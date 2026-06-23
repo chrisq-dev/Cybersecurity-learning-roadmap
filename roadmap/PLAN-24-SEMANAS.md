@@ -211,3 +211,5 @@ Si no puedes, repite la semana con una meta mas pequena.
 - Mejorar README y notas.
 - Elegir especializacion inicial.
 - Definir siguiente plan de 3 meses.
+- Revisar `empleabilidad/EMPLEO-READY.md`.
+- Si tienes Nivel 3, empezar a aplicar y registrar en `empleabilidad/TRACKER-APLICACIONES.md`.

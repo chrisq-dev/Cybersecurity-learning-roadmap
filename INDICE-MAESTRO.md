@@ -97,8 +97,10 @@ Este archivo es el mapa rapido para encontrar temas dentro del repositorio.
 - [Scripts](scripts/README.md)
 - [Writeups](writeups/README.md)
 - [Empleabilidad](empleabilidad/README.md)
+- [Empleo-ready](empleabilidad/EMPLEO-READY.md)
 - [Rutas por rol](empleabilidad/RUTAS-POR-ROL.md)
 - [Mapa skills a evidencia](empleabilidad/MAPA-SKILLS-EVIDENCIA.md)
+- [Tracker de aplicaciones](empleabilidad/TRACKER-APLICACIONES.md)
 - [Playbooks](playbooks/README.md)
 - [Plantillas profesionales](plantillas/README.md)
 

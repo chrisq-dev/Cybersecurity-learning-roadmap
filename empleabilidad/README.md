@@ -39,6 +39,7 @@ Tu GitHub debe mostrar:
 
 ## Archivos de Esta Carpeta
 
+- [EMPLEO-READY.md](EMPLEO-READY.md) - Sistema para saber si ya tienes evidencia suficiente para aplicar.
 - [RUTA-TRABAJO.md](RUTA-TRABAJO.md) - Ruta concreta para llegar a un primer trabajo.
 - [PROYECTOS-PORTAFOLIO.md](PROYECTOS-PORTAFOLIO.md) - Proyectos que puedes construir para demostrar habilidad.
 - [CV-LINKEDIN.md](CV-LINKEDIN.md) - Como presentar tu perfil.
@@ -46,3 +47,4 @@ Tu GitHub debe mostrar:
 - [CHECKLIST-APLICAR.md](CHECKLIST-APLICAR.md) - Validacion antes de aplicar.
 - [RUTAS-POR-ROL.md](RUTAS-POR-ROL.md) - Que estudiar segun el rol objetivo.
 - [MAPA-SKILLS-EVIDENCIA.md](MAPA-SKILLS-EVIDENCIA.md) - Como demostrar habilidades con evidencia.
+- [TRACKER-APLICACIONES.md](TRACKER-APLICACIONES.md) - Seguimiento de vacantes, entrevistas y mejoras.

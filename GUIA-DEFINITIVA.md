@@ -59,6 +59,14 @@ Si falta una de esas partes, el tema todavia no esta cerrado.
 - [notes/PLANTILLA-NOTA.md](notes/PLANTILLA-NOTA.md): formato para notas.
 - [notes/PLANTILLA-RESPUESTA.md](notes/PLANTILLA-RESPUESTA.md): formato para respuestas tecnicas.
 
+### Para Conseguir Trabajo
+
+- [empleabilidad/EMPLEO-READY.md](empleabilidad/EMPLEO-READY.md): niveles de preparacion para aplicar.
+- [empleabilidad/RUTA-TRABAJO.md](empleabilidad/RUTA-TRABAJO.md): ruta hacia primer empleo.
+- [empleabilidad/PROYECTOS-PORTAFOLIO.md](empleabilidad/PROYECTOS-PORTAFOLIO.md): proyectos que demuestran habilidad.
+- [empleabilidad/MAPA-SKILLS-EVIDENCIA.md](empleabilidad/MAPA-SKILLS-EVIDENCIA.md): conectar skills con evidencia.
+- [empleabilidad/TRACKER-APLICACIONES.md](empleabilidad/TRACKER-APLICACIONES.md): seguimiento de aplicaciones.
+
 ## Donde Va Cada Cosa
 
 | Cosa | Donde va |
@@ -72,6 +80,8 @@ Si falta una de esas partes, el tema todavia no esta cerrado.
 | Reportes | `labs/reportes/`, `writeups/` o `plantillas/` |
 | Scripts | `scripts/` |
 | Proyectos grandes | `capstone-projects/` |
+| Preparacion laboral | `empleabilidad/EMPLEO-READY.md` |
+| Aplicaciones a trabajos | `empleabilidad/TRACKER-APLICACIONES.md` |
 
 ## Flujo Diario
 
@@ -170,11 +180,12 @@ Sigue esta ruta en orden:
 19. Arquitectura, IAM, continuidad y seguridad empresarial.
 20. Proyectos de portafolio.
 21. Simulacion de entrevista.
-22. Especializacion.
+22. Aplicaciones a trabajos.
+23. Especializacion.
 
-## Que Falta Para Que Sea Cada Vez Mas Fuerte
+## Como Volverlo Cada Vez Mas Fuerte
 
-Este repo ya tiene ruta, indice, temas, labs, evaluaciones, respuestas y seguimiento. Lo que se debe seguir agregando con el tiempo es:
+Este repo ya tiene ruta, indice, temas, labs, evaluaciones, respuestas, seguimiento y sistema de empleabilidad. A partir de aqui, el crecimiento debe venir de evidencia real:
 
 - Mas labs paso a paso.
 - Mas respuestas ejemplo.
@@ -183,6 +194,8 @@ Este repo ya tiene ruta, indice, temas, labs, evaluaciones, respuestas y seguimi
 - Mas proyectos integradores.
 - Mas simulaciones de entrevista.
 - Mas reportes profesionales.
+- Mas aplicaciones registradas.
+- Mas feedback externo.
 
 La guia no se vuelve definitiva por tener todos los textos desde el dia uno. Se vuelve definitiva porque cada tema termina con evidencia, practica y correccion.
 

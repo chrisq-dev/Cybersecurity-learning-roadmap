@@ -110,3 +110,15 @@ Evidencia:
 - Capstone con resumen ejecutivo.
 - README claro.
 - Reportes tecnicos breves.
+
+## Estado Empleo-Ready
+
+Usa [EMPLEO-READY.md](EMPLEO-READY.md) para marcar tu nivel:
+
+- Nivel 1: Base tecnica.
+- Nivel 2: Practica visible.
+- Nivel 3: Portafolio junior.
+- Nivel 4: Candidato fuerte.
+- Nivel 5: Ruta a experto.
+
+El objetivo minimo para aplicar es Nivel 3.

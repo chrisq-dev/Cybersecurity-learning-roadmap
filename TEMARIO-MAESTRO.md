@@ -418,12 +418,19 @@ Debes poder responder:
 - Pensamiento critico.
 - Aprendizaje continuo.
 - Etica profesional.
+- CV y LinkedIn.
+- Entrevistas tecnicas.
+- Portafolio.
+- Aplicaciones.
+- Networking profesional.
 
 Debes poder hacer:
 
 - Explicar un hallazgo a una persona tecnica.
 - Explicar el mismo hallazgo a una persona no tecnica.
 - Defender una recomendacion con evidencia.
+- Presentar un proyecto del repo en entrevista.
+- Registrar aplicaciones y aprender de rechazos.
 
 ## Material Desarrollado en Este Repo
 
@@ -462,6 +469,8 @@ Para estudiar directamente desde el repo, empieza con:
 - `playbooks/`
 - `plantillas/`
 - `labs/`
+- `empleabilidad/EMPLEO-READY.md`
+- `empleabilidad/TRACKER-APLICACIONES.md`
 
 Cada modulo debe estudiarse con el mismo ciclo:
 

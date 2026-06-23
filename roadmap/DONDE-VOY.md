@@ -138,6 +138,30 @@ Evidencia requerida:
 - [ ] Proyecto integrador terminado.
 - [ ] README de proyecto.
 
+### Fase 9: Empleo-Ready
+
+Objetivo: convertir estudio en evidencia para aplicar a trabajos junior.
+
+Evidencia requerida:
+
+- [ ] Nivel 3 marcado en [empleabilidad/EMPLEO-READY.md](../empleabilidad/EMPLEO-READY.md).
+- [ ] 5 proyectos o labs completos.
+- [ ] CV/LinkedIn actualizado.
+- [ ] 30 preguntas de entrevista practicadas.
+- [ ] Aplicaciones registradas en [empleabilidad/TRACKER-APLICACIONES.md](../empleabilidad/TRACKER-APLICACIONES.md).
+
+### Fase 10: Ruta a Experto
+
+Objetivo: elegir especialidad y profundizar con proyectos, feedback y experiencia.
+
+Evidencia requerida:
+
+- [ ] Especialidad elegida: SOC/Blue, AppSec, Cloud, DFIR, GRC, Red Team autorizado u otra.
+- [ ] 1 capstone completo.
+- [ ] 1 proyecto avanzado de la especialidad.
+- [ ] Feedback externo recibido.
+- [ ] Plan de 3 meses siguiente.
+
 ## Registro Semanal
 
 ### Semana 1
@@ -183,5 +207,6 @@ No avances solo porque leiste. Avanza cuando tengas:
 - Una respuesta escrita.
 - Una duda registrada.
 - Una evidencia en el repo.
+- Una mejora en empleabilidad cuando estes en fase laboral.
 
 Si una fase se pone amarilla o roja, vuelve al archivo del tema, haz una sesion corta y contesta preguntas.

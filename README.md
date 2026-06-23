@@ -30,6 +30,7 @@ Despues usa:
 - [roadmap/PRACTICA-DELIBERADA.md](roadmap/PRACTICA-DELIBERADA.md) para practicar de forma intencional.
 - [roadmap/REPASO-30-60-90.md](roadmap/REPASO-30-60-90.md) para consolidar lo aprendido.
 - [empleabilidad/README.md](empleabilidad/README.md) para conectar el estudio con conseguir trabajo.
+- [empleabilidad/EMPLEO-READY.md](empleabilidad/EMPLEO-READY.md) para saber si ya tienes evidencia suficiente para aplicar a trabajos.
 - Cada carpeta tematica para guardar notas, laboratorios y resumenes.
 
 ## Primeros Archivos Que Debes Leer
@@ -176,6 +177,7 @@ Aprender ciberseguridad con profundidad suficiente para entender cómo funcionan
 - Criptografia aplicada: hashing, cifrado, certificados, TLS y manejo de secretos.
 - Programacion y automatizacion: Python, Bash, PowerShell, Git y expresiones regulares.
 - Reportes: metodologia, evidencia, impacto, remediacion y comunicacion tecnica.
+- Empleabilidad: portafolio, CV, entrevistas, aplicaciones y evidencia para roles junior.
 
 ## Estructura
 

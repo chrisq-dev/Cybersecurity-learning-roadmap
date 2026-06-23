@@ -2,6 +2,8 @@
 
 Esta ruta esta pensada para conseguir un primer trabajo en ciberseguridad o acercarte a el desde soporte, redes o sistemas.
 
+Usa tambien [EMPLEO-READY.md](EMPLEO-READY.md) para saber si ya tienes evidencia suficiente para aplicar.
+
 ## Etapa 1: Base Empleable
 
 Duracion sugerida: 8 a 12 semanas.
@@ -92,6 +94,8 @@ Cuando tengas evidencia suficiente:
 - Aplica a Vulnerability Management Junior.
 
 No esperes sentirte experto para aplicar. Aplica cuando puedas explicar tus proyectos y tus fundamentos con claridad.
+
+Registra aplicaciones en [TRACKER-APLICACIONES.md](TRACKER-APLICACIONES.md).
 
 ## Indicadores de que Ya Puedes Aplicar
 
