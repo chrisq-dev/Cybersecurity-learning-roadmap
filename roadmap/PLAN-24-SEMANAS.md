@@ -2,6 +2,37 @@
 
 Plan inicial de 6 meses para estudiar ciberseguridad de forma constante. Ajustalo segun tu tiempo, pero manten evidencia escrita de cada semana.
 
+## Como Usar Este Plan
+
+Cada semana debe terminar con cuatro evidencias:
+
+- Nota: una explicacion con tus palabras en `notes/` o en el modulo correspondiente.
+- Practica: comandos, lab, analisis, script o ejercicio.
+- Respuestas: preguntas contestadas en `evaluaciones/RESPUESTAS.md`.
+- Estado: avance actualizado en `roadmap/DONDE-VOY.md` y `roadmap/TABLERO.md`.
+
+Si una semana no tiene evidencia, no cuenta como completada aunque hayas leido o visto videos.
+
+## Flujo Semanal
+
+1. Lunes: elegir tema en `roadmap/TABLERO.md`.
+2. Martes a jueves: estudiar y practicar.
+3. Viernes: contestar preguntas en `evaluaciones/RESPUESTAS.md`.
+4. Sabado: documentar nota, lab o reporte.
+5. Domingo: actualizar `roadmap/DONDE-VOY.md` y decidir si avanzas.
+
+## Criterio Para Avanzar
+
+Avanza si puedes:
+
+- Explicar el tema sin copiar.
+- Resolver al menos una practica.
+- Contestar preguntas basicas.
+- Nombrar riesgos y mitigaciones.
+- Mostrar evidencia escrita.
+
+Si no puedes, repite la semana con una meta mas pequena.
+
 ## Mes 1: Fundamentos y Redes
 
 ### Semana 1: Computacion y Seguridad Basica

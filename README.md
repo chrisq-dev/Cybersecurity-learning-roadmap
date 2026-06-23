@@ -8,7 +8,9 @@ La idea de este repo es construir una base completa: fundamentos, redes, Linux, 
 
 Empieza por [INICIO-AQUI.md](INICIO-AQUI.md). Ese archivo te dice que estudiar hoy, como avanzar la primera semana y como evitar perderte entre tantos temas.
 
-Despues lee [GUIA-DE-ESTUDIO.md](GUIA-DE-ESTUDIO.md). Ese archivo es la guia principal del repositorio: explica el orden recomendado, como estudiar, que practicar y como medir tu progreso.
+Despues lee [GUIA-DEFINITIVA.md](GUIA-DEFINITIVA.md). Ese archivo explica el sistema completo: donde vas, donde contestas, donde guardas notas, como practicas y como decides si avanzas.
+
+Luego usa [GUIA-DE-ESTUDIO.md](GUIA-DE-ESTUDIO.md). Ese archivo explica el orden recomendado, como estudiar, que practicar y como medir tu progreso.
 
 Despues usa:
 
@@ -18,10 +20,12 @@ Despues usa:
 - [roadmap/PLAN-24-SEMANAS.md](roadmap/PLAN-24-SEMANAS.md) para estudiar semana por semana.
 - [roadmap/RUTINA-SEMANAL.md](roadmap/RUTINA-SEMANAL.md) para mantener consistencia.
 - [roadmap/SESION-DIARIA.md](roadmap/SESION-DIARIA.md) para estudiar cada dia con evidencia concreta.
+- [roadmap/DONDE-VOY.md](roadmap/DONDE-VOY.md) para saber en que fase estas y que falta para avanzar.
 - [roadmap/TABLERO.md](roadmap/TABLERO.md) para elegir pocas tareas activas y no saturarte.
 - [roadmap/CHECKLIST.md](roadmap/CHECKLIST.md) para marcar avance.
 - [roadmap/MATRIZ-HABILIDADES.md](roadmap/MATRIZ-HABILIDADES.md) para saber que necesitas en cada nivel.
 - [evaluaciones/RUBRICA-DOMINIO.md](evaluaciones/RUBRICA-DOMINIO.md) para saber si ya dominas un tema o solo lo reconoces.
+- [evaluaciones/RESPUESTAS.md](evaluaciones/RESPUESTAS.md) para contestar preguntas y corregirte.
 - [roadmap/PRACTICA-DELIBERADA.md](roadmap/PRACTICA-DELIBERADA.md) para practicar de forma intencional.
 - [roadmap/REPASO-30-60-90.md](roadmap/REPASO-30-60-90.md) para consolidar lo aprendido.
 - [empleabilidad/README.md](empleabilidad/README.md) para conectar el estudio con conseguir trabajo.
@@ -30,16 +34,19 @@ Despues usa:
 ## Primeros Archivos Que Debes Leer
 
 1. [INICIO-AQUI.md](INICIO-AQUI.md)
-2. [SISTEMA-TDAH.md](SISTEMA-TDAH.md)
-3. [GUIA-DE-ESTUDIO.md](GUIA-DE-ESTUDIO.md)
-4. [roadmap/PLAN-24-SEMANAS.md](roadmap/PLAN-24-SEMANAS.md)
-5. [roadmap/SESION-DIARIA.md](roadmap/SESION-DIARIA.md)
-6. [roadmap/TABLERO.md](roadmap/TABLERO.md)
-7. [evaluaciones/RUBRICA-DOMINIO.md](evaluaciones/RUBRICA-DOMINIO.md)
-8. [INDICE-MAESTRO.md](INDICE-MAESTRO.md)
-9. [TEMARIO-MAESTRO.md](TEMARIO-MAESTRO.md)
-10. [labs/PRIMEROS-LABS.md](labs/PRIMEROS-LABS.md)
-11. [empleabilidad/PROYECTOS-PORTAFOLIO.md](empleabilidad/PROYECTOS-PORTAFOLIO.md)
+2. [GUIA-DEFINITIVA.md](GUIA-DEFINITIVA.md)
+3. [SISTEMA-TDAH.md](SISTEMA-TDAH.md)
+4. [GUIA-DE-ESTUDIO.md](GUIA-DE-ESTUDIO.md)
+5. [roadmap/PLAN-24-SEMANAS.md](roadmap/PLAN-24-SEMANAS.md)
+6. [roadmap/SESION-DIARIA.md](roadmap/SESION-DIARIA.md)
+7. [roadmap/DONDE-VOY.md](roadmap/DONDE-VOY.md)
+8. [roadmap/TABLERO.md](roadmap/TABLERO.md)
+9. [evaluaciones/RUBRICA-DOMINIO.md](evaluaciones/RUBRICA-DOMINIO.md)
+10. [evaluaciones/RESPUESTAS.md](evaluaciones/RESPUESTAS.md)
+11. [INDICE-MAESTRO.md](INDICE-MAESTRO.md)
+12. [TEMARIO-MAESTRO.md](TEMARIO-MAESTRO.md)
+13. [labs/PRIMEROS-LABS.md](labs/PRIMEROS-LABS.md)
+14. [empleabilidad/PROYECTOS-PORTAFOLIO.md](empleabilidad/PROYECTOS-PORTAFOLIO.md)
 
 ## Primer Bloque de Estudio
 

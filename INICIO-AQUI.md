@@ -2,6 +2,8 @@
 
 Este archivo es tu punto de entrada cuando no sepas que estudiar. Si te pierdes, vuelve aqui y sigue el siguiente paso.
 
+Para entender el sistema completo del repo, lee tambien [GUIA-DEFINITIVA.md](GUIA-DEFINITIVA.md).
+
 ## Respuesta Corta
 
 Si estas empezando hoy, estudia en este orden:
@@ -30,6 +32,7 @@ Haz solo esto:
    - Por que esto importa en seguridad.
 3. Revisa [evaluaciones/RUBRICA-DOMINIO.md](evaluaciones/RUBRICA-DOMINIO.md) y marca mentalmente tu nivel.
 4. Actualiza [roadmap/TABLERO.md](roadmap/TABLERO.md) con el tema actual.
+5. Registra donde vas en [roadmap/DONDE-VOY.md](roadmap/DONDE-VOY.md).
 
 Si haces eso, ya avanzaste.
 
@@ -43,6 +46,29 @@ Solo puedes tener:
 - 1 siguiente paso.
 
 Todo lo demas va en [notes/PENDIENTES.md](notes/PENDIENTES.md).
+
+## Donde Contesto Las Preguntas
+
+Usa estos lugares:
+
+- Preguntas de evaluacion: [evaluaciones/RESPUESTAS.md](evaluaciones/RESPUESTAS.md)
+- Notas tecnicas: carpeta [notes/](notes/)
+- Avance general: [roadmap/DONDE-VOY.md](roadmap/DONDE-VOY.md)
+- Tareas activas: [roadmap/TABLERO.md](roadmap/TABLERO.md)
+- Dudas e ideas futuras: [notes/PENDIENTES.md](notes/PENDIENTES.md)
+
+Regla: si es una respuesta a una pregunta, va en `evaluaciones/RESPUESTAS.md`. Si es una explicacion larga de un tema, va como nota en `notes/`. Si es progreso, va en `roadmap/DONDE-VOY.md`.
+
+## Como Se Que Voy Bien
+
+Cada semana revisa:
+
+1. [roadmap/DONDE-VOY.md](roadmap/DONDE-VOY.md)
+2. [roadmap/CHECKLIST.md](roadmap/CHECKLIST.md)
+3. [evaluaciones/RESPUESTAS.md](evaluaciones/RESPUESTAS.md)
+4. [roadmap/TABLERO.md](roadmap/TABLERO.md)
+
+Si tienes evidencia escrita y puedes explicar el tema sin copiar, vas bien. Si solo leiste o viste videos, todavia falta practica.
 
 ## Primera Semana
 
@@ -180,4 +206,3 @@ Vas bien si cada semana tienes:
 - Algo que sabes explicar mejor.
 
 No midas progreso por cantidad de videos vistos. Midelo por evidencia creada.
-

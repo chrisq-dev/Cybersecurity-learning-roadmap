@@ -100,14 +100,17 @@ Este archivo es el mapa rapido para encontrar temas dentro del repositorio.
 ## Estudio y Seguimiento
 
 - [Inicio aqui](INICIO-AQUI.md)
+- [Guia definitiva](GUIA-DEFINITIVA.md)
 - [Sistema TDAH](SISTEMA-TDAH.md)
 - [Guia de estudio](GUIA-DE-ESTUDIO.md)
 - [Temario maestro](TEMARIO-MAESTRO.md)
 - [Plan 24 semanas](roadmap/PLAN-24-SEMANAS.md)
 - [Sesion diaria](roadmap/SESION-DIARIA.md)
+- [Donde voy](roadmap/DONDE-VOY.md)
 - [Checklist](roadmap/CHECKLIST.md)
 - [Tablero](roadmap/TABLERO.md)
 - [Matriz de habilidades](roadmap/MATRIZ-HABILIDADES.md)
 - [Evaluaciones](evaluaciones/README.md)
 - [Rubrica de dominio](evaluaciones/RUBRICA-DOMINIO.md)
+- [Respuestas](evaluaciones/RESPUESTAS.md)
 - [Cheatsheets](cheatsheets/README.md)

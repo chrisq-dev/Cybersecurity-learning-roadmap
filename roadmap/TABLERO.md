@@ -21,6 +21,7 @@ Entender computadoras, sistemas operativos, identidad, permisos y seguridad basi
 - [ ] Leer `INICIO-AQUI.md`.
 - [ ] Estudiar `fundamentos/COMPUTACION-BASICA.md`.
 - [ ] Crear una nota corta con CPU, RAM, disco, proceso, archivo y relacion con seguridad.
+- [ ] Contestar 3 preguntas en `evaluaciones/RESPUESTAS.md`.
 
 ## Siguiente
 
@@ -40,6 +41,7 @@ Entender computadoras, sistemas operativos, identidad, permisos y seguridad basi
 
 - Nota:
 - Lab:
+- Respuestas:
 - Script:
 - Reporte:
 - Commit:

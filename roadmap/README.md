@@ -6,6 +6,7 @@ Ruta de estudio para avanzar desde fundamentos hasta temas practicos de segurida
 
 - [PLAN-24-SEMANAS.md](PLAN-24-SEMANAS.md)
 - [SESION-DIARIA.md](SESION-DIARIA.md)
+- [DONDE-VOY.md](DONDE-VOY.md)
 - [CHECKLIST.md](CHECKLIST.md)
 - [RUTINA-SEMANAL.md](RUTINA-SEMANAL.md)
 - [TABLERO.md](TABLERO.md)
