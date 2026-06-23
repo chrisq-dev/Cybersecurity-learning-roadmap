@@ -4,6 +4,19 @@ Repositorio personal para estudiar, practicar y documentar ciberseguridad de for
 
 La idea de este repo es construir una base completa: fundamentos, redes, Linux, Windows, Cisco, seguridad web, OWASP, blue team, cloud, Active Directory, scripting, laboratorios, writeups y recursos.
 
+Aunque este repo nace como mi ruta personal de aprendizaje, esta abierto para cualquier persona que quiera estudiar ciberseguridad de forma responsable, ordenada y etica.
+
+## Proposito Publico
+
+Este repositorio puede servir para:
+
+- Estudiantes que no saben por donde empezar.
+- Personas de IT, soporte o redes que quieren moverse a ciberseguridad.
+- Principiantes que necesitan una ruta completa y practica.
+- Personas que quieren construir portafolio con notas, labs, scripts y reportes.
+
+El enfoque es aprender haciendo: leer, practicar, responder preguntas, documentar evidencia y mejorar con el tiempo.
+
 ## Por Donde Empezar
 
 Empieza por [INICIO-AQUI.md](INICIO-AQUI.md). Ese archivo te dice que estudiar hoy, como avanzar la primera semana y como evitar perderte entre tantos temas.
@@ -225,6 +238,8 @@ Aprender ciberseguridad con profundidad suficiente para entender cómo funcionan
 Todo el contenido de este repositorio es educativo. Cualquier prueba, escaneo, explotacion o analisis debe realizarse unicamente en sistemas propios, autorizados o disenados como laboratorios.
 
 No se deben subir credenciales, tokens, datos personales, informacion privada, resultados de sistemas reales sin permiso o spoilers prohibidos por plataformas de practica.
+
+Si usas este repo para aprender, manten el mismo principio: practica solo en entornos propios, autorizados o creados para laboratorio.
 
 ## Estado
 
