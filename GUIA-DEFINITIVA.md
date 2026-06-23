@@ -23,6 +23,7 @@ Si falta una de esas partes, el tema todavia no esta cerrado.
 ### Para Saber Que Hacer
 
 - [INICIO-AQUI.md](INICIO-AQUI.md): primera ruta cuando no sabes que estudiar.
+- [ESTADO-DEL-REPO.md](ESTADO-DEL-REPO.md): estado de la version inicial y mejoras futuras.
 - [roadmap/DONDE-VOY.md](roadmap/DONDE-VOY.md): estado actual, fase, semana, evidencia y requisitos para avanzar.
 - [roadmap/TABLERO.md](roadmap/TABLERO.md): maximo 3 tareas activas.
 - [roadmap/PLAN-24-SEMANAS.md](roadmap/PLAN-24-SEMANAS.md): ruta de 6 meses.

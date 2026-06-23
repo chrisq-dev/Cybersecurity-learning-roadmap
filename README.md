@@ -28,6 +28,7 @@ Luego usa [GUIA-DE-ESTUDIO.md](GUIA-DE-ESTUDIO.md). Ese archivo explica el orden
 Despues usa:
 
 - [INDICE-MAESTRO.md](INDICE-MAESTRO.md) para encontrar cualquier tema rapido.
+- [ESTADO-DEL-REPO.md](ESTADO-DEL-REPO.md) para ver que ya esta completo y que queda como mejora continua.
 - [SISTEMA-TDAH.md](SISTEMA-TDAH.md) para estudiar con bloques cortos, menos saturacion y mas practica.
 - [TEMARIO-MAESTRO.md](TEMARIO-MAESTRO.md) para ver el mapa completo de temas que deberias conocer.
 - [roadmap/PLAN-24-SEMANAS.md](roadmap/PLAN-24-SEMANAS.md) para estudiar semana por semana.
@@ -243,4 +244,6 @@ Si usas este repo para aprender, manten el mismo principio: practica solo en ent
 
 ## Estado
 
-Repositorio en construccion continua como parte de mi ruta de aprendizaje en ciberseguridad.
+Version inicial completa como guia de estudio, practica, seguimiento y empleabilidad.
+
+Este repo seguira creciendo con mas notas, labs, proyectos y reportes conforme avance mi aprendizaje. Ver [ESTADO-DEL-REPO.md](ESTADO-DEL-REPO.md).

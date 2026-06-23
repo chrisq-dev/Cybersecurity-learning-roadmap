@@ -107,6 +107,7 @@ Este archivo es el mapa rapido para encontrar temas dentro del repositorio.
 ## Estudio y Seguimiento
 
 - [Inicio aqui](INICIO-AQUI.md)
+- [Estado del repo](ESTADO-DEL-REPO.md)
 - [Guia definitiva](GUIA-DEFINITIVA.md)
 - [Sistema TDAH](SISTEMA-TDAH.md)
 - [Guia de estudio](GUIA-DE-ESTUDIO.md)
