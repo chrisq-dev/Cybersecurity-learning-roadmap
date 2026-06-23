@@ -172,6 +172,8 @@ Si no puedes, repite la semana con una meta mas pequena.
 - Estudiar reconocimiento, enumeracion y escaneo autorizado.
 - Practicar solo en labs.
 - Documentar metodologia y reglas eticas.
+- Leer `security-teams/TEAMS-Y-HATS.md`.
+- Explicar diferencia entre Red Team, Purple Team, White Team, White Hat, Black Hat y Gray Hat.
 
 ### Semana 20: Cloud Security Intro
 

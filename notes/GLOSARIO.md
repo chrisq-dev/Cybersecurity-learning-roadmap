@@ -78,6 +78,9 @@
 - MITRE ATT&CK: base de conocimiento de tacticas y tecnicas usadas por adversarios.
 - Playbook: guia operativa para responder a un tipo de incidente.
 - Runbook: procedimiento repetible y detallado para ejecutar una tarea operativa.
+- Blue Team: equipo defensivo encargado de monitoreo, deteccion, investigacion y respuesta.
+- Purple Team: colaboracion entre Red Team y Blue Team para mejorar detecciones, controles y respuesta.
+- White Team: equipo que coordina reglas, alcance, autorizacion y evaluacion en ejercicios de seguridad.
 
 ## Red Team
 
@@ -85,11 +88,16 @@
 - Enumeracion: identificacion detallada de servicios, usuarios o recursos.
 - Explotacion: uso de una vulnerabilidad en un entorno autorizado.
 - Privilege escalation: aumento de privilegios en un sistema.
-- Scope: limites autorizados de una prueba.
 - Payload: contenido enviado para probar o explotar un comportamiento.
 - Post-explotacion: actividades despues de lograr acceso en un laboratorio o prueba autorizada.
 - Remediacion: accion para corregir o reducir un riesgo encontrado.
 - Evidencia: datos que respaldan un hallazgo, como logs, capturas o salidas de comandos.
+- Red Team: equipo ofensivo autorizado que simula adversarios para evaluar defensas.
+- White Hat: persona que trabaja con permiso, legalidad y etica.
+- Black Hat: atacante malicioso que opera sin autorizacion.
+- Gray Hat: persona que actua en zona ambigua, a veces sin permiso claro; es riesgoso legal y eticamente.
+- Scope: limites autorizados de una prueba o ejercicio.
+- Rules of engagement: reglas que definen que se permite, que no se permite, horarios, sistemas y contactos.
 
 ## Windows y Active Directory
 

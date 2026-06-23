@@ -33,6 +33,7 @@ Si falta una de esas partes, el tema todavia no esta cerrado.
 - [TEMARIO-MAESTRO.md](TEMARIO-MAESTRO.md): mapa grande de temas.
 - [INDICE-MAESTRO.md](INDICE-MAESTRO.md): busqueda rapida por area.
 - Carpetas tematicas: `fundamentos/`, `redes-cisco/`, `linux/`, `web-owasp/`, `blue-team/`, etc.
+- [security-teams/TEAMS-Y-HATS.md](security-teams/TEAMS-Y-HATS.md): mapa de Red Team, Blue Team, Purple Team, White Team y hats.
 
 ### Para Practicar
 
@@ -158,16 +159,18 @@ Sigue esta ruta en orden:
 8. Python para seguridad.
 9. Web y OWASP.
 10. Blue Team.
-11. Cloud security.
-12. AppSec y APIs.
-13. Vulnerability management.
-14. GRC basico.
-15. Red Team controlado.
-16. Forense y malware basico.
-17. Arquitectura, IAM, continuidad y seguridad empresarial.
-18. Proyectos de portafolio.
-19. Simulacion de entrevista.
-20. Especializacion.
+11. Security teams y hats.
+12. Cloud security.
+13. AppSec y APIs.
+14. Vulnerability management.
+15. GRC basico.
+16. Red Team controlado.
+17. Purple Team.
+18. Forense y malware basico.
+19. Arquitectura, IAM, continuidad y seguridad empresarial.
+20. Proyectos de portafolio.
+21. Simulacion de entrevista.
+22. Especializacion.
 
 ## Que Falta Para Que Sea Cada Vez Mas Fuerte
 
@@ -194,4 +197,3 @@ Cuando dudes, pregunta:
 5. Que falta? Responde en `notes/PENDIENTES.md`.
 
 Si esos cinco archivos estan vivos, no te pierdes.
-

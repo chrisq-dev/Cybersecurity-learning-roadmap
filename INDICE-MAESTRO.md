@@ -57,6 +57,11 @@ Este archivo es el mapa rapido para encontrar temas dentro del repositorio.
 - [Threat hunting](blue-team/THREAT-HUNTING.md)
 - [Detection engineering](blue-team/DETECTION-ENGINEERING.md)
 
+## Security Teams y Hats
+
+- [Security Teams y Hats](security-teams/README.md)
+- [Teams y Hats explicados](security-teams/TEAMS-Y-HATS.md)
+
 ## Infraestructura y Operacion
 
 - [Cloud Security](cloud-security/README.md)

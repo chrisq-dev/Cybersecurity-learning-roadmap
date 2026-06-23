@@ -259,7 +259,39 @@ Debes poder hacer:
 - Explicar impacto.
 - Recomendar mitigaciones.
 
-## 12. Criptografia Aplicada
+## 12. Security Teams, Hats y Roles
+
+- Blue Team.
+- Red Team autorizado.
+- Purple Team.
+- White Team.
+- AppSec Team.
+- Cloud Security Team.
+- DFIR Team.
+- Threat Intelligence Team.
+- GRC Team.
+- White Hat.
+- Black Hat.
+- Gray Hat.
+- Diferencia entre rol profesional y actividad ilegal.
+- Reglas de autorizacion.
+- Scope y rules of engagement.
+
+Debes poder responder:
+
+- Diferencia entre Red Team y Black Hat.
+- Que hace Blue Team.
+- Que hace Purple Team.
+- Que hace White Team.
+- Por que White Hat es la ruta correcta.
+- Por que Gray Hat puede ser riesgoso.
+- Que equipos existen en una organizacion moderna.
+
+Material:
+
+- `security-teams/`
+
+## 13. Criptografia Aplicada
 
 - Encoding vs hashing vs encryption.
 - Hashes.
@@ -279,7 +311,7 @@ Debes poder responder:
 - Por que no se deben guardar contrasenas en texto plano.
 - Como ayuda TLS a proteger trafico.
 
-## 13. Cloud Security
+## 14. Cloud Security
 
 - Responsabilidad compartida.
 - IAM.
@@ -302,7 +334,7 @@ Debes poder responder:
 - Por que IAM es una fuente comun de incidentes.
 - Por que el logging es critico en cloud.
 
-## 14. Seguridad de Aplicaciones y DevSecOps
+## 15. Seguridad de Aplicaciones y DevSecOps
 
 - SDLC.
 - Threat modeling.
@@ -322,7 +354,7 @@ Debes poder hacer:
 - Revisar dependencias vulnerables.
 - Explicar controles en un pipeline.
 
-## 15. Malware y Analisis Basico
+## 16. Malware y Analisis Basico
 
 - Tipos de malware.
 - Persistencia.
@@ -340,7 +372,7 @@ Debes poder hacer:
 - Crear una regla YARA simple.
 - Documentar IOCs.
 
-## 16. Forense Digital e Incidentes
+## 17. Forense Digital e Incidentes
 
 - Cadena de custodia.
 - Evidencia.
@@ -358,7 +390,7 @@ Debes poder responder:
 - Que preguntas hacer durante un incidente.
 - Como escribir una linea de tiempo.
 
-## 17. Gobernanza, Riesgo y Cumplimiento
+## 18. Gobernanza, Riesgo y Cumplimiento
 
 - Politicas.
 - Controles.
@@ -376,7 +408,7 @@ Debes poder responder:
 - Que es un control.
 - Por que la seguridad tambien es proceso.
 
-## 18. Habilidades Profesionales
+## 19. Habilidades Profesionales
 
 - Escritura tecnica.
 - Reportes ejecutivos.
@@ -407,6 +439,7 @@ Para estudiar directamente desde el repo, empieza con:
 - `cloud-security/`
 - `cripto/`
 - `red-team/`
+- `security-teams/`
 - `appsec-devsecops/`
 - `forense/`
 - `malware-basico/`

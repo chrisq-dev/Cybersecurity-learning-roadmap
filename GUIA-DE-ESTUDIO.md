@@ -255,7 +255,35 @@ Practica:
 - Documenta metodologia, evidencia, impacto y mitigacion.
 - Evita publicar spoilers o datos sensibles.
 
-### 9. Cloud Security
+### 9. Security Teams y Hats
+
+Antes de elegir una ruta, entiende la diferencia entre equipos profesionales y categorias eticas.
+
+Lee:
+
+- [security-teams/TEAMS-Y-HATS.md](security-teams/TEAMS-Y-HATS.md)
+
+Estudia:
+
+- Blue Team.
+- Red Team.
+- Purple Team.
+- White Team.
+- AppSec Team.
+- Cloud Security Team.
+- DFIR Team.
+- Threat Intelligence Team.
+- GRC Team.
+- White Hat, Black Hat y Gray Hat.
+
+Practica:
+
+- Explica la diferencia entre Red Team y Black Hat.
+- Explica por que Purple Team mejora defensas.
+- Escribe que ruta te interesa mas y que evidencia necesitas crear.
+- Define que actividades requieren autorizacion explicita.
+
+### 10. Cloud Security
 
 La nube es central en empresas modernas. IAM mal configurado, storage expuesto y logs incompletos son problemas comunes.
 
@@ -281,7 +309,7 @@ Practica:
 - Compara IAM en AWS, Azure y GCP.
 - Documenta riesgos de buckets/storage publicos.
 
-### 10. Criptografia Aplicada
+### 11. Criptografia Aplicada
 
 Criptografia aparece en contraseñas, TLS, certificados, integridad, firmas, secretos y comunicaciones.
 
@@ -308,7 +336,7 @@ Practica:
 - Revisa un certificado TLS.
 - Documenta buenas practicas para secretos.
 
-### 11. Reportes y Portafolio
+### 12. Reportes y Portafolio
 
 Saber documentar es parte del trabajo. Un buen reporte explica riesgo, evidencia y solucion.
 
@@ -323,7 +351,7 @@ Todo laboratorio importante debe tener:
 - Remediacion.
 - Lecciones aprendidas.
 
-### 12. AppSec y DevSecOps
+### 13. AppSec y DevSecOps
 
 AppSec protege aplicaciones durante diseño, desarrollo y operacion. DevSecOps integra controles de seguridad en pipelines.
 
@@ -338,7 +366,7 @@ Practica:
 - Diseña un pipeline con SAST, dependency scanning y secret scanning.
 - Documenta riesgos y controles.
 
-### 13. Forense Digital
+### 14. Forense Digital
 
 Forense ayuda a preservar evidencia y reconstruir que paso.
 
@@ -352,7 +380,7 @@ Practica:
 - Separa evidencia de hipotesis.
 - Calcula hashes de archivos de practica.
 
-### 14. Malware Basico
+### 15. Malware Basico
 
 Malware basico ayuda a entender comportamientos, IOCs y detecciones.
 
@@ -367,7 +395,7 @@ Practica:
 - Escribe una regla YARA simple.
 - Explica falsos positivos.
 
-### 15. Labs y Proyectos Guiados
+### 16. Labs y Proyectos Guiados
 
 La practica consolida el aprendizaje.
 
@@ -377,7 +405,7 @@ Lee y completa:
 - [labs/LABS-GUIADOS-BLUE-WEB.md](labs/LABS-GUIADOS-BLUE-WEB.md)
 - [labs/PROYECTOS-GUIADOS.md](labs/PROYECTOS-GUIADOS.md)
 
-### 16. Scripts Defensivos
+### 17. Scripts Defensivos
 
 Los scripts ayudan a automatizar tareas repetitivas y crear evidencia practica.
 
@@ -391,7 +419,7 @@ Practica:
 - Generar reporte de autenticacion con `auth_log_summary.py`.
 - Revisar inventario ficticio con `asset_inventory_check.py`.
 
-### 17. Gestion de Vulnerabilidades
+### 18. Gestion de Vulnerabilidades
 
 Aprende a identificar, priorizar, remediar y verificar vulnerabilidades.
 
@@ -406,7 +434,7 @@ Practica:
 - Prioriza hallazgos.
 - Escribe remediacion y validacion.
 
-### 18. GRC y Riesgo
+### 19. GRC y Riesgo
 
 GRC conecta seguridad con decisiones, controles y evidencia.
 
@@ -421,7 +449,7 @@ Practica:
 - Define controles preventivos, detectivos y correctivos.
 - Especifica evidencia.
 
-### 19. API Security
+### 20. API Security
 
 Las APIs concentran autenticacion, autorizacion, datos y logica de negocio.
 
@@ -436,7 +464,7 @@ Practica:
 - Identifica BOLA e IDOR.
 - Define logs seguros.
 
-### 20. Contenedores y Kubernetes
+### 21. Contenedores y Kubernetes
 
 Contenedores y Kubernetes son comunes en entornos modernos.
 
@@ -451,7 +479,7 @@ Practica:
 - Explica pods, services, namespaces y RBAC.
 - Crea checklist de seguridad Kubernetes.
 
-### 21. Privacidad
+### 22. Privacidad
 
 Privacidad ayuda a proteger datos personales y sensibles.
 
@@ -465,7 +493,7 @@ Practica:
 - Define controles.
 - Revisa riesgos de logs con datos sensibles.
 
-### 22. Aplicar a Trabajo
+### 23. Aplicar a Trabajo
 
 Cuando tengas proyectos y fundamentos, empieza a aplicar.
 
@@ -473,7 +501,7 @@ Lee:
 
 - [empleabilidad/CHECKLIST-APLICAR.md](empleabilidad/CHECKLIST-APLICAR.md)
 
-### 23. Email Security y Phishing
+### 24. Email Security y Phishing
 
 El correo es una de las vias mas comunes de ataque.
 
@@ -488,7 +516,7 @@ Practica:
 - Explica SPF, DKIM y DMARC.
 - Propone controles contra phishing.
 
-### 24. Wireless Security
+### 25. Wireless Security
 
 Wi-Fi debe diseñarse con segmentacion y controles.
 
@@ -501,7 +529,7 @@ Practica:
 - Diseña red corporativa, invitados y administracion.
 - Define VLANs y restricciones.
 
-### 25. Arquitectura de Seguridad
+### 26. Arquitectura de Seguridad
 
 Arquitectura une controles en un diseño coherente.
 
@@ -515,7 +543,7 @@ Practica:
 - Diseña controles preventivos, detectivos y correctivos para una app.
 - Explica Zero Trust con un caso remoto.
 
-### 26. IAM Corporativo y PAM
+### 27. IAM Corporativo y PAM
 
 Identidad es una de las areas mas importantes de seguridad.
 
@@ -530,7 +558,7 @@ Practica:
 - Diseña access review.
 - Propone controles para cuentas privilegiadas.
 
-### 27. Backups y Continuidad
+### 28. Backups y Continuidad
 
 La recuperacion tambien es seguridad.
 
@@ -545,7 +573,7 @@ Practica:
 - Diseña prueba de restauracion.
 - Crea tabletop de ransomware.
 
-### 28. Datos de Laboratorio
+### 29. Datos de Laboratorio
 
 Usa datos ficticios para practicar automatizacion.
 
@@ -560,7 +588,7 @@ Practica:
 - Ejecuta `asset_inventory_check.py`.
 - Lee los reportes generados.
 
-### 29. Network Security
+### 30. Network Security
 
 Lee:
 
@@ -573,7 +601,7 @@ Practica:
 - Define DMZ y segmentacion.
 - Explica egress filtering.
 
-### 30. Endpoint Security
+### 31. Endpoint Security
 
 Lee:
 
@@ -586,7 +614,7 @@ Practica:
 - Analiza parent process conceptual.
 - Define accion de contencion.
 
-### 31. Database Security
+### 32. Database Security
 
 Lee:
 
@@ -599,7 +627,7 @@ Practica:
 - Define auditoria.
 - Crea alertas de acceso sospechoso.
 
-### 32. Detection Engineering
+### 33. Detection Engineering
 
 Lee:
 
@@ -610,7 +638,7 @@ Practica:
 - Diseña deteccion de login fallido seguido de exito.
 - Documenta fuente, campos, falsos positivos y respuesta.
 
-### 33. Capstone Projects
+### 34. Capstone Projects
 
 Lee:
 
@@ -622,7 +650,7 @@ Practica:
 - Publica reporte final.
 - Usa evidencia, riesgo y remediacion.
 
-### 34. Cheatsheets, Evaluaciones y Repaso
+### 35. Cheatsheets, Evaluaciones y Repaso
 
 Cuando ya estudiaste un tema, usa estas carpetas para reforzar:
 
@@ -637,7 +665,7 @@ Practica:
 - Repite labs una semana despues.
 - Usa cheatsheets solo para confirmar, no para memorizar sin entender.
 
-### 35. Trabajo Real: Playbooks y Plantillas
+### 36. Trabajo Real: Playbooks y Plantillas
 
 Cuando ya entiendas fundamentos, practica documentacion profesional.
 

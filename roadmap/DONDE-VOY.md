@@ -116,7 +116,18 @@ Evidencia requerida:
 - [ ] Nota de responsabilidad compartida.
 - [ ] Ejemplo de IAM mal configurado y remediacion.
 
-### Fase 7: Red Team Controlado y Portafolio
+### Fase 7: Security Teams y Hats
+
+Objetivo: entender equipos profesionales, hats y limites eticos.
+
+Evidencia requerida:
+
+- [ ] Explicacion de Red Team vs Black Hat.
+- [ ] Explicacion de Blue Team, Purple Team y White Team.
+- [ ] Tabla de roles: AppSec, Cloud Security, DFIR, Threat Intel y GRC.
+- [ ] Nota sobre autorizacion, scope y reglas de engagement.
+
+### Fase 8: Red Team Controlado y Portafolio
 
 Objetivo: practicar ofensiva solo en labs autorizados y documentar profesionalmente.
 
@@ -174,4 +185,3 @@ No avances solo porque leiste. Avanza cuando tengas:
 - Una evidencia en el repo.
 
 Si una fase se pone amarilla o roja, vuelve al archivo del tema, haz una sesion corta y contesta preguntas.
-

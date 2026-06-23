@@ -26,6 +26,7 @@ Despues usa:
 - [roadmap/MATRIZ-HABILIDADES.md](roadmap/MATRIZ-HABILIDADES.md) para saber que necesitas en cada nivel.
 - [evaluaciones/RUBRICA-DOMINIO.md](evaluaciones/RUBRICA-DOMINIO.md) para saber si ya dominas un tema o solo lo reconoces.
 - [evaluaciones/RESPUESTAS.md](evaluaciones/RESPUESTAS.md) para contestar preguntas y corregirte.
+- [security-teams/TEAMS-Y-HATS.md](security-teams/TEAMS-Y-HATS.md) para entender Red Team, Blue Team, Purple Team, White Team, Black Hat, White Hat y roles relacionados.
 - [roadmap/PRACTICA-DELIBERADA.md](roadmap/PRACTICA-DELIBERADA.md) para practicar de forma intencional.
 - [roadmap/REPASO-30-60-90.md](roadmap/REPASO-30-60-90.md) para consolidar lo aprendido.
 - [empleabilidad/README.md](empleabilidad/README.md) para conectar el estudio con conseguir trabajo.
@@ -170,6 +171,7 @@ Aprender ciberseguridad con profundidad suficiente para entender cómo funcionan
 - Seguridad web: HTTP, autenticacion, sesiones, APIs y OWASP Top 10.
 - Blue Team: logs, SIEM, deteccion, respuesta a incidentes, Sigma, YARA y threat hunting.
 - Red Team basico: reconocimiento, enumeracion, explotacion en labs y post-explotacion controlada.
+- Security teams y hats: Red Team, Blue Team, Purple Team, White Team, White Hat, Black Hat, Gray Hat y roles modernos.
 - Cloud security: IAM, redes cloud, storage, logging, monitoreo y errores comunes.
 - Criptografia aplicada: hashing, cifrado, certificados, TLS y manejo de secretos.
 - Programacion y automatizacion: Python, Bash, PowerShell, Git y expresiones regulares.
@@ -185,6 +187,7 @@ Aprender ciberseguridad con profundidad suficiente para entender cómo funcionan
 - `web-owasp/` - Seguridad web, HTTP, APIs y OWASP Top 10.
 - `blue-team/` - Deteccion, SIEM, respuesta a incidentes y threat hunting.
 - `red-team/` - Tecnicas ofensivas en entornos controlados.
+- `security-teams/` - Mapa de equipos, hats, roles y diferencias eticas.
 - `cloud-security/` - Seguridad en AWS, Azure, GCP y conceptos cloud.
 - `cripto/` - Criptografia practica y seguridad de secretos.
 - `programacion/` - Python, Bash, PowerShell y automatizacion.
