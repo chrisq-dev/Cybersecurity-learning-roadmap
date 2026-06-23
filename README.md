@@ -15,9 +15,11 @@ Despues usa:
 - [TEMARIO-MAESTRO.md](TEMARIO-MAESTRO.md) para ver el mapa completo de temas que deberias conocer.
 - [roadmap/PLAN-24-SEMANAS.md](roadmap/PLAN-24-SEMANAS.md) para estudiar semana por semana.
 - [roadmap/RUTINA-SEMANAL.md](roadmap/RUTINA-SEMANAL.md) para mantener consistencia.
+- [roadmap/SESION-DIARIA.md](roadmap/SESION-DIARIA.md) para estudiar cada dia con evidencia concreta.
 - [roadmap/TABLERO.md](roadmap/TABLERO.md) para elegir pocas tareas activas y no saturarte.
 - [roadmap/CHECKLIST.md](roadmap/CHECKLIST.md) para marcar avance.
 - [roadmap/MATRIZ-HABILIDADES.md](roadmap/MATRIZ-HABILIDADES.md) para saber que necesitas en cada nivel.
+- [evaluaciones/RUBRICA-DOMINIO.md](evaluaciones/RUBRICA-DOMINIO.md) para saber si ya dominas un tema o solo lo reconoces.
 - [roadmap/PRACTICA-DELIBERADA.md](roadmap/PRACTICA-DELIBERADA.md) para practicar de forma intencional.
 - [roadmap/REPASO-30-60-90.md](roadmap/REPASO-30-60-90.md) para consolidar lo aprendido.
 - [empleabilidad/README.md](empleabilidad/README.md) para conectar el estudio con conseguir trabajo.
@@ -30,10 +32,12 @@ Despues usa:
 3. [INDICE-MAESTRO.md](INDICE-MAESTRO.md)
 4. [TEMARIO-MAESTRO.md](TEMARIO-MAESTRO.md)
 5. [roadmap/PLAN-24-SEMANAS.md](roadmap/PLAN-24-SEMANAS.md)
-6. [roadmap/TABLERO.md](roadmap/TABLERO.md)
-7. [labs/PRIMEROS-LABS.md](labs/PRIMEROS-LABS.md)
-8. [empleabilidad/PROYECTOS-PORTAFOLIO.md](empleabilidad/PROYECTOS-PORTAFOLIO.md)
-9. [roadmap/MATRIZ-HABILIDADES.md](roadmap/MATRIZ-HABILIDADES.md)
+6. [roadmap/SESION-DIARIA.md](roadmap/SESION-DIARIA.md)
+7. [roadmap/TABLERO.md](roadmap/TABLERO.md)
+8. [evaluaciones/RUBRICA-DOMINIO.md](evaluaciones/RUBRICA-DOMINIO.md)
+9. [labs/PRIMEROS-LABS.md](labs/PRIMEROS-LABS.md)
+10. [empleabilidad/PROYECTOS-PORTAFOLIO.md](empleabilidad/PROYECTOS-PORTAFOLIO.md)
+11. [roadmap/MATRIZ-HABILIDADES.md](roadmap/MATRIZ-HABILIDADES.md)
 
 ## Primer Bloque de Estudio
 
