@@ -99,6 +99,7 @@ Este archivo es el mapa rapido para encontrar temas dentro del repositorio.
 
 ## Estudio y Seguimiento
 
+- [Inicio aqui](INICIO-AQUI.md)
 - [Sistema TDAH](SISTEMA-TDAH.md)
 - [Guia de estudio](GUIA-DE-ESTUDIO.md)
 - [Temario maestro](TEMARIO-MAESTRO.md)

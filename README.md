@@ -6,7 +6,9 @@ La idea de este repo es construir una base completa: fundamentos, redes, Linux, 
 
 ## Por Donde Empezar
 
-Empieza por [GUIA-DE-ESTUDIO.md](GUIA-DE-ESTUDIO.md). Ese archivo es la guia principal del repositorio: explica el orden recomendado, como estudiar, que practicar y como medir tu progreso.
+Empieza por [INICIO-AQUI.md](INICIO-AQUI.md). Ese archivo te dice que estudiar hoy, como avanzar la primera semana y como evitar perderte entre tantos temas.
+
+Despues lee [GUIA-DE-ESTUDIO.md](GUIA-DE-ESTUDIO.md). Ese archivo es la guia principal del repositorio: explica el orden recomendado, como estudiar, que practicar y como medir tu progreso.
 
 Despues usa:
 
@@ -27,17 +29,17 @@ Despues usa:
 
 ## Primeros Archivos Que Debes Leer
 
-1. [SISTEMA-TDAH.md](SISTEMA-TDAH.md)
-2. [GUIA-DE-ESTUDIO.md](GUIA-DE-ESTUDIO.md)
-3. [INDICE-MAESTRO.md](INDICE-MAESTRO.md)
-4. [TEMARIO-MAESTRO.md](TEMARIO-MAESTRO.md)
-5. [roadmap/PLAN-24-SEMANAS.md](roadmap/PLAN-24-SEMANAS.md)
-6. [roadmap/SESION-DIARIA.md](roadmap/SESION-DIARIA.md)
-7. [roadmap/TABLERO.md](roadmap/TABLERO.md)
-8. [evaluaciones/RUBRICA-DOMINIO.md](evaluaciones/RUBRICA-DOMINIO.md)
-9. [labs/PRIMEROS-LABS.md](labs/PRIMEROS-LABS.md)
-10. [empleabilidad/PROYECTOS-PORTAFOLIO.md](empleabilidad/PROYECTOS-PORTAFOLIO.md)
-11. [roadmap/MATRIZ-HABILIDADES.md](roadmap/MATRIZ-HABILIDADES.md)
+1. [INICIO-AQUI.md](INICIO-AQUI.md)
+2. [SISTEMA-TDAH.md](SISTEMA-TDAH.md)
+3. [GUIA-DE-ESTUDIO.md](GUIA-DE-ESTUDIO.md)
+4. [roadmap/PLAN-24-SEMANAS.md](roadmap/PLAN-24-SEMANAS.md)
+5. [roadmap/SESION-DIARIA.md](roadmap/SESION-DIARIA.md)
+6. [roadmap/TABLERO.md](roadmap/TABLERO.md)
+7. [evaluaciones/RUBRICA-DOMINIO.md](evaluaciones/RUBRICA-DOMINIO.md)
+8. [INDICE-MAESTRO.md](INDICE-MAESTRO.md)
+9. [TEMARIO-MAESTRO.md](TEMARIO-MAESTRO.md)
+10. [labs/PRIMEROS-LABS.md](labs/PRIMEROS-LABS.md)
+11. [empleabilidad/PROYECTOS-PORTAFOLIO.md](empleabilidad/PROYECTOS-PORTAFOLIO.md)
 
 ## Primer Bloque de Estudio
 

@@ -7,26 +7,26 @@ Usa este tablero para saber en que estas trabajando ahora. Manten pocos temas ac
 Tema principal:
 
 ```text
-
+Fundamentos: computacion basica
 ```
 
 Objetivo de la semana:
 
 ```text
-
+Entender computadoras, sistemas operativos, identidad, permisos y seguridad basica.
 ```
 
 ## Ahora
 
-- [ ] 
-- [ ] 
-- [ ] 
+- [ ] Leer `INICIO-AQUI.md`.
+- [ ] Estudiar `fundamentos/COMPUTACION-BASICA.md`.
+- [ ] Crear una nota corta con CPU, RAM, disco, proceso, archivo y relacion con seguridad.
 
 ## Siguiente
 
-- [ ] 
-- [ ] 
-- [ ] 
+- [ ] Estudiar `fundamentos/SISTEMAS-OPERATIVOS.md`.
+- [ ] Estudiar `fundamentos/IDENTIDAD-PERMISOS.md`.
+- [ ] Estudiar `fundamentos/BASE-DE-SEGURIDAD.md`.
 
 ## Bloqueado
 

@@ -4,6 +4,8 @@ Esta guia esta pensada para estudiar ciberseguridad de forma ordenada, desde fun
 
 ## Como Usar Este Repositorio
 
+Si no sabes por donde empezar, abre primero [INICIO-AQUI.md](INICIO-AQUI.md). Ese archivo reduce todo a una ruta concreta para hoy, la primera semana y el primer mes.
+
 1. Lee el tema en la carpeta correspondiente.
 2. Crea tus propias notas con tus palabras.
 3. Haz un laboratorio pequeno.
