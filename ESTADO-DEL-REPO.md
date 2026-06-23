@@ -9,6 +9,7 @@ Version inicial completa.
 El repo ya tiene lo necesario para funcionar como guia personal y publica de estudio en ciberseguridad:
 
 - Ruta de inicio.
+- Guia practica de como estudiar.
 - Guia definitiva.
 - Temario maestro.
 - Indice maestro.
@@ -24,6 +25,8 @@ El repo ya tiene lo necesario para funcionar como guia personal y publica de est
 - Sistema Empleo-Ready.
 - Tracker de aplicaciones.
 - Reglas eticas.
+- Guia de contribucion.
+- Licencia.
 - Mapa de security teams y hats.
 
 ## Que Ya Esta Cubierto
@@ -95,9 +98,10 @@ Nada estructural.
 Para usarlo, no necesitas agregar mas carpetas antes de empezar. Empieza por:
 
 1. [INICIO-AQUI.md](INICIO-AQUI.md)
-2. [GUIA-DEFINITIVA.md](GUIA-DEFINITIVA.md)
-3. [roadmap/DONDE-VOY.md](roadmap/DONDE-VOY.md)
-4. [roadmap/TABLERO.md](roadmap/TABLERO.md)
+2. [COMO-ESTUDIAR.md](COMO-ESTUDIAR.md)
+3. [GUIA-DEFINITIVA.md](GUIA-DEFINITIVA.md)
+4. [roadmap/DONDE-VOY.md](roadmap/DONDE-VOY.md)
+5. [roadmap/TABLERO.md](roadmap/TABLERO.md)
 
 ## Que Falta Para Volverte Fuerte
 
@@ -120,6 +124,7 @@ El repo esta listo; el crecimiento viene de usarlo.
 La version inicial se considera completa porque cumple:
 
 - [x] Tiene punto de entrada claro.
+- [x] Tiene guia practica de estudio diario/semanal.
 - [x] Tiene ruta completa de estudio.
 - [x] Tiene mapa de temas.
 - [x] Tiene sistema de seguimiento.
@@ -129,6 +134,8 @@ La version inicial se considera completa porque cumple:
 - [x] Tiene plantillas de reportes.
 - [x] Tiene ruta de empleabilidad.
 - [x] Tiene reglas eticas.
+- [x] Tiene guia de contribucion.
+- [x] Tiene licencia.
 - [x] Esta conectado desde el README.
 - [x] Esta subido a GitHub.
 
@@ -158,4 +165,3 @@ No midas si el repo esta terminado por la cantidad de archivos. Midelo por si te
 - Prepararte para empleo.
 
 Con esos criterios, la version inicial esta terminada.
-

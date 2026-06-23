@@ -21,6 +21,8 @@ El enfoque es aprender haciendo: leer, practicar, responder preguntas, documenta
 
 Empieza por [INICIO-AQUI.md](INICIO-AQUI.md). Ese archivo te dice que estudiar hoy, como avanzar la primera semana y como evitar perderte entre tantos temas.
 
+Si quieres la respuesta practica de como estudiar este repo dia a dia, lee [COMO-ESTUDIAR.md](COMO-ESTUDIAR.md).
+
 Despues lee [GUIA-DEFINITIVA.md](GUIA-DEFINITIVA.md). Ese archivo explica el sistema completo: donde vas, donde contestas, donde guardas notas, como practicas y como decides si avanzas.
 
 Luego usa [GUIA-DE-ESTUDIO.md](GUIA-DE-ESTUDIO.md). Ese archivo explica el orden recomendado, como estudiar, que practicar y como medir tu progreso.
@@ -29,6 +31,7 @@ Despues usa:
 
 - [INDICE-MAESTRO.md](INDICE-MAESTRO.md) para encontrar cualquier tema rapido.
 - [ESTADO-DEL-REPO.md](ESTADO-DEL-REPO.md) para ver que ya esta completo y que queda como mejora continua.
+- [COMO-ESTUDIAR.md](COMO-ESTUDIAR.md) para saber como estudiar por dia, semana y evidencia.
 - [SISTEMA-TDAH.md](SISTEMA-TDAH.md) para estudiar con bloques cortos, menos saturacion y mas practica.
 - [TEMARIO-MAESTRO.md](TEMARIO-MAESTRO.md) para ver el mapa completo de temas que deberias conocer.
 - [roadmap/PLAN-24-SEMANAS.md](roadmap/PLAN-24-SEMANAS.md) para estudiar semana por semana.
@@ -50,19 +53,20 @@ Despues usa:
 ## Primeros Archivos Que Debes Leer
 
 1. [INICIO-AQUI.md](INICIO-AQUI.md)
-2. [GUIA-DEFINITIVA.md](GUIA-DEFINITIVA.md)
-3. [SISTEMA-TDAH.md](SISTEMA-TDAH.md)
-4. [GUIA-DE-ESTUDIO.md](GUIA-DE-ESTUDIO.md)
-5. [roadmap/PLAN-24-SEMANAS.md](roadmap/PLAN-24-SEMANAS.md)
-6. [roadmap/SESION-DIARIA.md](roadmap/SESION-DIARIA.md)
-7. [roadmap/DONDE-VOY.md](roadmap/DONDE-VOY.md)
-8. [roadmap/TABLERO.md](roadmap/TABLERO.md)
-9. [evaluaciones/RUBRICA-DOMINIO.md](evaluaciones/RUBRICA-DOMINIO.md)
-10. [evaluaciones/RESPUESTAS.md](evaluaciones/RESPUESTAS.md)
-11. [INDICE-MAESTRO.md](INDICE-MAESTRO.md)
-12. [TEMARIO-MAESTRO.md](TEMARIO-MAESTRO.md)
-13. [labs/PRIMEROS-LABS.md](labs/PRIMEROS-LABS.md)
-14. [empleabilidad/PROYECTOS-PORTAFOLIO.md](empleabilidad/PROYECTOS-PORTAFOLIO.md)
+2. [COMO-ESTUDIAR.md](COMO-ESTUDIAR.md)
+3. [GUIA-DEFINITIVA.md](GUIA-DEFINITIVA.md)
+4. [SISTEMA-TDAH.md](SISTEMA-TDAH.md)
+5. [GUIA-DE-ESTUDIO.md](GUIA-DE-ESTUDIO.md)
+6. [roadmap/PLAN-24-SEMANAS.md](roadmap/PLAN-24-SEMANAS.md)
+7. [roadmap/SESION-DIARIA.md](roadmap/SESION-DIARIA.md)
+8. [roadmap/DONDE-VOY.md](roadmap/DONDE-VOY.md)
+9. [roadmap/TABLERO.md](roadmap/TABLERO.md)
+10. [evaluaciones/RUBRICA-DOMINIO.md](evaluaciones/RUBRICA-DOMINIO.md)
+11. [evaluaciones/RESPUESTAS.md](evaluaciones/RESPUESTAS.md)
+12. [INDICE-MAESTRO.md](INDICE-MAESTRO.md)
+13. [TEMARIO-MAESTRO.md](TEMARIO-MAESTRO.md)
+14. [labs/PRIMEROS-LABS.md](labs/PRIMEROS-LABS.md)
+15. [empleabilidad/PROYECTOS-PORTAFOLIO.md](empleabilidad/PROYECTOS-PORTAFOLIO.md)
 
 ## Primer Bloque de Estudio
 
@@ -241,6 +245,12 @@ Todo el contenido de este repositorio es educativo. Cualquier prueba, escaneo, e
 No se deben subir credenciales, tokens, datos personales, informacion privada, resultados de sistemas reales sin permiso o spoilers prohibidos por plataformas de practica.
 
 Si usas este repo para aprender, manten el mismo principio: practica solo en entornos propios, autorizados o creados para laboratorio.
+
+## Contribuciones y Licencia
+
+Este repo esta abierto para aprendizaje y mejoras educativas. Revisa [CONTRIBUTING.md](CONTRIBUTING.md) antes de proponer cambios.
+
+Licencia: [MIT](LICENSE).
 
 ## Estado
 
