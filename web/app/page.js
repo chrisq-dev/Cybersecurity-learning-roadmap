@@ -186,6 +186,31 @@ export default function Home() {
         </div>
       </section>
 
+      <section
+        style={{
+          textAlign: 'center',
+          background: 'var(--bg-card)',
+          border: '1px solid var(--border-color)',
+          borderRadius: 'var(--border-radius)',
+          padding: '1.25rem',
+          margin: '0 auto 1rem auto',
+          maxWidth: '760px',
+          boxShadow: '0 4px 12px var(--border-glow)'
+        }}
+      >
+        <p style={{ margin: 0, fontSize: '0.98rem', color: 'var(--text-muted)' }}>
+          Si esta guia te resulta util, considera dejar una estrella en{' '}
+          <a
+            href="https://github.com/chrisq-dev/Cybersecurity-learning-roadmap"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          . Ayuda a que mas personas puedan encontrarla.
+        </p>
+      </section>
+
     </div>
   );
 }

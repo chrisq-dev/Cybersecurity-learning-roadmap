@@ -14,7 +14,7 @@ export default function TopNav() {
 
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
         <a
-          href="https://github.com/chrisq-dev/Cibersecurity"
+          href="https://github.com/chrisq-dev/Cybersecurity-learning-roadmap"
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none', fontSize: '0.9rem', transition: 'color var(--transition-fast)' }}

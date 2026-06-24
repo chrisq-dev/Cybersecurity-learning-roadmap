@@ -60,4 +60,7 @@ Las contribuciones son bienvenidas si respetan el enfoque educativo, defensivo y
 
 Antes de proponer cambios, revisa [CONTRIBUTING.md](CONTRIBUTING.md).
 
+## Apoya la Guia
+
+Si esta coleccion te resulta util, considera dejar una estrella en GitHub. Ayuda a que mas personas encuentren el proyecto y a seguir mejorandolo poco a poco.
 
