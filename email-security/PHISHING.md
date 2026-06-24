@@ -4,6 +4,14 @@
 
 Aprender a analizar correos sospechosos y proponer controles.
 
+Phishing no es solo "correos mal escritos". Muchos ataques son creibles, oportunos y adaptados al negocio. El objetivo es evaluar indicadores, contexto e impacto.
+
+## Mapa Mental
+
+```text
+mensaje -> identidad -> enlace/adjunto -> intencion -> usuarios afectados -> contencion
+```
+
 ## Que es Phishing
 
 Phishing busca engañar a una persona para que:
@@ -25,6 +33,16 @@ Ejemplos:
 - Suplantacion de proveedor.
 - Mensaje falso de directivo.
 
+## Tipos Comunes
+
+- Credential phishing.
+- Malware por adjunto.
+- BEC.
+- Smishing.
+- QR phishing.
+- Suplantacion de soporte.
+- Falso proveedor.
+
 ## Indicadores
 
 - Remitente parecido pero no igual.
@@ -35,6 +53,17 @@ Ejemplos:
 - Links con dominios raros.
 - Solicitud de credenciales.
 - Cambio de cuenta o pago.
+
+## Indicadores Tecnicos
+
+- SPF/DKIM/DMARC fallidos.
+- Reply-To distinto.
+- dominio recien creado.
+- URL con subdominios engañosos.
+- adjunto con macros.
+- archivo comprimido con password.
+- acortadores.
+- login falso.
 
 ## Analisis Seguro
 
@@ -50,6 +79,15 @@ Revisa:
 - Contexto.
 - SPF/DKIM/DMARC si tienes headers.
 
+## Preguntas de Contexto
+
+- El usuario esperaba este correo?
+- El remitente es proveedor real?
+- La solicitud tiene urgencia artificial?
+- Pide saltar proceso normal?
+- Pide pago, credenciales o MFA?
+- Otros usuarios lo recibieron?
+
 ## Controles
 
 - Filtros de correo.
@@ -62,7 +100,7 @@ Revisa:
 - Bloqueo de macros.
 - Sandboxing de adjuntos.
 
-## Practica
+## Practica Guiada
 
 Analiza este correo ficticio:
 
@@ -79,6 +117,28 @@ Responde:
 - Que controles ayudan?
 - Que recomendarias al usuario?
 
+## Mini Laboratorio: Reporte de Phishing
+
+Crea `reporte-phishing.md`:
+
+1. Resumen.
+2. Indicadores.
+3. Analisis de remitente.
+4. Analisis de URL o adjunto.
+5. Usuarios afectados.
+6. Contencion.
+7. Recomendacion al usuario.
+8. Controles preventivos.
+
+## Errores Comunes
+
+- Abrir adjuntos sospechosos.
+- Culpar al usuario en vez de mejorar controles.
+- No buscar otros destinatarios.
+- No revisar clics o logins posteriores.
+- No comunicar claramente.
+- No convertir el caso en aprendizaje.
+
 ## Criterio de Dominio
 
 Puedes avanzar cuando puedas:
@@ -87,3 +147,4 @@ Puedes avanzar cuando puedas:
 - Explicar BEC.
 - Proponer controles.
 - Escribir una recomendacion clara.
+- Hacer un reporte de phishing con evidencia y contencion.

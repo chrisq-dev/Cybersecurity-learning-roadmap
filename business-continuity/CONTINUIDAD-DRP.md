@@ -65,7 +65,7 @@ Preguntas:
 
 ## Practica
 
-Crea un tabletop:
+Un tabletop de ejemplo:
 
 - Escenario.
 - Participantes.

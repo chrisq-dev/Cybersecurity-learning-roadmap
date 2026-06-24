@@ -149,7 +149,7 @@ Eventos importantes:
 - [ ] Logs disponibles.
 - [ ] Cambios documentados.
 
-## Entregable
+## Ejemplo de resultado
 
 ```md
 # Hardening Linux

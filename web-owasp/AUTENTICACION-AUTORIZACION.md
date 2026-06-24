@@ -4,6 +4,20 @@
 
 Entender una de las diferencias mas importantes en seguridad web: comprobar quien eres vs comprobar que puedes hacer.
 
+Muchos incidentes no ocurren porque el login falle, sino porque la aplicacion no valida correctamente que acciones puede realizar un usuario autenticado. Autenticacion y autorizacion deben revisarse por separado.
+
+## Mapa Mental
+
+```text
+identidad -> sesion/token -> rol -> permiso -> recurso -> accion -> auditoria
+```
+
+Pregunta central:
+
+```text
+Esta identidad puede hacer esta accion sobre este recurso especifico?
+```
+
 ## Autenticacion
 
 Autenticacion responde:
@@ -20,6 +34,17 @@ Ejemplos:
 - Certificado.
 - SSO.
 
+Controles:
+
+- MFA;
+- rate limiting;
+- bloqueo progresivo;
+- deteccion de password spraying;
+- recuperacion segura;
+- password hashing fuerte;
+- proteccion contra credential stuffing;
+- logs de login.
+
 ## Autorizacion
 
 Autorizacion responde:
@@ -34,6 +59,15 @@ Ejemplos:
 - Un empleado solo ve sus propios documentos.
 - Un API key solo puede leer, no escribir.
 
+Modelos comunes:
+
+- RBAC: permisos por rol.
+- ABAC: permisos por atributos.
+- ReBAC: permisos por relacion.
+- ACL: listas de acceso por recurso.
+
+El modelo exacto importa menos que validarlo siempre en servidor.
+
 ## Ejemplo Simple
 
 Escenario:
@@ -47,6 +81,13 @@ Resultados posibles:
 - Si no estas logueado: `401 Unauthorized`.
 - Si estas logueado pero no tienes permiso: `403 Forbidden`.
 
+## 401 vs 403
+
+- 401: no hay identidad valida o falta autenticacion.
+- 403: hay identidad, pero no permiso.
+
+Usarlos bien ayuda a depurar y a monitorear.
+
 ## Sesiones
 
 Despues del login, una aplicacion suele crear una sesion.
@@ -58,6 +99,17 @@ Flujo:
 3. Servidor crea sesion.
 4. Servidor envia cookie de sesion.
 5. Navegador reenvia cookie en requests futuras.
+
+Controles de sesion:
+
+- cookie `HttpOnly`;
+- cookie `Secure`;
+- cookie `SameSite`;
+- expiracion;
+- rotacion despues de login;
+- invalidacion en logout;
+- revocacion ante riesgo;
+- proteccion contra fijacion de sesion.
 
 ## Tokens
 
@@ -75,6 +127,16 @@ Riesgos:
 - Token sin expiracion.
 - Token con demasiados permisos.
 - Token guardado en lugar inseguro.
+
+Buenas practicas:
+
+- expiracion corta cuando aplique;
+- scopes;
+- audience correcta;
+- rotacion;
+- revocacion;
+- no guardar tokens en logs;
+- proteger refresh tokens.
 
 ## Fallas Comunes
 
@@ -112,7 +174,33 @@ Mitigacion:
 - Rotacion de sesion despues de login.
 - Logout real.
 
-## Practica
+### Falta de Autorizacion por Objeto
+
+La app valida el rol general, pero no el recurso especifico.
+
+Ejemplo:
+
+```text
+Usuario A puede ver factura 1001.
+Usuario A no deberia ver factura 1002.
+```
+
+### Mass Assignment
+
+La API acepta campos que el usuario no deberia controlar.
+
+Ejemplo conceptual:
+
+```json
+{
+  "name": "Ana",
+  "role": "admin"
+}
+```
+
+Si el backend acepta `role` desde el cliente, hay riesgo.
+
+## Practica Guiada
 
 Analiza una aplicacion imaginaria:
 
@@ -129,7 +217,7 @@ Recursos:
 - Panel admin.
 - Logs.
 
-Crea una tabla:
+Una tabla de ejemplo puede verse asi:
 
 | Recurso | Usuario | Soporte | Admin |
 | --- | --- | --- | --- |
@@ -138,6 +226,37 @@ Crea una tabla:
 | Facturas de todos | | | |
 | Panel admin | | | |
 | Logs | | | |
+
+Agrega:
+
+- que endpoints existirian;
+- que respuesta daria cada caso no permitido;
+- que eventos registrarias;
+- que acciones requieren MFA o reautenticacion.
+
+## Mini Laboratorio: Matriz de Acceso
+
+Crea `matriz-authz-app.md` con:
+
+1. Roles.
+2. Recursos.
+3. Acciones.
+4. Reglas permitidas.
+5. Reglas denegadas.
+6. Pruebas manuales.
+7. Eventos de auditoria.
+
+## Checklist
+
+- [ ] MFA en cuentas sensibles.
+- [ ] Rate limit en login.
+- [ ] Password hashing fuerte.
+- [ ] Cookies seguras.
+- [ ] Sesion rota despues de login.
+- [ ] Autorizacion por recurso.
+- [ ] Backend valida permisos.
+- [ ] Errores 401/403 correctos.
+- [ ] Logs de acciones sensibles.
 
 ## Criterio de Dominio
 
@@ -148,3 +267,4 @@ Puedes avanzar cuando puedas:
 - Explicar sesiones.
 - Entender cookies de sesion.
 - Dar un ejemplo de Broken Access Control.
+- Construir una matriz de permisos y pruebas de autorizacion.

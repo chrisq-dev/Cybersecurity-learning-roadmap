@@ -26,7 +26,7 @@ El script debe:
 2026-06-23T10:05:00 user=maria src_ip=10.0.0.5 result=success
 ```
 
-### Entregables
+### Ejemplo de resultado
 
 - Script en `scripts/`.
 - Log ficticio en `labs/data/`.
@@ -50,7 +50,7 @@ Crear una checklist de seguridad basica para Linux.
 - Permisos.
 - Servicios innecesarios.
 
-### Entregables
+### Ejemplo de resultado
 
 - Guia en `linux/HARDENING-BASICO.md`.
 - Lab aplicando 3 controles.
@@ -70,7 +70,7 @@ Documentar vulnerabilidades web comunes con causa, impacto y mitigacion.
 - Security Misconfiguration.
 - SSRF.
 
-### Entregables
+### Ejemplo de resultado
 
 - Una nota por vulnerabilidad.
 - Un lab permitido por vulnerabilidad.
@@ -86,7 +86,7 @@ Simular trabajo de SOC.
 
 Cuenta comprometida con varios logins fallidos y un login exitoso.
 
-### Entregables
+### Ejemplo de resultado
 
 - Linea de tiempo.
 - Evidencia.
@@ -109,7 +109,7 @@ Crear una checklist para revisar configuraciones cloud basicas.
 - Security groups.
 - Secretos.
 
-### Entregables
+### Ejemplo de resultado
 
 - Checklist.
 - Tabla de riesgos.
@@ -131,7 +131,7 @@ Documentar controles basicos contra phishing y spoofing.
 - Reporte de phishing.
 - Concientizacion.
 
-### Entregables
+### Ejemplo de resultado
 
 - Analisis de correo ficticio.
 - Checklist de controles.
@@ -143,7 +143,7 @@ Documentar controles basicos contra phishing y spoofing.
 
 Simular una respuesta organizacional ante ransomware.
 
-### Entregables
+### Ejemplo de resultado
 
 - Escenario.
 - Participantes.
@@ -158,7 +158,7 @@ Simular una respuesta organizacional ante ransomware.
 
 Practicar revision de accesos.
 
-### Entregables
+### Ejemplo de resultado
 
 - Matriz de usuarios, roles y sistemas.
 - Permisos excesivos detectados.

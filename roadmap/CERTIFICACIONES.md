@@ -74,7 +74,7 @@ Si empiezas desde cero:
 
 ## Regla
 
-No estudies certificaciones solo para coleccionarlas. Cada certificacion debe producir:
+No estudies certificaciones solo para coleccionarlas. Cada certificacion puede dejar como evidencia:
 
 - Notas.
 - Labs.

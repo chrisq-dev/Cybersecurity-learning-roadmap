@@ -4,6 +4,16 @@
 
 Entender como estudiar tecnicas ofensivas de forma responsable. Red Team o pentesting no significa atacar cualquier sistema; significa probar seguridad bajo reglas claras, autorizacion y alcance definido.
 
+Esta seccion existe para fijar el marco. Aprender ofensiva sin etica, alcance y reporte no te hace profesional; te vuelve un riesgo. El objetivo es entrenar pensamiento adversarial para mejorar defensas.
+
+## Mapa Mental
+
+```text
+autorizacion -> alcance -> reglas -> prueba controlada -> evidencia -> impacto -> remediacion
+```
+
+Si falta autorizacion o alcance, no hay practica profesional.
+
 ## Regla Principal
 
 Solo se prueba en:
@@ -34,6 +44,15 @@ Debe responder:
 - A quien reportar problemas?
 - Que esta fuera de alcance?
 
+Ejemplo de fuera de alcance:
+
+- Denegacion de servicio.
+- Persistencia.
+- Exfiltracion de datos reales.
+- Ataques a empleados.
+- Sistemas de terceros.
+- Cambios destructivos.
+
 ## Metodologia General
 
 1. Definir alcance.
@@ -44,6 +63,45 @@ Debe responder:
 6. Documentar evidencia.
 7. Explicar impacto.
 8. Recomendar remediacion.
+
+## Fases de Trabajo
+
+### Preparacion
+
+- Entender objetivo.
+- Confirmar autorizacion.
+- Definir alcance.
+- Preparar ambiente de notas.
+- Definir formato de reporte.
+
+### Reconocimiento Permitido
+
+- Revisar informacion dentro del alcance.
+- Identificar superficies autorizadas.
+- Documentar supuestos.
+
+### Enumeracion
+
+- Identificar servicios.
+- Leer banners.
+- Revisar versiones.
+- Entender rutas y endpoints.
+- No explotar sin necesidad.
+
+### Validacion Controlada
+
+- Probar solo lo necesario para demostrar riesgo.
+- Evitar impacto innecesario.
+- Usar datos de prueba.
+- Capturar evidencia minima suficiente.
+
+### Reporte
+
+- Explicar hallazgo.
+- Mostrar evidencia segura.
+- Describir impacto.
+- Dar pasos de reproduccion.
+- Proponer remediacion.
 
 ## Pensamiento Correcto
 
@@ -70,7 +128,20 @@ Mala evidencia:
 - Muestra informacion privada.
 - No explica impacto ni remediacion.
 
-## Practica
+## Severidad Responsable
+
+No todo hallazgo es critico.
+
+Considera:
+
+- Puede explotarse dentro del alcance?
+- Requiere autenticacion?
+- Que privilegios obtiene?
+- Que datos expone?
+- Afecta disponibilidad?
+- Hay controles compensatorios?
+
+## Practica Guiada
 
 Escribe un alcance ficticio:
 
@@ -95,6 +166,33 @@ Escribe un alcance ficticio:
 Aprender enumeracion y reporte.
 ```
 
+## Mini Laboratorio: Reporte Seguro
+
+Escenario:
+
+```text
+En una app local de laboratorio encuentras un panel admin accesible sin autenticacion.
+```
+
+Crea `reporte-red-team-etico.md` con:
+
+1. Alcance.
+2. Hallazgo.
+3. Evidencia sin datos sensibles.
+4. Impacto.
+5. Riesgo.
+6. Remediacion.
+7. Lo que NO hiciste para evitar dano.
+
+## Errores Comunes
+
+- Escanear IPs aleatorias.
+- Probar sistemas de universidad o trabajo sin permiso.
+- Publicar evidencia con secretos.
+- Explotar mas de lo necesario.
+- No reportar remediacion.
+- Confundir laboratorio con mundo real.
+
 ## Criterio de Dominio
 
 Puedes avanzar cuando puedas:
@@ -103,3 +201,4 @@ Puedes avanzar cuando puedas:
 - Explicar que es alcance.
 - Separar prueba responsable de actividad indebida.
 - Escribir un reporte con remediacion.
+- Explicar por que una prueba esta dentro o fuera de alcance.

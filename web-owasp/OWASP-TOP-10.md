@@ -4,6 +4,41 @@
 
 Conocer las categorias principales de riesgos en aplicaciones web. OWASP Top 10 no es una lista de payloads; es un mapa de fallas comunes.
 
+El objetivo de esta leccion es que puedas mirar una aplicacion y clasificar riesgos sin depender de memorizar nombres. OWASP Top 10 sirve para hablar con desarrolladores, analistas, clientes y equipos de seguridad usando un lenguaje comun.
+
+## Como Usar OWASP Correctamente
+
+OWASP no reemplaza pruebas, threat modeling ni criterio tecnico. Usalo para:
+
+- ordenar hallazgos;
+- explicar impacto;
+- construir checklists;
+- planear pruebas;
+- justificar controles;
+- mapear riesgos a categorias conocidas.
+
+No lo uses como:
+
+- lista cerrada de todas las vulnerabilidades;
+- ranking exacto para todas las empresas;
+- excusa para ignorar contexto;
+- coleccion de payloads.
+
+## Mapa Mental
+
+```text
+entrada -> identidad -> autorizacion -> logica -> datos -> configuracion -> logs
+```
+
+Una aplicacion falla cuando confia demasiado en algun punto:
+
+- confia en el usuario;
+- confia en el frontend;
+- confia en IDs;
+- confia en dependencias;
+- confia en defaults;
+- confia en que alguien revisara logs despues.
+
 ## 1. Broken Access Control
 
 Ocurre cuando un usuario puede hacer algo que no deberia.
@@ -28,6 +63,13 @@ Mitigacion:
 - Revisar controles por rol.
 - Tests de autorizacion.
 
+Preguntas de revision:
+
+- El backend valida permisos en cada accion?
+- Un usuario puede cambiar IDs y ver recursos ajenos?
+- Existe separacion real entre usuario, admin y soporte?
+- Los endpoints internos estan protegidos?
+
 ## 2. Cryptographic Failures
 
 Ocurre cuando se protege mal informacion sensible.
@@ -46,6 +88,14 @@ Mitigacion:
 - Cifrado para datos sensibles.
 - Manejo seguro de llaves.
 
+Preguntas de revision:
+
+- Que datos son sensibles?
+- Viajan por TLS?
+- Estan cifrados en reposo cuando aplica?
+- Las contraseñas usan hashing fuerte con salt?
+- Donde viven las llaves?
+
 ## 3. Injection
 
 Ocurre cuando datos no confiables son interpretados como comandos o consultas.
@@ -63,6 +113,13 @@ Mitigacion:
 - Escapar salida donde aplique.
 - Minimo privilegio.
 
+Preguntas de revision:
+
+- Hay concatenacion de consultas?
+- Hay llamadas a comandos del sistema?
+- Los parametros llegan a interpretes como SQL, shell, LDAP o templates?
+- La cuenta del servicio tiene permisos minimos?
+
 ## 4. Insecure Design
 
 Ocurre cuando el problema esta en el diseño, no solo en un bug.
@@ -77,6 +134,13 @@ Mitigacion:
 - Revisiones de diseño.
 - Abuse cases.
 - Controles desde arquitectura.
+
+Ejemplo de pensamiento:
+
+```text
+No basta con validar que el endpoint funcione.
+Tambien debes preguntar como podria abusarse.
+```
 
 ## 5. Security Misconfiguration
 
@@ -97,6 +161,14 @@ Mitigacion:
 - Revisiones automatizadas.
 - Desactivar lo innecesario.
 
+Revision rapida:
+
+- Debug apagado.
+- Credenciales default eliminadas.
+- Headers basicos configurados.
+- Servicios no usados apagados.
+- Acceso admin restringido.
+
 ## 6. Vulnerable and Outdated Components
 
 Ocurre al usar dependencias vulnerables o sin mantenimiento.
@@ -107,6 +179,13 @@ Mitigacion:
 - Actualizaciones.
 - SCA.
 - Parches.
+
+Preguntas:
+
+- Existe inventario de dependencias?
+- Hay dependencias sin mantenimiento?
+- Se sabe que version esta en produccion?
+- Hay proceso para actualizar?
 
 ## 7. Identification and Authentication Failures
 
@@ -126,6 +205,14 @@ Mitigacion:
 - Sesiones seguras.
 - Deteccion de ataques.
 
+Preguntas:
+
+- Existe MFA para cuentas sensibles?
+- Las sesiones expiran?
+- Se detecta fuerza bruta?
+- La recuperacion de contrasena es segura?
+- Las cookies tienen flags adecuados?
+
 ## 8. Software and Data Integrity Failures
 
 Fallas al confiar en codigo, actualizaciones o datos sin verificar.
@@ -142,6 +229,13 @@ Mitigacion:
 - Verificacion de integridad.
 - Proteccion de pipeline.
 - Revision de dependencias.
+
+Ejemplos modernos:
+
+- pipeline CI/CD con secretos expuestos;
+- paquetes instalados sin control;
+- artefactos sin firma;
+- cambios en produccion sin revision.
 
 ## 9. Security Logging and Monitoring Failures
 
@@ -162,6 +256,16 @@ Mitigacion:
 - Monitoreo.
 - Playbooks.
 
+Eventos minimos:
+
+- logins fallidos y exitosos;
+- cambios de contraseña;
+- cambios de permisos;
+- acceso a datos sensibles;
+- errores de autorizacion;
+- acciones administrativas;
+- fallas de validacion repetidas.
+
 ## 10. Server-Side Request Forgery
 
 SSRF ocurre cuando el servidor hace requests controladas por un atacante.
@@ -179,9 +283,16 @@ Mitigacion:
 - Bloquear rangos internos.
 - Controles de red.
 
+Preguntas:
+
+- El usuario controla URLs o destinos?
+- El servidor puede llegar a redes internas?
+- Hay metadata cloud accesible?
+- Existe allowlist de destinos?
+
 ## Como Estudiar Cada Categoria
 
-Para cada una crea una nota con:
+Para cada categoria, una nota informativa puede incluir:
 
 - Definicion.
 - Ejemplo.
@@ -189,6 +300,42 @@ Para cada una crea una nota con:
 - Lab.
 - Mitigacion.
 - Como detectarla.
+
+## Practica Guiada
+
+Elige una aplicacion real propia, una app local vulnerable o un proyecto demo autorizado. Una tabla de ejemplo puede verse asi:
+
+| Categoria OWASP | Donde podria aparecer | Impacto | Control | Evidencia a revisar |
+| --- | --- | --- | --- | --- |
+| Broken Access Control |  |  |  |  |
+| Cryptographic Failures |  |  |  |  |
+| Injection |  |  |  |  |
+| Insecure Design |  |  |  |  |
+| Security Misconfiguration |  |  |  |  |
+| Vulnerable Components |  |  |  |  |
+| Auth Failures |  |  |  |  |
+| Integrity Failures |  |  |  |  |
+| Logging Failures |  |  |  |  |
+| SSRF |  |  |  |  |
+
+## Ejemplo de resultado
+
+Crea `revision-owasp-top-10.md` con:
+
+1. Una categoria explicada con tus palabras.
+2. Un ejemplo seguro de laboratorio.
+3. Impacto tecnico.
+4. Impacto para negocio o usuario.
+5. Mitigacion.
+6. Deteccion o evidencia.
+
+## Errores Comunes
+
+- Aprender solo payloads y no causas.
+- No diferenciar impacto tecnico de impacto real.
+- Reportar "OWASP" sin explicar evidencia.
+- Confiar en el frontend como control.
+- No validar autorizacion por recurso.
 
 ## Criterio de Dominio
 
@@ -198,3 +345,4 @@ Puedes avanzar cuando puedas:
 - Dar un ejemplo por categoria.
 - Proponer una mitigacion.
 - Distinguir causa tecnica e impacto de negocio.
+- Convertir una categoria OWASP en una prueba, una evidencia y una recomendacion.

@@ -73,7 +73,7 @@ A veces no se corrige inmediatamente. Se acepta temporalmente con:
 
 ## Practica
 
-Crea una matriz:
+Una matriz de ejemplo puede verse asi:
 
 | Activo | Amenaza | Vulnerabilidad | Impacto | Control | Evidencia |
 | --- | --- | --- | --- | --- | --- |

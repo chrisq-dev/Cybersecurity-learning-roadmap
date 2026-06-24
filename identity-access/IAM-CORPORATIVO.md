@@ -88,7 +88,7 @@ Preguntas:
 
 ## Practica
 
-Crea una matriz de accesos:
+Una matriz de accesos puede verse asi:
 
 | Rol | Sistema | Permiso | Justificacion | Aprobador |
 | --- | --- | --- | --- | --- |

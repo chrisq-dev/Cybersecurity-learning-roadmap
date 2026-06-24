@@ -4,6 +4,20 @@
 
 Entender como proteger datos personales y por que privacidad importa en ciberseguridad.
 
+Privacidad y seguridad se cruzan constantemente. Seguridad protege sistemas y datos; privacidad exige que los datos personales se recolecten, usen, compartan, retengan y eliminen con criterio.
+
+## Mapa Mental
+
+```text
+dato -> proposito -> base de uso -> acceso -> retencion -> eliminacion -> evidencia
+```
+
+La pregunta central:
+
+```text
+Necesitamos este dato, quien lo usa, por cuanto tiempo y como lo protegemos?
+```
+
 ## Dato Personal
 
 Informacion que identifica o puede identificar a una persona.
@@ -16,6 +30,24 @@ Ejemplos:
 - Direccion.
 - Identificador de usuario.
 - IP en ciertos contextos.
+
+## Identificadores Directos e Indirectos
+
+Directos:
+
+- nombre;
+- correo;
+- telefono;
+- documento oficial.
+
+Indirectos:
+
+- IP;
+- device ID;
+- ubicacion;
+- combinaciones de atributos.
+
+Un dato aislado puede parecer no sensible, pero combinado con otros puede identificar a una persona.
 
 ## Dato Sensible
 
@@ -51,6 +83,23 @@ Proteger datos con controles tecnicos y organizacionales.
 
 Explicar como se usan los datos.
 
+## Ciclo de Vida del Dato
+
+1. Recoleccion.
+2. Uso.
+3. Almacenamiento.
+4. Comparticion.
+5. Retencion.
+6. Eliminacion.
+
+En cada fase pregunta:
+
+- que datos;
+- quien accede;
+- donde se guardan;
+- como se protegen;
+- cuando se eliminan.
+
 ## Controles de Seguridad
 
 - Clasificacion de datos.
@@ -62,6 +111,19 @@ Explicar como se usan los datos.
 - Eliminacion segura.
 - Revision de terceros.
 
+## Privacidad en Logs
+
+Los logs ayudan a seguridad, pero pueden exponer datos.
+
+Buenas practicas:
+
+- no registrar contrasenas ni tokens;
+- evitar datos personales innecesarios;
+- truncar o anonimizar cuando aplique;
+- restringir acceso;
+- definir retencion;
+- proteger exportaciones.
+
 ## Riesgos Comunes
 
 - Logs con datos sensibles.
@@ -71,17 +133,42 @@ Explicar como se usan los datos.
 - Retencion indefinida.
 - Datos de produccion en ambientes de prueba.
 
-## Practica
+## Practica Guiada
 
 Clasifica estos datos:
 
 | Dato | Personal | Sensible | Control recomendado |
 | --- | --- | --- | --- |
-| correo | | | |
-| contraseña | | | |
-| direccion IP | | | |
-| historial medico | | | |
-| ID interno de usuario | | | |
+| correo | ?Sí | ?No | ?Cifrado en tránsito |
+| contraseña | ?No | ?Sí | ?Hashing (Argon2) |
+| direccion IP | ?Depende | ?No | ?Anonimización de logs |
+| historial medico | ?Sí | ?Sí | ?Cifrado, RBAC estricto |
+| ID interno de usuario | ?No | ?No | ?Monitoreo |
+
+## Mini Laboratorio: Mapa de Datos
+
+Crea `mapa-datos-app.md`:
+
+| Dato | Proposito | Donde vive | Quien accede | Retencion | Control |
+| --- | --- | --- | --- | --- | --- |
+
+Incluye:
+
+- correo;
+- password hash;
+- IP;
+- logs de login;
+- archivo subido;
+- token de API.
+
+## Errores Comunes
+
+- Guardar datos "por si acaso".
+- Usar datos reales en desarrollo.
+- No tener retencion.
+- Dar acceso amplio a exportaciones.
+- Registrar secretos en logs.
+- No revisar terceros.
 
 ## Criterio de Dominio
 
@@ -92,3 +179,4 @@ Puedes avanzar cuando puedas:
 - Identificar datos sensibles.
 - Proponer controles.
 - Explicar por que logs pueden exponer datos.
+- Crear un mapa simple de datos con retencion y acceso.

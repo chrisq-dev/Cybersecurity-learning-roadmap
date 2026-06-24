@@ -1,5 +1,7 @@
 # Preguntas de Fundamentos
 
+Usa estas preguntas como examen oral o escrito. No basta con responder una frase; intenta explicar con ejemplo, impacto y evidencia.
+
 ## Redes
 
 1. Que pasa cuando visitas `https://example.com`?
@@ -13,6 +15,12 @@
 9. Que diferencia hay entre switch y router?
 10. Para que sirve TLS?
 
+### Casos
+
+1. Un usuario dice que "internet no funciona", pero puede hacer ping a `8.8.8.8` y no puede abrir `example.com`. Que sospechas?
+2. Un servidor escucha en `0.0.0.0:22`. Que significa y que riesgo podria tener?
+3. Dos equipos estan en VLANs distintas. Que necesitas para que se comuniquen?
+
 ## Linux
 
 1. Que significa `rwxr-x---`?
@@ -23,6 +31,12 @@
 6. Que es `sudo`?
 7. Que riesgo tiene ejecutar servicios como root?
 8. Que revisarias para hardening SSH?
+
+### Casos
+
+1. Un archivo tiene permisos `777`. Que significa y por que puede ser riesgoso?
+2. Ves muchos fallos de login en `/var/log/auth.log`. Que campos revisas?
+3. Un servicio desconocido escucha en un puerto. Que pasos tomas para investigarlo?
 
 ## Windows y AD
 
@@ -35,6 +49,12 @@
 7. Que es Kerberos?
 8. Por que son sensibles los grupos privilegiados?
 
+### Casos
+
+1. Un usuario aparece agregado a Domain Admins. Que evidencia revisarias?
+2. Una cuenta de servicio tiene password sin rotar por años. Que riesgo hay?
+3. Un login exitoso ocurre a las 03:00 desde ubicacion inusual. Que preguntas haces?
+
 ## Seguridad Base
 
 1. Explica confidencialidad, integridad y disponibilidad.
@@ -46,6 +66,21 @@
 7. Que es autorizacion?
 8. Que es auditoria?
 
+### Casos
+
+1. Una empresa quiere proteger datos de clientes. Identifica activo, amenaza, vulnerabilidad, impacto y controles.
+2. Un sistema critico no tiene backups probados. Que parte de CIA se afecta principalmente?
+3. Explica la diferencia entre control preventivo, detectivo y correctivo con un ejemplo.
+
+## Practica Escrita
+
+Elige un activo y completa:
+
+| Activo | Amenaza | Vulnerabilidad | Impacto | Control preventivo | Control detectivo | Control correctivo |
+| --- | --- | --- | --- | --- | --- | --- |
+
+Despues escribe una conclusion de 5 lineas justificando que atenderias primero.
+
 ## Criterio
 
 Si no puedes responder 80% con tus palabras, vuelve a:
@@ -54,3 +89,12 @@ Si no puedes responder 80% con tus palabras, vuelve a:
 - `redes-cisco/`
 - `linux/`
 - `windows-ad/`
+
+## Autoevaluacion
+
+- 0 puntos: no puedo explicar.
+- 1 punto: explico definicion.
+- 2 puntos: doy ejemplo.
+- 3 puntos: explico riesgo o impacto.
+- 4 puntos: propongo control.
+- 5 puntos: documento evidencia o practica.

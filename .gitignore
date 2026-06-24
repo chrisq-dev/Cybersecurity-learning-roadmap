@@ -6,6 +6,10 @@ Thumbs.db
 .agents/
 .codex/
 .git/
+AGENTS.md
+CLAUDE.md
+web/AGENTS.md
+web/CLAUDE.md
 
 # Secrets and environment files
 .env
@@ -35,6 +39,9 @@ venv/
 # Node
 node_modules/
 npm-debug.log*
+.next/
+web/.next/
+web/.turbo/
 
 # Lab artifacts
 captures/

@@ -90,7 +90,7 @@ except FileNotFoundError:
 
 ## Practica
 
-Crea un archivo `ejemplo.log` con:
+Un archivo de ejemplo, `ejemplo.log`, puede contener:
 
 ```text
 login failed user=admin ip=203.0.113.10
@@ -98,7 +98,7 @@ login success user=maria ip=10.0.0.5
 login failed user=root ip=203.0.113.10
 ```
 
-Crea un script que:
+Un script de ejemplo puede:
 
 - Lea el archivo.
 - Imprima solo lineas con `failed`.

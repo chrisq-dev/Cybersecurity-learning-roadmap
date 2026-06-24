@@ -1,132 +1,88 @@
-# Comandos Basicos de Linux
+---
+title: "Comandos Básicos de Linux"
+description: "Aprende a sobrevivir en la terminal: navegación, archivos y redes."
+tiempo_estimado: "30 min"
+dificultad: "Principiante"
+---
 
-## Objetivo
+> [!IMPORTANT]
+> **Objetivo de esta lección:** 
+> Perderle el miedo a la pantalla negra. Aprenderás a moverte, inspeccionar archivos, buscar información y entender qué está pasando en el sistema sin necesidad de interfaz gráfica.
 
-Usar la terminal para moverte, inspeccionar archivos, buscar informacion y entender el sistema.
+## 1. Navegación de Supervivencia
 
-## Navegacion
-
-```bash
-pwd
-ls
-ls -la
-cd /ruta
-cd ..
-cd ~
-```
-
-Explicacion:
-
-- `pwd`: muestra donde estas.
-- `ls`: lista archivos.
-- `ls -la`: lista archivos con detalles y ocultos.
-- `cd`: cambia de directorio.
-
-## Leer Archivos
+Antes de correr, hay que saber dónde estamos parados. La terminal no tiene botones de "Atrás", así que usaremos estos comandos:
 
 ```bash
-cat archivo.txt
-less archivo.txt
-head archivo.txt
-tail archivo.txt
-tail -f archivo.log
+pwd        # "Print Working Directory": ¿Dónde estoy ahora mismo?
+ls -la     # "List": Muéstrame todo lo que hay aquí, incluyendo archivos ocultos.
+cd /var    # "Change Directory": Llévame a la carpeta /var.
+cd ..      # Sube un nivel (a la carpeta padre).
+cd ~       # Llévame de vuelta a mi casa (Directorio Home).
 ```
 
-Uso:
+## 2. Leer Archivos como un Hacker
 
-- `cat`: ver archivo completo.
-- `less`: navegar archivo grande.
-- `head`: primeras lineas.
-- `tail`: ultimas lineas.
-- `tail -f`: seguir logs en tiempo real.
-
-## Buscar
+No usamos Word ni el Bloc de Notas. Para ver qué hay dentro de un archivo rápidamente:
 
 ```bash
-find /ruta -name "*.log"
-grep "error" archivo.log
-grep -i "failed" archivo.log
-grep -R "password" .
+cat archivo.txt      # Escupe todo el texto de golpe.
+less archivo.txt     # Ábrelo modo lectura (usa flechas para bajar, 'q' para salir).
+head archivo.txt     # Lee solo las primeras líneas.
+tail archivo.txt     # Lee solo las últimas líneas.
+tail -f archivo.log  # ¡Súper útil! Muestra en tiempo real lo que se añade al archivo.
 ```
 
-Uso:
+> [!TIP]
+> **El caso de uso real:** `tail -f` es el comando que más usarás cuando estés buscando errores en un servidor web o analizando logs del sistema durante un ataque.
 
-- `find`: buscar archivos.
-- `grep`: buscar texto.
-- `-i`: ignorar mayusculas/minusculas.
-- `-R`: buscar recursivamente.
+## 3. Búsqueda de Información
 
-## Sistema
+Cuando un servidor tiene miles de archivos, encontrar algo a mano es imposible.
 
 ```bash
-whoami
-id
-hostname
-uname -a
-df -h
-free -h
+find /var -name "*.log"      # Busca archivos que terminen en .log dentro de /var
+grep "error" archivo.log     # Busca la palabra "error" dentro del archivo
+grep -i "failed" archivo.log # Busca ignorando mayúsculas y minúsculas (-i)
+grep -R "password" .         # Busca la palabra en TODOS los archivos de esta carpeta
 ```
 
-Uso:
+## 4. Diagnóstico del Sistema y Red
 
-- Ver usuario actual.
-- Ver grupos.
-- Ver hostname.
-- Ver version del sistema.
-- Ver disco.
-- Ver memoria.
-
-## Red
+¿Quién soy? ¿Dónde estoy? ¿Tengo internet?
 
 ```bash
-ip addr
-ip route
-ss -tuln
-curl -I https://example.com
-dig example.com
+whoami                       # ¿Con qué usuario estoy ejecutando comandos?
+id                           # Muestra mi usuario y los grupos a los que pertenezco
+uname -a                     # Muestra la versión del kernel y del sistema
+df -h                        # Muestra el espacio libre en el disco
+free -h                      # Muestra la memoria RAM libre
+ip addr                      # Muestra mi dirección IP local
+curl -I https://google.com   # Hace un ping web para ver si hay conexión
 ```
 
-Uso:
+---
 
-- Ver IPs.
-- Ver gateway.
-- Ver puertos escuchando.
-- Probar HTTP.
-- Consultar DNS.
+## Laboratorio Práctico
 
-## Practica
+No puedes avanzar sin ensuciarte las manos. Abre tu terminal de Linux (o tu máquina virtual) y completa estos pasos. ¡Marca las casillas cuando termines!
 
-Crea una nota con:
+- [ ] Abre la terminal y ejecuta `pwd`. Escribe mentalmente en qué ruta estás.
+- [ ] Viaja a la carpeta temporal usando `cd /tmp`.
+- [ ] Ejecuta `ls -la` y busca si hay archivos que empiecen con un punto `.`.
+- [ ] Ejecuta `whoami` para confirmar con qué usuario estás operando.
+- [ ] Haz un ping rápido para verificar que tienes internet: `curl -I https://google.com`.
 
-```md
-# Comandos Basicos
-
-## Navegacion
-
-Comando usado:
-Resultado:
-Que significa:
-
-## Busqueda
-
-Comando usado:
-Resultado:
-Que significa:
-
-## Red
-
-Comando usado:
-Resultado:
-Que significa:
-```
+---
 
 ## Criterio de Dominio
 
-Puedes avanzar cuando puedas:
+Antes de hacer clic en el botón de "Completar Lección", sé honesto contigo mismo. ¿Puedes hacer lo siguiente sin mirar los apuntes?
 
-- Moverte por carpetas.
-- Leer archivos.
-- Buscar texto.
-- Ver usuario actual.
-- Ver IP y puertos.
-- Explicar que hace cada comando sin copiar.
+- [ ] ¿Sé cómo volver a mi directorio principal?
+- [ ] ¿Sé cómo buscar la palabra "password" dentro de un archivo de texto?
+- [ ] ¿Sé cómo leer las últimas 10 líneas de un registro (log)?
+- [ ] ¿Sé cómo ver mi dirección IP actual?
+
+> [!NOTE]
+> Si marcaste todas las casillas, ¡felicidades! Estás listo para el siguiente bloque. No olvides pulsar el botón de **Marcar como completado** debajo.

@@ -1,0 +1,180 @@
+import { getContentStructure } from '../lib/markdown';
+import CategoryList from '../components/CategoryList';
+import ProgressOverview from '../components/ProgressOverview';
+import Link from 'next/link';
+import { SiLinux, SiPython, SiGo, SiGnubash, SiCisco, SiOwasp, SiDocker, SiKubernetes, SiKalilinux } from 'react-icons/si';
+import { FaNetworkWired, FaShieldAlt, FaSatelliteDish, FaWindows, FaAws } from 'react-icons/fa';
+
+const techIcons = [
+  { Icon: SiLinux, color: '#FCC624', title: 'Linux' },
+  { Icon: SiKalilinux, color: '#557C94', title: 'Kali Linux' },
+  { Icon: FaNetworkWired, color: '#888888', title: 'Redes' },
+  { Icon: SiCisco, color: '#1BA0D7', title: 'Cisco' },
+  { Icon: SiOwasp, color: 'var(--text-main)', title: 'OWASP' },
+  { Icon: FaWindows, color: '#0078D6', title: 'Active Directory' },
+  { Icon: FaSatelliteDish, color: '#2a9d8f', title: 'SIEM' },
+  { Icon: FaShieldAlt, color: '#e9c46a', title: 'EDR' },
+  { Icon: SiPython, color: '#3776AB', title: 'Python' },
+  { Icon: SiGo, color: '#00ADD8', title: 'Go' },
+  { Icon: SiGnubash, color: '#4EAA25', title: 'Bash' },
+  { Icon: SiDocker, color: '#2496ED', title: 'Docker' },
+  { Icon: SiKubernetes, color: '#326CE5', title: 'Kubernetes' },
+  { Icon: FaAws, color: '#FF9900', title: 'AWS' },
+];
+
+const profileRoutes = [
+  {
+    title: 'Fundamentos',
+    description: 'Base tecnica para entender seguridad, redes, Linux, web y riesgo.',
+    links: [
+      ['Inicio Aqui', '/INICIO-AQUI'],
+      ['Como Usar Esta Guia', '/COMO-USAR-LA-GUIA'],
+      ['Base de Seguridad', '/fundamentos/BASE-DE-SEGURIDAD'],
+      ['Fundamentos de Redes', '/redes-cisco/FUNDAMENTOS-REDES'],
+    ],
+  },
+  {
+    title: 'Blue Team',
+    description: 'Investigacion, deteccion, SIEM, MITRE, hunting y respuesta.',
+    links: [
+      ['Fundamentos Blue Team', '/blue-team/FUNDAMENTOS-BLUE-TEAM'],
+      ['SIEM y MITRE', '/blue-team/SIEM-MITRE'],
+      ['Detection Engineering', '/blue-team/DETECTION-ENGINEERING'],
+      ['Respuesta a Incidentes', '/blue-team/RESPUESTA-INCIDENTES'],
+    ],
+  },
+  {
+    title: 'AppSec',
+    description: 'Seguridad web, APIs, OWASP, autenticacion, autorizacion y revisiones.',
+    links: [
+      ['Fundamentos Web', '/web-owasp/FUNDAMENTOS-WEB'],
+      ['OWASP Top 10', '/web-owasp/OWASP-TOP-10'],
+      ['Fundamentos de API Security', '/api-security/FUNDAMENTOS-API'],
+      ['Fundamentos de AppSec', '/appsec-devsecops/FUNDAMENTOS-APPSEC'],
+    ],
+  },
+  {
+    title: 'Cloud',
+    description: 'Responsabilidad compartida, IAM, logging, storage y Kubernetes.',
+    links: [
+      ['Fundamentos Cloud', '/cloud-security/FUNDAMENTOS-CLOUD'],
+      ['IAM Avanzado', '/cloud-security/IAM-AVANZADO'],
+      ['IAM, Storage y Logging', '/cloud-security/IAM-STORAGE-LOGGING'],
+      ['Kubernetes Seguridad', '/containers-kubernetes/KUBERNETES-SEGURIDAD'],
+    ],
+  },
+  {
+    title: 'GRC',
+    description: 'Gobierno, riesgo, controles, evidencia, privacidad y continuidad.',
+    links: [
+      ['Fundamentos GRC', '/grc/FUNDAMENTOS-GRC'],
+      ['Riesgo y Controles', '/grc/RIESGO-CONTROLES'],
+      ['Fundamentos de Privacidad', '/privacy/FUNDAMENTOS-PRIVACIDAD'],
+      ['Backups', '/business-continuity/BACKUPS'],
+    ],
+  },
+  {
+    title: 'Empleabilidad',
+    description: 'Portafolio, entrevistas, mapa de habilidades y preparacion laboral.',
+    links: [
+      ['Empleo Ready', '/empleabilidad/EMPLEO-READY'],
+      ['Rutas por Rol', '/empleabilidad/RUTAS-POR-ROL'],
+      ['Proyectos de Portafolio', '/empleabilidad/PROYECTOS-PORTAFOLIO'],
+      ['CV y LinkedIn', '/empleabilidad/CV-LINKEDIN'],
+    ],
+  },
+];
+
+export default function Home() {
+  const structure = getContentStructure();
+  const totalCategories = structure.length;
+  const totalPages = structure.reduce((acc, cat) => acc + cat.pages.length, 0);
+
+  return (
+    <div style={{ textAlign: 'center', paddingTop: '3rem' }}>
+      <h1 className="serif-title" style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', lineHeight: 1.1, marginBottom: '1rem' }}>
+        Apuntes <em>gratis</em> de <br/> ciberseguridad en español
+      </h1>
+      
+      <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto 1.5rem auto' }}>
+        Ruta estructurada para aprender fundamentos, redes, Linux, seguridad web, defensa, cloud, laboratorios y empleabilidad.
+      </p>
+
+      {/* Dynamic Statistics Banner */}
+      <div style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '1.5rem',
+        background: 'var(--bg-card)',
+        border: '1px solid var(--border-color)',
+        padding: '0.6rem 1.5rem',
+        borderRadius: '50px',
+        fontSize: '0.9rem',
+        color: 'var(--text-muted)',
+        marginBottom: '3rem',
+        boxShadow: '0 4px 12px var(--border-glow)'
+      }}>
+        <div>
+          <strong style={{ color: 'var(--text-main)' }}>{totalPages}</strong> apuntes ordenados
+        </div>
+        <span style={{ color: 'var(--border-color)' }}>|</span>
+        <div>
+          <strong style={{ color: 'var(--text-main)' }}>{totalCategories}</strong> módulos temáticos
+        </div>
+        <span style={{ color: 'var(--border-color)' }}>|</span>
+        <div>
+          <span style={{ color: 'var(--accent-success)', fontWeight: 'bold' }}>100%</span> en español
+        </div>
+      </div>
+
+      {/* Decorative tech icons */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.5rem', marginBottom: '4rem', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
+        {techIcons.map((tech, idx) => (
+          <div key={idx} style={{ 
+            color: tech.color, 
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'transform var(--transition-fast)',
+            cursor: 'help'
+          }} title={tech.title} className="tech-icon-hover">
+            <tech.Icon size={36} />
+          </div>
+        ))}
+      </div>
+
+      <section style={{ textAlign: 'left', margin: '0 auto 4rem auto' }}>
+        <h2 className="serif-title" style={{ fontSize: '2rem', borderBottom: 'none', marginBottom: '0.75rem' }}>
+          Rutas por perfil
+        </h2>
+        <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '2rem' }}>
+          Usa estas rutas como mapas de lectura segun el enfoque que quieras explorar.
+        </p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
+          {profileRoutes.map((route) => (
+            <div key={route.title} className="book-card" style={{ padding: '1.25rem', cursor: 'default' }}>
+              <h3 style={{ margin: '0 0 0.4rem 0', fontSize: '1.1rem', color: 'var(--text-main)' }}>
+                {route.title}
+              </h3>
+              <p style={{ fontSize: '0.92rem', marginBottom: '1rem', lineHeight: 1.55 }}>
+                {route.description}
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+                {route.links.map(([label, href]) => (
+                  <Link key={href} href={href} style={{ fontSize: '0.92rem', textDecoration: 'none', color: 'var(--text-muted)' }}>
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <ProgressOverview structure={structure} />
+      
+      <CategoryList structure={structure} />
+    </div>
+  );
+}

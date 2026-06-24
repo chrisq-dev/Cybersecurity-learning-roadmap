@@ -27,7 +27,7 @@ Este repositorio es principalmente una ruta personal de aprendizaje, pero esta a
 - Escribir en espanol.
 - Usar explicaciones claras.
 - Preferir ejemplos simples.
-- Incluir evidencia, practica o preguntas cuando sea posible.
+- Incluir ejemplos, practica segura, puntos a observar o preguntas cuando sea posible.
 - Mantener rutas y enlaces relativos.
 
 ## Formato Sugerido Para Nuevos Temas
@@ -47,14 +47,14 @@ Este repositorio es principalmente una ruta personal de aprendizaje, pero esta a
 
 ## Preguntas de Repaso
 
-## Evidencia Esperada
+## Puntos a Observar
 ```
 
 ## Antes de Proponer Cambios
 
 Revisa:
 
-- [ESTADO-DEL-REPO.md](ESTADO-DEL-REPO.md)
-- [GUIA-DEFINITIVA.md](GUIA-DEFINITIVA.md)
-- [SECURITY.md](SECURITY.md)
-
+- [README.md](README.md)
+- [INICIO-AQUI.md](INICIO-AQUI.md)
+- [COMO-USAR-LA-GUIA.md](COMO-USAR-LA-GUIA.md)
+- [notes/PENDIENTES.md](notes/PENDIENTES.md)

@@ -2,7 +2,7 @@
 
 Este archivo es tu punto de entrada cuando no sepas que estudiar. Si te pierdes, vuelve aqui y sigue el siguiente paso.
 
-Para entender el sistema completo del repo, lee tambien [GUIA-DEFINITIVA.md](GUIA-DEFINITIVA.md).
+Para entender el sistema completo del repo, lee tambien [GUIA-DE-ESTUDIO.md](GUIA-DE-ESTUDIO.md).
 
 ## Respuesta Corta
 
@@ -68,51 +68,51 @@ Cada semana revisa:
 3. [evaluaciones/RESPUESTAS.md](evaluaciones/RESPUESTAS.md)
 4. [roadmap/TABLERO.md](roadmap/TABLERO.md)
 
-Si tienes evidencia escrita y puedes explicar el tema sin copiar, vas bien. Si solo leiste o viste videos, todavia falta practica.
+Si tienes notas propias y puedes explicar el tema sin copiar, vas bien. Si solo leiste o viste videos, todavia falta practica.
 
 ## Primera Semana
 
 ### Dia 1: Computacion Basica
 
 - Leer: [fundamentos/COMPUTACION-BASICA.md](fundamentos/COMPUTACION-BASICA.md)
-- Evidencia: nota con tus palabras.
-- Debes poder explicar: CPU, RAM, disco, proceso y archivo.
+- Punto a observar: nota con tus palabras.
+- Criterio de comprension: CPU, RAM, disco, proceso y archivo.
 
 ### Dia 2: Sistemas Operativos
 
 - Leer: [fundamentos/SISTEMAS-OPERATIVOS.md](fundamentos/SISTEMAS-OPERATIVOS.md)
-- Evidencia: nota sobre procesos, usuarios, archivos y servicios.
-- Debes poder explicar: que hace un sistema operativo.
+- Punto a observar: nota sobre procesos, usuarios, archivos y servicios.
+- Criterio de comprension: que hace un sistema operativo.
 
 ### Dia 3: Identidad y Permisos
 
 - Leer: [fundamentos/IDENTIDAD-PERMISOS.md](fundamentos/IDENTIDAD-PERMISOS.md)
-- Evidencia: tabla con usuario, grupo, permiso y privilegio.
-- Debes poder explicar: autenticacion vs autorizacion.
+- Punto a observar: tabla con usuario, grupo, permiso y privilegio.
+- Criterio de comprension: autenticacion vs autorizacion.
 
 ### Dia 4: Base de Seguridad
 
 - Leer: [fundamentos/BASE-DE-SEGURIDAD.md](fundamentos/BASE-DE-SEGURIDAD.md)
-- Evidencia: ejemplo de amenaza, vulnerabilidad, riesgo, impacto y control.
-- Debes poder explicar: CIA y riesgo.
+- Punto a observar: ejemplo de amenaza, vulnerabilidad, riesgo, impacto y control.
+- Criterio de comprension: CIA y riesgo.
 
 ### Dia 5: OSI y TCP/IP
 
 - Leer: [redes-cisco/MODELO-OSI-TCPIP.md](redes-cisco/MODELO-OSI-TCPIP.md)
-- Evidencia: explicar que pasa cuando visitas una web.
-- Debes poder explicar: capas, encapsulacion, IP, TCP, HTTP y TLS.
+- Punto a observar: explicar que pasa cuando visitas una web.
+- Criterio de comprension: capas, encapsulacion, IP, TCP, HTTP y TLS.
 
 ### Dia 6: IP y Subnetting
 
 - Leer: [redes-cisco/IP-SUBNETTING.md](redes-cisco/IP-SUBNETTING.md)
-- Evidencia: 5 ejercicios de subredes.
-- Debes poder explicar: IP, mascara, gateway y CIDR.
+- Punto a observar: ejercicios de subredes.
+- Criterio de comprension: IP, mascara, gateway y CIDR.
 
 ### Dia 7: DNS, DHCP y NAT
 
 - Leer: [redes-cisco/DNS-DHCP-NAT.md](redes-cisco/DNS-DHCP-NAT.md)
-- Evidencia: comandos `nslookup` o `dig` documentados.
-- Debes poder explicar: como un nombre termina en una IP.
+- Punto a observar: comandos `nslookup` o `dig` documentados.
+- Criterio de comprension: como un nombre termina en una IP.
 
 ## Primer Mes
 
@@ -120,7 +120,7 @@ Si tienes evidencia escrita y puedes explicar el tema sin copiar, vas bien. Si s
 
 Meta: entender computadoras, sistemas, permisos y redes basicas.
 
-Evidencia minima:
+Puntos a observar:
 
 - 4 notas.
 - 1 glosario ampliado.
@@ -130,7 +130,7 @@ Evidencia minima:
 
 Meta: entender OSI, TCP/IP, subnetting, DNS, DHCP, NAT y trafico.
 
-Evidencia minima:
+Puntos a observar:
 
 - 5 ejercicios de subnetting.
 - 1 captura o analisis de trafico.
@@ -140,7 +140,7 @@ Evidencia minima:
 
 Meta: usar terminal, archivos, permisos, usuarios y procesos.
 
-Evidencia minima:
+Puntos a observar:
 
 - Lista de comandos usados.
 - Practica con permisos.
@@ -150,7 +150,7 @@ Evidencia minima:
 
 Meta: conectar teoria con practica.
 
-Evidencia minima:
+Puntos a observar:
 
 - 1 lab de logs.
 - 1 lab de red.
@@ -189,7 +189,7 @@ Cuando termines el primer mes, sigue:
 3. HTTP, web y OWASP.
 4. Blue Team y logs.
 5. Active Directory.
-6. Cloud security.
+6. Cloud Security.
 7. Red Team controlado.
 8. Proyectos de portafolio.
 9. Especializacion inicial.
@@ -205,4 +205,4 @@ Vas bien si cada semana tienes:
 - Algo documentado.
 - Algo que sabes explicar mejor.
 
-No midas progreso por cantidad de videos vistos. Midelo por evidencia creada.
+No midas progreso por cantidad de videos vistos. Midelo por notas, practica y explicaciones propias.

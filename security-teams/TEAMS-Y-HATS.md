@@ -34,7 +34,7 @@ Responsabilidades:
 - Mejorar controles.
 - Reducir falsos positivos.
 
-Debes estudiar:
+Ruta sugerida:
 
 - [blue-team/FUNDAMENTOS-BLUE-TEAM.md](../blue-team/FUNDAMENTOS-BLUE-TEAM.md)
 - [blue-team/LOGS-Y-ALERTAS.md](../blue-team/LOGS-Y-ALERTAS.md)
@@ -61,12 +61,13 @@ Responsabilidades:
 - Reporte de hallazgos.
 - Recomendaciones de remediacion.
 
-Debes estudiar:
+Ruta sugerida:
 
 - [red-team/METODOLOGIA-ETICA.md](../red-team/METODOLOGIA-ETICA.md)
 - [red-team/RECONOCIMIENTO-ENUMERACION.md](../red-team/RECONOCIMIENTO-ENUMERACION.md)
 - [red-team/REPORTE-REMEDIACION.md](../red-team/REPORTE-REMEDIACION.md)
-- [web-owasp/README.md](../web-owasp/README.md)
+- [web-owasp/FUNDAMENTOS-WEB.md](../web-owasp/FUNDAMENTOS-WEB.md)
+- [web-owasp/OWASP-TOP-10.md](../web-owasp/OWASP-TOP-10.md)
 - [windows-ad/ACTIVE-DIRECTORY.md](../windows-ad/ACTIVE-DIRECTORY.md)
 
 Evidencia para portafolio:
@@ -88,12 +89,13 @@ Responsabilidades:
 - Mapear actividad a MITRE ATT&CK.
 - Validar controles.
 
-Debes estudiar:
+Ruta sugerida:
 
 - [blue-team/SIEM-MITRE.md](../blue-team/SIEM-MITRE.md)
 - [blue-team/DETECTION-ENGINEERING.md](../blue-team/DETECTION-ENGINEERING.md)
 - [red-team/METODOLOGIA-ETICA.md](../red-team/METODOLOGIA-ETICA.md)
-- [playbooks/README.md](../playbooks/README.md)
+- [playbooks/CUENTA-COMPROMETIDA.md](../playbooks/CUENTA-COMPROMETIDA.md)
+- [playbooks/SERVIDOR-EXPUESTO.md](../playbooks/SERVIDOR-EXPUESTO.md)
 
 Evidencia para portafolio:
 
@@ -115,10 +117,10 @@ Responsabilidades:
 - Resolver disputas entre equipos.
 - Revisar reportes.
 
-Debes estudiar:
+Ruta sugerida:
 
-- [plantillas/REPORTE-EJECUTIVO.md](../plantillas/REPORTE-EJECUTIVO.md)
-- [plantillas/PLAN-REMEDIACION.md](../plantillas/PLAN-REMEDIACION.md)
+- [writeups/PLANTILLA-REPORTE.md](../writeups/PLANTILLA-REPORTE.md)
+- [grc/RIESGO-CONTROLES.md](../grc/RIESGO-CONTROLES.md)
 - [grc/FUNDAMENTOS-GRC.md](../grc/FUNDAMENTOS-GRC.md)
 - [red-team/METODOLOGIA-ETICA.md](../red-team/METODOLOGIA-ETICA.md)
 
@@ -142,12 +144,13 @@ Responsabilidades:
 - Integrar SAST, DAST y secret scanning.
 - Guiar remediaciones.
 
-Debes estudiar:
+Ruta sugerida:
 
 - [appsec-devsecops/FUNDAMENTOS-APPSEC.md](../appsec-devsecops/FUNDAMENTOS-APPSEC.md)
 - [appsec-devsecops/DEVSECOPS.md](../appsec-devsecops/DEVSECOPS.md)
 - [web-owasp/OWASP-TOP-10.md](../web-owasp/OWASP-TOP-10.md)
-- [api-security/README.md](../api-security/README.md)
+- [api-security/FUNDAMENTOS-API.md](../api-security/FUNDAMENTOS-API.md)
+- [api-security/RIESGOS-CONTROLES.md](../api-security/RIESGOS-CONTROLES.md)
 
 ### Cloud Security Team
 
@@ -163,12 +166,13 @@ Responsabilidades:
 - Monitoreo.
 - Configuraciones seguras.
 
-Debes estudiar:
+Ruta sugerida:
 
 - [cloud-security/FUNDAMENTOS-CLOUD.md](../cloud-security/FUNDAMENTOS-CLOUD.md)
 - [cloud-security/IAM-STORAGE-LOGGING.md](../cloud-security/IAM-STORAGE-LOGGING.md)
 - [cloud-security/IAM-AVANZADO.md](../cloud-security/IAM-AVANZADO.md)
-- [containers-kubernetes/README.md](../containers-kubernetes/README.md)
+- [containers-kubernetes/CONTENEDORES.md](../containers-kubernetes/CONTENEDORES.md)
+- [containers-kubernetes/KUBERNETES-SEGURIDAD.md](../containers-kubernetes/KUBERNETES-SEGURIDAD.md)
 
 ### DFIR Team
 
@@ -182,11 +186,12 @@ Responsabilidades:
 - Contener incidentes.
 - Documentar hallazgos.
 
-Debes estudiar:
+Ruta sugerida:
 
 - [forense/FUNDAMENTOS-FORENSE.md](../forense/FUNDAMENTOS-FORENSE.md)
 - [blue-team/RESPUESTA-INCIDENTES.md](../blue-team/RESPUESTA-INCIDENTES.md)
-- [playbooks/README.md](../playbooks/README.md)
+- [playbooks/CUENTA-COMPROMETIDA.md](../playbooks/CUENTA-COMPROMETIDA.md)
+- [playbooks/MALWARE-ENDPOINT.md](../playbooks/MALWARE-ENDPOINT.md)
 
 ### Threat Intelligence Team
 
@@ -200,7 +205,7 @@ Responsabilidades:
 - Producir contexto para deteccion y defensa.
 - Priorizar amenazas relevantes.
 
-Debes estudiar:
+Ruta sugerida:
 
 - [blue-team/SIEM-MITRE.md](../blue-team/SIEM-MITRE.md)
 - [blue-team/THREAT-HUNTING.md](../blue-team/THREAT-HUNTING.md)
@@ -220,12 +225,13 @@ Responsabilidades:
 - Cumplimiento.
 - Priorizacion.
 
-Debes estudiar:
+Ruta sugerida:
 
 - [grc/FUNDAMENTOS-GRC.md](../grc/FUNDAMENTOS-GRC.md)
 - [grc/RIESGO-CONTROLES.md](../grc/RIESGO-CONTROLES.md)
-- [vulnerability-management/README.md](../vulnerability-management/README.md)
-- [privacy/README.md](../privacy/README.md)
+- [vulnerability-management/FUNDAMENTOS.md](../vulnerability-management/FUNDAMENTOS.md)
+- [vulnerability-management/PRIORIZACION-Y-CVSS.md](../vulnerability-management/PRIORIZACION-Y-CVSS.md)
+- [privacy/FUNDAMENTOS-PRIVACIDAD.md](../privacy/FUNDAMENTOS-PRIVACIDAD.md)
 
 ## Hats
 
@@ -304,4 +310,3 @@ No necesitas escoger un color para siempre. Al inicio debes entender todos:
 - GRC para riesgo y negocio.
 
 Tu base debe ser etica: White Hat.
-

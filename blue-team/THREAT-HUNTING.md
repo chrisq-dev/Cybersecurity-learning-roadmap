@@ -4,6 +4,16 @@
 
 Aprender a buscar actividad sospechosa de forma proactiva, no solo esperar alertas.
 
+Threat hunting es una habilidad clave para pasar de analista reactivo a analista que entiende comportamiento. No reemplaza alertas; ayuda a descubrir brechas de deteccion y a mejorar reglas existentes.
+
+## Mapa Mental
+
+```text
+hipotesis -> datos -> busqueda -> contexto -> hallazgo -> deteccion -> mejora
+```
+
+Un hunt sin hipotesis se convierte en navegar logs sin rumbo.
+
 ## Que es Threat Hunting
 
 Threat hunting es una investigacion guiada por hipotesis.
@@ -36,6 +46,22 @@ Ejemplo bueno:
 Un atacante que obtuvo credenciales podria intentar multiples logins fallidos y luego un login exitoso desde una IP inusual.
 ```
 
+## Hipotesis Buena
+
+Debe tener:
+
+- comportamiento observable;
+- fuente de datos posible;
+- entidad afectada;
+- criterio de sospecha;
+- resultado esperado.
+
+Formato:
+
+```text
+Creo que [actor/comportamiento] podria [accion] en [entidad] y puedo buscarlo con [datos].
+```
+
 ## Fuentes de Datos
 
 - Logs de autenticacion.
@@ -48,6 +74,24 @@ Un atacante que obtuvo credenciales podria intentar multiples logins fallidos y 
 - Cloud audit logs.
 - Web server logs.
 
+## Tipos de Hunt
+
+### Basado en Hipotesis
+
+Parte de una idea concreta.
+
+### Basado en Inteligencia
+
+Parte de indicadores o tecnicas conocidas.
+
+### Basado en Anomalias
+
+Parte de desviaciones respecto al comportamiento normal.
+
+### Basado en Cobertura
+
+Busca tecnicas MITRE que no estan cubiertas por alertas actuales.
+
 ## Flujo de Hunting
 
 1. Crear hipotesis.
@@ -57,6 +101,21 @@ Un atacante que obtuvo credenciales podria intentar multiples logins fallidos y 
 5. Separar normal de sospechoso.
 6. Documentar hallazgos.
 7. Crear deteccion si aplica.
+
+## Baseline
+
+Antes de llamar algo sospechoso, entiende que es normal.
+
+Ejemplos:
+
+- horarios normales de login;
+- paises o redes comunes;
+- procesos habituales por rol;
+- dominios frecuentes;
+- cuentas de servicio esperadas;
+- volumen normal de errores.
+
+Sin baseline, todo parece raro o nada parece raro.
 
 ## Ejemplos de Hunts
 
@@ -129,7 +188,31 @@ Preguntas:
 - Se repite en varios hosts?
 - Hay trafico posterior?
 
-## Entregable de Hunting
+### Hunt 4: Cuentas de Servicio Anomalas
+
+Hipotesis:
+
+```text
+Una cuenta de servicio comprometida puede usarse desde hosts o horarios no esperados.
+```
+
+Datos:
+
+- cuenta;
+- host origen;
+- sistema destino;
+- hora;
+- accion;
+- resultado.
+
+Preguntas:
+
+- La cuenta deberia iniciar sesion interactivamente?
+- El host origen es esperado?
+- Hubo cambios de permisos?
+- Se accedieron recursos sensibles?
+
+## Formato de analisis de hunting
 
 ```md
 # Threat Hunt
@@ -151,6 +234,29 @@ Preguntas:
 ## Detecciones Propuestas
 ```
 
+## Mini Laboratorio: Hunt de Cuenta Comprometida
+
+Crea `hunt-cuenta-comprometida.md`:
+
+1. Hipotesis.
+2. Fuentes de datos.
+3. Campos necesarios.
+4. Busquedas conceptuales.
+5. Baseline esperado.
+6. Anomalias encontradas.
+7. Falsos positivos.
+8. Recomendacion.
+9. Deteccion nueva propuesta.
+
+## Errores Comunes
+
+- Buscar sin hipotesis.
+- No conocer normalidad del ambiente.
+- Confundir anomalia con incidente confirmado.
+- No documentar busquedas que no encontraron nada.
+- No convertir hallazgos repetibles en detecciones.
+- No pedir datos faltantes.
+
 ## Criterio de Dominio
 
 Puedes avanzar cuando puedas:
@@ -159,3 +265,4 @@ Puedes avanzar cuando puedas:
 - Identificar fuentes de datos.
 - Documentar resultados.
 - Proponer una deteccion nueva.
+- Explicar la diferencia entre anomalia, hallazgo e incidente.

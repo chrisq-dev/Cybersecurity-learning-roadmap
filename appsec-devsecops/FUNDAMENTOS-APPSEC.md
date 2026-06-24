@@ -4,6 +4,22 @@
 
 Entender como proteger aplicaciones durante diseño, desarrollo, pruebas y operacion.
 
+AppSec conecta desarrollo con seguridad. No se trata de frenar al equipo, sino de ayudar a construir software que falle menos, exponga menos datos y pueda ser revisado con evidencia.
+
+## Mapa Mental
+
+```text
+requisito -> diseno -> codigo -> dependencia -> prueba -> despliegue -> monitoreo
+```
+
+En cada fase debes preguntar:
+
+- Que puede salir mal?
+- Que dato sensible existe?
+- Que usuario o servicio tiene permisos?
+- Que validaciones son obligatorias?
+- Que evidencia queda si algo falla?
+
 ## Que es AppSec
 
 Application Security es la practica de reducir riesgos en aplicaciones.
@@ -32,6 +48,17 @@ Software Development Life Cycle:
 
 AppSec busca meter seguridad en todas las fases, no solo al final.
 
+## Seguridad por Fase
+
+| Fase | Actividad AppSec |
+| --- | --- |
+| Requisitos | Definir datos sensibles, roles y riesgos |
+| Diseno | Threat modeling y arquitectura segura |
+| Desarrollo | Validacion, auth, manejo de errores, secretos |
+| Pruebas | SAST, DAST, pruebas manuales, abuso de casos |
+| Despliegue | Configuracion segura, secrets, headers, TLS |
+| Operacion | Logs, alertas, respuesta, parches |
+
 ## Threat Modeling
 
 Threat modeling es pensar que puede salir mal antes de construir.
@@ -44,6 +71,19 @@ Preguntas:
 - Que controles existen?
 - Que pasa si falla?
 
+### Modelo Rapido: STRIDE
+
+STRIDE ayuda a pensar amenazas:
+
+- Spoofing: alguien se hace pasar por otro.
+- Tampering: alguien modifica datos.
+- Repudiation: alguien niega una accion.
+- Information Disclosure: datos expuestos.
+- Denial of Service: servicio interrumpido.
+- Elevation of Privilege: permisos aumentados indebidamente.
+
+No necesitas usarlo perfecto al inicio. Usalo para no olvidar categorias importantes.
+
 ## Code Review de Seguridad
 
 Buscar patrones inseguros:
@@ -54,6 +94,15 @@ Buscar patrones inseguros:
 - Permisos sin verificar.
 - Logs con datos sensibles.
 - Manejo inseguro de archivos.
+
+Preguntas para revisar codigo:
+
+- La autorizacion se valida en backend?
+- Las consultas usan parametros?
+- Los errores revelan detalles internos?
+- Los secretos vienen de variables seguras?
+- Hay limites de tamano y tipo en inputs?
+- Los logs evitan contrasenas, tokens y datos sensibles?
 
 ## SAST y DAST
 
@@ -88,7 +137,46 @@ Controles:
 - Dependency scanning.
 - Version pinning.
 
-## Practica
+## Secretos
+
+Nunca guardes secretos en repositorios:
+
+- API keys.
+- Tokens.
+- Passwords.
+- Certificados privados.
+- Connection strings.
+
+Controles:
+
+- Variables de entorno.
+- Secret managers.
+- Rotacion.
+- Escaneo de secretos.
+- Permisos por ambiente.
+
+## Logging Seguro
+
+Un log util responde que paso, cuando, donde y con que identidad. Un log inseguro filtra datos sensibles.
+
+Guarda:
+
+- ID de usuario.
+- Accion.
+- Recurso afectado.
+- Resultado.
+- IP o contexto.
+- Correlation ID.
+
+Evita:
+
+- Passwords.
+- Tokens.
+- Datos de tarjetas.
+- Secretos.
+- PII innecesaria.
+
+## Practica Guiada
 
 Elige una app imaginaria de login y responde:
 
@@ -99,6 +187,33 @@ Elige una app imaginaria de login y responde:
 - Que logs son necesarios?
 - Que pruebas harias?
 
+## Mini Laboratorio: Revision de Diseno
+
+Escenario:
+
+```text
+App SaaS con usuarios, administradores, pagos, subida de archivos y API publica.
+```
+
+Crea `revision-appsec-saas.md` con:
+
+1. Activos principales.
+2. Roles.
+3. Flujos sensibles.
+4. 10 amenazas posibles usando STRIDE.
+5. Controles preventivos.
+6. Logs necesarios.
+7. Pruebas de seguridad.
+
+## Errores Comunes
+
+- Pensar que AppSec empieza cuando la app ya esta terminada.
+- Confiar en validacion de frontend.
+- No modelar permisos por recurso.
+- Tratar todos los hallazgos como igual de graves.
+- Ignorar dependencias.
+- No revisar secrets en CI/CD.
+
 ## Criterio de Dominio
 
 Puedes avanzar cuando puedas:
@@ -108,3 +223,4 @@ Puedes avanzar cuando puedas:
 - Explicar threat modeling.
 - Diferenciar SAST y DAST.
 - Identificar riesgos comunes en codigo.
+- Proponer controles por fase del SDLC.

@@ -7,13 +7,13 @@ Esta guia esta pensada para estudiar ciberseguridad de forma ordenada, desde fun
 Si no sabes por donde empezar, abre primero [INICIO-AQUI.md](INICIO-AQUI.md). Ese archivo reduce todo a una ruta concreta para hoy, la primera semana y el primer mes.
 
 1. Lee el tema en la carpeta correspondiente.
-2. Crea tus propias notas con tus palabras.
+2. Notas propias con tus palabras.
 3. Haz un laboratorio pequeno.
 4. Documenta comandos, errores, observaciones y lecciones.
 5. Marca el avance en `roadmap/CHECKLIST.md`.
 6. Repite hasta poder explicar el tema sin copiar.
 
-Usa [INDICE-MAESTRO.md](INDICE-MAESTRO.md) cuando quieras encontrar un tema rapido.
+Usa [TEMARIO-MAESTRO.md](TEMARIO-MAESTRO.md) cuando quieras encontrar un tema rapido.
 
 ## Regla Principal
 
@@ -77,7 +77,7 @@ Practica:
 
 - Calcula subredes manualmente.
 - Diseña una red pequena con VLANs.
-- Crea reglas ACL simples.
+- Reglas ACL simples.
 - Captura trafico HTTP, DNS y TLS en Wireshark.
 
 ### 3. Linux
@@ -103,10 +103,10 @@ Estudia:
 
 Practica:
 
-- Crea usuarios y grupos.
+- Usuarios y grupos.
 - Cambia permisos con `chmod` y `chown`.
 - Revisa logs de autenticacion.
-- Crea scripts simples en Bash.
+- Scripts simples en Bash.
 - Configura SSH de forma mas segura.
 
 ### 4. Windows y Active Directory
@@ -158,7 +158,7 @@ Estudia:
 
 Practica:
 
-- Crea un parser de logs.
+- Parser de logs.
 - Calcula hashes de archivos.
 - Lee un archivo CSV y genera un reporte.
 - Consume una API publica.
@@ -198,7 +198,7 @@ Practica:
 
 - Resuelve labs de PortSwigger Web Security Academy.
 - Documenta cada vulnerabilidad con: causa, impacto, explotacion en lab y remediacion.
-- Crea ejemplos locales vulnerables y corregidos.
+- Ejemplos locales vulnerables y corregidos.
 
 ### 7. Blue Team
 
@@ -226,8 +226,8 @@ Estudia:
 Practica:
 
 - Analiza logs de autenticacion.
-- Crea una regla Sigma simple.
-- Crea una regla YARA simple.
+- Regla Sigma simple.
+- Regla YARA simple.
 - Documenta una investigacion: alerta, evidencia, conclusion y accion.
 
 ### 8. Red Team Controlado
@@ -376,7 +376,7 @@ Lee:
 
 Practica:
 
-- Crea una linea de tiempo con logs ficticios.
+- Linea de tiempo con logs ficticios.
 - Separa evidencia de hipotesis.
 - Calcula hashes de archivos de practica.
 
@@ -390,7 +390,7 @@ Lee:
 
 Practica:
 
-- Crea IOCs ficticios.
+- IOCs ficticios.
 - Calcula hashes.
 - Escribe una regla YARA simple.
 - Explica falsos positivos.
@@ -411,7 +411,9 @@ Los scripts ayudan a automatizar tareas repetitivas y crear evidencia practica.
 
 Lee:
 
-- [scripts/README.md](scripts/README.md)
+- [scripts/hash_file.py](scripts/hash_file.py)
+- [scripts/auth_log_summary.py](scripts/auth_log_summary.py)
+- [scripts/asset_inventory_check.py](scripts/asset_inventory_check.py)
 
 Practica:
 
@@ -430,7 +432,7 @@ Lee:
 
 Practica:
 
-- Crea inventario ficticio.
+- Inventario ficticio.
 - Prioriza hallazgos.
 - Escribe remediacion y validacion.
 
@@ -445,7 +447,7 @@ Lee:
 
 Practica:
 
-- Crea matriz de riesgos.
+- Matriz de riesgos.
 - Define controles preventivos, detectivos y correctivos.
 - Especifica evidencia.
 
@@ -477,7 +479,7 @@ Practica:
 
 - Revisa riesgos de Dockerfile.
 - Explica pods, services, namespaces y RBAC.
-- Crea checklist de seguridad Kubernetes.
+- Checklist de seguridad Kubernetes.
 
 ### 22. Privacidad
 
@@ -554,7 +556,7 @@ Lee:
 
 Practica:
 
-- Crea matriz de accesos.
+- Matriz de accesos.
 - Diseña access review.
 - Propone controles para cuentas privilegiadas.
 
@@ -571,7 +573,7 @@ Practica:
 
 - Define RPO/RTO.
 - Diseña prueba de restauracion.
-- Crea tabletop de ransomware.
+- Tabletop de ransomware.
 
 ### 29. Datos de Laboratorio
 
@@ -579,8 +581,10 @@ Usa datos ficticios para practicar automatizacion.
 
 Lee:
 
-- [labs/data/README.md](labs/data/README.md)
-- [labs/reportes/README.md](labs/reportes/README.md)
+- [labs/data/auth.log](labs/data/auth.log)
+- [labs/data/assets.csv](labs/data/assets.csv)
+- [labs/reportes/auth-report.md](labs/reportes/auth-report.md)
+- [labs/reportes/asset-report.md](labs/reportes/asset-report.md)
 
 Practica:
 
@@ -610,7 +614,7 @@ Lee:
 
 Practica:
 
-- Crea checklist endpoint.
+- Checklist endpoint.
 - Analiza parent process conceptual.
 - Define accion de contencion.
 
@@ -625,7 +629,7 @@ Practica:
 
 - Diseña roles DB.
 - Define auditoria.
-- Crea alertas de acceso sospechoso.
+- Alertas de acceso sospechoso.
 
 ### 33. Detection Engineering
 
@@ -642,7 +646,10 @@ Practica:
 
 Lee:
 
-- [capstone-projects/README.md](capstone-projects/README.md)
+- [capstone-projects/SOC-INVESTIGATION.md](capstone-projects/SOC-INVESTIGATION.md)
+- [capstone-projects/APPSEC-REVIEW.md](capstone-projects/APPSEC-REVIEW.md)
+- [capstone-projects/CLOUD-SECURITY-REVIEW.md](capstone-projects/CLOUD-SECURITY-REVIEW.md)
+- [capstone-projects/SECURE-SMALL-BUSINESS.md](capstone-projects/SECURE-SMALL-BUSINESS.md)
 
 Practica:
 
@@ -654,8 +661,13 @@ Practica:
 
 Cuando ya estudiaste un tema, usa estas carpetas para reforzar:
 
-- [cheatsheets/README.md](cheatsheets/README.md)
-- [evaluaciones/README.md](evaluaciones/README.md)
+- [cheatsheets/BLUE-TEAM.md](cheatsheets/BLUE-TEAM.md)
+- [cheatsheets/WEB.md](cheatsheets/WEB.md)
+- [cheatsheets/LINUX.md](cheatsheets/LINUX.md)
+- [cheatsheets/REDES.md](cheatsheets/REDES.md)
+- [evaluaciones/PREGUNTAS-FUNDAMENTOS.md](evaluaciones/PREGUNTAS-FUNDAMENTOS.md)
+- [evaluaciones/PREGUNTAS-BLUE-WEB-CLOUD.md](evaluaciones/PREGUNTAS-BLUE-WEB-CLOUD.md)
+- [evaluaciones/SIMULACION-ENTREVISTA.md](evaluaciones/SIMULACION-ENTREVISTA.md)
 - [roadmap/REPASO-30-60-90.md](roadmap/REPASO-30-60-90.md)
 - [roadmap/BITACORA-SEMANAL.md](roadmap/BITACORA-SEMANAL.md)
 
@@ -671,8 +683,12 @@ Cuando ya entiendas fundamentos, practica documentacion profesional.
 
 Lee:
 
-- [playbooks/README.md](playbooks/README.md)
-- [plantillas/README.md](plantillas/README.md)
+- [playbooks/CUENTA-COMPROMETIDA.md](playbooks/CUENTA-COMPROMETIDA.md)
+- [playbooks/PHISHING.md](playbooks/PHISHING.md)
+- [playbooks/SERVIDOR-EXPUESTO.md](playbooks/SERVIDOR-EXPUESTO.md)
+- [writeups/PLANTILLA-REPORTE.md](writeups/PLANTILLA-REPORTE.md)
+- [notes/PLANTILLA-NOTA.md](notes/PLANTILLA-NOTA.md)
+- [notes/PLANTILLA-RESPUESTA.md](notes/PLANTILLA-RESPUESTA.md)
 - [empleabilidad/RUTAS-POR-ROL.md](empleabilidad/RUTAS-POR-ROL.md)
 - [empleabilidad/MAPA-SKILLS-EVIDENCIA.md](empleabilidad/MAPA-SKILLS-EVIDENCIA.md)
 

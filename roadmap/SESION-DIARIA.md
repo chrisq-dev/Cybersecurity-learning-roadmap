@@ -4,7 +4,7 @@ Usa este formato cada vez que estudies. La meta es evitar estudiar "mucho" sin p
 
 ## Regla de Una Sesion
 
-Cada sesion debe producir al menos una de estas evidencias:
+Una sesion puede dejar alguna de estas evidencias:
 
 - Una nota explicada con tus palabras.
 - Un comando probado y documentado.

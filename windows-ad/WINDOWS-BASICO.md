@@ -97,7 +97,7 @@ Si tienes Windows:
 
 Si no tienes Windows:
 
-1. Crea una nota con los conceptos.
+1. Una nota de ejemplo puede incluir los conceptos.
 2. Investiga que son los Event IDs 4624, 4625 y 4688.
 3. Explica por que importan.
 

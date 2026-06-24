@@ -20,8 +20,8 @@ No avances solo porque leiste. Avanza cuando puedas explicar, practicar y docume
 
 Usalo cuando tengas poco tiempo.
 
-1. Abre [roadmap/TABLERO.md](roadmap/TABLERO.md).
-2. Elige una sola tarea.
+1. Abre la herramienta **Mi Cuaderno** en el menú lateral.
+2. Ve a la pestaña "Sesión Activa".
 3. Lee 10 minutos.
 4. Practica 10 minutos.
 5. Escribe 5 minutos:
@@ -57,7 +57,7 @@ Ejemplo:
 
 ## Flujo Semanal
 
-Cada semana debe producir:
+Cada semana puede cerrar con:
 
 - 1 nota.
 - 1 practica.
@@ -69,13 +69,13 @@ Si no hay evidencia, no cuenta como semana completada.
 
 ## Donde Escribir Cada Cosa
 
-| Necesidad | Archivo |
+| Necesidad | Archivo / Herramienta |
 | --- | --- |
-| Saber que hacer hoy | `roadmap/TABLERO.md` |
-| Saber donde voy | `roadmap/DONDE-VOY.md` |
-| Contestar preguntas | `evaluaciones/RESPUESTAS.md` |
-| Notas largas | `notes/` |
-| Dudas | `notes/PENDIENTES.md` |
+| Saber qué hacer hoy | Herramienta **Mi Cuaderno** (Pestaña: Sesión Activa) |
+| Saber dónde voy | `roadmap/DONDE-VOY.md` |
+| Contestar preguntas | Herramienta **Mi Cuaderno** (Pestaña: Método 3-2-1) |
+| Notas largas | Usa tu aplicación favorita (Notion, Obsidian, etc.) |
+| Dudas y Distracciones | Herramienta **Mi Cuaderno** (Pestaña: Archivo de Pendientes) |
 | Labs | `labs/` |
 | Reportes | `labs/reportes/`, `writeups/` o `plantillas/` |
 | Proyectos | `capstone-projects/` |
@@ -88,8 +88,8 @@ Dia 1:
 
 1. Lee [INICIO-AQUI.md](INICIO-AQUI.md).
 2. Lee [fundamentos/COMPUTACION-BASICA.md](fundamentos/COMPUTACION-BASICA.md).
-3. Escribe una nota corta.
-4. Actualiza [roadmap/TABLERO.md](roadmap/TABLERO.md).
+3. Escribe una nota corta en **Mi Cuaderno**.
+4. Actualiza tu objetivo en la "Sesión Activa".
 
 Primera semana:
 

@@ -4,6 +4,22 @@
 
 Entender Active Directory como sistema central de identidad en muchas empresas.
 
+Active Directory es una de las tecnologias mas importantes para seguridad corporativa. Si AD cae, muchas veces cae la empresa: usuarios, equipos, permisos, acceso a servidores, politicas y autenticacion dependen de el.
+
+## Mapa Mental
+
+```text
+dominio -> domain controllers -> usuarios/equipos -> grupos -> permisos -> GPO -> logs
+```
+
+Cuando analices AD, piensa:
+
+- Quien tiene privilegios?
+- Que equipos son criticos?
+- Que politicas se aplican?
+- Que cuentas estan viejas o mal protegidas?
+- Que eventos muestran cambios sensibles?
+
 ## Que es Active Directory
 
 Active Directory es una tecnologia de Microsoft para administrar identidades, equipos, grupos, politicas y acceso en una organizacion.
@@ -73,6 +89,17 @@ Importa porque:
 - Los tickets son objetivo en ataques.
 - Muchos eventos de seguridad dependen de autenticacion Kerberos.
 
+## NTLM
+
+NTLM es otro mecanismo de autenticacion historico en entornos Windows.
+
+En seguridad importa porque:
+
+- Puede aparecer en ambientes legacy.
+- Puede ser objetivo de relay.
+- Debe reducirse cuando sea posible.
+- Puede indicar configuraciones antiguas.
+
 ## LDAP
 
 LDAP permite consultar el directorio.
@@ -98,6 +125,26 @@ Riesgo:
 
 - Un usuario en grupo privilegiado puede afectar gran parte del dominio.
 
+## Cuentas de Servicio
+
+Son cuentas usadas por aplicaciones o servicios.
+
+Riesgos:
+
+- Passwords que nunca rotan.
+- Permisos excesivos.
+- Uso interactivo no necesario.
+- SPNs mal gestionados.
+- Secretos guardados en scripts.
+
+Controles:
+
+- Minimo privilegio.
+- Rotacion.
+- gMSA cuando aplique.
+- Monitoreo de uso anomalo.
+- Documentacion de propietario.
+
 ## Riesgos Comunes
 
 - Usuarios con privilegios excesivos.
@@ -107,6 +154,20 @@ Riesgo:
 - GPOs inseguras.
 - Falta de monitoreo.
 - Admins usando cuentas privilegiadas para tareas diarias.
+
+## Eventos que Deben Importarte
+
+Ejemplos conceptuales:
+
+- Logins exitosos y fallidos.
+- Creacion de usuarios.
+- Cambios de grupos privilegiados.
+- Cambios de GPO.
+- Bloqueos de cuenta.
+- Uso de cuentas admin.
+- Cambios en Domain Controllers.
+
+No memorices IDs al inicio. Primero entiende que comportamiento quieres detectar.
 
 ## Buenas Practicas
 
@@ -119,7 +180,16 @@ Riesgo:
 - Auditar GPOs.
 - Proteger Domain Controllers.
 
-## Practica Conceptual
+## Errores Comunes
+
+- Usar cuentas Domain Admin para tareas diarias.
+- No separar cuentas admin y normales.
+- Dejar usuarios antiguos activos.
+- No revisar membresias de grupos.
+- No monitorear cambios de GPO.
+- No proteger Domain Controllers como activos criticos.
+
+## Practica Conceptual Guiada
 
 Dibuja un dominio con:
 
@@ -137,6 +207,28 @@ Explica:
 - Como se asignan permisos.
 - Que pasaria si un usuario entra a Domain Admins.
 
+## Mini Laboratorio: Auditoria AD en Papel
+
+Escenario:
+
+```text
+Dominio empresa.local
+2 Domain Controllers
+240 usuarios
+25 usuarios con permisos administrativos
+18 cuentas deshabilitadas pero aun en grupos
+4 cuentas de servicio con password sin rotar
+GPO antigua aplica scripts de inicio
+```
+
+Crea `auditoria-ad-basica.md` con:
+
+1. Riesgos principales.
+2. Preguntas que harias al administrador.
+3. Evidencia que pedirias.
+4. Controles inmediatos.
+5. Detecciones recomendadas.
+
 ## Criterio de Dominio
 
 Puedes avanzar cuando puedas:
@@ -146,3 +238,4 @@ Puedes avanzar cuando puedas:
 - Explicar GPO.
 - Explicar Kerberos a nivel basico.
 - Identificar riesgos de grupos privilegiados.
+- Proponer controles para cuentas admin y cuentas de servicio.

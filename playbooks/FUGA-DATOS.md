@@ -4,6 +4,17 @@
 
 Investigar posible exposicion o extraccion de datos.
 
+## Severidad Inicial
+
+Sube severidad si:
+
+- hay datos personales o sensibles;
+- volumen alto;
+- datos expuestos a internet;
+- tercero no autorizado accedio;
+- hay obligacion contractual o legal;
+- la exposicion sigue activa.
+
 ## Señales
 
 - Descarga masiva.
@@ -23,6 +34,15 @@ Investigar posible exposicion o extraccion de datos.
 - Como se detecto.
 - Si hubo terceros.
 
+## Primeros 15 Minutos
+
+1. Confirmar que dato esta involucrado.
+2. Contener exposicion activa.
+3. Preservar logs.
+4. Identificar owner del sistema.
+5. Evitar borrar evidencia.
+6. Escalar segun proceso interno.
+
 ## Pasos
 
 1. Confirmar tipo de dato.
@@ -35,6 +55,15 @@ Investigar posible exposicion o extraccion de datos.
 8. Remediar control.
 9. Documentar lecciones.
 
+## Clasificacion de Datos
+
+| Tipo | Ejemplo | Impacto |
+| --- | --- | --- |
+| Publico | informacion publicada | bajo |
+| Interno | documentacion interna | medio |
+| Confidencial | datos de clientes | alto |
+| Sensible | credenciales, salud, financiero | critico |
+
 ## Contencion
 
 - Revocar acceso.
@@ -43,9 +72,33 @@ Investigar posible exposicion o extraccion de datos.
 - Bloquear exfiltracion.
 - Deshabilitar cuenta comprometida.
 
+## Analisis de Alcance
+
+Responde:
+
+- que datos;
+- cuantos registros;
+- durante cuanto tiempo;
+- quien accedio;
+- desde donde;
+- si hubo descarga;
+- si hay copia externa;
+- que logs lo prueban.
+
 ## Preguntas
 
 - Son datos personales?
 - Son datos sensibles?
 - Hay obligacion de notificacion?
 - Que control fallo?
+
+## Cierre
+
+Puedes cerrar cuando:
+
+- exposicion contenida;
+- alcance documentado;
+- owner informado;
+- controles corregidos;
+- notificacion evaluada por responsables;
+- monitoreo posterior definido.

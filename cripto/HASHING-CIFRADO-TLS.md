@@ -129,7 +129,7 @@ Incluye:
 
 ## Practica
 
-1. Crea un archivo.
+1. Usa un archivo de ejemplo.
 2. Calcula SHA256.
 3. Modifica una letra.
 4. Calcula SHA256 otra vez.

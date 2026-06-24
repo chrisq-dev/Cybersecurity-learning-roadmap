@@ -2,6 +2,12 @@
 
 Esta rubrica sirve para decidir si realmente dominas un tema o si solo lo reconoces cuando lo lees. Usala antes de marcar avances en el checklist.
 
+## Principio
+
+No marques un tema como dominado por haberlo leido. Un tema esta dominado cuando puedes explicarlo, practicarlo, analizarlo, defenderlo y documentarlo con evidencia.
+
+La evidencia vale mas que la sensacion de avance.
+
 ## Niveles
 
 ### Nivel 0: Lo He Escuchado
@@ -73,7 +79,7 @@ Ejemplo: ante SSH expuesto, propones llaves, desactivar root login, MFA si aplic
 
 Puedes convertir el tema en una nota, reporte, lab o explicacion que otra persona pueda seguir.
 
-Debes producir:
+Puede demostrarlo con:
 
 - Resumen claro.
 - Pasos reproducibles.
@@ -126,3 +132,77 @@ No necesitas llevar todo a Nivel 5. La estrategia correcta es profundidad en tem
 - Reportes tecnicos.
 - Un proyecto completo de portafolio.
 
+## Matriz de Evidencia
+
+| Tipo de evidencia | Sirve para probar |
+| --- | --- |
+| Nota explicativa | Comprension conceptual |
+| Comando con salida | Practica tecnica |
+| Tabla de analisis | Capacidad de comparar y priorizar |
+| Timeline | Investigacion |
+| Checklist aplicado | Defensa o hardening |
+| Reporte | Comunicacion profesional |
+| Script simple | Automatizacion |
+| Deteccion conceptual | Blue Team |
+| Matriz de permisos | AppSec/API |
+| Diagrama | Arquitectura y claridad |
+
+## Rubrica de Reporte
+
+| Criterio | Basico | Bueno | Fuerte |
+| --- | --- | --- | --- |
+| Alcance | Menciona el tema | Define sistema/lab | Define limites y supuestos |
+| Evidencia | Pega salidas | Explica salidas | Relaciona evidencia con conclusion |
+| Analisis | Opina | Identifica causa | Separa hechos, hipotesis e impacto |
+| Remediacion | General | Accion concreta | Accion verificable y priorizada |
+| Claridad | Incompleto | Comprensible | Reproducible por otra persona |
+
+## Gates por Ruta
+
+### Fundamentos
+
+Antes de avanzar a temas complejos:
+
+- explicar CIA, riesgo y controles;
+- resolver subnetting basico;
+- interpretar permisos Linux;
+- explicar DNS, HTTP y TLS;
+- crear un mini reporte de logs.
+
+### Web/AppSec
+
+Antes de decir que sabes AppSec:
+
+- explicar authn vs authz;
+- crear matriz de permisos;
+- explicar SQLi, XSS, CSRF y SSRF;
+- proponer mitigaciones;
+- escribir un reporte de revision OWASP.
+
+### Blue Team
+
+Antes de decir que sabes Blue Team:
+
+- crear timeline;
+- separar evidencia de hipotesis;
+- mapear un caso a MITRE;
+- proponer contencion;
+- escribir una deteccion conceptual.
+
+### Cloud
+
+Antes de decir que sabes cloud security:
+
+- explicar responsabilidad compartida;
+- revisar IAM conceptual;
+- detectar storage publico como riesgo;
+- proponer logs y alertas;
+- justificar minimo privilegio.
+
+## Regla de Repeticion
+
+Un tema importante debe practicarse al menos tres veces:
+
+1. una vez guiado;
+2. una vez con variacion;
+3. una vez documentado como si fuera para otra persona.

@@ -2,6 +2,33 @@
 
 Estos laboratorios son para practicar sin tocar sistemas de terceros.
 
+## Como Leer Estos Labs
+
+Cada lab muestra una forma de convertir comandos y observaciones en explicaciones utiles. No basta con ejecutar comandos; lo importante es entender que demuestra cada salida.
+
+Una buena nota de estudio puede contener:
+
+- objetivo;
+- comandos o pasos;
+- salida relevante;
+- explicacion con tus palabras;
+- errores encontrados;
+- conclusion;
+- dudas pendientes.
+
+Formato sugerido si quieres documentarlo:
+
+```text
+labs/reportes/<tema>-<fecha>.md
+```
+
+## Reglas
+
+- No escanees redes ajenas.
+- No pruebes sistemas de terceros.
+- Usa dominios de ejemplo, tu equipo local o laboratorios autorizados.
+- Si un comando falla, documenta el error; tambien es aprendizaje.
+
 ## Lab 1: Flujo Web Basico
 
 ### Objetivo
@@ -13,6 +40,7 @@ Entender que ocurre al visitar una pagina web.
 - Terminal.
 - `curl`.
 - `dig` o `nslookup`.
+- navegador con DevTools.
 
 ### Pasos
 
@@ -34,6 +62,8 @@ curl -I https://example.com
 curl -v https://example.com
 ```
 
+4. Abrir DevTools y revisar pestaña Network.
+
 ### Preguntas
 
 - Que IP resolvio el dominio?
@@ -41,15 +71,24 @@ curl -v https://example.com
 - Que headers aparecen?
 - Se usa HTTPS?
 - Que parte corresponde a DNS, TCP/TLS y HTTP?
+- Que headers ayudan a entender el servidor?
+- Que diferencia hay entre `curl -I` y `curl -v`?
 
-### Entregable
+### Ejemplo de resultado
 
-Crea un reporte corto con:
+Un ejemplo de reporte puede incluir:
 
 - Comandos.
 - Resultados.
 - Explicacion.
 - Dudas.
+- Diagrama simple del flujo.
+
+### Criterio de Exito
+
+- Explicas DNS, TCP/TLS y HTTP por separado.
+- Identificas codigo de respuesta y headers.
+- Puedes explicar que evidencia obtuvo cada comando.
 
 ## Lab 2: Subnetting Manual
 
@@ -88,9 +127,15 @@ Broadcast:
 Hosts:
 ```
 
-### Entregable
+### Ejemplo de resultado
 
 Explica como calculaste cada resultado.
+
+### Criterio de Exito
+
+- Identificas red, broadcast y rango usable.
+- Explicas por que una IP pertenece o no pertenece a una subred.
+- No dependes solo de calculadoras.
 
 ## Lab 3: Permisos Linux
 
@@ -117,12 +162,30 @@ ls -l
 - Quien puede ejecutar?
 - Que archivo es mas sensible?
 
-### Entregable
+### Ejemplo de resultado
 
 Tabla:
 
 | Archivo | Permisos | Owner puede | Grupo puede | Otros pueden |
 | --- | --- | --- | --- | --- |
+
+### Extension
+
+Agrega:
+
+```bash
+echo "secreto" > secreto.txt
+chmod 600 secreto.txt
+ls -l secreto.txt
+```
+
+Explica por que un archivo sensible no deberia ser legible por todos.
+
+### Criterio de Exito
+
+- Interpretas `rwx`.
+- Explicas owner, group y others.
+- Justificas permisos para archivo publico, privado y ejecutable.
 
 ## Lab 4: Hash e Integridad
 
@@ -145,9 +208,25 @@ sha256sum archivo.txt
 - Por que?
 - Para que sirve esto en seguridad?
 
-### Entregable
+### Ejemplo de resultado
 
 Explicacion de hashing vs cifrado.
+
+### Extension
+
+Ejemplo con dos archivos de contenido casi igual para comparar hashes:
+
+```bash
+echo "transferencia=100" > a.txt
+echo "transferencia=101" > b.txt
+sha256sum a.txt b.txt
+```
+
+### Criterio de Exito
+
+- Explicas que hash no cifra.
+- Explicas por que un cambio pequeño altera el resultado.
+- Das un ejemplo de integridad en seguridad.
 
 ## Lab 5: Analisis de Logs Ficticios
 
@@ -171,6 +250,82 @@ Practicar investigacion sin necesitar logs reales.
 - Que buscarias despues?
 - Que accion recomendarias?
 
-### Entregable
+### Ejemplo de resultado
 
 Mini reporte de investigacion.
+
+### Criterio de Exito
+
+- Separas evidencia de hipotesis.
+- Creas una linea de tiempo.
+- Propones al menos una accion defensiva.
+- Indicas que informacion falta.
+
+## Lab 6: Inventario Basico de Activos
+
+### Objetivo
+
+Entender que no puedes proteger lo que no conoces.
+
+### Datos
+
+Una tabla informativa con activos ficticios puede verse asi:
+
+| Activo | Owner | Criticidad | Exposicion | Datos | Control principal |
+| --- | --- | --- | --- | --- | --- |
+| laptop-personal | yo | media | privada | notas, llaves | cifrado, backups |
+| app-web-demo | dev | alta | internet | usuarios | MFA, logs |
+| db-demo | data | critica | interna | datos sensibles | acceso restringido |
+
+### Preguntas
+
+- Cual activo atenderias primero?
+- Que activo tiene mas impacto?
+- Que activo necesita mejores logs?
+- Que control preventivo aplicarias?
+- Que control detectivo aplicarias?
+
+### Ejemplo de resultado
+
+Una tabla con priorizacion y una conclusion breve sobre que activo atender primero.
+
+## Lab 7: Mini Hardening Checklist
+
+### Objetivo
+
+Practicar pensamiento defensivo sobre un sistema Linux ficticio.
+
+### Escenario
+
+```text
+Servidor Linux expuesto a internet.
+SSH abierto.
+Usuario admin con password.
+No hay backups.
+Logs locales.
+Servicio web en puerto 80.
+```
+
+### Puntos a observar
+
+1. Identifica riesgos.
+2. Propone controles preventivos.
+3. Propone controles detectivos.
+4. Propone controles correctivos.
+5. Define evidencia para verificar cada control.
+
+### Ejemplo de resultado
+
+Tabla:
+
+| Riesgo | Impacto | Control | Tipo | Como verificar |
+| --- | --- | --- | --- | --- |
+
+## Rubrica Rapida
+
+| Nivel | Evidencia |
+| --- | --- |
+| Basico | Ejecutaste comandos y pegaste salidas |
+| Bueno | Explicaste resultados con tus palabras |
+| Fuerte | Relacionaste resultados con riesgo y control |
+| Portafolio | Reporte claro, reproducible y con conclusion |

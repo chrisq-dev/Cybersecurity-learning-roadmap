@@ -63,8 +63,8 @@ Si tienes Windows:
 Si no tienes Windows:
 
 - Estudia capturas o ejemplos de eventos.
-- Crea una nota explicando Kerberos.
-- Crea un mapa de conceptos de AD.
+- Nota explicativa sobre Kerberos.
+- Un mapa de conceptos puede mostrar de AD.
 
 ## Criterio de Dominio
 

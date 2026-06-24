@@ -1,0 +1,104 @@
+# Web del Roadmap de Ciberseguridad
+
+Aplicacion Next.js para leer los apuntes del repositorio como una guia web en espanol.
+
+La app lee los archivos Markdown del directorio padre, genera rutas estaticas y permite navegar los modulos como una plataforma local de estudio.
+
+## Requisitos
+
+- Node.js.
+- npm.
+- El repositorio completo, no solo la carpeta `web`.
+
+## Desarrollo
+
+```bash
+npm run dev
+```
+
+Abre:
+
+```text
+http://localhost:3000
+```
+
+## Scripts
+
+```bash
+npm run dev
+npm run build
+npm run start
+npm run lint
+```
+
+## Como Funciona
+
+- `lib/markdown.js` lee los Markdown del repositorio.
+- `app/page.js` genera la portada con categorias y buscador.
+- `app/[...slug]/page.js` renderiza cada leccion.
+- `components/MarkdownRenderer.jsx` convierte Markdown a HTML.
+- `components/TableOfContents.jsx` genera la tabla de contenido.
+- `components/LessonProgress.jsx` guarda marcadores locales de lectura en `localStorage`.
+- `components/ProgressOverview.jsx` muestra avance de lecturas por categoria.
+- `components/CategoryList.jsx` maneja busqueda, filtros y rutas por perfil.
+
+## Convenciones de Contenido
+
+Para que una leccion funcione bien en la web:
+
+- usa un solo `# Titulo` principal;
+- separa secciones con `##`;
+- usa `###` para subsecciones;
+- agrega bloques de codigo cuando haya comandos;
+- incluye practica y criterio de dominio;
+- usa ejemplos, mapas mentales y puntos a observar;
+- evita depender de imagenes externas cuando no sean necesarias.
+
+## Interactividad Actual
+
+La web incluye:
+
+- busqueda por titulo y categoria;
+- busqueda por contenido;
+- filtros por nivel;
+- rutas sugeridas por perfil;
+- navegacion por rutas;
+- tabla de contenido;
+- boton para guardar lecturas;
+- persistencia local de marcadores.
+
+## Pendientes Recomendados
+
+- Pagina de orientacion para elegir ruta.
+- Deploy publico con Dockerfile en Easypanel.
+- Screenshot o preview publico cuando exista deploy.
+
+## Nota
+
+La app asume que se ejecuta desde `web/` y que los contenidos Markdown viven en el directorio padre.
+
+## Deploy con Docker en Easypanel
+
+El `Dockerfile` esta en la raiz del repositorio porque la web necesita leer los Markdown del directorio padre.
+
+Configuracion sugerida:
+
+- Build context: raiz del repositorio.
+- Dockerfile: `Dockerfile`.
+- Puerto interno: `3000`.
+- Comando: usar el comando definido en la imagen.
+
+Prueba local:
+
+```bash
+docker build -t cibersecurity-web .
+docker run --rm -p 3000:3000 cibersecurity-web
+```
+
+## Nota Sobre Build
+
+`next build` puede mostrar un warning de Turbopack/NFT porque la app lee Markdown e imagenes desde el directorio padre del proyecto `web/`. Es una decision intencional para mantener el contenido como archivos Markdown normales en la raiz del repositorio. El build sigue generando las paginas correctamente.
+
+## Criterio de Calidad
+
+La web debe sentirse como una guia informativa, no como una lista de tareas. El contenido puede mostrar ejemplos, criterios, mapas mentales y practicas sugeridas, pero debe evitar lenguaje de entregas obligatorias.
