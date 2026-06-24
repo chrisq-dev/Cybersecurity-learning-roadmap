@@ -10,6 +10,7 @@ Archivo para registrar mejoras reales del proyecto. No es una lista de temas por
 - [x] Agregar resumen de progreso por categoria.
 - [x] Crear pagina "Como usar esta guia" dentro de la web.
 - [x] Evaluar si el boton de progreso debe mantenerse o quitarse para que la experiencia sea mas informativa.
+- [x] Agregar healthcheck y guia de deploy para Easypanel.
 - [ ] Probar deploy publico con Dockerfile en Easypanel.
 
 ## Contenido por Reforzar

@@ -15,6 +15,8 @@ Empieza aqui:
 
 Para configurar la descripcion, topics y datos del repositorio en GitHub, revisa [PUBLICACION-GITHUB.md](PUBLICACION-GITHUB.md).
 
+Para publicar la web con Docker/Easypanel, revisa [DEPLOY-EASYPANEL.md](DEPLOY-EASYPANEL.md).
+
 La idea no es leer todo de golpe. La idea es avanzar por ciclos:
 
 ```text
@@ -48,6 +50,12 @@ La web incluye:
 - navegacion anterior/siguiente;
 - marcadores locales de lectura;
 - soporte para contenido en subcarpetas.
+
+Healthcheck de produccion:
+
+```text
+/api/health
+```
 
 ## Modulos Principales
 

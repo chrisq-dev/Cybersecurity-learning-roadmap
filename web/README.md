@@ -22,6 +22,12 @@ Abre:
 http://localhost:3000
 ```
 
+Healthcheck local:
+
+```text
+http://localhost:3000/api/health
+```
+
 ## Scripts
 
 ```bash
@@ -36,6 +42,7 @@ npm run lint
 - `lib/markdown.js` lee los Markdown del repositorio.
 - `app/page.js` genera la portada con categorias y buscador.
 - `app/[...slug]/page.js` renderiza cada leccion.
+- `app/api/health/route.js` expone healthcheck para Docker/Easypanel.
 - `components/MarkdownRenderer.jsx` convierte Markdown a HTML.
 - `components/TableOfContents.jsx` genera la tabla de contenido.
 - `components/LessonProgress.jsx` guarda marcadores locales de lectura en `localStorage`.
@@ -86,6 +93,7 @@ Configuracion sugerida:
 - Build context: raiz del repositorio.
 - Dockerfile: `Dockerfile`.
 - Puerto interno: `3000`.
+- Health path: `/api/health`.
 - Comando: usar el comando definido en la imagen.
 
 Prueba local:
@@ -93,6 +101,12 @@ Prueba local:
 ```bash
 docker build -t cibersecurity-web .
 docker run --rm -p 3000:3000 cibersecurity-web
+```
+
+Prueba con Docker Compose desde la raiz:
+
+```bash
+docker compose up --build
 ```
 
 ## Nota Sobre Build
