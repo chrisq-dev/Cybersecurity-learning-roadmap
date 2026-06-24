@@ -344,6 +344,12 @@ blockquote p {
   color: var(--text-main) !important;
 }
 
+.github-profile-link:hover {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 6px 18px var(--border-glow) !important;
+  transform: translateY(-1px);
+}
+
 .tech-icon-hover:hover {
   transform: translateY(-4px) scale(1.1);
 }
