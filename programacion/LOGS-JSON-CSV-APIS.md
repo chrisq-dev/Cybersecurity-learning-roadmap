@@ -207,16 +207,16 @@ reporte = """# Reporte
 Se encontraron 3 eventos fallidos.
 """
 
-Path("reporte.md").write_text(reporte)
+Path("resumen.txt").write_text(reporte)
 ```
 
-## Practica Guiada
+## Ejemplo de Automatizacion
 
 Un script de ejemplo puede:
 
-- Lea un CSV de activos.
-- Detecte filas sin owner.
-- Genere un reporte Markdown.
+- Leer un CSV de activos.
+- Detectar filas sin owner.
+- Generar un resumen legible.
 
 Campos sugeridos:
 
@@ -227,7 +227,7 @@ test01,,low
 db01,team-data,critical
 ```
 
-## Mini Laboratorio: Inventario a Reporte
+## Ejemplo de Inventario
 
 Entrada:
 
@@ -249,7 +249,7 @@ Salida esperada:
 
 ## Ejemplo de resultado
 
-`reporte-inventario.md` con:
+Un resumen de inventario debe incluir:
 
 1. resumen;
 2. tabla de hallazgos;

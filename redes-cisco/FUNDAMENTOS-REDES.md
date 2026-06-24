@@ -340,7 +340,7 @@ Interpretacion:
 - Confundir bloqueo de firewall con caida del servicio.
 - No revisar rutas, proxy o VPN.
 
-## Practica Conceptual Segura
+## Observacion Segura
 
 En tu propio equipo o laboratorio puedes observar:
 

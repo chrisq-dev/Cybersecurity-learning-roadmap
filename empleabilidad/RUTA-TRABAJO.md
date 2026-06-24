@@ -32,13 +32,13 @@ Debes demostrar:
 - Notas tecnicas claras.
 - 3 laboratorios documentados.
 
-Evidencia minima:
+Senales de preparacion:
 
-- `labs/PRIMEROS-LABS.md` completado con tus resultados.
-- Una nota de redes.
-- Una nota de Linux.
-- Una nota de Windows.
-- Un README claro.
+- Puedes explicar redes basicas.
+- Puedes leer comandos Linux y Windows sin copiarlos a ciegas.
+- Puedes interpretar logs simples.
+- Tu GitHub muestra notas tecnicas claras.
+- Tu README explica que estas estudiando y hacia donde vas.
 
 Lo importante en esta etapa es claridad. Si no puedes explicar DNS, HTTP, Linux basico, permisos y logs, las herramientas avanzadas se vuelven memorizacion fragil.
 

@@ -244,7 +244,7 @@ Buenas practicas:
 - Registrar denies relevantes.
 - Usar expiracion para reglas temporales.
 
-## Practica
+## Ejemplo de Diseno de Reglas
 
 Ejemplo de diseno de reglas para una red simple:
 

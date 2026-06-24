@@ -132,7 +132,7 @@ Ejemplos:
 - Aprobaciones.
 - Resultados de pruebas.
 
-## Practica Guiada
+## Ejemplo de Politica
 
 Una politica simple puede verse asi:
 
@@ -152,14 +152,14 @@ Una politica simple puede verse asi:
 ## Revision
 ```
 
-## Mini Laboratorio: Registro de Riesgos
+## Criterios Para un Registro de Riesgos
 
-Crea `registro-riesgos-basico.md`:
+Un registro de riesgos ayuda a conectar activos, impacto, probabilidad, tratamiento y evidencia.
 
 | Riesgo | Activo | Impacto | Probabilidad | Tratamiento | Owner | Evidencia |
 | --- | --- | --- | --- | --- | --- | --- |
 
-Incluye al menos:
+Ejemplos de riesgos que ayudan a entender el formato:
 
 - cuenta admin sin MFA;
 - backups no probados;

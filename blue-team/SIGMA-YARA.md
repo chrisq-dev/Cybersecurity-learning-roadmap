@@ -78,15 +78,15 @@ rule Archivo_Sospechoso_Demo
 | Sigma | Logs/eventos | Logins fallidos |
 | YARA | Archivos/patrones | Archivo con cadenas sospechosas |
 
-## Practica Sigma
+## Ejemplo Sigma
 
-Escribe una regla conceptual para:
+Una regla conceptual podria detectar:
 
 ```text
 Detectar 5 logins fallidos para el mismo usuario en poco tiempo.
 ```
 
-Incluye:
+Debe considerar:
 
 - Fuente.
 - Campo usuario.
@@ -94,9 +94,9 @@ Incluye:
 - Falsos positivos.
 - Severidad.
 
-## Practica YARA
+## Ejemplo YARA
 
-Escribe una regla conceptual que busque:
+Una regla conceptual podria buscar:
 
 - La palabra `powershell`.
 - La palabra `encodedcommand`.

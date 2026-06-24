@@ -119,7 +119,7 @@ Ejemplos:
 - Rotar credenciales.
 - Eliminar persistencia.
 
-Erradicacion responde:
+Erradicacion busca aclarar:
 
 - Como entro?
 - Que permitio que ocurriera?
@@ -188,7 +188,7 @@ Considera:
 ## Recomendaciones
 ```
 
-## Practica Guiada
+## Ejemplo de Analisis
 
 Caso simulado:
 
@@ -196,7 +196,7 @@ Caso simulado:
 Una cuenta de usuario tuvo 30 logins fallidos desde una IP externa, luego un login exitoso y descarga de muchos archivos.
 ```
 
-Escribe:
+El analisis debe cubrir:
 
 - Severidad.
 - Evidencia.
@@ -204,7 +204,7 @@ Escribe:
 - Preguntas pendientes.
 - Recomendaciones.
 
-Agrega:
+Tambien conviene incluir:
 
 - linea de tiempo;
 - owner de cada accion;

@@ -52,9 +52,9 @@ Usar gestores de secretos o mecanismos del orquestador.
 
 Los contenedores deben enviar logs a salida estandar o a una plataforma de logs.
 
-## Practica Conceptual
+## Ejemplo de Revision
 
-Revisa este Dockerfile:
+Este Dockerfile muestra decisiones que deben revisarse:
 
 ```dockerfile
 FROM ubuntu:latest

@@ -16,10 +16,10 @@ Una buena nota de estudio puede contener:
 - conclusion;
 - dudas pendientes.
 
-Formato sugerido si quieres documentarlo:
+Si quieres guardar notas personales, usa un nombre claro para encontrarlas despues:
 
 ```text
-labs/reportes/<tema>-<fecha>.md
+tema-fecha-notas
 ```
 
 ## Reglas
@@ -96,9 +96,9 @@ Un ejemplo de reporte puede incluir:
 
 Practicar red, rango usable y broadcast.
 
-### Ejercicios
+### Ejemplos Para Razonar
 
-Completa:
+Estos bloques sirven para practicar el calculo manual de mascara, rango usable, broadcast y cantidad de hosts:
 
 ```text
 192.168.1.0/24
@@ -169,9 +169,9 @@ Tabla:
 | Archivo | Permisos | Owner puede | Grupo puede | Otros pueden |
 | --- | --- | --- | --- | --- |
 
-### Extension
+### Observacion Adicional
 
-Agrega:
+Estos comandos muestran un archivo con permisos mas restrictivos:
 
 ```bash
 echo "secreto" > secreto.txt

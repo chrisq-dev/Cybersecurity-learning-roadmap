@@ -1,68 +1,112 @@
-# Checklist Para Aplicar a Trabajos
+# Criterios Para Aplicar a Trabajos
 
-Usa esta checklist para saber si tu repo y perfil ya estan listos para empezar a aplicar.
+Esta guia no es una lista de tareas obligatorias. Sirve para entender que señales indican que una persona ya puede empezar a aplicar a roles iniciales de ciberseguridad con mas seguridad.
 
-## GitHub
+La idea central es simple: no necesitas saberlo todo, pero si necesitas poder explicar fundamentos, leer evidencia basica y hablar de tus proyectos con claridad.
 
-- [ ] README claro.
-- [ ] Ruta de estudio visible.
-- [ ] Labs documentados.
-- [ ] Scripts con README.
-- [ ] Sin secretos.
-- [ ] Sin datos reales sensibles.
-- [ ] Commits con mensajes claros.
+## GitHub y Perfil Publico
+
+Un perfil publico se ve mas fuerte cuando:
+
+- el README explica quien eres y que estas construyendo;
+- la ruta de estudio o proyectos son faciles de entender;
+- los laboratorios usan datos ficticios o autorizados;
+- no hay secretos, tokens ni datos reales sensibles;
+- los commits tienen mensajes claros;
+- cada proyecto explica problema, analisis, riesgo y aprendizaje.
+
+No se trata de tener muchos repositorios. Se trata de que lo que muestras tenga contexto.
 
 ## Fundamentos
 
-- [ ] Explico TCP/IP, DNS, HTTP y TLS.
-- [ ] Uso Linux basico.
-- [ ] Entiendo Windows y eventos.
-- [ ] Explico autenticacion vs autorizacion.
-- [ ] Explico CIA triad y riesgo.
+Antes de aplicar conviene poder explicar:
+
+- TCP/IP, DNS, HTTP y TLS;
+- Linux basico;
+- Windows y eventos;
+- autenticacion vs autorizacion;
+- CIA triad y riesgo.
+
+Si no puedes explicar estos temas en palabras simples, una entrevista tecnica se vuelve dificil aunque hayas usado muchas herramientas.
 
 ## Blue Team
 
-- [ ] Analizo logs simples.
-- [ ] Escribo una conclusion.
-- [ ] Uso MITRE ATT&CK a nivel basico.
-- [ ] Cree una regla Sigma conceptual.
-- [ ] Entiendo respuesta a incidentes.
+Para roles SOC o analista junior conviene entender:
 
-## Web
+- lectura de logs simples;
+- diferencia entre evento, alerta e incidente;
+- como escribir una conclusion;
+- MITRE ATT&CK a nivel basico;
+- falsos positivos;
+- respuesta a incidentes.
 
-- [ ] Explico OWASP Top 10.
-- [ ] Explico SQL Injection.
-- [ ] Explico XSS.
-- [ ] Explico Broken Access Control.
-- [ ] Propongo mitigaciones.
+La meta no es sonar experto. La meta es demostrar que sabes razonar con evidencia incompleta.
+
+## Seguridad Web
+
+Para web, AppSec o perfiles backend con seguridad conviene explicar:
+
+- OWASP Top 10;
+- SQL Injection;
+- XSS;
+- Broken Access Control;
+- autenticacion y sesiones;
+- mitigaciones y controles.
+
+Un buen candidato no solo dice el nombre de la vulnerabilidad. Explica causa, impacto y remediacion.
 
 ## Automatizacion
 
-- [ ] Tengo un script de hashes.
-- [ ] Tengo un parser de logs.
-- [ ] Tengo un reporte generado.
-- [ ] Puedo explicar mi codigo.
+Automatizar ayuda, pero no debe ser teatro. Un proyecto pequeño puede ser suficiente si resuelve algo claro.
 
-## Proyectos Minimos
+Ideas que demuestran criterio:
 
-- [ ] Parser de logs.
-- [ ] Guia de hardening Linux.
-- [ ] Writeup permitido de web security.
-- [ ] Investigacion de alerta simulada.
-- [ ] Checklist cloud o IAM.
+- calcular hashes;
+- resumir logs;
+- leer CSV/JSON;
+- generar una tabla de hallazgos;
+- consultar una API;
+- convertir datos en una conclusion.
+
+Lo importante es poder explicar el codigo, las entradas, las salidas, las limitaciones y los falsos positivos.
+
+## Proyectos Iniciales
+
+Buenos proyectos iniciales:
+
+- analisis de logs;
+- hardening Linux;
+- caso OWASP explicado;
+- investigacion de alerta simulada;
+- revision cloud o IAM conceptual;
+- red segmentada.
+
+No todos requieren codigo. Algunos demuestran mejor criterio con explicacion, arquitectura y analisis.
 
 ## Entrevista
 
-- [ ] Puedo explicar un proyecto en 2 minutos.
-- [ ] Puedo contar un problema que resolvi.
-- [ ] Puedo explicar que haria si no se algo.
-- [ ] Puedo leer una alerta simple.
-- [ ] Puedo explicar una remediacion.
+Antes de aplicar, conviene poder:
 
-## Aplicacion Semanal
+- explicar un proyecto en dos minutos;
+- contar un problema que resolviste;
+- decir que harias cuando no sabes algo;
+- leer una alerta simple;
+- proponer una remediacion;
+- hablar de limitaciones sin inventar.
 
-- [ ] Aplicar a 5 vacantes.
-- [ ] Mejorar 1 archivo del repo.
-- [ ] Practicar 10 preguntas.
-- [ ] Contactar 2 personas o comunidades.
-- [ ] Publicar 1 aprendizaje.
+La honestidad tecnica importa. Decir "no lo se, pero lo investigaria asi" suele ser mejor que improvisar.
+
+## Aplicacion Constante
+
+Aplicar a trabajos tambien se entrena. Conviene:
+
+- revisar vacantes para entender patrones;
+- mejorar tu CV con evidencia real;
+- hablar con comunidades;
+- publicar aprendizajes;
+- pedir feedback;
+- ajustar tu ruta segun los roles que te interesan.
+
+## Criterio Final
+
+Puedes empezar a aplicar cuando puedas defender tus fundamentos y explicar ejemplos concretos. No esperes sentirte experto. Aplica cuando tengas suficiente evidencia para sostener una conversacion tecnica honesta.

@@ -1,6 +1,6 @@
 # Proyectos Guiados
 
-Los proyectos guiados sirven para conectar teoria con situaciones realistas. En esta web no se tratan como entregables obligatorios ni como tareas cerradas. Son escenarios de estudio para entender como se aplican los conceptos y que tipo de razonamiento se espera en ciberseguridad.
+Los proyectos guiados sirven para conectar teoria con situaciones realistas. En esta web no se tratan como tareas obligatorias ni como actividades cerradas. Son escenarios de estudio para entender como se aplican los conceptos y que tipo de razonamiento se espera en ciberseguridad.
 
 Un buen proyecto no se mide solo por tener archivos. Se mide por la claridad con la que puedes explicar:
 

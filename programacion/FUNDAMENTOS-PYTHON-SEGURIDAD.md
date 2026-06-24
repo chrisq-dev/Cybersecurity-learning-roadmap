@@ -126,7 +126,7 @@ report = f"""# Resumen de Log
 - Fallos: {fallos}
 """
 
-Path("reporte.md").write_text(report)
+Path("resumen.txt").write_text(report)
 ```
 
 ## Manejo de Errores
@@ -153,42 +153,42 @@ Evita:
 - mezclar datos reales con pruebas;
 - guardar passwords en scripts.
 
-## Practica Guiada
+## Ejemplo de Automatizacion
 
 Un script de ejemplo puede:
 
-- Lea un archivo de texto.
-- Cuente lineas.
-- Busque una palabra.
-- Genere un resumen.
+- Leer un archivo de texto.
+- Contar lineas.
+- Buscar una palabra.
+- Generar un resumen.
 
-Despues mejoralo para:
+Para hacerlo mas robusto conviene considerar:
 
 - Aceptar el nombre del archivo como argumento.
 - Manejar errores si el archivo no existe.
-- Guardar resultado en Markdown.
+- Guardar resultado en un formato legible.
 
-## Mini Laboratorio: Parser de Log
+## Ejemplo de Parser de Log
 
-Crea `log_summary.py` que lea:
+Un parser de log puede leer eventos como estos:
 
 ```text
 2026-06-23 user=admin src_ip=203.0.113.10 result=failed
 2026-06-23 user=admin src_ip=203.0.113.10 result=success
 ```
 
-Debe generar:
+El resultado esperado deberia resumir:
 
 - total de lineas;
 - total de `failed`;
 - total de `success`;
 - usuarios vistos;
 - IPs vistas;
-- reporte Markdown.
+- resumen legible.
 
 ## Ejemplo de resultado
 
-`reporte-parser-log.md` con:
+Un resumen de parser de logs debe explicar:
 
 1. objetivo;
 2. comando usado;

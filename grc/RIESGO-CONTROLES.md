@@ -71,14 +71,14 @@ A veces no se corrige inmediatamente. Se acepta temporalmente con:
 - Fecha de expiracion.
 - Controles compensatorios.
 
-## Practica
+## Ejemplo de Matriz
 
 Una matriz de ejemplo puede verse asi:
 
 | Activo | Amenaza | Vulnerabilidad | Impacto | Control | Evidencia |
 | --- | --- | --- | --- | --- | --- |
 
-Agrega 5 riesgos.
+La lectura importante es separar cada columna. El activo es lo que se protege, la amenaza es lo que podria pasar, la vulnerabilidad es la debilidad que lo permite, el impacto explica el daño, el control reduce probabilidad o impacto y la evidencia demuestra que el control existe.
 
 ## Criterio de Dominio
 

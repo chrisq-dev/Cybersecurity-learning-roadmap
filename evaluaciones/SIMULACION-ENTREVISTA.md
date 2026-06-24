@@ -26,7 +26,7 @@ Caso:
 Un usuario tuvo 20 logins fallidos desde una IP externa y luego un login exitoso.
 ```
 
-Responde:
+Una respuesta solida cubre:
 
 - Que evidencia tienes?
 - Que hipotesis haces?
@@ -42,7 +42,7 @@ Caso:
 Un usuario puede cambiar /invoices/1001 por /invoices/1002 y ver facturas ajenas.
 ```
 
-Responde:
+Una respuesta solida cubre:
 
 - Que vulnerabilidad es?
 - Cual es el impacto?
@@ -57,7 +57,7 @@ Caso:
 Un bucket contiene archivos sensibles y permite acceso publico.
 ```
 
-Responde:
+Una respuesta solida cubre:
 
 - Riesgo.
 - Impacto.

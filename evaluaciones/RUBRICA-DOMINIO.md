@@ -92,23 +92,21 @@ Este es el nivel ideal para temas importantes del portafolio.
 
 ## Checklist Por Tema
 
-Copia esto al final de tus notas cuando estudies un tema:
+Una forma de evaluar dominio es revisar estos niveles:
 
-```md
 ## Dominio del Tema
 
-- [ ] Nivel 1: Lo puedo explicar.
-- [ ] Nivel 2: Lo puedo practicar.
-- [ ] Nivel 3: Lo puedo analizar.
-- [ ] Nivel 4: Lo puedo defender o corregir.
-- [ ] Nivel 5: Lo puedo documentar profesionalmente.
+- Nivel 1: lo puedo explicar.
+- Nivel 2: lo puedo practicar.
+- Nivel 3: lo puedo analizar.
+- Nivel 4: lo puedo defender o corregir.
+- Nivel 5: lo puedo documentar profesionalmente.
 
 Evidencia:
 
 Dudas pendientes:
 
 Proxima practica:
-```
 
 ## Como Usarla Con El Roadmap
 

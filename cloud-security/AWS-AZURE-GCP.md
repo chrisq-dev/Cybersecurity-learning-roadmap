@@ -105,9 +105,9 @@ Una postura cloud basica debe considerar:
 - secretos fuera del codigo y dentro de servicios diseñados para secretos;
 - backups definidos segun criticidad.
 
-## Practica Conceptual
+## Comparacion Conceptual
 
-Para cada proveedor responde:
+Para comparar proveedores conviene ubicar:
 
 - Como se llama el servicio de identidad?
 - Como se llama storage de objetos?

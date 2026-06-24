@@ -78,7 +78,7 @@ En una aplicacion web autorizada:
 - Revisar robots.txt si existe.
 - Revisar errores.
 
-## Practica Segura
+## Observacion Segura
 
 Usa solo `example.com` o una app local propia para practicar HTTP:
 
@@ -87,7 +87,7 @@ curl -I https://example.com
 curl -v https://example.com
 ```
 
-Documenta:
+Observa:
 
 - Codigo HTTP.
 - Headers.

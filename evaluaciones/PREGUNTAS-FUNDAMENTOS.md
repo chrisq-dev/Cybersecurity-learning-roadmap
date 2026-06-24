@@ -72,14 +72,14 @@ Usa estas preguntas como examen oral o escrito. No basta con responder una frase
 2. Un sistema critico no tiene backups probados. Que parte de CIA se afecta principalmente?
 3. Explica la diferencia entre control preventivo, detectivo y correctivo con un ejemplo.
 
-## Practica Escrita
+## Analisis Escrito
 
-Elige un activo y completa:
+Para practicar razonamiento, toma un activo y analiza:
 
 | Activo | Amenaza | Vulnerabilidad | Impacto | Control preventivo | Control detectivo | Control correctivo |
 | --- | --- | --- | --- | --- | --- | --- |
 
-Despues escribe una conclusion de 5 lineas justificando que atenderias primero.
+La parte importante es justificar que atenderias primero y por que.
 
 ## Criterio
 

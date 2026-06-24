@@ -180,7 +180,7 @@ Controles importantes:
 
 ## Autenticacion
 
-Autenticacion responde:
+Autenticacion aclara:
 
 ```text
 Quien eres?
@@ -204,7 +204,7 @@ Riesgos:
 
 ## Autorizacion
 
-Autorizacion responde:
+Autorizacion aclara:
 
 ```text
 Que puedes hacer?
@@ -383,7 +383,7 @@ Por eso se combinan logs web, aplicacion, base de datos, proxy, WAF y autenticac
 - No documentar impacto.
 - No entender que usuario, rol y recurso son diferentes.
 
-## Practica Segura
+## Observacion Segura
 
 En una web propia o sitio de ejemplo puedes observar:
 

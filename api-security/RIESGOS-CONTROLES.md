@@ -100,9 +100,9 @@ Una API segura debe evaluarse con estos criterios:
 - tokens con expiracion razonable;
 - permisos minimos entre servicios y datos.
 
-## Practica
+## Ejemplo de Riesgo
 
-Analiza este request:
+Este request muestra un riesgo comun de autorizacion y mass assignment:
 
 ```http
 PATCH /api/users/123
@@ -115,7 +115,7 @@ Content-Type: application/json
 }
 ```
 
-Responde:
+El analisis debe revisar:
 
 - Que riesgo aparece?
 - Que validarias?

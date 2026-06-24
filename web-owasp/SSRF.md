@@ -99,7 +99,7 @@ El impacto depende de:
 
 ## Allowlist Correcta
 
-Una allowlist responde:
+Una allowlist aclara:
 
 - que dominios estan permitidos;
 - que esquemas se permiten;
@@ -138,7 +138,7 @@ Aunque la app falle, la red debe limitar salidas:
 - No considerar DNS rebinding.
 - Permitir cualquier URL.
 
-## Practica Segura Guiada
+## Ejemplo de Analisis SSRF
 
 Escenario ficticio:
 
@@ -146,7 +146,7 @@ Escenario ficticio:
 Una app permite generar previews de URLs.
 ```
 
-Responde:
+El analisis debe cubrir:
 
 - Que riesgos existen?
 - Que destinos bloquearias?

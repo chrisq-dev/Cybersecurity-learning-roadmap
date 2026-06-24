@@ -88,7 +88,7 @@ except FileNotFoundError:
     print("El archivo no existe")
 ```
 
-## Practica
+## Ejemplo de Archivo
 
 Un archivo de ejemplo, `ejemplo.log`, puede contener:
 

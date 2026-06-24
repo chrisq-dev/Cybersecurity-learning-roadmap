@@ -176,9 +176,9 @@ Evita:
 - Secretos.
 - PII innecesaria.
 
-## Practica Guiada
+## Ejemplo de Revision AppSec
 
-Elige una app imaginaria de login y responde:
+Una app imaginaria de login permite analizar:
 
 - Que datos maneja?
 - Que roles existen?
@@ -187,7 +187,7 @@ Elige una app imaginaria de login y responde:
 - Que logs son necesarios?
 - Que pruebas harias?
 
-## Mini Laboratorio: Revision de Diseno
+## Criterios Para Revisar un Diseno
 
 Escenario:
 
@@ -195,15 +195,17 @@ Escenario:
 App SaaS con usuarios, administradores, pagos, subida de archivos y API publica.
 ```
 
-Crea `revision-appsec-saas.md` con:
+Una revision de diseno AppSec debe explicar:
 
-1. Activos principales.
-2. Roles.
-3. Flujos sensibles.
-4. 10 amenazas posibles usando STRIDE.
-5. Controles preventivos.
-6. Logs necesarios.
-7. Pruebas de seguridad.
+- Cuales son los activos principales y por que importan.
+- Que roles existen y que permisos tiene cada uno.
+- Que flujos son sensibles: login, pagos, subida de archivos, administracion y API publica.
+- Que amenazas aparecen si se analiza el sistema con STRIDE.
+- Que controles previenen abuso antes de que exista una vulnerabilidad explotable.
+- Que logs permiten reconstruir acciones importantes.
+- Que pruebas de seguridad validan autenticacion, autorizacion, validacion de datos y manejo de errores.
+
+El objetivo no es llenar una plantilla, sino aprender a mirar una aplicacion antes de programarla como si ya estuviera bajo abuso real.
 
 ## Errores Comunes
 

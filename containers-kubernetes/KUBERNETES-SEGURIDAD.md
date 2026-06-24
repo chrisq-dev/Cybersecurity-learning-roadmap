@@ -194,16 +194,16 @@ Una revision de Kubernetes debe considerar:
 - logs y auditoria activos;
 - limites de CPU y memoria.
 
-## Practica Conceptual Guiada
+## Ejemplo de Analisis de Manifest
 
-Analiza:
+Este fragmento representa un permiso de alto riesgo:
 
 ```yaml
 securityContext:
   privileged: true
 ```
 
-Responde:
+El analisis debe explicar:
 
 - Que riesgo existe?
 - Por que podria usarse?

@@ -103,7 +103,7 @@ Ejemplos:
 - Llaves SSH privadas.
 - Archivos `.env`.
 
-## Practica
+## Observacion Segura
 
 ```bash
 mkdir permisos-lab

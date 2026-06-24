@@ -95,9 +95,9 @@ Ejemplo:
 - Cuentas antiguas activas.
 - Llaves API expuestas.
 
-## Practica
+## Ejemplo de Analisis
 
-Analiza estas cuentas imaginarias:
+Estas cuentas imaginarias muestran riesgos comunes:
 
 | Cuenta | Uso | Riesgo | Mejora |
 | --- | --- | --- | --- |
@@ -106,7 +106,7 @@ Analiza estas cuentas imaginarias:
 | ex-empleado | Sin uso | Acceso indebido | Desactivar |
 | api-prod | App productiva | Secreto expuesto | Rotar y guardar en secret manager |
 
-Agrega 3 ejemplos propios.
+El patron a entender es que una identidad debe tener proposito, owner, permisos minimos y ciclo de vida claro. Cuando alguno de esos puntos falta, el riesgo aumenta aunque no exista un ataque activo.
 
 ## Criterio de Dominio
 

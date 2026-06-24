@@ -168,9 +168,9 @@ Mejor:
 {"error":"Invalid credentials"}
 ```
 
-## Practica Guiada
+## Ejemplo de Diseno de API
 
-Diseña una API para notas:
+Una API simple de notas podria exponer:
 
 ```text
 GET /notes
@@ -180,7 +180,7 @@ PATCH /notes/{id}
 DELETE /notes/{id}
 ```
 
-Define:
+Antes de implementarla conviene definir:
 
 - Quien puede crear.
 - Quien puede leer.

@@ -67,15 +67,15 @@ Revisa Terraform, CloudFormation u otros archivos de infraestructura.
 - Escanear dependencias.
 - Separar ambientes.
 
-## Practica
+## Ejemplo de Pipeline Seguro
 
-Diseña un pipeline seguro para una app:
+Un pipeline seguro para una app puede verse asi:
 
 ```text
 Commit -> Tests -> SAST -> Dependency Scan -> Build -> Deploy
 ```
 
-Agrega:
+Los puntos importantes de revision son:
 
 - Donde revisar secretos.
 - Donde revisar dependencias.

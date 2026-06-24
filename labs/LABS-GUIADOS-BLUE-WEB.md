@@ -57,7 +57,7 @@ Agrega una linea de tiempo:
 | Hora | Evento | Evidencia | Interpretacion |
 | --- | --- | --- | --- |
 
-Despues responde:
+El analisis debe aclarar:
 
 - Es incidente confirmado o sospecha?
 - Que evidencia falta?
@@ -211,9 +211,9 @@ Escribe una regla conceptual con:
 - Falsos positivos.
 - Severidad.
 
-### Extension
+### Observacion Adicional
 
-Agrega:
+Tambien puede considerar:
 
 - MITRE tactica;
 - MITRE tecnica;

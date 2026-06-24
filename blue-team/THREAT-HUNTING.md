@@ -234,19 +234,19 @@ Preguntas:
 ## Detecciones Propuestas
 ```
 
-## Mini Laboratorio: Hunt de Cuenta Comprometida
+## Criterios Para Analizar Una Cuenta Comprometida
 
-Crea `hunt-cuenta-comprometida.md`:
+Un hunt de cuenta comprometida debe razonar sobre:
 
-1. Hipotesis.
-2. Fuentes de datos.
-3. Campos necesarios.
-4. Busquedas conceptuales.
-5. Baseline esperado.
-6. Anomalias encontradas.
-7. Falsos positivos.
-8. Recomendacion.
-9. Deteccion nueva propuesta.
+- Hipotesis: que comportamiento indicaria posible compromiso.
+- Fuentes de datos: autenticacion, VPN, endpoint, correo, proxy, EDR o directorio.
+- Campos necesarios: usuario, IP origen, pais, dispositivo, hora, resultado, metodo de autenticacion y recurso accedido.
+- Busquedas conceptuales: accesos imposibles, cambios bruscos de ubicacion, fallos repetidos, inicios fuera de horario y acceso a recursos nuevos.
+- Baseline esperado: como se comporta normalmente esa cuenta.
+- Anomalias: que cambio es relevante y por que.
+- Falsos positivos: viajes, VPN corporativa, cambios de turno, automatizaciones o errores de sincronizacion.
+- Recomendacion: restablecimiento de credenciales, revocacion de sesiones, MFA, revision de permisos y monitoreo posterior.
+- Deteccion propuesta: regla que capture el patron sin generar ruido excesivo.
 
 ## Errores Comunes
 

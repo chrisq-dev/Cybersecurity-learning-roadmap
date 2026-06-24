@@ -88,9 +88,9 @@ journalctl -xe
 - Error repetido.
 - Conexion desde IP desconocida.
 
-## Practica
+## Observacion Segura
 
-Ejecuta:
+En un entorno propio, estos comandos permiten observar procesos, puertos y logs:
 
 ```bash
 ps aux | head
@@ -100,27 +100,19 @@ journalctl -n 20
 
 Si no tienes permisos para logs:
 
-- Anota el error.
-- Explica que permiso falta.
-- Busca logs accesibles.
+- Identifica que permiso falta.
+- Revisa que logs son accesibles para tu usuario.
+- Evita elevar privilegios sin entender que informacion estas consultando.
 
-## Mini Investigacion
+## Criterios de Revision
 
-Formato:
+Una revision basica de sistema Linux debe cubrir:
 
 ```md
-# Revision de Sistema Linux
-
-## Procesos Observados
-
-
-## Puertos Escuchando
-
-
-## Logs Revisados
-
-
-## Eventos Interesantes
+Procesos observados.
+Puertos escuchando.
+Logs revisados.
+Eventos interesantes.
 
 
 ## Conclusion

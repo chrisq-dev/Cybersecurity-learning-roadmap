@@ -158,15 +158,15 @@ Eventos utiles:
 - No tener inventario de APs autorizados.
 - Permitir que IoT vea toda la red.
 
-## Practica Conceptual
+## Ejemplo de Diseno Wi-Fi
 
-Diseña red Wi-Fi para una oficina:
+Una red Wi-Fi de oficina deberia separar:
 
 - Red corporativa.
 - Red invitados.
 - Red administracion.
 
-Define:
+El diseno debe aclarar:
 
 - Quien entra a cada red.
 - Que VLAN usa.

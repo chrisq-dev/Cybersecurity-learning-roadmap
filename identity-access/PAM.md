@@ -64,9 +64,9 @@ Controles:
 - Monitoreo.
 - Documentacion.
 
-## Practica
+## Ejemplo de Revision PAM
 
-Analiza:
+Esta cuenta muestra problemas clasicos de privilegio permanente:
 
 ```text
 Cuenta: svc-backup
@@ -75,7 +75,7 @@ Rotacion: nunca
 Owner: desconocido
 ```
 
-Responde:
+La revision debe separar:
 
 - Riesgos.
 - Controles.

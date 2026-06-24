@@ -139,15 +139,15 @@ Ejemplos:
 - agrupar eventos repetidos;
 - agregar condiciones de comportamiento.
 
-## Practica Guiada
+## Ejemplo de Diseno
 
-Diseña deteccion:
+Una deteccion comun busca:
 
 ```text
 Multiples logins fallidos seguidos por login exitoso desde la misma IP.
 ```
 
-Define:
+Debe definir:
 
 - Fuentes.
 - Campos.

@@ -116,7 +116,7 @@ report = """# Reporte
 Eventos analizados: 10
 """
 
-Path("reporte.md").write_text(report)
+Path("resumen.txt").write_text(report)
 ```
 
 ## Errores Comunes

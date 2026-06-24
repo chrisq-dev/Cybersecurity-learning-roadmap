@@ -133,26 +133,26 @@ Buenas practicas:
 - Retencion indefinida.
 - Datos de produccion en ambientes de prueba.
 
-## Practica Guiada
+## Ejemplo de Clasificacion
 
-Clasifica estos datos:
+Esta tabla muestra como clasificar datos y elegir controles:
 
 | Dato | Personal | Sensible | Control recomendado |
 | --- | --- | --- | --- |
-| correo | ?Sí | ?No | ?Cifrado en tránsito |
-| contraseña | ?No | ?Sí | ?Hashing (Argon2) |
-| direccion IP | ?Depende | ?No | ?Anonimización de logs |
-| historial medico | ?Sí | ?Sí | ?Cifrado, RBAC estricto |
-| ID interno de usuario | ?No | ?No | ?Monitoreo |
+| correo | Si | No | Cifrado en transito |
+| contraseña | No | Si | Hashing fuerte |
+| direccion IP | Depende | No | Anonimizacion de logs |
+| historial medico | Si | Si | Cifrado y RBAC estricto |
+| ID interno de usuario | No | No | Monitoreo |
 
-## Mini Laboratorio: Mapa de Datos
+## Criterios Para Mapear Datos
 
-Crea `mapa-datos-app.md`:
+Un mapa de datos ayuda a entender que informacion existe, para que se usa, donde vive y quien puede acceder.
 
 | Dato | Proposito | Donde vive | Quien accede | Retencion | Control |
 | --- | --- | --- | --- | --- | --- |
 
-Incluye:
+Conviene considerar datos como:
 
 - correo;
 - password hash;

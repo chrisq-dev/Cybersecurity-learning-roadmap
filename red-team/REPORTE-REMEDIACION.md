@@ -76,15 +76,15 @@ Una buena remediacion debe ser:
 - Proporcional al riesgo.
 - Verificable.
 
-## Practica
+## Ejemplo de Reporte
 
-Toma un hallazgo ficticio:
+Un hallazgo ficticio puede verse asi:
 
 ```text
 Una pagina de laboratorio muestra version exacta del servidor en headers.
 ```
 
-Escribe:
+Un reporte claro debe separar:
 
 - Titulo.
 - Riesgo.

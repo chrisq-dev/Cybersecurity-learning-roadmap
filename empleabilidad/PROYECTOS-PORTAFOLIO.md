@@ -2,7 +2,7 @@
 
 Un portafolio de ciberseguridad no debe ser una carpeta llena de archivos sin explicacion. Debe demostrar que entiendes problemas, riesgos, evidencia, controles y comunicacion tecnica.
 
-Los proyectos de esta seccion son ideas de estudio y demostracion. No son entregables obligatorios ni tienen que vivir en carpetas especificas. Lo importante es que puedas explicar el razonamiento detras de cada proyecto.
+Los proyectos de esta seccion son ideas de estudio y demostracion. No son tareas obligatorias ni tienen que vivir en carpetas especificas. Lo importante es que puedas explicar el razonamiento detras de cada proyecto.
 
 ## Que Debe Demostrar un Proyecto
 

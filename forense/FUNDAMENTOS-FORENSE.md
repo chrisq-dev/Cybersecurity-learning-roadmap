@@ -159,9 +159,9 @@ Conclusion:
 Con base en login inusual, descarga masiva y ausencia de viaje registrado, la hipotesis de compromiso es probable.
 ```
 
-## Practica Guiada
+## Ejemplo de Analisis
 
-Usa logs ficticios y crea:
+Con logs ficticios, un analisis forense basico debe reconstruir:
 
 - Timeline.
 - Evidencia clave.
@@ -169,17 +169,17 @@ Usa logs ficticios y crea:
 - Preguntas pendientes.
 - Conclusion.
 
-## Mini Laboratorio: Timeline Forense
+## Criterios Para un Timeline Forense
 
-Crea `timeline-forense-basico.md`:
+Un timeline forense debe ayudar a reconstruir hechos sin mezclar conclusiones prematuras. Debe considerar:
 
-1. Lista 10 eventos ficticios.
-2. Ordenalos por tiempo.
-3. Marca fuente de cada evento.
-4. Separa hechos de hipotesis.
-5. Escribe una conclusion.
-6. Lista evidencia faltante.
-7. Calcula hash de un archivo de prueba.
+- eventos ordenados por tiempo;
+- fuente de cada evento;
+- zona horaria;
+- separacion entre hechos e hipotesis;
+- conclusion sustentada;
+- evidencia faltante;
+- integridad de archivos cuando aplique.
 
 ## Errores Comunes
 

@@ -48,7 +48,7 @@ Fuera de alcance:
 
 ## Fase 1: Arquitectura
 
-Dibuja o describe:
+La arquitectura base puede representarse asi:
 
 ```text
 frontend -> API -> base de datos
@@ -56,7 +56,7 @@ frontend -> API -> base de datos
              -> storage/logs
 ```
 
-Incluye:
+El analisis debe incluir:
 
 - datos sensibles;
 - flujos de autenticacion;

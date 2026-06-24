@@ -111,15 +111,17 @@ Ejemplos:
 - Revisar permisos.
 - Activar logging.
 
-## Practica
+## Observacion
 
-Elige Linux o Windows y documenta:
+Para entender un sistema operativo conviene saber donde observar:
 
-- Como ver procesos.
-- Como ver servicios.
-- Como ver usuarios.
-- Como ver red.
-- Como ver logs.
+- procesos;
+- servicios;
+- usuarios;
+- red;
+- logs.
+
+La idea no es llenar un archivo, sino reconocer que cada sistema operativo ofrece mecanismos para ver que esta ocurriendo y que evidencia deja.
 
 ## Tabla Comparativa
 

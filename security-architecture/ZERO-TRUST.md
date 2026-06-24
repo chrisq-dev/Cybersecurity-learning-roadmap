@@ -142,7 +142,7 @@ Orden razonable:
 
 No se implementa Zero Trust en una tarde. Se madura por etapas.
 
-## Practica
+## Ejemplo de Acceso Condicional
 
 Caso:
 
@@ -150,7 +150,7 @@ Caso:
 Empleado remoto quiere acceder a panel administrativo.
 ```
 
-Define:
+El analisis debe definir:
 
 - Que verificas.
 - Que permisos das.

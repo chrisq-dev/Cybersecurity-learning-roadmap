@@ -52,7 +52,7 @@ El correo fue diseñado en una epoca con menos controles de identidad. Por eso e
 
 SPF define que servidores pueden enviar correo para un dominio.
 
-Pregunta que responde:
+Pregunta que aclara:
 
 ```text
 Esta IP autorizada para enviar correo de este dominio?
@@ -64,7 +64,7 @@ Limitacion: SPF valida el envelope sender, no siempre lo que el usuario ve en `F
 
 DKIM firma correos con criptografia.
 
-Pregunta que responde:
+Pregunta que aclara:
 
 ```text
 El mensaje fue firmado por una llave asociada al dominio y no fue alterado?
@@ -105,30 +105,30 @@ DMARC tambien depende de alineacion: que el dominio autenticado coincida con el 
 - verificacion fuera de banda para pagos.
 - bloqueo de macros.
 
-## Practica Guiada
+## Observacion Segura
 
-Elige un dominio publico y consulta registros TXT:
+Un dominio publico permite observar registros TXT:
 
 ```bash
 dig TXT example.com
 ```
 
-Documenta:
+Observa:
 
 - Si aparece SPF.
 - Si entiendes la politica.
 - Que dudas tienes.
 
-## Mini Laboratorio: Revision de Dominio
+## Criterios Para Revisar un Dominio
 
-Crea `revision-email-domain.md`:
+Una revision basica de dominio debe considerar:
 
-1. Dominio revisado.
-2. Registro SPF.
-3. Registro DMARC.
-4. Interpretacion.
-5. Riesgos.
-6. Recomendaciones.
+- dominio revisado;
+- registro SPF;
+- registro DMARC;
+- interpretacion;
+- riesgos;
+- recomendaciones.
 
 No hagas pruebas intrusivas. Solo consulta DNS publico.
 

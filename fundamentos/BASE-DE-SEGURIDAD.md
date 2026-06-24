@@ -414,15 +414,15 @@ Un hallazgo tecnico se vuelve mas fuerte cuando puedes explicar impacto y priori
 - Ignorar usuarios, procesos y negocio.
 - Hablar solo de ataques y no de controles.
 
-## Practica Conceptual
+## Ejemplo de Analisis
 
-Toma tres activos en un entorno propio o ficticio:
+Tres activos comunes para razonar seguridad pueden ser:
 
 - una laptop;
 - una cuenta de correo;
 - un servidor web imaginario.
 
-Para cada uno identifica:
+Para cada uno se debe distinguir:
 
 - activo;
 - amenaza;

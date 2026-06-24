@@ -173,15 +173,15 @@ No basta con decir "tenemos SIEM". Pregunta:
 - Que detecciones tienen owner?
 - Que casos de uso son prioritarios?
 
-## Practica Guiada
+## Ejemplo de Mapeo
 
-Toma este caso:
+Este caso permite mapear comportamiento a MITRE ATT&CK:
 
 ```text
 Un usuario tuvo 50 logins fallidos, luego uno exitoso, y despues ejecuto comandos para listar usuarios.
 ```
 
-Mapea:
+El mapeo debe identificar:
 
 - Posible tactica 1.
 - Posible tecnica 1.
@@ -189,7 +189,7 @@ Mapea:
 - Posible tecnica 2.
 - Logs que necesitarias.
 
-Agrega:
+Tambien debe considerar:
 
 - consulta conceptual;
 - falsos positivos posibles;

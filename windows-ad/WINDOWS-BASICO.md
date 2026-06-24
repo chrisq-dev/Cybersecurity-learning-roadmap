@@ -84,16 +84,14 @@ En seguridad debes revisar:
 - Cambios de servicios.
 - Alertas de Defender.
 
-## Practica
+## Observacion Segura
 
 Si tienes Windows:
 
-1. Abre Task Manager.
-2. Revisa procesos activos.
-3. Abre Services.
-4. Identifica 5 servicios.
-5. Abre Event Viewer.
-6. Busca eventos de seguridad.
+1. Task Manager permite observar procesos activos.
+2. Services muestra servicios instalados y su estado.
+3. Event Viewer permite revisar eventos de seguridad.
+4. La lectura importante es conectar proceso, servicio, usuario y evento.
 
 Si no tienes Windows:
 

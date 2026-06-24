@@ -74,7 +74,7 @@ Sube severidad si:
 
 ## Analisis de Alcance
 
-Responde:
+El analisis de alcance debe aclarar:
 
 - que datos;
 - cuantos registros;

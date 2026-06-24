@@ -98,7 +98,7 @@ Preguntas:
 - Despues hubo login exitoso?
 - Es un usuario real o cuenta de servicio?
 
-## Practica
+## Observacion Segura
 
 Si tienes Windows:
 
@@ -109,12 +109,13 @@ Get-LocalUser
 Get-LocalGroup
 ```
 
-Documenta:
+Al revisar estos comandos, enfocate en entender:
 
-- Comando.
-- Resultado.
-- Que significa.
-- Riesgo si fuera sospechoso.
+- Que consulta hace cada comando.
+- Que informacion devuelve.
+- Que significa un inicio de sesion exitoso frente a uno fallido.
+- Que usuarios y grupos existen localmente.
+- Que riesgo existiria si el resultado mostrara actividad fuera de horario, usuarios inesperados o muchos fallos de autenticacion.
 
 ## Criterio de Dominio
 

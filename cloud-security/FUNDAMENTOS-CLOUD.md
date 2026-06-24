@@ -158,16 +158,18 @@ Alertas iniciales:
 - Abrir `0.0.0.0/0` sin justificar.
 - No separar ambientes dev, staging y prod.
 
-## Practica Guiada
+## Criterios de Revision
 
-Sin crear infraestructura real, documenta:
+Sin crear infraestructura real, una revision cloud inicial debe cubrir:
 
 - 5 errores comunes de IAM.
 - 5 controles para proteger storage.
 - 5 logs importantes en cloud.
 - 5 preguntas que harias en una revision cloud.
 
-## Mini Laboratorio: Revision Cloud en Papel
+La parte importante es entender por que cada punto reduce riesgo: IAM limita abuso de identidad, storage protege datos, los logs dan visibilidad y las preguntas de revision revelan supuestos inseguros.
+
+## Ejemplo de Revision Cloud en Papel
 
 Imagina esta cuenta:
 
@@ -180,7 +182,7 @@ Logs desactivados.
 Llaves de acceso viejas sin rotacion.
 ```
 
-Un reporte de ejemplo, `revision-cloud-basica.md`, puede incluir:
+Una revision basica puede incluir:
 
 1. Hallazgos ordenados por riesgo.
 2. Impacto de cada hallazgo.

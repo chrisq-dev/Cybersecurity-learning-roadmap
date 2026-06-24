@@ -141,9 +141,9 @@ Considera:
 - Afecta disponibilidad?
 - Hay controles compensatorios?
 
-## Practica Guiada
+## Ejemplo de Alcance
 
-Escribe un alcance ficticio:
+Un alcance ficticio puede verse asi:
 
 ```md
 # Alcance de Laboratorio
@@ -166,7 +166,7 @@ Escribe un alcance ficticio:
 Aprender enumeracion y reporte.
 ```
 
-## Mini Laboratorio: Reporte Seguro
+## Ejemplo de Reporte Seguro
 
 Escenario:
 
@@ -174,15 +174,15 @@ Escenario:
 En una app local de laboratorio encuentras un panel admin accesible sin autenticacion.
 ```
 
-Crea `reporte-red-team-etico.md` con:
+Un reporte etico debe explicar:
 
-1. Alcance.
-2. Hallazgo.
-3. Evidencia sin datos sensibles.
-4. Impacto.
-5. Riesgo.
-6. Remediacion.
-7. Lo que NO hiciste para evitar dano.
+- alcance;
+- hallazgo;
+- evidencia sin datos sensibles;
+- impacto;
+- riesgo;
+- remediacion;
+- lo que no se hizo para evitar daño.
 
 ## Errores Comunes
 

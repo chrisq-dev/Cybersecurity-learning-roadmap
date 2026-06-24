@@ -112,22 +112,22 @@ TLS ayuda a proteger:
 
 Sin HTTPS, alguien en la red podria ver o modificar trafico.
 
-## Practica
+## Observacion Segura
 
-Ejecuta:
+En un entorno propio o contra un sitio de ejemplo puedes observar HTTP con:
 
 ```bash
 curl -I https://example.com
 curl -v https://example.com
 ```
 
-Documenta:
+La lectura importante es:
 
-- Codigo de estado.
-- Headers.
-- Si hay redireccion.
-- Tipo de contenido.
-- Diferencia entre `-I` y `-v`.
+- codigo de estado;
+- headers;
+- si hay redireccion;
+- tipo de contenido;
+- diferencia entre `-I` y `-v`.
 
 ## Criterio de Dominio
 

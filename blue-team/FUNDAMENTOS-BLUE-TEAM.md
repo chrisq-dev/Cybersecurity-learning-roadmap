@@ -117,7 +117,7 @@ La investigacion no debe empezar con conclusion. Debe empezar con preguntas.
 
 ## Triage Inicial
 
-Antes de investigar profundo, responde:
+Antes de investigar profundo, aclara:
 
 - Que alerta se disparo?
 - Que fuente la genero?
@@ -315,9 +315,9 @@ Se recomienda [acciones] y monitorear [indicadores].
 - Ignorar actividad posterior al evento inicial.
 - No preservar evidencia.
 
-## Practica Conceptual
+## Ejemplo de Analisis
 
-Analiza este caso:
+Este caso permite practicar razonamiento defensivo:
 
 ```text
 Alerta: multiples logins fallidos

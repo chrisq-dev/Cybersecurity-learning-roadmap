@@ -301,9 +301,9 @@ Para cada categoria, una nota informativa puede incluir:
 - Mitigacion.
 - Como detectarla.
 
-## Practica Guiada
+## Ejemplo de Revision OWASP
 
-Elige una aplicacion real propia, una app local vulnerable o un proyecto demo autorizado. Una tabla de ejemplo puede verse asi:
+En una aplicacion propia, una app local vulnerable o un proyecto demo autorizado, una tabla de revision puede verse asi:
 
 | Categoria OWASP | Donde podria aparecer | Impacto | Control | Evidencia a revisar |
 | --- | --- | --- | --- | --- |
@@ -318,16 +318,16 @@ Elige una aplicacion real propia, una app local vulnerable o un proyecto demo au
 | Logging Failures |  |  |  |  |
 | SSRF |  |  |  |  |
 
-## Ejemplo de resultado
+## Criterios Para Estudiar Una Categoria
 
-Crea `revision-owasp-top-10.md` con:
+Una categoria de OWASP se entiende mejor cuando puedes explicar:
 
-1. Una categoria explicada con tus palabras.
-2. Un ejemplo seguro de laboratorio.
-3. Impacto tecnico.
-4. Impacto para negocio o usuario.
-5. Mitigacion.
-6. Deteccion o evidencia.
+- la categoria con tus palabras;
+- un ejemplo seguro de laboratorio o escenario ficticio;
+- impacto tecnico;
+- impacto para negocio o usuario;
+- mitigacion;
+- deteccion o evidencia.
 
 ## Errores Comunes
 

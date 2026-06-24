@@ -162,9 +162,9 @@ App vulnerable + cuenta limitada = impacto acotado
 
 La mitigacion principal de SQL Injection sigue siendo usar consultas parametrizadas, validacion y diseno seguro. Los permisos de DB son una capa adicional para limitar impacto.
 
-## Practica Conceptual
+## Ejemplo de Controles
 
-Diseña controles para:
+Una base de datos de clientes usada por una app web requiere controles sobre:
 
 ```text
 Base de datos de clientes usada por una app web.

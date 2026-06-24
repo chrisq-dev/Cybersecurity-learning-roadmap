@@ -125,9 +125,9 @@ Puede ser control adicional:
 - No proteger cambio de email o MFA.
 - Tokens predecibles o no validados.
 
-## Practica Segura Guiada
+## Ejemplo de Analisis CSRF
 
-Analiza una accion ficticia:
+Esta accion ficticia muestra un cambio de estado sensible:
 
 ```text
 POST /change-email
@@ -135,7 +135,7 @@ Cookie: session=...
 Body: email=nuevo@example.com
 ```
 
-Responde:
+El analisis debe cubrir:
 
 - Que control falta?
 - Que impacto tiene?

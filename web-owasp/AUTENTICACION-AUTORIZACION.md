@@ -20,7 +20,7 @@ Esta identidad puede hacer esta accion sobre este recurso especifico?
 
 ## Autenticacion
 
-Autenticacion responde:
+Autenticacion aclara:
 
 ```text
 Quien eres?
@@ -47,7 +47,7 @@ Controles:
 
 ## Autorizacion
 
-Autorizacion responde:
+Autorizacion aclara:
 
 ```text
 Que puedes hacer?
@@ -200,9 +200,9 @@ Ejemplo conceptual:
 
 Si el backend acepta `role` desde el cliente, hay riesgo.
 
-## Practica Guiada
+## Ejemplo de Matriz de Acceso
 
-Analiza una aplicacion imaginaria:
+Esta aplicacion imaginaria permite razonar sobre roles y recursos:
 
 Roles:
 

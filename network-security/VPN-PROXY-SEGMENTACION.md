@@ -249,7 +249,7 @@ La microsegmentacion es especialmente util cuando muchos servicios viven en la m
 - Segmentos definidos en diagrama pero no aplicados en reglas.
 - Reglas temporales que nunca expiran.
 
-## Practica
+## Ejemplo de Diseno de Acceso
 
 Ejemplo de diseno de acceso remoto para administradores:
 

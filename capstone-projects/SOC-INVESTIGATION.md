@@ -10,13 +10,17 @@ Este proyecto demuestra que puedes trabajar una alerta de principio a fin: triag
 
 Un usuario presenta multiples logins fallidos, un login exitoso y actividad posterior sospechosa.
 
-## Datos
+## Datos de Referencia
 
-Usa:
+El caso puede apoyarse en datos ficticios como:
 
-- `labs/data/auth.log`
-- `scripts/auth_log_summary.py`
-- `labs/reportes/auth-report.md`
+- logs de autenticacion;
+- resumen de eventos por usuario;
+- resumen de eventos por IP;
+- timeline;
+- reporte de analisis.
+
+No importa la ruta exacta de los archivos. Importa que los datos sean ficticios o autorizados y que permitan razonar sin exponer informacion sensible.
 
 ## Alcance
 
@@ -50,7 +54,7 @@ Fuera de alcance:
 
 ## Fase 1: Triage
 
-Responde:
+El triage debe aclarar:
 
 - Que alerta inicia el caso?
 - Que usuario esta involucrado?

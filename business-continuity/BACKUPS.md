@@ -124,9 +124,9 @@ Controles:
 - Cifrado.
 - Documentacion.
 
-## Practica Guiada
+## Ejemplo de Estrategia
 
-Diseña estrategia para:
+Una estrategia de backup para este caso debe cubrir:
 
 ```text
 App web con base de datos de clientes.

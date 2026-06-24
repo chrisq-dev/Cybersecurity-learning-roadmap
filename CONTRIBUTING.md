@@ -43,7 +43,7 @@ Este repositorio es una web publica de recursos de ciberseguridad en espanol. La
 
 ## Riesgos de Seguridad
 
-## Practica Segura
+## Observacion Segura
 
 ## Preguntas de Repaso
 

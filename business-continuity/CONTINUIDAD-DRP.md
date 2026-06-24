@@ -63,7 +63,7 @@ Preguntas:
 - Que evidencia se conserva?
 - Que comunicacion se envia?
 
-## Practica
+## Ejemplo de Tabletop
 
 Un tabletop de ejemplo:
 

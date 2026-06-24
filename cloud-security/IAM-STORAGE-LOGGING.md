@@ -108,9 +108,9 @@ Eventos importantes:
 - Logs no habilitados.
 - Secretos en repositorios.
 
-## Practica Conceptual
+## Ejemplo de Revision Cloud
 
-Para una app web en cloud, define:
+Para una app web en cloud, la revision debe aclarar:
 
 - Que identidad usa.
 - Que permisos necesita.

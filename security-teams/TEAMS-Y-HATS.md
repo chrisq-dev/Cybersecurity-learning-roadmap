@@ -1,6 +1,6 @@
 # Teams y Hats en Ciberseguridad
 
-Este archivo responde: que equipos existen, que hace cada uno, que debes estudiar y que NO debes perseguir.
+Este archivo aclara que equipos existen, que hace cada uno, que debes estudiar y que NO debes perseguir.
 
 ## Resumen Rapido
 

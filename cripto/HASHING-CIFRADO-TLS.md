@@ -127,13 +127,9 @@ Incluye:
 - Ignorar errores de certificado.
 - Guardar secretos en GitHub.
 
-## Practica
+## Observacion de Hashing
 
-1. Usa un archivo de ejemplo.
-2. Calcula SHA256.
-3. Modifica una letra.
-4. Calcula SHA256 otra vez.
-5. Explica por que cambio.
+Un hash criptografico cambia completamente cuando cambia el contenido de entrada, aunque sea por un caracter. Esta propiedad ayuda a verificar integridad, detectar modificaciones y comparar artefactos sin guardar el contenido original.
 
 Comando:
 

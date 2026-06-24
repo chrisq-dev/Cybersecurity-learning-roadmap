@@ -127,9 +127,9 @@ Otros errores:
 - hash;
 - descargas sensibles.
 
-## Practica Conceptual Guiada
+## Ejemplo de Upload Seguro
 
-Diseña una funcion segura de upload para imagenes de perfil:
+Una funcion segura de upload para imagenes de perfil debe considerar:
 
 - Extensiones permitidas.
 - Tamaño maximo.

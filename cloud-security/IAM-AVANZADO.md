@@ -194,9 +194,9 @@ Preguntas:
 - Que identidades pueden modificar IAM?
 - Que secretos no tienen owner?
 
-## Practica Conceptual Guiada
+## Ejemplo de Analisis de Politica
 
-Analiza esta politica:
+Esta politica representa privilegios excesivos:
 
 ```text
 Identity: app-prod
@@ -205,7 +205,7 @@ Resource: *
 Condition: none
 ```
 
-Responde:
+El analisis debe explicar:
 
 - Que riesgo tiene?
 - Que permisos probablemente necesita una app normal?

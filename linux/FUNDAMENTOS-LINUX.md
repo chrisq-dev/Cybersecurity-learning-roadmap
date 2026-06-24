@@ -385,7 +385,7 @@ Controles posibles:
 - Ignorar usuarios de servicio.
 - No documentar cambios.
 
-## Practica Segura
+## Observacion Segura
 
 En un entorno propio puedes observar:
 

@@ -123,14 +123,13 @@ Elige una ruta principal y una secundaria. No intentes dominar todas al mismo ti
 - Verificacion.
 - Reporting.
 
-### Archivos del repo
+### Temas del repositorio
 
 - `vulnerability-management/`
 - `network-security/`
 - `linux/HARDENING-BASICO.md`
-- `scripts/asset_inventory_check.py`
 
-### Evidencia minima
+### Evidencia conceptual
 
 - Inventario ficticio.
 - Reporte de activos sin owner.

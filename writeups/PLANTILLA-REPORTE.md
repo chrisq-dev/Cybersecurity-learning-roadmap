@@ -99,12 +99,14 @@ Que aprendi y que haria diferente la proxima vez.
 
 Documentacion consultada.
 
-## Checklist Final
+## Criterios Finales
 
-- [ ] El alcance esta claro.
-- [ ] La evidencia no expone secretos.
-- [ ] Hay timeline si aplica.
-- [ ] Los hallazgos tienen impacto.
-- [ ] Las remediaciones son verificables.
-- [ ] Hay conclusion.
-- [ ] Otra persona podria seguir el reporte.
+Antes de considerar que un reporte esta claro, revisa si:
+
+- el alcance esta claro;
+- la evidencia no expone secretos;
+- hay timeline cuando aplica;
+- los hallazgos explican impacto;
+- las remediaciones son verificables;
+- hay conclusion;
+- otra persona podria seguir el razonamiento.

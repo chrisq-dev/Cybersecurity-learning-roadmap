@@ -83,9 +83,9 @@ La actividad es consistente con intento de fuerza bruta, pero falta validar si l
 - Antes o despues hubo algo relacionado?
 - Hay impacto?
 
-## Practica
+## Ejemplo de Lectura de Logs
 
-Analiza este evento ficticio:
+Este evento ficticio permite observar intentos fallidos seguidos por un acceso exitoso:
 
 ```text
 2026-06-23T10:15:22 host=web01 user=admin src_ip=203.0.113.50 action=login result=failed
@@ -94,7 +94,7 @@ Analiza este evento ficticio:
 2026-06-23T10:16:02 host=web01 user=admin src_ip=203.0.113.50 action=login result=success
 ```
 
-Responde:
+El analisis debe separar:
 
 - Que evidencia hay?
 - Que hipotesis tienes?

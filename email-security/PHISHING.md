@@ -100,9 +100,9 @@ Revisa:
 - Bloqueo de macros.
 - Sandboxing de adjuntos.
 
-## Practica Guiada
+## Ejemplo de Analisis
 
-Analiza este correo ficticio:
+Este correo ficticio muestra indicadores comunes de phishing:
 
 ```text
 From: soporte@micros0ft-security.example
@@ -110,25 +110,25 @@ Subject: Cuenta bloqueada urgente
 Body: Inicia sesion ahora para evitar cierre de cuenta: http://login-security.example
 ```
 
-Responde:
+El analisis debe cubrir:
 
 - Que indicadores ves?
 - Que riesgo existe?
 - Que controles ayudan?
 - Que recomendarias al usuario?
 
-## Mini Laboratorio: Reporte de Phishing
+## Criterios Para Analizar Phishing
 
-Crea `reporte-phishing.md`:
+Un analisis de phishing debe explicar:
 
-1. Resumen.
-2. Indicadores.
-3. Analisis de remitente.
-4. Analisis de URL o adjunto.
-5. Usuarios afectados.
-6. Contencion.
-7. Recomendacion al usuario.
-8. Controles preventivos.
+- resumen;
+- indicadores;
+- analisis de remitente;
+- analisis de URL o adjunto;
+- usuarios afectados si aplica;
+- contencion;
+- recomendacion al usuario;
+- controles preventivos.
 
 ## Errores Comunes
 

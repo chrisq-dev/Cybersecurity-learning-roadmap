@@ -213,9 +213,9 @@ Un buen arquitecto de seguridad explica el riesgo y propone controles proporcion
 - No probar backups.
 - Documentar diagramas que no reflejan reglas reales.
 
-## Practica
+## Ejemplo de Arquitectura Segura
 
-Diseña arquitectura para una app:
+Una arquitectura segura para una app debe considerar:
 
 - Frontend.
 - Backend.

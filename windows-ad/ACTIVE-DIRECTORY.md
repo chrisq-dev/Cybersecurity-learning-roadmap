@@ -189,9 +189,9 @@ No memorices IDs al inicio. Primero entiende que comportamiento quieres detectar
 - No monitorear cambios de GPO.
 - No proteger Domain Controllers como activos criticos.
 
-## Practica Conceptual Guiada
+## Ejemplo de Dominio
 
-Dibuja un dominio con:
+Un dominio basico puede representarse con:
 
 - 1 Domain Controller.
 - 3 usuarios.
@@ -200,14 +200,14 @@ Dibuja un dominio con:
 - 1 OU.
 - 1 GPO.
 
-Explica:
+El analisis debe explicar:
 
 - Quien autentica.
 - Donde viven los usuarios.
 - Como se asignan permisos.
 - Que pasaria si un usuario entra a Domain Admins.
 
-## Mini Laboratorio: Auditoria AD en Papel
+## Ejemplo de Auditoria AD en Papel
 
 Escenario:
 
@@ -221,13 +221,13 @@ Dominio empresa.local
 GPO antigua aplica scripts de inicio
 ```
 
-Crea `auditoria-ad-basica.md` con:
+Una auditoria basica de AD debe explicar:
 
-1. Riesgos principales.
-2. Preguntas que harias al administrador.
-3. Evidencia que pedirias.
-4. Controles inmediatos.
-5. Detecciones recomendadas.
+- riesgos principales;
+- preguntas para el administrador;
+- evidencia necesaria;
+- controles inmediatos;
+- detecciones recomendadas.
 
 ## Criterio de Dominio
 

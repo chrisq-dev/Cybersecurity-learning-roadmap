@@ -86,14 +86,14 @@ Preguntas:
 - Hay permisos excesivos?
 - La cuenta tiene owner?
 
-## Practica
+## Ejemplo de Matriz de Acceso
 
 Una matriz de accesos puede verse asi:
 
 | Rol | Sistema | Permiso | Justificacion | Aprobador |
 | --- | --- | --- | --- | --- |
 
-Agrega:
+La matriz debe contemplar momentos del ciclo de vida como:
 
 - Nuevo empleado.
 - Cambio de puesto.
