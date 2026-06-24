@@ -104,19 +104,21 @@ Estas preguntas estan pensadas para medir criterio. Responde con causa, impacto,
 
 Elige uno:
 
-1. Escribe un reporte SOC de una cuenta comprometida.
-2. Escribe una revision OWASP de una app de notas.
-3. Escribe una revision IAM de una cuenta cloud ficticia.
-4. Escribe una deteccion conceptual con MITRE y falsos positivos.
+1. Explica como analizarias una cuenta comprometida.
+2. Explica como revisarias riesgos OWASP en una app de notas.
+3. Explica como revisarias IAM en una cuenta cloud ficticia.
+4. Explica una deteccion conceptual con MITRE y falsos positivos.
 
 ## Criterio
 
-Si fallas preguntas, vuelve a:
+Si fallas preguntas, refuerza:
 
-- `blue-team/`
-- `web-owasp/`
-- `api-security/`
-- `cloud-security/`
+- Blue Team.
+- Seguridad web.
+- Seguridad de APIs.
+- Seguridad cloud.
+- IAM.
+- Logging y deteccion.
 
 ## Autoevaluacion
 

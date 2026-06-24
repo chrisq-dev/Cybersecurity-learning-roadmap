@@ -83,12 +83,14 @@ La parte importante es justificar que atenderias primero y por que.
 
 ## Criterio
 
-Si no puedes responder 80% con tus palabras, vuelve a:
+Si no puedes responder 80% con tus palabras, refuerza:
 
-- `fundamentos/`
-- `redes-cisco/`
-- `linux/`
-- `windows-ad/`
+- Computacion basica.
+- Redes.
+- Linux.
+- Windows.
+- Identidad y permisos.
+- Logs y observacion segura.
 
 ## Autoevaluacion
 
