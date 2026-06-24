@@ -1,8 +1,8 @@
 # Cybersecurity Learning Roadmap
 
-Hola, soy Christian Quiñones. Disene esta web para recopilar y ordenar recursos de ciberseguridad en espanol: fundamentos, redes, Linux, seguridad web, Blue Team, Cloud Security, AppSec, GRC, laboratorios, playbooks y empleabilidad.
+Hola, soy Christian Quiñones. Diseñé esta web para recopilar y ordenar recursos de ciberseguridad en espanol: fundamentos, redes, Linux, seguridad web, Blue Team, Cloud Security, AppSec, GRC, laboratorios, playbooks y empleabilidad.
 
-El objetivo es que cualquier estudiante pueda entrar, elegir una ruta y avanzar poco a poco sin perderse entre archivos sueltos. La web funciona como una biblioteca de guias: cada modulo tiene temas ordenados, buscador, filtros por nivel y marcadores locales de lectura.
+El objetivo es que cualquier estudiante pueda entrar, elegir una ruta y avanzar poco a poco sin perderse entre archivos sueltos. La web funciona como una biblioteca de guias: cada modulo tiene temas ordenados, buscador, filtros por nivel y rutas de lectura.
 
 ![Preview de la web](assets/preview-home.png)
 
