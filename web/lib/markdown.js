@@ -12,7 +12,117 @@ const IGNORE_FOLDERS = [
   '.next',
   '.gemini',
   'public',
+  'notes',
+  'resources',
+  'roadmap',
 ];
+
+const PUBLIC_ROOT_FILES = [
+  'INICIO-AQUI.md',
+];
+
+const INTERNAL_ROOT_FILES = [
+  'COMO-ESTUDIAR.md',
+  'COMO-USAR-LA-GUIA.md',
+  'CONTRIBUTING.md',
+  'DEPLOY-EASYPANEL.md',
+  'GUIA-DE-ESTUDIO.md',
+  'LICENSE',
+  'PUBLICACION-GITHUB.md',
+  'README.md',
+  'SECURITY.md',
+  'SISTEMA-TDAH.md',
+  'TEMARIO-MAESTRO.md',
+];
+
+const PUBLIC_FOLDERS = [
+  'fundamentos',
+  'redes-cisco',
+  'linux',
+  'windows-ad',
+  'programacion',
+  'web-owasp',
+  'blue-team',
+  'security-teams',
+  'cloud-security',
+  'api-security',
+  'appsec-devsecops',
+  'vulnerability-management',
+  'network-security',
+  'endpoint-security',
+  'database-security',
+  'wireless-security',
+  'identity-access',
+  'containers-kubernetes',
+  'security-architecture',
+  'grc',
+  'privacy',
+  'email-security',
+  'business-continuity',
+  'cripto',
+  'forense',
+  'malware-basico',
+  'red-team',
+  'labs',
+  'playbooks',
+  'capstone-projects',
+  'cheatsheets',
+  'empleabilidad',
+  'writeups',
+];
+
+const PAGE_ORDER = {
+  '': ['INICIO-AQUI'],
+  fundamentos: ['COMPUTACION-BASICA', 'SISTEMAS-OPERATIVOS', 'IDENTIDAD-PERMISOS', 'BASE-DE-SEGURIDAD'],
+  'redes-cisco': ['FUNDAMENTOS-REDES', 'MODELO-OSI-TCPIP', 'IP-SUBNETTING', 'DNS-DHCP-NAT', 'SWITCHING-VLANS-ACLS'],
+  linux: ['FUNDAMENTOS-LINUX', 'COMANDOS-BASICOS', 'PERMISOS-USUARIOS', 'PROCESOS-SERVICIOS-LOGS', 'HARDENING-BASICO'],
+  'windows-ad': ['FUNDAMENTOS-WINDOWS-AD', 'WINDOWS-BASICO', 'POWERSHELL-EVENTOS', 'ACTIVE-DIRECTORY'],
+  programacion: ['FUNDAMENTOS-PYTHON-SEGURIDAD', 'PYTHON-BASICO', 'LOGS-JSON-CSV-APIS'],
+  'web-owasp': ['FUNDAMENTOS-WEB', 'HTTP', 'AUTENTICACION-AUTORIZACION', 'OWASP-TOP-10', 'SQL-INJECTION', 'XSS', 'CSRF', 'SSRF', 'FILE-UPLOAD'],
+  'blue-team': ['FUNDAMENTOS-BLUE-TEAM', 'LOGS-Y-ALERTAS', 'SIEM-MITRE', 'SIGMA-YARA', 'DETECTION-ENGINEERING', 'THREAT-HUNTING', 'RESPUESTA-INCIDENTES'],
+  'security-teams': ['TEAMS-Y-HATS'],
+  'cloud-security': ['FUNDAMENTOS-CLOUD', 'IAM-STORAGE-LOGGING', 'IAM-AVANZADO', 'AWS-AZURE-GCP'],
+  'api-security': ['FUNDAMENTOS-API', 'RIESGOS-CONTROLES'],
+  'appsec-devsecops': ['FUNDAMENTOS-APPSEC', 'DEVSECOPS'],
+  'vulnerability-management': ['FUNDAMENTOS', 'PRIORIZACION-Y-CVSS'],
+  'network-security': ['FIREWALLS-IDS-IPS', 'VPN-PROXY-SEGMENTACION'],
+  'endpoint-security': ['EDR-ANTIVIRUS-HARDENING', 'TELEMETRIA-ENDPOINT'],
+  'database-security': ['FUNDAMENTOS-DB', 'PERMISOS-AUDITORIA'],
+  'wireless-security': ['FUNDAMENTOS-WIFI'],
+  'identity-access': ['IAM-CORPORATIVO', 'PAM'],
+  'containers-kubernetes': ['CONTENEDORES', 'KUBERNETES-SEGURIDAD'],
+  'security-architecture': ['FUNDAMENTOS-ARQUITECTURA', 'ZERO-TRUST'],
+  grc: ['FUNDAMENTOS-GRC', 'RIESGO-CONTROLES'],
+  privacy: ['FUNDAMENTOS-PRIVACIDAD'],
+  'email-security': ['FUNDAMENTOS-EMAIL', 'PHISHING'],
+  'business-continuity': ['BACKUPS', 'CONTINUIDAD-DRP'],
+  cripto: ['HASHING-CIFRADO-TLS'],
+  forense: ['FUNDAMENTOS-FORENSE'],
+  'malware-basico': ['FUNDAMENTOS-MALWARE'],
+  'red-team': ['METODOLOGIA-ETICA', 'RECONOCIMIENTO-ENUMERACION', 'REPORTE-REMEDIACION'],
+  labs: ['PRIMEROS-LABS', 'LABS-GUIADOS-FUNDAMENTOS', 'LABS-GUIADOS-BLUE-WEB', 'PROYECTOS-GUIADOS'],
+  playbooks: ['CUENTA-COMPROMETIDA', 'PHISHING', 'SERVIDOR-EXPUESTO', 'MALWARE-ENDPOINT', 'FUGA-DATOS'],
+  'capstone-projects': ['SOC-INVESTIGATION', 'APPSEC-REVIEW', 'CLOUD-SECURITY-REVIEW', 'SECURE-SMALL-BUSINESS'],
+  cheatsheets: ['GLOSARIO', 'REDES', 'LINUX', 'WEB', 'BLUE-TEAM', 'PYTHON'],
+  empleabilidad: ['RUTA-TRABAJO', 'RUTAS-POR-ROL', 'EMPLEO-READY', 'PROYECTOS-PORTAFOLIO', 'MAPA-SKILLS-EVIDENCIA', 'CV-LINKEDIN', 'ENTREVISTAS', 'CHECKLIST-APLICAR'],
+  writeups: ['PLANTILLA-REPORTE'],
+};
+
+function sortPagesByStudyOrder(folder, pages) {
+  const order = PAGE_ORDER[folder] || [];
+
+  return pages.sort((a, b) => {
+    const nameA = a.fileName.replace('.md', '');
+    const nameB = b.fileName.replace('.md', '');
+    const idxA = order.indexOf(nameA);
+    const idxB = order.indexOf(nameB);
+
+    if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+    if (idxA !== -1) return -1;
+    if (idxB !== -1) return 1;
+    return a.title.localeCompare(b.title);
+  });
+}
 
 function getMarkdownFilesRecursive(dir, relativeParts = []) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -50,7 +160,7 @@ export function formatFolderName(folderName) {
     .replace('Grc', 'GRC')
     .replace('Iam', 'IAM')
     .replace('Siem', 'SIEM')
-    .replace('Id', 'ID')
+    .replace(/\bId\b/g, 'ID')
     .replace('Db', 'Database')
     .replace('Edr', 'EDR')
     .replace('Vpn', 'VPN')
@@ -129,13 +239,16 @@ export function getContentStructure() {
   const items = fs.readdirSync(ROOT_DIR, { withFileTypes: true });
   const structure = [];
 
-  // We want to read individual root markdown files first (like README, INICIO-AQUI, SISTEMA-TDAH)
+  // Root files are limited to the public student entry point.
   const rootFiles = [];
 
   items.forEach((item) => {
     if (!item.isDirectory()) {
-      const ignoredRootFiles = ['LICENSE', 'CONTRIBUTING.md', 'README.md', 'PLANTILLA-APUNTES.md'];
-      if (item.name.endsWith('.md') && !ignoredRootFiles.includes(item.name)) {
+      if (
+        item.name.endsWith('.md') &&
+        PUBLIC_ROOT_FILES.includes(item.name) &&
+        !INTERNAL_ROOT_FILES.includes(item.name)
+      ) {
         const filePath = path.join(ROOT_DIR, item.name);
         const fileContent = fs.readFileSync(filePath, 'utf8');
         const { data } = matter(fileContent);
@@ -161,29 +274,10 @@ export function getContentStructure() {
   });
 
   if (rootFiles.length > 0) {
-    const rootOrder = [
-      'INICIO-AQUI',
-      'COMO-USAR-LA-GUIA',
-      'COMO-ESTUDIAR',
-      'GUIA-DE-ESTUDIO',
-      'TEMARIO-MAESTRO',
-      'PUBLICACION-GITHUB'
-    ];
-
-    rootFiles.sort((a, b) => {
-      const nameA = a.fileName.replace('.md', '');
-      const nameB = b.fileName.replace('.md', '');
-      const idxA = rootOrder.indexOf(nameA);
-      const idxB = rootOrder.indexOf(nameB);
-
-      if (idxA !== -1 && idxB !== -1) return idxA - idxB;
-      if (idxA !== -1) return -1;
-      if (idxB !== -1) return 1;
-      return a.title.localeCompare(b.title);
-    });
+    sortPagesByStudyOrder('', rootFiles);
 
     structure.push({
-      category: 'General',
+      category: 'Inicio',
       folder: '',
       pages: rootFiles
     });
@@ -191,12 +285,21 @@ export function getContentStructure() {
 
   // Now scan subdirectories
   items.forEach((item) => {
-    if (item.isDirectory() && !IGNORE_FOLDERS.includes(item.name) && !item.name.startsWith('.')) {
+    if (
+      item.isDirectory() &&
+      PUBLIC_FOLDERS.includes(item.name) &&
+      !IGNORE_FOLDERS.includes(item.name) &&
+      !item.name.startsWith('.')
+    ) {
       const folderPath = path.join(ROOT_DIR, item.name);
       const pages = [];
       const files = getMarkdownFilesRecursive(folderPath, [item.name]);
+      const allowedFiles = PAGE_ORDER[item.name] || null;
 
       files.forEach((file) => {
+        const baseName = file.fileName.replace('.md', '');
+        if (allowedFiles && !allowedFiles.includes(baseName)) return;
+
         const fileContent = fs.readFileSync(file.filePath, 'utf8');
         const { data } = matter(fileContent);
 
@@ -218,8 +321,7 @@ export function getContentStructure() {
       });
 
       if (pages.length > 0) {
-        // Also sort pages inside folders alphabetically
-        pages.sort((a, b) => a.title.localeCompare(b.title));
+        sortPagesByStudyOrder(item.name, pages);
 
         structure.push({
           category: formatFolderName(item.name),
@@ -231,7 +333,7 @@ export function getContentStructure() {
   });
 
   const STUDY_ORDER = [
-    'General',
+    'Inicio',
     'Fundamentos',
     'Redes Cisco',
     'Linux',

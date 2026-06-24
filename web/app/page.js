@@ -28,7 +28,7 @@ const profileRoutes = [
     description: 'Base tecnica para entender seguridad, redes, Linux, web y riesgo.',
     links: [
       ['Inicio Aqui', '/INICIO-AQUI'],
-      ['Como Usar Esta Guia', '/COMO-USAR-LA-GUIA'],
+      ['Computacion Basica', '/fundamentos/COMPUTACION-BASICA'],
       ['Base de Seguridad', '/fundamentos/BASE-DE-SEGURIDAD'],
       ['Fundamentos de Redes', '/redes-cisco/FUNDAMENTOS-REDES'],
     ],
@@ -93,7 +93,7 @@ export default function Home() {
   return (
     <div style={{ textAlign: 'center', paddingTop: '3rem' }}>
       <h1 className="serif-title" style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', lineHeight: 1.1, marginBottom: '1rem' }}>
-        Apuntes <em>gratis</em> de <br/> ciberseguridad en español
+        Guías <em>gratis</em> de <br/> ciberseguridad en español
       </h1>
       
       <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto 1.5rem auto' }}>
@@ -115,7 +115,7 @@ export default function Home() {
         boxShadow: '0 4px 12px var(--border-glow)'
       }}>
         <div>
-          <strong style={{ color: 'var(--text-main)' }}>{totalPages}</strong> apuntes ordenados
+          <strong style={{ color: 'var(--text-main)' }}>{totalPages}</strong> guías ordenadas
         </div>
         <span style={{ color: 'var(--border-color)' }}>|</span>
         <div>

@@ -1,4 +1,4 @@
-# Glosario Inicial
+# Glosario de Ciberseguridad
 
 ## Conceptos Base
 

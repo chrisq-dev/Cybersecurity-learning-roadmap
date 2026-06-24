@@ -1,8 +1,8 @@
 import "./globals.css";
 import TopNav from '../components/TopNav';
 export const metadata = {
-  title: "Ciberseguridad - Apuntes y Guías",
-  description: "Guías, laboratorios y apuntes de ciberseguridad en español.",
+  title: "Ciberseguridad - Guías de Estudio",
+  description: "Guías ordenadas, laboratorios y recursos de ciberseguridad en español.",
 };
 
 export default function RootLayout({ children }) {

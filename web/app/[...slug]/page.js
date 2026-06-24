@@ -22,7 +22,7 @@ export async function generateMetadata({ params }) {
   if (!data) return { title: 'No encontrado' };
   return {
     title: `${data.title} | Ciberseguridad`,
-    description: `Apuntes de ${data.title} — guia de ciberseguridad en español.`,
+    description: `Guia de ${data.title} — ciberseguridad en español.`,
   };
 }
 

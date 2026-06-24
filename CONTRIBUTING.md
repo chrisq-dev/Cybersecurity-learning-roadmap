@@ -1,6 +1,6 @@
 # Contribuir
 
-Este repositorio es principalmente una ruta personal de aprendizaje, pero esta abierto a mejoras educativas.
+Este repositorio es una web publica de recursos de ciberseguridad en espanol. La meta es mantener guias claras, practicas y eticas para estudiantes que quieren aprender con orden.
 
 ## Que Tipo de Contribuciones Sirven
 
@@ -56,5 +56,4 @@ Revisa:
 
 - [README.md](README.md)
 - [INICIO-AQUI.md](INICIO-AQUI.md)
-- [COMO-USAR-LA-GUIA.md](COMO-USAR-LA-GUIA.md)
-- [notes/PENDIENTES.md](notes/PENDIENTES.md)
+- [SECURITY.md](SECURITY.md)

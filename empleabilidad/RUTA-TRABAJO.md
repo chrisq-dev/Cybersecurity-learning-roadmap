@@ -122,7 +122,7 @@ Cuando tengas evidencia suficiente:
 
 No esperes sentirte experto para aplicar. Aplica cuando puedas explicar tus proyectos y tus fundamentos con claridad.
 
-Registra aplicaciones en [TRACKER-APLICACIONES.md](TRACKER-APLICACIONES.md).
+Lleva un registro privado de vacantes, fechas, respuestas y aprendizajes de entrevista. Puede ser una hoja de calculo, una nota personal o tu gestor de tareas.
 
 ## Como Saber a Que Rol Apuntar
 

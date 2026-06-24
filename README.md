@@ -1,33 +1,49 @@
-# Roadmap de Ciberseguridad
+# Cybersecurity Learning Roadmap
 
-Guia publica en espanol para estudiar ciberseguridad de forma estructurada, practica y etica.
+Hola, soy Christian Quinones. Disene esta web para recopilar y ordenar recursos de ciberseguridad en espanol: fundamentos, redes, Linux, seguridad web, Blue Team, Cloud Security, AppSec, GRC, laboratorios, playbooks y empleabilidad.
 
-Este repositorio combina apuntes, rutas, laboratorios, preguntas, playbooks, proyectos y una web local para leer el contenido como una plataforma de aprendizaje.
+El objetivo es que cualquier estudiante pueda entrar, elegir una ruta y avanzar poco a poco sin perderse entre archivos sueltos. La web funciona como una biblioteca de guias: cada modulo tiene temas ordenados, buscador, filtros por nivel y marcadores locales de lectura.
 
 ![Preview de la web](assets/preview-home.png)
 
-## Como Estudiar
+## Que Es
 
-Empieza aqui:
+Una guia publica para aprender ciberseguridad de forma estructurada, practica y etica.
 
-1. [INICIO-AQUI.md](INICIO-AQUI.md): ruta inicial y orden recomendado.
-2. [COMO-ESTUDIAR.md](COMO-ESTUDIAR.md): metodo diario y semanal.
-3. [GUIA-DE-ESTUDIO.md](GUIA-DE-ESTUDIO.md): sistema completo de avance.
-4. [TEMARIO-MAESTRO.md](TEMARIO-MAESTRO.md): mapa general de temas.
+Este repositorio no busca ser una coleccion de comandos ni una lista de tareas. Busca explicar conceptos, conectar temas y servir como referencia para estudiar con orden.
 
-Para configurar la descripcion, topics y datos del repositorio en GitHub, revisa [PUBLICACION-GITHUB.md](PUBLICACION-GITHUB.md).
+## Que Incluye
 
-Para publicar la web con Docker/Easypanel, revisa [DEPLOY-EASYPANEL.md](DEPLOY-EASYPANEL.md).
+- Fundamentos de computacion, sistemas operativos, identidad y riesgo.
+- Redes, Cisco, modelo OSI/TCP-IP, DNS, DHCP, NAT, VLANs y ACLs.
+- Linux, Windows y Active Directory.
+- Python y automatizacion para seguridad.
+- Seguridad web, HTTP, OWASP Top 10, SQL Injection, XSS, CSRF, SSRF y file upload.
+- Blue Team, logs, SIEM, MITRE ATT&CK, Sigma, YARA, deteccion y respuesta a incidentes.
+- Cloud Security, IAM, storage, logging, Kubernetes y contenedores.
+- AppSec, DevSecOps, API Security, GRC, privacidad y continuidad.
+- Wireless, Network Security, Endpoint Security y Database Security.
+- Playbooks, labs guiados, capstones, writeups y recursos de empleabilidad.
 
-La idea no es leer todo de golpe. La idea es avanzar por ciclos:
+## Como Usarla
+
+Empieza por:
+
+1. [Inicio Aqui](INICIO-AQUI.md)
+2. [Computacion Basica](fundamentos/COMPUTACION-BASICA.md)
+3. [Base de Seguridad](fundamentos/BASE-DE-SEGURIDAD.md)
+4. [Fundamentos de Redes](redes-cisco/FUNDAMENTOS-REDES.md)
+5. [Fundamentos Web](web-owasp/FUNDAMENTOS-WEB.md)
+
+La ruta recomendada es:
 
 ```text
-leer -> practicar -> documentar -> evaluar -> repetir
+fundamentos -> redes -> Linux -> web -> Blue Team -> cloud/AppSec -> labs -> portafolio
 ```
 
-## Web Interactiva Local
+## Web
 
-El contenido puede leerse desde una web hecha con Next.js.
+La web esta hecha con Next.js y lee las guias Markdown del repositorio.
 
 ```bash
 cd web
@@ -41,78 +57,28 @@ Despues abre:
 http://localhost:3000
 ```
 
-La web incluye:
-
-- lectura ordenada de los Markdown;
-- busqueda por titulo y categoria;
-- busqueda por contenido;
-- filtros por nivel;
-- rutas sugeridas por perfil;
-- tabla de contenido por leccion;
-- navegacion anterior/siguiente;
-- marcadores locales de lectura;
-- soporte para contenido en subcarpetas.
-
-Healthcheck de produccion:
+Healthcheck:
 
 ```text
 /api/health
 ```
 
-## Modulos Principales
+## Docker
 
-- Fundamentos de seguridad.
-- Redes y Cisco.
-- Linux.
-- Windows y Active Directory.
-- Programacion para seguridad.
-- Web y OWASP.
-- Blue Team.
-- Cloud Security.
-- AppSec y DevSecOps.
-- Vulnerability Management.
-- GRC.
-- API Security.
-- Contenedores y Kubernetes.
-- Forense.
-- Malware basico.
-- Red Team etico.
-- Labs, playbooks, writeups y evaluaciones.
-- Empleabilidad y portafolio.
+El proyecto incluye `Dockerfile` y `docker-compose.yml`.
 
-## Estructura de una Buena Leccion
+```bash
+docker build -t cybersecurity-learning-roadmap .
+docker run --rm -p 3000:3000 cybersecurity-learning-roadmap
+```
 
-Los temas deben evolucionar hacia este formato:
+Para Easypanel, revisa [DEPLOY-EASYPANEL.md](DEPLOY-EASYPANEL.md).
 
-- objetivo claro;
-- mapa mental;
-- conceptos clave explicados;
-- errores comunes;
-- practica guiada;
-- evidencia sugerida;
-- puntos a observar;
-- autoevaluacion;
-- criterio de dominio.
+## Etica
 
-Una leccion esta lista cuando una persona puede estudiarla sola, entender por que importa el tema, practicar algo concreto y reconocer evidencia de aprendizaje sin sentir que la pagina es una lista de tareas obligatorias.
+Todo el contenido es educativo.
 
-## Estado del Proyecto
-
-Este proyecto esta en crecimiento. Ya existe una base amplia de temas, pero el objetivo es convertir cada modulo importante en una leccion mas completa, practica y evaluable.
-
-Prioridad actual:
-
-1. Profundizar los fundamentos.
-2. Mejorar la experiencia web para alumnos.
-3. Agregar ejercicios y evaluaciones por modulo.
-4. Documentar labs con evidencia.
-5. Convertir el repo en portafolio publico de aprendizaje.
-
-## Reglas Eticas
-
-Todo el contenido de este repositorio es estrictamente educativo.
-
-Cualquier prueba, escaneo, explotacion o analisis debe realizarse unicamente en:
+Cualquier prueba, escaneo, explotacion o analisis debe realizarse solo en:
 
 - sistemas propios;
 - laboratorios locales;
@@ -121,8 +87,8 @@ Cualquier prueba, escaneo, explotacion o analisis debe realizarse unicamente en:
 
 No uses este material contra terceros, redes publicas, empresas, usuarios o sistemas sin autorizacion.
 
-## Contribuciones
+## Contribuir
 
 Las contribuciones son bienvenidas si respetan el enfoque educativo, defensivo y etico del proyecto.
 
-Antes de proponer contenido, revisa [CONTRIBUTING.md](CONTRIBUTING.md).
+Antes de proponer cambios, revisa [CONTRIBUTING.md](CONTRIBUTING.md).

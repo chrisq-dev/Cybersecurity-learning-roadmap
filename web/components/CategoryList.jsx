@@ -103,10 +103,10 @@ export default function CategoryList({ structure }) {
       {/* Main Routes Grid */}
       <div style={{ textAlign: 'left', marginTop: '4rem' }}>
         <h2 className="serif-title" style={{ fontSize: '2rem', borderBottom: 'none', marginBottom: '1rem' }}>
-          Rutas principales ↗
+          Guías por módulo ↗
         </h2>
         <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '2rem' }}>
-          Selecciona una categoría para empezar a estudiar.
+          Avanza por módulos en orden. Cada guía conecta fundamentos, práctica segura y criterios de comprensión.
         </p>
 
         {filteredStructure.length > 0 ? (
@@ -134,7 +134,7 @@ export default function CategoryList({ structure }) {
         ) : (
           <div style={{ textAlign: 'center', padding: '3rem 1rem', border: '1px dashed var(--border-color)', borderRadius: 'var(--border-radius)', background: 'var(--bg-card)' }}>
             <p style={{ margin: 0, fontSize: '1.1rem', color: 'var(--text-muted)' }}>
-              No se encontraron apuntes que coincidan con &ldquo;{query}&rdquo;.
+              No se encontraron guías que coincidan con &ldquo;{query}&rdquo;.
             </p>
           </div>
         )}

@@ -1,6 +1,6 @@
 # Sistema Empleo-Ready
 
-Este archivo define cuando el repo empieza a servir como portafolio real para buscar trabajo. No garantiza empleo por si solo; ningun repo puede hacerlo. Lo que si hace es obligarte a producir evidencia clara de habilidades: notas, labs, scripts, reportes, proyectos y respuestas de entrevista.
+Esta guia explica que evidencia conviene construir antes de buscar un primer rol en ciberseguridad. No garantiza empleo por si sola; ningun recurso puede hacerlo. Lo que si hace es darte criterios para demostrar habilidades reales: fundamentos, labs, scripts, reportes, proyectos y respuestas de entrevista.
 
 ## Objetivo
 
@@ -31,55 +31,55 @@ Prioriza estos roles:
 
 Puedes explicar fundamentos, pero aun tienes poca evidencia.
 
-Debes tener:
+Debes poder:
 
-- [ ] Nota de computacion basica.
-- [ ] Nota de redes.
-- [ ] Nota de Linux.
-- [ ] Nota de Windows.
-- [ ] Glosario con tus palabras.
-- [ ] 10 preguntas contestadas en `evaluaciones/RESPUESTAS.md`.
+- Explicar computacion basica.
+- Explicar redes.
+- Usar Linux basico.
+- Entender Windows a nivel usuario y administrador inicial.
+- Definir terminos comunes de seguridad con tus palabras.
+- Responder 10 preguntas basicas de entrevista sin memorizar.
 
 ### Nivel 2: Practica Visible
 
 Ya no solo lees: produces evidencia.
 
-Debes tener:
+Debes poder mostrar:
 
-- [ ] 3 labs documentados.
-- [ ] 1 script funcional.
-- [ ] 1 reporte tecnico.
-- [ ] 1 checklist de hardening o seguridad.
-- [ ] `roadmap/DONDE-VOY.md` actualizado.
+- 3 labs documentados.
+- 1 script funcional.
+- 1 reporte tecnico.
+- 1 checklist de hardening o seguridad.
+- Un resumen claro de lo que estudiaste, practicaste y aprendiste.
 
 ### Nivel 3: Portafolio Junior
 
 Ya puedes empezar a aplicar a roles junior.
 
-Debes tener:
+Debes poder mostrar:
 
-- [ ] 5 proyectos o labs completos.
-- [ ] 2 scripts utiles.
-- [ ] 2 reportes tecnicos.
-- [ ] 1 resumen ejecutivo.
-- [ ] 1 investigacion de alerta simulada.
-- [ ] 1 writeup permitido de web security.
-- [ ] CV/LinkedIn actualizado con evidencia.
-- [ ] 30 preguntas de entrevista practicadas.
+- 5 proyectos o labs completos.
+- 2 scripts utiles.
+- 2 reportes tecnicos.
+- 1 resumen ejecutivo.
+- 1 investigacion de alerta simulada.
+- 1 writeup permitido de web security.
+- CV/LinkedIn actualizado con evidencia.
+- 30 preguntas de entrevista practicadas.
 
 ### Nivel 4: Candidato Fuerte
 
 Ya puedes defender tu perfil en entrevista con ejemplos concretos.
 
-Debes tener:
+Debes poder defender:
 
-- [ ] 1 capstone completo.
-- [ ] 1 proyecto Blue Team.
-- [ ] 1 proyecto Web/AppSec.
-- [ ] 1 proyecto Python.
-- [ ] 1 proyecto Cloud o GRC.
-- [ ] 1 simulacion de entrevista documentada.
-- [ ] 1 mapa de skills a evidencia actualizado.
+- 1 capstone completo.
+- 1 proyecto Blue Team.
+- 1 proyecto Web/AppSec.
+- 1 proyecto Python.
+- 1 proyecto Cloud o GRC.
+- 1 simulacion de entrevista documentada.
+- Un mapa claro entre skills, evidencia y aprendizajes.
 
 ### Nivel 5: Ruta a Experto
 
@@ -87,13 +87,13 @@ Experto no significa "lo se todo". Significa que puedes resolver problemas, expl
 
 Debes construir:
 
-- [ ] Profundidad en una especialidad.
-- [ ] Proyectos repetibles.
-- [ ] Detecciones o automatizaciones propias.
-- [ ] Reportes claros.
-- [ ] Practica constante.
-- [ ] Feedback externo.
-- [ ] Historial de mejora.
+- Profundidad en una especialidad.
+- Proyectos repetibles.
+- Detecciones o automatizaciones propias.
+- Reportes claros.
+- Practica constante.
+- Feedback externo.
+- Historial de mejora.
 
 ## Proyectos Obligatorios Para Aplicar
 
@@ -131,16 +131,16 @@ Si no puedes explicar un proyecto en entrevista, no cuenta como proyecto termina
 
 Puedes empezar a aplicar cuando cumplas:
 
-- [ ] Puedo explicar TCP/IP, DNS, HTTP, TLS y puertos comunes.
-- [ ] Puedo usar Linux basico sin copiar todo.
-- [ ] Puedo explicar autenticacion, autorizacion, IAM y minimo privilegio.
-- [ ] Puedo leer logs y escribir una conclusion.
-- [ ] Puedo explicar OWASP Top 10 con ejemplos.
-- [ ] Puedo escribir un reporte con impacto y remediacion.
-- [ ] Tengo 5 evidencias publicas en GitHub.
-- [ ] Tengo CV y LinkedIn alineados al repo.
-- [ ] Puedo hablar de 3 proyectos sin leer.
-- [ ] Puedo responder preguntas basicas de entrevista.
+- Puedes explicar TCP/IP, DNS, HTTP, TLS y puertos comunes.
+- Puedes usar Linux basico sin copiar todo.
+- Puedes explicar autenticacion, autorizacion, IAM y minimo privilegio.
+- Puedes leer logs y escribir una conclusion.
+- Puedes explicar OWASP Top 10 con ejemplos.
+- Puedes escribir un reporte con impacto y remediacion.
+- Tienes 5 evidencias publicas en GitHub.
+- Tienes CV y LinkedIn alineados a tu evidencia.
+- Puedes hablar de 3 proyectos sin leer.
+- Puedes responder preguntas basicas de entrevista.
 
 ## Rutina Semanal Para Conseguir Trabajo
 
@@ -155,13 +155,13 @@ Cada semana:
 
 No esperes sentirte experto para aplicar. Aplica cuando tengas evidencia suficiente y puedas explicar lo que hiciste.
 
-## Como Usar Este Archivo
+## Como Usar Esta Guia
 
-1. Marca tu nivel actual.
-2. Elige el siguiente requisito incompleto.
+1. Identifica tu nivel actual.
+2. Elige el siguiente requisito que todavia no puedas explicar o demostrar.
 3. Trabaja una semana en esa evidencia.
-4. Actualiza `roadmap/DONDE-VOY.md`.
-5. Actualiza `empleabilidad/MAPA-SKILLS-EVIDENCIA.md`.
+4. Relaciona lo que hiciste con una habilidad concreta.
+5. Actualiza tu CV, LinkedIn o portafolio cuando tengas evidencia real.
 6. Repite.
 
 ## Verdad Importante
@@ -177,4 +177,3 @@ El repo no te hace experto automaticamente. Te vuelve fuerte si lo usas asi:
 - Aplicas a trabajos.
 
 La meta no es tener muchos archivos. La meta es poder demostrar habilidad real.
-

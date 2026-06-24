@@ -6,6 +6,8 @@ Esta guia deja la web lista para publicarse con Docker en Easypanel.
 
 Usa un servicio tipo Docker/Git repository.
 
+Antes de desplegar, valida localmente `npm run lint`, `npm run build` y `docker build`.
+
 Valores recomendados:
 
 | Campo | Valor |

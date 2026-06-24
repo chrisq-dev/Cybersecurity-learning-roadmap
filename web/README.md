@@ -1,6 +1,6 @@
 # Web del Roadmap de Ciberseguridad
 
-Aplicacion Next.js para leer los apuntes del repositorio como una guia web en espanol.
+Aplicacion Next.js para leer las guias del repositorio como una plataforma web en espanol.
 
 La app lee los archivos Markdown del directorio padre, genera rutas estaticas y permite navegar los modulos como una plataforma local de estudio.
 
@@ -40,6 +40,7 @@ npm run lint
 ## Como Funciona
 
 - `lib/markdown.js` lee los Markdown del repositorio.
+- El indice publico esta curado: la web muestra guias de estudio, no documentos internos del repo.
 - `app/page.js` genera la portada con categorias y buscador.
 - `app/[...slug]/page.js` renderiza cada leccion.
 - `app/api/health/route.js` expone healthcheck para Docker/Easypanel.
@@ -60,6 +61,10 @@ Para que una leccion funcione bien en la web:
 - incluye practica y criterio de dominio;
 - usa ejemplos, mapas mentales y puntos a observar;
 - evita depender de imagenes externas cuando no sean necesarias.
+
+## Contenido Visible
+
+La web debe mostrar recursos para alumnos en orden de estudio. Documentos internos como pendientes, despliegue, publicacion, sistema personal de estudio, tableros o notas administrativas pueden vivir en el repo, pero no deben aparecer en la navegacion principal.
 
 ## Interactividad Actual
 
