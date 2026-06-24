@@ -1,24 +1,35 @@
 # Proyectos Guiados
 
-Estos proyectos sirven para aprender y tambien para mostrar evidencia en GitHub.
+Los proyectos guiados sirven para conectar teoria con situaciones realistas. En esta web no se tratan como entregables obligatorios ni como tareas cerradas. Son escenarios de estudio para entender como se aplican los conceptos y que tipo de razonamiento se espera en ciberseguridad.
 
-## Proyecto 1: Parser de Logs de Autenticacion
+Un buen proyecto no se mide solo por tener archivos. Se mide por la claridad con la que puedes explicar:
 
-### Objetivo
+- que problema existe;
+- que datos o evidencia se observarian;
+- que riesgo representa;
+- que controles reducen ese riesgo;
+- que limitaciones tiene el analisis;
+- que decision tomarias con la informacion disponible.
 
-Crear un script que lea logs ficticios y genere un reporte.
+## Como Leer Estos Proyectos
 
-### Requisitos
+Cada proyecto debe entenderse como un caso. Puedes reproducirlo en un entorno propio si quieres practicar, pero el valor principal esta en comprender el flujo.
 
-El script debe:
+La estructura mental recomendada es:
 
-- Leer un archivo `.log`.
-- Contar logins fallidos.
-- Agrupar por usuario.
-- Agrupar por IP.
-- Generar un reporte Markdown.
+```text
+escenario -> evidencia -> analisis -> riesgo -> controles -> conclusion
+```
 
-### Datos de Ejemplo
+## Proyecto 1: Analisis de Logs de Autenticacion
+
+### Que Busca Enseñar
+
+Este proyecto enseña como un analista defensivo interpreta intentos de autenticacion, detecta patrones y evita conclusiones apresuradas.
+
+### Escenario
+
+Un sistema registra eventos de login:
 
 ```text
 2026-06-23T10:00:01 user=admin src_ip=203.0.113.10 result=failed
@@ -26,162 +37,276 @@ El script debe:
 2026-06-23T10:05:00 user=maria src_ip=10.0.0.5 result=success
 ```
 
-### Ejemplo de resultado
+### Como Pensarlo
 
-- Script en `scripts/`.
-- Log ficticio en `labs/data/`.
-- Reporte en `labs/reportes/`.
-- README explicando uso.
+Preguntas importantes:
 
-## Proyecto 2: Guia de Hardening Linux
+- Cuantos fallos hubo?
+- Se concentran en un usuario?
+- Se concentran en una IP?
+- Hubo un login exitoso despues de muchos fallos?
+- El usuario tenia privilegios altos?
+- La IP origen es esperada?
+- El horario es normal?
 
-### Objetivo
+### Falsos Positivos
 
-Crear una checklist de seguridad basica para Linux.
+No todo patron de fallos es ataque.
 
-### Contenido
+Posibles explicaciones benignas:
 
-- Actualizaciones.
-- Usuarios y grupos.
-- Sudo.
-- SSH.
-- Firewall.
-- Logs.
-- Permisos.
-- Servicios innecesarios.
+- usuario olvido su contrasena;
+- aplicacion usa credencial antigua;
+- dispositivo intenta reconectar;
+- integracion mal configurada;
+- cambio reciente de politica de contrasenas.
 
-### Ejemplo de resultado
+Posibles señales de riesgo:
 
-- Guia en `linux/HARDENING-BASICO.md`.
-- Lab aplicando 3 controles.
-- Explicacion de riesgos mitigados.
+- muchos usuarios atacados desde la misma IP;
+- pocos intentos por usuario en muchos usuarios, posible password spraying;
+- login exitoso despues de fallos;
+- origen externo desconocido;
+- cuenta privilegiada involucrada.
 
-## Proyecto 3: OWASP Top 10 Resumido con Labs
+### Lo Que Debe Quedar Claro
 
-### Objetivo
+El objetivo no es solo contar eventos. El objetivo es explicar si el comportamiento parece normal, sospechoso o incidente, y por que.
 
-Documentar vulnerabilidades web comunes con causa, impacto y mitigacion.
+## Proyecto 2: Hardening Linux
+
+### Que Busca Enseñar
+
+Hardening significa reducir superficie de ataque. No es aplicar comandos al azar. Es entender que controles reducen que riesgos.
+
+### Areas de Revision
+
+- actualizaciones;
+- usuarios y grupos;
+- sudo;
+- SSH;
+- firewall;
+- logs;
+- permisos;
+- servicios innecesarios.
+
+### Como Pensarlo
+
+Ejemplo:
+
+```text
+Servicio SSH expuesto + password login + sin MFA + usuario con sudo = riesgo alto.
+```
+
+Controles posibles:
+
+- llaves SSH;
+- restriccion por IP;
+- usuarios nominales;
+- sudo limitado;
+- logs de autenticacion;
+- alertas por fuerza bruta.
+
+### Lo Que Debe Quedar Claro
+
+Cada control debe poder conectarse con un riesgo. Si no puedes explicar que riesgo reduce, probablemente solo estas siguiendo una checklist sin criterio.
+
+## Proyecto 3: OWASP Top 10 con Casos
+
+### Que Busca Enseñar
+
+OWASP Top 10 ayuda a entender categorias comunes de fallas web. El objetivo no es memorizar nombres, sino comprender causa, impacto y mitigacion.
 
 ### Vulnerabilidades Iniciales
 
 - Broken Access Control.
 - SQL Injection.
 - XSS.
-- Security Misconfiguration.
 - SSRF.
+- Security Misconfiguration.
 
-### Ejemplo de resultado
+### Como Pensarlo
 
-- Una nota por vulnerabilidad.
-- Un lab permitido por vulnerabilidad.
-- Reporte con remediacion.
+Para cada vulnerabilidad pregunta:
+
+- donde entra el dato o accion;
+- que confianza asume la aplicacion;
+- que validacion falta;
+- que impacto tendria;
+- que control lo previene;
+- que log ayudaria a detectarlo.
+
+### Lo Que Debe Quedar Claro
+
+Una vulnerabilidad web se entiende bien cuando puedes explicar la causa raiz y la remediacion, no solo el payload.
 
 ## Proyecto 4: Investigacion de Incidente Simulado
 
-### Objetivo
+### Que Busca Enseñar
 
-Simular trabajo de SOC.
+Este proyecto enseña como razonar como SOC: separar evidencia, hipotesis y conclusion.
 
 ### Caso
 
-Cuenta comprometida con varios logins fallidos y un login exitoso.
+Una cuenta muestra varios logins fallidos y luego un login exitoso desde una IP externa desconocida.
 
-### Ejemplo de resultado
+### Como Pensarlo
 
-- Linea de tiempo.
-- Evidencia.
-- Hipotesis.
-- Acciones recomendadas.
-- Mapeo MITRE ATT&CK.
+Preguntas:
 
-## Proyecto 5: Checklist Cloud Security
+- el usuario reconoce la actividad?
+- hubo MFA?
+- hubo cambios despues del login?
+- hay descargas, cambios de permisos o creacion de tokens?
+- la IP pertenece a VPN o proveedor conocido?
+- hay actividad similar en otros usuarios?
 
-### Objetivo
+### Conclusiones Posibles
 
-Crear una checklist para revisar configuraciones cloud basicas.
+- benigno: actividad esperada y confirmada;
+- sospechoso: falta contexto, requiere monitoreo;
+- incidente: acceso no autorizado confirmado o altamente probable.
 
-### Areas
+### Lo Que Debe Quedar Claro
 
-- IAM.
-- MFA.
-- Storage.
-- Logs.
-- Security groups.
-- Secretos.
+Un analista no debe saltar directo a "hackeo". Debe construir una conclusion con evidencia.
 
-### Ejemplo de resultado
+## Proyecto 5: Revision de Cloud Security
 
-- Checklist.
-- Tabla de riesgos.
-- Mitigaciones.
-- Referencias.
+### Que Busca Enseñar
 
-## Proyecto 6: Email Security Review
+Cloud security se basa en identidad, configuracion, visibilidad y responsabilidad compartida.
 
-### Objetivo
+### Areas Clave
 
-Documentar controles basicos contra phishing y spoofing.
+- IAM;
+- MFA;
+- storage;
+- logs;
+- security groups;
+- secretos;
+- backups;
+- cuentas privilegiadas.
 
-### Areas
+### Como Pensarlo
 
-- SPF.
-- DKIM.
-- DMARC.
-- MFA.
-- Reporte de phishing.
-- Concientizacion.
+Ejemplo de riesgo:
 
-### Ejemplo de resultado
+```text
+Bucket publico + datos sensibles + sin logs = riesgo de fuga dificil de investigar.
+```
 
-- Analisis de correo ficticio.
-- Checklist de controles.
-- Recomendaciones.
+Controles:
 
-## Proyecto 7: Tabletop de Ransomware
+- acceso privado;
+- cifrado;
+- logging;
+- politicas por rol;
+- alertas;
+- revision de permisos.
 
-### Objetivo
+### Lo Que Debe Quedar Claro
 
-Simular una respuesta organizacional ante ransomware.
+En cloud, muchas brechas ocurren por configuracion e identidad, no por vulnerabilidades complejas.
 
-### Ejemplo de resultado
+## Proyecto 6: Email Security y Phishing
 
-- Escenario.
-- Participantes.
-- Timeline.
-- Decisiones.
-- RTO/RPO.
-- Lecciones aprendidas.
+### Que Busca Enseñar
 
-## Proyecto 8: Access Review
+El correo sigue siendo una via comun de acceso inicial. Entender phishing implica mirar identidad, dominio, enlaces, adjuntos, headers y comportamiento del usuario.
 
-### Objetivo
+### Areas Clave
 
-Practicar revision de accesos.
+- SPF;
+- DKIM;
+- DMARC;
+- MFA;
+- reporte de phishing;
+- concientizacion;
+- analisis de headers;
+- enlaces y adjuntos.
 
-### Ejemplo de resultado
+### Como Pensarlo
 
-- Matriz de usuarios, roles y sistemas.
-- Permisos excesivos detectados.
-- Recomendaciones.
-- Evidencia requerida.
+Preguntas:
+
+- el dominio del remitente es legitimo?
+- SPF/DKIM/DMARC alinean?
+- el enlace apunta a un dominio esperado?
+- hay urgencia, presion o suplantacion?
+- el usuario interactuo?
+- hubo login posterior?
+
+### Lo Que Debe Quedar Claro
+
+Phishing no se analiza solo por apariencia. Se analiza combinando señales tecnicas y contexto humano.
+
+## Proyecto 7: Ransomware Tabletop
+
+### Que Busca Enseñar
+
+Un tabletop no prueba herramientas. Prueba decisiones, comunicacion y preparacion.
+
+### Escenario
+
+Una organizacion detecta archivos cifrados en varios equipos y sospecha ransomware.
+
+### Como Pensarlo
+
+Preguntas:
+
+- que sistemas estan afectados?
+- hay backups?
+- los backups estan aislados?
+- hay propagacion activa?
+- quien decide apagar, aislar o restaurar?
+- cual es el RTO/RPO?
+- que se comunica a usuarios y directivos?
+
+### Lo Que Debe Quedar Claro
+
+Responder ransomware requiere coordinacion. No basta con "tener backup"; hay que saber restaurar, contener y comunicar.
+
+## Proyecto 8: Revision de Accesos
+
+### Que Busca Enseñar
+
+La revision de accesos busca comprobar si usuarios, roles y permisos siguen teniendo sentido.
+
+### Como Pensarlo
+
+Preguntas:
+
+- el usuario sigue en la organizacion?
+- el rol corresponde a su funcion?
+- hay privilegios excesivos?
+- hay cuentas compartidas?
+- hay cuentas sin owner?
+- hay accesos antiguos no revocados?
+
+### Lo Que Debe Quedar Claro
+
+El acceso excesivo no siempre parece incidente, pero aumenta impacto cuando una cuenta se compromete.
 
 ## Capstone Projects
 
-Cuando termines varios proyectos pequeños, continua con:
+Los capstones combinan varios temas en un escenario mas grande:
 
-- `capstone-projects/SOC-INVESTIGATION.md`
-- `capstone-projects/SECURE-SMALL-BUSINESS.md`
-- `capstone-projects/APPSEC-REVIEW.md`
-- `capstone-projects/CLOUD-SECURITY-REVIEW.md`
+- investigacion SOC;
+- pequeña empresa segura;
+- AppSec review;
+- Cloud Security review.
 
-## Como Terminar un Proyecto
+La idea de un capstone es integrar teoria: redes, identidad, logs, riesgo, controles, comunicacion y remediacion.
 
-Un proyecto esta terminado cuando tiene:
+## Criterio de Dominio
 
-- README.
-- Objetivo.
-- Pasos.
-- Evidencia.
-- Resultado.
-- Lecciones aprendidas.
-- Limitaciones.
+Estos proyectos cumplen su funcion cuando puedes explicar:
+
+- que problema estudia cada escenario;
+- que evidencia seria relevante;
+- que falsos positivos podrian existir;
+- que riesgo se intenta reducir;
+- que controles aplican;
+- que conclusion seria defendible;
+- que limitaciones tiene el analisis.

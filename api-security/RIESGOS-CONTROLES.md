@@ -86,17 +86,19 @@ Evitar:
 - Tokens.
 - Datos sensibles innecesarios.
 
-## Checklist
+## Criterios de Revision
 
-- [ ] Autenticacion requerida.
-- [ ] Autorizacion por objeto.
-- [ ] Validacion de entrada.
-- [ ] Allowlist de campos.
-- [ ] Rate limiting.
-- [ ] Errores seguros.
-- [ ] Logs utiles.
-- [ ] Tokens con expiracion.
-- [ ] Permisos minimos.
+Una API segura debe evaluarse con estos criterios:
+
+- autenticacion requerida cuando el recurso no es publico;
+- autorizacion por objeto para evitar BOLA/IDOR;
+- validacion de entrada en servidor;
+- allowlist de campos para evitar mass assignment;
+- rate limiting para reducir abuso;
+- errores seguros que no filtren detalles internos;
+- logs utiles sin contrasenas ni tokens;
+- tokens con expiracion razonable;
+- permisos minimos entre servicios y datos.
 
 ## Practica
 

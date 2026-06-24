@@ -133,37 +133,33 @@ En codigo frontend, revisa:
 - valores de URL insertados en DOM;
 - librerias de sanitizacion mal configuradas.
 
-## Practica Segura Guiada
+## Observacion Segura
 
-Usa labs autorizados. Documenta:
+XSS debe estudiarse en laboratorios autorizados o aplicaciones propias. La idea es entender el flujo, no lanzar payloads contra sistemas ajenos.
 
-- Donde entra el dato.
-- Donde se renderiza.
-- Que contexto usa.
-- Impacto.
-- Mitigacion.
+Para analizar un caso de XSS, separa:
 
-## Mini Laboratorio Defensivo
+- entrada: donde llega el dato no confiable;
+- almacenamiento: si se guarda o solo se refleja;
+- salida: donde se renderiza;
+- contexto: HTML, atributo, JavaScript, URL o CSS;
+- impacto: que podria hacer un atacante;
+- control: escape, sanitizacion, CSP y cookies seguras;
+- deteccion: logs y señales sin guardar payloads peligrosos completos si no hace falta.
 
-Crea `revision-xss-defensiva.md`:
+## Criterios de Revision
 
-1. Elige un flujo: comentarios, perfil, busqueda o mensajes.
-2. Explica donde entra el dato.
-3. Explica donde se renderiza.
-4. Identifica el contexto: HTML, atributo, JS, URL o CSS.
-5. Define el control correcto.
-6. Agrega una recomendacion de CSP.
-7. Explica que cookies deberian tener `HttpOnly`, `Secure` y `SameSite`.
+Una revision defensiva busca comprobar si:
 
-## Checklist de Revision
-
-- [ ] Datos no confiables se escapan segun contexto.
-- [ ] HTML permitido pasa por sanitizador confiable.
-- [ ] No se usa `innerHTML` con datos no confiables.
-- [ ] Cookies sensibles usan `HttpOnly`.
-- [ ] CSP esta definida y probada.
-- [ ] Inputs se validan, aunque no sea la defensa principal.
-- [ ] Logs registran intentos sospechosos sin guardar payloads peligrosos completos si no es necesario.
+- los datos no confiables se escapan segun contexto;
+- el HTML permitido pasa por sanitizador confiable;
+- no se usa `innerHTML` con datos no confiables;
+- cookies sensibles usan `HttpOnly`;
+- cookies sensibles usan `Secure`;
+- cookies sensibles usan `SameSite`;
+- CSP esta definida como capa adicional;
+- inputs se validan, aunque no sean la defensa principal;
+- logs registran intentos sospechosos sin crear nuevos riesgos.
 
 ## Errores Comunes
 

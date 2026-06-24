@@ -56,4 +56,3 @@ Revisa:
 
 - [README.md](README.md)
 - [INICIO-AQUI.md](INICIO-AQUI.md)
-- [SECURITY.md](SECURITY.md)

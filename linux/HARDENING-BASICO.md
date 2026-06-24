@@ -138,16 +138,18 @@ Eventos importantes:
 - Servicios reiniciados.
 - Errores repetidos.
 
-## Checklist
+## Criterios de Revision
 
-- [ ] Sistema actualizado.
-- [ ] Usuarios revisados.
-- [ ] Sudo revisado.
-- [ ] SSH revisado.
-- [ ] Firewall revisado.
-- [ ] Servicios revisados.
-- [ ] Logs disponibles.
-- [ ] Cambios documentados.
+Una revision de hardening debe considerar:
+
+- sistema actualizado;
+- usuarios revisados;
+- sudo revisado;
+- SSH revisado;
+- firewall revisado;
+- servicios revisados;
+- logs disponibles;
+- cambios documentados.
 
 ## Ejemplo de resultado
 

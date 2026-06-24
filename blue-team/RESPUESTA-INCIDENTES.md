@@ -212,17 +212,17 @@ Agrega:
 - evidencia que no debes perder;
 - detecciones posteriores.
 
-## Mini Laboratorio: Cuenta Comprometida
+## Criterios Para Analizar una Cuenta Comprometida
 
-Crea `ir-cuenta-comprometida.md`:
+Un caso de cuenta comprometida debe explicar:
 
-1. Resumen ejecutivo.
-2. Severidad.
-3. Timeline.
-4. Evidencia.
-5. Contencion inmediata.
-6. Erradicacion.
-7. Recuperacion.
+- resumen ejecutivo;
+- severidad;
+- timeline;
+- evidencia;
+- contencion inmediata;
+- erradicacion;
+- recuperacion;
 8. Comunicacion.
 9. Lecciones aprendidas.
 10. Mejoras de deteccion.

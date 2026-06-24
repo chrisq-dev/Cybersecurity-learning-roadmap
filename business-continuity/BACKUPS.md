@@ -141,31 +141,31 @@ Define:
 - Retencion.
 - Como probar restauracion.
 
-## Mini Laboratorio: Plan de Restore
+## Criterios de un Plan de Restore
 
-Crea `plan-restore-basico.md`:
+Un plan de restore debe explicar:
 
-1. Sistema.
-2. Datos respaldados.
-3. Frecuencia.
-4. RPO.
-5. RTO.
-6. Retencion.
-7. Responsable.
-8. Pasos de restauracion.
-9. Evidencia de prueba.
-10. Riesgos pendientes.
+- sistema involucrado;
+- datos respaldados;
+- frecuencia;
+- RPO;
+- RTO;
+- retencion;
+- responsable;
+- pasos de restauracion;
+- evidencia de prueba;
+- riesgos pendientes.
 
-## Checklist
+## Controles Que Deben Entenderse
 
-- [ ] Backup existe.
-- [ ] Backup esta cifrado.
-- [ ] Backup esta aislado o inmutable.
-- [ ] Restore fue probado.
-- [ ] Owner definido.
-- [ ] RPO/RTO documentados.
-- [ ] Alertas por fallo.
-- [ ] Credenciales protegidas.
+- El backup debe existir y cubrir datos importantes.
+- El backup debe estar cifrado si contiene informacion sensible.
+- El backup debe estar aislado o ser inmutable para resistir ransomware.
+- El restore debe probarse; un backup no probado es una suposicion.
+- Debe existir owner responsable.
+- RPO y RTO deben estar definidos segun impacto.
+- Fallos de backup deben generar alertas.
+- Credenciales de backup deben protegerse con mucho cuidado.
 
 ## Errores Comunes
 

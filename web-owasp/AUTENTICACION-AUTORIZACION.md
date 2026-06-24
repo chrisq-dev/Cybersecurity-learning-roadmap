@@ -227,36 +227,37 @@ Una tabla de ejemplo puede verse asi:
 | Panel admin | | | |
 | Logs | | | |
 
-Agrega:
+En una revision informativa conviene considerar:
 
 - que endpoints existirian;
 - que respuesta daria cada caso no permitido;
 - que eventos registrarias;
 - que acciones requieren MFA o reautenticacion.
 
-## Mini Laboratorio: Matriz de Acceso
+## Criterios de Revision de Acceso
 
-Crea `matriz-authz-app.md` con:
+Una matriz de acceso ayuda a razonar sobre:
 
-1. Roles.
-2. Recursos.
-3. Acciones.
-4. Reglas permitidas.
-5. Reglas denegadas.
-6. Pruebas manuales.
-7. Eventos de auditoria.
+- roles;
+- recursos;
+- acciones;
+- reglas permitidas;
+- reglas denegadas;
+- respuestas esperadas;
+- eventos de auditoria;
+- casos donde se requiere MFA o reautenticacion.
 
-## Checklist
+## Controles Que Deben Entenderse
 
-- [ ] MFA en cuentas sensibles.
-- [ ] Rate limit en login.
-- [ ] Password hashing fuerte.
-- [ ] Cookies seguras.
-- [ ] Sesion rota despues de login.
-- [ ] Autorizacion por recurso.
-- [ ] Backend valida permisos.
-- [ ] Errores 401/403 correctos.
-- [ ] Logs de acciones sensibles.
+- MFA en cuentas sensibles reduce abuso de credenciales.
+- Rate limit en login reduce fuerza bruta y automatizacion.
+- Password hashing fuerte reduce impacto si se filtran hashes.
+- Cookies seguras reducen robo o envio indebido de sesion.
+- Rotar sesion despues de login reduce fijacion de sesion.
+- Autorizacion por recurso evita Broken Access Control.
+- El backend debe validar permisos; el frontend no es confiable.
+- Errores 401/403 correctos ayudan a separar autenticacion y autorizacion.
+- Logs de acciones sensibles permiten investigacion posterior.
 
 ## Criterio de Dominio
 

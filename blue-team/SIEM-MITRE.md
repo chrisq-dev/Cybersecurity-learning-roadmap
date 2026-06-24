@@ -196,20 +196,20 @@ Agrega:
 - accion recomendada;
 - severidad justificada.
 
-## Mini Laboratorio: Caso de Uso SIEM
+## Criterios de un Caso de Uso SIEM
 
-Crea `caso-uso-siem-logins.md` con:
+Un caso de uso SIEM debe explicar:
 
-1. Pregunta de investigacion.
-2. Fuentes de log.
-3. Campos requeridos.
-4. Logica conceptual.
-5. Ventana temporal.
-6. Umbral.
-7. MITRE tactica/tecnica.
-8. Falsos positivos.
-9. Pasos de investigacion.
-10. Respuesta recomendada.
+- pregunta de investigacion;
+- fuentes de log;
+- campos requeridos;
+- logica conceptual;
+- ventana temporal;
+- umbral;
+- MITRE tactica/tecnica;
+- falsos positivos;
+- pasos de investigacion;
+- respuesta recomendada.
 
 ## Errores Comunes
 

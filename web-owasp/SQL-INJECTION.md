@@ -142,46 +142,30 @@ Ejemplo:
 
 El usuario recibe un mensaje generico. El detalle tecnico va a logs protegidos.
 
-## Practica Segura Guiada
+## Observacion Segura
 
-Usa solo laboratorios autorizados como PortSwigger Web Security Academy o una app local vulnerable.
+La SQL Injection debe estudiarse solo en laboratorios autorizados o aplicaciones locales vulnerables creadas para aprendizaje.
 
-Para documentar un lab:
+Una forma segura de analizar un caso es separar:
 
-```md
-# SQL Injection Lab
+- causa: donde se concatena o interpreta input como SQL;
+- flujo: que endpoint recibe el dato;
+- impacto: que datos podrian leerse o modificarse;
+- mitigacion: parametros, allowlists y minimo privilegio;
+- deteccion: errores, patrones raros y eventos repetidos;
+- limitacion: que no se puede afirmar sin evidencia.
 
-## Causa
+## Criterios de Revision
 
-## Evidencia
+Una revision defensiva busca comprobar si:
 
-## Impacto
-
-## Mitigacion
-
-## Lecciones Aprendidas
-```
-
-## Mini Laboratorio Defensivo
-
-Crea `revision-sqli-defensiva.md`:
-
-1. Describe un endpoint vulnerable hipotetico.
-2. Identifica donde entra el dato.
-3. Explica por que concatenar es riesgoso.
-4. Escribe la version conceptual segura con parametro.
-5. Define que logs revisarias.
-6. Propone permisos minimos para la cuenta de DB.
-
-## Checklist de Revision
-
-- [ ] No hay concatenacion directa de SQL.
-- [ ] Consultas raw usan parametros.
-- [ ] Campos dinamicos usan allowlist.
-- [ ] Errores no revelan estructura interna.
-- [ ] Cuenta DB tiene minimo privilegio.
-- [ ] Eventos sospechosos quedan en logs.
-- [ ] Pruebas cubren login, busqueda, filtros y reportes.
+- no hay concatenacion directa de SQL;
+- las consultas raw usan parametros;
+- los campos dinamicos usan allowlist;
+- los errores no revelan estructura interna;
+- la cuenta de base de datos tiene minimo privilegio;
+- eventos sospechosos quedan en logs utiles;
+- flujos sensibles como login, busqueda, filtros y reportes tienen controles.
 
 ## Errores Comunes
 

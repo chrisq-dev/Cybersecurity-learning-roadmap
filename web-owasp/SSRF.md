@@ -153,24 +153,25 @@ Responde:
 - Que allowlist permitirias?
 - Que logs guardarias?
 
-Agrega:
+En una revision informativa conviene considerar:
 
 - que red interna no debe ser accesible;
 - que puertos bloquearias;
 - como manejarias redirecciones;
 - que mensaje de error mostrarias al usuario.
 
-## Mini Laboratorio Defensivo
+## Criterios de Revision
 
-Crea `revision-ssrf-defensiva.md` con:
+Un flujo con riesgo de SSRF debe analizar:
 
-1. Flujo de negocio que necesita consultar URLs.
-2. Destinos permitidos.
-3. Destinos prohibidos.
-4. Validacion de esquema, host y puerto.
-5. Politica de red egress.
-6. Logs y alertas.
-7. Impacto si el control falla.
+- flujo de negocio que necesita consultar URLs;
+- destinos permitidos;
+- destinos prohibidos;
+- validacion de esquema, host y puerto;
+- politica de red egress;
+- manejo de redirecciones;
+- logs y alertas;
+- impacto si el control falla.
 
 ## Criterio de Dominio
 

@@ -138,7 +138,7 @@ Diseña una funcion segura de upload para imagenes de perfil:
 - Ubicacion de almacenamiento.
 - Permisos.
 
-Agrega:
+En una revision informativa conviene considerar:
 
 - flujo de rechazo;
 - logs;
@@ -146,29 +146,29 @@ Agrega:
 - que pasa si se detecta malware;
 - como borrarias archivos antiguos.
 
-## Mini Laboratorio Defensivo
+## Criterios de Revision
 
-Crea `diseno-upload-seguro.md`:
+Un flujo de upload seguro debe explicar:
 
-1. Caso de uso.
-2. Tipos permitidos.
-3. Validaciones.
-4. Almacenamiento.
-5. Permisos.
-6. Logs.
-7. Manejo de errores.
-8. Riesgos residuales.
+- caso de uso real;
+- tipos permitidos;
+- validaciones;
+- almacenamiento;
+- permisos;
+- logs;
+- manejo de errores;
+- riesgos residuales.
 
-## Checklist
+## Controles Que Deben Entenderse
 
-- [ ] Allowlist de tipos.
-- [ ] Tamaño maximo.
-- [ ] Nombre generado por servidor.
-- [ ] Storage no ejecutable.
-- [ ] Permisos minimos.
-- [ ] Descarga autorizada.
-- [ ] Escaneo si aplica.
-- [ ] Logs suficientes.
+- Allowlist de tipos reduce archivos inesperados.
+- Tamaño maximo reduce abuso de almacenamiento y DoS.
+- Nombre generado por servidor evita abuso de rutas o nombres peligrosos.
+- Storage no ejecutable reduce riesgo de ejecucion remota.
+- Permisos minimos reducen impacto si algo falla.
+- Descarga autorizada evita fuga de archivos privados.
+- Escaneo puede agregar defensa si el contexto lo justifica.
+- Logs suficientes permiten investigar abuso sin exponer datos sensibles.
 
 ## Criterio de Dominio
 

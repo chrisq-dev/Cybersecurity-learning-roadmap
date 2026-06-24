@@ -195,9 +195,9 @@ Agrega tambien:
 - Que eventos serian sospechosos.
 - Que respuesta daria si no hay permisos.
 
-## Mini Laboratorio: Matriz de Permisos
+## Criterios Para una Matriz de Permisos
 
-Crea `matriz-api-notas.md`:
+Una matriz de permisos ayuda a entender que puede hacer cada tipo de usuario sobre cada endpoint:
 
 | Endpoint | Usuario normal | Admin | Sin login | Riesgo |
 | --- | --- | --- | --- | --- |
@@ -207,7 +207,7 @@ Crea `matriz-api-notas.md`:
 | PATCH /notes/{id} |  |  |  |  |
 | DELETE /notes/{id} |  |  |  |  |
 
-Despues escribe 5 pruebas manuales para validar que un usuario no pueda tocar notas de otro usuario.
+El punto importante es validar mentalmente que un usuario no pueda leer, modificar o borrar recursos de otro usuario. La matriz debe revelar diferencias entre autenticacion, rol y propiedad del recurso.
 
 ## Criterio de Dominio
 

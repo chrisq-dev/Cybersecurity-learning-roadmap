@@ -92,16 +92,18 @@ Riesgos comunes:
 | Auditoria | CloudTrail | Activity Log | Cloud Audit Logs |
 | Secretos | Secrets Manager | Key Vault | Secret Manager |
 
-## Checklist Basica Cloud
+## Criterios Basicos Cloud
 
-- [ ] MFA en cuentas privilegiadas.
-- [ ] Permisos revisados.
-- [ ] Storage no publico salvo necesidad.
-- [ ] Logs de auditoria activos.
-- [ ] Llaves antiguas rotadas.
-- [ ] Security groups/firewalls revisados.
-- [ ] Secretos en secret manager.
-- [ ] Backups definidos.
+Una postura cloud basica debe considerar:
+
+- MFA en cuentas privilegiadas;
+- permisos revisados;
+- storage no publico salvo necesidad justificada;
+- logs de auditoria activos;
+- llaves antiguas rotadas o eliminadas;
+- security groups y firewalls revisados;
+- secretos fuera del codigo y dentro de servicios diseñados para secretos;
+- backups definidos segun criticidad.
 
 ## Practica Conceptual
 

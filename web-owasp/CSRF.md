@@ -141,23 +141,24 @@ Responde:
 - Que impacto tiene?
 - Como lo mitigarias?
 
-Agrega:
+En una revision informativa conviene considerar:
 
 - que cookie flags usarias;
 - si pedirias reautenticacion;
 - que logs registrarias;
 - que codigo de respuesta daria si falta token.
 
-## Mini Laboratorio Defensivo
+## Criterios de Revision
 
-Crea `revision-csrf-defensiva.md`:
+Para entender si una accion es sensible, revisa:
 
-1. Lista 5 acciones sensibles.
-2. Define si cambian estado.
-3. Define control CSRF.
-4. Define politica SameSite.
-5. Define si requieren reautenticacion.
-6. Define eventos de log.
+- si cambia estado;
+- si usa cookies automaticamente;
+- si requiere token CSRF;
+- que politica `SameSite` aplica;
+- si requiere reautenticacion;
+- que evento de log ayuda a investigar abuso;
+- que respuesta debe devolverse si falta el token.
 
 ## Criterio de Dominio
 

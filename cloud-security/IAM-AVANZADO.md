@@ -212,27 +212,27 @@ Responde:
 - Como reducirias privilegios?
 - Que logs activarias?
 
-## Mini Laboratorio: Revision IAM
+## Criterios de Revision IAM
 
-Crea `revision-iam-avanzada.md`:
+Una revision IAM avanzada debe razonar sobre:
 
-1. Lista 5 identidades humanas y 5 no humanas hipoteticas.
-2. Define permisos minimos para cada una.
-3. Identifica 5 permisos peligrosos.
-4. Propone condiciones.
-5. Define logs y alertas.
-6. Escribe una politica conceptual menos permisiva que `Action: * Resource: *`.
+- identidades humanas y no humanas;
+- permisos minimos para cada identidad;
+- permisos peligrosos;
+- condiciones como origen, recurso, MFA o tiempo;
+- logs y alertas;
+- alternativas menos permisivas que `Action: * Resource: *`.
 
-## Checklist
+## Controles Que Deben Entenderse
 
-- [ ] MFA en identidades humanas sensibles.
-- [ ] Sin uso diario de root.
-- [ ] Roles temporales sobre llaves permanentes.
-- [ ] Llaves viejas eliminadas.
-- [ ] Permisos wildcard justificados.
-- [ ] Logs protegidos.
-- [ ] Secretos fuera del codigo.
-- [ ] Revision periodica de accesos.
+- MFA en identidades humanas sensibles reduce abuso de credenciales.
+- Evitar uso diario de root reduce impacto operativo.
+- Roles temporales son preferibles a llaves permanentes.
+- Llaves viejas aumentan superficie de compromiso.
+- Permisos wildcard deben estar justificados y limitados.
+- Logs protegidos evitan que un atacante borre evidencia.
+- Secretos fuera del codigo reducen fugas accidentales.
+- Revision periodica de accesos reduce privilegios acumulados.
 
 ## Errores Comunes
 

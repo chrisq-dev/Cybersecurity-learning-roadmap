@@ -180,17 +180,19 @@ Necesitas:
 - alertas sobre cambios sensibles;
 - inventario de workloads.
 
-## Checklist
+## Criterios de Revision
 
-- [ ] RBAC minimo.
-- [ ] Pods no privilegiados.
-- [ ] Contenedores no root.
-- [ ] Secrets protegidos.
-- [ ] Network Policies.
-- [ ] Imagenes escaneadas.
-- [ ] API server restringido.
-- [ ] Logs y auditoria activos.
-- [ ] Limites de CPU/memoria.
+Una revision de Kubernetes debe considerar:
+
+- RBAC minimo;
+- pods no privilegiados;
+- contenedores no root;
+- secrets protegidos;
+- Network Policies;
+- imagenes escaneadas;
+- API server restringido;
+- logs y auditoria activos;
+- limites de CPU y memoria.
 
 ## Practica Conceptual Guiada
 
@@ -208,16 +210,18 @@ Responde:
 - Que alternativa segura buscarias?
 - Como lo bloquearias?
 
-## Mini Laboratorio: Revision de Manifest
+## Criterios Para Leer un Manifest
 
-Crea `revision-kubernetes-manifest.md`:
+Al leer un manifest, observa:
 
-1. Describe un pod hipotetico.
-2. Lista 5 configuraciones inseguras posibles.
-3. Propone un `securityContext` seguro conceptual.
-4. Define permisos RBAC minimos.
-5. Define una Network Policy conceptual.
-6. Explica como protegerias secrets.
+- que hace el pod;
+- si usa configuraciones privilegiadas;
+- que usuario ejecuta el contenedor;
+- que permisos RBAC necesita realmente;
+- que comunicacion de red deberia permitir;
+- como maneja secrets;
+- que limites de recursos tiene;
+- que evidencia quedaria en logs o auditoria.
 7. Define que logs revisarias.
 
 ## Errores Comunes

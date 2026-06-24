@@ -157,22 +157,22 @@ Define:
 - Severidad.
 - Pasos de investigacion.
 
-## Mini Laboratorio: Documento de Deteccion
+## Criterios de una Deteccion
 
-Crea `deteccion-login-exitoso-tras-fallos.md`:
+Una deteccion bien pensada debe describir:
 
-1. Nombre.
-2. Hipotesis.
-3. Riesgo.
-4. Fuente de datos.
-5. Campos requeridos.
-6. Logica conceptual.
-7. MITRE.
-8. Severidad.
-9. Falsos positivos.
-10. Pasos de triage.
-11. Acciones de respuesta.
-12. Como probarla.
+- nombre;
+- hipotesis;
+- riesgo;
+- fuente de datos;
+- campos requeridos;
+- logica conceptual;
+- MITRE;
+- severidad;
+- falsos positivos;
+- pasos de triage;
+- acciones de respuesta;
+- forma segura de probarla.
 
 ## Errores Comunes
 

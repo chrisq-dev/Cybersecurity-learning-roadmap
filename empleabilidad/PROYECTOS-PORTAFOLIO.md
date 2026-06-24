@@ -1,68 +1,111 @@
 # Proyectos de Portafolio
 
-Estos proyectos estan pensados para demostrar habilidad real. No tienen que ser enormes. Deben estar terminados, explicados y ser faciles de revisar.
+Un portafolio de ciberseguridad no debe ser una carpeta llena de archivos sin explicacion. Debe demostrar que entiendes problemas, riesgos, evidencia, controles y comunicacion tecnica.
 
-## Proyecto 1: Analizador de Logs de Autenticacion
+Los proyectos de esta seccion son ideas de estudio y demostracion. No son entregables obligatorios ni tienen que vivir en carpetas especificas. Lo importante es que puedas explicar el razonamiento detras de cada proyecto.
+
+## Que Debe Demostrar un Proyecto
+
+Un proyecto fuerte demuestra:
+
+- comprension del problema;
+- uso de datos ficticios o autorizados;
+- analisis claro;
+- identificacion de riesgos;
+- mitigaciones razonables;
+- limitaciones;
+- comunicacion simple.
+
+Si un proyecto no se puede explicar en una entrevista, todavia no esta maduro aunque tenga codigo.
+
+## Proyecto 1: Analisis de Logs de Autenticacion
 
 Area: Blue Team / Python.
 
-Objetivo:
+### Que Enseña
 
-- Leer logs de ejemplo.
-- Detectar intentos fallidos.
-- Contar IPs o usuarios con mas fallos.
-- Generar un reporte Markdown.
+Este proyecto enseña a interpretar eventos de autenticacion y distinguir entre actividad normal, error operativo, fuerza bruta o password spraying.
 
-Evidencia:
+### Conceptos Clave
 
-- Script en `scripts/`.
-- Logs de ejemplo sin datos sensibles.
-- Reporte en `labs/`.
-- Explicacion de falsos positivos.
+- logins fallidos;
+- logins exitosos;
+- IP origen;
+- usuario objetivo;
+- horario;
+- privilegios;
+- falsos positivos;
+- severidad.
 
-Habilidades demostradas:
+### Como Explicarlo
 
-- Python.
-- Logs.
-- Deteccion basica.
-- Reporte tecnico.
+Una explicacion madura no dice solo "conte fallos". Dice:
 
-## Proyecto 2: Guia de Hardening Linux
+```text
+Observe multiples fallos contra una cuenta, revise si hubo exito posterior, compare origen y horario, considere falsos positivos y propuse acciones proporcionales.
+```
+
+### Falsos Positivos
+
+Posibles causas benignas:
+
+- usuario con contrasena antigua;
+- servicio mal configurado;
+- dispositivo intentando reconectar;
+- cambio reciente de credenciales;
+- pruebas internas autorizadas.
+
+### Habilidades Demostradas
+
+- lectura de logs;
+- analisis de patrones;
+- pensamiento defensivo;
+- comunicacion de hallazgos;
+- automatizacion si decides usar codigo.
+
+## Proyecto 2: Hardening Linux
 
 Area: Linux / Blue Team.
 
-Objetivo:
+### Que Enseña
 
-- Crear una checklist de hardening basico.
-- Explicar cada control.
-- Probar configuraciones en lab.
+Hardening enseña a reducir superficie de ataque. El valor no esta en listar controles, sino en explicar por que cada control existe.
 
-Controles sugeridos:
+### Controles Relevantes
 
-- Actualizaciones.
-- Usuarios y sudo.
-- SSH seguro.
-- Firewall local.
-- Permisos.
-- Logs.
+- actualizaciones;
+- usuarios y sudo;
+- SSH seguro;
+- firewall local;
+- permisos;
+- logs;
+- servicios innecesarios.
 
-Evidencia:
+### Como Explicarlo
 
-- Guia en `linux/`.
-- Lab documentado.
-- Comandos usados.
+Una buena explicacion conecta control con riesgo:
 
-## Proyecto 3: OWASP Top 10 con Labs
+```text
+Restringir SSH reduce exposicion administrativa. Revisar sudo reduce impacto si una cuenta normal se compromete. Logs permiten investigar eventos posteriores.
+```
+
+### Habilidades Demostradas
+
+- administracion basica;
+- criterio de permisos;
+- reduccion de superficie;
+- lectura de logs;
+- documentacion tecnica.
+
+## Proyecto 3: OWASP Top 10 con Casos
 
 Area: Seguridad web.
 
-Objetivo:
+### Que Enseña
 
-- Documentar 5 vulnerabilidades OWASP.
-- Resolver labs permitidos.
-- Explicar causa, impacto y mitigacion.
+Este proyecto demuestra que entiendes vulnerabilidades web por causa, impacto y mitigacion, no solo por nombre.
 
-Vulnerabilidades iniciales:
+### Vulnerabilidades Iniciales
 
 - Broken Access Control.
 - SQL Injection.
@@ -70,98 +113,160 @@ Vulnerabilidades iniciales:
 - SSRF.
 - Security Misconfiguration.
 
-Evidencia:
+### Como Explicarlo
 
-- Writeups permitidos en `writeups/`.
-- Tabla comparativa.
-- Notas en `web-owasp/`.
+Para cada caso, debes poder decir:
 
-## Proyecto 4: Laboratorio de Red Segmentada
+- que confianza se rompio;
+- que dato o accion no se valido;
+- que impacto tendria;
+- que control lo reduce;
+- como se detectaria.
+
+### Habilidades Demostradas
+
+- HTTP;
+- autorizacion;
+- validacion de entrada;
+- lectura de requests;
+- remediacion;
+- comunicacion de riesgo.
+
+## Proyecto 4: Red Segmentada
 
 Area: Redes / Cisco.
 
-Objetivo:
+### Que Enseña
 
-- Diseñar una red con VLANs.
-- Separar segmentos.
-- Aplicar ACLs.
-- Documentar conectividad permitida y bloqueada.
+Este proyecto demuestra que entiendes segmentacion, VLANs, ACLs y control de movimiento lateral.
 
-Evidencia:
+### Conceptos Clave
 
-- Diagrama.
-- Configuracion.
-- Pruebas de conectividad.
-- Explicacion de seguridad.
+- VLANs;
+- subredes;
+- routing entre VLANs;
+- ACLs;
+- zonas de red;
+- administracion separada.
+
+### Como Explicarlo
+
+Una explicacion madura:
+
+```text
+Separe usuarios, servidores, invitados y administracion para que un compromiso en un segmento no permita acceso plano a toda la red.
+```
+
+### Habilidades Demostradas
+
+- diseño de red;
+- seguridad por zonas;
+- reglas de acceso;
+- minimo privilegio en red;
+- documentacion de flujos.
 
 ## Proyecto 5: Investigacion de Alerta Simulada
 
 Area: SOC / Blue Team.
 
-Objetivo:
+### Que Enseña
 
-- Tomar una alerta simulada.
-- Revisar evidencia.
-- Formular hipotesis.
-- Concluir si es incidente o falso positivo.
-- Recomendar acciones.
+Este proyecto demuestra capacidad de triage: reunir evidencia, formular hipotesis, evaluar impacto y concluir con claridad.
 
-Evidencia:
+### Como Pensarlo
 
-- Reporte en `labs/`.
-- Timeline.
-- IOCs si aplica.
-- Relacion con MITRE ATT&CK.
+Una alerta no es una conclusion. Es una señal.
 
-## Proyecto 6: Inventario de Activos Simple
+Debes poder diferenciar:
 
-Area: Python / Seguridad Operativa.
+- hecho observado;
+- hipotesis;
+- falso positivo;
+- incidente confirmado;
+- accion recomendada.
 
-Objetivo:
+### Habilidades Demostradas
 
-- Leer un CSV con activos.
-- Identificar equipos sin owner, sin criticidad o sin fecha de actualizacion.
-- Generar reporte.
+- analisis defensivo;
+- manejo de incertidumbre;
+- MITRE ATT&CK;
+- severidad;
+- comunicacion ejecutiva y tecnica.
 
-Evidencia:
+## Proyecto 6: Inventario de Activos
 
-- Script.
-- CSV de ejemplo ficticio.
-- Reporte Markdown.
+Area: Seguridad Operativa.
 
-## Proyecto 7: Checklist de Cloud Security
+### Que Enseña
+
+No puedes proteger bien lo que no sabes que existe. Inventario de activos conecta seguridad con operacion.
+
+### Conceptos Clave
+
+- owner;
+- criticidad;
+- exposicion;
+- sistema operativo;
+- fecha de actualizacion;
+- datos que maneja;
+- dependencia de negocio.
+
+### Como Explicarlo
+
+El valor esta en priorizar:
+
+```text
+Un servidor expuesto, sin owner y con datos sensibles merece mas atencion que un activo interno de baja criticidad.
+```
+
+## Proyecto 7: Cloud Security Review
 
 Area: Cloud Security.
 
-Objetivo:
+### Que Enseña
 
-- Crear checklist basica para IAM, storage, logging y secretos.
-- Explicar errores comunes.
-- Proponer mitigaciones.
+Cloud security demuestra criterio sobre identidad, storage, logging, redes y secretos.
 
-Evidencia:
+### Areas Clave
 
-- Guia en `cloud-security/`.
-- Tabla de riesgos.
-- Referencias oficiales.
+- IAM;
+- MFA;
+- storage;
+- logs;
+- security groups;
+- secretos;
+- backups.
 
-## Como Presentar Cada Proyecto
+### Como Explicarlo
 
-Cada proyecto debe tener:
+Una explicacion fuerte conecta configuracion con riesgo:
 
-- Problema.
-- Objetivo.
-- Herramientas.
-- Pasos.
-- Resultado.
-- Riesgos detectados.
-- Remediacion.
-- Que aprendi.
+```text
+Un bucket publico no siempre es malo, pero si contiene datos sensibles y no hay logs, el riesgo de fuga y falta de evidencia aumenta mucho.
+```
+
+## Como Presentar un Proyecto
+
+Cuando hables de un proyecto, la estructura clara es:
+
+1. Problema.
+2. Contexto.
+3. Riesgo.
+4. Analisis.
+5. Controles.
+6. Limitaciones.
+7. Aprendizaje.
+
+No necesitas prometer que resolviste todo. Necesitas demostrar que piensas con criterio.
 
 ## Prioridad Recomendada
 
-1. Analizador de logs.
-2. Guia de hardening Linux.
-3. OWASP Top 10 con labs.
+Para empezar, conviene dominar primero:
+
+1. Analisis de logs.
+2. Hardening Linux.
+3. OWASP Top 10 con casos.
 4. Investigacion de alerta simulada.
-5. Laboratorio de red segmentada.
+5. Red segmentada.
+
+Ese orden construye base: sistemas, evidencia, web, defensa y arquitectura.
