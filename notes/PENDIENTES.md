@@ -24,7 +24,7 @@ Archivo para registrar mejoras reales del proyecto. No es una lista de temas por
 
 ## Limpieza Tecnica
 
-- [ ] Reparar o reinicializar Git local; la carpeta `.git` actual no funciona como repositorio valido.
+- [x] Reparar o reinicializar Git local; la carpeta `.git` actual no funciona como repositorio valido.
 - [x] Quitar o justificar archivos de agente dentro de `web/` si no deben publicarse.
 - [x] Revisar warnings de `<img>` en `MarkdownRenderer.jsx`.
 - [x] Revisar warning de Turbopack por lectura dinamica de Markdown.
