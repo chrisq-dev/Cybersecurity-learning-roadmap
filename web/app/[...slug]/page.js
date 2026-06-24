@@ -4,6 +4,8 @@ import Pagination from '../../components/Pagination';
 import TableOfContents from '../../components/TableOfContents';
 import Link from 'next/link';
 
+const BASE_URL = "https://cbsdev.lat";
+
 export async function generateStaticParams() {
   const structure = getContentStructure();
   let paths = [];
@@ -15,13 +17,47 @@ export async function generateStaticParams() {
   return paths;
 }
 
+function extractDescription(content) {
+  if (!content) return null;
+  const plain = content
+    .replace(/^#+\s.*/gm, '')       // quitar headings
+    .replace(/\*\*|__|`{1,3}/g, '') // quitar markdown inline
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // links → texto
+    .replace(/\n+/g, ' ')
+    .trim();
+  const first = plain.slice(0, 155).trim();
+  return first.length > 0 ? first : null;
+}
+
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const data = getMarkdownContent(resolvedParams.slug);
   if (!data) return { title: 'No encontrado' };
+
+  const pageUrl = `${BASE_URL}/${resolvedParams.slug.join('/')}`;
+  const description =
+    extractDescription(data.content) ||
+    `Guía de ${data.title} — ciberseguridad en español.`;
+
   return {
-    title: `${data.title} | Ciberseguridad`,
-    description: `Guia de ${data.title} — ciberseguridad en español.`,
+    title: data.title,
+    description,
+    alternates: { canonical: pageUrl },
+    openGraph: {
+      title: `${data.title} | Ciberseguridad`,
+      description,
+      url: pageUrl,
+      siteName: "Ciberseguridad",
+      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: data.title }],
+      locale: "es_MX",
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${data.title} | Ciberseguridad`,
+      description,
+      images: ["/og-image.png"],
+    },
   };
 }
 
