@@ -10,6 +10,8 @@ DevSecOps busca que seguridad sea parte del flujo de desarrollo y despliegue.
 
 No significa llenar todo de herramientas; significa crear controles repetibles.
 
+El objetivo es detectar riesgos temprano y reducir errores repetidos. Si seguridad solo revisa al final, los cambios son mas caros y el equipo puede ver seguridad como bloqueo. DevSecOps integra controles donde el equipo ya trabaja: repositorio, pipeline, revision de codigo, despliegue y monitoreo.
+
 ## Pipeline CI/CD
 
 Un pipeline puede:
@@ -20,6 +22,8 @@ Un pipeline puede:
 4. Construir artefactos.
 5. Escanear.
 6. Desplegar.
+
+Cada fase puede introducir riesgo. Una dependencia comprometida entra al instalar paquetes. Un secreto puede filtrarse en logs. Un token de deploy con permisos amplios puede modificar produccion. Un artefacto no verificado puede ser reemplazado. DevSecOps busca que esos riesgos sean visibles y controlados.
 
 ## Controles de Seguridad
 
@@ -57,6 +61,8 @@ Revisa Terraform, CloudFormation u otros archivos de infraestructura.
 - Deploy sin revision.
 - Artefactos sin firma.
 
+Supply chain security se refiere a la confianza en todo lo que participa en construir y entregar software: dependencias, acciones de CI, runners, imagenes base, artefactos, llaves, registros y personas con permisos. Un ataque no siempre explota la app; a veces compromete el camino que la construye.
+
 ## Buenas Practicas
 
 - Minimo privilegio para tokens.
@@ -81,6 +87,15 @@ Los puntos importantes de revision son:
 - Donde revisar dependencias.
 - Donde bloquear deploy.
 - Que logs guardar.
+
+## Errores Comunes
+
+- Activar herramientas sin revisar resultados.
+- Dar permisos administrativos a tokens de CI.
+- Guardar secretos como variables visibles para cualquier job.
+- Ignorar dependencias transitivas.
+- No separar ambientes.
+- No definir quien decide si un hallazgo bloquea despliegue.
 
 ## Criterio de Dominio
 

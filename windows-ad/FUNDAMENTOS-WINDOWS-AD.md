@@ -17,6 +17,8 @@ Temas:
 - Firewall.
 - Windows Defender.
 
+Windows es importante en ciberseguridad porque muchas empresas lo usan para estaciones de trabajo, servidores, identidad y administracion. Un analista debe entender que ocurre en el endpoint: procesos, servicios, usuarios, grupos, sesiones, eventos y controles defensivos.
+
 ## PowerShell Inicial
 
 Comandos utiles:
@@ -42,6 +44,12 @@ Conceptos:
 - Kerberos: protocolo de autenticacion.
 - LDAP: protocolo usado para consultar directorios.
 
+Active Directory centraliza identidad. Si AD falla o se compromete, el impacto puede alcanzar usuarios, servidores, permisos, politicas y autenticacion. Por eso los Domain Controllers deben tratarse como activos criticos, no como servidores normales.
+
+## Identidad en Windows
+
+Una cuenta local existe solo en un equipo. Una cuenta de dominio existe en AD y puede acceder a recursos segun permisos. Los grupos simplifican administracion, pero tambien pueden concentrar demasiado privilegio. Un cambio pequeño en membresias puede dar acceso amplio si el grupo tiene permisos sensibles.
+
 ## Eventos Importantes
 
 - Logon exitoso.
@@ -50,6 +58,8 @@ Conceptos:
 - Cambio de grupo.
 - Cambio de contraseña.
 - Ejecucion de procesos sospechosos.
+
+Los eventos no prueban un incidente por si solos. Un logon fallido puede ser error de contraseña, password spraying o un servicio mal configurado. La lectura correcta combina usuario, hora, equipo, IP, resultado y actividad posterior.
 
 ## Observacion Segura
 
@@ -65,6 +75,14 @@ Si no tienes Windows:
 - Estudia capturas o ejemplos de eventos.
 - Nota explicativa sobre Kerberos.
 - Un mapa de conceptos puede mostrar de AD.
+
+## Errores Comunes
+
+- Confundir usuario local con usuario de dominio.
+- Pensar que todo administrador tiene el mismo alcance.
+- Ignorar cambios de grupos privilegiados.
+- No revisar actividad posterior a un login exitoso.
+- No diferenciar servicio, proceso y evento.
 
 ## Criterio de Dominio
 

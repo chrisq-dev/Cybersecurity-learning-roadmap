@@ -42,12 +42,12 @@ Ruta sugerida:
 - [blue-team/RESPUESTA-INCIDENTES.md](../blue-team/RESPUESTA-INCIDENTES.md)
 - [blue-team/DETECTION-ENGINEERING.md](../blue-team/DETECTION-ENGINEERING.md)
 
-Evidencia para portafolio:
+Senales de comprension:
 
 - Analisis de logs.
-- Reporte de alerta.
-- Regla Sigma.
-- Playbook de incidente.
+- Comunicacion de una alerta.
+- Logica de deteccion.
+- Flujo de respuesta a incidente.
 
 ### Red Team
 
@@ -70,12 +70,12 @@ Ruta sugerida:
 - [web-owasp/OWASP-TOP-10.md](../web-owasp/OWASP-TOP-10.md)
 - [windows-ad/ACTIVE-DIRECTORY.md](../windows-ad/ACTIVE-DIRECTORY.md)
 
-Evidencia para portafolio:
+Senales de comprension:
 
-- Writeup permitido.
-- Reporte con impacto y remediacion.
-- Lab vulnerable y corregido.
-- Documentacion de metodologia.
+- Analisis permitido en entornos autorizados.
+- Explicacion de impacto y remediacion.
+- Comprension de causa raiz y correccion.
+- Metodologia etica y reproducible.
 
 ### Purple Team
 
@@ -97,12 +97,12 @@ Ruta sugerida:
 - [playbooks/CUENTA-COMPROMETIDA.md](../playbooks/CUENTA-COMPROMETIDA.md)
 - [playbooks/SERVIDOR-EXPUESTO.md](../playbooks/SERVIDOR-EXPUESTO.md)
 
-Evidencia para portafolio:
+Senales de comprension:
 
 - Tabla tecnica ofensiva vs deteccion.
-- Regla Sigma mejorada.
-- Playbook actualizado.
-- Informe de brechas de logging.
+- Mejora de logica de deteccion.
+- Flujo de respuesta ajustado.
+- Identificacion de brechas de logging.
 
 ### White Team
 
@@ -115,7 +115,7 @@ Responsabilidades:
 - Evitar dano operativo.
 - Medir resultados.
 - Resolver disputas entre equipos.
-- Revisar reportes.
+- Revisar comunicacion de resultados.
 
 Ruta sugerida:
 
@@ -124,12 +124,12 @@ Ruta sugerida:
 - [grc/FUNDAMENTOS-GRC.md](../grc/FUNDAMENTOS-GRC.md)
 - [red-team/METODOLOGIA-ETICA.md](../red-team/METODOLOGIA-ETICA.md)
 
-Evidencia para portafolio:
+Senales de comprension:
 
 - Reglas de engagement ficticias.
 - Matriz de alcance.
 - Criterios de exito.
-- Reporte final del ejercicio.
+- Comunicacion final del ejercicio.
 
 ### AppSec Team
 
@@ -182,7 +182,7 @@ Responsabilidades:
 
 - Preservar evidencia.
 - Analizar logs, disco, memoria o artefactos.
-- Crear timeline.
+- Reconstruir lineas de tiempo.
 - Contener incidentes.
 - Documentar hallazgos.
 

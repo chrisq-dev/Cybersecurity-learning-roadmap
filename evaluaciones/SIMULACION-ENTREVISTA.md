@@ -28,7 +28,7 @@ Un usuario tuvo 20 logins fallidos desde una IP externa y luego un login exitoso
 
 Una respuesta solida cubre:
 
-- Que evidencia tienes?
+- Que datos observaste?
 - Que hipotesis haces?
 - Que buscarias despues?
 - Que accion recomendarias?

@@ -86,6 +86,6 @@ Ejemplo:
 ```text
 Situacion: estaba aprendiendo analisis de logs.
 Tarea: necesitaba identificar intentos fallidos de login.
-Accion: cree un script en Python que contaba fallos por usuario e IP.
-Resultado: genere un reporte con patrones sospechosos y recomendaciones.
+Accion: analice fallos por usuario e IP.
+Resultado: explique patrones sospechosos y recomendaciones.
 ```

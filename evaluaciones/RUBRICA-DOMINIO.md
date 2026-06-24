@@ -102,7 +102,7 @@ Una forma de evaluar dominio es revisar estos niveles:
 - Nivel 4: lo puedo defender o corregir.
 - Nivel 5: lo puedo documentar profesionalmente.
 
-Evidencia:
+Senales que lo demuestran:
 
 Dudas pendientes:
 
@@ -127,7 +127,7 @@ No necesitas llevar todo a Nivel 5. La estrategia correcta es profundidad en tem
 - Active Directory conceptual.
 - IAM cloud.
 - Respuesta a incidentes.
-- Reportes tecnicos.
+- Comunicacion tecnica clara.
 - Un proyecto completo de portafolio.
 
 ## Matriz de Evidencia
@@ -175,13 +175,13 @@ Antes de decir que sabes AppSec:
 - crear matriz de permisos;
 - explicar SQLi, XSS, CSRF y SSRF;
 - proponer mitigaciones;
-- escribir un reporte de revision OWASP.
+- comunicar una revision OWASP con causa, impacto y mitigacion.
 
 ### Blue Team
 
 Antes de decir que sabes Blue Team:
 
-- crear timeline;
+- reconstruir una linea de tiempo;
 - separar evidencia de hipotesis;
 - mapear un caso a MITRE;
 - proponer contencion;

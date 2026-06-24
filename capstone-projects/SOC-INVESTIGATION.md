@@ -43,9 +43,9 @@ Fuera de alcance:
 
 ## Puntos a observar
 
-1. Ejecutar parser de logs.
-2. Revisar reporte.
-3. Crear timeline.
+1. Entender que informacion aportan los logs.
+2. Separar eventos relevantes de ruido.
+3. Reconstruir una linea de tiempo.
 4. Formular hipotesis.
 5. Mapear con MITRE ATT&CK.
 6. Proponer contencion.

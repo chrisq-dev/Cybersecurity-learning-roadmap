@@ -6,6 +6,8 @@ Entender como una empresa administra identidades y accesos durante el ciclo de v
 
 ## Ciclo Joiner, Mover, Leaver
 
+IAM corporativo busca que cada identidad tenga el acceso correcto durante el tiempo correcto. El problema no es solo crear usuarios; tambien es ajustar permisos cuando cambian de puesto y retirar accesos cuando salen. Muchas brechas ocurren por cuentas olvidadas, permisos acumulados o accesos que nadie revisa.
+
 ### Joiner
 
 Persona entra a la organizacion.
@@ -52,6 +54,8 @@ Beneficios:
 - Mejor logging.
 - MFA centralizado.
 
+SSO mejora seguridad cuando esta bien configurado, pero tambien concentra riesgo. Si el proveedor de identidad se compromete, muchos sistemas quedan expuestos. Por eso SSO debe combinarse con MFA, politicas condicionales, monitoreo y recuperacion segura.
+
 ## MFA
 
 MFA reduce riesgo de contraseña comprometida.
@@ -74,6 +78,8 @@ Permisos por rol:
 - Administrador.
 - Finanzas.
 - Soporte.
+
+RBAC evita asignar permisos usuario por usuario sin estructura. El riesgo aparece cuando los roles crecen sin control o se usan como excepciones permanentes. Un buen rol representa una funcion real del negocio y tiene permisos minimos para esa funcion.
 
 ## Access Reviews
 
@@ -98,6 +104,16 @@ La matriz debe contemplar momentos del ciclo de vida como:
 - Nuevo empleado.
 - Cambio de puesto.
 - Salida de empleado.
+
+## Señales de Riesgo
+
+- Usuarios sin owner.
+- Cuentas antiguas activas.
+- Permisos heredados de puestos anteriores.
+- Grupos demasiado amplios.
+- Acceso a sistemas criticos sin MFA.
+- Cuentas compartidas.
+- Falta de revision periodica.
 
 ## Criterio de Dominio
 

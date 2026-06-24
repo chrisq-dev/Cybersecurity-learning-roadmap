@@ -10,6 +10,8 @@ Un contenedor empaqueta una aplicacion con sus dependencias y la ejecuta de form
 
 No es una maquina virtual completa. Comparte el kernel del host.
 
+Ese detalle es clave para seguridad. Si el aislamiento se rompe o el contenedor corre con privilegios excesivos, el host puede quedar en riesgo. Contenedores ayudan a empaquetar y desplegar, pero no eliminan la necesidad de hardening, inventario, monitoreo y control de secretos.
+
 ## Imagen vs Contenedor
 
 - Imagen: plantilla.
@@ -26,6 +28,8 @@ Riesgos comunes:
 - Copiar secretos.
 - Instalar paquetes innecesarios.
 - No fijar versiones.
+
+Cada instruccion del Dockerfile afecta la superficie de ataque. Una imagen grande tiene mas paquetes que mantener. Una imagen con secretos queda comprometida aunque el secreto se borre en una capa posterior. Una imagen `latest` puede cambiar sin que el equipo lo note.
 
 ## Buenas Practicas
 
@@ -52,6 +56,8 @@ Usar gestores de secretos o mecanismos del orquestador.
 
 Los contenedores deben enviar logs a salida estandar o a una plataforma de logs.
 
+Los contenedores suelen vivir poco tiempo. Si los logs solo existen dentro del contenedor, se pierden al reiniciarlo. Por eso la observabilidad debe estar fuera del contenedor: logs centralizados, metricas, eventos del orquestador y alertas.
+
 ## Ejemplo de Revision
 
 Este Dockerfile muestra decisiones que deben revisarse:
@@ -70,6 +76,16 @@ Preguntas:
 - Que mejorarias?
 - Ejecuta como root?
 - La imagen base es especifica?
+
+## Riesgos Comunes
+
+- Contenedores privilegiados.
+- Montar el socket de Docker sin control.
+- Ejecutar como root.
+- Usar imagenes sin mantenimiento.
+- Incluir herramientas innecesarias.
+- Exponer puertos administrativos.
+- No limitar CPU, memoria o filesystem.
 
 ## Criterio de Dominio
 

@@ -196,6 +196,6 @@ Puedes avanzar cuando puedas:
 
 - Explicar evidencia.
 - Explicar cadena de custodia.
-- Crear timeline.
+- Reconstruir una linea de tiempo.
 - Separar hechos de hipotesis.
 - Documentar integridad con hashes y notas claras.

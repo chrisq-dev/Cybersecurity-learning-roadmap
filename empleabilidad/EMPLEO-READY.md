@@ -1,6 +1,6 @@
 # Sistema Empleo-Ready
 
-Esta guia explica que evidencia conviene construir antes de buscar un primer rol en ciberseguridad. No garantiza empleo por si sola; ningun recurso puede hacerlo. Lo que si hace es darte criterios para demostrar habilidades reales: fundamentos, labs, scripts, reportes, proyectos y respuestas de entrevista.
+Esta guia explica que nivel de comprension conviene alcanzar antes de buscar un primer rol en ciberseguridad. No garantiza empleo por si sola; ningun recurso puede hacerlo. Lo que si hace es darte criterios para demostrar habilidades reales: fundamentos, razonamiento tecnico, comunicacion, proyectos y respuestas de entrevista.
 
 ## Objetivo
 
@@ -8,7 +8,7 @@ Llegar a un punto donde puedas aplicar a roles junior y explicar con seguridad:
 
 - Que sabes.
 - Que practicaste.
-- Que evidencia tienes.
+- Que señales muestran tu avance.
 - Como piensas ante un problema.
 - Como comunicas riesgo, impacto y remediacion.
 
@@ -29,7 +29,7 @@ Prioriza estos roles:
 
 ### Nivel 1: Base Tecnica
 
-Puedes explicar fundamentos, pero aun tienes poca evidencia.
+Puedes explicar fundamentos, pero aun tienes poca practica defendible.
 
 Debes poder:
 
@@ -42,30 +42,30 @@ Debes poder:
 
 ### Nivel 2: Practica Visible
 
-Ya no solo lees: produces evidencia.
+Ya no solo lees: puedes explicar casos simples.
 
-Debes poder mostrar:
+Debes poder explicar:
 
-- 3 labs documentados.
-- 1 script funcional.
-- 1 reporte tecnico.
-- 1 checklist de hardening o seguridad.
-- Un resumen claro de lo que estudiaste, practicaste y aprendiste.
+- Casos basicos de redes, Linux, Windows y logs.
+- Como una automatizacion simple ayuda a revisar datos.
+- Como comunicar un hallazgo tecnico.
+- Como revisar hardening o controles de seguridad.
+- Que estudiaste, que entendiste y que dudas quedan.
 
 ### Nivel 3: Portafolio Junior
 
 Ya puedes empezar a aplicar a roles junior.
 
-Debes poder mostrar:
+Debes poder explicar:
 
-- 5 proyectos o labs completos.
-- 2 scripts utiles.
-- 2 reportes tecnicos.
-- 1 resumen ejecutivo.
-- 1 investigacion de alerta simulada.
-- 1 writeup permitido de web security.
-- CV/LinkedIn actualizado con evidencia.
-- 30 preguntas de entrevista practicadas.
+- Casos completos de Blue Team, Web/AppSec, Cloud o GRC.
+- Automatizaciones simples y sus limites.
+- Hallazgos tecnicos con impacto y remediacion.
+- Un resumen ejecutivo.
+- Una investigacion de alerta simulada.
+- Un caso permitido de web security.
+- Tu CV/LinkedIn con aprendizaje claro y honesto.
+- Preguntas de entrevista sin memorizar respuestas vacias.
 
 ### Nivel 4: Candidato Fuerte
 
@@ -78,26 +78,26 @@ Debes poder defender:
 - 1 proyecto Web/AppSec.
 - 1 proyecto Python.
 - 1 proyecto Cloud o GRC.
-- 1 simulacion de entrevista documentada.
-- Un mapa claro entre skills, evidencia y aprendizajes.
+- Claridad para explicar una simulacion de entrevista.
+- Un mapa claro entre skills, comprension y aprendizajes.
 
 ### Nivel 5: Ruta a Experto
 
-Experto no significa "lo se todo". Significa que puedes resolver problemas, explicar tradeoffs, documentar evidencia y mejorar sistemas reales.
+Experto no significa "lo se todo". Significa que puedes resolver problemas, explicar tradeoffs, razonar con evidencia y mejorar sistemas reales.
 
-Debes construir:
+Debes desarrollar:
 
 - Profundidad en una especialidad.
 - Proyectos repetibles.
 - Detecciones o automatizaciones propias.
-- Reportes claros.
+- Comunicacion tecnica clara.
 - Practica constante.
 - Feedback externo.
 - Historial de mejora.
 
-## Proyectos Obligatorios Para Aplicar
+## Casos Recomendados Para Aplicar
 
-Completa al menos 5:
+No son obligatorios ni deben vivir como entregas dentro del repositorio. Son casos que conviene entender porque aparecen mucho en entrevistas y trabajo junior:
 
 1. Analizador de logs de autenticacion.
 2. Investigacion de alerta simulada.
@@ -109,15 +109,15 @@ Completa al menos 5:
 8. SOC investigation capstone.
 9. Secure small business capstone.
 
-## Evidencia Minima Por Proyecto
+## Comprension Minima Por Caso
 
-Cada proyecto debe tener:
+Cada caso debe poder explicarse con:
 
 - Problema.
 - Objetivo.
 - Entorno o datos usados.
-- Pasos.
-- Evidencia.
+- Razonamiento.
+- Datos observados.
 - Hallazgos.
 - Riesgo.
 - Impacto.

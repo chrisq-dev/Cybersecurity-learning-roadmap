@@ -195,7 +195,7 @@ if response.status_code != 200:
     raise SystemExit(f"Error API: {response.status_code}")
 ```
 
-## Reporte Markdown
+## Salida Legible
 
 ```python
 from pathlib import Path
@@ -274,5 +274,5 @@ Puedes avanzar cuando puedas:
 - Leer JSON.
 - Leer CSV.
 - Consultar una API simple.
-- Generar reporte Markdown.
+- Comunicar resultados en un formato legible.
 - Manejar errores de formato, API y campos faltantes.

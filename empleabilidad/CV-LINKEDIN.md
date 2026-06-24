@@ -52,7 +52,7 @@ Documento mi aprendizaje en GitHub mediante notas tecnicas, laboratorios permiti
 Ejemplo para CV:
 
 ```text
-Desarrollador backend con interes profesional en ciberseguridad, AppSec y automatizacion. Experiencia construyendo APIs, integraciones y sistemas de negocio. Actualmente desarrollo una ruta publica de aprendizaje en ciberseguridad con fundamentos de redes, Linux, OWASP, Blue Team, cloud security y reportes tecnicos.
+Desarrollador backend con interes profesional en ciberseguridad, AppSec y automatizacion. Experiencia construyendo APIs, integraciones y sistemas de negocio. Actualmente desarrollo una ruta publica de aprendizaje en ciberseguridad con fundamentos de redes, Linux, OWASP, Blue Team, cloud security y analisis tecnico.
 ```
 
 Ejemplo mas junior:
@@ -93,9 +93,9 @@ Formato:
 
 ```text
 Analizador de logs de autenticacion
-- Cree un script en Python para detectar multiples intentos fallidos de login en logs de ejemplo.
-- Genere un reporte Markdown con IPs, usuarios afectados y recomendaciones.
-- Practique parsing de logs, deteccion basica y documentacion de hallazgos.
+- Analice multiples intentos fallidos de login en datos de ejemplo.
+- Resumi IPs, usuarios afectados y recomendaciones.
+- Practique parsing de logs, deteccion basica y comunicacion de hallazgos.
 ```
 
 Formato recomendado:

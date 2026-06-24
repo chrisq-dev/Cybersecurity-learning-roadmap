@@ -2,7 +2,11 @@
 
 ## Objetivo
 
-Aprender Python suficiente para automatizar tareas de ciberseguridad: leer archivos, analizar logs, calcular hashes, consumir APIs y generar reportes.
+Aprender Python suficiente para automatizar tareas de ciberseguridad: leer archivos, analizar logs, calcular hashes, consumir APIs y comunicar resultados.
+
+Para seguridad no necesitas empezar con programacion avanzada. Lo primero es entender tipos de datos, control de flujo, lectura de archivos y manejo de errores. Con eso ya puedes razonar sobre logs, inventarios, respuestas de API y pequeñas transformaciones de datos.
+
+La prioridad es escribir codigo claro. Un script confuso puede producir una conclusion equivocada y hacer que un analista persiga ruido. Siempre importa saber que entra, que se procesa, que se ignora y que limite tiene el resultado.
 
 ## Variables
 
@@ -100,9 +104,24 @@ login failed user=root ip=203.0.113.10
 
 Un script de ejemplo puede:
 
-- Lea el archivo.
-- Imprima solo lineas con `failed`.
-- Cuente cuantas fallas hay.
+- Leer el archivo.
+- Imprimir solo lineas con `failed`.
+- Contar cuantas fallas hay.
+
+## Lectura de Datos de Seguridad
+
+Muchos datos de seguridad vienen como texto, JSON o CSV. Antes de procesarlos conviene identificar campos como usuario, IP, hora, accion, resultado y sistema origen. Si falta un campo importante, el analisis debe reconocer esa limitacion.
+
+No todo lo que coincide con una palabra es malicioso. Por ejemplo, `failed` puede indicar ataque, error de usuario, prueba interna o servicio mal configurado. Python ayuda a contar y filtrar, pero la interpretacion sigue siendo responsabilidad del analista.
+
+## Errores Comunes
+
+- No manejar archivos inexistentes.
+- Asumir que todas las lineas tienen el mismo formato.
+- Imprimir secretos o datos personales sin necesidad.
+- Mezclar datos reales con ejemplos publicos.
+- Confundir conteo alto con incidente confirmado.
+- No explicar limitaciones del analisis.
 
 ## Criterio de Dominio
 

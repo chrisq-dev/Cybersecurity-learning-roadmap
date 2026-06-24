@@ -25,7 +25,7 @@ Un SIEM ayuda a:
 - Correlacionar actividad.
 - Crear alertas.
 - Investigar incidentes.
-- Generar reportes.
+- Comunicar resultados.
 
 Ejemplos de fuentes:
 

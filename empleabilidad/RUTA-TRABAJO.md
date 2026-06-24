@@ -55,12 +55,12 @@ Debes demostrar:
 - Reglas Sigma basicas.
 - Comunicacion escrita.
 
-Evidencia minima:
+Senales de comprension:
 
-- 2 investigaciones de logs.
-- 1 regla Sigma.
-- 1 mini reporte de incidente.
-- 1 explicacion de MITRE ATT&CK aplicada a un caso.
+- Puedes explicar como investigarias logs de autenticacion.
+- Puedes describir una regla Sigma a nivel conceptual.
+- Puedes separar evento, alerta, incidente, hipotesis y falso positivo.
+- Puedes aplicar MITRE ATT&CK a un caso sin forzar tecnicas.
 
 Debes practicar escribir conclusiones, no solo mirar alertas. Un analista junior aporta valor cuando puede decir:
 
@@ -72,21 +72,21 @@ Observe este evento, lo compare con el comportamiento esperado, encontre esta ev
 
 Duracion sugerida: 8 a 12 semanas.
 
-Debes demostrar:
+Debes comprender:
 
 - HTTP.
 - OWASP Top 10.
 - Burp Suite Community o curl.
-- SQL Injection en labs.
-- XSS en labs.
-- Broken Access Control en labs.
-- Reportes con impacto y remediacion.
+- SQL Injection en entornos autorizados.
+- XSS en entornos autorizados.
+- Broken Access Control en entornos autorizados.
+- Impacto y remediacion.
 
-Evidencia minima:
+Senales de comprension:
 
-- 3 writeups permitidos de PortSwigger.
-- 1 tabla OWASP con causa, impacto y mitigacion.
-- 1 lab local vulnerable y corregido.
+- Puedes explicar causa, impacto y mitigacion de categorias OWASP.
+- Puedes hablar de pruebas permitidas sin atacar sistemas reales.
+- Puedes diferenciar encontrar una falla de corregir su causa raiz.
 
 En esta etapa evita enfocarte solo en "explotar". Aprende a explicar causa raiz, impacto real y remediacion. Eso te diferencia de alguien que solo siguio pasos de un lab.
 
@@ -94,21 +94,21 @@ En esta etapa evita enfocarte solo en "explotar". Aprende a explicar causa raiz,
 
 Duracion sugerida: 4 a 8 semanas.
 
-Debes demostrar:
+Debes comprender:
 
 - Python basico.
 - Bash o PowerShell.
 - Parsing de logs.
 - Manejo de archivos.
-- Reportes simples.
+- Salidas tecnicas simples y legibles.
 
-Evidencia minima:
+Senales de comprension:
 
-- Script para analizar logs.
-- Script para calcular hashes.
-- Script para generar reporte en Markdown.
+- Puedes explicar como se analiza un log linea por linea.
+- Puedes explicar que hace un hash y para que sirve.
+- Puedes convertir datos tecnicos en conclusiones claras sin exponer informacion sensible.
 
-Automatizar no significa hacer herramientas enormes. Un script pequeno que parsea logs, resume datos o genera evidencia ya muestra criterio tecnico.
+Automatizar no significa hacer herramientas enormes. Entender como leer datos, resumirlos y explicar limites ya muestra criterio tecnico.
 
 ## Etapa 5: Aplicar a Trabajos
 
@@ -146,7 +146,7 @@ Puedes explorar varias areas, pero para aplicar conviene vender una historia pri
 - Puedes usar Linux sin miedo.
 - Puedes revisar logs y escribir una conclusion.
 - Puedes explicar OWASP Top 10 con ejemplos.
-- Tienes 3 a 5 proyectos o labs documentados.
+- Puedes explicar 3 a 5 casos de estudio o proyectos propios.
 - Puedes hablar de riesgo, impacto y remediacion.
 - Tu GitHub no parece una carpeta abandonada.
 

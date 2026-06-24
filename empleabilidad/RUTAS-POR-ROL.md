@@ -25,13 +25,13 @@ Elige una ruta principal y una secundaria. No intentes dominar todas al mismo ti
 - `labs/LABS-GUIADOS-BLUE-WEB.md`
 - `capstone-projects/SOC-INVESTIGATION.md`
 
-### Evidencia minima
+### Senales de comprension
 
-- 2 investigaciones de logs.
-- 1 regla Sigma conceptual.
-- 1 parser de logs.
-- 1 reporte de incidente.
-- 1 capstone SOC.
+- Puedes explicar investigaciones de logs.
+- Puedes describir una regla Sigma conceptual.
+- Puedes razonar sobre parsing de logs sin depender de una herramienta propia.
+- Puedes comunicar severidad, impacto y siguientes pasos.
+- Puedes defender un caso SOC de principio a fin.
 
 ### Puedes aplicar cuando
 
@@ -62,12 +62,12 @@ Elige una ruta principal y una secundaria. No intentes dominar todas al mismo ti
 - `database-security/`
 - `capstone-projects/APPSEC-REVIEW.md`
 
-### Evidencia minima
+### Senales de comprension
 
-- 3 writeups permitidos.
-- 1 AppSec review.
-- 1 tabla OWASP causa/impacto/mitigacion.
-- 1 checklist de API security.
+- Puedes explicar hallazgos permitidos sin glorificar explotacion.
+- Puedes hacer una revision AppSec conceptual.
+- Puedes conectar causa, impacto y mitigacion.
+- Puedes revisar APIs por autenticacion, autorizacion, validacion y logging.
 
 ### Puedes aplicar cuando
 
@@ -97,12 +97,12 @@ Elige una ruta principal y una secundaria. No intentes dominar todas al mismo ti
 - `appsec-devsecops/`
 - `capstone-projects/CLOUD-SECURITY-REVIEW.md`
 
-### Evidencia minima
+### Senales de comprension
 
-- Checklist cloud.
-- IAM review conceptual.
-- Storage exposure review.
-- Cloud security capstone.
+- Puedes revisar cloud con criterios claros.
+- Puedes explicar riesgos de IAM.
+- Puedes identificar exposicion de storage.
+- Puedes defender una revision cloud de extremo a extremo.
 
 ### Puedes aplicar cuando
 
@@ -129,12 +129,12 @@ Elige una ruta principal y una secundaria. No intentes dominar todas al mismo ti
 - `network-security/`
 - `linux/HARDENING-BASICO.md`
 
-### Evidencia conceptual
+### Senales de comprension
 
-- Inventario ficticio.
-- Reporte de activos sin owner.
-- Priorizacion de vulnerabilidades.
-- Plan de remediacion.
+- Puedes explicar por que el inventario es la base.
+- Puedes detectar riesgos por owner desconocido o criticidad indefinida.
+- Puedes priorizar vulnerabilidades por contexto.
+- Puedes proponer remediacion verificable.
 
 ### Puedes aplicar cuando
 
@@ -161,12 +161,12 @@ Elige una ruta principal y una secundaria. No intentes dominar todas al mismo ti
 - `business-continuity/`
 - `vulnerability-management/`
 
-### Evidencia minima
+### Senales de comprension
 
-- Matriz de riesgos.
-- Politica simple.
-- Checklist de controles.
-- Ejemplo de evidencia.
+- Puedes explicar una matriz de riesgos.
+- Puedes leer una politica simple.
+- Puedes revisar controles sin tratarlos como checklist mecanico.
+- Puedes pedir evidencia adecuada cuando el contexto lo requiere.
 
 ### Puedes aplicar cuando
 

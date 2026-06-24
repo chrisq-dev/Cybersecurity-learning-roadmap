@@ -104,7 +104,7 @@ digest = sha256(Path("archivo.txt").read_bytes()).hexdigest()
 print(digest)
 ```
 
-## Reporte Markdown
+## Salida Legible
 
 ```python
 from pathlib import Path

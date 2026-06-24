@@ -168,7 +168,7 @@ Checklist de endpoint de ejemplo:
 
 - Pensar que antivirus basta.
 - Aislar tarde un host claramente comprometido.
-- Limpiar antes de preservar evidencia minima.
+- Limpiar antes de preservar datos relevantes para investigacion.
 - No revisar actividad posterior.
 - Dejar usuarios con admin local por comodidad.
 - No probar que el EDR este reportando.

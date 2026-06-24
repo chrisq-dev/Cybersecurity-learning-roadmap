@@ -4,12 +4,12 @@
 
 Usar Python para automatizar tareas simples de seguridad.
 
-Python no te hace buen analista por si solo. Te vuelve mas eficiente si lo usas para repetir menos trabajo manual, procesar evidencia, validar datos y generar reportes reproducibles.
+Python no te hace buen analista por si solo. Te vuelve mas eficiente si lo usas para repetir menos trabajo manual, procesar evidencia, validar datos y comunicar resultados reproducibles.
 
 ## Mapa Mental
 
 ```text
-entrada -> validacion -> procesamiento -> resumen -> reporte -> evidencia
+entrada -> validacion -> procesamiento -> resumen -> conclusion -> limites
 ```
 
 Antes de escribir codigo pregunta:
@@ -28,7 +28,7 @@ Antes de escribir codigo pregunta:
 - Calcular hashes.
 - Leer JSON y CSV.
 - Consultar APIs.
-- Generar reportes.
+- Comunicar resultados.
 
 ## Buenas Practicas
 
@@ -59,11 +59,11 @@ Antes de escribir codigo pregunta:
 2. Validar entradas.
 3. Procesar datos.
 4. Generar resumen.
-5. Escribir reporte.
+5. Escribir salida clara.
 6. Devolver codigo de salida claro.
 ```
 
-## Mini Script: Leer un Archivo
+## Ejemplo: Leer un Archivo
 
 ```python
 from pathlib import Path
@@ -75,7 +75,7 @@ for line in path.read_text().splitlines():
         print(line)
 ```
 
-## Mini Script: Argumentos
+## Ejemplo: Argumentos
 
 ```python
 import argparse
@@ -99,7 +99,7 @@ for line in path.read_text().splitlines():
 print(f"Coincidencias: {count}")
 ```
 
-## Mini Script: Hash SHA256
+## Ejemplo: Hash SHA256
 
 ```python
 from hashlib import sha256
@@ -110,7 +110,7 @@ digest = sha256(path.read_bytes()).hexdigest()
 print(digest)
 ```
 
-## Mini Script: Reporte Markdown
+## Ejemplo de Salida Legible
 
 ```python
 from pathlib import Path

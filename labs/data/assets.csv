@@ -1,6 +1,0 @@
-hostname,owner,criticality
-web01,web-team,high
-db01,data-team,critical
-test01,,low
-jump01,infra-team,high
-legacy01,,medium

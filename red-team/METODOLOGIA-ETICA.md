@@ -93,7 +93,7 @@ Ejemplo de fuera de alcance:
 - Probar solo lo necesario para demostrar riesgo.
 - Evitar impacto innecesario.
 - Usar datos de prueba.
-- Capturar evidencia minima suficiente.
+- Capturar solo la informacion necesaria para demostrar riesgo.
 
 ### Reporte
 
