@@ -51,40 +51,10 @@ export const metadata = {
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LearningResource",
-  name: "Ciberseguridad — Guías gratis en español",
-  description: "Ruta estructurada para aprender ciberseguridad en español: fundamentos, redes, Linux, seguridad web, Blue Team, cloud y empleabilidad.",
-  url: BASE_URL,
-  inLanguage: "es",
-  educationalLevel: "beginner",
-  learningResourceType: "LearningResource",
-  teaches: [
-    "Fundamentos de ciberseguridad",
-    "Seguridad de redes",
-    "Linux para seguridad",
-    "OWASP Top 10",
-    "Blue Team y SIEM",
-    "Cloud Security",
-    "AppSec y DevSecOps",
-  ],
-  creator: {
-    "@type": "Person",
-    name: "Christian Quiñones",
-    url: BASE_URL,
-  },
-  isAccessibleForFree: true,
-};
-
 export default function RootLayout({ children }) {
   return (
     <html lang="es" suppressHydrationWarning>
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
         <div className="layout-container">
           <TopNav />
           <main className="main-content">

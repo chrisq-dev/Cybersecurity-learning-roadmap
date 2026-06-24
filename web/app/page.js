@@ -88,8 +88,24 @@ export default function Home() {
   const totalCategories = structure.length;
   const totalPages = structure.reduce((acc, cat) => acc + cat.pages.length, 0);
 
+  const courseJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: "Ciberseguridad — Guías gratis en español",
+    description: "Ruta estructurada para aprender ciberseguridad en español: fundamentos, redes, Linux, seguridad web, Blue Team, cloud y empleabilidad.",
+    provider: {
+      "@type": "Person",
+      name: "Christian Quiñones",
+      url: "https://cbsdev.lat"
+    }
+  };
+
   return (
     <div style={{ textAlign: 'center', paddingTop: '3rem' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
+      />
       <h1 className="serif-title" style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', lineHeight: 1.1, marginBottom: '1rem' }}>
         Guías <em>gratis</em> de <br/> ciberseguridad en español
       </h1>

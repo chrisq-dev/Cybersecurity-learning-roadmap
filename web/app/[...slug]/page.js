@@ -80,8 +80,32 @@ export default async function Page({ params }) {
 
   const prevPage = currentIndex > 0 ? allPages[currentIndex - 1] : null;
   const nextPage = currentIndex < allPages.length - 1 ? allPages[currentIndex + 1] : null;
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: data.title,
+    description: data.meta?.description || `Guía de ${data.title} — ciberseguridad en español.`,
+    image: `https://cbsdev.lat/og-image.png`,
+    author: {
+      "@type": "Person",
+      name: "Christian Quiñones",
+      url: "https://cbsdev.lat"
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Christian Quiñones",
+      url: "https://cbsdev.lat"
+    },
+    inLanguage: "es",
+  };
+
   return (
     <article className="markdown-reader" style={{ paddingBottom: '5rem' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <header style={{ marginBottom: '3rem' }}>
         <Link href="/" style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
           ← Volver al inicio
