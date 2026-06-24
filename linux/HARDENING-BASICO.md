@@ -164,7 +164,7 @@ Eventos importantes:
 
 ## Evidencia
 
-## Pendientes
+## Mejoras Recomendadas
 ```
 
 ## Criterio de Dominio

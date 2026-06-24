@@ -22,17 +22,11 @@ const PUBLIC_ROOT_FILES = [
 ];
 
 const INTERNAL_ROOT_FILES = [
-  'COMO-ESTUDIAR.md',
-  'COMO-USAR-LA-GUIA.md',
   'CONTRIBUTING.md',
   'DEPLOY-EASYPANEL.md',
-  'GUIA-DE-ESTUDIO.md',
   'LICENSE',
-  'PUBLICACION-GITHUB.md',
   'README.md',
   'SECURITY.md',
-  'SISTEMA-TDAH.md',
-  'TEMARIO-MAESTRO.md',
 ];
 
 const PUBLIC_FOLDERS = [
@@ -164,8 +158,7 @@ export function formatFolderName(folderName) {
     .replace('Db', 'Database')
     .replace('Edr', 'EDR')
     .replace('Vpn', 'VPN')
-    .replace('Api', 'API')
-    .replace('Tdah', 'TDAH');
+    .replace('Api', 'API');
 }
 
 function inferLevel({ folder = '', fileName = '', title = '', isRoot = false }) {

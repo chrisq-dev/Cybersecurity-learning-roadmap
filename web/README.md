@@ -64,7 +64,7 @@ Para que una leccion funcione bien en la web:
 
 ## Contenido Visible
 
-La web debe mostrar recursos para alumnos en orden de estudio. Documentos internos como pendientes, despliegue, publicacion, sistema personal de estudio, tableros o notas administrativas pueden vivir en el repo, pero no deben aparecer en la navegacion principal.
+La web debe mostrar recursos para alumnos en orden de estudio. La navegacion principal debe estar centrada en guias, labs, playbooks, cheatsheets y recursos profesionales utiles.
 
 ## Interactividad Actual
 
@@ -78,12 +78,6 @@ La web incluye:
 - tabla de contenido;
 - boton para guardar lecturas;
 - persistencia local de marcadores.
-
-## Pendientes Recomendados
-
-- Pagina de orientacion para elegir ruta.
-- Deploy publico con Dockerfile en Easypanel.
-- Screenshot o preview publico cuando exista deploy.
 
 ## Nota
 

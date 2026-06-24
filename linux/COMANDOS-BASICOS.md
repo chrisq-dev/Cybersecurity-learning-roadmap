@@ -77,7 +77,7 @@ No puedes avanzar sin ensuciarte las manos. Abre tu terminal de Linux (o tu máq
 
 ## Criterio de Dominio
 
-Antes de hacer clic en el botón de "Completar Lección", sé honesto contigo mismo. ¿Puedes hacer lo siguiente sin mirar los apuntes?
+Antes de hacer clic en el boton de "Completar Leccion", se honesto contigo mismo. Puedes hacer lo siguiente sin mirar la guia?
 
 - [ ] ¿Sé cómo volver a mi directorio principal?
 - [ ] ¿Sé cómo buscar la palabra "password" dentro de un archivo de texto?
@@ -85,4 +85,4 @@ Antes de hacer clic en el botón de "Completar Lección", sé honesto contigo mi
 - [ ] ¿Sé cómo ver mi dirección IP actual?
 
 > [!NOTE]
-> Si marcaste todas las casillas, ¡felicidades! Estás listo para el siguiente bloque. No olvides pulsar el botón de **Marcar como completado** debajo.
+> Si marcaste todas las casillas, estas listo para el siguiente bloque. No olvides pulsar el boton de **Marcar como completado** debajo.
