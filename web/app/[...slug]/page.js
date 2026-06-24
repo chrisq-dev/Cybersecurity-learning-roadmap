@@ -2,7 +2,6 @@ import { getMarkdownContent, getContentStructure } from '../../lib/markdown';
 import MarkdownRenderer from '../../components/MarkdownRenderer';
 import Pagination from '../../components/Pagination';
 import TableOfContents from '../../components/TableOfContents';
-import LessonProgress from '../../components/LessonProgress';
 import Link from 'next/link';
 
 export async function generateStaticParams() {
@@ -45,8 +44,6 @@ export default async function Page({ params }) {
 
   const prevPage = currentIndex > 0 ? allPages[currentIndex - 1] : null;
   const nextPage = currentIndex < allPages.length - 1 ? allPages[currentIndex + 1] : null;
-  const currentSlug = resolvedParams.slug.join('/');
-
   return (
     <article className="markdown-reader" style={{ paddingBottom: '5rem' }}>
       <header style={{ marginBottom: '3rem' }}>
@@ -66,7 +63,6 @@ export default async function Page({ params }) {
             )}
           </div>
         )}
-        <LessonProgress slug={currentSlug} />
       </header>
 
       <div style={{ display: 'flex', gap: '3rem', alignItems: 'flex-start' }}>

@@ -6,7 +6,17 @@ Aprender a pensar como analista defensivo: observar, investigar, documentar y re
 
 Blue Team no es solo mirar alertas. Es convertir senales incompletas en una decision defendible: falso positivo, actividad esperada, incidente real o riesgo que requiere mejora de controles.
 
-## Mapa Mental
+El objetivo de esta guia es que entiendas:
+
+- que es una alerta;
+- que es evidencia;
+- como formular hipotesis;
+- como validar;
+- como estimar impacto;
+- como recomendar acciones;
+- como comunicar conclusiones.
+
+## Modelo Mental
 
 ```text
 alerta -> evidencia -> contexto -> hipotesis -> validacion -> impacto -> accion -> reporte
@@ -14,20 +24,96 @@ alerta -> evidencia -> contexto -> hipotesis -> validacion -> impacto -> accion 
 
 Un buen analista separa tres cosas:
 
-- Hechos: evidencia observada.
-- Hipotesis: explicacion posible.
-- Conclusion: decision apoyada por evidencia.
+- hechos: evidencia observada;
+- hipotesis: explicacion posible;
+- conclusion: decision apoyada por evidencia.
+
+## Que Es Blue Team
+
+Blue Team agrupa actividades defensivas. Incluye monitoreo, deteccion, respuesta a incidentes, hardening, analisis de logs, threat hunting, gestion de vulnerabilidades, mejora de controles y documentacion.
+
+La mentalidad defensiva no es "bloquear todo". Es entender riesgo, proteger lo importante, detectar desviaciones y responder con criterio.
+
+## Alerta vs Evento
+
+Un evento es algo que ocurrio.
+
+Ejemplos:
+
+- login fallido;
+- proceso iniciado;
+- archivo creado;
+- conexion permitida;
+- DNS consultado.
+
+Una alerta es un evento o conjunto de eventos que cumple una regla de deteccion.
+
+Ejemplo:
+
+```text
+10 logins fallidos para la misma cuenta en 2 minutos
+```
+
+No toda alerta es incidente. No todo incidente genera alerta. Esa es una idea clave.
+
+## Evidencia
+
+Evidencia es informacion observable que apoya o contradice una hipotesis.
+
+Ejemplos:
+
+- log de autenticacion;
+- proceso ejecutado;
+- hash de archivo;
+- conexion de red;
+- consulta DNS;
+- correo recibido;
+- cambio de permiso;
+- accion en cloud;
+- alerta EDR.
+
+Una conclusion fuerte necesita evidencia suficiente, no intuicion.
+
+## Contexto
+
+El contexto convierte datos en significado.
+
+Ejemplo:
+
+```text
+Login exitoso a las 03:12 desde otro pais
+```
+
+Puede ser:
+
+- sospechoso si el usuario no viaja y no usa VPN;
+- esperado si es un administrador de guardia usando VPN corporativa;
+- ambiguo si faltan datos.
+
+Contexto util:
+
+- criticidad del activo;
+- rol del usuario;
+- ubicacion esperada;
+- horario laboral;
+- cambios recientes;
+- tickets de mantenimiento;
+- comportamiento historico;
+- exposicion del sistema.
 
 ## Flujo de Investigacion
 
 1. Recibir alerta.
 2. Entender que dice.
-3. Reunir evidencia.
-4. Formular hipotesis.
-5. Buscar actividad relacionada.
-6. Determinar impacto.
-7. Recomendar accion.
-8. Documentar.
+3. Identificar activo, usuario, IP, proceso o recurso involucrado.
+4. Reunir evidencia primaria.
+5. Formular hipotesis.
+6. Buscar actividad relacionada.
+7. Determinar impacto.
+8. Recomendar accion.
+9. Documentar conclusion.
+
+La investigacion no debe empezar con conclusion. Debe empezar con preguntas.
 
 ## Triage Inicial
 
@@ -41,19 +127,10 @@ Antes de investigar profundo, responde:
 - Hay severidad asignada?
 - La alerta tiene regla o deteccion asociada?
 - El comportamiento tiene contexto legitimo?
+- Hay eventos repetidos?
+- Hay evidencia de exito o solo intento?
 
 El objetivo del triage es decidir si se investiga mas, se cierra como benigno o se escala.
-
-## Preguntas de Analista
-
-- Que paso?
-- Cuando paso?
-- Donde paso?
-- Que usuario o sistema estuvo involucrado?
-- Es esperado o sospechoso?
-- Hay evidencia adicional?
-- Cual es el impacto?
-- Que accion se recomienda?
 
 ## Fuentes de Evidencia
 
@@ -66,28 +143,66 @@ El objetivo del triage es decidir si se investiga mas, se cierra como benigno o 
 | Firewall | Conexiones permitidas o bloqueadas |
 | Cloud logs | Acciones en recursos cloud |
 | Email gateway | Remitente, enlaces, adjuntos |
+| Logs de aplicacion | Acciones realizadas dentro del sistema |
+| IAM | Cambios de permisos y roles |
 
-## Logs Comunes
+Ninguna fuente cuenta toda la historia. El analista correlaciona.
 
-- Autenticacion.
-- Procesos.
-- DNS.
-- Web server.
-- Firewall.
-- EDR.
-- Cloud.
+## Hipotesis
+
+Una hipotesis es una explicacion posible.
+
+Ejemplo:
+
+Alerta: multiples fallos de login.
+
+Hipotesis:
+
+- usuario olvido contrasena;
+- servicio usa credencial vieja;
+- intento de fuerza bruta;
+- password spraying;
+- actividad de scanner interno;
+- ataque desde IP externa.
+
+Despues buscas evidencia para confirmar o descartar.
+
+## Falso Positivo y Verdadero Positivo
+
+### Falso positivo
+
+La alerta se disparo, pero no representa actividad maliciosa ni riesgo relevante.
+
+Ejemplo:
+
+Un scanner autorizado genera trafico que parece reconocimiento.
+
+### Verdadero positivo
+
+La alerta representa actividad real que requiere atencion.
+
+Ejemplo:
+
+Login exitoso desde IP desconocida seguido de cambio de MFA y descarga masiva.
+
+La meta no es cerrar rapido. Es cerrar bien.
 
 ## Severidad
 
-La severidad no debe depender solo de que una alerta suene peligrosa. Considera:
+La severidad no debe depender solo de que una alerta suene peligrosa.
 
-- Criticidad del activo.
-- Privilegios del usuario.
-- Confirmacion de actividad maliciosa.
-- Alcance.
-- Persistencia.
-- Exfiltracion.
-- Disponibilidad afectada.
+Considera:
+
+- criticidad del activo;
+- privilegios del usuario;
+- confirmacion de actividad maliciosa;
+- alcance;
+- persistencia;
+- movimiento lateral;
+- exfiltracion;
+- disponibilidad afectada;
+- sensibilidad de datos;
+- exposicion externa.
 
 Ejemplo:
 
@@ -114,57 +229,42 @@ Ejemplos de tacticas:
 
 Usalo para describir comportamiento, no para decorar reportes. Si dices "Credential Access", explica que evidencia muestra intento de obtener credenciales.
 
-## Errores Comunes de Principiante
+## Acciones de Respuesta
 
-- Cerrar alertas sin documentar por que.
-- Confundir ausencia de evidencia con evidencia de ausencia.
-- Saltar a conclusiones sin validar.
-- No revisar contexto del usuario o activo.
-- No proponer una accion concreta.
-- Reportar tecnicismos sin impacto.
+Las acciones dependen de evidencia e impacto.
 
-## Practica Guiada
+Ejemplos:
 
-Una investigacion simulada puede verse asi:
+- bloquear IP;
+- deshabilitar cuenta;
+- revocar sesiones;
+- aislar endpoint;
+- rotar credenciales;
+- restaurar desde backup;
+- abrir incidente;
+- ajustar regla de deteccion;
+- pedir confirmacion a usuario;
+- escalar a equipo responsable.
 
-```md
-# Investigacion: Multiples Logins Fallidos
+Una accion defensiva tambien puede romper operacion. Por eso hay que balancear rapidez, evidencia y riesgo.
 
-## Alerta
+## Comunicacion
 
-Multiples fallos de login para el usuario admin.
+Un reporte defensivo debe ser claro.
 
-## Evidencia
+Debe responder:
 
-- Hora:
-- Usuario:
-- IP origen:
-- Sistema destino:
+- que paso;
+- como se detecto;
+- que evidencia existe;
+- que impacto tiene;
+- que se hizo;
+- que falta;
+- que se recomienda.
 
-## Hipotesis
+Evita escribir solo tecnicismos. Seguridad debe comunicar riesgo a personas tecnicas y no tecnicas.
 
-Puede ser fuerza bruta, error de usuario o servicio mal configurado.
-
-## Validacion
-
-Buscar otros eventos desde la misma IP.
-
-## Conclusion
-
-
-## Acciones
-
-
-```
-
-Completa el reporte con al menos:
-
-- 5 eventos de evidencia.
-- 2 hipotesis alternativas.
-- 1 conclusion.
-- 3 acciones recomendadas.
-
-## Mini Laboratorio: Login Sospechoso
+## Ejemplo de Investigacion
 
 Escenario:
 
@@ -176,13 +276,23 @@ Hora: 03:12
 Sistema: panel administrativo
 ```
 
-Analiza:
+Preguntas:
 
-1. Que evidencia pedirias?
-2. Que haria que esto fuera benigno?
-3. Que haria que fuera incidente?
-4. Que acciones tomarias en los primeros 15 minutos?
-5. Que controles evitarian repeticion?
+- El usuario `admin` existe y debe usarse?
+- La IP externa pertenece a VPN corporativa?
+- Hubo MFA?
+- Hay logins fallidos antes?
+- Hubo cambios despues del login?
+- Se descargaron datos?
+- Se crearon usuarios?
+- Hay tickets de mantenimiento?
+- El usuario reconoce la actividad?
+
+Conclusiones posibles:
+
+- benigno: acceso esperado por guardia documentada;
+- sospechoso: login inusual sin cambios posteriores;
+- incidente: login seguido de cambios, descargas o acciones no autorizadas.
 
 ## Plantilla de Conclusion
 
@@ -193,13 +303,49 @@ La hipotesis mas probable es [hipotesis].
 Se recomienda [acciones] y monitorear [indicadores].
 ```
 
+## Errores Comunes
+
+- Cerrar alertas sin documentar por que.
+- Confundir ausencia de evidencia con evidencia de ausencia.
+- Saltar a conclusiones sin validar.
+- No revisar contexto del usuario o activo.
+- No proponer una accion concreta.
+- Reportar tecnicismos sin impacto.
+- Tratar toda alerta como incidente.
+- Ignorar actividad posterior al evento inicial.
+- No preservar evidencia.
+
+## Practica Conceptual
+
+Analiza este caso:
+
+```text
+Alerta: multiples logins fallidos
+Usuario: jlopez
+Origen: 198.51.100.20
+Destino: VPN corporativa
+Hora: 02:44
+Resultado: 14 fallos y 1 exito
+```
+
+Preguntas:
+
+- Que evidencia adicional pedirias?
+- Que hipotesis existen?
+- Que haria que esto sea benigno?
+- Que haria que sea incidente?
+- Que acciones tomarias primero?
+- Que controles evitarian repeticion?
+
 ## Criterio de Dominio
 
-Puedes avanzar cuando puedas:
+Dominas este tema cuando puedes:
 
-- Explicar que es una alerta.
-- Leer un log basico.
-- Separar evidencia de suposicion.
-- Escribir una conclusion.
-- Proponer una accion.
-- Justificar severidad usando impacto y evidencia.
+- diferenciar evento, alerta e incidente;
+- separar evidencia, hipotesis y conclusion;
+- explicar fuentes de evidencia;
+- hacer triage inicial;
+- justificar severidad con impacto;
+- usar MITRE ATT&CK con sentido;
+- proponer acciones proporcionales;
+- escribir una conclusion clara y defendible.

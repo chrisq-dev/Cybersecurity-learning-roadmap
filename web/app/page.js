@@ -1,6 +1,5 @@
 import { getContentStructure } from '../lib/markdown';
 import CategoryList from '../components/CategoryList';
-import ProgressOverview from '../components/ProgressOverview';
 import Link from 'next/link';
 import { SiLinux, SiPython, SiGo, SiGnubash, SiCisco, SiOwasp, SiDocker, SiKubernetes, SiKalilinux } from 'react-icons/si';
 import { FaNetworkWired, FaShieldAlt, FaSatelliteDish, FaWindows, FaAws } from 'react-icons/fa';
@@ -172,8 +171,6 @@ export default function Home() {
         </div>
       </section>
 
-      <ProgressOverview structure={structure} />
-      
       <CategoryList structure={structure} />
     </div>
   );

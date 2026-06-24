@@ -46,8 +46,6 @@ npm run lint
 - `app/api/health/route.js` expone healthcheck para Docker/Easypanel.
 - `components/MarkdownRenderer.jsx` convierte Markdown a HTML.
 - `components/TableOfContents.jsx` genera la tabla de contenido.
-- `components/LessonProgress.jsx` guarda marcadores locales de lectura en `localStorage`.
-- `components/ProgressOverview.jsx` muestra avance de lecturas por categoria.
 - `components/CategoryList.jsx` maneja busqueda, filtros y rutas por perfil.
 
 ## Convenciones de Contenido
@@ -66,7 +64,7 @@ Para que una leccion funcione bien en la web:
 
 La web debe mostrar recursos para alumnos en orden de estudio. La navegacion principal debe estar centrada en guias, labs, playbooks, cheatsheets y recursos profesionales utiles.
 
-## Interactividad Actual
+## Navegacion Actual
 
 La web incluye:
 
@@ -76,8 +74,7 @@ La web incluye:
 - rutas sugeridas por perfil;
 - navegacion por rutas;
 - tabla de contenido;
-- boton para guardar lecturas;
-- persistencia local de marcadores.
+- enlaces anterior/siguiente entre guias.
 
 ## Nota
 

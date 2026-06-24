@@ -63,26 +63,26 @@ curl -I https://google.com   # Hace un ping web para ver si hay conexión
 
 ---
 
-## Laboratorio Práctico
+## Observacion Practica
 
-No puedes avanzar sin ensuciarte las manos. Abre tu terminal de Linux (o tu máquina virtual) y completa estos pasos. ¡Marca las casillas cuando termines!
+Para entender comandos de Linux conviene observarlos en un entorno propio, como una maquina virtual, WSL o un laboratorio local. Estos comandos muestran ubicacion, usuario, archivos, procesos y conectividad:
 
-- [ ] Abre la terminal y ejecuta `pwd`. Escribe mentalmente en qué ruta estás.
-- [ ] Viaja a la carpeta temporal usando `cd /tmp`.
-- [ ] Ejecuta `ls -la` y busca si hay archivos que empiecen con un punto `.`.
-- [ ] Ejecuta `whoami` para confirmar con qué usuario estás operando.
-- [ ] Haz un ping rápido para verificar que tienes internet: `curl -I https://google.com`.
+- `pwd` muestra la ruta actual.
+- `cd /tmp` cambia a un directorio temporal.
+- `ls -la` lista archivos visibles y ocultos.
+- `whoami` confirma el usuario actual.
+- `curl -I https://google.com` muestra si hay respuesta HTTP.
 
 ---
 
 ## Criterio de Dominio
 
-Antes de hacer clic en el boton de "Completar Leccion", se honesto contigo mismo. Puedes hacer lo siguiente sin mirar la guia?
+Puedes considerar dominado este bloque cuando puedas hacer lo siguiente sin mirar la guia:
 
-- [ ] ¿Sé cómo volver a mi directorio principal?
-- [ ] ¿Sé cómo buscar la palabra "password" dentro de un archivo de texto?
-- [ ] ¿Sé cómo leer las últimas 10 líneas de un registro (log)?
-- [ ] ¿Sé cómo ver mi dirección IP actual?
+- Volver a tu directorio principal.
+- Buscar la palabra `password` dentro de un archivo de texto.
+- Leer las ultimas 10 lineas de un log.
+- Ver tu direccion IP actual.
 
 > [!NOTE]
-> Si marcaste todas las casillas, estas listo para el siguiente bloque. No olvides pulsar el boton de **Marcar como completado** debajo.
+> El objetivo no es memorizar comandos aislados. El objetivo es saber que informacion te da cada comando y cuando usarla.
