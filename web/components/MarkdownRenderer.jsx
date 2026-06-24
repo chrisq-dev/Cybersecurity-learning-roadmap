@@ -12,12 +12,6 @@ import Link from 'next/link';
 // plain <img> instead of next/image with a fixed allowlist.
 /* eslint-disable @next/next/no-img-element */
 
-// Strip leading `?` from table cell text (leftover from old interactive format)
-function stripInteractivePrefix(text) {
-  if (typeof text === 'string' && text.startsWith('?')) return text.slice(1).trim();
-  return text;
-}
-
 // Remove .md extension from local/relative file paths and links in markdown text,
 // but ignore code blocks, inline code, and absolute URLs.
 function removeMdExtensionFromText(content) {
@@ -126,14 +120,6 @@ export default function MarkdownRenderer({ content, basePath = '' }) {
               return <div className={`alert-box alert-${alertType}`}>{cleanChildren}</div>;
             }
             return <blockquote {...props}>{children}</blockquote>;
-          },
-          // Strip the `?` prefix from td cells (old interactive format → show answer as plain text)
-          td({ node, children, ...props }) {
-            const processedChildren = React.Children.map(children, child => {
-              if (typeof child === 'string') return stripInteractivePrefix(child);
-              return child;
-            });
-            return <td {...props}>{processedChildren}</td>;
           },
         }}
       >

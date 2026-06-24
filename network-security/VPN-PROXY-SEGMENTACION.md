@@ -4,6 +4,24 @@
 
 Entender controles de acceso remoto, salida a internet y separacion de redes.
 
+Estos controles definen como entran usuarios remotos, como salen sistemas a internet y como se limita el movimiento dentro de la red. Son temas esenciales para reducir impacto cuando una cuenta, laptop, servidor o aplicacion se compromete.
+
+## Modelo Mental
+
+```text
+identidad -> dispositivo -> acceso -> segmento -> permiso -> log
+```
+
+Una arquitectura madura no pregunta solo "esta conectado a la VPN?". Pregunta:
+
+- quien es el usuario;
+- desde que dispositivo entra;
+- que postura tiene el dispositivo;
+- a que segmento necesita llegar;
+- que puertos requiere;
+- que se registra;
+- que se bloquea por defecto.
+
 ## VPN
 
 Una VPN crea un canal cifrado hacia una red o servicio.
@@ -43,6 +61,32 @@ Modelo mejor:
 Usuario remoto -> VPN con MFA -> Segmento segun rol -> Sistemas necesarios
 ```
 
+## VPN Site-to-Site vs Acceso Remoto
+
+### Acceso remoto
+
+Un usuario se conecta desde su dispositivo hacia recursos internos.
+
+Riesgos:
+
+- credenciales robadas;
+- dispositivo infectado;
+- falta de MFA;
+- acceso excesivo.
+
+### Site-to-site
+
+Conecta redes completas entre oficinas, cloud o proveedores.
+
+Riesgos:
+
+- confianza excesiva entre redes;
+- rutas demasiado amplias;
+- proveedor comprometido;
+- falta de monitoreo este-oeste.
+
+En ambos casos, la VPN cifra el canal, pero no reemplaza segmentacion ni autorizacion.
+
 ## Proxy
 
 Un proxy intermedia trafico, normalmente web.
@@ -63,6 +107,45 @@ Riesgos:
 - Reglas demasiado permisivas.
 - Inspeccion TLS mal comunicada o mal configurada.
 
+## Proxy Directo y Proxy Reverso
+
+### Proxy directo
+
+Intermedia salida de usuarios o sistemas hacia internet.
+
+Ejemplo:
+
+```text
+usuario -> proxy -> internet
+```
+
+Usos:
+
+- filtrar URLs;
+- registrar navegacion;
+- aplicar politicas;
+- bloquear descargas peligrosas.
+
+### Proxy reverso
+
+Intermedia entrada desde usuarios externos hacia una aplicacion interna.
+
+Ejemplo:
+
+```text
+internet -> reverse proxy -> aplicacion
+```
+
+Usos:
+
+- TLS termination;
+- balanceo;
+- WAF;
+- autenticacion centralizada;
+- ocultar infraestructura interna.
+
+No confundas ambos. Uno controla salida; el otro controla entrada hacia servicios.
+
 ## Egress Filtering
 
 Controlar trafico saliente.
@@ -81,6 +164,22 @@ Servidor web no puede conectarse libremente a cualquier IP interna.
 ```
 
 Egress filtering es importante porque muchas organizaciones solo piensan en bloquear entrada. Un atacante que ya logro ejecutar codigo necesita salida para descargar herramientas, comunicarse o sacar datos.
+
+Ejemplo de politica:
+
+```text
+Servidor de aplicacion puede salir a proveedor de pagos por 443.
+Servidor de aplicacion no puede conectarse por SSH a internet.
+Base de datos no inicia conexiones a internet.
+```
+
+Egress filtering reduce:
+
+- command and control;
+- descarga de herramientas;
+- exfiltracion;
+- abuso de SSRF;
+- conexiones inesperadas desde servidores.
 
 ## DMZ
 
@@ -105,6 +204,14 @@ Separar por funcion y riesgo:
 - Produccion.
 - Desarrollo.
 
+La segmentacion responde una pregunta clave:
+
+```text
+Si este activo cae, que mas puede alcanzar?
+```
+
+No basta con crear VLANs. La segmentacion existe de verdad cuando hay reglas, logs y revisiones.
+
 ## Microsegmentacion
 
 Segmentacion clasica separa redes grandes. Microsegmentacion busca controlar comunicacion entre cargas o servicios especificos.
@@ -118,6 +225,8 @@ database no inicia conexiones a internet
 ```
 
 En cloud o Kubernetes esto puede implementarse con security groups, network policies, service mesh o politicas equivalentes.
+
+La microsegmentacion es especialmente util cuando muchos servicios viven en la misma nube, cluster o red virtual. En vez de confiar en que "todo backend puede hablar con todo", define relaciones concretas.
 
 ## Zonas Sugeridas
 
@@ -142,7 +251,7 @@ En cloud o Kubernetes esto puede implementarse con security groups, network poli
 
 ## Practica
 
-Diseña acceso remoto para administradores:
+Ejemplo de diseno de acceso remoto para administradores:
 
 - Quien entra?
 - MFA?
@@ -150,6 +259,82 @@ Diseña acceso remoto para administradores:
 - Que puertos?
 - Que logs?
 - Que pasa si el dispositivo no cumple?
+
+Diseno razonable:
+
+| Pregunta | Respuesta esperada |
+| --- | --- |
+| Quien entra? | Administradores nominales |
+| MFA? | Obligatorio |
+| Dispositivo | Corporativo y saludable |
+| Segmento | Administracion |
+| Acceso | Jump box, no red completa |
+| Logs | VPN, jump box, comandos criticos |
+| Incumplimiento | Bloquear o acceso limitado |
+
+## Patrones de Arquitectura
+
+### Patron debil
+
+```text
+VPN -> red completa -> servidores y usuarios
+```
+
+Problema:
+
+Una cuenta VPN comprometida puede explorar demasiado.
+
+### Patron mejor
+
+```text
+VPN con MFA -> segmento por rol -> jump box -> sistemas necesarios
+```
+
+Ventaja:
+
+La identidad, el dispositivo y el rol limitan alcance.
+
+### Patron para aplicaciones publicas
+
+```text
+internet -> WAF/reverse proxy -> app -> database
+```
+
+La base de datos no debe exponerse directamente a internet ni a usuarios.
+
+## Logs Importantes
+
+Para VPN:
+
+- usuario;
+- IP origen;
+- hora de conexion;
+- MFA exitoso o fallido;
+- dispositivo;
+- IP asignada;
+- bytes transferidos;
+- desconexion.
+
+Para proxy:
+
+- usuario o IP;
+- URL o dominio;
+- categoria;
+- accion;
+- bytes;
+- user-agent;
+- reputacion.
+
+Para segmentacion:
+
+- regla aplicada;
+- origen;
+- destino;
+- puerto;
+- accion;
+- zona.
+
+Sin logs, estos controles son dificiles de auditar.
 
 ## Preguntas de Comprension
 

@@ -4,6 +4,24 @@
 
 Entender controles de seguridad de red y como ayudan a prevenir o detectar trafico no deseado.
 
+Estos controles no son decoracion en un diagrama. Son puntos donde una organizacion decide que comunicacion permite, que bloquea, que registra y que investiga. Una red sin controles claros depende demasiado de que cada sistema individual este perfectamente protegido, y eso rara vez ocurre.
+
+## Modelo Mental
+
+```text
+flujo de red -> politica -> control -> log -> revision
+```
+
+Una comunicacion segura debe poder explicarse:
+
+- quien inicia;
+- hacia donde va;
+- por que puerto;
+- por que se permite;
+- que control lo valida;
+- que log queda;
+- quien revisa la regla.
+
 ## Firewall
 
 Un firewall permite o bloquea trafico segun reglas.
@@ -81,11 +99,37 @@ Detecta actividad sospechosa y alerta.
 
 No necesariamente bloquea.
 
+Un IDS es util cuando quieres visibilidad sin interrumpir trafico. Puede colocarse para observar segmentos, trafico norte-sur o este-oeste, dependiendo de la arquitectura.
+
+Ejemplo:
+
+```text
+IDS detecta intento de explotacion contra servidor web y genera alerta para SOC.
+```
+
+Limitacion:
+
+Si nadie revisa alertas o si hay demasiados falsos positivos, el IDS pierde valor operativo.
+
 ## IPS
 
 Intrusion Prevention System.
 
 Puede bloquear trafico sospechoso.
+
+Un IPS agrega capacidad de prevencion, pero tambien mayor riesgo operativo. Una firma mal calibrada puede bloquear trafico legitimo.
+
+Ejemplo:
+
+```text
+IPS bloquea trafico que coincide con explotacion conocida.
+```
+
+Pregunta clave:
+
+```text
+Que prefiero en este flujo: alertar, bloquear o monitorear?
+```
 
 ## Diferencia
 
@@ -170,6 +214,23 @@ Un log de red deberia ayudar a responder:
 - Fue normal para ese origen?
 - Hubo una alerta asociada?
 
+Ejemplo de log conceptual:
+
+```text
+2026-06-24T12:01:10 allow src=10.10.10.25 dst=10.10.20.50 proto=tcp dpt=443 bytes=18342 rule=USERS_TO_WEB
+```
+
+Interpretacion:
+
+- el origen fue un host de usuarios;
+- el destino fue un servidor web;
+- se uso TCP 443;
+- la regla que permitio fue identificable;
+- hubo transferencia de datos;
+- falta revisar si ese flujo era esperado para ese usuario y horario.
+
+Un log sin regla, sin zona o sin timestamp confiable tiene menos valor.
+
 ## Higiene de Reglas
 
 Buenas practicas:
@@ -185,7 +246,7 @@ Buenas practicas:
 
 ## Practica
 
-Diseña reglas para:
+Ejemplo de diseno de reglas para una red simple:
 
 - Usuarios a web server por 443.
 - Admin a servidores por SSH.
@@ -196,6 +257,86 @@ Tabla:
 
 | Origen | Destino | Puerto | Accion | Justificacion |
 | --- | --- | --- | --- | --- |
+| Usuarios | Web interno | TCP 443 | Allow | Acceso a aplicacion |
+| Admin VPN | Servidores | TCP 22 | Allow | Administracion controlada |
+| Invitados | Internet | TCP 80/443 | Allow | Navegacion basica |
+| Usuarios | Base de datos | TCP 5432 | Deny | DB solo desde backend |
+
+La parte importante no es llenar la tabla. Es poder defender por que cada flujo existe.
+
+## Arquitectura Correcta
+
+Un firewall funciona mejor cuando la red ya tiene zonas razonables.
+
+Ejemplo debil:
+
+```text
+usuarios, servidores, invitados y administracion en la misma red
+```
+
+Ejemplo mejor:
+
+```text
+usuarios -> firewall interno -> aplicaciones -> firewall interno -> datos
+administracion -> jump box -> sistemas criticos
+invitados -> internet solamente
+```
+
+Los controles se vuelven mas claros cuando la arquitectura separa funciones.
+
+## Revision de Reglas
+
+Las reglas envejecen.
+
+Preguntas para revisar:
+
+- La regla sigue siendo necesaria?
+- Tiene owner?
+- Tiene justificacion?
+- Tiene alcance minimo?
+- Usa `any` donde podria ser especifica?
+- Hay trafico real usando esa regla?
+- Expone administracion?
+- Tiene fecha de expiracion si fue temporal?
+
+Una regla temporal sin expiracion se convierte en riesgo permanente.
+
+## Falsos Positivos y Falsos Negativos
+
+### Falso positivo
+
+El IDS/IPS alerta o bloquea algo benigno.
+
+Impacto:
+
+- fatiga de alertas;
+- interrupcion del negocio;
+- perdida de confianza en la herramienta.
+
+### Falso negativo
+
+El IDS/IPS no detecta actividad maliciosa.
+
+Impacto:
+
+- incidente sin alerta;
+- deteccion tardia;
+- falsa sensacion de seguridad.
+
+La calidad defensiva mejora ajustando reglas, revisando contexto y aprendiendo de incidentes.
+
+## Criterio de Buena Regla
+
+Una buena regla:
+
+- es especifica;
+- tiene razon de negocio o tecnica;
+- tiene owner;
+- genera logs utiles;
+- evita `any any`;
+- se revisa periodicamente;
+- limita administracion;
+- no contradice la arquitectura.
 
 ## Preguntas de Comprension
 
