@@ -44,6 +44,7 @@ Archivo para registrar mejoras reales del proyecto. No es una lista de temas por
 
 - [x] Proponer nombre final del repo.
 - [x] Proponer descripcion y tags de GitHub.
-- [ ] Agregar screenshot o preview de la web cuando este deployada.
+- [x] Agregar screenshot o preview local de la web.
+- [ ] Actualizar screenshot o preview cuando la web este deployada.
 - [x] Agregar instrucciones claras para ejecutar localmente y con Docker.
 - [x] Decidir licencia y reglas de contribucion visibles.

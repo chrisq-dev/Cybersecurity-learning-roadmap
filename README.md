@@ -4,6 +4,8 @@ Guia publica en espanol para estudiar ciberseguridad de forma estructurada, prac
 
 Este repositorio combina apuntes, rutas, laboratorios, preguntas, playbooks, proyectos y una web local para leer el contenido como una plataforma de aprendizaje.
 
+![Preview de la web](assets/preview-home.png)
+
 ## Como Estudiar
 
 Empieza aqui:
