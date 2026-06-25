@@ -313,6 +313,27 @@ blockquote p {
   text-decoration: none;
 }
 
+.route-card {
+  position: relative;
+  cursor: pointer;
+}
+
+.route-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: var(--border-radius);
+}
+
+.route-card-link {
+  position: relative;
+  z-index: 2;
+}
+
+.route-card-link:hover {
+  color: var(--text-main) !important;
+}
+
 /* ── Search ─────────────────────────────────────── */
 .search-pill {
   width: 100%;

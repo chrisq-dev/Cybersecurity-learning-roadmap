@@ -122,6 +122,33 @@ const learningOutcomes = [
   },
 ];
 
+const studyAreas = [
+  {
+    title: 'Fundamentos',
+    text: 'Computación, sistemas operativos, redes, Linux, Windows, permisos y conceptos base de seguridad.',
+  },
+  {
+    title: 'Seguridad web y AppSec',
+    text: 'HTTP, OWASP Top 10, APIs, autenticación, autorización, validación y revisiones de seguridad.',
+  },
+  {
+    title: 'Defensa y respuesta',
+    text: 'Logs, alertas, SIEM, MITRE ATT&CK, hunting, playbooks e investigación de incidentes.',
+  },
+  {
+    title: 'Cloud y arquitectura',
+    text: 'IAM, storage, logging, contenedores, Kubernetes, Zero Trust y controles de arquitectura.',
+  },
+  {
+    title: 'Riesgo y empleabilidad',
+    text: 'GRC, privacidad, continuidad, rutas por rol, portafolio, entrevistas, CV y LinkedIn.',
+  },
+  {
+    title: 'Cultura y recursos',
+    text: 'Glosario hacker, plataformas de práctica, certificaciones, Mr. Robot, open source y referencias geek.',
+  },
+];
+
 export default function Home() {
   const structure = getContentStructure();
   const totalCategories = structure.length;
@@ -208,6 +235,28 @@ export default function Home() {
 
       <section style={{ textAlign: 'left', margin: '0 auto 4rem auto' }}>
         <h2 className="serif-title" style={{ fontSize: '2rem', borderBottom: 'none', marginBottom: '0.75rem' }}>
+          Qué puedes estudiar aquí
+        </h2>
+        <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '2rem', maxWidth: '760px' }}>
+          No necesitas dominar todo al mismo tiempo. Usa esta guía como un mapa para ubicar temas, conectar conceptos y elegir una ruta principal.
+        </p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
+          {studyAreas.map((area) => (
+            <div key={area.title} className="book-card" style={{ padding: '1.15rem', cursor: 'default' }}>
+              <h3 style={{ margin: '0 0 0.45rem 0', fontSize: '1.05rem', color: 'var(--text-main)' }}>
+                {area.title}
+              </h3>
+              <p style={{ margin: 0, fontSize: '0.92rem', lineHeight: 1.55, color: 'var(--text-muted)' }}>
+                {area.text}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section style={{ textAlign: 'left', margin: '0 auto 4rem auto' }}>
+        <h2 className="serif-title" style={{ fontSize: '2rem', borderBottom: 'none', marginBottom: '0.75rem' }}>
           Rutas por perfil
         </h2>
         <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '2rem' }}>
@@ -216,7 +265,12 @@ export default function Home() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
           {profileRoutes.map((route) => (
-            <div key={route.title} className="book-card" style={{ padding: '1.25rem', cursor: 'default' }}>
+            <div key={route.title} className="book-card route-card" style={{ padding: '1.25rem' }}>
+              <Link
+                href={route.links[0][1]}
+                className="route-card-overlay"
+                aria-label={`Abrir ${route.title}`}
+              />
               <h3 style={{ margin: '0 0 0.4rem 0', fontSize: '1.1rem', color: 'var(--text-main)' }}>
                 {route.title}
               </h3>
@@ -225,7 +279,7 @@ export default function Home() {
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
                 {route.links.map(([label, href]) => (
-                  <Link key={href} href={href} style={{ fontSize: '0.92rem', textDecoration: 'none', color: 'var(--text-muted)' }}>
+                  <Link key={href} href={href} className="route-card-link" style={{ fontSize: '0.92rem', textDecoration: 'none', color: 'var(--text-muted)' }}>
                     {label}
                   </Link>
                 ))}
@@ -233,6 +287,38 @@ export default function Home() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section
+        className="open-source-note"
+        style={{
+          textAlign: 'left',
+          background: 'var(--bg-card)',
+          border: '1px solid var(--border-color)',
+          borderRadius: 'var(--border-radius)',
+          padding: '1.5rem',
+          margin: '0 auto 1rem auto',
+          maxWidth: '860px',
+          boxShadow: '0 4px 12px var(--border-glow)'
+        }}
+      >
+        <h2 className="serif-title" style={{ fontSize: '1.65rem', borderBottom: 'none', marginBottom: '0.75rem' }}>
+          Proyecto abierto
+        </h2>
+        <p style={{ margin: '0 0 0.85rem 0', fontSize: '0.98rem', lineHeight: 1.65, color: 'var(--text-muted)' }}>
+          Esta guía está en construcción. La idea es seguir agregando recursos, mejorando explicaciones y corrigiendo contenido conforme estudio, pruebo laboratorios y recibo feedback.
+        </p>
+        <p style={{ margin: 0, fontSize: '0.98rem', lineHeight: 1.65, color: 'var(--text-muted)' }}>
+          Si encuentras un error, una explicación confusa o quieres sugerir una mejora, puedes abrir un issue o contribuir desde{' '}
+          <a
+            href="https://github.com/chrisq-dev/Cybersecurity-learning-roadmap"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          .
+        </p>
       </section>
 
       <section
