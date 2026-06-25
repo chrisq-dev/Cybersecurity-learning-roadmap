@@ -1,6 +1,6 @@
 import { getContentStructure } from '../lib/markdown';
 import Link from 'next/link';
-import { SiLinux, SiPython, SiGo, SiGnubash, SiCisco, SiOwasp, SiDocker, SiKubernetes, SiKalilinux } from 'react-icons/si';
+import { SiLinux, SiPython, SiGnubash, SiCisco, SiOwasp, SiDocker, SiKubernetes, SiKalilinux } from 'react-icons/si';
 import { FaNetworkWired, FaShieldAlt, FaSatelliteDish, FaWindows, FaAws } from 'react-icons/fa';
 
 const techIcons = [
@@ -13,7 +13,6 @@ const techIcons = [
   { Icon: FaSatelliteDish, color: '#2a9d8f', title: 'SIEM' },
   { Icon: FaShieldAlt, color: '#e9c46a', title: 'EDR' },
   { Icon: SiPython, color: '#3776AB', title: 'Python' },
-  { Icon: SiGo, color: '#00ADD8', title: 'Go' },
   { Icon: SiGnubash, color: '#4EAA25', title: 'Bash' },
   { Icon: SiDocker, color: '#2496ED', title: 'Docker' },
   { Icon: SiKubernetes, color: '#326CE5', title: 'Kubernetes' },
