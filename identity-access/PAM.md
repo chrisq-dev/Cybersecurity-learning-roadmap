@@ -1,107 +1,57 @@
-# Privileged Access Management
+# PAM (Privileged Access Management): La Bóveda Nuclear
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender como proteger cuentas privilegiadas.
+Aprender cómo proteger a los "Dioses" de la red corporativa.
 
-## Qué es PAM
+En el módulo anterior (IAM) hablamos de empleados normales como la recepcionista o el de ventas. Pero en toda empresa existe un pequeño grupo de humanos (El equipo de IT / Administradores de Sistemas) cuyas cuentas tienen poder absoluto.
+*   Si le robas la contraseña al de ventas, puedes leer el Excel de los clientes.
+*   Si le robas la contraseña al Administrador de Red (Domain Admin), **eres el dueño de la empresa entera**. Puedes borrar servidores, apagar el Antivirus, y robar bases de datos encriptadas.
 
-PAM gestiona accesos privilegiados.
+Por eso, los hackers profesionales dedican el 90% de su tiempo a robar credenciales de Administradores. A esto se le llama **Movimiento Lateral** y **Escalada de Privilegios**.
 
-Ejemplos:
+---
 
-- Administradores de dominio.
-- Root.
-- Administradores cloud.
-- Cuentas de base de datos.
-- Cuentas de servicio críticas.
+## 1. El Problema: El Post-it en el Monitor
 
-La idea central es que el acceso privilegiado no debe ser permanente, compartido ni invisible. Una cuenta normal puede causar daño limitado; una cuenta privilegiada puede cambiar configuraciones, leer datos sensibles, crear persistencia o borrar rastros. Por eso PAM combina prevencion, aprobacion, monitoreo y revisión.
+Históricamente, el Administrador de Sistemas creaba una sola cuenta en el Servidor Maestro con la contraseña `PasswordSuperFuerte123!`.
+Para no olvidarla, el Administrador la anotaba en un *Post-it* amarillo debajo de su teclado, o peor aún, usaba esa misma contraseña gigante para iniciar sesión en su laptop de uso diario.
 
-## Riesgo
+*   **El Ataque:** El hacker le hace Phishing a la recepcionista. Entra a su computadora. Desde la computadora de la recepcionista, el hacker explora la red en silencio (Movimiento Lateral). Descubre que el Administrador dejó su sesión iniciada en la red local. El hacker usa una herramienta como *Mimikatz* (Visto en Forense de Memoria), extrae la contraseña gigante de la memoria RAM del Administrador, y automáticamente gana el juego. (Ataque *Pass-The-Hash*).
 
-Una cuenta privilegiada comprometida puede causar impacto alto:
+---
 
-- Acceso a datos.
-- Cambios de configuración.
-- Desactivar logs.
-- Crear usuarios.
-- Persistencia.
+## 2. La Solución: La Bóveda Nuclear (PAM)
 
-## Controles
+Para detener esta masacre, las corporaciones implementan sistemas de **PAM (Privileged Access Management)** (Ej. *CyberArk*, *BeyondTrust*).
 
-- Cuentas admin separadas.
-- MFA obligatorio.
-- Just-in-time access.
-- Session recording en ambientes críticos.
-- Password vault.
-- Rotación de secretos.
-- Access reviews.
-- Alertas por uso privilegiado.
+*   **La Analogía:** Los Códigos de Lanzamiento Nuclear y la Bóveda de Titanio.
+El Administrador de Sistemas moderno **NO CONOCE** la contraseña del Servidor Maestro. Es imposible que la anote en un *Post-it* porque no sabe cuál es.
 
-## Just-in-Time
+1.  **La Custodia:** El sistema PAM inventa una contraseña de 120 caracteres aleatorios (`&4#Lp9...`) y la guarda adentro de una Bóveda Cibernética ultra blindada. El servidor maestro se configura para que solo acepte esa contraseña absurda.
+2.  **El Chequeo (Checkout):** Son las 3:00 PM y el Administrador necesita reiniciar el servidor. El Administrador entra al portal del sistema PAM y solicita acceso: *"Soy el Admin, necesito entrar al Servidor 5 por motivos de mantenimiento"*.
+3.  **La Entrega Temporal:** La Bóveda aprueba la petición. No le muestra la contraseña al Admin, sino que **le inyecta la sesión automáticamente** en su pantalla. El Admin reinicia el servidor.
+4.  **La Autodestrucción (Checkin):** El Administrador termina su trabajo a las 3:30 PM y cierra la sesión. Inmediatamente, la Bóveda inventa una contraseña nueva de 120 caracteres diferentes y se la cambia al servidor de forma invisible.
 
-Acceso temporal y aprobado.
+**¿Por qué esto destruye a los Hackers?**
+Incluso si el hacker logra infiltrarse en la computadora del Administrador a las 4:00 PM, no encontrará absolutamente nada. La contraseña ya rotó, cambió, y nadie en el mundo humano sabe cuál es la nueva.
 
-Ejemplo:
+---
 
-```text
-Admin recibe permisos durante 1 hora para una tarea especifica.
-```
+## 3. Grabación de Sesiones (Session Recording)
 
-JIT reduce la ventana de abuso. Si una credencial se compromete, el atacante no debería encontrar privilegios administrativos activos todo el tiempo. También ayuda a distinguir actividad normal de actividad sospechosa, porque cada elevación debe tener razon, duración y contexto.
+Los sistemas PAM modernos incluyen una función de auditoría extrema.
+Cuando la Bóveda le concede el acceso al Administrador, el sistema empieza a **grabar en video toda la pantalla** y guarda un registro de cada tecla que presiona en la consola de comandos.
 
-## Cuentas de Servicio
+Si a las 3:15 PM el servidor maestro se borra por completo, el equipo forense no tiene que adivinar si fue un virus, o si fue un error humano, o si fue un Sabotaje Interno (Insider Threat). Simplemente abren la Bóveda, reproducen el video del Administrador, y ven exactamente el comando destructivo que tecleó.
 
-Riesgos:
+---
 
-- Sin owner.
-- Contraseña nunca rota.
-- Permisos amplios.
-- Uso desconocido.
+## 4. Criterio de Dominio (Autoevaluación)
 
-Controles:
+Revisa si puedes proteger el reino:
 
-- Owner.
-- Rotación.
-- Permisos mínimos.
-- Monitoreo.
-- Documentacion.
-
-Las cuentas de servicio son dificiles porque no pertenecen a una persona. Si nadie sabe que aplicación las usa, nadie se atreve a rotarlas. Por eso necesitan owner técnico, permisos especificos, inventario y monitoreo. Una cuenta de servicio con privilegios altos y contraseña antigua puede ser más peligrosa que una cuenta humana.
-
-## Ejemplo de Revisión PAM
-
-Esta cuenta muestra problemas clasicos de privilegio permanente:
-
-```text
-Cuenta: svc-backup
-Permisos: administrador de dominio
-Rotacion: nunca
-Owner: desconocido
-```
-
-La revisión debe separar:
-
-- Riesgos.
-- Controles.
-- Plan de remediación.
-- Evidencia requerida.
-
-## Señales de Riesgo
-
-- Cuentas admin usadas para trabajo diario.
-- Passwords compartidos por varias personas.
-- Cuentas sin MFA en sistemas críticos.
-- Service accounts con permisos de administrador.
-- Secretos que nunca rotan.
-- Accesos privilegiados sin alerta ni registro.
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Explicar PAM.
-- Explicar JIT.
-- Identificar cuentas privilegiadas.
-- Proponer controles para service accounts.
+1. Un hacker logra tomar control de la computadora de un becario de Marketing. Explica qué es el "Movimiento Lateral" y cuál es el objetivo final (la cuenta objetivo) del hacker durante esta fase del ataque.
+2. El Administrador de Bases de Datos de tu empresa dice que el sistema PAM "es muy molesto" y propone que simplemente le dejen configurar una contraseña muy compleja (Ej. 30 caracteres) y que él promete guardarla en su mente. Usando el concepto de la "Bóveda Nuclear" y la rotación de claves, explica por qué la propuesta del Administrador sigue siendo un riesgo inaceptable para la empresa.
+3. Un ataque de *Pass-The-Hash* (robar una credencial directamente de la Memoria RAM) depende de que la contraseña permanezca estática y válida por mucho tiempo. ¿Cómo mitiga matemáticamente un sistema de *Privileged Access Management* (PAM) este vector de ataque específico?
+4. Ocurre una caída masiva del sistema de nóminas el día de pago. El Administrador jura que él solo estaba "leyendo" la configuración y no tocó nada. Si la empresa cuenta con un sistema PAM de nivel empresarial (*Enterprise-Grade*), ¿Qué evidencia exacta buscaría el Analista Forense para comprobar o desmentir la versión del Administrador?
