@@ -1,132 +1,58 @@
-# Riesgos y Controles en APIs
+# Riesgos y Controles de API: Hackeando al Mesero
 
-## Objetivo
+## Objetivo del Módulo
 
-Conocer fallas comunes en APIs y como mitigarlas.
+Aprender la vulnerabilidad número 1 de las APIs en el mundo entero (BOLA) y cómo el equipo defensivo utiliza pulseras criptográficas para detenerla.
 
-## BOLA / IDOR
+Las APIs son maravillosas porque conectan sistemas mundiales en milisegundos, pero al quitar la interfaz gráfica para el usuario, los desarrolladores suelen olvidar ponerle candados a las peticiones invisibles de las máquinas.
 
-Broken Object Level Authorization ocurre cuando un usuario accede a objetos de otro usuario cambiando IDs.
+---
 
-Ejemplo:
+## 1. El Riesgo #1: BOLA (Broken Object Level Authorization)
 
-```text
-/api/invoices/1001
-/api/invoices/1002
-```
+*   **La Analogía:** Llegas a un teatro de lujo durante el invierno. Vas al Guardarropa y entregas tu chaqueta. El empleado te da un ticket de papel con el número `15`. 
+    Al final de la obra, tú miras el ticket `15`. Decides sacar un bolígrafo de tu bolsillo, tachar el 15 y escribir `16`. 
+    Le entregas el ticket alterado al empleado. El empleado es una API mal programada: ve el número 16, **no te pide tu identificación para confirmar**, va al armario, y te entrega el costoso abrigo de visón de otra persona. Acabas de robar el objeto de alguien más cambiando un número.
 
-Mitigacion:
-
-- Validar permisos en servidor para cada objeto.
-- No confiar en que el frontend oculta botones.
-- Tests de autorización.
-
-## Mass Assignment
-
-Ocurre cuando la API acepta campos que el usuario no debería controlar.
-
-Ejemplo:
-
+**El Ataque BOLA en la vida real:**
+Abres la App de tu banco. Para ver el saldo de tu propia cuenta, la App le manda este mensaje JSON invisible al Mesero (La API):
 ```json
 {
-  "name": "Ana",
-  "role": "admin"
+  "usuario": "Juan",
+  "accion": "ver_saldo",
+  "cuenta_id": 15
 }
 ```
+La API te responde con tus 50 dólares.
+El Hacker toma el control, intercepta el mensaje antes de que salga del celular, y con un teclado cambia el `"cuenta_id": 15` por `"cuenta_id": 16`. 
 
-Mitigacion:
+Si el programador del banco construyó una API ingenua (El empleado del guardarropa tonto), la API no verificará si el usuario "Juan" es realmente el dueño de la cuenta 16. La API simplemente obedecerá y le entregará al hacker el saldo del cliente 16 (Un millón de dólares). 
 
-- Allowlist de campos permitidos.
-- DTOs.
-- Validación estricta.
+BOLA es la causa principal de las filtraciones masivas de datos en empresas modernas (OWASP API #1).
 
-## Rate Limiting
+---
 
-Limita abuso.
+## 2. Los Escudos Defensivos (Controles)
 
-Protege contra:
+Para arreglar al empleado del guardarropa y al Mesero, la industria usa dos mecanismos principales.
 
-- Fuerza bruta.
-- Scraping.
-- Abuso de recursos.
-- Ataques automatizados.
+### Rate Limiting (Límite de Tasa)
+*   **La Analogía:** El Cantinero del bar que dice *"No te voy a servir más de 2 cervezas por minuto"*.
+*   **La Función:** Un hacker necesita adivinar tu contraseña. Le lanza 5,000 peticiones JSON a la API de inicio de sesión por segundo (Fuerza Bruta). Si la API tiene configurado un *Rate Limit*, después de la 5ta petición errónea en un minuto, la API bloquea la dirección IP del hacker temporalmente. Detiene el ataque de tajo.
 
-## Errores Excesivos
+### Tokens JWT (JSON Web Tokens)
+*   **La Analogía:** El sello de luz ultravioleta que te ponen en la mano en los festivales VIP.
+*   **La Función:** Es la evolución de la Autenticación y Autorización (Visto en la Fase 15). 
+    Cuando inicias sesión con tu contraseña, la API te devuelve un archivo de texto gigantesco llamado JWT. Este Token tiene adentro tu nombre ("Juan") y tus permisos ("No puede ver la cuenta 16"), y está **Firmado Criptográficamente** con la llave privada del servidor.
+    En cada orden que le das al mesero, le tienes que mostrar tu sello VIP (El JWT). Si intentas falsificar el ticket de guardarropa para robarte el abrigo 16, el mesero lee tu JWT, ve la firma digital, dice *"Tu sello no te autoriza a abrir la cuenta 16"*, y rechaza el ataque BOLA al instante.
 
-Errores demasiado detallados revelan información.
+---
 
-Mal:
+## 3. Criterio de Dominio (Autoevaluación)
 
-```text
-SQL syntax error at line...
-```
+Revisa si puedes asegurar el tráfico invisible de las máquinas:
 
-Mejor:
-
-```text
-Invalid request
-```
-
-Con detalle interno solo en logs.
-
-## Logging
-
-Registrar:
-
-- Identidad.
-- Endpoint.
-- Resultado.
-- IP origen.
-- User-Agent.
-- Correlation ID.
-
-Evitar:
-
-- Contraseñas.
-- Tokens.
-- Datos sensibles innecesarios.
-
-## Criterios de Revisión
-
-Una API segura debe evaluarse con estos criterios:
-
-- Autenticación requerida cuando el recurso no es público;
-- Autorización por objeto para evitar BOLA/IDOR;
-- Validación de entrada en servidor;
-- Allowlist de campos para evitar mass assignment;
-- Rate limiting para reducir abuso;
-- Errores seguros que no filtren detalles internos;
-- Logs útiles sin contraseñas ni tokens;
-- Tokens con expiracion razonable;
-- Permisos mínimos entre servicios y datos.
-
-## Ejemplo de Riesgo
-
-Este request muestra un riesgo común de autorización y mass assignment:
-
-```http
-PATCH /api/users/123
-Authorization: Bearer token
-Content-Type: application/json
-
-{
-  "displayName": "Ana",
-  "role": "admin"
-}
-```
-
-El análisis debe revisar:
-
-- Qué riesgo aparece?
-- Qué validarias?
-- Qué log guardarias?
-- Qué respuesta segura darias?
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Explicar BOLA.
-- Explicar mass assignment.
-- Proponer rate limiting.
-- Diseñar logs seguros.
+1. Un hacker descubre que al cambiar el número en la URL de una tienda web de `tienda.com/api/pedido/40` a `tienda.com/api/pedido/41`, puede descargar la factura de compra de otro cliente, exponiendo su tarjeta de crédito. Usando la analogía del Ticket de Guardarropa, explica por qué la API permitió este ataque y cómo se llama esta vulnerabilidad.
+2. ¿Por qué el uso del "Saneamiento de Entradas" (Input Sanitization, que aprendimos en la Fase 17 para evitar Inyecciones SQL) **no** sirve para detener un ataque BOLA? (Pista: Analiza si el dato que manda el hacker es código malicioso o es un número completamente legal).
+3. Estás diseñando la API de inicio de sesión (Login) de tu empresa. Explica cómo la implementación de un mecanismo estricto de **Rate Limiting** destruye financieramente la viabilidad de un ataque de Fuerza Bruta.
+4. El contenido de un **Token JWT** (Ej. `"rol": "usuario_normal"`) viaja por internet en texto codificado, lo que significa que el hacker puede decodificarlo y leerlo fácilmente. Si esto es así, ¿Por qué el hacker no puede simplemente borrar la palabra `"usuario_normal"` de su propio Token, escribir `"Administrador"`, y engañar a la API para ganar control total del sistema? (Recuerda la Fase 11 Criptografía).
