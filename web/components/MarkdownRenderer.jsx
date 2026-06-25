@@ -3,10 +3,10 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import rehypeSlug from 'rehype-slug';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import Link from 'next/link';
+import { createHeadingId, extractTextFromReactNode } from '../lib/headings';
 
 // Markdown can reference arbitrary local or external images, so this renderer uses
 // plain <img> instead of next/image with a fixed allowlist.
@@ -49,12 +49,30 @@ function normalizeInternalHref(href, basePath) {
 
 export default function MarkdownRenderer({ content, basePath = '' }) {
   const processedContent = removeMdExtensionFromText(content);
+  const headingCounts = new Map();
+
+  function Heading({ level, children, ...props }) {
+    const Tag = `h${level}`;
+    const id = createHeadingId(extractTextFromReactNode(children), headingCounts);
+
+    return (
+      <Tag id={id} {...props}>
+        {children}
+      </Tag>
+    );
+  }
+
   return (
     <div className="markdown-content">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeSlug]}
         components={{
+          h2({ node, children, ...props }) {
+            return <Heading level={2} {...props}>{children}</Heading>;
+          },
+          h3({ node, children, ...props }) {
+            return <Heading level={3} {...props}>{children}</Heading>;
+          },
           code({ node, inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || '');
             return !inline && match ? (

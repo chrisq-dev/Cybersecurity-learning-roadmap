@@ -1,20 +1,20 @@
 'use client';
 
 import { useMemo } from 'react';
+import { createHeadingId } from '../lib/headings';
 
 export default function TableOfContents({ content }) {
   const headings = useMemo(() => {
     const lines = content.split('\n');
     const extractedHeadings = [];
-
-    const slugify = (text) => text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
+    const headingCounts = new Map();
 
     lines.forEach(line => {
       const match = line.match(/^(#{2,3})\s+(.+)$/);
       if (match) {
         const level = match[1].length;
         const text = match[2];
-        extractedHeadings.push({ level, text, id: slugify(text) });
+        extractedHeadings.push({ level, text, id: createHeadingId(text, headingCounts) });
       }
     });
 

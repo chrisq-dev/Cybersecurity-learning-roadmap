@@ -1,5 +1,6 @@
 import "./globals.css";
 import TopNav from '../components/TopNav';
+import ReadingProgress from '../components/ReadingProgress';
 
 const BASE_URL = "https://cbsdev.lat";
 
@@ -69,6 +70,7 @@ export default function RootLayout({ children }) {
     <html lang="es" suppressHydrationWarning>
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <ReadingProgress />
         <div className="layout-container">
           <TopNav />
           <main className="main-content">
