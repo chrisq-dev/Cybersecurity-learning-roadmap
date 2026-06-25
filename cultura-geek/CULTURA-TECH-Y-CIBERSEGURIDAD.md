@@ -176,11 +176,81 @@ Es bueno para entender restricciones. No puedes hacer todo de la forma cómoda. 
 
 Para ciberseguridad, esa forma de pensar ayuda cuando estudias firmware, hardware, embedded systems o simplemente quieres entender que el software vive sobre máquinas reales.
 
+## Juegos Cyberpunk y Narrativa Tech
+
+Estos juegos no sirven para aprender ciberseguridad técnica de forma directa.
+
+Su valor está en otra parte: construyen mundos donde la tecnología afecta identidad, privacidad, trabajo, cuerpo, vigilancia, crimen, desigualdad y poder corporativo. No entrenan comandos, pero sí ayudan a imaginar preguntas importantes.
+
+### Cyberpunk 2077
+
+Cyberpunk 2077 no enseña hacking real, pero sí muestra un mundo donde casi todo está conectado: personas con implantes, corporaciones gigantes, vigilancia, identidades digitales, datos personales, mercados ilegales y dependencia extrema de la tecnología.
+
+Lo interesante no es usarlo como referencia técnica, sino como conversación. ¿Qué pasa cuando la tecnología entra literalmente en el cuerpo? ¿Quién protege tus datos si tu identidad, tus recuerdos, tu salud y tu trabajo dependen de sistemas controlados por empresas? ¿Qué significa privacidad cuando la vida entera está conectada?
+
+Cyberpunk 2077 sirve para pensar en ciberseguridad como algo más grande que computadoras. También habla de poder, desigualdad, control, explotación y resistencia.
+
+### Deus Ex
+
+Deus Ex es una de las sagas más importantes para pensar en transhumanismo, vigilancia, conspiraciones, aumentos humanos y control tecnológico.
+
+No es realista como práctica de hacking, pero sí es muy buena para pensar en seguridad como fenómeno social. La tecnología no solo protege o ataca computadoras; también cambia cuerpos, gobiernos, empresas y decisiones humanas.
+
+Si te interesa la relación entre ciberseguridad, identidad, privacidad y poder, Deus Ex encaja muy bien en esta sección.
+
 ### Watch Dogs
 
-Watch Dogs es fantasía, pero puede servir para discutir ciudades conectadas, vigilancia, cámaras, teléfonos, infraestructura y abuso de sistemas.
+Watch Dogs es fantasía, pero sirve para hablar de ciudades conectadas, cámaras, teléfonos, infraestructura, vigilancia y abuso de sistemas.
+
+El juego exagera muchísimo la capacidad de controlar todo desde un teléfono, pero esa exageración abre una pregunta útil: ¿qué pasa cuando una ciudad depende demasiado de sistemas conectados? Semáforos, cámaras, transporte, bancos, datos personales y dispositivos pueden convertirse en superficie de ataque.
 
 No lo tomaría como referencia técnica. Lo tomaría como punto de partida para hablar de riesgos en un mundo donde todo está conectado.
+
+### Observer
+
+Observer mezcla cyberpunk, terror psicológico e investigación.
+
+Su valor está en la forma en que trata memoria, identidad, vigilancia y tecnología invasiva. No es un juego para aprender herramientas, sino para pensar en una pregunta incómoda: si la tecnología puede entrar en tu mente, tus recuerdos o tu percepción, ¿qué significa proteger la privacidad?
+
+Es una recomendación interesante si te gustan historias oscuras sobre identidad digital y control.
+
+### System Shock
+
+System Shock es importante por su influencia en la cultura de ciencia ficción tecnológica.
+
+Su historia gira alrededor de una inteligencia artificial fuera de control, estaciones espaciales, sistemas automatizados y dependencia tecnológica. Aunque es ficción, conecta con temas reales: confianza excesiva en sistemas, fallos de control, automatización peligrosa y consecuencias de construir tecnología sin límites claros.
+
+Sirve para pensar en seguridad, pero también en diseño responsable.
+
+### Shadowrun
+
+Shadowrun mezcla cyberpunk, fantasía, corporaciones, mercenarios, hackers y mundos controlados por poder económico.
+
+Aunque tiene elementos fantásticos, es útil para pensar en algo muy común dentro del cyberpunk: cuando las corporaciones tienen más poder que muchas instituciones, la tecnología se vuelve una herramienta de control, espionaje y supervivencia.
+
+No es una referencia técnica, pero sí una buena referencia cultural para entender la estética y las preguntas del género.
+
+### Detroit: Become Human
+
+Detroit: Become Human no trata de hacking, pero sí de inteligencia artificial, identidad, derechos, control y decisiones morales.
+
+Sirve para pensar en cómo tratamos sistemas inteligentes, qué significa autonomía y qué pasa cuando una tecnología empieza a parecer demasiado humana para ser tratada como simple herramienta.
+
+Si te interesa IA, ética y sociedad, encaja bien como narrativa tech.
+
+### Orwell
+
+Orwell es un juego centrado en vigilancia e investigación.
+
+Te pone en una posición incómoda: revisar información, conectar datos y tomar decisiones sobre personas. Eso lo vuelve útil para pensar en privacidad, monitoreo, sesgos y abuso de poder.
+
+Es una buena recomendación para entender que recolectar información no siempre significa entender la verdad. El contexto importa.
+
+### Cloudpunk
+
+Cloudpunk es una historia cyberpunk más tranquila, centrada en una ciudad vertical, trabajo precario, inteligencias artificiales, entregas, corporaciones y vida cotidiana dentro de un mundo tecnológico desigual.
+
+No es técnico, pero ayuda a sentir el ambiente del cyberpunk: luces, datos, vigilancia, automatización, soledad y personas intentando sobrevivir dentro de sistemas enormes.
 
 ## Podcasts y Canales Para Aprender Sin Sentirte En Clase
 
