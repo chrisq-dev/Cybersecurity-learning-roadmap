@@ -115,11 +115,6 @@ export default function Home() {
   const structure = getContentStructure();
   const totalCategories = structure.length;
   const totalPages = structure.reduce((acc, cat) => acc + cat.pages.length, 0);
-  const pagesByHref = new Map(
-    structure
-      .flatMap((category) => category.pages)
-      .map((page) => [`/${page.slug.join('/')}`, page])
-  );
 
   const courseJsonLd = {
     "@context": "https://schema.org",
@@ -218,19 +213,11 @@ export default function Home() {
                 {route.description}
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
-                {route.links.map(([label, href]) => {
-                  const page = pagesByHref.get(href);
-                  return (
-                    <Link key={href} href={href} className="route-preview-link">
-                      <span>{label}</span>
-                      {page?.stats && (
-                        <small>
-                          {page.stats.previewLabel} · {page.stats.sectionLabel}
-                        </small>
-                      )}
-                    </Link>
-                  );
-                })}
+                {route.links.map(([label, href]) => (
+                  <Link key={href} href={href} style={{ fontSize: '0.92rem', textDecoration: 'none', color: 'var(--text-muted)' }}>
+                    {label}
+                  </Link>
+                ))}
               </div>
             </div>
           ))}
@@ -249,17 +236,17 @@ export default function Home() {
           boxShadow: '0 4px 12px var(--border-glow)'
         }}
       >
-        <p style={{ margin: '0 0 1rem 0', fontSize: '0.98rem', color: 'var(--text-muted)' }}>
-          Si esta guía te resulta útil, una estrella ayuda a que más personas puedan encontrarla.
+        <p style={{ margin: 0, fontSize: '0.98rem', color: 'var(--text-muted)' }}>
+          Si esta guía te resulta útil, considera dejar una estrella en{' '}
+          <a
+            href="https://github.com/chrisq-dev/Cybersecurity-learning-roadmap"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          . Ayuda a que más personas puedan encontrarla.
         </p>
-        <a
-          className="github-star-button"
-          href="https://github.com/chrisq-dev/Cybersecurity-learning-roadmap"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          ⭐ Dale una estrella en GitHub
-        </a>
       </section>
 
     </div>
