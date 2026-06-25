@@ -41,6 +41,8 @@ const PUBLIC_FOLDERS = [
   'security-teams',
   'cloud-security',
   'ai-security',
+  'osint-cti',
+  'mobile-security',
   'api-security',
   'appsec-devsecops',
   'vulnerability-management',
@@ -82,6 +84,8 @@ const PAGE_ORDER = {
   'blue-team': ['FUNDAMENTOS-BLUE-TEAM', 'LOGS-Y-ALERTAS', 'SIEM-MITRE', 'SIGMA-YARA', 'DETECTION-ENGINEERING', 'THREAT-HUNTING', 'RESPUESTA-INCIDENTES'],
   'security-teams': ['TEAMS-Y-HATS'],
   'cloud-security': ['FUNDAMENTOS-CLOUD', 'IAM-STORAGE-LOGGING', 'IAM-AVANZADO', 'AWS-AZURE-GCP'],
+  'osint-cti': ['FUNDAMENTOS-OSINT', 'THREAT-INTELLIGENCE', 'HERRAMIENTAS-Y-PRIVACIDAD'],
+  'mobile-security': ['FUNDAMENTOS-MOBILE', 'REVERSE-ENGINEERING', 'OWASP-MOBILE-TOP-10'],
   'ai-security': ['FUNDAMENTOS-IA', 'OWASP-TOP-10-LLM', 'IA-EN-DEFENSA'],
   'api-security': ['FUNDAMENTOS-API', 'RIESGOS-CONTROLES'],
   'appsec-devsecops': ['FUNDAMENTOS-APPSEC', 'DEVSECOPS'],
@@ -198,6 +202,8 @@ export function formatFolderName(folderName) {
     .replace('Edr', 'EDR')
     .replace('Vpn', 'VPN')
     .replace('Api', 'API')
+    .replace('Osint Cti', 'OSINT y CTI')
+    .replace('Mobile Security', 'Seguridad Móvil')
     .replace('Ai Security', 'Seguridad en IA y LLMs')
     .replace('Social Engineering', 'Ingeniería Social')
     .replace('Cultura Geek', 'Cultura Geek')
@@ -238,8 +244,10 @@ function inferLevel({ folder = '', fileName = '', title = '', isRoot = false }) 
 
   if (
     folder === 'blue-team' ||
+    folder === 'osint-cti' ||
     folder === 'cloud-security' ||
     folder === 'api-security' ||
+    folder === 'mobile-security' ||
     folder === 'appsec-devsecops' ||
     folder === 'vulnerability-management' ||
     folder === 'windows-ad' ||
@@ -388,6 +396,8 @@ export function getContentStructure() {
     'Security Teams',
     'Cloud Security',
     'Seguridad en IA y LLMs',
+    'OSINT y CTI',
+    'Seguridad Móvil',
     'Criptografía',
     'AppSec y DevSecOps',
     'Forense',

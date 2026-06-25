@@ -37,7 +37,7 @@ const profileRoutes = [
     links: [
       ['Fundamentos Blue Team', '/blue-team/fundamentos-blue-team'],
       ['SIEM y MITRE', '/blue-team/siem-mitre'],
-      ['Detection Engineering', '/blue-team/detection-engineering'],
+      ['Fundamentos OSINT', '/osint-cti/fundamentos-osint'],
       ['Respuesta a Incidentes', '/blue-team/respuesta-incidentes'],
     ],
   },
@@ -47,7 +47,7 @@ const profileRoutes = [
     links: [
       ['Fundamentos Web', '/web-owasp/fundamentos-web'],
       ['OWASP Top 10', '/web-owasp/owasp-top-10'],
-      ['Fundamentos de API Security', '/api-security/fundamentos-api'],
+      ['OWASP Mobile Top 10', '/mobile-security/owasp-mobile-top-10'],
       ['Fundamentos de AppSec', '/appsec-devsecops/fundamentos-appsec'],
     ],
   },
@@ -109,12 +109,12 @@ const studyAreas = [
     text: 'Computación, sistemas operativos, redes, Linux, Windows, permisos y conceptos base de seguridad.',
   },
   {
-    title: 'Seguridad web y AppSec',
-    text: 'HTTP, OWASP Top 10, APIs, autenticación, autorización, validación y revisiones de seguridad.',
+    title: 'Seguridad web, AppSec y Móvil',
+    text: 'HTTP, OWASP Top 10, APIs, Mobile Pentesting, autenticación y revisiones de seguridad.',
   },
   {
-    title: 'Defensa y respuesta',
-    text: 'Logs, alertas, SIEM, MITRE ATT&CK, hunting, playbooks e investigación de incidentes.',
+    title: 'Defensa, OSINT y respuesta',
+    text: 'Logs, SIEM, CTI, Threat Intelligence, hunting, playbooks e investigación de incidentes.',
   },
   {
     title: 'Cloud y arquitectura',
