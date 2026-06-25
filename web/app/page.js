@@ -81,6 +81,15 @@ const profileRoutes = [
     ],
   },
   {
+    title: 'IoT y Hardware',
+    description: 'Hardware hacking, radiofrecuencia (SDR), clonación RFID y ciberseguridad industrial (SCADA/OT).',
+    links: [
+      ['Fundamentos IoT', '/iot-ot-security/fundamentos-iot'],
+      ['SCADA y OT', '/iot-ot-security/scada-y-ot'],
+      ['Hardware Hacking', '/iot-ot-security/hardware-hacking'],
+    ],
+  },
+  {
     title: 'Empleabilidad',
     description: 'Portafolio, entrevistas, mapa de habilidades y preparación laboral.',
     links: [
@@ -118,7 +127,7 @@ const studyAreas = [
   },
   {
     title: 'Cloud y arquitectura',
-    text: 'IAM, storage, logging, contenedores, Kubernetes, Zero Trust y controles de arquitectura.',
+    text: 'IAM, storage, logging, Kubernetes, Zero Trust, sistemas industriales (OT) y hardware hacking.',
   },
   {
     title: 'Seguridad en Inteligencia Artificial',
