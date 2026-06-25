@@ -1,228 +1,56 @@
-# Fundamentos de AppSec
+# Fundamentos de AppSec: El Corrector y el Muñeco de Choque
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender como proteger aplicaciones durante diseño, desarrollo, pruebas y operación.
+Aprender cómo auditar el código fuente que escriben los programadores de tu empresa.
 
-AppSec conecta desarrollo con seguridad. No se trata de frenar al equipo, sino de ayudar a construir software que falle menos, exponga menos datos y pueda ser revisado con evidencia.
+La **Seguridad de Aplicaciones (AppSec)** parte de una premisa triste pero real: Los programadores estudian para hacer que las cosas funcionen rápido, no para hacerlas seguras. Si un programador de tu empresa construye una Base de Datos y la conecta a la página web, es altamente probable que el código tenga agujeros por donde un hacker puede pasar. (El clásico de OWASP).
 
-## Mapa Mental
+El equipo de Seguridad no puede leer millones de líneas de código manualmente. Necesitamos robots que lo hagan por nosotros.
 
-```text
-requisito -> diseño -> código -> dependencia -> prueba -> despliegue -> monitoreo
-```
+---
 
-En cada fase debes preguntar:
+## 1. El Enemigo: Falta de Saneamiento
 
-- Qué puede salir mal?
-- Qué dato sensible existe?
-- Qué usuario o servicio tiene permisos?
-- Qué validaciones son obligatorias?
-- Qué evidencia queda si algo falla?
+En las Fases 6 (Web) y 7 (Red Team) mencionamos brevemente la famosa **Inyección SQL**. 
 
-## Qué es AppSec
+El 90% de los ataques a páginas web ocurren por un solo error de programación: **Falta de Saneamiento de Entradas (Input Sanitization)**.
+*   **El Error:** El programador pone un cuadro de texto que dice "Escribe tu Nombre". El usuario escribe *Juan*. La Base de Datos guarda *Juan*.
+*   **El Ataque:** El Hacker no escribe su nombre. Escribe una orden destructiva en código SQL: `' OR 1=1; DROP TABLE usuarios; --`.
+*   **La Consecuencia:** Como el programador fue perezoso y no le enseñó a la página web a diferenciar entre "Nombres humanos" y "Código de computadora", la Base de Datos obedece la orden del hacker y se borra a sí misma por completo.
 
-Application Security es la práctica de reducir riesgos en aplicaciones.
+Para evitar que esto llegue a producción (Internet público), usamos SAST y DAST.
 
-Incluye:
+---
 
-- Diseño seguro.
-- Revisión de código.
-- Pruebas de seguridad.
-- Manejo de dependencias.
-- Autenticación y autorización.
-- Protección de datos.
-- Logging.
+## 2. SAST: El Corrector Ortográfico (Código Estático)
 
-## SDLC
+SAST significa *Static Application Security Testing*.
 
-Software Development Life Cycle:
+*   **La Analogía:** Cuando escribes un documento en Microsoft Word y escribes mal una palabra, Word le pone una raya roja por debajo inmediatamente. Word no necesita que imprimas el documento para saber que te equivocaste. Está leyendo el texto (Estático) mientras escribes.
+*   **En Programación:** SAST es un robot (Ej. *SonarQube*, *Checkmarx*) que lee el código fuente que el programador acaba de escribir en su computadora (Python, Java, C#).
+*   **Lo que Atrapa:** Si el SAST ve que el programador dejó una contraseña secreta escrita en texto plano adentro del código, o si ve que el programador olvidó poner la función de Saneamiento para evitar Inyecciones SQL, el SAST pone una "raya roja" y levanta una alerta.
+*   **La Ventaja:** Encuentra el error en el momento exacto en que se cometió, meses antes de que el programa salga al mercado.
 
-1. Requisitos.
-2. Diseño.
-3. Desarrollo.
-4. Pruebas.
-5. Despliegue.
-6. Operación.
-7. Mantenimiento.
+---
 
-AppSec busca meter seguridad en todas las fases, no solo al final.
+## 3. DAST: El Muñeco de Pruebas de Choque (Dinámico)
 
-## Seguridad por Fase
+SAST es muy bueno leyendo texto, pero a veces, los errores de seguridad solo aparecen cuando las piezas del programa se conectan entre sí y el motor arranca. Aquí entra DAST (*Dynamic Application Security Testing*).
 
-| Fase | Actividad AppSec |
-| --- | --- |
-| Requisitos | Definir datos sensibles, roles y riesgos |
-| Diseño | Threat modeling y arquitectura segura |
-| Desarrollo | Validación, auth, manejo de errores, secretos |
-| Pruebas | SAST, DAST, pruebas manuales, abuso de casos |
-| Despliegue | Configuración segura, secrets, headers, TLS |
-| Operación | Logs, alertas, respuesta, parches |
+*   **La Analogía:** SAST revisa que el diseño de los frenos del auto en papel sea correcto. DAST pone a un Muñeco de Pruebas de Choque (Crash Test Dummy) adentro del auto real, lo arranca a 100 km/h y lo choca contra la pared para ver si el conductor sobrevive.
+*   **En Programación:** DAST (Ej. *OWASP ZAP*, *Burp Suite*) no tiene acceso al código fuente. Trata a la página web como una "Caja Negra" (Igual que un hacker).
+*   **Lo que Atrapa:** El robot DAST se conecta a la página web de pruebas del banco, y empieza a dispararle millones de contraseñas falsas, Inyecciones SQL y ataques cruzados (XSS) a los cuadros de texto para ver si la página web explota o escupe información privada.
 
-## Threat Modeling
+**El Resumen:** SAST lee tu código en la fábrica. DAST ataca tu programa terminado desde afuera. Necesitas ambos.
 
-Threat modeling es pensar que puede salir mal antes de construir.
+---
 
-Preguntas:
+## 4. Criterio de Dominio (Autoevaluación)
 
-- Qué estamos construyendo?
-- Qué datos maneja?
-- Quién puede atacarlo?
-- Qué controles existen?
-- Qué pasa si falla?
+Revisa si puedes auditar código como un profesional:
 
-### Modelo Rápido: STRIDE
-
-STRIDE ayuda a pensar amenazas:
-
-- Spoofing: alguien se hace pasar por otro.
-- Tampering: alguien modifica datos.
-- Repudiation: alguien niega una acción.
-- Information Disclosure: datos expuestos.
-- Denial of Service: servicio interrumpido.
-- Elevation of Privilege: permisos aumentados indebidamente.
-
-No necesitas usarlo perfecto al inicio. Usalo para no olvidar categorías importantes.
-
-## Code Review de Seguridad
-
-Buscar patrones inseguros:
-
-- Validación solo en frontend.
-- Consultas SQL concatenadas.
-- Secretos en código.
-- Permisos sin verificar.
-- Logs con datos sensibles.
-- Manejo inseguro de archivos.
-
-Preguntas para revisar código:
-
-- La autorización se valida en backend?
-- Las consultas usan parametros?
-- Los errores revelan detalles internos?
-- Los secretos vienen de variables seguras?
-- Hay límites de tamano y tipo en inputs?
-- Los logs evitan contraseñas, tokens y datos sensibles?
-
-## SAST y DAST
-
-### SAST
-
-Analiza código fuente o binarios sin ejecutar la app.
-
-Encuentra:
-
-- Patrones inseguros.
-- Dependencias.
-- Posibles errores.
-
-### DAST
-
-Prueba una app en ejecucion desde fuera.
-
-Encuentra:
-
-- Fallas web.
-- Configuraciones.
-- Comportamiento real.
-
-## Dependencias
-
-Las apps usan librerías. Si una dependencia tiene vulnerabilidad, la app puede quedar expuesta.
-
-Controles:
-
-- Inventario.
-- Actualizaciones.
-- Dependency scanning.
-- Versión pinning.
-
-## Secretos
-
-Nunca guardes secretos en repositorios:
-
-- API keys.
-- Tokens.
-- Passwords.
-- Certificados privados.
-- Connection strings.
-
-Controles:
-
-- Variables de entorno.
-- Secret managers.
-- Rotación.
-- Escaneo de secretos.
-- Permisos por ambiente.
-
-## Logging Seguro
-
-Un log útil responde que paso, cuando, donde y con que identidad. Un log inseguro filtra datos sensibles.
-
-Guarda:
-
-- ID de usuario.
-- Acción.
-- Recurso afectado.
-- Resultado.
-- IP o contexto.
-- Correlation ID.
-
-Evita:
-
-- Passwords.
-- Tokens.
-- Datos de tarjetas.
-- Secretos.
-- PII innecesaria.
-
-## Ejemplo de Revisión AppSec
-
-Una app imaginaria de login permite analizar:
-
-- Qué datos maneja?
-- Qué roles existen?
-- Dónde podria fallar autenticación?
-- Dónde podria fallar autorización?
-- Qué logs son necesarios?
-- Qué pruebas harias?
-
-## Criterios Para Revisar un Diseño
-
-Escenario:
-
-```text
-App SaaS con usuarios, administradores, pagos, subida de archivos y API pública.
-```
-
-Una revisión de diseño AppSec debe explicar:
-
-- Cuales son los activos principales y por que importan.
-- Que roles existen y que permisos tiene cada uno.
-- Que flujos son sensibles: login, pagos, subida de archivos, administracion y API pública.
-- Que amenazas aparecen si se analiza el sistema con STRIDE.
-- Que controles previenen abuso antes de que exista una vulnerabilidad explotable.
-- Que logs permiten reconstruir acciones importantes.
-- Que pruebas de seguridad validan autenticación, autorización, validación de datos y manejo de errores.
-
-El objetivo no es llenar una plantilla, sino aprender a mirar una aplicación antes de programarla como si ya estuviera bajo abuso real.
-
-## Errores Comunes
-
-- Pensar que AppSec empieza cuando la app ya está terminada.
-- Confiar en validación de frontend.
-- No modelar permisos por recurso.
-- Tratar todos los hallazgos como igual de graves.
-- Ignorar dependencias.
-- No revisar secrets en CI/CD.
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Explicar AppSec.
-- Explicar SDLC.
-- Explicar threat modeling.
-- Diferenciar SAST y DAST.
-- Identificar riesgos comunes en código.
-- Proponer controles por fase del SDLC.
+1. Un desarrollador escribe una aplicación en lenguaje Java. Mientras programa, accidentalmente deja la "Llave Secreta de Amazon AWS" escrita en la línea 45 de su código. ¿Cuál de las dos herramientas (SAST o DAST) es la ideal para encontrar este error específico, y usando la analogía correspondiente, por qué?
+2. Explica el concepto de "Falta de Saneamiento de Entradas" (Input Sanitization) usando el ejemplo clásico de una Inyección SQL, y describe cómo un simple cuadro de "Buscar Usuario" se convierte en un arma letal si el desarrollador omite este paso.
+3. El equipo de Seguridad (AppSec) contrata un sistema DAST para escanear la página web de la empresa todas las noches. A diferencia de un SAST, ¿Por qué el DAST necesita que la página web y la base de datos estén completamente operativas y encendidas (Running State) para poder hacer su trabajo?
+4. El robot SAST reportó 50 "Falsos Positivos" (marcó como error algo que en realidad es seguro), lo cual hizo que los programadores se enojaran y apagaran la herramienta. ¿Qué proceso de ajuste (visto también en la Fase 8 con el SIEM y en la Fase 13 con el IPS) debe realizar el Arquitecto de Seguridad para que la herramienta SAST sea útil?
