@@ -1,176 +1,60 @@
-# Telemetria de Endpoint
+# Telemetría del Endpoint: Las Cámaras Corporales
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender que datos de endpoint ayudan a investigar actividad sospechosa.
+Aprender de dónde diablos saca un *SOC Analyst* (Fase 8) la información para saber que un empleado a tres mil kilómetros de distancia abrió un virus de Excel en su computadora.
 
-La telemetria de endpoint es la evidencia que permite reconstruir que hizo un usuario, proceso o archivo en una máquina. Sin telemetria, una alerta queda incompleta.
+El SIEM (El cerebro del cuartel general de seguridad) es una máquina vacía. Si los servidores y las laptops corporativas no le envían datos voluntariamente, el Analista de Seguridad estará ciego. A este envío continuo de información se le llama **Telemetría**.
 
-## Mapa Mental
+---
 
-```text
-usuario -> proceso padre -> proceso hijo -> command line -> archivo -> red -> persistencia
-```
+## 1. La Analogía: La Bodycam Policial
 
-Una investigación busca unir esas piezas en una linea de tiempo.
+*   Imagina a un policía patrullando una ciudad a media noche.
+*   Si ocurre un tiroteo y el policía no trae su radio, el Cuartel General no se entera de nada.
+*   Por eso, la policía moderna inventó las **Bodycams** (Cámaras Corporales). La cámara graba cada palabra, cada rostro y cada acción, y transmite el video en vivo al Cuartel General.
+*   Si algo sale mal, el Detective Forense puede rebobinar la cinta de la Bodycam y ver exactamente cómo ocurrieron los hechos.
 
-## Telemetria Útil
+En Ciberseguridad, la computadora del empleado de Finanzas es el policía patrullando. El agente de **Telemetría** es la Bodycam instalada en su pecho. El Cuartel General es el **SIEM**.
 
-- Procesos.
-- Parent process.
-- Command line.
-- Usuario.
-- Hash de archivo.
-- Conexiones de red.
-- Escritura de archivos.
-- Cambios de registro.
-- Servicios creados.
-- Tareas programadas.
+---
 
-## Campos Importantes
+## 2. Windows Event Logs: La Bitácora del Barco
 
-| Campo | Pregunta |
-| --- | --- |
-| Timestamp | Cuándo ocurrio? |
-| Hostname | En qué equipo? |
-| Usuario | Con qué identidad? |
-| Process name | Qué se ejecuto? |
-| Parent process | Qué lo inicio? |
-| Command line | Con qué argumentos? |
-| File hash | Qué archivo exacto? |
-| Path | Desde dónde se ejecuto? |
-| Destination IP/domain | A dónde se conecto? |
-| Action | Fue permitido, bloqueado o detectado? |
+De fábrica, todas las computadoras con Windows ya tienen una libreta de notas integrada llamada **Windows Event Logs** (Visor de Eventos).
+Cada vez que enciendes la computadora, Windows anota:
+*   *"9:00 AM - El usuario Juanito inició sesión (Evento 4624)"*
+*   *"9:05 AM - Juanito abrió Word.exe (Evento 4688)"*
+*   *"9:06 AM - Juanito metió mal su contraseña (Evento 4625)"*
 
-## Parent Process
+El problema es que Windows borra esta libreta cada pocos días para ahorrar espacio en el disco duro. Si el equipo Forense llega a investigar el hackeo 3 meses después, la libreta estará vacía. 
 
-El proceso padre ayuda a entender origen.
+Por eso, el equipo de IT configura las laptops para que envíen (Log Forwarding) una copia de esta libreta, segundo a segundo, al SIEM gigante de la empresa. El SIEM nunca borra nada.
 
-Ejemplo sospechoso conceptual:
+---
 
-```text
-winword.exe -> powershell.exe
-```
+## 3. Sysmon: La Bodycam de Grado Militar
 
-No siempre es malicioso, pero requiere contexto.
+Los Event Logs de Windows son buenos, pero los hackers saben cómo evadirlos o borrarlos antes de que se envíen. Además, Windows no anota detalles profundos como *"¿A qué IP de internet se conectó Word.exe?"*.
 
-Ejemplos que merecen revisión:
+Para atrapar Hackers avanzados, el *Blue Team* instala una herramienta legendaria y gratuita creada por Microsoft: **Sysmon (System Monitor)**.
 
-| Cadena | Por que importa |
-| --- | --- |
-| `winword.exe -> powershell.exe` | posible macro o documento malicioso |
-| `excel.exe -> cmd.exe` | posible abuso de Office |
-| `browser.exe -> powershell.exe` | descarga/ejecucion sospechosa |
-| `service.exe -> unknown.exe` | posible persistencia |
-| `explorer.exe -> temp/random.exe` | ejecucion desde ruta temporal |
+Sysmon se inyecta directamente en el núcleo (Kernel) del sistema operativo. Funciona como una Bodycam indetectable y de altísima resolución.
+Cuando el hacker lanza un ataque, Sysmon graba toda la evidencia destructiva:
 
-## Command Line
+1.  **Creación de Procesos (Event ID 1):** *"Excel.exe acaba de generar un hijo llamado PowerShell.exe"*. (La señal universal de que un ataque de *Fileless Malware* acaba de comenzar).
+2.  **Conexiones de Red (Event ID 3):** *"PowerShell.exe acaba de iniciar una conexión de red hacia una dirección IP rusa en el puerto 443"*.
+3.  **Archivos Creados (Event ID 11):** *"PowerShell.exe acaba de descargar y soltar un archivo llamado ransomware.exe en la carpeta temporal de Windows"*.
 
-La linea de comando revela intencion.
+Cuando el SIEM (En el Cuartel General) recibe estas tres grabaciones de la Bodycam (Sysmon) provenientes de la laptop del empleado, hace sonar la Alarma Roja en la pantalla del Analista.
 
-Preguntas:
+---
 
-- Descarga archivos?
-- Ejecuta contenido codificado?
-- Modifica seguridad?
-- Crea usuarios?
+## 4. Criterio de Dominio (Autoevaluación)
 
-Señales comunes:
+Revisa si puedes darle visión al Blue Team:
 
-- Comandos codificados;
-- Descarga desde internet;
-- Ejecucion desde `%TEMP%`;
-- Desactivación de antivirus;
-- Creación de usuarios;
-- Compresion de archivos;
-- Acceso a rutas sensibles;
-- Uso de herramientas administrativas fuera de contexto.
-
-## Persistencia
-
-Formas comunes:
-
-- Servicios.
-- Tareas programadas.
-- Run keys.
-- Startup folder.
-- Agentes instalados.
-
-## Red desde Endpoint
-
-Revisa:
-
-- Dominios consultados;
-- IP destino;
-- Puerto;
-- Proceso que inicio conexión;
-- Volumen;
-- Frecuencia;
-- Reputación o contexto.
-
-Una conexión externa no es maliciosa por si sola. Importa el proceso, usuario, destino y momento.
-
-## Archivos
-
-Campos útiles:
-
-- Ruta;
-- Hash;
-- Firma;
-- Fecha de creación;
-- Owner;
-- Origen;
-- Si fue descargado;
-- Si se ejecuto.
-
-## Registro y Configuración
-
-En Windows, cambios de registro pueden indicar:
-
-- Persistencia;
-- Desactivación de controles;
-- Configuración de servicios;
-- Ejecucion al inicio.
-
-## Caso de Referencia
-
-Caso:
-
-```text
-Usuario abre adjunto. Luego winword.exe inicia powershell.exe y se conecta a internet.
-```
-
-Puntos a observar:
-
-- Qué evidencia necesitas?
-- Qué procesos revisas?
-- Qué conexiones?
-- Qué acción de contención consideras?
-
-## Linea de Tiempo Conceptual
-
-| Hora | Evento | Evidencia | Interpretacion |
-| --- | --- | --- | --- |
-| 10:00 | usuario abre adjunto | proceso Office | inicio del flujo |
-| 10:01 | PowerShell ejecutado | parent process | comportamiento sospechoso |
-| 10:02 | conexión externa | destino/red | posible descarga o C2 |
-| 10:04 | archivo creado | ruta/hash | posible payload |
-
-## Errores Comunes
-
-- Ver un proceso raro y concluir sin contexto.
-- Ignorar parent process.
-- No revisar command line.
-- No revisar conexiones posteriores.
-- No preguntar si el usuario esperaba la actividad.
-- No preservar hashes/rutas.
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Explicar telemetria endpoint.
-- Usar parent process como contexto.
-- Identificar persistencia conceptual.
-- Formular preguntas de investigación.
-- Construir una linea de tiempo básica de endpoint.
+1. Un Analista del SOC revisa su pantalla del SIEM y nota que no ha recibido ni un solo log de eventos de las laptops del departamento de Finanzas durante las últimas 48 horas. Usando la analogía de la Bodycam, explica qué significa este "Silencio de Telemetría" y por qué es una emergencia crítica.
+2. ¿Por qué depender exclusivamente de la lectura de los "Event Logs" locales guardados en la laptop del usuario comprometido es una falla técnica durante una investigación de *Incident Response* o Forense? (Pista: Piensa en lo primero que hace un hacker profesional cuando obtiene permisos de Administrador).
+3. ¿Cuál es la diferencia principal entre los Event Logs que vienen por defecto en Windows y la telemetría hiper-detallada que provee la herramienta avanzada **Sysmon**?
+4. El SIEM levanta una alerta basada en la Telemetría (Sysmon Event ID 1): `powershell.exe -ExecutionPolicy Bypass -encodedCommand aW52b2tlLW1pbWlrYXR6...`. Como vimos en los módulos anteriores, ¿Por qué este simple evento (un programa legal ejecutando código ofuscado) es suficiente para que el Analista de Seguridad desconecte la máquina de la red inmediatamente?
