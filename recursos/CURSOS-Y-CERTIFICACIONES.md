@@ -10,18 +10,20 @@ Una certificación puede ayudar, pero no hace magia. Sirve para ordenar estudio,
 
 Antes de pagar cualquier examen, revisa siempre la página oficial, el temario actualizado, el precio, la vigencia, el idioma, los requisitos y si realmente se alinea con tu objetivo.
 
-## Regla General
+## Regla General: El Algoritmo ATS
 
-No estudies certificaciones como si fueran trofeos.
+No estudies certificaciones como si fueran trofeos para tu ego.
+
+En el mundo corporativo, las certificaciones iniciales (como Security+) rara vez impresionarán a un Director de Seguridad (CISO). El verdadero propósito táctico de estas certificaciones es **"Hackear" el filtro de Recursos Humanos (ATS - Applicant Tracking System)**.
+
+Cuando aplicas a un empleo, tu currículum es escaneado por un robot que busca palabras clave. Si la vacante pide "Security+" y tú no lo tienes, el robot desecha tu CV antes de que un humano lo lea. 
+**Las certificaciones son tu llave maestra para superar el algoritmo y llegar a la entrevista técnica.**
 
 Úsalas así:
 
-- Para ordenar fundamentos.
-- Para validar una etapa.
-- Para preparar entrevistas.
-- Para cubrir filtros laborales.
-- Para detectar huecos de conocimiento.
-- Para construir disciplina de estudio.
+- Para inyectar palabras clave en tu CV y pasar el filtro ATS de RRHH.
+- Para ordenar fundamentos cuando estás perdido.
+- Para demostrar disciplina estructurada ante un reclutador.
 
 No las uses así:
 
@@ -289,13 +291,21 @@ No tomes todo al mismo tiempo. Elige una ruta principal y una secundaria.
 
 ## Cómo Decidir Si Vale La Pena
 
-Antes de pagar una certificación, responde:
+Antes de pagar cientos de dólares por una certificación, haz un análisis corporativo de tu perfil:
 
-- ¿Qué rol quiero buscar?
-- ¿Esta certificación aparece en vacantes reales?
-- ¿Me enseña algo que todavía no entiendo?
-- ¿Tengo base suficiente para aprovecharla?
-- ¿Puedo demostrar lo aprendido con proyectos?
-- ¿El costo vale la pena para mi etapa actual?
+- ¿Qué rol específico quiero buscar?
+- ¿Esta certificación aparece como un "Requisito Obligatorio" en las vacantes reales de LinkedIn en mi país?
+- ¿Tengo la base técnica suficiente o solo voy a memorizar un banco de preguntas (Dumps)?
+- ¿Puedo demostrar lo aprendido construyendo un Home Lab (Portafolio)?
+- ¿El Retorno de Inversión (ROI) justifica el gasto en mi etapa actual?
 
-Si no puedes responder esas preguntas, espera. Estudiar fundamentos casi siempre es mejor inversión que comprar un examen por ansiedad.
+Si no puedes responder esas preguntas, detente. Construir un proyecto práctico en tu computadora es casi siempre mejor inversión que comprar un examen por ansiedad.
+
+---
+
+## Criterio de Dominio (Autoevaluación)
+
+¿Entiendes el propósito corporativo de una certificación?
+
+1. Llevas 6 meses estudiando Ciberseguridad de forma autodidacta y has montado tu propio Active Directory. Envías tu CV a 30 empresas pero nadie te llama. Explicando la teoría del Algoritmo ATS (Applicant Tracking System), argumenta por qué obtener la certificación "CompTIA Security+" de repente haría que tu teléfono empiece a sonar, aunque no hayas aprendido nada "nuevo" técnicamente.
+2. ¿Por qué depender exclusivamente de tener 5 certificaciones te ayudará a pasar la entrevista con Recursos Humanos, pero te garantizará el rechazo inmediato cuando te toque la entrevista final con el Arquitecto de Seguridad? (Pista: Certificaciones vs. Proyectos Prácticos).

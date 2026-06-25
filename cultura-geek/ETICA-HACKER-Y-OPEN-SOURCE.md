@@ -56,28 +56,19 @@ Si encuentras una vulnerabilidad en un entorno donde sí tienes permiso para inv
 
 No exageres. No amenaces. No publiques datos sensibles. No conviertas el reporte en espectáculo.
 
-## Open Source
+## Open Source y el Riesgo de la Cadena de Suministro
 
-El open source es una parte importante de la cultura técnica.
+El open source es una parte importante de la cultura técnica, pero en el entorno corporativo, es un arma de doble filo. Hoy en día, el 90% del software comercial utiliza librerías de código abierto gratuitas.
 
-Te permite:
+**La Responsabilidad del Desarrollador:**
+Te permite leer código real, aprender de otros y construir reputación técnica. Pero también exige una responsabilidad extrema:
+- No subas secretos ni credenciales a repositorios públicos.
+- Documenta los límites de uso de tus herramientas.
 
-- Leer código real.
-- Aprender de otros.
-- Reportar errores.
-- Mejorar documentación.
-- Crear herramientas.
-- Construir reputación técnica.
-- Compartir conocimiento.
-
-Pero open source también exige responsabilidad:
-
-- No subas secretos.
-- No copies licencias sin entenderlas.
-- No publiques herramientas peligrosas sin contexto.
-- Documenta límites de uso.
-- Acepta feedback.
-- Cuida la calidad de lo que compartes.
+**La Perspectiva de Riesgo (Supply Chain Attacks):**
+Si dependes de código gratuito hecho por voluntarios en internet, estás heredando su riesgo.
+Casos como **Log4j** (una vulnerabilidad en una simple librería de registro de Java que afectó a millones de servidores globalmente) o el **Backdoor de xz-utils** (donde un atacante pasó años ganándose la confianza de una comunidad open source para inyectar código malicioso sutil) nos enseñan una lección crítica de seguridad:
+*Que el código sea abierto no significa que sea seguro.* Si tu empresa usa una librería, tu empresa es responsable de auditarla.
 
 ## Internet Libre y Privacidad
 
@@ -100,3 +91,13 @@ Una buena regla para estudiar:
 > Aprende como si algún día fueras responsable de proteger a otros.
 
 Eso cambia la mentalidad. Ya no estudias para impresionar, sino para entender, reducir riesgos y tomar mejores decisiones.
+
+---
+
+## Criterio de Dominio (Autoevaluación)
+
+¿Entiendes el peso de la ética y la cadena de suministro?
+
+1. Un desarrollador junior copia una herramienta de escaneo de red que encontró en GitHub y la ejecuta directamente dentro de la red corporativa del banco donde trabaja. Explica detalladamente el concepto de "Ataque de Cadena de Suministro" (Supply Chain Attack) y por qué esta acción podría comprometer la seguridad de todo el banco.
+2. ¿Cuál es la diferencia técnica y legal entre utilizar nmap para escanear tu propia máquina virtual de laboratorio (Metasploitable) frente a escanear el sitio web oficial de una universidad "solo para ver qué puertos tienen abiertos"?
+3. El caso del Backdoor de `xz-utils` en Linux fue orquestado durante años mediante ingeniería social dentro de la comunidad Open Source. Si el código fuente es público y cualquiera puede leerlo, ¿Por qué vulnerabilidades masivas como esta o como *Log4j* pasan desapercibidas durante años?

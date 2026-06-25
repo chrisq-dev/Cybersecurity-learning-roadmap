@@ -10,45 +10,25 @@ Series, películas, documentales, libros, videojuegos y comunidades pueden despe
 
 Esta sección existe para conectar la parte técnica con la parte humana de la ciberseguridad.
 
-## Series y Películas
+## Análisis de Riesgos en la Cultura Pop (Películas y Series)
 
-### Mr. Robot
+Consumir estas series no te hará un hacker, pero usarlas como **Casos de Estudio** entrenará tu visión de riesgo corporativo.
 
-**Por qué verla:** muestra privacidad, vigilancia, ingeniería social, poder corporativo, salud mental, ética y consecuencias.
+### The Social Network (El Nacimiento de la Deuda Técnica)
+**El Caso de Estudio:** Más allá del drama de negocios, esta película es una clase maestra sobre la mentalidad *"Move Fast and Break Things"* (Muévete rápido y rompe cosas). 
+**Lección de Seguridad:** Cuando priorizas salir a producción antes que asegurar tu infraestructura (cero DevSecOps), creas una arquitectura frágil. Esta filosofía llevó directamente a desastres masivos de privacidad años después, como el escándalo de Cambridge Analytica.
 
-**Qué observar:** no solo los comandos. Observa confianza, manipulación, fallas humanas, OpSec, exposición de sistemas y decisiones éticas.
+### Snowden (La Amenaza Interna - Insider Threat)
+**El Caso de Estudio:** Una lección brutal sobre el modelo de Confianza Cero (Zero Trust) y el Principio de Privilegio Menor.
+**Lección de Seguridad:** No importa cuántos Firewalls perimetrales de un millón de dólares tengas instalados. Si le das a un administrador de sistemas acceso irrestricto a todos los datos sin monitoreo de exfiltración, tu empresa caerá desde adentro.
 
-**Qué no romantizar:** intrusión sin permiso, daño a terceros, robo de información o justificar ataques por ideología personal.
+### Mr. Robot (El Eslabón Humano)
+**El Caso de Estudio:** El "Hackeo" a Steel Mountain.
+**Lección de Seguridad:** Elliot no entra al data center más seguro del mundo usando un exploit de día cero. Entra caminando por la puerta principal manipulando psicológicamente a un empleado mal pagado y estresado. La seguridad física y la concienciación de empleados son tu primera línea de defensa.
 
-### Silicon Valley
-
-**Por qué verla:** muestra startups, producto, deuda técnica, presión por crecer, decisiones de negocio y cultura de ingeniería.
-
-**Qué observar:** cómo el negocio afecta decisiones técnicas, cómo se acumula deuda técnica y cómo la seguridad puede quedar fuera cuando todo se mueve rápido.
-
-### The Social Network
-
-**Por qué verla:** ayuda a pensar en producto, ambición, propiedad intelectual, crecimiento, conflictos entre socios y consecuencias legales.
-
-**Qué observar:** decisiones éticas, presión de mercado, datos de usuarios y poder de plataformas.
-
-### Snowden
-
-**Por qué verla:** conecta vigilancia, privacidad, inteligencia, filtraciones, riesgo personal y seguridad operacional.
-
-**Qué observar:** privacidad, secreto, gobierno, acceso a información y dilemas éticos.
-
-### Who Am I
-
-**Por qué verla:** sirve para discutir identidad digital, grupos, reconocimiento, ingeniería social y reputación.
-
-**Qué observar:** la diferencia entre habilidad técnica, ego, presión social y consecuencias.
-
-### Black Mirror
-
-**Por qué verla:** algunos episodios funcionan como ejercicios de pensamiento sobre tecnología, vigilancia, identidad, dependencia digital y abuso de datos.
-
-**Qué observar:** impacto social y psicológico de sistemas mal diseñados o mal gobernados.
+### Silicon Valley (La Fricción entre Negocio e Ingeniería)
+**El Caso de Estudio:** El conflicto eterno entre el CEO que quiere lanzar la aplicación hoy y el Ingeniero que dice "la base de datos no es segura".
+**Lección de Seguridad:** Si no aprendes a traducir el "Riesgo Técnico" en "Pérdida de Dinero" para convencer al CEO (GRC), tus advertencias técnicas serán ignoradas hasta que ocurra una filtración de datos y la empresa sea demandada.
 
 ## Documentales
 
@@ -75,23 +55,25 @@ Documental sobre Edward Snowden. Útil para discutir vigilancia, periodismo, fil
 
 No todos son manuales técnicos. Algunos son mejores para entender contexto, historia y mentalidad.
 
-## Personas e Historias
+## Personajes: Historias Reales y Lecciones Corporativas
 
-Estas figuras pueden servir para investigar historia tecnológica y cultura hacker:
+No estudiamos biografías para idolatrar figuras, sino para entender los errores, contextos y filosofías que moldearon la industria actual.
 
-- Aaron Swartz.
-- Grace Hopper.
-- Ada Lovelace.
-- Margaret Hamilton.
-- Linus Torvalds.
-- Richard Stallman.
-- Kevin Mitnick.
-- Clifford Stoll.
-- Edward Snowden.
-- Joanna Rutkowska.
-- Katie Moussouris.
+### Mark Zuckerberg (El Monopolio de los Datos)
+**Su Historia:** Pasó de programar en su dormitorio a ser el dueño del ecosistema de redes sociales más grande del planeta.
+**La Lección:** Su lema *"Move Fast and Break Things"* dominó la década de 2010. Demostró que en la economía moderna, **los Datos son el nuevo Petróleo**. Su historia es la razón principal por la que hoy existen leyes estrictas como el GDPR europeo. Si recolectas datos que no necesitas, estás almacenando uranio radioactivo en tu servidor. 
 
-No se trata de idolatrar personas. Se trata de entender trayectorias, aportes, errores, contexto y consecuencias.
+### Kevin Mitnick (El Padre de la Ingeniería Social)
+**Su Historia:** El hacker más buscado de los años 90. No era el mejor programador, pero podía convencer a un operador de telecomunicaciones de darle las contraseñas centrales por teléfono fingiendo ser un técnico estresado.
+**La Lección:** Mitnick demostró hace 30 años que *el cerebro humano es la vulnerabilidad que nunca tendrá un parche (Zero-Day permanente)*. Pasó años en prisión y terminó fundando una empresa millonaria de consultoría, probando que el Red Team ético es un negocio corporativo legítimo.
+
+### Aaron Swartz (El Activista del Código Libre)
+**Su Historia:** Co-creador del RSS y Reddit. Creía que la información pública (especialmente artículos científicos pagados por impuestos) debía ser gratuita. Descargó millones de artículos del MIT y fue perseguido agresivamente por el gobierno federal bajo la obsoleta ley CFAA (Computer Fraud and Abuse Act) hasta el punto del suicidio.
+**La Lección:** La ley avanza más lento que la tecnología. En ciberseguridad, las fronteras de lo que es un "acceso no autorizado" pueden arruinarte la vida si no las comprendes. Nunca juegues en la zona gris sin contratos legales (Rules of Engagement).
+
+### Edward Snowden (El Vigilante)
+**Su Historia:** Analista de infraestructura de la NSA que filtró documentos clasificados demostrando que el gobierno espiaba masivamente a civiles de forma inconstitucional.
+**La Lección:** Reveló que las agencias de inteligencia estaban comprometiendo los estándares de criptografía mundiales (debilitando algoritmos a propósito). También enseñó una lección dura a nivel corporativo: *El Control de Acceso Basado en Roles (RBAC)* es inútil si no auditas qué hacen los administradores de sistemas de nivel élite con sus permisos.
 
 ## Videojuegos y Experiencias
 
@@ -147,4 +129,12 @@ Algunos recursos son introductorios, otros son más técnicos. No consumas conte
 - Una alerta no es un incidente hasta que hay evidencia.
 - Saber explicar es parte del trabajo.
 
-La cultura geek puede inspirar. La disciplina técnica es lo que construye habilidad.
+---
+
+## Criterio de Dominio (Autoevaluación)
+
+¿Eres capaz de separar el espectáculo de la realidad técnica?
+
+1. Acabas de ver una película donde un Hacker escribe frenéticamente en un teclado durante 10 segundos y logra penetrar las defensas del FBI. Como profesional de ciberseguridad corporativa, explica detalladamente por qué este escenario es un mito y cómo ocurre un proceso de Intrusión (Kill Chain) en el mundo real.
+2. Analizando la historia de **Kevin Mitnick**, ¿Por qué un atacante moderno en Rusia preferiría utilizar OSINT y enviar un correo de *Spear Phishing* a la secretaria del CEO en lugar de intentar buscar vulnerabilidades matemáticas de *Día Cero* en el Firewall corporativo?
+3. Estudia la filosofía empresarial inicial de **Mark Zuckerberg** (*Move Fast and Break Things*). Si tú fueras el CISO (Director de Seguridad) de una startup con esa filosofía y el CEO te exige ignorar los controles de privacidad para lanzar una App más rápido, ¿Cómo argumentarías el Riesgo de Negocio (Multas GDPR, daño reputacional) para detener ese despliegue?
