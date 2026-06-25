@@ -49,8 +49,8 @@ Ingenieros de Samsung pegaron código fuente secreto de la compañía en ChatGPT
 
 Las **Alucinaciones** ocurren cuando un LLM afirma algo con total confianza matemática, pero que en la realidad es 100% falso o inventado.
 
-*   **El Riesgo Defensivo:** Si le preguntas a un LLM *"¿La dirección IP 185.15.54.22 es maliciosa?"* y el LLM alucina diciendo *"No, es una IP legítima de Microsoft"*, el analista podría cerrar la alerta y permitir que un ransomware destruya la empresa.
-*   **La Regla de Oro:** La IA no es un oráculo de la verdad, es un motor predictivo de lenguaje. **Todo análisis técnico generado por IA debe ser verificado por un humano antes de tomar acciones de respuesta a incidentes.** La IA sugiere, el humano valida y decide.
+* **El Riesgo Defensivo:** Si le preguntas a un LLM *"¿La dirección IP 185.15.54.22 es maliciosa?"* y el LLM alucina diciendo *"No, es una IP legítima de Microsoft"*, el analista podría cerrar la alerta y permitir que un ransomware destruya la empresa.
+* **La Regla de Oro:** La IA no es un oráculo de la verdad, es un motor predictivo de lenguaje. **Todo análisis técnico generado por IA debe ser verificado por un humano antes de tomar acciones de respuesta a incidentes.** La IA sugiere, el humano valida y decide.
 
 ---
 

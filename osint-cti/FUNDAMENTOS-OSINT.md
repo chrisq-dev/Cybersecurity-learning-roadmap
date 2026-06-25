@@ -15,8 +15,8 @@ El **OSINT** (Open Source Intelligence) es el proceso de recolectar, analizar y 
 
 En el Hacking Ético (Red Team), existe una regla de oro: **Nunca toques el servidor de tu víctima si no es necesario**.
 
-*   **Reconocimiento Activo:** Escanear los puertos de una empresa (Nmap). Esto hace ruido, deja rastros en el Firewall y el Blue Team puede bloquearte.
-*   **Reconocimiento Pasivo (OSINT):** Es ser un fantasma. Nunca interactúas con los servidores de la empresa. Buscas la información que ellos mismos, o terceros, filtraron por accidente en internet.
+* **Reconocimiento Activo:** Escanear los puertos de una empresa (Nmap). Esto hace ruido, deja rastros en el Firewall y el Blue Team puede bloquearte.
+* **Reconocimiento Pasivo (OSINT):** Es ser un fantasma. Nunca interactúas con los servidores de la empresa. Buscas la información que ellos mismos, o terceros, filtraron por accidente en internet.
 
 Si quieres saber qué sistema operativo usa la empresa objetivo, no los escaneas. Entras a su perfil de LinkedIn, miras las ofertas de trabajo y ves que buscan "Especialista en Windows Server 2019". ¡Bum! Acaban de revelarte su infraestructura sin darse cuenta.
 
@@ -27,8 +27,8 @@ Si quieres saber qué sistema operativo usa la empresa objetivo, no los escaneas
 Google no es solo un buscador; es la base de datos de vulnerabilidades más grande del mundo, si sabes hablar su idioma. Los **Google Dorks** son operadores lógicos que te permiten hacer búsquedas quirúrgicas.
 
 Ejemplos de Dorking:
-*   `site:banco.com filetype:pdf "contraseña"` -> Busca documentos PDF dentro del servidor del banco que contengan la palabra "contraseña".
-*   `inurl:admin.php intitle:"Panel de Control"` -> Busca páginas web en internet que tengan un panel de administrador expuesto al público.
+* `site:banco.com filetype:pdf "contraseña"` -> Busca documentos PDF dentro del servidor del banco que contengan la palabra "contraseña".
+* `inurl:admin.php intitle:"Panel de Control"` -> Busca páginas web en internet que tengan un panel de administrador expuesto al público.
 
 > **Importante:**
 > Los hackers usan Google Dorks constantemente para encontrar servidores configurados incorrectamente que exponen archivos `.env` (donde los programadores guardan las contraseñas de las bases de datos).
@@ -40,9 +40,9 @@ Ejemplos de Dorking:
 Cuando tomas una fotografía con tu celular y la subes a internet sin procesarla, no solo estás compartiendo los píxeles de la imagen. Estás compartiendo **Metadatos** (Datos sobre los datos).
 
 El formato EXIF de las fotografías incluye:
-*   Latitud y Longitud GPS exactas de dónde se tomó la foto.
-*   El modelo de tu celular.
-*   La fecha y hora exacta.
+* Latitud y Longitud GPS exactas de dónde se tomó la foto.
+* El modelo de tu celular.
+* La fecha y hora exacta.
 
 Si un cibercriminal o investigador de OSINT descarga la foto que el CEO de la empresa subió a su blog personal, puede extraer estos metadatos con herramientas como `exiftool` y descubrir dónde vive, cuáles son sus horarios de movimiento y planear un ataque de Ingeniería Social físico.
 

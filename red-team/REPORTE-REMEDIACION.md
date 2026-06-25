@@ -30,9 +30,9 @@ Un buen reporte de auditoría (Pentest Report) se divide estrictamente en dos pa
 El CEO del Banco no sabe qué es "Nmap", ni qué es un "Puerto 22", ni qué es "SQLi". El CEO solo habla un idioma: **Dinero y Riesgo Reputacional.**
 
 El Resumen Ejecutivo es una sola página, escrita en lenguaje de negocios, que responde a tres preguntas:
-1.  *¿Alguien puede entrar y robarnos?* (Sí o No).
-2.  *Si nos roban, ¿Cuánto dinero vamos a perder o de cuánto será la demanda legal?*
-3.  *¿Podemos arreglarlo rápido?*
+1. *¿Alguien puede entrar y robarnos?* (Sí o No).
+2. *Si nos roban, ¿Cuánto dinero vamos a perder o de cuánto será la demanda legal?*
+3. *¿Podemos arreglarlo rápido?*
 
 > **Importante (El Arte de Asustar Correctamente):**
 > Un mal reporte dice: *"Encontramos una vulnerabilidad de Cross-Site Scripting (XSS) en la cookie de sesión del parámetro `id`"*.
@@ -57,10 +57,10 @@ Para evitar peleas sobre si un error es "Muy malo" o "Más o menos malo", la ind
 CVSS te hace una serie de preguntas sobre el hackeo (Ej. *¿El hacker necesitaba contraseña para hacer el ataque? ¿El ataque destruyó datos o solo leyó datos?*).
 Al final, la calculadora escupe un número del **0.0 al 10.0**.
 
-*   **Bajo (0.1 - 3.9):** "Arréglalo cuando tengas tiempo el próximo mes".
-*   **Medio (4.0 - 6.9):** "Ponlo en la lista de tareas para esta semana".
-*   **Alto (7.0 - 8.9):** "Arréglalo hoy en la tarde".
-*   **Crítico (9.0 - 10.0):** (Ej. *EternalBlue*, Log4j). "Despierta al equipo de desarrollo a las 3:00 AM un domingo. Tienen 4 horas para arreglar esto o el servidor explotará".
+* **Bajo (0.1 - 3.9):** "Arréglalo cuando tengas tiempo el próximo mes".
+* **Medio (4.0 - 6.9):** "Ponlo en la lista de tareas para esta semana".
+* **Alto (7.0 - 8.9):** "Arréglalo hoy en la tarde".
+* **Crítico (9.0 - 10.0):** (Ej. *EternalBlue*, Log4j). "Despierta al equipo de desarrollo a las 3:00 AM un domingo. Tienen 4 horas para arreglar esto o el servidor explotará".
 
 ---
 

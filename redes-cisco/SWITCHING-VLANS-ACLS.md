@@ -16,7 +16,7 @@ En ciberseguridad, asumir que un atacante no va a entrar a tu red es pecar de in
 Imagina que tu empresa (La Red Local o LAN) es un gran edificio de oficinas.
 
 Si no configuras nada, tu red será como un edificio sin paredes internas, estilo "espacio abierto" enorme.
-*   **El Problema de Seguridad:** Si alguien entra gritando "¡Hola!" (Un mensaje de *Broadcast* de red), todos en el edificio entero, desde el contador hasta el diseñador, van a escucharlo. Si un empleado se roba un documento financiero secreto que alguien dejó en una mesa, no hay puertas que lo detengan.
+* **El Problema de Seguridad:** Si alguien entra gritando "¡Hola!" (Un mensaje de *Broadcast* de red), todos en el edificio entero, desde el contador hasta el diseñador, van a escucharlo. Si un empleado se roba un documento financiero secreto que alguien dejó en una mesa, no hay puertas que lo detengan.
 
 Para arreglar esto, instalamos **VLANs (Virtual Local Area Networks)**.
 
@@ -25,7 +25,7 @@ Una VLAN es como levantar **paredes de cristal insonorizadas** en el edificio.
 A través de la configuración del *Switch* (sin tener que comprar cables nuevos o aparatos nuevos), puedes decirle al aparato:
 *"Del puerto 1 al 10 será la VLAN 10 (Recursos Humanos). Del puerto 11 al 20 será la VLAN 20 (Finanzas)"*.
 
-*   **El resultado:** A partir de ese segundo, aunque la computadora de Finanzas y la computadora de Recursos Humanos estén enchufadas **al mismo aparato físico**, no pueden escucharse, no pueden hablarse y están completamente separadas lógicamente.
+* **El resultado:** A partir de ese segundo, aunque la computadora de Finanzas y la computadora de Recursos Humanos estén enchufadas **al mismo aparato físico**, no pueden escucharse, no pueden hablarse y están completamente separadas lógicamente.
 
 > **El Ángulo Hacker (VLAN Hopping):**
 > Si un hacker conecta su laptop en el puerto de "Invitados" de la recepción (VLAN 30), e intenta hackear al servidor de Finanzas (VLAN 20), el Switch no dejará pasar sus paquetes. Así que los hackers desarrollaron una técnica llamada *VLAN Hopping* (Saltar la VLAN), que consiste en enviar paquetes con etiquetas falsas para engañar al Switch y hacerle creer que el hacker pertenece a la VLAN de Finanzas.
@@ -72,15 +72,15 @@ Piensa en la red de un banco pequeño. Como Arquitecto de Seguridad, ¿cómo usa
 Un mal diseño pondría todas las máquinas en una sola red plana (Ej. `192.168.1.x`).
 Un **diseño blindado de CCNA** haría lo siguiente:
 
-1.  **VLAN 10 (Cajeros):** `10.0.10.x`. Contiene las computadoras de los cajeros en la sucursal.
-2.  **VLAN 20 (Gerencia):** `10.0.20.x`. Contiene las laptops de los banqueros y directores.
-3.  **VLAN 30 (Servidores):** `10.0.30.x`. Aquí está la base de datos de dinero y saldos de los clientes.
-4.  **VLAN 40 (Invitados):** `10.0.40.x`. El Wi-Fi gratuito para los clientes que están sentados esperando su turno.
+1. **VLAN 10 (Cajeros):** `10.0.10.x`. Contiene las computadoras de los cajeros en la sucursal.
+2. **VLAN 20 (Gerencia):** `10.0.20.x`. Contiene las laptops de los banqueros y directores.
+3. **VLAN 30 (Servidores):** `10.0.30.x`. Aquí está la base de datos de dinero y saldos de los clientes.
+4. **VLAN 40 (Invitados):** `10.0.40.x`. El Wi-Fi gratuito para los clientes que están sentados esperando su turno.
 
 **Las ACLs del Router dirían:**
-*   **Regla 1:** La VLAN 10 (Cajeros) SÍ puede hablar con la VLAN 30 (Servidores).
-*   **Regla 2:** La VLAN 20 (Gerencia) SÍ puede hablar con la VLAN 30 (Servidores).
-*   **Regla 3:** La VLAN 40 (Invitados) SOLO puede hablar con Internet. Tiene **prohibido** absoluto intentar siquiera mirar hacia la VLAN 30.
+* **Regla 1:** La VLAN 10 (Cajeros) SÍ puede hablar con la VLAN 30 (Servidores).
+* **Regla 2:** La VLAN 20 (Gerencia) SÍ puede hablar con la VLAN 30 (Servidores).
+* **Regla 3:** La VLAN 40 (Invitados) SOLO puede hablar con Internet. Tiene **prohibido** absoluto intentar siquiera mirar hacia la VLAN 30.
 
 Si un hacker que se hace pasar por un cliente se sienta en la sala de espera y se conecta al Wi-Fi gratuito, su intento de escanear los servidores será frenado en seco por el Router gracias a las VLANs y la ACL.
 

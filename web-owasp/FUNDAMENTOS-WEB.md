@@ -15,24 +15,24 @@ No puedes hackear ni defender una página web si no entiendes sus piezas móvile
 Olvídate de las computadoras por un momento. Imagina que vas a cenar a un Restaurante elegante.
 
 Ese restaurante tiene tres componentes críticos que están estrictamente separados:
-1.  **La Mesa y el Menú (Frontend):** Lo que tú puedes ver y tocar.
-2.  **El Mesero (La Red / HTTP):** El que lleva tus órdenes hacia atrás y te trae la comida.
-3.  **La Cocina (Backend):** El lugar secreto y cerrado donde se prepara todo.
-4.  **La Alacena (Base de Datos):** El refrigerador gigante donde están guardados los ingredientes (y los secretos).
+1. **La Mesa y el Menú (Frontend):** Lo que tú puedes ver y tocar.
+2. **El Mesero (La Red / HTTP):** El que lleva tus órdenes hacia atrás y te trae la comida.
+3. **La Cocina (Backend):** El lugar secreto y cerrado donde se prepara todo.
+4. **La Alacena (Base de Datos):** El refrigerador gigante donde están guardados los ingredientes (y los secretos).
 
 Así es exactamente como funciona cualquier página web (Amazon, Facebook, tu banco).
 
 ### A. El Frontend (La Mesa)
 Es todo lo que ocurre **dentro de tu propio dispositivo** (tu celular o tu laptop). Está construido con tres lenguajes: HTML (la estructura), CSS (la pintura) y JavaScript (el movimiento).
-*   *La Regla de Oro:* **El Frontend NUNCA es de confianza.** Como el menú está en tu mesa, tú puedes tomar un bolígrafo, tachar el precio de la Langosta de $100 dólares, y escribir $1 dólar. 
+* *La Regla de Oro:* **El Frontend NUNCA es de confianza.** Como el menú está en tu mesa, tú puedes tomar un bolígrafo, tachar el precio de la Langosta de $100 dólares, y escribir $1 dólar. 
 
 ### B. El Backend (La Cocina)
 Es una supercomputadora en un edificio de Amazon o Google (Servidor). Trabaja usando lenguajes como Python, PHP o Node.js. 
-*   *Su Trabajo:* Es el cerebro ciego. Recibe la nota del mesero que dice "El cliente de la mesa 4 quiere la Langosta a $1 dólar". Si el Cocinero es estúpido (mal programado), cocinará la langosta y la cobrará a $1. Si el Cocinero está bien programado (Blue Team), validará la orden: *"Espera, la Langosta cuesta $100, no $1. Orden rechazada"*.
+* *Su Trabajo:* Es el cerebro ciego. Recibe la nota del mesero que dice "El cliente de la mesa 4 quiere la Langosta a $1 dólar". Si el Cocinero es estúpido (mal programado), cocinará la langosta y la cobrará a $1. Si el Cocinero está bien programado (Blue Team), validará la orden: *"Espera, la Langosta cuesta $100, no $1. Orden rechazada"*.
 
 ### C. La Base de Datos (La Alacena)
 Es donde se guardan de forma permanente las contraseñas, los números de tarjetas de crédito y los saldos bancarios. Corre con sistemas como SQL o MongoDB.
-*   *La Vulnerabilidad:* El Cocinero (Backend) es el **único** que tiene las llaves de la alacena. Si un atacante logra engañar al Cocinero, el atacante obtendrá la llave de la alacena entera.
+* *La Vulnerabilidad:* El Cocinero (Backend) es el **único** que tiene las llaves de la alacena. Si un atacante logra engañar al Cocinero, el atacante obtendrá la llave de la alacena entera.
 
 ---
 

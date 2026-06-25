@@ -16,18 +16,18 @@ El mayor problema de un Centro de Seguridad (SOC) no es que no puedan ver al hac
 Un **Log** (Registro) es simplemente una línea de texto que anota que "algo" ocurrió.
 Cualquier computadora moderna genera miles de logs por segundo sin que te des cuenta.
 
-*   Si mueves el mouse de tu Windows, la computadora internamente anota un log de que el cursor cambió de píxel.
-*   Si Juan entra a su computadora a las 8:00 AM usando su contraseña correcta, el servidor de Windows (Active Directory) anota: `Evento 4624: Juan inició sesión con éxito`.
+* Si mueves el mouse de tu Windows, la computadora internamente anota un log de que el cursor cambió de píxel.
+* Si Juan entra a su computadora a las 8:00 AM usando su contraseña correcta, el servidor de Windows (Active Directory) anota: `Evento 4624: Juan inició sesión con éxito`.
 
 **El Log es estúpido y ciego.** No sabe si la acción fue buena o mala, solo es un notario que certifica que el evento ocurrió y lo archiva en un disco duro (como lo vimos en la guía de Python y Parsing de CSVs/JSONs).
 
 ### El Problema de Leer Logs Crudos
 Imagina ser el Analista SOC Tier 1 e intentar leer esto en tu pantalla:
-1.  *Juan abrió Word.*
-2.  *El Firewall bloqueó una IP de China.*
-3.  *María cerró Excel.*
-4.  *El servidor 2 se quedó sin RAM.*
-5.  *Juan descargó un virus.exe.*
+1. *Juan abrió Word.*
+2. *El Firewall bloqueó una IP de China.*
+3. *María cerró Excel.*
+4. *El servidor 2 se quedó sin RAM.*
+5. *Juan descargó un virus.exe.*
 
 Tu cerebro colapsaría a los 5 minutos. Necesitas una forma matemática de ignorar el ruido (Word, Excel) y gritar solo cuando haya fuego (El virus). Aquí nacen las alertas.
 
@@ -39,7 +39,7 @@ Una **Alerta** es un Log que fue evaluado por una Regla Matemática (Detection E
 
 El trabajo del Blue Team avanzado no es leer logs. Es crear reglas lógicas para que las máquinas lean los logs por ellos.
 
-*   **Regla Lógica:** `"Si lees un Log donde el Usuario X falló su contraseña 1 vez, ignóralo. PERO si lees Logs donde el Usuario X falló su contraseña 50 veces en menos de 1 minuto... enciende la Sirena Roja y envíale la Alerta al Analista Tier 1"`.
+* **Regla Lógica:** `"Si lees un Log donde el Usuario X falló su contraseña 1 vez, ignóralo. PERO si lees Logs donde el Usuario X falló su contraseña 50 veces en menos de 1 minuto... enciende la Sirena Roja y envíale la Alerta al Analista Tier 1"`.
 
 La Alerta es lo que realmente llega a la pantalla del Guardia de Seguridad en el SOC.
 

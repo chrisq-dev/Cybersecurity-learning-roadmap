@@ -15,16 +15,16 @@ Hoy en día, el 80% del tráfico de internet ocurre *sin* interfaz gráfica. Son
 ## 1. La Analogía: El Mesero
 
 Imagina que entras a un restaurante de lujo.
-*   **Tú (El Cliente / La App Móvil):** Tienes hambre y quieres comer.
-*   **La Cocina (La Base de Datos):** Está llena de la comida (los datos) que tú quieres. 
+* **Tú (El Cliente / La App Móvil):** Tienes hambre y quieres comer.
+* **La Cocina (La Base de Datos):** Está llena de la comida (los datos) que tú quieres. 
 
 **El Problema:** El dueño del restaurante no te permite entrar físicamente a la cocina. Si todos los clientes entraran a la cocina a agarrar comida, harían un desastre, se quemarían con las estufas y se robarían la comida de otros.
 
 **La Solución (La API):**
 Para que puedas conseguir tu comida sin pisar la cocina, el restaurante contrató a un **Mesero (La API)**.
-1.  **La Petición (Request):** Tú le das al mesero un papelito (Tu orden) que dice: *"Quiero la hamburguesa número 5"*.
-2.  **El Transporte:** El mesero camina hasta la cocina blindada, entrega el papelito y el cocinero hace la hamburguesa.
-3.  **La Respuesta (Response):** El mesero sale de la cocina con un plato en la mano y te entrega exactamente la hamburguesa 5 en tu mesa. No viste cómo la prepararon, no viste la cocina, solo recibiste el resultado.
+1. **La Petición (Request):** Tú le das al mesero un papelito (Tu orden) que dice: *"Quiero la hamburguesa número 5"*.
+2. **El Transporte:** El mesero camina hasta la cocina blindada, entrega el papelito y el cocinero hace la hamburguesa.
+3. **La Respuesta (Response):** El mesero sale de la cocina con un plato en la mano y te entrega exactamente la hamburguesa 5 en tu mesa. No viste cómo la prepararon, no viste la cocina, solo recibiste el resultado.
 
 **En la vida real:**
 Cuando abres la App de Uber en tu celular y pides un auto, tu celular no tiene todo el mapa mundial guardado adentro. Tu celular es el Cliente en la mesa. Envía una Petición (Request) a la API de Google Maps (El Mesero). La API va a los servidores gigantescos de Google (La Cocina), saca el mapa de tu calle, y se lo trae a tu celular para que lo dibuje en tu pantalla.
@@ -40,17 +40,17 @@ Es literalmente texto plano organizado con llaves `{}`.
 Un "papelito de orden" (API Request) pidiendo información de un usuario se ve así:
 ```json
 {
-  "usuario_id": 15,
-  "accion": "leer_perfil"
+ "usuario_id": 15,
+ "accion": "leer_perfil"
 }
 ```
 
 La "bandeja con comida" (API Response) que el mesero te trae de regreso se ve así:
 ```json
 {
-  "nombre": "Juan Perez",
-  "saldo_bancario": 5000.00,
-  "tarjeta": "terminacion 4455"
+ "nombre": "Juan Perez",
+ "saldo_bancario": 5000.00,
+ "tarjeta": "terminacion 4455"
 }
 ```
 

@@ -31,12 +31,12 @@ import csv # Librería oficial de Python para leer CSVs
 
 # Abrimos el archivo
 with open('log.csv', mode='r') as archivo:
-    lector = csv.DictReader(archivo)
-    
-    print("Las siguientes IPs fueron bloqueadas por intentar entrar:")
-    for fila in lector: # Un Bucle FOR para leer fila por fila
-        if fila['Accion'] == "Denegado":
-            print(fila['IP_Origen']) 
+ lector = csv.DictReader(archivo)
+ 
+ print("Las siguientes IPs fueron bloqueadas por intentar entrar:")
+ for fila in lector: # Un Bucle FOR para leer fila por fila
+ if fila['Accion'] == "Denegado":
+ print(fila['IP_Origen']) 
 ```
 **Resultado en pantalla:**
 `8.8.8.8`
@@ -55,10 +55,10 @@ JSON parece un diccionario de la vida real. Tiene una "Llave" (La palabra) y un 
 **Ejemplo de un log de AWS en JSON:**
 ```json
 {
-  "usuario": "juan.perez",
-  "ip_conexion": "187.20.10.5",
-  "exito": false,
-  "razon": "Contrasena incorrecta"
+ "usuario": "juan.perez",
+ "ip_conexion": "187.20.10.5",
+ "exito": false,
+ "razon": "Contrasena incorrecta"
 }
 ```
 
@@ -86,15 +86,15 @@ url_api = "https://www.virustotal.com/api/v3/ip_addresses/" + ip_sospechosa
 
 # Nuestra contraseña de acceso (API Key) para que VirusTotal nos deje pasar
 headers = {
-    "x-apikey": "tu_codigo_secreto_aqui12345"
+ "x-apikey": "tu_codigo_secreto_aqui12345"
 }
 
 # Hacemos la pregunta a internet (usando requests)
 respuesta = requests.get(url_api, headers=headers)
 
 # VirusTotal siempre responde en formato JSON (El idioma universal).
-# Así que usamos .json() para leerlo
-datos = respuesta.json()
+# Así que usamos.json para leerlo
+datos = respuesta.json
 
 # Parseamos la respuesta para ver cuántos antivirus mundiales marcaron esta IP como "Maliciosa"
 votos_maliciosos = datos['data']['attributes']['last_analysis_stats']['malicious']

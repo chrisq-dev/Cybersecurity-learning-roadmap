@@ -15,8 +15,8 @@ Si quieres ser un profesional de seguridad, hay una verdad innegable: **Casi el 
 
 ¿Por qué Linux se siente tan intimidante al principio si vienes de usar Windows o macOS toda tu vida?
 
-*   **Windows / macOS (El Conductor):** Están diseñados para que manejes el auto sin saber de mecánica. Tienen tableros brillantes, volantes suaves e interfaces gráficas (GUI) hermosas. Si el motor falla, el auto se detiene y te sale una "Pantalla Azul" que no te deja hacer nada. No tienes acceso al motor.
-*   **Linux (El Mecánico):** Linux te quita el volante, te quita el tablero brillante, te abre el capó del auto y te dice: *"Aquí está el motor. Haz lo que quieras"*. No hay botones mágicos. Tienes que hablarle a la máquina usando comandos de texto directamente. 
+* **Windows / macOS (El Conductor):** Están diseñados para que manejes el auto sin saber de mecánica. Tienen tableros brillantes, volantes suaves e interfaces gráficas (GUI) hermosas. Si el motor falla, el auto se detiene y te sale una "Pantalla Azul" que no te deja hacer nada. No tienes acceso al motor.
+* **Linux (El Mecánico):** Linux te quita el volante, te quita el tablero brillante, te abre el capó del auto y te dice: *"Aquí está el motor. Haz lo que quieras"*. No hay botones mágicos. Tienes que hablarle a la máquina usando comandos de texto directamente. 
 
 La ciberseguridad requiere precisión quirúrgica. Un hacker no usa botones; le susurra comandos directamente al motor para que haga cosas que el creador original jamás planeó.
 
@@ -26,9 +26,9 @@ La ciberseguridad requiere precisión quirúrgica. Un hacker no usa botones; le 
 
 Esta es la regla dorada de Linux. Literalmente, **todo** en el sistema operativo es tratado como si fuera un archivo de texto.
 
-*   Tu disco duro no es una letra `C:\` mágica; es un archivo llamado `/dev/sda`.
-*   Tu cámara web es un archivo llamado `/dev/video0`.
-*   Incluso la memoria RAM, los procesos corriendo y el teclado se representan como simples archivos de texto.
+* Tu disco duro no es una letra `C:\` mágica; es un archivo llamado `/dev/sda`.
+* Tu cámara web es un archivo llamado `/dev/video0`.
+* Incluso la memoria RAM, los procesos corriendo y el teclado se representan como simples archivos de texto.
 
 > **Importante para la Seguridad:**
 > Si un teclado es solo un archivo de texto para Linux, significa que si un hacker logra obtener permisos para leer ese archivo, ¡estará leyendo todo lo que tecleas en tiempo real (un Keylogger)! La seguridad entera de Linux se reduce a una sola cosa: **Proteger quién puede leer y quién puede modificar archivos.**
@@ -45,13 +45,13 @@ Cualquier disco duro, USB o red que conectes, simplemente se cuelga como una ram
 
 ### Las 5 Ramas (Directorios) Críticas para un Analista:
 
-1.  **`/` (Raíz):** El inicio de todo. Solo el Administrador Supremo tiene poder absoluto aquí.
-2.  **`/home` (Los Apartamentos):** Aquí viven los usuarios normales. Si tu usuario es "juan", tus documentos, fotos y descargas estarán en `/home/juan`. 
-3.  **`/etc` (El Cerebro de Configuración):** (Se pronuncia "etsy"). Aquí viven los archivos de texto que controlan cómo se comporta la computadora.
-    *   *Ángulo Hacker:* Aquí está el famoso archivo `/etc/shadow`, que es la caja fuerte que guarda todas las contraseñas del sistema. Es el Santo Grial de un atacante local.
-4.  **`/var` (La Caja Negra):** Especialmente la carpeta `/var/log`. Aquí el sistema guarda las bitácoras (Logs) de todo lo que pasa. Si alguien intentó hackear la máquina a las 3 AM, la evidencia de las IPs y contraseñas fallidas está escrita aquí.
-5.  **`/tmp` (El Basurero Temporal):** Una carpeta especial donde cualquier usuario (sin importar sus privilegios) puede crear y borrar archivos, pero que se vacía sola cada vez que la PC se reinicia.
-    *   *Ángulo Hacker:* Como cualquiera puede escribir aquí, el 99% de los malwares y scripts de hackeo se descargan inicialmente en la carpeta `/tmp` para esconderse temporalmente.
+1. **`/` (Raíz):** El inicio de todo. Solo el Administrador Supremo tiene poder absoluto aquí.
+2. **`/home` (Los Apartamentos):** Aquí viven los usuarios normales. Si tu usuario es "juan", tus documentos, fotos y descargas estarán en `/home/juan`. 
+3. **`/etc` (El Cerebro de Configuración):** (Se pronuncia "etsy"). Aquí viven los archivos de texto que controlan cómo se comporta la computadora.
+ * *Ángulo Hacker:* Aquí está el famoso archivo `/etc/shadow`, que es la caja fuerte que guarda todas las contraseñas del sistema. Es el Santo Grial de un atacante local.
+4. **`/var` (La Caja Negra):** Especialmente la carpeta `/var/log`. Aquí el sistema guarda las bitácoras (Logs) de todo lo que pasa. Si alguien intentó hackear la máquina a las 3 AM, la evidencia de las IPs y contraseñas fallidas está escrita aquí.
+5. **`/tmp` (El Basurero Temporal):** Una carpeta especial donde cualquier usuario (sin importar sus privilegios) puede crear y borrar archivos, pero que se vacía sola cada vez que la PC se reinicia.
+ * *Ángulo Hacker:* Como cualquiera puede escribir aquí, el 99% de los malwares y scripts de hackeo se descargan inicialmente en la carpeta `/tmp` para esconderse temporalmente.
 
 ---
 
@@ -65,9 +65,9 @@ A diferencia de Windows o Mac, que son de una sola compañía (Microsoft / Apple
 Imagina que el Kernel de Linux es el helado de vainilla. Diferentes comunidades le ponen chispas de chocolate o galleta y lo empaquetan con un nombre distinto.
 
 ### Las Distros que verás en Ciberseguridad:
-*   **Ubuntu / Debian:** Las más populares y amigables. Usadas en millones de servidores web en la nube.
-*   **CentOS / Red Hat (RHEL):** Usadas en servidores corporativos ultra-estables (Bancos, Gobierno).
-*   **Kali Linux / Parrot OS:** Las versiones "Hacker". Son helados de vainilla pero pre-empaquetados de fábrica con cientos de herramientas de ataque, escaneo de redes y análisis forense.
+* **Ubuntu / Debian:** Las más populares y amigables. Usadas en millones de servidores web en la nube.
+* **CentOS / Red Hat (RHEL):** Usadas en servidores corporativos ultra-estables (Bancos, Gobierno).
+* **Kali Linux / Parrot OS:** Las versiones "Hacker". Son helados de vainilla pero pre-empaquetados de fábrica con cientos de herramientas de ataque, escaneo de redes y análisis forense.
 
 > **Consejo:** 
 > No importa si aprendes a usar Ubuntu o Kali; el motor interno es exactamente el mismo. Los comandos que aprendas en uno, te servirán en el otro.

@@ -15,10 +15,10 @@ El **Cross-Site Request Forgery (CSRF)**, o Falsificación de Petición en Sitio
 
 Imagina que eres el Director de una empresa. Vas al Banco, te identificas con el Cajero (Inicias sesión) y te quedas en la sala de espera leyendo una revista. El Cajero ya sabe que eres tú y confía en cualquier papel que le entregues en los próximos 15 minutos.
 
-1.  Mientras estás en la sala de espera del banco, un extraño se te acerca y te dice: *"Oye, mira esta foto de un gatito"*. 
-2.  Te entrega una hoja de papel doblada. En la portada tiene la foto del gatito, pero por detrás (la parte que tú no ves), hay una orden de transferencia bancaria hacia la cuenta del extraño.
-3.  Tú, sin saberlo, caminas hacia el Cajero y le entregas la hoja de papel doblada.
-4.  El Cajero te mira, confirma tu identidad (porque ya estabas validado en la sala), desdobla la hoja, lee la orden de transferencia y ejecuta la transacción.
+1. Mientras estás en la sala de espera del banco, un extraño se te acerca y te dice: *"Oye, mira esta foto de un gatito"*. 
+2. Te entrega una hoja de papel doblada. En la portada tiene la foto del gatito, pero por detrás (la parte que tú no ves), hay una orden de transferencia bancaria hacia la cuenta del extraño.
+3. Tú, sin saberlo, caminas hacia el Cajero y le entregas la hoja de papel doblada.
+4. El Cajero te mira, confirma tu identidad (porque ya estabas validado en la sala), desdobla la hoja, lee la orden de transferencia y ejecuta la transacción.
 
 Acabas de robarte a ti mismo, y el extraño nunca tuvo que saber tu contraseña. Solo necesitó que tú entregaras el papel por él.
 

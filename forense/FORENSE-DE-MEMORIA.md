@@ -16,9 +16,9 @@ Durante los años 90 y 2000, los virus de computadora eran archivos (Ej. `virus.
 Hoy en día, la técnica ofensiva se llama **Fileless Malware (Malware Sin Archivos)**.
 El hacker te envía un correo electrónico con un enlace. Al darle clic, el navegador de internet inyecta directamente un código malicioso en la **Memoria RAM** de tu computadora usando herramientas legítimas de Windows (como PowerShell).
 
-*   El virus no se instaló en el disco duro.
-*   No hay ningún archivo `virus.exe` que el Antivirus tradicional pueda encontrar.
-*   El atacante roba tus contraseñas y transfiere los datos a Rusia, todo mientras flota en la RAM.
+* El virus no se instaló en el disco duro.
+* No hay ningún archivo `virus.exe` que el Antivirus tradicional pueda encontrar.
+* El atacante roba tus contraseñas y transfiere los datos a Rusia, todo mientras flota en la RAM.
 
 ¿El problema defensivo? Como dijimos en el *Orden de Volatilidad*, si el usuario se asusta y presiona el botón de Apagar la computadora, **la electricidad se corta y la RAM se vacía por completo**. El virus desaparece sin dejar rastro y el Analista Forense que revise el disco duro al día siguiente no encontrará absolutamente nada.
 
@@ -41,9 +41,9 @@ Para analizarlo, el investigador usa el software estándar de la industria llama
 
 Volatility funciona como un microscopio que le da sentido a la basura de la RAM. A través de una terminal de comandos, el analista puede hacerle preguntas a la fotografía de la memoria:
 
-*   `volatility -f memoria.dmp windows.pslist`: "Muéstrame todos los procesos que estaban corriendo cuando se tomó la foto". (Para encontrar el PowerShell malicioso).
-*   `volatility -f memoria.dmp windows.netscan`: "Muéstrame todas las conexiones de red activas". (Para ver la conexión abierta hacia la IP de Rusia).
-*   `volatility -f memoria.dmp windows.hashdump`: "Sácame todas las contraseñas guardadas en la RAM".
+* `volatility -f memoria.dmp windows.pslist`: "Muéstrame todos los procesos que estaban corriendo cuando se tomó la foto". (Para encontrar el PowerShell malicioso).
+* `volatility -f memoria.dmp windows.netscan`: "Muéstrame todas las conexiones de red activas". (Para ver la conexión abierta hacia la IP de Rusia).
+* `volatility -f memoria.dmp windows.hashdump`: "Sácame todas las contraseñas guardadas en la RAM".
 
 ### Contraseñas Desencriptadas
 Aquí radica el poder final del Forense de Memoria.

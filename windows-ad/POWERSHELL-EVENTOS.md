@@ -23,11 +23,11 @@ Si prendes el Visor de Eventos en una laptop corporativa normal, verás que la m
 ### Los 3 Eventos de Seguridad Críticos (Security IDs)
 Para no enloquecer, los cazadores de amenazas se aprenden de memoria ciertos Event IDs (Números de Evento).
 
-*   **Event ID 4624 (Acceso Exitoso):** Significa que alguien, de alguna forma, inició sesión exitosamente.
-*   **Event ID 4625 (Acceso Denegado):** Alguien intentó iniciar sesión pero falló la contraseña.
-    *   *El Ángulo Hacker:* Si tu Visor de Eventos marca **un** Evento 4625, es normal; alguien se equivocó al teclear. Si marca **cuatrocientos eventos 4625 en el último minuto**, estás bajo un ataque de Fuerza Bruta inminente.
-*   **Event ID 4688 (Nuevo Proceso Creado):** Se creó un nuevo proceso. 
-    *   *El Ángulo Hacker:* Si el Evento 4688 muestra que el proceso "Calculadora" fue el "Padre" que creó al proceso hijo "Consola de Comandos", estás viendo cómo un malware secuestró una aplicación inofensiva para intentar tomar control. (Una calculadora real jamás intenta abrir una terminal).
+* **Event ID 4624 (Acceso Exitoso):** Significa que alguien, de alguna forma, inició sesión exitosamente.
+* **Event ID 4625 (Acceso Denegado):** Alguien intentó iniciar sesión pero falló la contraseña.
+ * *El Ángulo Hacker:* Si tu Visor de Eventos marca **un** Evento 4625, es normal; alguien se equivocó al teclear. Si marca **cuatrocientos eventos 4625 en el último minuto**, estás bajo un ataque de Fuerza Bruta inminente.
+* **Event ID 4688 (Nuevo Proceso Creado):** Se creó un nuevo proceso. 
+ * *El Ángulo Hacker:* Si el Evento 4688 muestra que el proceso "Calculadora" fue el "Padre" que creó al proceso hijo "Consola de Comandos", estás viendo cómo un malware secuestró una aplicación inofensiva para intentar tomar control. (Una calculadora real jamás intenta abrir una terminal).
 
 ---
 
@@ -36,16 +36,16 @@ Para no enloquecer, los cazadores de amenazas se aprenden de memoria ciertos Eve
 Antiguamente, Windows tenía la famosa terminal negra de comandos (`cmd.exe`). Era bastante inútil y primitiva comparada con Linux. Para arreglar eso, Microsoft creó **PowerShell** (la terminal azul).
 
 PowerShell no es solo una terminal para crear carpetitas. Es un lenguaje de programación orientado a objetos completo, integrado en lo más profundo del sistema operativo.
-*   **Para el Administrador:** Es mágico. Un administrador puede usar un script de PowerShell de 5 líneas para buscar en el Controlador de Dominio a todos los empleados que no han iniciado sesión en 3 meses, desactivar sus cuentas y borrar sus archivos automáticamente.
-*   **Para el Hacker:** Es el arma definitiva. Dado que PowerShell es una herramienta *legítima* creada por Microsoft y firmada criptográficamente por ellos, los antivirus antiguos confían en ella ciegamente.
+* **Para el Administrador:** Es mágico. Un administrador puede usar un script de PowerShell de 5 líneas para buscar en el Controlador de Dominio a todos los empleados que no han iniciado sesión en 3 meses, desactivar sus cuentas y borrar sus archivos automáticamente.
+* **Para el Hacker:** Es el arma definitiva. Dado que PowerShell es una herramienta *legítima* creada por Microsoft y firmada criptográficamente por ellos, los antivirus antiguos confían en ella ciegamente.
 
 ### Fileless Malware (El Malware sin Archivos)
 El concepto de seguridad más aterrador y avanzado de esta década.
 
-1.  **El ataque clásico:** Te envío un correo con un archivo llamado `virus.exe`. Lo descargas a tu disco duro. Tu Antivirus escanea tu disco duro, ve el virus y lo borra. Fracaso total del atacante.
-2.  **El ataque PowerShell (Fileless):** Te envío un documento de Word que dice "Salarios.docx". Al abrirlo, el archivo tiene una línea de código incrustada. Ese código no descarga nada al disco duro; simplemente obliga a **PowerShell** a abrirse de fondo y ejecutar un comando directamente **en la memoria RAM** para robar tus contraseñas.
-    *   Como no se descargó ningún `.exe` al disco duro, el Antivirus tradicional nunca vio nada.
-    *   Como PowerShell es un programa legal de Microsoft, el sistema lo dejó correr.
+1. **El ataque clásico:** Te envío un correo con un archivo llamado `virus.exe`. Lo descargas a tu disco duro. Tu Antivirus escanea tu disco duro, ve el virus y lo borra. Fracaso total del atacante.
+2. **El ataque PowerShell (Fileless):** Te envío un documento de Word que dice "Salarios.docx". Al abrirlo, el archivo tiene una línea de código incrustada. Ese código no descarga nada al disco duro; simplemente obliga a **PowerShell** a abrirse de fondo y ejecutar un comando directamente **en la memoria RAM** para robar tus contraseñas.
+ * Como no se descargó ningún `.exe` al disco duro, el Antivirus tradicional nunca vio nada.
+ * Como PowerShell es un programa legal de Microsoft, el sistema lo dejó correr.
 
 > **Importante para Defensores:**
 > Hoy en día, la única forma de detener los ataques *Fileless* en Windows es activar políticas avanzadas de auditoría, como *PowerShell Script Block Logging* (Evento 4104), que obliga a las cámaras de seguridad (Event Viewer) a grabar literalmente el código de cada script de PowerShell que se intente ejecutar en la memoria RAM, sin importar de dónde venga.

@@ -17,19 +17,19 @@ Esa es la Nube: **La computadora de alguien más.**
 Para entender la seguridad en la nube, debes entender los 3 modelos de servicio.
 
 ### A. Infraestructura como Servicio (IaaS)
-*   **La Analogía:** Rentas un terreno vacío con paredes y techo.
-*   *Tecnología:* Amazon te presta un Servidor Linux completamente vacío (EC2). Tú tienes que instalarle la puerta, los muebles (Base de datos), la plomería (Redes) y pintarlo (El código).
-*   *Seguridad:* Tú eres responsable de casi todo. Si te hackean porque tu base de datos no tenía contraseña, es 100% tu culpa.
+* **La Analogía:** Rentas un terreno vacío con paredes y techo.
+* *Tecnología:* Amazon te presta un Servidor Linux completamente vacío (EC2). Tú tienes que instalarle la puerta, los muebles (Base de datos), la plomería (Redes) y pintarlo (El código).
+* *Seguridad:* Tú eres responsable de casi todo. Si te hackean porque tu base de datos no tenía contraseña, es 100% tu culpa.
 
 ### B. Plataforma como Servicio (PaaS)
-*   **La Analogía:** Rentas un departamento amueblado.
-*   *Tecnología:* Amazon te dice: *"No te preocupes por instalar Linux ni la base de datos. Toma esta base de datos mágica (RDS) que ya funciona. Solo mete tus datos"*.
-*   *Seguridad:* Amazon se encarga de que la base de datos no tenga virus de sistema operativo. Tú solo te encargas de que las contraseñas de tus usuarios sean fuertes.
+* **La Analogía:** Rentas un departamento amueblado.
+* *Tecnología:* Amazon te dice: *"No te preocupes por instalar Linux ni la base de datos. Toma esta base de datos mágica (RDS) que ya funciona. Solo mete tus datos"*.
+* *Seguridad:* Amazon se encarga de que la base de datos no tenga virus de sistema operativo. Tú solo te encargas de que las contraseñas de tus usuarios sean fuertes.
 
 ### C. Software como Servicio (SaaS)
-*   **La Analogía:** Pagas una noche en un Hotel de Lujo de 5 Estrellas (All Inclusive).
-*   *Tecnología:* Google Mail (Gmail) o Netflix. Tú no sabes qué servidor usan, ni te importa. Solo entras, consumes el servicio y te vas.
-*   *Seguridad:* Google se encarga del 99% de la seguridad. Tu única responsabilidad es no darle tu contraseña de Gmail a un estafador.
+* **La Analogía:** Pagas una noche en un Hotel de Lujo de 5 Estrellas (All Inclusive).
+* *Tecnología:* Google Mail (Gmail) o Netflix. Tú no sabes qué servidor usan, ni te importa. Solo entras, consumes el servicio y te vas.
+* *Seguridad:* Google se encarga del 99% de la seguridad. Tu única responsabilidad es no darle tu contraseña de Gmail a un estafador.
 
 ---
 
@@ -41,8 +41,8 @@ Cuando una empresa migra a AWS y es hackeada a la semana siguiente, el CEO de la
 Esto es falso en el 99.9% de los casos.
 
 **La Regla de Oro:**
-*   **Amazon (El Dueño del Hotel):** Es responsable de la Seguridad **DE** la Nube. (Security OF the Cloud). Asegurar que los muros físicos del edificio no se caigan, que no haya goteras, y que los cables eléctricos no se quemen.
-*   **Tú (El Cliente):** Eres responsable de la Seguridad **EN** la Nube. (Security IN the Cloud). Si tú rentas la Habitación 402, y al salir a caminar dejas la puerta abierta de par en par con todo tu dinero en la cama, y alguien entra y te roba... **El Hotel no te va a pagar ni un centavo**.
+* **Amazon (El Dueño del Hotel):** Es responsable de la Seguridad **DE** la Nube. (Security OF the Cloud). Asegurar que los muros físicos del edificio no se caigan, que no haya goteras, y que los cables eléctricos no se quemen.
+* **Tú (El Cliente):** Eres responsable de la Seguridad **EN** la Nube. (Security IN the Cloud). Si tú rentas la Habitación 402, y al salir a caminar dejas la puerta abierta de par en par con todo tu dinero en la cama, y alguien entra y te roba... **El Hotel no te va a pagar ni un centavo**.
 
 Los hackers no atacan los muros físicos de Amazon. Los hackers usan escáneres en internet buscando a los miles de clientes tontos que dejan sus "Habitaciones 402" con las puertas abiertas de par en par (Configuraciones por Defecto Inseguras).
 

@@ -15,8 +15,8 @@ A todos les gusta la idea de ser el hacker que rompe el banco (Red Team). Pero l
 
 Imagina un Banco físico gigantesco con 500 sucursales.
 
-*   El **Red Team** es un grupo de mercenarios contratados una vez al año para intentar robar la bóveda. Si lo logran, entregan un reporte y se van a casa.
-*   El **Blue Team** es el equipo de seguridad que trabaja turnos de 24 horas, los 7 días de la semana, mirando las cámaras de seguridad.
+* El **Red Team** es un grupo de mercenarios contratados una vez al año para intentar robar la bóveda. Si lo logran, entregan un reporte y se van a casa.
+* El **Blue Team** es el equipo de seguridad que trabaja turnos de 24 horas, los 7 días de la semana, mirando las cámaras de seguridad.
 
 Este cuarto oscuro lleno de monitores donde los guardias miran las cámaras se llama **SOC (Security Operations Center)**.
 Un Analista SOC no está físicamente de pie en la puerta del banco con un arma. Está en un edificio a kilómetros de distancia, mirando miles de eventos por segundo en su pantalla. Su trabajo no es construir el banco, su trabajo es **Monitorear, Detectar y Responder**.
@@ -28,16 +28,16 @@ Un Analista SOC no está físicamente de pie en la puerta del banco con un arma.
 Si entras a trabajar al área de Ciberseguridad Defensiva de una empresa como Amazon o un Banco Internacional, lo más probable es que entres en uno de estos niveles:
 
 ### Tier 1 (Analista de Triage / El Guardia Frontal)
-*   *El Trabajo:* Mirar la pantalla principal. Cuando suena una alarma (ej. *"Alguien intentó iniciar sesión 50 veces desde Rusia"*), el Analista Tier 1 abre la alerta.
-*   *La Decisión:* Su único trabajo es decidir si es un Falso Positivo ("Ah, es el Director de Ventas que está de viaje en Rusia y olvidó su contraseña") o si es un Ataque Real ("Es un hacker intentando robar la cuenta"). Si es real, lo "escala" al siguiente nivel.
+* *El Trabajo:* Mirar la pantalla principal. Cuando suena una alarma (ej. *"Alguien intentó iniciar sesión 50 veces desde Rusia"*), el Analista Tier 1 abre la alerta.
+* *La Decisión:* Su único trabajo es decidir si es un Falso Positivo ("Ah, es el Director de Ventas que está de viaje en Rusia y olvidó su contraseña") o si es un Ataque Real ("Es un hacker intentando robar la cuenta"). Si es real, lo "escala" al siguiente nivel.
 
 ### Tier 2 (Incident Responder / El Detective)
-*   *El Trabajo:* Recibe la alerta escalada del Tier 1. Su trabajo ya no es mirar la pantalla general, es realizar una investigación profunda.
-*   *La Acción:* Extrae la computadora infectada de la red para que el virus no se propague, analiza qué archivos tocó el hacker y averigua cómo logró entrar.
+* *El Trabajo:* Recibe la alerta escalada del Tier 1. Su trabajo ya no es mirar la pantalla general, es realizar una investigación profunda.
+* *La Acción:* Extrae la computadora infectada de la red para que el virus no se propague, analiza qué archivos tocó el hacker y averigua cómo logró entrar.
 
 ### Tier 3 (Threat Hunter / Las Fuerzas Especiales)
-*   *El Trabajo:* Es el nivel más alto. El Tier 3 asume que **el hacker ya está adentro y las alarmas (Tier 1) fallaron**.
-*   *La Acción:* No espera a que suene la pantalla. Sale proactivamente a cazar a la red. Analiza tráfico matemático extraño y escribe nuevas reglas para que los sistemas de alarma del futuro sean mejores.
+* *El Trabajo:* Es el nivel más alto. El Tier 3 asume que **el hacker ya está adentro y las alarmas (Tier 1) fallaron**.
+* *La Acción:* No espera a que suene la pantalla. Sale proactivamente a cazar a la red. Analiza tráfico matemático extraño y escribe nuevas reglas para que los sistemas de alarma del futuro sean mejores.
 
 ---
 
@@ -46,9 +46,9 @@ Si entras a trabajar al área de Ciberseguridad Defensiva de una empresa como Am
 Un guardia no puede vigilar un pasillo si no hay una cámara instalada.
 En Ciberseguridad, las "cámaras" son los softwares que recolectan información (Telemetría) de las computadoras.
 
-*   **EDR (Endpoint Detection and Response):** Es un software avanzado (mucho más inteligente que un simple Antivirus) que se instala en la laptop de cada empleado. El EDR graba exactamente qué programa se abrió, a qué hora, y a qué IP de internet se conectó.
-*   **Firewalls y Proxies:** Las cámaras que vigilan la puerta de entrada y salida del edificio. Anotan quién entró y quién salió.
-*   **Logs del Servidor:** La bitácora del Mesero (Como vimos en la guía de Web).
+* **EDR (Endpoint Detection and Response):** Es un software avanzado (mucho más inteligente que un simple Antivirus) que se instala en la laptop de cada empleado. El EDR graba exactamente qué programa se abrió, a qué hora, y a qué IP de internet se conectó.
+* **Firewalls y Proxies:** Las cámaras que vigilan la puerta de entrada y salida del edificio. Anotan quién entró y quién salió.
+* **Logs del Servidor:** La bitácora del Mesero (Como vimos en la guía de Web).
 
 Toda esta información gigantesca se envía por tuberías hacia el SOC para que el Analista (Tier 1) pueda verla.
 

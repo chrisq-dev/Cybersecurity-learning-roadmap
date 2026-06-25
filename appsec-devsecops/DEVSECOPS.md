@@ -16,9 +16,9 @@ Para arreglar este divorcio, la industria creó **DevSecOps (Development, Securi
 
 ## 1. El Costo del Error: La Fábrica de Aviones
 
-*   **La Analogía:** Imagina la línea de ensamblaje de la fábrica de aviones Boeing.
-    *   Si un obrero olvida poner un tornillo en el ala del avión, pero el Inspector de Calidad se da cuenta inmediatamente (en el piso de la fábrica), arreglarlo toma 1 minuto y cuesta 1 dólar.
-    *   Pero si nadie se da cuenta, y el avión se le vende a una aerolínea, y el avión ya está volando a 30,000 pies de altura con pasajeros (En Informática a esto se le llama **Producción**)... Arreglar el tornillo implicará aterrizar el avión de emergencia, pagar compensaciones, salir en las noticias y costará 1 Millón de Dólares.
+* **La Analogía:** Imagina la línea de ensamblaje de la fábrica de aviones Boeing.
+ * Si un obrero olvida poner un tornillo en el ala del avión, pero el Inspector de Calidad se da cuenta inmediatamente (en el piso de la fábrica), arreglarlo toma 1 minuto y cuesta 1 dólar.
+ * Pero si nadie se da cuenta, y el avión se le vende a una aerolínea, y el avión ya está volando a 30,000 pies de altura con pasajeros (En Informática a esto se le llama **Producción**)... Arreglar el tornillo implicará aterrizar el avión de emergencia, pagar compensaciones, salir en las noticias y costará 1 Millón de Dólares.
 
 En informática es exactamente igual. Si un programador de tu empresa deja una vulnerabilidad crítica, y el Hacker la descubre cuando la aplicación web ya está abierta al público de internet, arreglarla será catastróficamente caro.
 
@@ -27,16 +27,16 @@ En informática es exactamente igual. Si un programador de tu empresa deja una v
 ## 2. Shift Left: Mover la Seguridad a la Izquierda
 
 Si imaginas el ciclo de vida del software como una línea de tiempo que va de izquierda a derecha:
-*   **Izquierda (Día 1):** El programador abre su laptop y empieza a teclear código (Fábrica).
-*   **Derecha (Mes 6):** La aplicación web se inaugura en internet (Producción).
+* **Izquierda (Día 1):** El programador abre su laptop y empieza a teclear código (Fábrica).
+* **Derecha (Mes 6):** La aplicación web se inaugura en internet (Producción).
 
 La filosofía moderna de DevSecOps se llama **"Shift Left" (Desplazar a la Izquierda)**.
 Significa que ya no esperamos a la derecha (Mes 6) para hacer el escaneo de seguridad. Agresivamente empujamos todas las auditorías hacia la izquierda (Día 1).
 
 **¿Cómo funciona en la vida real?**
-1.  El programador escribe código en su laptop (En su IDE, como Visual Studio). 
-2.  Un robot de seguridad (SAST) está integrado directamente en su pantalla, subrayando en rojo los errores de seguridad en tiempo real, antes de que guarde el archivo.
-3.  El programador no puede subir su código al servidor central de la empresa si el robot detecta que tiene errores críticos. La puerta está bloqueada en la fábrica.
+1. El programador escribe código en su laptop (En su IDE, como Visual Studio). 
+2. Un robot de seguridad (SAST) está integrado directamente en su pantalla, subrayando en rojo los errores de seguridad en tiempo real, antes de que guarde el archivo.
+3. El programador no puede subir su código al servidor central de la empresa si el robot detecta que tiene errores críticos. La puerta está bloqueada en la fábrica.
 
 ---
 
@@ -46,11 +46,11 @@ La magia de DevSecOps ocurre en un "Pipeline" de CI/CD (Integración Continua / 
 Un Pipeline es una banda transportadora robótica.
 
 Cuando el programador termina su código, lo pone en la banda transportadora (Git). El Pipeline de forma automática, sin intervención humana, realiza los siguientes pasos en 5 minutos:
-1.  **Construye (Build):** Ensambla el programa.
-2.  **Prueba SAST:** El Corrector Ortográfico lee el código buscando Inyecciones SQL.
-3.  **Prueba SCA:** Otro robot escanea las "Librerías de código abierto" gratuitas que usó el programador para asegurarse de que no tengan virus escondidos.
-4.  **Prueba DAST:** El Muñeco de Choque arranca el programa por 1 minuto y lo ataca dinámicamente.
-5.  **Despliegue (Deploy):** Si y solo si los 3 robots (SAST, SCA y DAST) levantan el pulgar verde, la aplicación se pública mágicamente en el internet público. 
+1. **Construye (Build):** Ensambla el programa.
+2. **Prueba SAST:** El Corrector Ortográfico lee el código buscando Inyecciones SQL.
+3. **Prueba SCA:** Otro robot escanea las "Librerías de código abierto" gratuitas que usó el programador para asegurarse de que no tengan virus escondidos.
+4. **Prueba DAST:** El Muñeco de Choque arranca el programa por 1 minuto y lo ataca dinámicamente.
+5. **Despliegue (Deploy):** Si y solo si los 3 robots (SAST, SCA y DAST) levantan el pulgar verde, la aplicación se pública mágicamente en el internet público. 
 
 Si cualquier robot encuentra una vulnerabilidad grave, la banda transportadora se frena en seco, y la aplicación no sale al mercado. El programador recibe un correo automático para que arregle su código.
 

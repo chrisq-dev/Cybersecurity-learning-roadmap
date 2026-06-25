@@ -1,7 +1,6 @@
 ---
 title: "Cómo Usar Esta Guía"
 ---
-
 # Cómo Usar Esta Guía
 
 Esta guía no está pensada para que la termines rápido.

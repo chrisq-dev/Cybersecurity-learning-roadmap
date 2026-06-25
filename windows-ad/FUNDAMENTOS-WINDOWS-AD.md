@@ -18,9 +18,9 @@ Existe un mito en la cultura popular: *"Los servidores reales usan Linux, y Wind
 
 **Falso.**
 Es cierto que Linux domina el alojamiento de Páginas Web en la Nube. Pero adentro del edificio físico de una empresa, **casi el 100% del parque informático es de Microsoft**.
-*   Las laptops de los 5,000 empleados usan Windows.
-*   El servidor de correos internos (Exchange) usa Windows.
-*   El servidor que valida las contraseñas de la puerta electrónica del edificio usa Windows.
+* Las laptops de los 5,000 empleados usan Windows.
+* El servidor de correos internos (Exchange) usa Windows.
+* El servidor que valida las contraseñas de la puerta electrónica del edificio usa Windows.
 
 > **Importante:**
 > Si un atacante quiere robar la Base de Datos de clientes de un Banco, tal vez tenga que hackear un servidor Linux. Pero para **llegar** a ese servidor, primero tiene que enviar un correo con Phishing a un empleado, infectar su laptop con Windows, y usar la red corporativa de Windows para moverse en secreto. **El camino hacia el tesoro casi siempre está pavimentado por Windows.**
@@ -32,8 +32,8 @@ Es cierto que Linux domina el alojamiento de Páginas Web en la Nube. Pero adent
 El Windows que compras en la tienda y usas en tu casa pertenece a un Grupo de Trabajo (*Workgroup*).
 
 Imagina que tu casa es una pequeña Isla Autónoma en medio del océano.
-*   **Tú eres el Rey Absoluto:** Puedes instalar juegos, cambiar el fondo de pantalla, borrar el sistema operativo, o romperlo por completo.
-*   **Tus Leyes no salen de tu Isla:** Si le creas una cuenta a "Mi Hermano" en tu laptop con la contraseña `123`, tu hermano solo puede iniciar sesión **físicamente en tu laptop**. Si va a la computadora del vecino e intenta poner su usuario y contraseña, la PC del vecino le dirá: *"No sé quién eres"*.
+* **Tú eres el Rey Absoluto:** Puedes instalar juegos, cambiar el fondo de pantalla, borrar el sistema operativo, o romperlo por completo.
+* **Tus Leyes no salen de tu Isla:** Si le creas una cuenta a "Mi Hermano" en tu laptop con la contraseña `123`, tu hermano solo puede iniciar sesión **físicamente en tu laptop**. Si va a la computadora del vecino e intenta poner su usuario y contraseña, la PC del vecino le dirá: *"No sé quién eres"*.
 
 A los hackers de nivel corporativo no les interesan las islas pequeñas. Ganar control de tu laptop personal solo les da control de tu laptop. Fin del juego.
 
@@ -44,9 +44,9 @@ A los hackers de nivel corporativo no les interesan las islas pequeñas. Ganar c
 Cuando entras a trabajar a una multinacional, te entregan una laptop. Esa laptop tiene Windows, pero pertenece a un **Dominio** (Domain).
 
 La laptop dejó de ser una isla. Ahora es una provincia subyugada bajo el control de un inmenso **Imperio Corporativo**.
-*   **Ya no eres el Rey:** Por más que sea "tu" laptop, tú eres solo un usuario (Campesino). Si intentas instalar Spotify o cambiar la hora del reloj, Windows te dirá: *"Acceso Denegado. Consulta a tu Administrador de TI"*.
-*   **Las Leyes vienen de la Capital:** Existe una súper-computadora escondida en el cuarto de servidores llamada **Controlador de Dominio (Domain Controller)**. Esa súper-computadora es la Capital del Imperio. Dicta las leyes para absolutamente todas las laptops de la empresa.
-*   **La Ciudadanía Universal:** Cuando el equipo de TI te crea la cuenta `juan.perez`, no la crean en tu laptop. La crean en la súper-computadora. Eso significa que puedes ir a **cualquier** laptop vacía en cualquiera de los 50 pisos del edificio, escribir `juan.perez` y tu contraseña, y la máquina te dejará entrar porque verificará tu existencia preguntándole a la Capital.
+* **Ya no eres el Rey:** Por más que sea "tu" laptop, tú eres solo un usuario (Campesino). Si intentas instalar Spotify o cambiar la hora del reloj, Windows te dirá: *"Acceso Denegado. Consulta a tu Administrador de TI"*.
+* **Las Leyes vienen de la Capital:** Existe una súper-computadora escondida en el cuarto de servidores llamada **Controlador de Dominio (Domain Controller)**. Esa súper-computadora es la Capital del Imperio. Dicta las leyes para absolutamente todas las laptops de la empresa.
+* **La Ciudadanía Universal:** Cuando el equipo de TI te crea la cuenta `juan.perez`, no la crean en tu laptop. La crean en la súper-computadora. Eso significa que puedes ir a **cualquier** laptop vacía en cualquiera de los 50 pisos del edificio, escribir `juan.perez` y tu contraseña, y la máquina te dejará entrar porque verificará tu existencia preguntándole a la Capital.
 
 ---
 

@@ -15,9 +15,9 @@ Si una corporación gigante sufre un ataque de Ransomware devastador, la primera
 
 El Antivirus que conoces desde los años 90 (McAfee, Norton, Avast) funciona bajo una tecnología llamada **Detección por Firmas**.
 
-*   **La Analogía:** Es un cadenero parado en la puerta de una discoteca.
-*   El cadenero tiene una hoja de papel en la mano con las fotos de los "10 criminales más buscados del país" (La base de datos de firmas YARA o Hashes de virus conocidos).
-*   Si tú llegas a la puerta, el cadenero mira tu cara, mira su hoja de papel, y si coinciden, no te deja entrar (Borra el archivo `.exe`).
+* **La Analogía:** Es un cadenero parado en la puerta de una discoteca.
+* El cadenero tiene una hoja de papel en la mano con las fotos de los "10 criminales más buscados del país" (La base de datos de firmas YARA o Hashes de virus conocidos).
+* Si tú llegas a la puerta, el cadenero mira tu cara, mira su hoja de papel, y si coinciden, no te deja entrar (Borra el archivo `.exe`).
 
 ### La Debilidad Fatal (Zero-Day)
 ¿Qué hace el hacker ruso? Entra a Photoshop, le pinta un bigote falso a la foto del criminal, y lo manda de nuevo a la discoteca. (A esto se le llama ofuscar el malware, cambiar su Hash).
@@ -31,8 +31,8 @@ A esto se le llama un ataque de **Día Cero (Zero-Day)**. Una variante nueva de 
 
 Para arreglar el error del cadenero, la industria inventó el **EDR** (Ej. *CrowdStrike, SentinelOne, Microsoft Defender for Endpoint*).
 
-*   **La Analogía:** El EDR es un detective vestido de civil caminando *adentro* de la discoteca.
-*   Al detective no le importa tu cara ni le importa cómo te llamas. No usa listas de invitados. **El detective observa tu Comportamiento.**
+* **La Analogía:** El EDR es un detective vestido de civil caminando *adentro* de la discoteca.
+* Al detective no le importa tu cara ni le importa cómo te llamas. No usa listas de invitados. **El detective observa tu Comportamiento.**
 
 El EDR monitorea matemáticamente qué está haciendo cada programa en la Memoria RAM.
 Si entraste a la discoteca vestido de traje (Pasaste al Cadenero), pero una vez adentro sacas un cuchillo e intentas apuñalar al cantinero... El detective te neutraliza al instante.
@@ -48,9 +48,9 @@ Incluso con el mejor EDR del mundo, dejar que los usuarios hagan lo que quieran 
 
 Hardening es aplicar la teoría militar del **Principio del Menor Privilegio**. No puedes confiar en el sentido común de tus empleados. Tienes que usar la fuerza del Sistema Operativo para prohibirles el error.
 
-*   **Quitar Permisos de Administrador:** El 90% de los virus fallan catastróficamente si el usuario que le dio doble clic no tiene permisos de Administrador en su propia computadora.
-*   **Deshabilitar Puertos USB:** Poner pegamento lógico a los puertos USB para que si un empleado encuentra una memoria tirada en el estacionamiento (Un ataque clásico del *Red Team*) y la conecta, la computadora la rechace.
-*   **Desinstalar Bloatware:** Si el empleado es de Ventas, desinstala Python, desinstala PowerShell y borra todos los juegos que vienen con Windows. Menos software instalado = Menos agujeros posibles para el Hacker (Reducir la Superficie de Ataque).
+* **Quitar Permisos de Administrador:** El 90% de los virus fallan catastróficamente si el usuario que le dio doble clic no tiene permisos de Administrador en su propia computadora.
+* **Deshabilitar Puertos USB:** Poner pegamento lógico a los puertos USB para que si un empleado encuentra una memoria tirada en el estacionamiento (Un ataque clásico del *Red Team*) y la conecta, la computadora la rechace.
+* **Desinstalar Bloatware:** Si el empleado es de Ventas, desinstala Python, desinstala PowerShell y borra todos los juegos que vienen con Windows. Menos software instalado = Menos agujeros posibles para el Hacker (Reducir la Superficie de Ataque).
 
 ---
 
@@ -60,5 +60,5 @@ Revisa si podrías asegurar las laptops de tu empresa:
 
 1. El CEO de la empresa compró una licencia premium de un "Antivirus Tradicional" (Basado en Firmas) para todas las laptops corporativas. Si un Hacker envía un correo con un archivo de Excel malicioso totalmente nuevo, creado esa misma mañana (*Zero-Day*), ¿Por qué el Antivirus Tradicional dejará pasar el archivo sin lanzar ninguna alerta?
 2. Explica la diferencia arquitectónica de enfoque entre un "Antivirus Tradicional" (Cadenero) y una plataforma "EDR" (Detective). ¿Qué observa uno y qué observa el otro?
-3. Sabiendo que el EDR monitorea el "comportamiento" de los procesos del sistema, ¿Cómo utilizaría la industria las reglas **SIGMA** (Vistas en la Fase 8) en combinación con el EDR de una computadora?
+3. Sabiendo que el EDR monitorea el "comportamiento" de los procesos del sistema, ¿Cómo utilizaría la industria las reglas **SIGMA** (Vistas Anteriormente) en combinación con el EDR de una computadora?
 4. El proceso de *Hardening* corporativo exige quitarle los privilegios de Administrador local a todos los empleados sobre sus propias laptops. El equipo de Ventas se queja de que "ahora tienen que llamar a Sistemas para poder instalar Spotify". ¿Cómo justificas matemáticamente que esta medida drástica previene un ataque de Ransomware masivo?

@@ -18,9 +18,9 @@ El mayor error de un investigador principiante no es no encontrar datos; es deja
 Si te contratan para perfilar a un cibercriminal y entras a su perfil público de LinkedIn usando tu cuenta personal, LinkedIn le enviará una notificación que dice: *"Carlos del Blue Team del Banco XYZ acaba de ver tu perfil"*. Acabas de destruir la investigación.
 
 ### Mandamientos del Investigador:
-1.  **Máquinas Desechables:** Nunca investigues desde tu computadora personal de uso diario. Usa una Máquina Virtual (VirtualBox/VMware) limpia.
-2.  **Identidades Sintéticas (Sock Puppets):** Crea cuentas falsas (con fotos generadas por IA) para interactuar en redes sociales o foros de hackers.
-3.  **Túneles Oscuros:** Usa VPNs o Tor para ocultar la dirección IP corporativa de tu empresa. Si investigas un foro criminal desde la oficina, el servidor del criminal registrará tu IP corporativa.
+1. **Máquinas Desechables:** Nunca investigues desde tu computadora personal de uso diario. Usa una Máquina Virtual (VirtualBox/VMware) limpia.
+2. **Identidades Sintéticas (Sock Puppets):** Crea cuentas falsas (con fotos generadas por IA) para interactuar en redes sociales o foros de hackers.
+3. **Túneles Oscuros:** Usa VPNs o Tor para ocultar la dirección IP corporativa de tu empresa. Si investigas un foro criminal desde la oficina, el servidor del criminal registrará tu IP corporativa.
 
 ---
 

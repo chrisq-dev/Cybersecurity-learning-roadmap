@@ -45,18 +45,18 @@ El SSL Pinning hace casi imposible para los Pentesters interceptar el tráfico p
 Cuando la Ingeniería Inversa y los Proxys de red fallan porque la aplicación está demasiado ofuscada y tiene SSL Pinning, entra **Frida**.
 
 Frida es un framework de instrumentación dinámica, y es el estándar de oro del Mobile Pentesting.
-*   **¿Qué hace?** En lugar de descompilar el código muerto de la app, Frida inyecta código de JavaScript **directamente en la memoria RAM del celular mientras la aplicación se está ejecutando**.
+* **¿Qué hace?** En lugar de descompilar el código muerto de la app, Frida inyecta código de JavaScript **directamente en la memoria RAM del celular mientras la aplicación se está ejecutando**.
 
 ### El Salto de la Matrix
-Imagínate esto: Abres la app del banco. La app ejecuta su función `checkSSLPinning()` para ver si el hacker la está interceptando. La función arroja `True` (hay un hacker) y la app se va a cerrar.
+Imagínate esto: Abres la app del banco. La app ejecuta su función `checkSSLPinning` para ver si el hacker la está interceptando. La función arroja `True` (hay un hacker) y la app se va a cerrar.
 En esa micro-fracción de segundo en la Memoria RAM, Frida intercepta la función y **fuerza al sistema a cambiar el resultado de `True` a `False`**. 
 
 La aplicación queda hipnotizada, asume que no hay ningún hacker interceptando y envía todas las contraseñas al atacante felizmente.
 
 Con Frida, los pentesters pueden:
-*   Destruir la protección SSL Pinning en tiempo real.
-*   Saltarse los avisos de "Celular Rooteado/Jailbreakeado" (`Root Detection Bypass`).
-*   Robar variables de memoria antes de que se cifren.
+* Destruir la protección SSL Pinning en tiempo real.
+* Saltarse los avisos de "Celular Rooteado/Jailbreakeado" (`Root Detection Bypass`).
+* Robar variables de memoria antes de que se cifren.
 
 ---
 

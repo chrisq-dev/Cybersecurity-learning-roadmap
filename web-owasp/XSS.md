@@ -39,7 +39,7 @@ Si el programador fue perezoso y guardó ese texto crudo en la base de datos, ca
 
 ### Más allá de la Molestia (Robo de Sesión)
 Sacar ventanas emergentes (`alert`) es divertido, pero un hacker real hace esto de forma invisible:
-`<script> enviar_a_rusia( document.cookie ); </script>`
+`<script> enviar_a_rusia( document.cookie); </script>`
 
 Ese pequeño comando toma tu **Cookie de Sesión** (El post-it mágico que le dice al servidor quién eres) y se la envía al servidor remoto del hacker. El atacante ahora es dueño de tu cuenta de Facebook o de tu Banco, y tú nunca te diste cuenta porque la página pareció cargar normalmente.
 
@@ -47,9 +47,9 @@ Ese pequeño comando toma tu **Cookie de Sesión** (El post-it mágico que le di
 
 ## 3. Tipos de XSS
 
-1.  **XSS Reflejado (El Espejo):** El código malicioso va escondido en un Link que el hacker te envía por WhatsApp. Cuando das clic, la página del banco se abre, el servidor del banco "refleja" el ataque de vuelta a tu pantalla, y te roban. El código malicioso nunca se guardó en la base de datos.
-2.  **XSS Almacenado (La Bomba de Tiempo):** El peor de todos (El ejemplo de la carta). El hacker guarda el comentario malicioso en la base de datos del servidor (ej. Un video de YouTube). Un millón de personas entran a ver el video, y el millón de personas se infectan automáticamente.
-3.  **XSS Basado en DOM:** El ataque ocurre enteramente dentro del código Frontend de tu navegador. El cartero (Servidor) nunca llegó a ver el dardo.
+1. **XSS Reflejado (El Espejo):** El código malicioso va escondido en un Link que el hacker te envía por WhatsApp. Cuando das clic, la página del banco se abre, el servidor del banco "refleja" el ataque de vuelta a tu pantalla, y te roban. El código malicioso nunca se guardó en la base de datos.
+2. **XSS Almacenado (La Bomba de Tiempo):** El peor de todos (El ejemplo de la carta). El hacker guarda el comentario malicioso en la base de datos del servidor (ej. Un video de YouTube). Un millón de personas entran a ver el video, y el millón de personas se infectan automáticamente.
+3. **XSS Basado en DOM:** El ataque ocurre enteramente dentro del código Frontend de tu navegador. El cartero (Servidor) nunca llegó a ver el dardo.
 
 ---
 
@@ -61,8 +61,8 @@ Prevenir el XSS es una de las tareas más repetitivas de un programador.
 
 Cuando el cartero revisa la carta, debe confiscar las armas. En la web, las armas son los símbolos mayor que y menor que (`<` y `>`).
 El programador usa funciones que convierten los símbolos peligrosos en texto inofensivo de HTML.
-*   El `<` se convierte en `&lt;` (Less Than).
-*   El `>` se convierte en `&gt;` (Greater Than).
+* El `<` se convierte en `&lt;` (Less Than).
+* El `>` se convierte en `&gt;` (Greater Than).
 
 Cuando el hacker intenta inyectar `<script>`, la base de datos guarda `&lt;script&gt;`.
 Cuando el navegador de la víctima lee la página, en lugar de *ejecutar* un virus, simplemente dibuja las letras "<script>" en la pantalla como si fuera texto normal y aburrido. El dardo fue desactivado.

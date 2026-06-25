@@ -13,10 +13,10 @@ Descubrirás cómo dispositivos aparentemente inofensivos pueden ser convertidos
 ## 1. ¿Qué es el IoT?
 
 El **Internet of Things (IoT)** se refiere a agregar conexión Wi-Fi o Bluetooth a objetos cotidianos que tradicionalmente no tenían internet.
-*   Focos inteligentes (Philips Hue).
-*   Cámaras de seguridad de bebés.
-*   Neveras, aspiradoras y termostatos.
-*   Dispositivos médicos (Marcapasos).
+* Focos inteligentes (Philips Hue).
+* Cámaras de seguridad de bebés.
+* Neveras, aspiradoras y termostatos.
+* Dispositivos médicos (Marcapasos).
 
 ### El Problema de Negocio
 Los fabricantes de estos dispositivos (como fábricas genéricas en Asia) tienen un solo objetivo: **Vender barato y vender rápido**.

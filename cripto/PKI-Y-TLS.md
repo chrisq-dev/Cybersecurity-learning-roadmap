@@ -19,9 +19,9 @@ Necesitamos un árbitro, un notario que certifique quién es quién. Necesitamos
 
 La **PKI (Infraestructura de Llave Pública)** es el sistema global de confianza del internet.
 
-*   **La Analogía:** Cuando vas al aeropuerto internacional y dices "Soy Juan Pérez de México", el oficial de migración no te cree solo porque tú lo dices. Te pide tu **Pasaporte**.
-*   El pasaporte tiene tu foto, y lo más importante: **Tiene el sello oficial y holográfico del Gobierno de México**.
-*   El oficial de migración confía en el Gobierno de México. Como el Gobierno selló el documento, el oficial confía en ti automáticamente (Confianza Transitiva).
+* **La Analogía:** Cuando vas al aeropuerto internacional y dices "Soy Juan Pérez de México", el oficial de migración no te cree solo porque tú lo dices. Te pide tu **Pasaporte**.
+* El pasaporte tiene tu foto, y lo más importante: **Tiene el sello oficial y holográfico del Gobierno de México**.
+* El oficial de migración confía en el Gobierno de México. Como el Gobierno selló el documento, el oficial confía en ti automáticamente (Confianza Transitiva).
 
 ### La Autoridad Certificadora (CA)
 En internet, los "Gobiernos" que emiten los pasaportes se llaman **Autoridades Certificadoras (CA - Certificate Authorities)**. Son empresas mundialmente confiables (como *DigiCert* o *Let's Encrypt*).
@@ -54,7 +54,7 @@ Cuando abres Chrome y escribes `https://amazon.com`, ocurre el **TLS Handshake (
 
 Revisa si entiendes la cadena de confianza mundial:
 
-1. Estás navegando desde un cibercafé de un aeropuerto, el cual es administrado por un Hacker. Intentas entrar a tu Banco, pero el navegador Chrome muestra una pantalla roja gigante que dice: *"Warning: The Certificate is Invalid"*. Si ignoras la advertencia y das clic en "Continuar", ¿Qué ataque de Redes clásico (*que vimos en la Fase 3*) estás permitiendo que ocurra?
+1. Estás navegando desde un cibercafé de un aeropuerto, el cual es administrado por un Hacker. Intentas entrar a tu Banco, pero el navegador Chrome muestra una pantalla roja gigante que dice: *"Warning: The Certificate is Invalid"*. Si ignoras la advertencia y das clic en "Continuar", ¿Qué ataque de Redes clásico (*que vimos Anteriormente*) estás permitiendo que ocurra?
 2. En la infraestructura PKI de internet, ¿Cuál es la función exacta de una Autoridad Certificadora (CA) usando la analogía del Gobierno que emite Pasaportes?
 3. Para proteger el tráfico de una videollamada HD de 2 horas (5 Gigabytes de datos) entre tú y un servidor, ¿Por qué el protocolo TLS no usa Cifrado Asimétrico (RSA) para encriptar el video, y en su lugar solo lo usa al principio para intercambiar una llave Simétrica (AES)?
 4. Si un hacker ruso logra vulnerar las computadoras centrales de una Autoridad Certificadora importante (Ej. DigiCert) y se roba su "Sello Maestro", ¿Por qué esto se considera el fin del mundo para la seguridad en internet, y qué podría hacer el hacker con ese sello?

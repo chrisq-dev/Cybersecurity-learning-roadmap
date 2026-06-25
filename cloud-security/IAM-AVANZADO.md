@@ -18,14 +18,14 @@ Las llaves del Conserje en la nube no son de metal. Son un documento de texto es
 **Ejemplo de una Llave Básica:**
 ```json
 {
-  "Effect": "Allow",
-  "Action": "s3:GetObject",
-  "Resource": "arn:aws:s3:::bodega-hospital/*"
+ "Effect": "Allow",
+ "Action": "s3:GetObject",
+ "Resource": "arn:aws:s3:::bodega-hospital/*"
 }
 ```
-*   **Effect:** ¿Qué vas a hacer, Permitir (Allow) o Bloquear (Deny)?
-*   **Action:** ¿Qué poder mágico te estoy dando? (En este caso, la acción `GetObject` significa que puedes descargar fotos de S3).
-*   **Resource:** ¿Sobre qué edificio específico tienes este poder? (En este caso, solo sobre la `bodega-hospital`).
+* **Effect:** ¿Qué vas a hacer, Permitir (Allow) o Bloquear (Deny)?
+* **Action:** ¿Qué poder mágico te estoy dando? (En este caso, la acción `GetObject` significa que puedes descargar fotos de S3).
+* **Resource:** ¿Sobre qué edificio específico tienes este poder? (En este caso, solo sobre la `bodega-hospital`).
 
 Si un hacker roba las credenciales de este empleado, el hacker solo podrá descargar fotos. Es aburrido y de bajo impacto. El hacker quiere más.
 
@@ -39,13 +39,13 @@ Si el Administrador de Sistemas de tu empresa tiene mucha prisa el viernes en la
 
 ```json
 {
-  "Effect": "Allow",
-  "Action": "s3:*",
-  "Resource": "*"
+ "Effect": "Allow",
+ "Action": "s3:*",
+ "Resource": "*"
 }
 ```
-*   `Action: s3:*` -> Puedes hacer **CUALQUIER COSA** en el mundo del almacenamiento (Leer, Borrar, Modificar, Eliminar bodegas enteras).
-*   `Resource: *` -> Sobre **CUALQUIER BODEGA** del mundo que exista en esta empresa.
+* `Action: s3:*` -> Puedes hacer **CUALQUIER COSA** en el mundo del almacenamiento (Leer, Borrar, Modificar, Eliminar bodegas enteras).
+* `Resource: *` -> Sobre **CUALQUIER BODEGA** del mundo que exista en esta empresa.
 
 A esto se le llama **Over-permissive Policies** (Políticas con exceso de permisos). Si el hacker roba esta llave, acaba de obtener el poder de borrar las bases de datos de toda la compañía con un solo enter.
 
@@ -55,9 +55,9 @@ A esto se le llama **Over-permissive Policies** (Políticas con exceso de permis
 
 Pero los hackers reales apuntan aún más alto. Apuntan a la característica más avanzada de IAM: El **AssumeRole** (Asumir un Rol).
 
-*   **La Analogía:** Es el equivalente corporativo a ponerse una máscara de látex de otra persona.
-*   Imagina que la cuenta de un becario (Junior) tiene una política muy aburrida que solo le permite leer manuales.
-*   PERO, el becario tiene una línea mágica en su JSON que dice: `sts:AssumeRole`.
+* **La Analogía:** Es el equivalente corporativo a ponerse una máscara de látex de otra persona.
+* Imagina que la cuenta de un becario (Junior) tiene una política muy aburrida que solo le permite leer manuales.
+* PERO, el becario tiene una línea mágica en su JSON que dice: `sts:AssumeRole`.
 
 Esa línea significa: *"Tú eres un becario débil, pero tienes permiso de caminar al armario, agarrar el uniforme del CEO, ponértelo, y durante 1 hora el sistema pensará que eres el CEO"*.
 

@@ -15,10 +15,10 @@ A diferencia del CSRF (donde el atacante engaña a un *Usuario/Cliente*), en el 
 
 Volvamos a la analogía del Restaurante.
 
-1.  El Mesero (Servidor Web) tiene permiso de salir a la calle a atender a los clientes (Internet Público).
-2.  La Cocina y la Bóveda del dinero (Bases de Datos, Servidores de Pago, APIs de Amazon AWS) están detrás de una inmensa puerta de acero blindada (El Firewall). 
-3.  Si un delincuente en la calle intenta abrir la puerta blindada de la cocina, será bloqueado inmediatamente.
-4.  **Pero el Mesero tiene la llave de la puerta blindada**, porque su trabajo es entrar y salir todo el día con las órdenes.
+1. El Mesero (Servidor Web) tiene permiso de salir a la calle a atender a los clientes (Internet Público).
+2. La Cocina y la Bóveda del dinero (Bases de Datos, Servidores de Pago, APIs de Amazon AWS) están detrás de una inmensa puerta de acero blindada (El Firewall). 
+3. Si un delincuente en la calle intenta abrir la puerta blindada de la cocina, será bloqueado inmediatamente.
+4. **Pero el Mesero tiene la llave de la puerta blindada**, porque su trabajo es entrar y salir todo el día con las órdenes.
 
 ### El Ataque SSRF:
 El atacante en la calle no intenta forzar la puerta blindada. Simplemente llama al Mesero y le pone una pistola en la cabeza (o lo engaña). Le dice: *"Entra tú a la cocina, abre la bóveda, lee los números secretos del jefe, sal a la calle y dímelos en voz alta"*.
@@ -66,7 +66,7 @@ Curar el SSRF es difícil porque las aplicaciones web *necesitan* conectarse con
 
 En lugar de crear un filtro que prohíba que el servidor visite palabras como "192.168" o "localhost" (Blacklisting), el programador debe dictar explícitamente a dónde SÍ puede ir el servidor.
 
-*   *El Código Blindado:* "El mesero solo tiene permitido descargar imágenes desde `imgur.com` o `aws.com`. Si el cliente le pide ir a CUALQUIER otra URL del universo, el mesero debe abortar la operación y llamar a seguridad".
+* *El Código Blindado:* "El mesero solo tiene permitido descargar imágenes desde `imgur.com` o `aws.com`. Si el cliente le pide ir a CUALQUIER otra URL del universo, el mesero debe abortar la operación y llamar a seguridad".
 
 ---
 
@@ -76,5 +76,5 @@ Revisa si comprendes el poder del SSRF:
 
 1. Estás auditando una página web y encuentras una funcionalidad para exportar un PDF. La URL es: `empresa.com/exportar?url=pagina_facturas.html`. ¿Por qué ese parámetro `url=` enciende todas las alarmas en tu cabeza como posible SSRF?
 2. A diferencia del ataque XSS (que ataca el navegador del cliente) y del CSRF (que engaña la sesión del cliente), ¿quién es el actor tecnológico que físicamente realiza el trabajo sucio y rompe la red interna en un ataque SSRF?
-3. Un desarrollador de AWS se entera de la magia de la IP `169.254.169.254` e implementa un filtro de seguridad en el backend: `if (url == "169.254.169.254") { bloquear(); }`. ¿Por qué este filtro es fácil de evadir por un hacker? *(Pista: Existen decenas de formas de escribir o enmascarar una misma IP usando conversiones hexadecimales o redirecciones cortas).*
+3. Un desarrollador de AWS se entera de la magia de la IP `169.254.169.254` e implementa un filtro de seguridad en el backend: `if (url == "169.254.169.254") { bloquear; }`. ¿Por qué este filtro es fácil de evadir por un hacker? *(Pista: Existen decenas de formas de escribir o enmascarar una misma IP usando conversiones hexadecimales o redirecciones cortas).*
 4. Durante una entrevista de trabajo para Defensor (Blue Team), te preguntan cuál es la arquitectura de red ideal para mitigar el impacto de un SSRF. ¿Por qué sugerirías "Segmentación de Red" en la cocina interna del servidor?

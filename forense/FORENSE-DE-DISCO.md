@@ -13,7 +13,7 @@ Un hacker inexperto ataca un servidor, se asusta, borra todas sus herramientas d
 
 ## 1. La Mentira de "Borrar" un Archivo
 
-*   **La Analogía:** Un disco duro de 1 Terabyte es como un libro de 1 millón de páginas. Las páginas están llenas del texto de tus fotos y documentos. Para no perderse, el libro tiene un **Índice** al principio (En Windows esto se llama *MFT - Master File Table*).
+* **La Analogía:** Un disco duro de 1 Terabyte es como un libro de 1 millón de páginas. Las páginas están llenas del texto de tus fotos y documentos. Para no perderse, el libro tiene un **Índice** al principio (En Windows esto se llama *MFT - Master File Table*).
 
 Cuando tú borras un archivo pesadísimo de 10 Gigabytes, Windows termina la tarea en 1 milisegundo. ¿Cómo borró tanta información tan rápido?
 **La respuesta es que no lo hizo.** 
@@ -36,8 +36,8 @@ A esta técnica se le llama **File Carving (Esculpir)**.
 ### Los Magic Numbers (La firma del archivo)
 ¿Cómo sabe la herramienta forense qué es lo que está leyendo en medio de la basura?
 Todo tipo de archivo empieza con una firma hexadecimal oculta llamada "Número Mágico".
-*   Si el analista ve un pedazo de disco duro que empieza con los números hexadecimales `FF D8 FF E0`, sabe inmediatamente que acaba de chocar contra el inicio de una fotografía **.JPG**.
-*   Si ve los números `25 50 44 46`, sabe que acaba de chocar contra el inicio de un documento **.PDF**.
+* Si el analista ve un pedazo de disco duro que empieza con los números hexadecimales `FF D8 FF E0`, sabe inmediatamente que acaba de chocar contra el inicio de una fotografía **.JPG**.
+* Si ve los números `25 50 44 46`, sabe que acaba de chocar contra el inicio de un documento **.PDF**.
 
 La herramienta forense corta el disco desde donde empieza el número mágico, y "esculpe" el archivo, resucitándolo de la muerte para presentarlo como evidencia.
 

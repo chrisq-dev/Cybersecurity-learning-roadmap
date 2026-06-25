@@ -8,8 +8,8 @@ title: "PAM (Privileged Access Management): La Bóveda Nuclear"
 Aprender cómo proteger a los "Dioses" de la red corporativa.
 
 En la guía anterior (IAM) hablamos de empleados normales como la recepcionista o el de ventas. Pero en toda empresa existe un pequeño grupo de humanos (El equipo de IT / Administradores de Sistemas) cuyas cuentas tienen poder absoluto.
-*   Si le robas la contraseña al de ventas, puedes leer el Excel de los clientes.
-*   Si le robas la contraseña al Administrador de Red (Domain Admin), **eres el dueño de la empresa entera**. Puedes borrar servidores, apagar el Antivirus, y robar bases de datos encriptadas.
+* Si le robas la contraseña al de ventas, puedes leer el Excel de los clientes.
+* Si le robas la contraseña al Administrador de Red (Domain Admin), **eres el dueño de la empresa entera**. Puedes borrar servidores, apagar el Antivirus, y robar bases de datos encriptadas.
 
 Por eso, los hackers profesionales dedican el 90% de su tiempo a robar credenciales de Administradores. A esto se le llama **Movimiento Lateral** y **Escalada de Privilegios**.
 
@@ -20,7 +20,7 @@ Por eso, los hackers profesionales dedican el 90% de su tiempo a robar credencia
 Históricamente, el Administrador de Sistemas creaba una sola cuenta en el Servidor Maestro con la contraseña `PasswordSuperFuerte123!`.
 Para no olvidarla, el Administrador la anotaba en un *Post-it* amarillo debajo de su teclado, o peor aún, usaba esa misma contraseña gigante para iniciar sesión en su laptop de uso diario.
 
-*   **El Ataque:** El hacker le hace Phishing a la recepcionista. Entra a su computadora. Desde la computadora de la recepcionista, el hacker explora la red en silencio (Movimiento Lateral). Descubre que el Administrador dejó su sesión iniciada en la red local. El hacker usa una herramienta como *Mimikatz* (Visto en Forense de Memoria), extrae la contraseña gigante de la memoria RAM del Administrador, y automáticamente gana el juego. (Ataque *Pass-The-Hash*).
+* **El Ataque:** El hacker le hace Phishing a la recepcionista. Entra a su computadora. Desde la computadora de la recepcionista, el hacker explora la red en silencio (Movimiento Lateral). Descubre que el Administrador dejó su sesión iniciada en la red local. El hacker usa una herramienta como *Mimikatz* (Visto en Forense de Memoria), extrae la contraseña gigante de la memoria RAM del Administrador, y automáticamente gana el juego. (Ataque *Pass-The-Hash*).
 
 ---
 
@@ -28,13 +28,13 @@ Para no olvidarla, el Administrador la anotaba en un *Post-it* amarillo debajo d
 
 Para detener esta masacre, las corporaciones implementan sistemas de **PAM (Privileged Access Management)** (Ej. *CyberArk*, *BeyondTrust*).
 
-*   **La Analogía:** Los Códigos de Lanzamiento Nuclear y la Bóveda de Titanio.
+* **La Analogía:** Los Códigos de Lanzamiento Nuclear y la Bóveda de Titanio.
 El Administrador de Sistemas moderno **NO CONOCE** la contraseña del Servidor Maestro. Es imposible que la anote en un *Post-it* porque no sabe cuál es.
 
-1.  **La Custodia:** El sistema PAM inventa una contraseña de 120 caracteres aleatorios (`&4#Lp9...`) y la guarda adentro de una Bóveda Cibernética ultra blindada. El servidor maestro se configura para que solo acepte esa contraseña absurda.
-2.  **El Chequeo (Checkout):** Son las 3:00 PM y el Administrador necesita reiniciar el servidor. El Administrador entra al portal del sistema PAM y solicita acceso: *"Soy el Admin, necesito entrar al Servidor 5 por motivos de mantenimiento"*.
-3.  **La Entrega Temporal:** La Bóveda aprueba la petición. No le muestra la contraseña al Admin, sino que **le inyecta la sesión automáticamente** en su pantalla. El Admin reinicia el servidor.
-4.  **La Autodestrucción (Checkin):** El Administrador termina su trabajo a las 3:30 PM y cierra la sesión. Inmediatamente, la Bóveda inventa una contraseña nueva de 120 caracteres diferentes y se la cambia al servidor de forma invisible.
+1. **La Custodia:** El sistema PAM inventa una contraseña de 120 caracteres aleatorios (`&4#Lp9...`) y la guarda adentro de una Bóveda Cibernética ultra blindada. El servidor maestro se configura para que solo acepte esa contraseña absurda.
+2. **El Chequeo (Checkout):** Son las 3:00 PM y el Administrador necesita reiniciar el servidor. El Administrador entra al portal del sistema PAM y solicita acceso: *"Soy el Admin, necesito entrar al Servidor 5 por motivos de mantenimiento"*.
+3. **La Entrega Temporal:** La Bóveda aprueba la petición. No le muestra la contraseña al Admin, sino que **le inyecta la sesión automáticamente** en su pantalla. El Admin reinicia el servidor.
+4. **La Autodestrucción (Checkin):** El Administrador termina su trabajo a las 3:30 PM y cierra la sesión. Inmediatamente, la Bóveda inventa una contraseña nueva de 120 caracteres diferentes y se la cambia al servidor de forma invisible.
 
 **¿Por qué esto destruye a los Hackers?**
 Incluso si el hacker logra infiltrarse en la computadora del Administrador a las 4:00 PM, no encontrará absolutamente nada. La contraseña ya rotó, cambió, y nadie en el mundo humano sabe cuál es la nueva.

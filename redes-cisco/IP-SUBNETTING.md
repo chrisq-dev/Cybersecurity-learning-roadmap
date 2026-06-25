@@ -16,8 +16,8 @@ Las matemáticas detrás de las direcciones IP y el *subnetting* suelen asustar 
 Si quieres enviarle un paquete a tu amigo Juan, no basta con decirle al cartero: *"Entrégaselo a Juan"*. Hay millones de Juanes. Necesitas una dirección lógica estructurada: País, Estado, Código Postal, Calle y Número de Casa.
 
 En las redes informáticas:
-*   **La Dirección MAC:** Es el nombre completo de Juan (ej. Juan Pérez Gómez). Viene de fábrica y nunca cambia. Pero no te dice *dónde* vive.
-*   **La Dirección IP:** Es la dirección de su casa (ej. Calle Maple #123, Código Postal 5000). Cambia si Juan se muda a otra ciudad. 
+* **La Dirección MAC:** Es el nombre completo de Juan (ej. Juan Pérez Gómez). Viene de fábrica y nunca cambia. Pero no te dice *dónde* vive.
+* **La Dirección IP:** Es la dirección de su casa (ej. Calle Maple #123, Código Postal 5000). Cambia si Juan se muda a otra ciudad. 
 
 Las Direcciones IP le permiten a los Routers (las oficinas de correo) saber en qué país y en qué edificio del mundo estás conectado ahora mismo.
 
@@ -43,14 +43,14 @@ Si se nos acabaron las IPv4, ¿por qué tu casa sigue teniendo internet? Por un 
 
 Los ingenieros de internet acordaron reservar unos "Códigos Postales Especiales" que no existen en el mapa público mundial. Son como direcciones de departamentos dentro de un edificio.
 
-*   **IP Pública (Tu Edificio):** Es la dirección de la puerta principal de tu edificio hacia la calle (Internet). Es única en todo el mundo.
-*   **IP Privada (Tu Departamento):** Es tu número de departamento (`Apt 101`, `Apt 102`). Muchos edificios pueden tener un "Departamento 101", pero no hay conflicto porque están puertas adentro.
+* **IP Pública (Tu Edificio):** Es la dirección de la puerta principal de tu edificio hacia la calle (Internet). Es única en todo el mundo.
+* **IP Privada (Tu Departamento):** Es tu número de departamento (`Apt 101`, `Apt 102`). Muchos edificios pueden tener un "Departamento 101", pero no hay conflicto porque están puertas adentro.
 
 **Los Rangos Privados Famosos:**
 Si ves una IP que empieza con estos números, **sabes que es una IP privada local** que no puede navegar directamente a Internet sin pedirle permiso al Router:
-*   `10.x.x.x` (Muy usada en grandes empresas)
-*   `172.16.x.x` a `172.31.x.x`
-*   `192.168.x.x` (La clásica de todas las casas del mundo)
+* `10.x.x.x` (Muy usada en grandes empresas)
+* `172.16.x.x` a `172.31.x.x`
+* `192.168.x.x` (La clásica de todas las casas del mundo)
 
 ---
 
@@ -63,9 +63,9 @@ La solución es el **Subnetting (Subredes)**: Cortar ese pastel gigante en pedaz
 ### La Máscara de Red (El Cuchillo)
 Para decirle a la computadora qué parte de su dirección es "El nombre de la calle" y qué parte es "El número de la casa", usamos la Máscara de Red.
 
-*   **IP:** `192.168.1.55`
-*   **Máscara (Estilo antiguo):** `255.255.255.0`
-*   **Máscara (Estilo moderno / CIDR):** `/24`
+* **IP:** `192.168.1.55`
+* **Máscara (Estilo antiguo):** `255.255.255.0`
+* **Máscara (Estilo moderno / CIDR):** `/24`
 
 ¿Qué diablos significa `/24`?
 En lenguaje humano significa: *"Los primeros 3 bloques de la IP (`192.168.1`) son el nombre de la calle. El último bloque (`.55`) es el número de la casa. Solo caben 254 casas en esta calle"*.
@@ -80,16 +80,16 @@ En lenguaje humano significa: *"Los primeros 3 bloques de la IP (`192.168.1`) so
 Vamos a ver cómo la analogía del "edificio y el departamento" funciona en tu propia máquina.
 
 ### Paso 1: Tu IP Privada (El Departamento)
-1.  Abre la terminal (`cmd` en Windows, `Terminal` en Mac/Linux).
-2.  Escribe `ipconfig` (Windows) o `ip addr` (Mac/Linux).
-3.  Busca tu dirección IP (probablemente dirá algo como `192.168.0.15`).
-4.  Esta es tu dirección privada. Desde aquí solo puedes hablar con tu Smart TV, tu celular y otros equipos **dentro de tu casa**.
+1. Abre la terminal (`cmd` en Windows, `Terminal` en Mac/Linux).
+2. Escribe `ipconfig` (Windows) o `ip addr` (Mac/Linux).
+3. Busca tu dirección IP (probablemente dirá algo como `192.168.0.15`).
+4. Esta es tu dirección privada. Desde aquí solo puedes hablar con tu Smart TV, tu celular y otros equipos **dentro de tu casa**.
 
 ### Paso 2: Tu IP Pública (El Edificio hacia Internet)
-1.  Abre tu navegador web y entra a [https://www.cual-es-mi-ip.net/](https://www.cual-es-mi-ip.net/) o busca en Google "What is my IP".
-2.  Verás un número completamente diferente (Ej. `187.144.20.100`).
-3.  Esa es la IP Pública que tu proveedor de internet (Telmex, Movistar) le asignó a tu casa. 
-4.  **Cuando entras a Facebook**, Facebook no ve tu IP privada `192.168.0.15`. Facebook solo ve tu IP pública `187.144.20.100`.
+1. Abre tu navegador web y entra a [https://www.cual-es-mi-ip.net/](https://www.cual-es-mi-ip.net/) o busca en Google "What is my IP".
+2. Verás un número completamente diferente (Ej. `187.144.20.100`).
+3. Esa es la IP Pública que tu proveedor de internet (Telmex, Movistar) le asignó a tu casa. 
+4. **Cuando entras a Facebook**, Facebook no ve tu IP privada `192.168.0.15`. Facebook solo ve tu IP pública `187.144.20.100`.
 
 ---
 

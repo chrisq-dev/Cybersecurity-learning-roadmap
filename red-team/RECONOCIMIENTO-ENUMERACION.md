@@ -15,8 +15,8 @@ El error de un hacker novato es lanzar un misil ciegamente contra la puerta del 
 
 Imagina que te contratan para robar el Castillo del Rey.
 
-*   **Reconocimiento Pasivo (OSINT):** Te sientas en una colina a 5 kilómetros de distancia con unos binoculares. Miras a los guardias cambiar de turno y anotas sus uniformes. Lees los diarios del pueblo para ver quién construyó el castillo. *En ningún momento tocaste las piedras del castillo. El Rey no sabe que existes.*
-*   **Reconocimiento Activo (Enumeración):** Bajas de la colina de noche. Caminas hacia el castillo, tocas la puerta de madera con los nudillos para ver si suena hueca. Mueves las perillas de las ventanas para ver cuáles están sin seguro. *El Rey (El Firewall) sí puede escucharte si hace ruido.*
+* **Reconocimiento Pasivo (OSINT):** Te sientas en una colina a 5 kilómetros de distancia con unos binoculares. Miras a los guardias cambiar de turno y anotas sus uniformes. Lees los diarios del pueblo para ver quién construyó el castillo. *En ningún momento tocaste las piedras del castillo. El Rey no sabe que existes.*
+* **Reconocimiento Activo (Enumeración):** Bajas de la colina de noche. Caminas hacia el castillo, tocas la puerta de madera con los nudillos para ver si suena hueca. Mueves las perillas de las ventanas para ver cuáles están sin seguro. *El Rey (El Firewall) sí puede escucharte si hace ruido.*
 
 ---
 
@@ -25,8 +25,8 @@ Imagina que te contratan para robar el Castillo del Rey.
 **OSINT (Open-Source Intelligence)** significa Inteligencia de Fuentes Abiertas. Es el arte de hackear usando exclusivamente información pública en internet.
 
 A los Red Teamers les encanta LinkedIn. Si el Banco te contrata para hackearlos, tu primer paso es buscar a los empleados de TI en LinkedIn.
-*   Encuentras a "Juan", el Administrador de Sistemas.
-*   En su perfil, Juan presume: *"Orgulloso de haber migrado los servidores del Banco a Windows Server 2019 usando la versión de IIS 10.0"*.
+* Encuentras a "Juan", el Administrador de Sistemas.
+* En su perfil, Juan presume: *"Orgulloso de haber migrado los servidores del Banco a Windows Server 2019 usando la versión de IIS 10.0"*.
 
 ¡Bingo! Juan te acaba de regalar el mapa del castillo. Ahora sabes exactamente qué sistema operativo atacar sin haberle enviado ni un solo paquete de red a la IP del Banco. Tu ataque será silencioso, quirúrgico e indetectable.
 
@@ -35,15 +35,15 @@ A los Red Teamers les encanta LinkedIn. Si el Banco te contrata para hackearlos,
 ## 3. Enumeración Activa: Tocando Puertas con Nmap
 
 Una vez que sabes qué atacar, tienes que acercarte al castillo (La IP del servidor). Un servidor no es solo una "caja"; es un edificio con **65,535 puertas (Puertos)**.
-*   El Puerto 80 es la puerta de cristal (La página web).
-*   El Puerto 22 es la puerta trasera de acero (El acceso SSH para administradores).
+* El Puerto 80 es la puerta de cristal (La página web).
+* El Puerto 22 es la puerta trasera de acero (El acceso SSH para administradores).
 
 Para descubrir cuáles de estas 65,535 puertas están abiertas sin seguro, los hackers usan la herramienta más legendaria del mundo: **Nmap (Network Mapper)**.
 
 ### El Escaneo Sigiloso (Stealth Scan)
 Un comando clásico de Nmap se ve así: `nmap -sS -p- 10.0.0.5`
-*   `-p-`: Le dice a Nmap que toque absolutamente las 65,535 puertas.
-*   `-sS`: Le dice a Nmap que aplique el escaneo *Stealth* (Sigiloso).
+* `-p-`: Le dice a Nmap que toque absolutamente las 65,535 puertas.
+* `-sS`: Le dice a Nmap que aplique el escaneo *Stealth* (Sigiloso).
 
 **La Magia del Stealth Scan (TCP SYN):**
 Nmap camina hacia el Puerto 22 y toca la puerta: *"Hola, ¿puedo entrar?"* (SYN).

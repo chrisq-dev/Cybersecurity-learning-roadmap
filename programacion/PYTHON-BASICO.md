@@ -52,9 +52,9 @@ Un script que solo avanza en línea recta es inútil. El robot necesita tomar de
 puerto = "abierto"
 
 if puerto == "abierto":
-    print("¡Bingo! Lanza el ataque.")
+ print("¡Bingo! Lanza el ataque.")
 else:
-    print("Maldición, está cerrado. Abortar misión.")
+ print("Maldición, está cerrado. Abortar misión.")
 ```
 
 **La Magia de los Dos Puntos y los Espacios:**
@@ -78,7 +78,7 @@ lista_ips = ["192.168.1.5", "10.0.0.8", "8.8.8.8"]
 
 # El bucle FOR: Por cada 'ip' dentro de la 'lista_ips', haz esto:
 for ip in lista_ips:
-    print("Escaneando la IP número: " + ip)
+ print("Escaneando la IP número: " + ip)
 ```
 El robot tomará la primera IP, la analizará, volverá arriba, tomará la segunda IP, la analizará, y así hasta que la lista se quede vacía.
 

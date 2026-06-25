@@ -13,11 +13,11 @@ Si conectas un servidor directamente al internet público, durará exactamente 5
 
 ## 1. El Firewall (Cortafuegos): El Guardia de la Puerta
 
-*   **La Analogía:** Es un guardia de seguridad enorme, pero muy poco inteligente. Está parado en la puerta del castillo con una lista de invitados escrita en un papel (Políticas).
+* **La Analogía:** Es un guardia de seguridad enorme, pero muy poco inteligente. Está parado en la puerta del castillo con una lista de invitados escrita en un papel (Políticas).
 
-Su trabajo es leer la dirección de origen, la dirección de destino y el puerto (Conceptos que vimos en la Fase 2 de Redes).
-*   *"¿Vienes de internet (Cualquier IP) y quieres entrar al Puerto 80 (La página web)? La lista dice que sí puedes pasar. Adelante."*
-*   *"¿Vienes de internet y quieres entrar al Puerto 22 (SSH / Terminal de comandos)? La lista dice que está Prohibido. Rechazado."*
+Su trabajo es leer la dirección de origen, la dirección de destino y el puerto (Conceptos que vimos Anteriormente de Redes).
+* *"¿Vienes de internet (Cualquier IP) y quieres entrar al Puerto 80 (La página web)? La lista dice que sí puedes pasar. Adelante."*
+* *"¿Vienes de internet y quieres entrar al Puerto 22 (SSH / Terminal de comandos)? La lista dice que está Prohibido. Rechazado."*
 
 **La Debilidad del Firewall:**
 El Firewall tradicional **no revisa qué traes adentro de la mochila**.
@@ -29,7 +29,7 @@ Si un Hacker se disfraza de visitante normal y pide entrar por el Puerto 80 (La 
 
 Como el Firewall es ciego al contenido, necesitamos algo más inteligente detrás de él.
 
-*   **La Analogía:** Es un Perro Rastreador entrenado. 
+* **La Analogía:** Es un Perro Rastreador entrenado. 
 El IDS se sienta adentro del castillo y huele a las personas que el Firewall dejó pasar. Examina el interior de los paquetes de datos buscando Firmas de Virus (YARA) o comportamientos anómalos.
 
 **La Regla de Oro del IDS:**
@@ -46,7 +46,7 @@ Para evitar Falsos Positivos. Si el perro se equivoca y muerde al CEO de la empr
 
 El siguiente nivel de evolución es el IPS.
 
-*   **La Analogía:** Es un Perro Rastreador y de Ataque.
+* **La Analogía:** Es un Perro Rastreador y de Ataque.
 La letra "P" significa *Prevention*. Este sistema se coloca directamente *en medio* del pasillo (In-line). Si huele la Inyección SQL, ladra (Envía la alerta al SIEM) y **muerde al atacante inmediatamente**, bloqueando su conexión a internet (Tirando el paquete).
 
 El servidor web se salva automáticamente sin intervención humana.

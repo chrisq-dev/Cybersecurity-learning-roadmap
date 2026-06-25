@@ -15,8 +15,8 @@ Los programadores de hoy en día son buenos usando contraseñas complejas. Lo qu
 
 Para que nunca lo olvides, usaremos la analogía de la Discoteca Exclusiva.
 
-*   **Autenticación (Authentication - AuthN):** Es el Guardia de Seguridad en la puerta de la calle. Te pide tu ID y confirma que la foto coincida con tu cara. Si coincide, te deja entrar al edificio. *(Eres quien dices ser).*
-*   **Autorización (Authorization - AuthZ):** Es el Cadenero de la Sala VIP en el segundo piso. Tú ya estás adentro de la discoteca (ya pasaste la Autenticación), pero cuando intentas subir al segundo piso, el cadenero te detiene y dice: *"Tu pulsera es normal. Aquí solo entran VIPs. Acceso Denegado"*. *(Tienes permiso para hacer esto).*
+* **Autenticación (Authentication - AuthN):** Es el Guardia de Seguridad en la puerta de la calle. Te pide tu ID y confirma que la foto coincida con tu cara. Si coincide, te deja entrar al edificio. *(Eres quien dices ser).*
+* **Autorización (Authorization - AuthZ):** Es el Cadenero de la Sala VIP en el segundo piso. Tú ya estás adentro de la discoteca (ya pasaste la Autenticación), pero cuando intentas subir al segundo piso, el cadenero te detiene y dice: *"Tu pulsera es normal. Aquí solo entran VIPs. Acceso Denegado"*. *(Tienes permiso para hacer esto).*
 
 ### El Error Común:
 Los programadores novatos instalan al guardia de seguridad de la calle (Pantalla de Login con Usuario y Contraseña), pero se les olvida poner cadeneros VIP en las puertas internas. El programador asume ciegamente: *"Bueno, si ya logró entrar al edificio, significa que es un tipo bueno, hay que dejarlo pasear por donde quiera"*.

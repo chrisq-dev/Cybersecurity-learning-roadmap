@@ -13,13 +13,13 @@ La Criptografía no es ocultar un archivo en una carpeta invisible. Es tomar un 
 
 ## 1. Cifrado Simétrico: La Caja Fuerte (AES)
 
-*   **La Analogía:** Tienes una caja fuerte de acero. Tienes **UNA SOLA LLAVE** física. Con esa misma llave cierras la caja, y con esa misma llave la abres.
+* **La Analogía:** Tienes una caja fuerte de acero. Tienes **UNA SOLA LLAVE** física. Con esa misma llave cierras la caja, y con esa misma llave la abres.
 
 En la informática, el rey absoluto de este método se llama **AES (Advanced Encryption Standard)**.
 Es el algoritmo que usa el gobierno de EE.UU. para proteger sus secretos nucleares.
 
-*   **La Ventaja:** Es increíblemente rápido. Si quieres cifrar un disco duro entero de 1 Terabyte (como lo hace *BitLocker* de Windows), AES lo hace en segundos.
-*   **La Desventaja (El Problema de la Distribución):** Imagina que quieres mandarle un documento secreto a tu amigo en Japón usando AES. Le mandas la caja fuerte cerrada. ¿Cómo le envías la llave? Si se la mandas por correo, el cartero la puede copiar. Si se la mandas por WhatsApp, un hacker la puede interceptar. Si el hacker roba la única llave, se acabó el juego.
+* **La Ventaja:** Es increíblemente rápido. Si quieres cifrar un disco duro entero de 1 Terabyte (como lo hace *BitLocker* de Windows), AES lo hace en segundos.
+* **La Desventaja (El Problema de la Distribución):** Imagina que quieres mandarle un documento secreto a tu amigo en Japón usando AES. Le mandas la caja fuerte cerrada. ¿Cómo le envías la llave? Si se la mandas por correo, el cartero la puede copiar. Si se la mandas por WhatsApp, un hacker la puede interceptar. Si el hacker roba la única llave, se acabó el juego.
 
 **Uso Principal en la Vida Real:** Cifrar Discos Duros locales y bases de datos. Y es el algoritmo exacto que usa un Hacker para encriptar los archivos de una empresa cuando hace un ataque de **Ransomware**.
 
@@ -29,10 +29,10 @@ Es el algoritmo que usa el gobierno de EE.UU. para proteger sus secretos nuclear
 
 Para solucionar el problema de cómo enviarle la llave a tu amigo en Japón, unos genios matemáticos inventaron el cifrado asimétrico.
 
-*   **La Analogía:** El Buzón de Correos público en la calle.
-    *   Tú fabricas un Buzón de metal, pero en lugar de tener 1 llave, tiene **DOS LLAVES MATEMÁTICAMENTE CONECTADAS**.
-    *   **Llave Pública (El Candado Abierto):** Haces 1,000 copias de esta llave y se la regalas a todo el mundo (A tu amigo en Japón, al cartero, al hacker). Esta llave **SOLO SIRVE PARA CERRAR EL BUZÓN, NUNCA PARA ABRIRLO**.
-    *   **Llave Privada (La Llave Maestra):** Esta llave la guardas tú, nunca sale de tu casa. Es la única que puede **ABRIR EL BUZÓN**.
+* **La Analogía:** El Buzón de Correos público en la calle.
+ * Tú fabricas un Buzón de metal, pero en lugar de tener 1 llave, tiene **DOS LLAVES MATEMÁTICAMENTE CONECTADAS**.
+ * **Llave Pública (El Candado Abierto):** Haces 1,000 copias de esta llave y se la regalas a todo el mundo (A tu amigo en Japón, al cartero, al hacker). Esta llave **SOLO SIRVE PARA CERRAR EL BUZÓN, NUNCA PARA ABRIRLO**.
+ * **Llave Privada (La Llave Maestra):** Esta llave la guardas tú, nunca sale de tu casa. Es la única que puede **ABRIR EL BUZÓN**.
 
 **¿Cómo funciona en la práctica?**
 1. Tu amigo en Japón quiere mandarte un secreto.
@@ -43,8 +43,8 @@ Para solucionar el problema de cómo enviarle la llave a tu amigo en Japón, uno
 
 En informática, el rey de este método se llama **RSA** o Curvas Elípticas (ECC).
 
-*   **La Ventaja:** Resuelve el problema de intercambiar secretos por internet sin conocerse en persona previamente.
-*   **La Desventaja:** Matemáticamente es pesadísimo y lentísimo. No puedes usar RSA para cifrar un disco duro de 1 Terabyte porque la computadora tardaría un mes.
+* **La Ventaja:** Resuelve el problema de intercambiar secretos por internet sin conocerse en persona previamente.
+* **La Desventaja:** Matemáticamente es pesadísimo y lentísimo. No puedes usar RSA para cifrar un disco duro de 1 Terabyte porque la computadora tardaría un mes.
 
 ---
 

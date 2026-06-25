@@ -25,22 +25,22 @@ El Modelo OSI (Open Systems Interconnection) tiene 7 capas. El modelo TCP/IP es 
 Para entender cómo la información viaja, imagina una inmensa corporación internacional enviando un paquete de máxima seguridad de una fábrica a otra.
 
 ### Las Capas Superiores (El Software y el Usuario)
-*   **Capa 7: Aplicación (Application) - *El Jefe***
-    El Jefe escribe la carta que quiere enviar. Él no sabe de aviones ni de rutas; solo sabe qué mensaje quiere mandar. (En tu PC: Tu navegador web, o la app de WhatsApp).
-*   **Capa 6: Presentación (Presentation) - *El Traductor y Cifrador***
-    El Secretario toma la carta del Jefe, la traduce al idioma destino (Formato/JSON) y la mete en un sobre a prueba de rayos X con candado para que nadie la lea en el camino (Cifrado TLS/SSL).
-*   **Capa 5: Sesión (Session) - *El Recepcionista***
-    Abre una línea telefónica con la fábrica destino diciendo: *"Oye, te voy a mandar una carta importante, avísame cuando estés listo para recibirla"*. 
+* **Capa 7: Aplicación (Application) - *El Jefe***
+ El Jefe escribe la carta que quiere enviar. Él no sabe de aviones ni de rutas; solo sabe qué mensaje quiere mandar. (En tu PC: Tu navegador web, o la app de WhatsApp).
+* **Capa 6: Presentación (Presentation) - *El Traductor y Cifrador***
+ El Secretario toma la carta del Jefe, la traduce al idioma destino (Formato/JSON) y la mete en un sobre a prueba de rayos X con candado para que nadie la lea en el camino (Cifrado TLS/SSL).
+* **Capa 5: Sesión (Session) - *El Recepcionista***
+ Abre una línea telefónica con la fábrica destino diciendo: *"Oye, te voy a mandar una carta importante, avísame cuando estés listo para recibirla"*. 
 
 ### Las Capas Inferiores (El Transporte y el Hardware)
-*   **Capa 4: Transporte (Transport) - *El Gestor de Logística (TCP/UDP)***
-    Toma el sobre cerrado, lo pesa y decide si lo envía por **Correo Certificado (TCP)**, donde el cartero debe pedirle una firma de recibido al destino, o por **Correo Normal (UDP)**, donde simplemente lo lanza a la puerta y se va rápido, sin importar si el paquete se perdió. Le pone un número de "Puerto" para saber a qué departamento de la fábrica destino va dirigido.
-*   **Capa 3: Red (Network) - *El Departamento de Enrutamiento (IP y Routers)***
-    Pega una etiqueta con la Dirección GPS completa (Dirección IP de origen y destino). Ellos miran el mapa del mundo y deciden por qué país y carreteras es mejor enviar el camión para evitar el tráfico.
-*   **Capa 2: Enlace de Datos (Data Link) - *El Chofer Local (MAC y Switches)***
-    Es el conductor del camión. Solo conoce las calles de su propia ciudad. Lee la dirección física de la siguiente parada (Dirección MAC) y maneja hasta entregárselo al siguiente centro de distribución.
-*   **Capa 1: Física (Physical) - *La Carretera y el Camión***
-    Son los cables de cobre, la fibra óptica, las ondas de radio Wi-Fi, y la electricidad pura viajando.
+* **Capa 4: Transporte (Transport) - *El Gestor de Logística (TCP/UDP)***
+ Toma el sobre cerrado, lo pesa y decide si lo envía por **Correo Certificado (TCP)**, donde el cartero debe pedirle una firma de recibido al destino, o por **Correo Normal (UDP)**, donde simplemente lo lanza a la puerta y se va rápido, sin importar si el paquete se perdió. Le pone un número de "Puerto" para saber a qué departamento de la fábrica destino va dirigido.
+* **Capa 3: Red (Network) - *El Departamento de Enrutamiento (IP y Routers)***
+ Pega una etiqueta con la Dirección GPS completa (Dirección IP de origen y destino). Ellos miran el mapa del mundo y deciden por qué país y carreteras es mejor enviar el camión para evitar el tráfico.
+* **Capa 2: Enlace de Datos (Data Link) - *El Chofer Local (MAC y Switches)***
+ Es el conductor del camión. Solo conoce las calles de su propia ciudad. Lee la dirección física de la siguiente parada (Dirección MAC) y maneja hasta entregárselo al siguiente centro de distribución.
+* **Capa 1: Física (Physical) - *La Carretera y el Camión***
+ Son los cables de cobre, la fibra óptica, las ondas de radio Wi-Fi, y la electricidad pura viajando.
 
 > **Importante:** Cuando el paquete llega a la fábrica destino, hace **exactamente el proceso inverso**. Sube desde la Carretera (Capa 1) hasta que se le entrega en la mano al Jefe destino (Capa 7). A este proceso de meter el paquete en sobres cada vez más grandes se le llama **Encapsulación**.
 
@@ -50,13 +50,13 @@ Para entender cómo la información viaja, imagina una inmensa corporación inte
 
 ¿Qué pasa realmente cuando escribes "Hola" y le das enviar?
 
-1.  **(Capa 7 - App):** La aplicación de WhatsApp registra que presionaste "Enviar".
-2.  **(Capa 6 - Presentación):** Tu celular toma el texto "Hola" y le aplica un cifrado militar (*End-to-End Encryption*) convirtiéndolo en basura matemática: `x$f29Jk!`.
-3.  **(Capa 5 - Sesión):** Tu celular verifica si el servidor de Meta (Facebook) está despierto.
-4.  **(Capa 4 - Transporte):** TCP divide tu mensaje en mini-pedazos y le pone el **Puerto 443** (el puerto para tráfico web seguro).
-5.  **(Capa 3 - Red):** Se le pega la Dirección IP pública de los servidores de WhatsApp.
-6.  **(Capa 2 - Enlace):** Se le pega la Dirección MAC del router Wi-Fi de tu casa.
-7.  **(Capa 1 - Física):** El mensaje se convierte en pulsos de ondas de radio que salen volando de la antena de tu celular hacia tu modem.
+1. **(Capa 7 - App):** La aplicación de WhatsApp registra que presionaste "Enviar".
+2. **(Capa 6 - Presentación):** Tu celular toma el texto "Hola" y le aplica un cifrado militar (*End-to-End Encryption*) convirtiéndolo en basura matemática: `x$f29Jk!`.
+3. **(Capa 5 - Sesión):** Tu celular verifica si el servidor de Meta (Facebook) está despierto.
+4. **(Capa 4 - Transporte):** TCP divide tu mensaje en mini-pedazos y le pone el **Puerto 443** (el puerto para tráfico web seguro).
+5. **(Capa 3 - Red):** Se le pega la Dirección IP pública de los servidores de WhatsApp.
+6. **(Capa 2 - Enlace):** Se le pega la Dirección MAC del router Wi-Fi de tu casa.
+7. **(Capa 1 - Física):** El mensaje se convierte en pulsos de ondas de radio que salen volando de la antena de tu celular hacia tu modem.
 
 ---
 
@@ -64,18 +64,18 @@ Para entender cómo la información viaja, imagina una inmensa corporación inte
 
 Aquí es donde el modelo te convierte en un experto. Si una página web no carga (ej. `banco.com`), o estás analizando un ataque, vas escalando las capas desde abajo hacia arriba (De la 1 a la 7):
 
-*   **Problema Capa 1 (Físico):** ¿Tienes el cable de red conectado? ¿Hay luz en el módem?
-*   **Problema Capa 2 (Enlace):** ¿Estás conectado al Wi-Fi correcto o hay interferencia?
-*   **Problema Capa 3 (Red):** Intenta hacer `ping 8.8.8.8`. Si falla, tu Router no tiene internet, tienes una IP inválida, o te banearon la IP.
-*   **Problema Capa 4 (Transporte):** El internet funciona, pero el servidor del banco tiene el Puerto bloqueado (Firewall) o está caído. (El `ping` funciona, pero la web no carga).
-*   **Problema Capa 6 (Presentación):** La web carga, pero tu navegador saca una pantalla roja gigante de advertencia porque el certificado SSL/TLS (Cifrado) expiró o es falso.
-*   **Problema Capa 7 (Aplicación):** La web carga perfecto, ves el logo del banco, pero cuando metes tu contraseña sale "Error HTTP 500: Fallo en el servidor" o "Contraseña incorrecta".
+* **Problema Capa 1 (Físico):** ¿Tienes el cable de red conectado? ¿Hay luz en el módem?
+* **Problema Capa 2 (Enlace):** ¿Estás conectado al Wi-Fi correcto o hay interferencia?
+* **Problema Capa 3 (Red):** Intenta hacer `ping 8.8.8.8`. Si falla, tu Router no tiene internet, tienes una IP inválida, o te banearon la IP.
+* **Problema Capa 4 (Transporte):** El internet funciona, pero el servidor del banco tiene el Puerto bloqueado (Firewall) o está caído. (El `ping` funciona, pero la web no carga).
+* **Problema Capa 6 (Presentación):** La web carga, pero tu navegador saca una pantalla roja gigante de advertencia porque el certificado SSL/TLS (Cifrado) expiró o es falso.
+* **Problema Capa 7 (Aplicación):** La web carga perfecto, ves el logo del banco, pero cuando metes tu contraseña sale "Error HTTP 500: Fallo en el servidor" o "Contraseña incorrecta".
 
 ### El Ángulo Hacker
 Los atacantes también se especializan por capas:
-*   Un terrorista que corta un cable submarino de fibra óptica es un ataque de **Capa 1**.
-*   Un atacante inundando un servidor web con miles de peticiones falsas para tirarlo (DDoS) suele ser un ataque de **Capa 3 o 4**.
-*   Un hacker usando SQL Injection para robar contraseñas de la base de datos a través de un formulario de login es un ataque puro de **Capa 7**.
+* Un terrorista que corta un cable submarino de fibra óptica es un ataque de **Capa 1**.
+* Un atacante inundando un servidor web con miles de peticiones falsas para tirarlo (DDoS) suele ser un ataque de **Capa 3 o 4**.
+* Un hacker usando SQL Injection para robar contraseñas de la base de datos a través de un formulario de login es un ataque puro de **Capa 7**.
 
 ---
 

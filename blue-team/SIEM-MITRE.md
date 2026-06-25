@@ -40,8 +40,8 @@ En lugar de decir *"Leyó contraseñas de la RAM"*, el mundo entero (Rusia, Chin
 
 ### Tácticas y Técnicas
 El framework divide todos los ataques del mundo en:
-*   **Tácticas (El QUÉ):** ¿Qué quiere lograr el hacker? (Ej. Quiere "Ganar Acceso Inicial", o quiere "Robar Credenciales").
-*   **Técnicas (El CÓMO):** ¿Cómo lo va a lograr? (Ej. Para "Ganar Acceso Inicial", usó la técnica **T1566: Phishing**).
+* **Tácticas (El QUÉ):** ¿Qué quiere lograr el hacker? (Ej. Quiere "Ganar Acceso Inicial", o quiere "Robar Credenciales").
+* **Técnicas (El CÓMO):** ¿Cómo lo va a lograr? (Ej. Para "Ganar Acceso Inicial", usó la técnica **T1566: Phishing**).
 
 ---
 

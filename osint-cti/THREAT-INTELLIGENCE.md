@@ -15,9 +15,9 @@ Si el Blue Team son los soldados en la trinchera y la Respuesta a Incidentes (IR
 
 Para entender CTI, debes entender que los datos por sí solos no sirven de nada.
 
-*   **Dato Crudo:** "La Dirección IP 185.14.2.1 hizo conexión a nuestro servidor." (Es un número inútil).
-*   **Información:** "La IP 185.14.2.1 pertenece a un servidor en Rusia conocido por alojar malware." (Ya tiene contexto).
-*   **Inteligencia:** "El grupo criminal ruso 'APT28' está usando la IP 185.14.2.1 esta semana para lanzar Phishing masivo contra empresas del sector bancario usando correos falsos de DHL. Recomendamos bloquear esa IP en el Firewall hoy." (Tiene contexto, motivación y **una acción recomendada**).
+* **Dato Crudo:** "La Dirección IP 185.14.2.1 hizo conexión a nuestro servidor." (Es un número inútil).
+* **Información:** "La IP 185.14.2.1 pertenece a un servidor en Rusia conocido por alojar malware." (Ya tiene contexto).
+* **Inteligencia:** "El grupo criminal ruso 'APT28' está usando la IP 185.14.2.1 esta semana para lanzar Phishing masivo contra empresas del sector bancario usando correos falsos de DHL. Recomendamos bloquear esa IP en el Firewall hoy." (Tiene contexto, motivación y **una acción recomendada**).
 
 El verdadero analista de CTI es el que escribe la tercera oración.
 
@@ -29,16 +29,16 @@ Cuando el equipo CTI analiza a un hacker, debe documentar sus armas. Hay dos for
 
 ### IOC (Indicator of Compromise) - "Las Balas"
 Son evidencias forenses técnicas: 
-*   La Dirección IP del atacante.
-*   El Hash (firma matemática) del virus que usó.
-*   El nombre de dominio (`banco-falso-login.com`).
+* La Dirección IP del atacante.
+* El Hash (firma matemática) del virus que usó.
+* El nombre de dominio (`banco-falso-login.com`).
 **El problema:** Son fáciles de cambiar. Si le bloqueas la IP al hacker, mañana comprará otra por $5 dólares y seguirá atacando.
 
 ### TTP (Tactics, Techniques, and Procedures) - "La Estrategia"
 Es la forma de operar (el comportamiento) del hacker:
-*   *Táctica:* Robar credenciales.
-*   *Técnica:* Usar correos de Phishing haciéndose pasar por DHL los viernes a las 4:00 PM.
-*   *Procedimiento:* Cuando entra al servidor, siempre crea una tarea programada en Windows llamada "UpdateAgent" para no perder acceso.
+* *Táctica:* Robar credenciales.
+* *Técnica:* Usar correos de Phishing haciéndose pasar por DHL los viernes a las 4:00 PM.
+* *Procedimiento:* Cuando entra al servidor, siempre crea una tarea programada en Windows llamada "UpdateAgent" para no perder acceso.
 **La ventaja:** Si le enseñas al Firewall a detectar y bloquear este "comportamiento" (TTP), no importa si el hacker cambia de IP o de virus mañana; su ataque fracasará porque su *estrategia* fue quemada. A esto se le conoce como la *Pirámide del Dolor de David Bianco*.
 
 ---

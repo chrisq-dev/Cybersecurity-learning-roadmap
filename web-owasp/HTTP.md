@@ -33,11 +33,11 @@ Cuando le entregas la nota al mesero (una Petición HTTP / Request), la nota tie
 
 ### GET (Tráeme)
 Es el método más común. Solo sirve para **leer** o traer información. Cuando escribes `google.com` en tu navegador, tu Chrome le envía un `GET /` al servidor de Google pidiéndole que le envíe la página principal.
-*   **La Peligrosidad:** En un método `GET`, cualquier información extra viaja **visiblemente en la URL** (ej. `banco.com/saldo?cuenta=juan`). Si mandas una contraseña por un método GET, quedará grabada para siempre en el historial de navegación de tu computadora y en los logs del servidor.
+* **La Peligrosidad:** En un método `GET`, cualquier información extra viaja **visiblemente en la URL** (ej. `banco.com/saldo?cuenta=juan`). Si mandas una contraseña por un método GET, quedará grabada para siempre en el historial de navegación de tu computadora y en los logs del servidor.
 
 ### POST (Toma esto y Guárdalo)
 Sirve para **enviar** información sensible (como cuando te registras, compras algo o subes una foto).
-*   **La Seguridad:** En un método `POST`, la información (ej. tu contraseña) no viaja expuesta en la URL. Viaja escondida dentro del "Cuerpo" (Body) de la carta, en un sobre cerrado. 
+* **La Seguridad:** En un método `POST`, la información (ej. tu contraseña) no viaja expuesta en la URL. Viaja escondida dentro del "Cuerpo" (Body) de la carta, en un sobre cerrado. 
 
 ---
 
@@ -45,14 +45,14 @@ Sirve para **enviar** información sensible (como cuando te registras, compras a
 
 Cuando el mesero regresa de la cocina, siempre regresa con un número de 3 dígitos (Status Code). Es el resumen de lo que pasó allá atrás. Un profesional de seguridad los lee como matrix.
 
-*   **200 (OK):** Todo salió perfecto. La página se cargó con éxito.
-*   **301 / 302 (Redirección):** El mesero te dice *"El recurso se mudó, ve a esta otra mesa"*.
-*   **400 (Errores del Cliente):** Tú (el navegador) arruinaste la orden.
-    *   **401 (Unauthorized):** No tienes el post-it (Cookie) para ver esta página.
-    *   **403 (Forbidden):** Tienes el post-it, sé quién eres, pero tu rol es muy bajo para entrar aquí.
-    *   **404 (Not Found):** Me pediste un menú que no existe.
-*   **500 (Errores del Servidor):** El Cocinero arruinó la orden.
-    *   **500 (Internal Server Error):** El código del servidor acaba de fallar miserablemente. (Dato: A los hackers de Red Team les encanta provocar errores 500 para ver si el servidor escupe pistas en la pantalla).
+* **200 (OK):** Todo salió perfecto. La página se cargó con éxito.
+* **301 / 302 (Redirección):** El mesero te dice *"El recurso se mudó, ve a esta otra mesa"*.
+* **400 (Errores del Cliente):** Tú (el navegador) arruinaste la orden.
+ * **401 (Unauthorized):** No tienes el post-it (Cookie) para ver esta página.
+ * **403 (Forbidden):** Tienes el post-it, sé quién eres, pero tu rol es muy bajo para entrar aquí.
+ * **404 (Not Found):** Me pediste un menú que no existe.
+* **500 (Errores del Servidor):** El Cocinero arruinó la orden.
+ * **500 (Internal Server Error):** El código del servidor acaba de fallar miserablemente. (Dato: A los hackers de Red Team les encanta provocar errores 500 para ver si el servidor escupe pistas en la pantalla).
 
 ---
 

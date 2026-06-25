@@ -21,9 +21,9 @@ Lo asombroso es que, a base de entrenar este sistema de predicción con trillone
 ### La Analogía: El Pasante Súper Inteligente pero Ingenuo
 
 Imagina que tu empresa acaba de contratar a un pasante:
-*   Ha leído todos los libros de la biblioteca mundial (tiene conocimientos infinitos).
-*   Puede hablar 50 idiomas y programar en todos los lenguajes.
-*   **Pero es extremadamente ingenuo y obediente.** No tiene malicia, ni sabe distinguir cuándo un cliente le está mintiendo para engañarlo. Hará exactamente lo que le pidan.
+* Ha leído todos los libros de la biblioteca mundial (tiene conocimientos infinitos).
+* Puede hablar 50 idiomas y programar en todos los lenguajes.
+* **Pero es extremadamente ingenuo y obediente.** No tiene malicia, ni sabe distinguir cuándo un cliente le está mintiendo para engañarlo. Hará exactamente lo que le pidan.
 
 Si conectas a este "pasante" (LLM) a la base de datos de recursos humanos para que responda dudas sobre vacaciones, le estás dando mucho poder. Si un hacker sabe cómo hablarle, podría engañarlo para que le revele los salarios de todos los empleados.
 

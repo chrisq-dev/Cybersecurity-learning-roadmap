@@ -16,7 +16,7 @@ Cuando hablamos de "hackear una IA", no hablamos de romper criptografía o explo
 El Prompt Injection es equivalente a hacerle el **"Truco Mental Jedi"** a la Inteligencia Artificial.
 
 Cuando un desarrollador crea una aplicación con IA, le da unas instrucciones ocultas llamadas **System Prompt**. Por ejemplo, una aerolínea podría configurar su bot así:
-*   *Instrucción del Sistema:* "Eres un asistente de aerolínea. Solo debes responder preguntas sobre vuelos. Sé amable. No digas malas palabras."
+* *Instrucción del Sistema:* "Eres un asistente de aerolínea. Solo debes responder preguntas sobre vuelos. Sé amable. No digas malas palabras."
 
 Un **Prompt Injection** ocurre cuando el usuario introduce un texto diseñado para sobrescribir o ignorar esa instrucción original del sistema.
 

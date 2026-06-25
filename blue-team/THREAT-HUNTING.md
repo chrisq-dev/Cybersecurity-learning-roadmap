@@ -30,9 +30,9 @@ Imagina que el Threat Hunter de la empresa lanza una búsqueda (Query) en el SIE
 *"Muéstrame a todos los usuarios que iniciaron sesión con éxito a través de la Red Privada (VPN) desde las 12:00 AM hasta las 5:00 AM"*.
 
 El SIEM le devuelve 3 nombres: María, Pedro y Juan.
-*   **María:** Es la Jefa de Sistemas. Es normal que trabaje de madrugada reparando servidores. (Inofensivo).
-*   **Pedro:** Es del equipo de Ventas Asiáticas. Es normal que se conecte a esta hora por la diferencia horaria. (Inofensivo).
-*   **Juan:** Es del departamento de Recursos Humanos de la oficina local. Su turno terminó a las 6:00 PM. **Anomalía.**
+* **María:** Es la Jefa de Sistemas. Es normal que trabaje de madrugada reparando servidores. (Inofensivo).
+* **Pedro:** Es del equipo de Ventas Asiáticas. Es normal que se conecte a esta hora por la diferencia horaria. (Inofensivo).
+* **Juan:** Es del departamento de Recursos Humanos de la oficina local. Su turno terminó a las 6:00 PM. **Anomalía.**
 
 El Threat Hunter empieza a "jalar el hilo" de Juan. 
 Busca en el SIEM: *"¿Qué hizo la computadora de Juan a las 2:15 AM?"*.
@@ -46,8 +46,8 @@ La alarma del Antivirus nunca sonó porque usar la VPN y abrir PowerShell son fu
 
 Un Threat Hunter nunca regresa con las manos vacías. Al final del día, su cacería termina en uno de dos posibles resultados:
 
-1.  **Encuentra al Hacker:** El peor escenario. Llama de inmediato al equipo de Bomberos (Respuesta a Incidentes) para apagar las computadoras, aislar la red y expulsar al atacante antes de que termine de robar.
-2.  **No encuentra nada (El mejor escenario):** Descubre que Juan realmente estaba trabajando horas extras. Pero la cacería no fue inútil. El Threat Hunter toma lo que aprendió sobre los horarios de Juan, y le dice al *Detection Engineer*: *"Por favor, escribe una regla automática (Una Alerta) para que la próxima vez que un usuario de Recursos Humanos abra PowerShell en la madrugada, la alarma suene sola"*.
+1. **Encuentra al Hacker:** El peor escenario. Llama de inmediato al equipo de Bomberos (Respuesta a Incidentes) para apagar las computadoras, aislar la red y expulsar al atacante antes de que termine de robar.
+2. **No encuentra nada (El mejor escenario):** Descubre que Juan realmente estaba trabajando horas extras. Pero la cacería no fue inútil. El Threat Hunter toma lo que aprendió sobre los horarios de Juan, y le dice al *Detection Engineer*: *"Por favor, escribe una regla automática (Una Alerta) para que la próxima vez que un usuario de Recursos Humanos abra PowerShell en la madrugada, la alarma suene sola"*.
 
 De esta forma, la trampa manual se vuelve automática, y el ciclo de defensa de la empresa se vuelve más fuerte cada día.
 

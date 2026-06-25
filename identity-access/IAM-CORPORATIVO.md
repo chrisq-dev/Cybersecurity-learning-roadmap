@@ -14,16 +14,16 @@ Como dice el famoso dicho de la industria moderna: *"Los hackers ya no rompen la
 ## 1. La Analogía: El Hotel
 
 ### Autenticación (¿Quién eres?)
-*   **La Analogía:** Llegas a la recepción del hotel a las 3:00 PM. El recepcionista te pide tu **Pasaporte**. Él mira la foto de tu pasaporte y mira tu cara. Si coinciden, él confirma que tú eres, efectivamente, *Juan Pérez*.
-*   **En Informática:** Esto es escribir tu Usuario y Contraseña, y poner el código de 6 dígitos que te llega al celular (Autenticación Multi-Factor - MFA). El sistema dice: *"Ok, sí eres el empleado Juan Pérez"*.
-*   **El Límite:** Autenticarse **NO** te da permiso de hacer nada. Solo demuestra que eres tú.
+* **La Analogía:** Llegas a la recepción del hotel a las 3:00 PM. El recepcionista te pide tu **Pasaporte**. Él mira la foto de tu pasaporte y mira tu cara. Si coinciden, él confirma que tú eres, efectivamente, *Juan Pérez*.
+* **En Informática:** Esto es escribir tu Usuario y Contraseña, y poner el código de 6 dígitos que te llega al celular (Autenticación Multi-Factor - MFA). El sistema dice: *"Ok, sí eres el empleado Juan Pérez"*.
+* **El Límite:** Autenticarse **NO** te da permiso de hacer nada. Solo demuestra que eres tú.
 
 ### Autorización (¿Qué puedes hacer?)
-*   **La Analogía:** Una vez que el recepcionista sabe que eres Juan Pérez, te entrega una **Tarjeta Magnética Blanca**. 
-    *   Tú caminas por el pasillo. Pasas la tarjeta por la puerta de la habitación 402, la luz se pone verde y entras (Autorizado). 
-    *   Bajas al primer piso e intentas usar la misma tarjeta para abrir la cocina del restaurante. La luz parpadea en rojo y la puerta no se abre (Denegado). 
-    *   Tú sigues siendo Juan Pérez, pero **no tienes los permisos** para entrar a la cocina.
-*   **En Informática:** Esto se llama **RBAC (Role-Based Access Control)**. El sistema sabe que eres Juan (Ventas), por lo tanto tu tarjeta virtual solo abre la carpeta de *Excel de Clientes*, pero bloquea tu acceso a la carpeta de *Nóminas de Recursos Humanos*.
+* **La Analogía:** Una vez que el recepcionista sabe que eres Juan Pérez, te entrega una **Tarjeta Magnética Blanca**. 
+ * Tú caminas por el pasillo. Pasas la tarjeta por la puerta de la habitación 402, la luz se pone verde y entras (Autorizado). 
+ * Bajas al primer piso e intentas usar la misma tarjeta para abrir la cocina del restaurante. La luz parpadea en rojo y la puerta no se abre (Denegado). 
+ * Tú sigues siendo Juan Pérez, pero **no tienes los permisos** para entrar a la cocina.
+* **En Informática:** Esto se llama **RBAC (Role-Based Access Control)**. El sistema sabe que eres Juan (Ventas), por lo tanto tu tarjeta virtual solo abre la carpeta de *Excel de Clientes*, pero bloquea tu acceso a la carpeta de *Nóminas de Recursos Humanos*.
 
 ---
 
@@ -38,8 +38,8 @@ La solución a esto es centralizar la identidad.
 
 ### SSO: La Pulsera del Parque de Diversiones
 **Single Sign-On (SSO)** (Ej. *Okta*, *PingIdentity*) se conecta al Gran Libro.
-*   **La Analogía:** Cuando vas a un parque de diversiones, en lugar de hacer fila para sacar la cartera y pagar 5 dólares en la Montaña Rusa, y luego volver a hacer fila para pagar 3 dólares en los Carritos Chocones... pagas una sola vez en la entrada del parque y te ponen una **Pulsera Verde de papel** en la muñeca.
-*   **En Informática:** El empleado llega el lunes en la mañana. Escribe su contraseña una sola vez en la intranet de la empresa. El sistema SSO le da un *Token* criptográfico invisible (La Pulsera). Durante el resto del día, el empleado puede abrir el Correo, el CRM y la Base de Datos mágicamente sin tener que volver a escribir contraseñas.
+* **La Analogía:** Cuando vas a un parque de diversiones, en lugar de hacer fila para sacar la cartera y pagar 5 dólares en la Montaña Rusa, y luego volver a hacer fila para pagar 3 dólares en los Carritos Chocones... pagas una sola vez en la entrada del parque y te ponen una **Pulsera Verde de papel** en la muñeca.
+* **En Informática:** El empleado llega el lunes en la mañana. Escribe su contraseña una sola vez en la intranet de la empresa. El sistema SSO le da un *Token* criptográfico invisible (La Pulsera). Durante el resto del día, el empleado puede abrir el Correo, el CRM y la Base de Datos mágicamente sin tener que volver a escribir contraseñas.
 
 ---
 

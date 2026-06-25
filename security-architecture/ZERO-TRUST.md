@@ -7,7 +7,7 @@ title: "Zero Trust: El Laboratorio Secreto"
 
 Aprender la arquitectura definitiva del siglo XXI: **Asume la brecha (Assume Breach).**
 
-La "Defensa en Profundidad" de la guía anterior asume que las murallas del castillo son sagradas. Pero, ¿qué pasa cuando la secretaria se lleva su laptop a Starbucks, se conecta a un Wi-Fi falso (Fase 22), se infecta, y luego regresa a la oficina y conecta la laptop directamente a la red interna, detrás del Firewall?
+La "Defensa en Profundidad" de la guía anterior asume que las murallas del castillo son sagradas. Pero, ¿qué pasa cuando la secretaria se lleva su laptop a Starbucks, se conecta a un Wi-Fi falso, se infecta, y luego regresa a la oficina y conecta la laptop directamente a la red interna, detrás del Firewall?
 El modelo del castillo fracasa porque confió ciegamente en la laptop de la secretaria. 
 Aquí nace **Zero Trust (Confianza Cero)**.
 
@@ -16,10 +16,10 @@ Aquí nace **Zero Trust (Confianza Cero)**.
 ## 1. La Muerte del Perímetro
 
 Históricamente, la red de la oficina era el "Paraíso".
-*   **La Analogía Antigua:** Trabajabas en un edificio corporativo. Mostrabas tu credencial al guardia de seguridad en la puerta principal. Una vez adentro del edificio, el guardia te dejaba en paz. Podías caminar libremente por todos los pasillos, usar todas las impresoras y abrir todas las puertas porque "ya estabas adentro, así que eras de confianza".
-*   **La Analogía de Zero Trust (El Laboratorio Secreto):** Trabajas en un centro de investigación de Biorriesgos. Muestras tu credencial al guardia en la entrada. Entras al edificio. Giras a la derecha e intentas abrir la puerta de la sala de Rayos X. La puerta está bloqueada y te exige que escanees tu credencial y tu huella dactilar **otra vez**. 
-    *   No importa que "ya estés adentro del edificio". La sala de Rayos X **no confía en ti** por defecto.
-    *   Zero Trust elimina la palabra "confianza" del diccionario técnico.
+* **La Analogía Antigua:** Trabajabas en un edificio corporativo. Mostrabas tu credencial al guardia de seguridad en la puerta principal. Una vez adentro del edificio, el guardia te dejaba en paz. Podías caminar libremente por todos los pasillos, usar todas las impresoras y abrir todas las puertas porque "ya estabas adentro, así que eras de confianza".
+* **La Analogía de Zero Trust (El Laboratorio Secreto):** Trabajas en un centro de investigación de Biorriesgos. Muestras tu credencial al guardia en la entrada. Entras al edificio. Giras a la derecha e intentas abrir la puerta de la sala de Rayos X. La puerta está bloqueada y te exige que escanees tu credencial y tu huella dactilar **otra vez**. 
+ * No importa que "ya estés adentro del edificio". La sala de Rayos X **no confía en ti** por defecto.
+ * Zero Trust elimina la palabra "confianza" del diccionario técnico.
 
 ---
 
@@ -28,17 +28,17 @@ Históricamente, la red de la oficina era el "Paraíso".
 Para construir este "Laboratorio Secreto" en una red corporativa, Microsoft y Google utilizan tres principios inquebrantables:
 
 ### 1. Verificar Explícitamente (Verify Explicitly)
-*   **El Concepto:** No importa si estás conectado al Wi-Fi de tu casa o al cable de red de la oficina central del banco. La red te tratará exactamente igual: como un extraño peligroso.
-*   **La Ejecución:** Cada vez que intentes abrir un archivo o acceder a una Base de Datos, el sistema verificará quién eres (MFA), el estado de salud de tu computadora (¿Tienes el Antivirus encendido?), y desde dónde te conectas, **antes** de dejarte pasar.
+* **El Concepto:** No importa si estás conectado al Wi-Fi de tu casa o al cable de red de la oficina central del banco. La red te tratará exactamente igual: como un extraño peligroso.
+* **La Ejecución:** Cada vez que intentes abrir un archivo o acceder a una Base de Datos, el sistema verificará quién eres (MFA), el estado de salud de tu computadora (¿Tienes el Antivirus encendido?), y desde dónde te conectas, **antes** de dejarte pasar.
 
 ### 2. Principio de Menor Privilegio (Least Privilege)
-*   Ya lo vimos en IAM (Fase 15). Dale al usuario el mínimo nivel de acceso necesario para hacer su trabajo, y solo por el tiempo que lo necesite (JIT - Just-In-Time access).
-*   Si eres el Diseñador Gráfico, puedes acceder a la carpeta de "Logotipos". Pero si intentas abrir la carpeta de "Nómina", el sistema te bloqueará el paso violentamente, porque tu puesto no requiere ver la nómina.
+* Ya lo vimos en IAM. Dale al usuario el mínimo nivel de acceso necesario para hacer su trabajo, y solo por el tiempo que lo necesite (JIT - Just-In-Time access).
+* Si eres el Diseñador Gráfico, puedes acceder a la carpeta de "Logotipos". Pero si intentas abrir la carpeta de "Nómina", el sistema te bloqueará el paso violentamente, porque tu puesto no requiere ver la nómina.
 
 ### 3. Asumir la Brecha (Assume Breach)
-*   Es la filosofía más oscura y realista de la ciberseguridad. 
-*   **La Regla:** Trabaja bajo la suposición matemática de que los Hackers **ya están adentro** de tu red en este preciso momento.
-*   Si asumes que el enemigo ya está adentro, diseñarás tu red con Segmentación Extrema (Los compartimentos estancos del submarino) y cifrarás todas las comunicaciones internas de extremo a extremo, para evitar que el atacante (que ya está adentro) pueda moverse lateralmente hacia los servidores vitales.
+* Es la filosofía más oscura y realista de la ciberseguridad. 
+* **La Regla:** Trabaja bajo la suposición matemática de que los Hackers **ya están adentro** de tu red en este preciso momento.
+* Si asumes que el enemigo ya está adentro, diseñarás tu red con Segmentación Extrema (Los compartimentos estancos del submarino) y cifrarás todas las comunicaciones internas de extremo a extremo, para evitar que el atacante (que ya está adentro) pueda moverse lateralmente hacia los servidores vitales.
 
 ---
 

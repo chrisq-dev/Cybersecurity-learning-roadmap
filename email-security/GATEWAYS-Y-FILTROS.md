@@ -14,13 +14,13 @@ Necesitamos un sistema de Aduanas.
 
 ## 1. Secure Email Gateway (SEG)
 
-*   **La Analogía (El Agente de Aduanas):** Imagina que compras un paquete en el extranjero. Antes de que el paquete llegue a tu casa, tiene que pasar por la Aduana del país. Los agentes abren el paquete, lo pasan por rayos X, huelen si hay explosivos, y si lo consideran seguro, le ponen un sello verde y te lo mandan.
-*   **En Informática:** El SEG (Secure Email Gateway) es un servidor masivo de seguridad que se pone literalmente "en medio" de internet y tu servidor de correo corporativo. **Todo** el correo del mundo tiene que pasar por él primero.
+* **La Analogía (El Agente de Aduanas):** Imagina que compras un paquete en el extranjero. Antes de que el paquete llegue a tu casa, tiene que pasar por la Aduana del país. Los agentes abren el paquete, lo pasan por rayos X, huelen si hay explosivos, y si lo consideran seguro, le ponen un sello verde y te lo mandan.
+* **En Informática:** El SEG (Secure Email Gateway) es un servidor masivo de seguridad que se pone literalmente "en medio" de internet y tu servidor de correo corporativo. **Todo** el correo del mundo tiene que pasar por él primero.
 
 ### Funciones del SEG:
-1.  **Anti-Spam Avanzado:** Bloquea los correos que venden pastillas mágicas y estafas nigerianas.
-2.  **Escaneo de Enlaces (URL Rewriting):** Si el correo trae un enlace azul que dice `Haga clic aquí para ver su factura`, el SEG lo intercepta, entra al enlace con una máquina virtual oculta, verifica si es una página de Phishing, y si es malo, bloquea el correo.
-3.  **Filtrado de Archivos (Anti-Malware):** Escanea los documentos de Word y los PDFs buscando macros maliciosas (Visto en la Fase 16: Malware).
+1. **Anti-Spam Avanzado:** Bloquea los correos que venden pastillas mágicas y estafas nigerianas.
+2. **Escaneo de Enlaces (URL Rewriting):** Si el correo trae un enlace azul que dice `Haga clic aquí para ver su factura`, el SEG lo intercepta, entra al enlace con una máquina virtual oculta, verifica si es una página de Phishing, y si es malo, bloquea el correo.
+3. **Filtrado de Archivos (Anti-Malware):** Escanea los documentos de Word y los PDFs buscando macros maliciosas: Malware).
 
 ---
 
@@ -28,8 +28,8 @@ Necesitamos un sistema de Aduanas.
 
 ¿Qué pasa si el atacante creó un virus completamente nuevo (Zero-Day) que el Antivirus del Gateway (SEG) no reconoce en sus firmas?
 
-*   **La Analogía:** El agente de aduanas encuentra una caja negra con un botón rojo. No sabe si es un juguete o una bomba. Así que toma la caja, la mete en un cuarto blindado de concreto (El Sandbox), cierra la puerta de titanio y aprieta el botón rojo para ver qué pasa. Si explota, la bomba se destruyó adentro del cuarto blindado sin lastimar a nadie.
-*   **En Informática:** El SEG toma el archivo PDF sospechoso adjunto en el correo y lo abre dentro de una Máquina Virtual desechable (La Caja de Arena). El sistema observa el comportamiento del PDF durante 3 minutos. Si el PDF intenta modificar el disco duro o conectarse a un servidor en Rusia (Comportamiento anómalo), el sistema lo clasifica como bomba (Malware), destruye la máquina virtual y elimina el correo. El usuario final jamás se entera de que estuvo a un clic de la quiebra.
+* **La Analogía:** El agente de aduanas encuentra una caja negra con un botón rojo. No sabe si es un juguete o una bomba. Así que toma la caja, la mete en un cuarto blindado de concreto (El Sandbox), cierra la puerta de titanio y aprieta el botón rojo para ver qué pasa. Si explota, la bomba se destruyó adentro del cuarto blindado sin lastimar a nadie.
+* **En Informática:** El SEG toma el archivo PDF sospechoso adjunto en el correo y lo abre dentro de una Máquina Virtual desechable (La Caja de Arena). El sistema observa el comportamiento del PDF durante 3 minutos. Si el PDF intenta modificar el disco duro o conectarse a un servidor en Rusia (Comportamiento anómalo), el sistema lo clasifica como bomba (Malware), destruye la máquina virtual y elimina el correo. El usuario final jamás se entera de que estuvo a un clic de la quiebra.
 
 ---
 

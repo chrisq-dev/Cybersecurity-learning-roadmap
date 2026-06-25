@@ -12,8 +12,8 @@ Aquí no hackeamos bases de datos para robar números de tarjeta; aquí hackeamo
 
 ## 1. La Diferencia entre IT y OT
 
-*   **IT (Information Technology):** Maneja **Datos**. Son tus servidores Windows, bases de datos SQL, la nube y los empleados usando Word.
-*   **OT (Operational Technology):** Maneja **Física**. Son los sistemas que abren y cierran válvulas de presión en una refinería de petróleo, los brazos robóticos que arman autos, y el sistema que cambia la luz del semáforo a verde.
+* **IT (Information Technology):** Maneja **Datos**. Son tus servidores Windows, bases de datos SQL, la nube y los empleados usando Word.
+* **OT (Operational Technology):** Maneja **Física**. Son los sistemas que abren y cierran válvulas de presión en una refinería de petróleo, los brazos robóticos que arman autos, y el sistema que cambia la luz del semáforo a verde.
 
 ### La Triada CIA invertida
 En ciberseguridad clásica (IT), la regla de oro es la Triada CIA: **Confidencialidad**, Integridad y Disponibilidad. Lo más importante es que nadie robe los datos. Si hay un virus, apagas el servidor inmediatamente para proteger la base de datos (pierdes disponibilidad para salvar la confidencialidad).

@@ -95,7 +95,7 @@ Configuración sugerida:
 Prueba local:
 
 ```bash
-docker build -t cibersecurity-web .
+docker build -t cibersecurity-web.
 docker run --rm -p 3000:3000 cibersecurity-web
 ```
 

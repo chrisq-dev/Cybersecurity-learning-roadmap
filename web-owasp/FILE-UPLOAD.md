@@ -16,10 +16,10 @@ Casi todas las páginas modernas te piden subir algo: una foto de perfil, un cur
 Imagina que el Servidor Web es un castillo fuertemente protegido. Nadie puede entrar a la sala de control.
 El castillo tiene un pequeño buzón de correos donde la gente del pueblo puede meter sus fotos de perfil. El guardia de la puerta toma las fotos y las guarda en el almacén del castillo.
 
-1.  El Hacker no intenta romper la puerta.
-2.  Toma un soldado enemigo (un virus), lo esconde adentro de un caballo de madera, le pone una etiqueta que dice `"foto_de_gatito.jpg"` y lo empuja por el buzón.
-3.  El guardia del castillo (un mal programador) solo lee la etiqueta externa, asume que es una foto, y mete el caballo de madera al almacén interno del castillo.
-4.  A medianoche, el soldado enemigo sale del caballo de madera falso, camina por los pasillos del castillo, roba las llaves maestras y le abre la puerta al ejército atacante.
+1. El Hacker no intenta romper la puerta.
+2. Toma un soldado enemigo (un virus), lo esconde adentro de un caballo de madera, le pone una etiqueta que dice `"foto_de_gatito.jpg"` y lo empuja por el buzón.
+3. El guardia del castillo (un mal programador) solo lee la etiqueta externa, asume que es una foto, y mete el caballo de madera al almacén interno del castillo.
+4. A medianoche, el soldado enemigo sale del caballo de madera falso, camina por los pasillos del castillo, roba las llaves maestras y le abre la puerta al ejército atacante.
 
 Esto es exactamente lo que hace una **Web Shell**.
 
@@ -34,8 +34,8 @@ La página web tiene un formulario: *"Sube tu foto de perfil (Solo JPG)"*.
 El hacker crea un archivo maligno llamado `virus.php`.
 
 **Paso 1: Evadir las Defensas Tontas (Frontend)**
-El programador junior puso una defensa en JavaScript (en el navegador) que dice: *"Si el archivo no termina en .jpg, muestra un error rojo"*.
-*   *El Hack:* El atacante usa Burp Suite (un proxy proxy interceptor). En su navegador, sube un archivo real llamado `gato.jpg` para engañar a Chrome. Pero mientras el archivo viaja por el aire en las manos del Mesero (HTTP), el atacante intercepta el paquete en Burp Suite, le borra la palabra `.jpg` y escribe `.php` con el código maligno adentro. El servidor trasero recibe el PHP directamente.
+El programador junior puso una defensa en JavaScript (en el navegador) que dice: *"Si el archivo no termina en.jpg, muestra un error rojo"*.
+* *El Hack:* El atacante usa Burp Suite (un proxy proxy interceptor). En su navegador, sube un archivo real llamado `gato.jpg` para engañar a Chrome. Pero mientras el archivo viaja por el aire en las manos del Mesero (HTTP), el atacante intercepta el paquete en Burp Suite, le borra la palabra `.jpg` y escribe `.php` con el código maligno adentro. El servidor trasero recibe el PHP directamente.
 
 **Paso 2: La Ejecución**
 El servidor guarda el archivo felizmente en: `empresa.com/uploads/virus.php`.
@@ -47,10 +47,10 @@ El atacante simplemente abre su navegador y entra a esa URL. El servidor "ejecut
 
 Subir archivos de forma segura es extremadamente difícil. Requiere Defensa en Profundidad (Capas).
 
-1.  **Nunca confíes en la extensión (El Nombre):** Que el archivo se llame `.jpg` no significa que sea una foto. Un programador debe analizar los **Magic Bytes** del archivo (el código binario interno) para verificar si matemáticamente *es* una foto real.
-2.  **Quítales el poder de ejecución:** La carpeta donde se guardan las fotos (`/uploads/`) jamás debe tener permisos de ejecución (Recuerda los permisos `rwx` de Linux). Si el hacker logra subir `virus.php`, el servidor debe configurarse para decir: *"Esta carpeta es un calabozo. Nada aquí adentro tiene derecho a correr como un programa. Solo te mostraré como texto aburrido"*.
-3.  **Cambia el Nombre:** Si el hacker sube `virus.php`, el servidor debe renombrarlo instantáneamente a un número aleatorio indescifrable como `9843658934.txt`. Así el hacker nunca sabrá qué URL visitar para activar su bomba.
-4.  **Usa un Bucket Externo:** Las grandes empresas (AWS) ya no guardan las fotos de perfil en el mismo servidor donde corre la página web. Las guardan en un cuarto separado (S3 Buckets). Si la bomba explota, explota en un cuarto vacío de Amazon, no en el servidor de la empresa.
+1. **Nunca confíes en la extensión (El Nombre):** Que el archivo se llame `.jpg` no significa que sea una foto. Un programador debe analizar los **Magic Bytes** del archivo (el código binario interno) para verificar si matemáticamente *es* una foto real.
+2. **Quítales el poder de ejecución:** La carpeta donde se guardan las fotos (`/uploads/`) jamás debe tener permisos de ejecución (Recuerda los permisos `rwx` de Linux). Si el hacker logra subir `virus.php`, el servidor debe configurarse para decir: *"Esta carpeta es un calabozo. Nada aquí adentro tiene derecho a correr como un programa. Solo te mostraré como texto aburrido"*.
+3. **Cambia el Nombre:** Si el hacker sube `virus.php`, el servidor debe renombrarlo instantáneamente a un número aleatorio indescifrable como `9843658934.txt`. Así el hacker nunca sabrá qué URL visitar para activar su bomba.
+4. **Usa un Bucket Externo:** Las grandes empresas (AWS) ya no guardan las fotos de perfil en el mismo servidor donde corre la página web. Las guardan en un cuarto separado (S3 Buckets). Si la bomba explota, explota en un cuarto vacío de Amazon, no en el servidor de la empresa.
 
 ---
 

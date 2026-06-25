@@ -64,7 +64,7 @@ print(respuesta.status_code)
 ```
 
 ### ¿Por qué lo usan los atacantes?
-Si un atacante quiere hacer un ataque de "Fuerza Bruta" para adivinar tu contraseña, no va a sentarse frente al teclado a escribir contraseñas 5,000 veces en la pantalla de *Login*. Va a escribir un script con un bucle `for`, y usará `requests.post()` para inyectar 5,000 contraseñas por segundo directamente en las tuberías ocultas del sitio web.
+Si un atacante quiere hacer un ataque de "Fuerza Bruta" para adivinar tu contraseña, no va a sentarse frente al teclado a escribir contraseñas 5,000 veces en la pantalla de *Login*. Va a escribir un script con un bucle `for`, y usará `requests.post` para inyectar 5,000 contraseñas por segundo directamente en las tuberías ocultas del sitio web.
 
 ### ¿Por qué lo usan los defensores?
 Si tienes un archivo de texto con 500 correos electrónicos sospechosos, no vas a copiar y pegar uno por uno en una página web de seguridad para ver si son virus. Escribes un script que usa `requests` para enviarle los 500 correos a la base de datos de Microsoft, y te devuelve la respuesta en milisegundos.
@@ -82,13 +82,13 @@ import requests
 lista_urls_sospechosas = ["http://malware.com", "http://google.com", "http://phishing-banco.com"]
 
 for sitio in lista_urls_sospechosas:
-    respuesta = requests.get(sitio)
-    
-    # El código HTTP 200 significa "Página Viva y Funcionando"
-    if respuesta.status_code == 200:
-        print("¡ALERTA! El sitio " + sitio + " sigue vivo y activo en internet.")
-    else:
-        print("El sitio " + sitio + " parece estar caído.")
+ respuesta = requests.get(sitio)
+ 
+ # El código HTTP 200 significa "Página Viva y Funcionando"
+ if respuesta.status_code == 200:
+ print("¡ALERTA! El sitio " + sitio + " sigue vivo y activo en internet.")
+ else:
+ print("El sitio " + sitio + " parece estar caído.")
 ```
 
 **¿Qué acaba de pasar?** En 10 líneas de código, construiste un escáner automatizado de *Threat Intelligence* que revisa si los servidores de los hackers siguen vivos en internet, sin necesidad de que tú abras Google Chrome y te arriesgues a infectar tu propia computadora.

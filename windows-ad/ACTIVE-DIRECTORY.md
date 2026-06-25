@@ -28,8 +28,8 @@ La solución es **Active Directory**.
 El servidor físico que tiene guardado este Libro de Empleados se llama **Controlador de Dominio (Domain Controller o DC)**. 
 
 El DC es el "Trono de Hierro" de la empresa.
-*   Cuando Juan enciende su laptop nueva y pone su usuario, la laptop se congela por un segundo. Se comunica por el cable de red con el Controlador de Dominio y le pregunta: *"Oye Rey, alguien llamado Juan puso esta contraseña. ¿Existe en el libro?"*.
-*   Si el DC dice *"Sí, déjalo entrar"*, la laptop se desbloquea.
+* Cuando Juan enciende su laptop nueva y pone su usuario, la laptop se congela por un segundo. Se comunica por el cable de red con el Controlador de Dominio y le pregunta: *"Oye Rey, alguien llamado Juan puso esta contraseña. ¿Existe en el libro?"*.
+* Si el DC dice *"Sí, déjalo entrar"*, la laptop se desbloquea.
 
 > **Importante:**
 > ¡El Controlador de Dominio es el objetivo final de todos los atacantes! Si un hacker logra acceder como Administrador al DC (*Domain Admin*), el atacante puede literalmente agregar su propio nombre al Libro de Empleados, darse acceso a la cuenta bancaria del CEO, y ser invisible. Quien controla el DC, controla a toda la empresa.

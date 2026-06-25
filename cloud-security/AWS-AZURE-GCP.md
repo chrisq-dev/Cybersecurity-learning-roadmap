@@ -14,39 +14,39 @@ El mercado mundial de la nube está dominado por tres corporaciones gigantes. Si
 ## 1. Amazon Web Services (AWS)
 
 Es el Rey indiscutible. Fue el primero en llegar al mercado y tiene la mayor cuota del mundo.
-*   **Perfil:** Si una empresa es una Startup tecnológica (Netflix, Airbnb, Uber), casi seguro usan AWS.
-*   **La Ventaja/Desventaja:** Tiene más de 200 servicios diferentes. Es tan complejo que las empresas suelen configurarlo mal, dejando agujeros de seguridad masivos.
+* **Perfil:** Si una empresa es una Startup tecnológica (Netflix, Airbnb, Uber), casi seguro usan AWS.
+* **La Ventaja/Desventaja:** Tiene más de 200 servicios diferentes. Es tan complejo que las empresas suelen configurarlo mal, dejando agujeros de seguridad masivos.
 
 **El Diccionario de AWS:**
-*   **EC2 (Elastic Compute Cloud):** Así le llama Amazon a una simple Computadora Virtual (Un servidor Linux o Windows).
-*   **S3 (Simple Storage Service):** Así le llama Amazon a un disco duro gigante donde guardas fotos o backups (Bodegas).
-*   **IAM (Identity and Access Management):** El sistema de control de usuarios y permisos.
+* **EC2 (Elastic Compute Cloud):** Así le llama Amazon a una simple Computadora Virtual (Un servidor Linux o Windows).
+* **S3 (Simple Storage Service):** Así le llama Amazon a un disco duro gigante donde guardas fotos o backups (Bodegas).
+* **IAM (Identity and Access Management):** El sistema de control de usuarios y permisos.
 
 ---
 
 ## 2. Microsoft Azure
 
 Es el segundo jugador más grande, pero el favorito del sector corporativo tradicional.
-*   **Perfil:** Si el cliente es un Banco, un Hospital o una oficina de Gobierno que lleva 20 años usando Windows y Active Directory, casi 100% seguro usarán Azure, porque se integra perfectamente con las licencias de Microsoft que ya pagan.
-*   **La Ventaja/Desventaja:** Su integración con Office 365 y Windows es insuperable. Pero su complejidad de permisos es infame entre los analistas de seguridad.
+* **Perfil:** Si el cliente es un Banco, un Hospital o una oficina de Gobierno que lleva 20 años usando Windows y Active Directory, casi 100% seguro usarán Azure, porque se integra perfectamente con las licencias de Microsoft que ya pagan.
+* **La Ventaja/Desventaja:** Su integración con Office 365 y Windows es insuperable. Pero su complejidad de permisos es infame entre los analistas de seguridad.
 
 **El Diccionario de Azure (La Traducción):**
-*   **Virtual Machines (VM):** El equivalente a las EC2 de Amazon. (Computadoras).
-*   **Blob Storage:** El equivalente a los S3 de Amazon. (Bodegas).
-*   **Entra ID (Antes Azure Active Directory):** El equivalente a IAM. Es el corazón de la seguridad de Microsoft.
+* **Virtual Machines (VM):** El equivalente a las EC2 de Amazon. (Computadoras).
+* **Blob Storage:** El equivalente a los S3 de Amazon. (Bodegas).
+* **Entra ID (Antes Azure Active Directory):** El equivalente a IAM. Es el corazón de la seguridad de Microsoft.
 
 ---
 
 ## 3. Google Cloud Platform (GCP)
 
 El tercer jugador. Tiene menos cuota de mercado global, pero es amado por los ingenieros de datos y la inteligencia artificial.
-*   **Perfil:** Empresas que manejan *Big Data*, Inteligencia Artificial o que usan intensivamente Kubernetes (inventado por Google).
-*   **La Ventaja/Desventaja:** Es mucho más fácil de usar y su red interna es asombrosamente rápida.
+* **Perfil:** Empresas que manejan *Big Data*, Inteligencia Artificial o que usan intensivamente Kubernetes (inventado por Google).
+* **La Ventaja/Desventaja:** Es mucho más fácil de usar y su red interna es asombrosamente rápida.
 
 **El Diccionario de GCP (La Traducción):**
-*   **Compute Engine:** El equivalente a las EC2 o VMs.
-*   **Cloud Storage:** El equivalente a los S3 o Blobs.
-*   **Cloud IAM:** El control de accesos.
+* **Compute Engine:** El equivalente a las EC2 o VMs.
+* **Cloud Storage:** El equivalente a los S3 o Blobs.
+* **Cloud IAM:** El control de accesos.
 
 ---
 

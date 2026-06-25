@@ -15,7 +15,7 @@ El Hashing es magia de un solo sentido. Sirve para guardar contraseñas de forma
 
 Imagina que tomas una manzana, un plátano y dos fresas. Los metes a una licuadora industrial y presionas el botón. El resultado es un batido (Jugo) de color rojo oscuro.
 
-*   **Es Irreversible:** No importa qué tan inteligente seas, no puedes tomar ese jugo rojo, aplicar ingeniería inversa, separar los átomos y volver a construir la manzana original. Es físicamente imposible.
+* **Es Irreversible:** No importa qué tan inteligente seas, no puedes tomar ese jugo rojo, aplicar ingeniería inversa, separar los átomos y volver a construir la manzana original. Es físicamente imposible.
 
 Eso es una función de **Hash (Ej. SHA-256)**.
 Tomas un texto (Ej. `"Hola Mundo"`) y lo pasas por la función matemática SHA-256. El resultado será una cadena de texto basura que siempre tiene exactamente 64 caracteres de largo, sin importar si metiste la palabra "Hola" o si metiste la Enciclopedia Británica entera.
@@ -55,9 +55,9 @@ Cuando el hacker roba la base de datos de Facebook llena de Hashes, no necesita 
 Para destruir las Tablas Arcoíris del hacker, los defensores inventaron la **Sal (Salt)**.
 Antes de meter tu contraseña a la licuadora, el servidor le añade texto aleatorio (Sal) a tu contraseña.
 
-*   Contraseña original: `admin`
-*   La Sal aleatoria de este usuario: `H7xL`
-*   Lo que se mete a la licuadora: `adminH7xL`
+* Contraseña original: `admin`
+* La Sal aleatoria de este usuario: `H7xL`
+* Lo que se mete a la licuadora: `adminH7xL`
 
 El Hash resultante ahora es completamente único y diferente. La Tabla Arcoíris del hacker (que solo tenía el Hash de la palabra sola `admin`) ya no sirve para nada, porque el hacker tendría que volver a pre-calcular millones de palabras sumándoles la sal específica de tu usuario, lo cual tomaría 100 años.
 

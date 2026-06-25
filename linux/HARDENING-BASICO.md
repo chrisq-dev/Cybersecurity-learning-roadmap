@@ -17,9 +17,9 @@ Un servidor Linux recién encendido de fábrica viene con muchas comodidades act
 Es un castillo con el puente levadizo abajo, los comerciantes entrando y saliendo, y puertas traseras sin candado para que el jardinero pueda entrar a trabajar cómodo.
 
 Hacer *Hardening* significa:
-1.  **Subir el puente levadizo:** Nadie entra a menos que tenga una identificación militar.
-2.  **Sellar las puertas traseras:** Solo hay una entrada principal, fuertemente vigilada.
-3.  **Desarmar a los visitantes:** Nadie camina por el castillo con una espada desenfundada.
+1. **Subir el puente levadizo:** Nadie entra a menos que tenga una identificación militar.
+2. **Sellar las puertas traseras:** Solo hay una entrada principal, fuertemente vigilada.
+3. **Desarmar a los visitantes:** Nadie camina por el castillo con una espada desenfundada.
 
 Si el servidor solo fue contratado para mostrar una Página Web, su **único trabajo** es servir tráfico web por el Puerto 443 (HTTPS). Cualquier otra cosa (como un servidor de correos pre-instalado, o un puerto de base de datos expuesto al exterior) es un riesgo inaceptable y debe ser destruido.
 
@@ -34,12 +34,12 @@ SSH es el protocolo que usas para administrar tu servidor desde tu casa sin tene
 
 ### Hardening de SSH (Reglas de Oro)
 
-1.  **Prohibir al Rey (`PermitRootLogin no`):**
-    Nunca, bajo ninguna circunstancia, se le debe permitir al usuario `root` iniciar sesión desde Internet. Obliga a los administradores a entrar primero con su cuenta de Campesino (ej. `juan`), y una vez adentro de la muralla, usar `sudo` para volverse administradores.
-2.  **Destruir las Contraseñas (Usar Llaves Criptográficas):**
-    Las contraseñas de texto (como "F1rulais2024!") son hackeables o adivinables. Los servidores profesionales **desactivan el inicio de sesión con contraseña**. La única forma de entrar es si tu computadora personal tiene una Llave Privada Criptográfica (un archivo de texto con miles de caracteres matemáticos aleatorios). Si no tienes la llave, el servidor ni siquiera te pedirá contraseña; te cortará la conexión en 0.1 segundos.
-3.  **Cambiar el Puerto (Opcional pero útil):**
-    Cambiar el SSH del Puerto 22 al Puerto 5892 no detendrá a un hacker real que escanee todos tus puertos, pero **limpiará tus logs** del 90% del ruido de bots basura que atacan a ciegas el puerto estándar 22.
+1. **Prohibir al Rey (`PermitRootLogin no`):**
+ Nunca, bajo ninguna circunstancia, se le debe permitir al usuario `root` iniciar sesión desde Internet. Obliga a los administradores a entrar primero con su cuenta de Campesino (ej. `juan`), y una vez adentro de la muralla, usar `sudo` para volverse administradores.
+2. **Destruir las Contraseñas (Usar Llaves Criptográficas):**
+ Las contraseñas de texto (como "F1rulais2024!") son hackeables o adivinables. Los servidores profesionales **desactivan el inicio de sesión con contraseña**. La única forma de entrar es si tu computadora personal tiene una Llave Privada Criptográfica (un archivo de texto con miles de caracteres matemáticos aleatorios). Si no tienes la llave, el servidor ni siquiera te pedirá contraseña; te cortará la conexión en 0.1 segundos.
+3. **Cambiar el Puerto (Opcional pero útil):**
+ Cambiar el SSH del Puerto 22 al Puerto 5892 no detendrá a un hacker real que escanee todos tus puertos, pero **limpiará tus logs** del 90% del ruido de bots basura que atacan a ciegas el puerto estándar 22.
 
 ---
 
@@ -49,14 +49,14 @@ Linux tiene un firewall interno legendario y extremadamente complejo llamado `ip
 
 El *Hardening* de red más básico del mundo tiene solo tres reglas universales:
 
-1.  **Denegar Toda Entrada (Default Deny Incoming):**
-    Le dices a UFW: *"Rechaza a cualquier persona que intente entrar desde Internet"*.
-2.  **Permitir Toda Salida (Default Allow Outgoing):**
-    Le dices a UFW: *"Si el servidor mismo inicia la conexión hacia afuera (ej. para bajar actualizaciones de Ubuntu), déjalo salir y volver a entrar"*.
-3.  **Hacer Excepciones Explícitas:**
-    Abres agujeros microscópicos en la pared **solo** para lo que necesitas.
-    *   `sudo ufw allow ssh` (O abres el puerto personalizado que hayas elegido para entrar a administrarlo).
-    *   `sudo ufw allow 443/tcp` (Abres la puerta web para los clientes).
+1. **Denegar Toda Entrada (Default Deny Incoming):**
+ Le dices a UFW: *"Rechaza a cualquier persona que intente entrar desde Internet"*.
+2. **Permitir Toda Salida (Default Allow Outgoing):**
+ Le dices a UFW: *"Si el servidor mismo inicia la conexión hacia afuera (ej. para bajar actualizaciones de Ubuntu), déjalo salir y volver a entrar"*.
+3. **Hacer Excepciones Explícitas:**
+ Abres agujeros microscópicos en la pared **solo** para lo que necesitas.
+ * `sudo ufw allow ssh` (O abres el puerto personalizado que hayas elegido para entrar a administrarlo).
+ * `sudo ufw allow 443/tcp` (Abres la puerta web para los clientes).
 
 **El Resultado:** Si levantaste una base de datos local y olvidaste ponerle contraseña, estás a salvo de Internet porque UFW tiene la puerta principal cerrada con candado y solo deja pasar tráfico Web y SSH.
 

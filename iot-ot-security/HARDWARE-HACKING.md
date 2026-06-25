@@ -22,8 +22,8 @@ Los desarrolladores asumen que los atacantes están a 5,000 kilómetros de dista
 
 Cuando los ingenieros diseñan un Smart TV o un Router de internet, necesitan una forma de probarlo en la fábrica antes de venderlo. Para eso, dejan pequeños "puntos de soldadura" expuestos en la placa base llamados **Puertos de Diagnóstico (UART o JTAG)**.
 
-*   **El Error:** Las fábricas casi nunca bloquean estos puertos antes de enviar el producto a la tienda.
-*   **El Hack:** Un Hardware Hacker compra el router, lo desatornilla, conecta unos pequeños cables con pinzas (Jumpers) a esos puntitos de metal, y los conecta a su laptop mediante un adaptador USB (como el famoso *Bus Pirate* o un adaptador FTDI).
+* **El Error:** Las fábricas casi nunca bloquean estos puertos antes de enviar el producto a la tienda.
+* **El Hack:** Un Hardware Hacker compra el router, lo desatornilla, conecta unos pequeños cables con pinzas (Jumpers) a esos puntitos de metal, y los conecta a su laptop mediante un adaptador USB (como el famoso *Bus Pirate* o un adaptador FTDI).
 
 ¡Magia! Al conectarse, la laptop del hacker recibe una terminal de Linux (`root@router:~#`) con acceso total al procesador del router. No tuvo que adivinar contraseñas web; simplemente entró por la "puerta trasera" que dejaron los ingenieros de fábrica.
 

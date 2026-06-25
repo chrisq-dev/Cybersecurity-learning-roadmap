@@ -21,28 +21,28 @@ Para desmitificar la computadora, usaremos la analogía de la cocina de un resta
 
 ### 1.1 El Procesador (CPU) -> El Cocinero Principal
 La CPU (Unidad Central de Procesamiento) es el cerebro. Ejecuta instrucciones matemáticas y lógicas a una velocidad de miles de millones por segundo (Gigahercios o GHz).
-*   **En la analogía:** El Cocinero. No puede hacer absolutamente nada sin una receta (las instrucciones del programa) y sin ingredientes (los datos). Trabaja rapidísimo, pero solo puede procesar lo que tiene inmediatamente a la mano.
-*   **En la computadora:** Cada vez que mueves el mouse, abres Chrome, o se cifra un archivo, la CPU está procesando matemáticas.
-*   **El Ángulo de Ciberseguridad (Riesgo):** El malware (como un virus o ransomware) también son matemáticas. Necesitan a la CPU para funcionar. Un tipo de malware llamado *Cryptojacker* secuestra el Cocinero para minar criptomonedas para un atacante, haciendo que los ventiladores de tu computadora suenen como un avión despegando y el equipo se vuelva lento.
+* **En la analogía:** El Cocinero. No puede hacer absolutamente nada sin una receta (las instrucciones del programa) y sin ingredientes (los datos). Trabaja rapidísimo, pero solo puede procesar lo que tiene inmediatamente a la mano.
+* **En la computadora:** Cada vez que mueves el mouse, abres Chrome, o se cifra un archivo, la CPU está procesando matemáticas.
+* **El Ángulo de Ciberseguridad (Riesgo):** El malware (como un virus o ransomware) también son matemáticas. Necesitan a la CPU para funcionar. Un tipo de malware llamado *Cryptojacker* secuestra el Cocinero para minar criptomonedas para un atacante, haciendo que los ventiladores de tu computadora suenen como un avión despegando y el equipo se vuelva lento.
 
 ### 1.2 La Memoria RAM -> La Mesa de Trabajo (Memoria Volátil)
 La RAM (Memoria de Acceso Aleatorio) guarda la información temporal que la CPU necesita procesar *en este exacto milisegundo*.
-*   **En la analogía:** La Mesa de Preparación del cocinero. Es pequeña pero de acceso instantáneo. Todo lo que el cocinero está usando ahora mismo (la tabla de picar, los cuchillos, los vegetales pelados) debe estar en esta mesa. Al final del día, la mesa se limpia por completo; no queda nada.
-*   **En la computadora:** Si tienes 50 pestañas de navegador abiertas, un videojuego y Spotify, todo eso está ocupando espacio en la RAM. Si se corta la energía de la casa y la computadora se apaga, **todo lo que estaba en la RAM se pierde de inmediato**.
-*   **El Ángulo de Ciberseguridad (Riesgo):** Al ser tan rápida, los programas guardan cosas sensibles aquí temporalmente. Cuando inicias sesión en tu banco, tu contraseña sin cifrar o tu "llave de sesión" vive en la RAM por unos minutos. 
-    *   **Ataque Real (*Cold Boot Attack*):** Los atacantes sofisticados pueden congelar físicamente los chips de memoria RAM de una laptop robada con nitrógeno líquido para evitar que los datos se borren al apagarla, moviendo el chip a otra máquina para extraer contraseñas maestras directamente del hardware.
+* **En la analogía:** La Mesa de Preparación del cocinero. Es pequeña pero de acceso instantáneo. Todo lo que el cocinero está usando ahora mismo (la tabla de picar, los cuchillos, los vegetales pelados) debe estar en esta mesa. Al final del día, la mesa se limpia por completo; no queda nada.
+* **En la computadora:** Si tienes 50 pestañas de navegador abiertas, un videojuego y Spotify, todo eso está ocupando espacio en la RAM. Si se corta la energía de la casa y la computadora se apaga, **todo lo que estaba en la RAM se pierde de inmediato**.
+* **El Ángulo de Ciberseguridad (Riesgo):** Al ser tan rápida, los programas guardan cosas sensibles aquí temporalmente. Cuando inicias sesión en tu banco, tu contraseña sin cifrar o tu "llave de sesión" vive en la RAM por unos minutos. 
+ * **Ataque Real (*Cold Boot Attack*):** Los atacantes sofisticados pueden congelar físicamente los chips de memoria RAM de una laptop robada con nitrógeno líquido para evitar que los datos se borren al apagarla, moviendo el chip a otra máquina para extraer contraseñas maestras directamente del hardware.
 
 ### 1.3 El Disco de Almacenamiento (HDD / SSD) -> La Gran Despensa
 El disco es la Memoria No Volátil. Guarda todo de forma permanente, pero es mucho más lento que la RAM.
-*   **En la analogía:** La cámara frigorífica del restaurante. Es inmensa. Caben toneladas de ingredientes, pero el cocinero tiene que caminar hasta ella, buscar en los estantes, y traer los ingredientes a la mesa de trabajo (RAM) antes de poder cocinar.
-*   **En la computadora:** Aquí se instala Windows, se guardan tus fotos, documentos, y programas. Si apagas el equipo, la información sigue ahí intacta mañana.
-*   **El Ángulo de Ciberseguridad (Riesgo):** Aquí es donde el *Ransomware* hace su daño millonario. Un ransomware es un programa maligno que entra a tu despensa y mete todos tus ingredientes en cajas fuertes impenetrables (cifrado matemático fuerte), exigiéndote un pago en Bitcoin a cambio de la llave. También es el lugar donde el malware se esconde para sobrevivir a los reinicios del sistema (lo que en seguridad llamamos **Persistencia**).
+* **En la analogía:** La cámara frigorífica del restaurante. Es inmensa. Caben toneladas de ingredientes, pero el cocinero tiene que caminar hasta ella, buscar en los estantes, y traer los ingredientes a la mesa de trabajo (RAM) antes de poder cocinar.
+* **En la computadora:** Aquí se instala Windows, se guardan tus fotos, documentos, y programas. Si apagas el equipo, la información sigue ahí intacta mañana.
+* **El Ángulo de Ciberseguridad (Riesgo):** Aquí es donde el *Ransomware* hace su daño millonario. Un ransomware es un programa maligno que entra a tu despensa y mete todos tus ingredientes en cajas fuertes impenetrables (cifrado matemático fuerte), exigiéndote un pago en Bitcoin a cambio de la llave. También es el lugar donde el malware se esconde para sobrevivir a los reinicios del sistema (lo que en seguridad llamamos **Persistencia**).
 
 ### 1.4 La Tarjeta de Red (NIC) -> La Ventanilla de Entregas
 Es el componente físico (tu chip de Wi-Fi o puerto de cable Ethernet) que te conecta al mundo exterior.
-*   **En la analogía:** La ventanilla donde el restaurante recibe pedidos por teléfono (internet) y entrega platos terminados a los repartidores.
-*   **En la computadora:** Permite el flujo de paquetes de datos a través de "puertos lógicos" (como canales de radio).
-*   **El Ángulo de Ciberseguridad (Riesgo):** Una computadora desconectada de internet es casi invulnerable (a menos que conectes un USB infectado). Pero una computadora en red tiene "puertas" abiertas esperando escuchar datos. Si dejas un puerto administrativo abierto hacia internet sin contraseña fuerte, un atacante automatizado al otro lado del mundo podría entrar a la cocina sin que te des cuenta.
+* **En la analogía:** La ventanilla donde el restaurante recibe pedidos por teléfono (internet) y entrega platos terminados a los repartidores.
+* **En la computadora:** Permite el flujo de paquetes de datos a través de "puertos lógicos" (como canales de radio).
+* **El Ángulo de Ciberseguridad (Riesgo):** Una computadora desconectada de internet es casi invulnerable (a menos que conectes un USB infectado). Pero una computadora en red tiene "puertas" abiertas esperando escuchar datos. Si dejas un puerto administrativo abierto hacia internet sin contraseña fuerte, un atacante automatizado al otro lado del mundo podría entrar a la cocina sin que te des cuenta.
 
 ---
 
@@ -53,9 +53,9 @@ El hardware (CPU, RAM, Disco) por sí solo es chatarra electrónica de titanio y
 ### 2.1 Programa, Proceso y Servicio (Diferencias Críticas)
 Estos tres términos se usan como sinónimos, pero en ciberseguridad, confundirlos es un error grave.
 
-*   **Programa (El Archivo Muerto):** Es el código guardado en el disco duro. Por ejemplo, el archivo `chrome.exe` o `calculadora.exe`. Es estático. No consume RAM, no consume CPU. Es como un libro de recetas cerrado en una estantería.
-*   **Proceso (La Vida Activa):** Es el programa **cuando le das doble clic**. El Sistema Operativo lee el archivo del disco duro, lo copia a la RAM, y la CPU empieza a ejecutar sus instrucciones. Un proceso está vivo. Tiene un identificador único numérico llamado **PID (Process ID)**.
-*   **Servicio o Demonio (El Trabajador Invisible):** Es un proceso especial que arranca de forma silenciosa ("en background") cuando enciendes la computadora, sin que tú le des clic. Ejemplo: el servicio que busca actualizaciones de Windows, o el reloj del sistema.
+* **Programa (El Archivo Muerto):** Es el código guardado en el disco duro. Por ejemplo, el archivo `chrome.exe` o `calculadora.exe`. Es estático. No consume RAM, no consume CPU. Es como un libro de recetas cerrado en una estantería.
+* **Proceso (La Vida Activa):** Es el programa **cuando le das doble clic**. El Sistema Operativo lee el archivo del disco duro, lo copia a la RAM, y la CPU empieza a ejecutar sus instrucciones. Un proceso está vivo. Tiene un identificador único numérico llamado **PID (Process ID)**.
+* **Servicio o Demonio (El Trabajador Invisible):** Es un proceso especial que arranca de forma silenciosa ("en background") cuando enciendes la computadora, sin que tú le des clic. Ejemplo: el servicio que busca actualizaciones de Windows, o el reloj del sistema.
 
 > **Importante:**
 > **La regla de oro del Cazador de Amenazas (Threat Hunter):**
@@ -67,8 +67,8 @@ Estos tres términos se usan como sinónimos, pero en ciberseguridad, confundirl
 
 Las computadoras modernas (desde Windows NT y Linux) son sistemas multi-usuario. No todos tienen el mismo poder.
 
-1.  **Usuario Estándar:** Puede abrir programas y editar sus propios documentos (`Mis Documentos`), pero el sistema operativo le **prohíbe** físicamente alterar los archivos base de la computadora o leer los datos de otros usuarios.
-2.  **Administrador (Windows) o Root (Linux/macOS):** Es el Dios del sistema. El sistema operativo no le niega nada. Puede borrar el núcleo del sistema, crear cuentas nuevas, o apagar el equipo por completo.
+1. **Usuario Estándar:** Puede abrir programas y editar sus propios documentos (`Mis Documentos`), pero el sistema operativo le **prohíbe** físicamente alterar los archivos base de la computadora o leer los datos de otros usuarios.
+2. **Administrador (Windows) o Root (Linux/macOS):** Es el Dios del sistema. El sistema operativo no le niega nada. Puede borrar el núcleo del sistema, crear cuentas nuevas, o apagar el equipo por completo.
 
 ### El Mayor Error de Seguridad del Usuario Promedio
 Históricamente, la gente usaba sus computadoras siempre con la cuenta de Administrador.
@@ -92,9 +92,9 @@ Hoy en día, en ciberseguridad, rara vez trabajamos atacando hardware físico di
 Imagina que compras un software (como VirtualBox o VMware). Este software es capaz de "mentirle" a un sistema operativo. Toma una porción de tu RAM física, una porción de tu CPU, y un archivo en tu disco duro, y crea un "Hardware Fantasma". 
 Dentro de ese hardware fantasma, puedes instalar Windows o Linux. 
 
-*   **Host (Anfitrión):** Tu computadora real física.
-*   **Guest (Invitado):** La computadora fantasma que vive dentro de una ventana de tu pantalla.
-*   **Hypervisor:** El programa mágico (VirtualBox) que hace la traducción entre la computadora fantasma y los chips reales de tu placa madre.
+* **Host (Anfitrión):** Tu computadora real física.
+* **Guest (Invitado):** La computadora fantasma que vive dentro de una ventana de tu pantalla.
+* **Hypervisor:** El programa mágico (VirtualBox) que hace la traducción entre la computadora fantasma y los chips reales de tu placa madre.
 
 ### ¿Por qué lo usamos en Seguridad?
 Las Máquinas Virtuales ofrecen **Aislamiento (Sandboxing)**. Si descargas un virus altamente destructivo y lo ejecutas dentro de una Máquina Virtual, el virus destruirá por completo la computadora fantasma. Cuando te canses de ver cómo lo destruye, simplemente apagas la máquina virtual, la borras como si fuera un archivo de Word, y tu computadora física real (Host) no sufre absolutamente ningún rasguño.
@@ -130,8 +130,8 @@ Es hora de ver la "Matriz". No necesitas instalar nada, tu sistema operativo ya 
 1. Abre tu **Terminal**.
 2. Escribe el comando `top` y presiona Enter.
 3. Verás una lista actualizándose en tiempo real. 
-    * La columna `%CPU` muestra cuánto esfuerzo hace el procesador.
-    * La columna `COMMAND` muestra el nombre del programa.
+ * La columna `%CPU` muestra cuánto esfuerzo hace el procesador.
+ * La columna `COMMAND` muestra el nombre del programa.
 4. Presiona la tecla `q` para salir y volver a la terminal.
 
 ---

@@ -15,9 +15,9 @@ La **Respuesta a Incidentes (Incident Response - IR)** no es un arte, es una cie
 
 Imagina que el Servidor Principal es un edificio de oficinas, y el Hacker es un incendio en el tercer piso.
 
-*   **Error de Novato:** El guardia de seguridad entra en pánico, corre al cuarto de máquinas y apaga el interruptor eléctrico de todo el edificio.
-    *   *Consecuencia:* Apagar un servidor a la fuerza destruye la Memoria RAM. La Memoria RAM es donde el hacker guarda sus herramientas (Fileless Malware) y las llaves de encriptación. Al apagarlo, destruiste la única evidencia que tenías para atrapar al criminal y descifrar los archivos.
-*   **Protocolo Profesional:** Llamas a los Bomberos (El equipo de IR). Ellos no apagan el edificio. Ellos entran, **aíslan** el tercer piso cerrando las puertas cortafuegos, extraen el oxígeno del piso para matar el fuego, y luego preservan la escena del crimen.
+* **Error de Novato:** El guardia de seguridad entra en pánico, corre al cuarto de máquinas y apaga el interruptor eléctrico de todo el edificio.
+ * *Consecuencia:* Apagar un servidor a la fuerza destruye la Memoria RAM. La Memoria RAM es donde el hacker guarda sus herramientas (Fileless Malware) y las llaves de encriptación. Al apagarlo, destruiste la única evidencia que tenías para atrapar al criminal y descifrar los archivos.
+* **Protocolo Profesional:** Llamas a los Bomberos (El equipo de IR). Ellos no apagan el edificio. Ellos entran, **aíslan** el tercer piso cerrando las puertas cortafuegos, extraen el oxígeno del piso para matar el fuego, y luego preservan la escena del crimen.
 
 ---
 

@@ -54,9 +54,9 @@ La respuesta es la magia del **NAT**.
 
 ### La Analogía de la Oficina Corporativa
 Imagina una empresa con 100 empleados, pero la empresa solo tiene **un único número de teléfono oficial** hacia el exterior (ej. `555-1000`).
-*   Internamente, cada empleado tiene una "Extensión Privada" (`Ext 10`, `Ext 11`, `Ext 12`).
-*   Si el empleado de la Extensión 10 quiere pedir una pizza, marca el número. El Conmutador Central (NAT) toma la llamada, la saca por la línea oficial (`555-1000`), y anota en su libreta: *"La llamada que acaba de salir hacia la pizzería es para la Ext 10"*.
-*   Cuando la pizzería llama de vuelta al `555-1000`, el Conmutador revisa su libreta y redirige la llamada exactamente a la Extensión 10.
+* Internamente, cada empleado tiene una "Extensión Privada" (`Ext 10`, `Ext 11`, `Ext 12`).
+* Si el empleado de la Extensión 10 quiere pedir una pizza, marca el número. El Conmutador Central (NAT) toma la llamada, la saca por la línea oficial (`555-1000`), y anota en su libreta: *"La llamada que acaba de salir hacia la pizzería es para la Ext 10"*.
+* Cuando la pizzería llama de vuelta al `555-1000`, el Conmutador revisa su libreta y redirige la llamada exactamente a la Extensión 10.
 
 **En las redes:**
 Tu Router casero es el Conmutador. 
@@ -75,9 +75,9 @@ Comprueba si los servicios invisibles están funcionando en tu red.
 ### En Windows:
 1. Abre tu terminal (`cmd`).
 2. Escribe el comando: `nslookup google.com`
-   * Este comando fuerza a tu PC a hablar con el **DNS**. Verás que te devuelve las Direcciones IP matemáticas que hay detrás de Google.
+ * Este comando fuerza a tu PC a hablar con el **DNS**. Verás que te devuelve las Direcciones IP matemáticas que hay detrás de Google.
 3. Ahora escribe: `ipconfig /all`
-   * Busca la línea que dice **"DHCP habilitado"**. Debería decir "Sí". También te dirá la fecha exacta en la que tu "préstamo" de IP expira (Concesión obtenida y expira).
+ * Busca la línea que dice **"DHCP habilitado"**. Debería decir "Sí". También te dirá la fecha exacta en la que tu "préstamo" de IP expira (Concesión obtenida y expira).
 
 ### En Linux/macOS:
 1. Abre tu terminal.

@@ -16,12 +16,12 @@ Un Analista de Seguridad o un Hacker no usa el ratón para abrir carpetas una po
 Imagina que la consola de Linux es como despertar en medio de un inmenso laberinto a oscuras. No puedes ver qué hay a tu alrededor hasta que usas una linterna.
 
 ### Los 3 Comandos de Ubicación
-*   `pwd` **(Print Working Directory):** Es mirar el GPS. Te responde exactamente en qué habitación del laberinto estás parado en este momento (Ej. `/home/juan/Descargas`).
-*   `ls` **(List):** Es encender la linterna. Te muestra todos los archivos y carpetas que hay en la habitación donde estás parado.
-    *   *El truco pro:* Siempre usa `ls -la`. La `-l` te da formato de lista detallada (quién es el dueño, los permisos), y la `-a` (All) ilumina los archivos ocultos (los que empiezan con un punto, como `.bash_history`), que son los favoritos de los hackers para esconder cosas.
-*   `cd` **(Change Directory):** Es caminar hacia otra habitación. 
-    *   `cd /var/log` (Te teletransporta directamente a la sala de bitácoras).
-    *   `cd ..` (Te hace retroceder una habitación hacia atrás).
+* `pwd` **(Print Working Directory):** Es mirar el GPS. Te responde exactamente en qué habitación del laberinto estás parado en este momento (Ej. `/home/juan/Descargas`).
+* `ls` **(List):** Es encender la linterna. Te muestra todos los archivos y carpetas que hay en la habitación donde estás parado.
+ * *El truco pro:* Siempre usa `ls -la`. La `-l` te da formato de lista detallada (quién es el dueño, los permisos), y la `-a` (All) ilumina los archivos ocultos (los que empiezan con un punto, como `.bash_history`), que son los favoritos de los hackers para esconder cosas.
+* `cd` **(Change Directory):** Es caminar hacia otra habitación. 
+ * `cd /var/log` (Te teletransporta directamente a la sala de bitácoras).
+ * `cd..` (Te hace retroceder una habitación hacia atrás).
 
 ---
 
@@ -29,11 +29,11 @@ Imagina que la consola de Linux es como despertar en medio de un inmenso laberin
 
 Cuando encuentras un archivo sospechoso, no le das "doble clic" para abrirlo en un bloc de notas. Lo lees directamente en la pared de la consola.
 
-*   `cat archivo.txt` **(Concatenate):** Toma todo el texto del archivo y te lo escupe de golpe en la pantalla. Útil para archivos cortos. Si el archivo tiene 10,000 líneas, tu pantalla se volverá loca.
-*   `less archivo.txt`: Es la versión inteligente. Te muestra el archivo página por página y puedes usar las flechas del teclado para bajar o subir. (Para salir presionas la letra `q`).
-*   `head -n 20 archivo.txt`: Solo te muestra las primeras 20 líneas.
-*   `tail -n 20 archivo.txt`: Solo te muestra las **últimas** 20 líneas. 
-    *   *Ángulo de Ciberseguridad:* Usamos `tail -f /var/log/auth.log` (`-f` de Follow). Esto "clava" tus ojos en el final del archivo en tiempo real. Si alguien intenta hackear tu servidor en este momento, verás las líneas rojas aparecer mágicamente en tu pantalla al instante.
+* `cat archivo.txt` **(Concatenate):** Toma todo el texto del archivo y te lo escupe de golpe en la pantalla. Útil para archivos cortos. Si el archivo tiene 10,000 líneas, tu pantalla se volverá loca.
+* `less archivo.txt`: Es la versión inteligente. Te muestra el archivo página por página y puedes usar las flechas del teclado para bajar o subir. (Para salir presionas la letra `q`).
+* `head -n 20 archivo.txt`: Solo te muestra las primeras 20 líneas.
+* `tail -n 20 archivo.txt`: Solo te muestra las **últimas** 20 líneas. 
+ * *Ángulo de Ciberseguridad:* Usamos `tail -f /var/log/auth.log` (`-f` de Follow). Esto "clava" tus ojos en el final del archivo en tiempo real. Si alguien intenta hackear tu servidor en este momento, verás las líneas rojas aparecer mágicamente en tu pantalla al instante.
 
 ---
 
@@ -43,14 +43,14 @@ Aquí es donde la interfaz gráfica muere y la consola brilla.
 
 ### `grep` (El Filtro Mágico)
 `grep` busca una palabra específica dentro de millones de líneas de texto en segundos.
-*   **Comando:** `grep "Failed password" /var/log/auth.log`
-*   **Lo que hace:** En lugar de hacerte leer las 50,000 líneas de la bitácora del sistema, `grep` filtra y te muestra *únicamente* las líneas donde alguien falló la contraseña. Es la herramienta número uno de un analista de incidentes (Blue Team).
+* **Comando:** `grep "Failed password" /var/log/auth.log`
+* **Lo que hace:** En lugar de hacerte leer las 50,000 líneas de la bitácora del sistema, `grep` filtra y te muestra *únicamente* las líneas donde alguien falló la contraseña. Es la herramienta número uno de un analista de incidentes (Blue Team).
 
 ### `find` (El Perro Sabueso)
 `find` busca archivos perdidos en todo el disco duro basado en reglas complejas, no solo por su nombre.
-*   **Ejemplo 1 (Por nombre):** `find / -name "passwords.txt"` (Busca desde la raíz `/` un archivo que se llame así).
-*   **Ejemplo Hacker (Por tamaño):** `find / -size +1G` (Encuentra todos los archivos que pesen más de 1 Gigabyte en todo el servidor, ideal para encontrar bases de datos robadas escondidas).
-*   **Ejemplo Hacker (Por tiempo):** `find / -mmin -10` (Encuentra cualquier archivo en todo el sistema que haya sido modificado en los **últimos 10 minutos**. Si acabas de ser hackeado, este comando te dirá exactamente qué archivos tocó el atacante).
+* **Ejemplo 1 (Por nombre):** `find / -name "passwords.txt"` (Busca desde la raíz `/` un archivo que se llame así).
+* **Ejemplo Hacker (Por tamaño):** `find / -size +1G` (Encuentra todos los archivos que pesen más de 1 Gigabyte en todo el servidor, ideal para encontrar bases de datos robadas escondidas).
+* **Ejemplo Hacker (Por tiempo):** `find / -mmin -10` (Encuentra cualquier archivo en todo el sistema que haya sido modificado en los **últimos 10 minutos**. Si acabas de ser hackeado, este comando te dirá exactamente qué archivos tocó el atacante).
 
 ---
 

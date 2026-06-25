@@ -28,7 +28,7 @@ El documento más famoso que publican es el **OWASP Top 10**.
 ¿Por qué a una corporación millonaria le importa una lista gratuita hecha por una fundación? Por la **Ley y el Dinero**.
 
 Existen estándares de seguridad obligatorios que las empresas deben cumplir si quieren operar. Por ejemplo, el **PCI-DSS** (El estándar que te permite procesar pagos con Tarjetas de Crédito Visa o Mastercard).
-*   El PCI-DSS dice literalmente en su regla 6.5: *"Usted debe entrenar a sus programadores para prevenir las vulnerabilidades listadas en el OWASP Top 10 vigente. Si usted no cumple, le quitaremos el derecho a procesar tarjetas de crédito"*.
+* El PCI-DSS dice literalmente en su regla 6.5: *"Usted debe entrenar a sus programadores para prevenir las vulnerabilidades listadas en el OWASP Top 10 vigente. Si usted no cumple, le quitaremos el derecho a procesar tarjetas de crédito"*.
 
 Si un programador novato comete el error #1 del OWASP, el atacante robará las tarjetas, Visa demandará a la empresa, y la empresa quebrará. Por eso OWASP es una Biblia corporativa.
 
@@ -39,9 +39,9 @@ Si un programador novato comete el error #1 del OWASP, el atacante robará las t
 El OWASP Top 10 se actualiza aproximadamente cada 4 años (2013, 2017, 2021). 
 Los errores de programación evolucionan al igual que la tecnología.
 
-*   **En 2013:** La Inyección de código (SQL Injection) era el rey absoluto (El Error #1). Todos los atacantes destruían bases de datos porque los programadores no sabían filtrar el texto.
-*   **En 2021:** La Inyección bajó al puesto #3. ¿Por qué? ¿Los hackers se rindieron? No. Los lenguajes modernos (como React, Angular y los ORM modernos de Backend) comenzaron a integrar defensas automáticas contra inyección. El programador ya no tiene que pensarlo, la herramienta lo defiende por defecto.
-*   **El Nuevo Rey (2021):** *Broken Access Control* (Control de Acceso Roto) subió al Puesto #1. Hoy en día, el error más común no es romper el código; es que el programador olvidó verificar si el Usuario A tiene permiso legal para ver la factura del Usuario B (IDOR).
+* **En 2013:** La Inyección de código (SQL Injection) era el rey absoluto (El Error #1). Todos los atacantes destruían bases de datos porque los programadores no sabían filtrar el texto.
+* **En 2021:** La Inyección bajó al puesto #3. ¿Por qué? ¿Los hackers se rindieron? No. Los lenguajes modernos (como React, Angular y los ORM modernos de Backend) comenzaron a integrar defensas automáticas contra inyección. El programador ya no tiene que pensarlo, la herramienta lo defiende por defecto.
+* **El Nuevo Rey (2021):** *Broken Access Control* (Control de Acceso Roto) subió al Puesto #1. Hoy en día, el error más común no es romper el código; es que el programador olvidó verificar si el Usuario A tiene permiso legal para ver la factura del Usuario B (IDOR).
 
 ---
 
@@ -49,11 +49,11 @@ Los errores de programación evolucionan al igual que la tecnología.
 
 A partir de este punto, los siguientes archivos de esta guía te enseñarán a atacar y defender las vulnerabilidades más críticas de esta lista:
 
-1.  **A01: Broken Access Control (Control de Acceso Roto):** Entrar a lugares que no te corresponden.
-2.  **A02: Cryptographic Failures (Fallos Criptográficos):** Guardar las contraseñas en texto plano (sin cifrar).
-3.  **A03: Injection (Inyección):** SQL Injection, XSS (Mentirle al sistema).
-4.  **A07: Identification and Authentication Failures:** Permitir contraseñas débiles como `123456` o no requerir Autenticación de Dos Factores (2FA).
-5.  **A10: Server-Side Request Forgery (SSRF):** Secuestrar al mesero (El servidor web) para que ataque a la red interna.
+1. **A01: Broken Access Control (Control de Acceso Roto):** Entrar a lugares que no te corresponden.
+2. **A02: Cryptographic Failures (Fallos Criptográficos):** Guardar las contraseñas en texto plano (sin cifrar).
+3. **A03: Injection (Inyección):** SQL Injection, XSS (Mentirle al sistema).
+4. **A07: Identification and Authentication Failures:** Permitir contraseñas débiles como `123456` o no requerir Autenticación de Dos Factores (2FA).
+5. **A10: Server-Side Request Forgery (SSRF):** Secuestrar al mesero (El servidor web) para que ataque a la red interna.
 
 ---
 

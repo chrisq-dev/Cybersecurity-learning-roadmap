@@ -8,20 +8,20 @@ title: "La Búsqueda de Empleo: El Maratón Corporativo"
 Aprender que buscar trabajo es un Trabajo a Tiempo Completo.
 
 Muchos candidatos envían 5 currículums el viernes por la noche, no reciben respuesta el lunes, y se rinden argumentando que "la industria está saturada". 
-La búsqueda de empleo no es un sprint de 100 metros, es un **Maratón Corporativo**. Y como cualquier proceso corporativo (Fase 20), requiere métricas, disciplina de embudo de ventas (Sales Funnel) y gestión del rechazo.
+La búsqueda de empleo no es un sprint de 100 metros, es un **Maratón Corporativo**. Y como cualquier proceso corporativo, requiere métricas, disciplina de embudo de ventas (Sales Funnel) y gestión del rechazo.
 
 ---
 
 ## 1. El Embudo de Conversión (Sales Funnel)
 
 Tienes que tratar tu perfil como si fuera un producto que le estás vendiendo a una empresa. En Ventas, existe la Ley del Embudo:
-*   Necesitas que **100** empresas vean tu CV.
-*   De esas 100, solo **20** empresas te llamarán a una primera entrevista de Recursos Humanos (Filtro).
-*   De esas 20, solo **5** empresas te pasarán a la Entrevista Técnica con el CISO (Fase 24).
-*   De esas 5, recibirás **1** oferta de trabajo firme.
+* Necesitas que **100** empresas vean tu CV.
+* De esas 100, solo **20** empresas te llamarán a una primera entrevista de Recursos Humanos (Filtro).
+* De esas 20, solo **5** empresas te pasarán a la Entrevista Técnica con el CISO.
+* De esas 5, recibirás **1** oferta de trabajo firme.
 
 **El Error del Novato:** El novato envía 10 CVs, y como nadie le llama, piensa que su perfil no sirve. La realidad es matemática: Aún no ha llenado la parte superior del embudo. 
-*Tu objetivo semanal debe ser enviar entre 30 y 50 aplicaciones altamente adaptadas (Tailoring - Fase 26).*
+*Tu objetivo semanal debe ser enviar entre 30 y 50 aplicaciones altamente adaptadas (Tailoring).*
 
 > **Referencias Cruzadas:**
 > Si planeas usar certificaciones técnicas para aumentar la cantidad de empresas que te llaman (la cima del embudo), asegúrate de usarlas estratégicamente. Lee nuestra guía sobre [Cursos y Certificaciones Recomendadas](../recursos/cursos-y-certificaciones.md).
@@ -31,24 +31,24 @@ Tienes que tratar tu perfil como si fuera un producto que le estás vendiendo a 
 ### El Horario de Operaciones
 No busques trabajo a las 2:00 AM en pijama. 
 Levántate a las 8:00 AM, vístete, siéntate en tu escritorio y divide tu día como un proyecto de ingeniería:
-*   **08:00 - 10:00:** Búsqueda en LinkedIn y portales (Hunting).
-*   **10:00 - 12:00:** Adaptación de CVs (Tailoring) según la descripción de cada puesto.
-*   **13:00 - 15:00:** Mensajes directos a reclutadores (Side Channel Attack).
-*   **15:00 - 17:00:** Home Lab (Fase 25) y estudio para mantener las habilidades afiladas.
+* **08:00 - 10:00:** Búsqueda en LinkedIn y portales (Hunting).
+* **10:00 - 12:00:** Adaptación de CVs (Tailoring) según la descripción de cada puesto.
+* **13:00 - 15:00:** Mensajes directos a reclutadores (Side Channel Attack).
+* **15:00 - 17:00:** Home Lab y estudio para mantener las habilidades afiladas.
 
 ### El Registro de Vulnerabilidades (El Excel)
 Crea una hoja de cálculo para documentar tus aplicaciones.
-*   **Anota:** Fecha, Empresa, Puesto, Enlace a la oferta, Estado (Enviado, Rechazado, Entrevista).
-*   **Por qué importa:** Si te llama Recursos Humanos en 3 semanas y tú respondes: *"¿Perdón, de qué empresa me llama? Es que he aplicado a muchas"*, acabas de destruir tu profesionalismo y perder la oportunidad. En el mundo del "Blue Team", la documentación lo es todo.
+* **Anota:** Fecha, Empresa, Puesto, Enlace a la oferta, Estado (Enviado, Rechazado, Entrevista).
+* **Por qué importa:** Si te llama Recursos Humanos en 3 semanas y tú respondes: *"¿Perdón, de qué empresa me llama? Es que he aplicado a muchas"*, acabas de destruir tu profesionalismo y perder la oportunidad. En el mundo del "Blue Team", la documentación lo es todo.
 
 ## 3. La Resiliencia al Rechazo (Assume Breach)
 
-En la Fase 23 aprendimos la arquitectura Zero Trust: **Assume Breach** (Asume que ya fuiste hackeado).
+Anteriormente aprendimos la arquitectura Zero Trust: **Assume Breach** (Asume que ya fuiste hackeado).
 En la búsqueda de empleo, la regla es: **Asume el Rechazo**.
 
-*   Recibirás decenas de correos automatizados diciendo: *"Hemos decidido avanzar con otros candidatos"*.
-*   No es un fracaso técnico, es una falta de coincidencia (Mismatch) temporal de necesidades.
-*   Usa cada entrevista fallida como una operación *Purple Team* (Fase 24). Al terminar la entrevista, anota en tu libreta las preguntas que no supiste responder. Estudia esos temas el fin de semana. A la tercera entrevista, ya te sabrás de memoria el examen del CISO.
+* Recibirás decenas de correos automatizados diciendo: *"Hemos decidido avanzar con otros candidatos"*.
+* No es un fracaso técnico, es una falta de coincidencia (Mismatch) temporal de necesidades.
+* Usa cada entrevista fallida como una operación *Purple Team*. Al terminar la entrevista, anota en tu libreta las preguntas que no supiste responder. Estudia esos temas el fin de semana. A la tercera entrevista, ya te sabrás de memoria el examen del CISO.
 
 ---
 
