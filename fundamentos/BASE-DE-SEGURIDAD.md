@@ -1,462 +1,104 @@
-# Base de Seguridad
+# Base de Seguridad: El Arte de Gestionar Riesgos
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender los conceptos que aparecen en casi cualquier área de ciberseguridad y aprender a razonar sobre riesgo.
+Aprender a pensar como un Arquitecto de Seguridad. 
 
-Esta guía no busca que memorices definiciones aisladas. Busca que puedas mirar un sistema real y responder:
+La ciberseguridad no es instalar un antivirus o configurar un firewall; eso es trabajo operativo. La **verdadera ciberseguridad es tomar decisiones de negocio para reducir el riesgo sin destruir la usabilidad del sistema**. En esta guía aprenderás los conceptos exactos bajo los estándares del **NIST** y certificaciones como **CISSP**, traducidos a la vida real.
 
-- Que queremos proteger;
-- De quien o de que lo protegemos;
-- Que podria fallar;
-- Que impacto tendria;
-- Que controles reducen el riesgo;
-- Que evidencia demuestra que el control funciona.
+---
 
-La ciberseguridad no es instalar herramientas. Es tomar decisiones para reducir riesgo sin destruir la operación del sistema.
+## 1. La Tríada CIA (El Santo Grial de la Seguridad)
 
-## Modelo Mental
+En cualquier reunión corporativa de ciberseguridad, escucharás hablar de la "Tríada CIA" (Confidencialidad, Integridad y Disponibilidad, por sus siglas en inglés). Todo esfuerzo defensivo busca proteger al menos uno de estos tres pilares.
 
-```text
-activo -> amenaza -> vulnerabilidad -> impacto -> riesgo -> control -> evidencia
-```
+### Confidencialidad (Nadie debe espiarte)
+La información solo debe ser accesible para las personas autorizadas.
+*   **Analogía:** Enviar un secreto en una caja cerrada con un candado cuya llave solo tiene tu amigo.
+*   **Ataque Común:** Robo de bases de datos, contraseñas filtradas (Data Breach).
+*   **Cómo se defiende:** Usando **Cifrado** (Matemáticas que hacen el texto ilegible) y contraseñas fuertes.
 
-Si no puedes nombrar el activo, no sabes que estas protegiendo.
-Si no puedes describir la amenaza, no sabes contra que estas protegiendo.
-Si no puedes explicar la vulnerabilidad, no sabes que debilidad existe.
-Si no puedes medir impacto, no puedes priorizar.
-Si no puedes pedir evidencia, solo tienes una opinion.
+### Integridad (Nadie debe alterar la verdad)
+La información no debe ser modificada, borrada o corrompida de forma no autorizada durante su almacenamiento o tránsito.
+*   **Analogía:** Imagina que mandas una carta firmada al banco diciendo *"Transfiere $10 a Juan"*. El cartero la intercepta, borra el 10 y escribe un 1000. Hubo un fallo crítico de integridad.
+*   **Ataque Común:** Malware que altera archivos, hackers cambiando sus permisos en una base de datos.
+*   **Cómo se defiende:** Usando **Hashes** (huellas digitales matemáticas de un archivo) y revisión de logs.
 
-## Seguridad No Es Absoluta
+### Disponibilidad (Availability - Siempre debe estar ahí)
+Los sistemas y datos deben estar funcionando y ser accesibles cuando se necesitan.
+*   **Analogía:** De nada sirve un banco impenetrable si cuando vas a sacar tu dinero la puerta está soldada y el cajero no funciona.
+*   **Ataque Común:** **DDoS** (Saturar una página web con millones de peticiones basura hasta que se caiga) y Ransomware (cifrar archivos para que no puedas abrirlos).
+*   **Cómo se defiende:** Redundancia (tener servidores de respaldo) y copias de seguridad (Backups).
 
-Un error común es pensar que algo es "seguro" o "inseguro" de forma absoluta. En realidad, seguridad depende de contexto.
+> [!TIP]
+> **El opuesto: La Tríada DAD**
+> Si fallas en proteger la CIA, ocurre un incidente DAD: **D**ivulgación (pierdes confidencialidad), **A**lteración (pierdes integridad), y **D**estrucción (pierdes disponibilidad).
 
-Ejemplo:
+---
 
-- Un servidor SSH expuesto puede ser aceptable si tiene MFA, llaves, monitoreo y restricciones.
-- El mismo SSH expuesto con contraseña débil y sin logs es un riesgo alto.
+## 2. La Fórmula del Riesgo (Para dejar de adivinar)
 
-La pregunta correcta no es solo:
+El error más común del novato es usar las palabras "Amenaza", "Vulnerabilidad" y "Riesgo" como sinónimos. En el estándar internacional, son cosas matemáticamente distintas.
 
-```text
-Es vulnerable?
-```
+Usemos el ejemplo de proteger una Casa:
+*   **Activo:** Lo que tiene valor (Tu televisión 4K y tus joyas).
+*   **Vulnerabilidad:** Una debilidad (Olvidaste cerrar la ventana del primer piso con llave).
+*   **Amenaza:** El actor peligroso (Un ladrón de casas que ronda por tu calle).
+*   **Riesgo:** La probabilidad de que la Amenaza aproveche la Vulnerabilidad para dañar el Activo, multiplicada por el Impacto. (Probabilidad Alta de perder la TV).
 
-La pregunta madura es:
+### La Regla de Oro de la Fórmula
+`Riesgo = Amenaza x Vulnerabilidad x Impacto`
 
-```text
-Qué riesgo crea, para qué activo, bajo qué amenaza, con qué impacto y con qué controles?
-```
+**Escenario de Examen:**
+Imagina que descubres que tu servidor web tiene una vulnerabilidad crítica (Falla de software) que permite que cualquiera lo apague. 
+Sin embargo, el servidor está desconectado de internet, apagado en una caja fuerte subterránea en la Antártida.
+*   ¿Hay una Vulnerabilidad? **SÍ**. El software es defectuoso.
+*   ¿Hay una Amenaza? **NO**. Ningún hacker ruso va a viajar a la Antártida a abrir la caja fuerte.
+*   ¿Hay Riesgo? **NO**. 
 
-## CIA Triad
+> [!WARNING]
+> Un error de principiante es entrar en pánico cuando los escáneres marcan 100 "Vulnerabilidades Altas". Si esas vulnerabilidades están en sistemas internos sin exposición a amenazas reales, tu **Riesgo** es bajo y deberías priorizar otras cosas. Prioriza el contexto, no el color rojo de la herramienta.
 
-La triada CIA resume tres objetivos básicos: confidencialidad, integridad y disponibilidad.
+---
 
-### Confidencialidad
+## 3. Controles de Seguridad (La Defensa)
 
-La información solo debe ser accesible para personas o sistemas autorizados.
+Para mitigar los riesgos, los Arquitectos de Seguridad instalan **Controles**. Estos se dividen de dos formas principales:
 
-Ejemplos:
+### Según su Naturaleza (Qué son):
+1.  **Físicos:** Puertas, candados, cámaras de seguridad, guardias, tarjetas magnéticas para entrar al edificio.
+2.  **Técnicos (Lógicos):** Firewalls, antivirus, contraseñas, cifrado, permisos en Active Directory.
+3.  **Administrativos:** Políticas, leyes de la empresa, entrenamiento contra el Phishing, reglas de recursos humanos. (Si un empleado anota su contraseña en un post-it, ningún firewall técnico lo va a salvar; necesitas un control administrativo).
 
-- Cifrado;
-- Control de acceso;
-- MFA;
-- Clasificación de datos;
-- Segmentación;
-- Mascaramiento de información.
+### Según su Función (Qué hacen en el tiempo):
+1.  **Preventivos:** Intentan evitar que el ataque pase. (Ej. Una cerradura en la puerta; un Antivirus que borra el archivo antes de que lo abras).
+2.  **Detectivos:** No detienen el ataque, pero dan la alarma. (Ej. Una cámara de seguridad; una alerta de que alguien hizo login a las 3 AM desde Rusia).
+3.  **Correctivos:** Se usan para arreglar el daño después del desastre. (Ej. Un extintor de incendios; restaurar tu computadora desde un Backup después de sufrir Ransomware).
 
-Preguntas útiles:
+---
 
-- Quién debería leer está información?
-- Quién no debería leerla?
-- Dónde está guardada?
-- Cómo viaja por la red?
-- Qué pasa si se filtra?
-- Hay datos personales, financieros, técnicos o secretos?
+## 4. Defensa en Profundidad (El Modelo de la Cebolla)
 
-Incidentes de confidencialidad:
+La máxima de la seguridad corporativa es que **todo control puede fallar**. Tu firewall puede tener un bug, tu empleado puede ser engañado, y tu antivirus puede fallar.
 
-- Fuga de base de datos;
-- Repositorio público con credenciales;
-- Correo sensible enviado al destinatario incorrecto;
-- Bucket cloud público;
-- Empleado con acceso a datos que no necesita.
+Por lo tanto, se aplica la **Defensa en Profundidad** (Defense in Depth). Consiste en poner capas superpuestas de controles, como una cebolla. Si el atacante rompe una capa, debe enfrentarse a la siguiente.
 
-### Integridad
+**Ejemplo de Defensa en Profundidad para un Servidor de Base de Datos:**
+1.  *Capa 1 (Red Externa):* Firewall que bloquea tráfico de países sospechosos.
+2.  *Capa 2 (Red Interna):* El servidor solo acepta conexiones de la IP del servidor web.
+3.  *Capa 3 (Sistema Operativo):* El servidor tiene los parches de seguridad al día.
+4.  *Capa 4 (Identidad):* Para entrar a la base de datos se requiere Autenticación Multifactor (MFA).
+5.  *Capa 5 (Datos):* La base de datos está fuertemente cifrada (encriptada). 
 
-La información no debe ser modificada sin autorización.
+Si un atacante roba la contraseña del administrador, aún le falta romper el MFA. Si rompe el MFA y se roba la base de datos, aún se enfrenta al cifrado. Nunca dependas de un solo candado.
 
-Ejemplos:
+---
 
-- Hashes;
-- Firmas digitales;
-- Control de cambios;
-- Permisos;
-- Revisión de código;
-- Logs de auditoria.
+## 5. Criterio de Dominio (Autoevaluación)
 
-Preguntas útiles:
+¿Puedes responder estas preguntas sin mirar arriba?
 
-- Cómo sabemos qué el dato no fue alterado?
-- Quién puede modificarlo?
-- Existe historial de cambios?
-- Se puede detectar una modificacion indebida?
-- Qué pasa si el dato es incorrecto?
-
-Incidentes de integridad:
-
-- Atacante modifica una factura;
-- Malware altera archivos;
-- Usuario cambia permisos sin autorización;
-- Actualizacion manipulada;
-- Datos de inventario alterados.
-
-### Disponibilidad
-
-Los sistemas deben estar funcionando cuando se necesitan.
-
-Ejemplos:
-
-- Backups;
-- Redundancia;
-- Monitoreo;
-- Protección contra DoS;
-- Planes de recuperación;
-- Capacidad suficiente.
-
-Preguntas útiles:
-
-- Cuanto tiempo puede estar caido?
-- Qué usuarios o procesos dependen de el?
-- Existe respaldo?
-- Existe procedimiento de recuperación?
-- Cuál es el impacto por hora de caida?
-
-Incidentes de disponibilidad:
-
-- Ransomware;
-- Caida de servidor;
-- Saturacion por tráfico;
-- Error de despliegue;
-- Dependencia externa fuera de servicio.
-
-## Activos
-
-Un activo es cualquier cosa que tenga valor para una persona u organización.
-
-Ejemplos:
-
-- Datos de clientes;
-- Código fuente;
-- Cuenta de administrador;
-- Servidor web;
-- Laptop de trabajo;
-- Token de API;
-- Reputación;
-- Continuidad del negocio;
-- Configuración de infraestructura;
-- Secretos de CI/CD;
-- Documentacion interna.
-
-En seguridad, no todo activo es técnico. Una credencial, un contrato, una marca, una relacion con clientes o la confianza pública también pueden ser activos.
-
-## Clasificación de Activos
-
-Clasificar activos ayuda a decidir donde invertir esfuerzo.
-
-Ejemplo simple:
-
-| Nivel | Descripcion | Ejemplo |
-| --- | --- | --- |
-| Público | Puede compartirse sin dano | Blog, landing pública |
-| Interno | Uso dentro de la organización | Procedimientos internos |
-| Confidencial | Acceso limitado | Datos de clientes |
-| Crítico | Alto impacto si se pierde o altera | Llaves maestras, produccion, backups |
-
-No todos los activos merecen el mismo nivel de control. Proteger todo como si fuera crítico suele ser caro e impracticable; proteger lo crítico como si fuera público es peligroso.
-
-## Amenaza
-
-Una amenaza es quien o que podria causar dano.
-
-Ejemplos:
-
-- Atacante externo;
-- Malware;
-- Empleado negligente;
-- Empleado malicioso;
-- Error humano;
-- Proveedor comprometido;
-- Falla electrica;
-- Desastre natural;
-- Bot automatizado;
-- Credencial filtrada.
-
-La amenaza no siempre es una persona. Puede ser un evento, una condicion o un fallo.
-
-## Vulnerabilidad
-
-Una vulnerabilidad es una debilidad que permite que algo salga mal.
-
-Ejemplos:
-
-- Contraseña débil;
-- Software sin parche;
-- Permiso excesivo;
-- Validación de entrada deficiente;
-- Bucket público;
-- Falta de MFA;
-- Logs desactivados;
-- Red sin segmentación.
-
-Una vulnerabilidad sin amenaza o sin impacto puede no ser prioridad. Una vulnerabilidad con amenaza activa e impacto alto debe atenderse rápido.
-
-## Impacto
-
-Impacto es la consecuencia si el riesgo se materializa.
-
-Puede ser:
-
-- Financiero;
-- Legal;
-- Operativo;
-- Reputacional;
-- Técnico;
-- Humano;
-- Contractual.
-
-Ejemplo:
-
-Una vulnerabilidad XSS en una página interna de bajo uso no tiene el mismo impacto que una falla de autorización que permite leer datos de todos los clientes.
-
-## Riesgo
-
-Formula mental:
-
-```text
-Riesgo = amenaza + vulnerabilidad + impacto
-```
-
-Versión práctica:
-
-```text
-Riesgo = probabilidad de que ocurra x impacto si ocurre
-```
-
-Ejemplo:
-
-- Activo: servidor web.
-- Amenaza: atacante externo.
-- Vulnerabilidad: panel admin sin MFA.
-- Impacto: acceso no autorizado a administracion.
-- Riesgo: compromiso del panel y posible modificacion de datos.
-- Controles: MFA, restriccion por IP, monitoreo, logs, alertas y revisiones.
-
-## Riesgo Inherente y Riesgo Residual
-
-### Riesgo inherente
-
-Es el riesgo antes de aplicar controles.
-
-Ejemplo:
-
-Un panel administrativo expuesto a internet sin MFA tiene riesgo inherente alto.
-
-### Riesgo residual
-
-Es el riesgo que queda después de aplicar controles.
-
-Ejemplo:
-
-El mismo panel con MFA, IP allowlist, logs, alertas y cuentas nominales sigue teniendo riesgo, pero menor.
-
-La meta no siempre es riesgo cero. La meta es riesgo aceptable y controlado.
-
-## Controles
-
-Un control es una medida para reducir riesgo. No todos los controles hacen lo mismo.
-
-### Preventivos
-
-Intentan evitar que el problema ocurra.
-
-Ejemplos:
-
-- MFA;
-- Hardening;
-- Segmentación de red;
-- Validación de entrada;
-- Políticas de mínimo privilegio;
-- Parches;
-- Configuraciones seguras.
-
-### Detectivos
-
-Ayudan a descubrir que algo ocurrio o está ocurriendo.
-
-Ejemplos:
-
-- Logs;
-- Alertas SIEM;
-- EDR;
-- Monitoreo de integridad;
-- Detección de anomalias;
-- Reglas Sigma;
-- Auditoria de cambios.
-
-### Correctivos
-
-Ayudan a recuperarse o reducir dano después del evento.
-
-Ejemplos:
-
-- Backups;
-- Rotación de credenciales;
-- Restauracion de sistemas;
-- Bloqueo de indicadores;
-- Parches;
-- Contención de host;
-- Revocacion de sesiones.
-
-## Defensa en Profundidad
-
-Defensa en profundidad significa no depender de un solo control.
-
-Ejemplo para una cuenta crítica:
-
-- Contraseña fuerte;
-- MFA;
-- Mínimo privilegio;
-- Alertas de inicio de sesión;
-- Revisión periodica de accesos;
-- Bloqueo por riesgo;
-- Logs retenidos;
-- Proceso de recuperación.
-
-Si un control falla, otros reducen impacto.
-
-## Evidencia
-
-En seguridad, una afirmacion sin evidencia es débil.
-
-Ejemplos de evidencia:
-
-- Captura de configuración;
-- Log de acceso;
-- Resultado de escaneo autorizado;
-- Política aplicada;
-- Alerta generada;
-- Ticket de remediación;
-- Hash de archivo;
-- Reporte de backup restaurado;
-- Prueba de MFA habilitado.
-
-Decir "tenemos backups" no basta. Mejor pregunta:
-
-- Cuándo fue el ultimo backup exitoso?
-- Dónde está guardado?
-- Está cifrado?
-- Quién puede restaurarlo?
-- Se ha probado restauracion?
-
-## Ejemplo Completo
-
-Escenario:
-
-- Una empresa pequeña tiene una aplicación web con panel administrativo.
-- El panel usa usuario y contraseña.
-- No tiene MFA.
-- Los administradores acceden desde cualquier IP.
-- Los logs solo se guardan 24 horas.
-
-Análisis:
-
-| Elemento | Ejemplo |
-| --- | --- |
-| Activo | Panel administrativo |
-| Amenaza | Robo de credenciales por phishing |
-| Vulnerabilidad | Falta de MFA y acceso abierto |
-| Impacto | Modificacion de datos, fraude, fuga de información |
-| Riesgo | Acceso no autorizado al panel |
-| Control preventivo | MFA, mínimo privilegio, IP allowlist |
-| Control detectivo | Alertas de login raro, logs retenidos |
-| Control correctivo | Rotación de credenciales, revocacion de sesiones, restauracion |
-
-Prioridad:
-
-El MFA seria una prioridad alta porque reduce directamente la probabilidad de abuso de credenciales. La retención de logs también es importante porque sin evidencia no se puede investigar bien.
-
-## Cómo Priorizar
-
-No todo puede arreglarse al mismo tiempo. Prioriza con preguntas:
-
-- El activo es crítico?
-- La vulnerabilidad es explotable?
-- La amenaza es realista?
-- Hay exposición a internet?
-- Hay datos sensibles?
-- Hay controles compensatorios?
-- El impacto seria alto?
-- Existe explotación activa?
-- El arreglo es rápido o complejo?
-
-Un hallazgo técnico se vuelve más fuerte cuando puedes explicar impacto y prioridad.
-
-## Errores Comunes
-
-- Confundir amenaza con vulnerabilidad.
-- Pensar que una herramienta equivale a seguridad.
-- Proponer controles sin entender el activo.
-- Reportar hallazgos sin impacto.
-- No diferenciar entre riesgo teorico y riesgo explotable.
-- No guardar evidencia.
-- Tratar todos los riesgos como urgentes.
-- Ignorar usuarios, procesos y negocio.
-- Hablar solo de ataques y no de controles.
-
-## Ejemplo de Análisis
-
-Tres activos comunes para razonar seguridad pueden ser:
-
-- Una laptop;
-- Una cuenta de correo;
-- Un servidor web imaginario.
-
-Para cada uno se debe distinguir:
-
-- Activo;
-- Amenaza;
-- Vulnerabilidad;
-- Impacto;
-- Control preventivo;
-- Control detectivo;
-- Control correctivo;
-- Evidencia esperada.
-
-El objetivo no es llenar una tabla por llenar. El objetivo es entrenar el razonamiento.
-
-## Autoevaluacion
-
-Puedes responder sin memorizar?
-
-- Qué diferencia hay entre amenaza y vulnerabilidad?
-- Por qué un activo puede ser no técnico?
-- Qué control detectivo pondrias para una cuenta comprometida?
-- Qué control correctivo pondrias ante ransomware?
-- Por qué el impacto ayuda a priorizar?
-- Qué significa riesgo residual?
-- Por qué MFA no elimina todo el riesgo?
-- Qué evidencia pedirias para comprobar qué un backup sirve?
-
-## Criterio de Dominio
-
-Dominas este tema cuando puedes:
-
-- Explicar confidencialidad, integridad y disponibilidad con ejemplos;
-- Identificar activos técnicos y no técnicos;
-- Diferenciar amenaza, vulnerabilidad, impacto y riesgo;
-- Proponer controles preventivos, detectivos y correctivos;
-- Justificar prioridades con impacto y evidencia;
-- Distinguir riesgo inherente y residual;
-- Explicar por que seguridad no es absoluta;
-- Analizar un escenario simple sin depender de herramientas.
+1. Un hacker satura la página de tu Universidad para que los estudiantes no puedan inscribirse en las clases. ¿Qué pilar de la tríada CIA fue atacado?
+2. Usando la fórmula del riesgo, ¿por qué dejar la puerta de tu casa abierta en un barrio privado y vigilado (Amenaza baja) tiene un riesgo diferente a dejarla abierta en una calle peligrosa (Amenaza alta), si la vulnerabilidad es exactamente la misma?
+3. Tienes un "Backup" (Copia de seguridad) de tus fotos familiares. ¿Qué tipo de control es este: Preventivo, Detectivo o Correctivo?
+4. Un empleado pega su contraseña en un papelito en su monitor. ¿Qué tipo de control falló: Técnico, Físico o Administrativo?

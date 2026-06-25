@@ -1,121 +1,87 @@
-# Identidad, Permisos y Acceso
+# Identidad y Permisos: ¿Quién eres y qué puedes hacer?
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender como los sistemas deciden quien eres y que puedes hacer.
+Entender por qué probar quién eres (Autenticación) y controlar a dónde puedes entrar (Autorización) es el corazón de la seguridad corporativa moderna.
 
-## Identidad
+Si el hardware y el sistema operativo son los muros del castillo, la "Gestión de Identidades" son los guardias de la puerta principal. En la ciberseguridad actual, los atacantes ya no "hackean" para entrar a las empresas rompiendo sistemas súper complejos; simplemente **se roban contraseñas válidas y entran por la puerta grande**. 
 
-Una identidad representa a una persona, servicio o sistema.
+En esta guía, aprenderás los conceptos de Identidad y Accesos bajo los estándares corporativos (IAM - Identity and Access Management).
 
-Ejemplos:
+---
 
-- Usuario local.
-- Usuario de dominio.
-- Cuenta de servicio.
-- Llave API.
-- Rol cloud.
+## 1. El Marco de Trabajo AAA (La Analogía del Aeropuerto)
 
-## Autenticación
+Para no confundir términos, los profesionales de seguridad usan el marco "AAA" (Authentication, Authorization, Accounting).
+Imagina que vas a viajar en avión.
 
-Autenticación significa demostrar quien eres.
+### 1.1 Autenticación (Authentication): ¿Realmente eres tú?
+Es el proceso de demostrar tu identidad al sistema.
+*   **En el Aeropuerto:** Llegas al mostrador y entregas tu Pasaporte Oficial. El guardia mira la foto y dice: *"Sí, eres Juan Pérez"*.
+*   **En la Computadora:** Cuando escribes tu usuario y tu contraseña en una página web.
 
-Factores comunes:
+### 1.2 Autorización (Authorization): ¿Qué puedes hacer?
+Es el proceso de revisar qué permisos tiene la persona que ya fue autenticada.
+*   **En el Aeropuerto:** El guardia ya sabe que eres Juan Pérez. Ahora mira tu boleto. Tienes permiso para entrar a la Sala de Espera y subir al Vuelo 404 en Clase Económica. **NO** tienes permiso (no estás autorizado) para subir a Primera Clase, y mucho menos tienes permiso para entrar a la cabina del piloto.
+*   **En la Computadora:** Ya iniciaste sesión. El sistema revisa si eres un Usuario Estándar (solo puedes leer archivos) o un Administrador (puedes borrar la base de datos). 
 
-- Algo que sabes: contraseña.
-- Algo que tienes: token, telefono, llave fisica.
-- Algo que eres: biometria.
+### 1.3 Contabilidad (Accounting / Auditing): ¿Qué hiciste?
+Es el proceso de registrar (guardar logs) todas las acciones que hiciste para poder investigarte en el futuro si algo sale mal.
+*   **En el Aeropuerto:** El sistema guarda un registro de la hora exacta a la que pasaste por seguridad y el asiento exacto en el que te sentaste.
+*   **En la Computadora:** El servidor web guarda un archivo diciendo: *"El usuario Juan Pérez borró el archivo ventas.pdf a las 14:03"*.
 
-MFA significa usar más de un factor.
+> [!WARNING]
+> **Error de Novatos:** Muchas veces la gente dice "Hubo un error de Autenticación" cuando en realidad el usuario sí pudo iniciar sesión, pero le salió un mensaje de "Acceso Denegado" al intentar abrir un archivo. Ese fue un error de **Autorización**. ¡No los confundas!
 
-## Autorización
+---
 
-Autorización significa decidir que puedes hacer después de autenticarte.
+## 2. Autenticación Multifactor (MFA): La Caída de las Contraseñas
 
-Ejemplo:
+Las contraseñas ya no sirven. Así de simple. La gente usa contraseñas como `Otoño2024!` o la misma contraseña para su banco y para el foro de videojuegos. Si el foro de videojuegos es hackeado, los atacantes probarán esa misma contraseña en tu banco (esto se llama *Credential Stuffing*).
 
-- Puedes iniciar sesión en una app.
-- Pero no puedes entrar al panel admin.
+Para solucionar esto, inventamos el **MFA (Multi-Factor Authentication)**.
+Existen 5 "Factores" para probar tu identidad. Un buen MFA debe usar al menos **DOS DE DIFERENTES TIPOS**.
 
-La primera parte es autenticación; la segunda es autorización.
+1.  **Algo que sabes (Knowledge):** Una contraseña, un PIN, la respuesta a una pregunta secreta ("¿Cuál fue el nombre de tu primer perro?").
+2.  **Algo que tienes (Possession):** Tu teléfono celular (donde recibes un código de Google Authenticator), una tarjeta magnética, o una llave física USB (como YubiKey).
+3.  **Algo que eres (Inherence):** Tu huella dactilar, el escáner de tu cara (FaceID), tu retina. (Biometría).
+4.  **Algo que haces (Behavior):** El patrón de cómo tecleas de rápido, o tu forma de caminar.
+5.  **Un lugar donde estás (Location):** Si el sistema ve que estás haciendo login físicamente en la oficina de Madrid a través del GPS de tu celular.
 
-## Auditoria
+**¿Por qué un SMS (mensaje de texto) es el peor MFA?**
+A los políticos y empresarios constantemente les roban sus redes sociales a pesar de tener MFA por SMS. Esto pasa porque un atacante puede sobornar o engañar al empleado de tu compañía telefónica para que pase tu número de teléfono a la tarjeta SIM del hacker (esto se llama *SIM Swapping*). El SMS llega al hacker, no a ti. 
+Usa siempre aplicaciones Autenticadoras (Google, Authy) o Llaves Físicas (FIDO2).
 
-Auditoria significa registrar acciones para poder revisarlas.
+---
 
-Ejemplos:
+## 3. Modelos de Control de Acceso (Los Estándares)
 
-- Usuario inicio sesión.
-- Usuario cambio contraseña.
-- Usuario accedio a un archivo.
-- Usuario agrego una regla de firewall.
+A nivel corporativo, ¿cómo decide un servidor quién entra a dónde?
+Hay 4 formas (Modelos) principales:
 
-## Permisos
+### 3.1 DAC (Discretionary Access Control)
+El dueño del archivo decide quién lo lee. 
+*   **Ejemplo:** Google Drive. Si tú creas un documento, tú decides si lo compartes por link a tus amigos. Es muy flexible pero un infierno para administrar en una empresa de 10,000 empleados.
 
-Los permisos definen acciones permitidas.
+### 3.2 MAC (Mandatory Access Control)
+Nadie decide nada. El sistema operativo impone etiquetas militares. 
+*   **Ejemplo:** Sistemas del Ejército. Tienes un archivo clasificado como "TOP SECRET". Tu usuario es de nivel "CONFIDENCIAL". No puedes abrir el archivo de ninguna forma, y aunque el creador del archivo quiera compartírtelo, el sistema simplemente no lo deja.
 
-Ejemplos:
+### 3.3 RBAC (Role-Based Access Control)
+Los permisos no se dan a "Juan". Se dan al rol de "CONTADOR".
+*   **Ejemplo:** Si Juan es el nuevo contador, simplemente se le asigna el rol "CONTADOR". Automáticamente recibe acceso a las finanzas. Si mañana Juan es despedido y entra María, a María se le da el rol "CONTADOR" y listo. Es el estándar de oro en las empresas normales.
 
-- Leer.
-- Escribir.
-- Ejecutar.
-- Eliminar.
-- Administrar.
+### 3.4 ABAC (Attribute-Based Access Control)
+Es la evolución moderna. Funciona con reglas y atributos (If / Then).
+*   **Ejemplo:** Juan tiene el rol de "CONTADOR" (Atributo 1). Pero Juan está intentando acceder a las finanzas el Domingo a las 3 AM (Atributo 2). Además, Juan está usando una laptop no registrada en China (Atributo 3). El sistema junta los atributos y dice: *"Eres contador, pero tu contexto es sospechoso. Acceso denegado"*. 
 
-## Principio de Mínimo Privilegio
+---
 
-Cada identidad debe tener solo los permisos necesarios.
+## 4. Criterio de Dominio (Autoevaluación)
 
-Mal ejemplo:
+Revisa si dominas el arte de los permisos:
 
-- Todos los usuarios son administradores.
-
-Buen ejemplo:
-
-- Usuario normal para trabajo diario.
-- Admin solo cuando se necesita.
-- Cuenta de servicio con permisos especificos.
-
-## Separación de Funciones
-
-No una sola persona o cuenta debería poder hacerlo todo sin control.
-
-Ejemplo:
-
-- Quien desarrolla no debería poder cambiar produccion sin revisión.
-- Quien aprueba pagos no debería poder crearlos y aprobarlos solo.
-
-## Riesgos Comunes
-
-- Contraseñas debiles.
-- MFA desactivado.
-- Usuarios compartidos.
-- Cuentas sin owner.
-- Permisos excesivos.
-- Cuentas antiguas activas.
-- Llaves API expuestas.
-
-## Ejemplo de Análisis
-
-Estas cuentas imaginarias muestran riesgos comunes:
-
-| Cuenta | Uso | Riesgo | Mejora |
-| --- | --- | --- | --- |
-| admin | Uso diario | Privilegios excesivos | Usar cuenta normal |
-| backup-service | Backups | Permisos amplios | Limitar a rutas necesarias |
-| ex-empleado | Sin uso | Acceso indebido | Desactivar |
-| api-prod | App productiva | Secreto expuesto | Rotar y guardar en secret manager |
-
-El patron a entender es que una identidad debe tener propósito, owner, permisos mínimos y ciclo de vida claro. Cuando alguno de esos puntos falta, el riesgo aumenta aunque no exista un ataque activo.
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas explicar:
-
-- Identidad.
-- Autenticación.
-- Autorización.
-- Auditoria.
-- MFA.
-- Mínimo privilegio.
-- Por que cuentas de servicio son sensibles.
+1. Un usuario entra a la página del banco, escribe su nombre y contraseña y entra. ¿Esto es Autenticación o Autorización?
+2. Entraste a trabajar a una empresa y tu jefe usó el sistema "RBAC". Te dio el rol de "Marketing". ¿Qué significa eso para tus permisos?
+3. Si le pones clave (Algo que sabes) y un PIN (Algo que sabes) a tu cuenta, ¿Tienes Autenticación Multifactor (MFA)? Piensa en las categorías de los factores.
+4. ¿Por qué enviar un código por Mensaje de Texto (SMS) es la forma más débil de MFA en la actualidad?
