@@ -34,11 +34,9 @@ Además de la ruta técnica, puedes revisar estas guías cuando quieras orientar
 
 ## Cómo Usar la Web
 
-- Usa las rutas por perfil si quieres explorar un área concreta.
-- Usa el buscador si ya sabes qué concepto quieres revisar.
-- Usa los filtros por nivel para separar contenido inicial, intermedio, avanzado y de referencia.
-- Guarda una lectura solo como marcador local; no es una tarea obligatoria.
-- Vuelve a fundamentos cuando una guía avanzada se sienta confusa.
+- Sigue el orden sugerido de módulos si estás empezando desde cero.
+- Usa la navegación lateral para saltar directamente al área que más te interese estudiar.
+- Vuelve a la sección de "Fundamentos Técnicos" cuando una guía avanzada se sienta confusa.
 
 ## Ruta por Etapas
 
@@ -66,7 +64,7 @@ Módulos principales:
 - Detection Engineering.
 - Endpoint Security.
 - Network Security.
-- Playbooks.
+- Respuesta a Incidentes (PICERL).
 
 ### 3. Seguridad Aplicada
 
@@ -83,7 +81,7 @@ Módulos principales:
 
 ### 4. Especialización y Portafolio
 
-Objetivo: conectar conocimiento con proyectos, reportes y perfil profesional.
+Objetivo: conectar conocimiento con la construcción de un "Home Lab" y el perfil profesional.
 
 Módulos principales:
 
@@ -91,8 +89,7 @@ Módulos principales:
 - Forense.
 - Malware Básico.
 - Red Team autorizado.
-- Capstone Projects.
-- Empleabilidad.
+- Empleabilidad y Portafolio de Élite.
 
 ## Criterio Para Avanzar
 
