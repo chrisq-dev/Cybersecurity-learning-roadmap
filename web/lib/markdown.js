@@ -40,6 +40,7 @@ const PUBLIC_FOLDERS = [
   'blue-team',
   'security-teams',
   'cloud-security',
+  'ai-security',
   'api-security',
   'appsec-devsecops',
   'vulnerability-management',
@@ -81,6 +82,7 @@ const PAGE_ORDER = {
   'blue-team': ['FUNDAMENTOS-BLUE-TEAM', 'LOGS-Y-ALERTAS', 'SIEM-MITRE', 'SIGMA-YARA', 'DETECTION-ENGINEERING', 'THREAT-HUNTING', 'RESPUESTA-INCIDENTES'],
   'security-teams': ['TEAMS-Y-HATS'],
   'cloud-security': ['FUNDAMENTOS-CLOUD', 'IAM-STORAGE-LOGGING', 'IAM-AVANZADO', 'AWS-AZURE-GCP'],
+  'ai-security': ['FUNDAMENTOS-IA', 'OWASP-TOP-10-LLM', 'IA-EN-DEFENSA'],
   'api-security': ['FUNDAMENTOS-API', 'RIESGOS-CONTROLES'],
   'appsec-devsecops': ['FUNDAMENTOS-APPSEC', 'DEVSECOPS'],
   'vulnerability-management': ['FUNDAMENTOS', 'PRIORIZACION-Y-CVSS'],
@@ -196,6 +198,7 @@ export function formatFolderName(folderName) {
     .replace('Edr', 'EDR')
     .replace('Vpn', 'VPN')
     .replace('Api', 'API')
+    .replace('Ai Security', 'Seguridad en IA y LLMs')
     .replace('Social Engineering', 'Ingeniería Social')
     .replace('Cultura Geek', 'Cultura Geek')
     .replace('Glosario', 'Glosario')
@@ -384,6 +387,7 @@ export function getContentStructure() {
     'Blue Team',
     'Security Teams',
     'Cloud Security',
+    'Seguridad en IA y LLMs',
     'Criptografía',
     'AppSec y DevSecOps',
     'Forense',
