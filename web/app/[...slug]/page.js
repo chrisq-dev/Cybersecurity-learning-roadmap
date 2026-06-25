@@ -113,11 +113,6 @@ export default async function Page({ params }) {
         <h1 className="serif-title guide-title" style={{ marginTop: '1.5rem', marginBottom: '0.5rem' }}>
           {data.title}
         </h1>
-        {data.meta.dificultad && (
-          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.75rem' }}>
-            <span className="meta-badge">Dificultad: {data.meta.dificultad}</span>
-          </div>
-        )}
       </header>
 
       <div className="content-layout">
