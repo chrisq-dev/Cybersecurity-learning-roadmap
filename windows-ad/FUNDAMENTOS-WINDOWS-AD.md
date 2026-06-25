@@ -1,94 +1,72 @@
-# Fundamentos de Windows y Active Directory
+# Fundamentos de Windows Corporativo: La Isla vs El Imperio
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender Windows y Active Directory lo suficiente para investigar eventos, comprender identidad empresarial y prepararte para roles SOC o seguridad corporativa.
+Desaprender lo que crees saber sobre Windows.
+Es muy probable que hayas usado Windows toda tu vida para jugar, hacer tareas o navegar por internet. Pero el Windows que usas en tu casa es fundamentalmente diferente al Windows que usan en un corporativo, un banco o un hospital. En ciberseguridad, el 95% del Ransomware del mundo busca aprovecharse de cómo las empresas conectan miles de computadoras Windows juntas.
 
-## Windows Básico
+Esta guía marca la frontera entre ser un "usuario avanzado de Windows" y entender cómo piensa un atacante de nivel empresarial.
 
-Temas:
+---
 
-- Usuarios locales.
-- Grupos locales.
-- Servicios.
-- Procesos.
-- Event Viewer.
-- PowerShell.
-- Firewall.
-- Windows Defender.
+## 1. El Mito del Hacker de Linux
 
-Windows es importante en ciberseguridad porque muchas empresas lo usan para estaciones de trabajo, servidores, identidad y administracion. Un analista debe entender que ocurre en el endpoint: procesos, servicios, usuarios, grupos, sesiones, eventos y controles defensivos.
+Existe un mito en la cultura popular: *"Los servidores reales usan Linux, y Windows es solo para las secretarias. Los hackers solo atacan Linux"*.
 
-## PowerShell Inicial
+**Falso.**
+Es cierto que Linux domina el alojamiento de Páginas Web en la Nube. Pero adentro del edificio físico de una empresa, **casi el 100% del parque informático es de Microsoft**.
+*   Las laptops de los 5,000 empleados usan Windows.
+*   El servidor de correos internos (Exchange) usa Windows.
+*   El servidor que valida las contraseñas de la puerta electrónica del edificio usa Windows.
 
-Comandos útiles:
+> **Importante:**
+> Si un atacante quiere robar la Base de Datos de clientes de un Banco, tal vez tenga que hackear un servidor Linux. Pero para **llegar** a ese servidor, primero tiene que enviar un correo con Phishing a un empleado, infectar su laptop con Windows, y usar la red corporativa de Windows para moverse en secreto. **El camino hacia el tesoro casi siempre está pavimentado por Windows.**
 
-```powershell
-Get-Process
-Get-Service
-Get-LocalUser
-Get-LocalGroup
-Get-EventLog -LogName Security -Newest 10
-Get-NetIPAddress
-```
+---
 
-## Active Directory
+## 2. La Analogía: La Isla Autónoma (Workgroup)
 
-Conceptos:
+El Windows que compras en la tienda y usas en tu casa pertenece a un Grupo de Trabajo (*Workgroup*).
 
-- Dominio: agrupacion centralizada de identidades y recursos.
-- Domain Controller: servidor que autentica y administra el dominio.
-- Usuario: identidad.
-- Grupo: conjunto de usuarios.
-- GPO: política aplicada a usuarios o equipos.
-- Kerberos: protocolo de autenticación.
-- LDAP: protocolo usado para consultar directorios.
+Imagina que tu casa es una pequeña Isla Autónoma en medio del océano.
+*   **Tú eres el Rey Absoluto:** Puedes instalar juegos, cambiar el fondo de pantalla, borrar el sistema operativo, o romperlo por completo.
+*   **Tus Leyes no salen de tu Isla:** Si le creas una cuenta a "Mi Hermano" en tu laptop con la contraseña `123`, tu hermano solo puede iniciar sesión **físicamente en tu laptop**. Si va a la computadora del vecino e intenta poner su usuario y contraseña, la PC del vecino le dirá: *"No sé quién eres"*.
 
-Active Directory centraliza identidad. Si AD falla o se compromete, el impacto puede alcanzar usuarios, servidores, permisos, políticas y autenticación. Por eso los Domain Controllers deben tratarse como activos críticos, no como servidores normales.
+A los hackers de nivel corporativo no les interesan las islas pequeñas. Ganar control de tu laptop personal solo les da control de tu laptop. Fin del juego.
 
-## Identidad en Windows
+---
 
-Una cuenta local existe solo en un equipo. Una cuenta de dominio existe en AD y puede acceder a recursos según permisos. Los grupos simplifican administracion, pero también pueden concentrar demasiado privilegio. Un cambio pequeño en membresias puede dar acceso amplio si el grupo tiene permisos sensibles.
+## 3. La Analogía: El Imperio Corporativo (Dominio)
 
-## Eventos Importantes
+Cuando entras a trabajar a una multinacional, te entregan una laptop. Esa laptop tiene Windows, pero pertenece a un **Dominio** (Domain).
 
-- Logon exitoso.
-- Logon fallido.
-- Creación de usuario.
-- Cambio de grupo.
-- Cambio de contraseña.
-- Ejecucion de procesos sospechosos.
+La laptop dejó de ser una isla. Ahora es una provincia subyugada bajo el control de un inmenso **Imperio Corporativo**.
+*   **Ya no eres el Rey:** Por más que sea "tu" laptop, tú eres solo un usuario (Campesino). Si intentas instalar Spotify o cambiar la hora del reloj, Windows te dirá: *"Acceso Denegado. Consulta a tu Administrador de TI"*.
+*   **Las Leyes vienen de la Capital:** Existe una súper-computadora escondida en el cuarto de servidores llamada **Controlador de Dominio (Domain Controller)**. Esa súper-computadora es la Capital del Imperio. Dicta las leyes para absolutamente todas las laptops de la empresa.
+*   **La Ciudadanía Universal:** Cuando el equipo de TI te crea la cuenta `juan.perez`, no la crean en tu laptop. La crean en la súper-computadora. Eso significa que puedes ir a **cualquier** laptop vacía en cualquiera de los 50 pisos del edificio, escribir `juan.perez` y tu contraseña, y la máquina te dejará entrar porque verificará tu existencia preguntándole a la Capital.
 
-Los eventos no prueban un incidente por si solos. Un logon fallido puede ser error de contraseña, password spraying o un servicio mal configurado. La lectura correcta combina usuario, hora, equipo, IP, resultado y actividad posterior.
+---
 
-## Observación Segura
+## 4. Por qué el Dominio es el Santo Grial del Hacker
 
-Si tienes Windows:
+Si un atacante (o un grupo de Ransomware profesional) logra infectar la laptop de `juan.perez` en el Piso 2, celebran, pero el trabajo apenas comienza. 
 
-- Abre Event Viewer.
-- Busca eventos de seguridad.
-- Ejecuta comandos básicos de PowerShell.
-- Observa que eventos aparecen y que significan dentro del sistema.
+El objetivo final de cualquier hacker dentro de una red de Windows no es destruir la laptop de Juan. Su objetivo es **viajar en silencio por los cables del edificio hasta encontrar la súper-computadora (El Controlador de Dominio) y hackearla**.
 
-Si no tienes Windows:
+Si el atacante logra comprometer el Controlador de Dominio (volverse "Domain Admin"):
+1. Tiene el poder de cambiar la contraseña de todos los empleados de la empresa al mismo tiempo.
+2. Tiene el poder de forzar a que las 5,000 laptops del edificio descarguen el Ransomware simultáneamente, sin que los usuarios puedan evitarlo.
+3. Tiene el control total del Imperio. La empresa está oficialmente destruida.
 
-- Estudia capturas o ejemplos de eventos.
-- Nota explicativa sobre Kerberos.
-- Un mapa de conceptos puede mostrar de AD.
+Este proceso de saltar de la laptop de un empleado hasta el servidor principal se llama **Movimiento Lateral**, y es el arte más oscuro y lucrativo de la ciberseguridad moderna.
 
-## Errores Comunes
+---
 
-- Confundir usuario local con usuario de dominio.
-- Pensar que todo administrador tiene el mismo alcance.
-- Ignorar cambios de grupos privilegiados.
-- No revisar actividad posterior a un login exitoso.
-- No diferenciar servicio, proceso y evento.
+## 5. Criterio de Dominio (Autoevaluación)
 
-## Criterio de Dominio
+Revisa si tu mente ya hizo el salto de nivel de usuario a nivel corporativo:
 
-Puedes avanzar cuando puedas explicar:
-
-- Usuario local vs usuario de dominio.
-- Que hace un Domain Controller.
-- Que es una GPO.
-- Por que los logs de Windows importan.
+1. Un amigo te dice: *"Instalé un buen antivirus en mi laptop, soy invulnerable a los hackers rusos"*. ¿Por qué a un hacker corporativo profesional no le interesa atacar la laptop de tu amigo (Workgroup)?
+2. En tu primer día de trabajo en un Banco, te asignan un escritorio temporal. Inicias sesión en una PC que nunca habías visto, y milagrosamente funciona. ¿Quién fue el encargado de verificar tu usuario y contraseña en ese instante?
+3. Un atacante de Ransomware logra infectar exitosamente a la computadora del equipo de diseño gráfico, pero 5 minutos después los analistas de seguridad lo expulsan. ¿Qué técnica le faltó ejecutar al atacante para lograr destruir toda la empresa?
+4. Si tienes la contraseña de Administrador (Local Admin) de la laptop de Recursos Humanos, ¿eso significa que también tienes control sobre el Controlador de Dominio?
