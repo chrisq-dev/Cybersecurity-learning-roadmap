@@ -1,271 +1,78 @@
-# Autenticación y Autorización
+# Autenticación vs Autorización: Robando Llaves Ajenas
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender una de las diferencias más importantes en seguridad web: comprobar quien eres vs comprobar que puedes hacer.
+Entender por qué el "Control de Acceso Roto" (Broken Access Control) se ha convertido en el Error #1 del mundo en el ranking de OWASP.
 
-Muchos incidentes no ocurren porque el login falle, sino porque la aplicación no valida correctamente que acciones puede realizar un usuario autenticado. Autenticación y autorización deben revisarse por separado.
+Los programadores de hoy en día son buenos usando contraseñas complejas. Lo que hacen terriblemente mal es verificar quién eres una vez que ya entraste al sistema. Confundir la diferencia entre **Autenticación** y **Autorización** es lo que permite que un estudiante de primaria con un navegador web pueda robar la base de datos de millones de pacientes de un hospital moderno.
 
-## Mapa Mental
+---
 
-```text
-identidad -> sesion/token -> rol -> permiso -> recurso -> acción -> auditoria
-```
+## 1. El Concepto: La Discoteca
 
-Pregunta central:
+Para que nunca lo olvides, usaremos la analogía de la Discoteca Exclusiva.
 
-```text
-Esta identidad puede hacer está acción sobre este recurso especifico?
-```
+*   **Autenticación (Authentication - AuthN):** Es el Guardia de Seguridad en la puerta de la calle. Te pide tu ID y confirma que la foto coincida con tu cara. Si coincide, te deja entrar al edificio. *(Eres quien dices ser).*
+*   **Autorización (Authorization - AuthZ):** Es el Cadenero de la Sala VIP en el segundo piso. Tú ya estás adentro de la discoteca (ya pasaste la Autenticación), pero cuando intentas subir al segundo piso, el cadenero te detiene y dice: *"Tu pulsera es normal. Aquí solo entran VIPs. Acceso Denegado"*. *(Tienes permiso para hacer esto).*
 
-## Autenticación
+### El Error Común:
+Los programadores novatos instalan al guardia de seguridad de la calle (Pantalla de Login con Usuario y Contraseña), pero se les olvida poner cadeneros VIP en las puertas internas. El programador asume ciegamente: *"Bueno, si ya logró entrar al edificio, significa que es un tipo bueno, hay que dejarlo pasear por donde quiera"*.
 
-Autenticación aclara:
+---
 
-```text
-Quién eres?
-```
+## 2. Insecure Direct Object Reference (IDOR)
 
-Ejemplos:
+El tipo más infame, simple y destructivo de "Autorización Rota" se llama **IDOR** (Referencia Insegura a Objetos Directos). Ocurre cuando el servidor asume que si pides un archivo, es porque te pertenece.
 
-- Usuario y contraseña.
-- MFA.
-- Token.
-- Certificado.
-- SSO.
+**El Escenario:**
+Inicias sesión en tu cuenta de un Banco. Le das clic al botón de "Ver mi estado de cuenta de este mes". El sistema te muestra un archivo PDF con tus gastos.
 
-Controles:
+Si miras la URL arriba en tu navegador (El Mesero), ves algo como esto:
+`banco.com/ver_pdf?recibo_id=100`
 
-- MFA;
-- Rate limiting;
-- Bloqueo progresivo;
-- Detección de password spraying;
-- Recuperación segura;
-- Password hashing fuerte;
-- Protección contra credential stuffing;
-- Logs de login.
+### El Ataque (IDOR):
+Un Hacker no necesita escribir código maligno ni inyectar virus. Simplemente da clic en la URL, borra el número `100`, escribe el número `101`, y presiona Enter.
 
-## Autorización
+`banco.com/ver_pdf?recibo_id=101`
 
-Autorización aclara:
+**¿Qué pasa en la cocina (El Backend)?**
+El Servidor recibe la orden. Verifica que el hacker tiene una sesión iniciada válida (Autenticación), así que dice: *"Okay, estás logueado. Quieres el recibo 101. ¡Aquí lo tienes!"*.
+El Servidor **olvidó** preguntarle al cadenero VIP: *"Espera, este hacker tiene la sesión iniciada, pero... ¿el recibo 101 le pertenece a él, o le pertenece al CEO de la empresa?"*.
 
-```text
-Qué puedes hacer?
-```
+Al cambiar un simple número en la URL, el hacker acaba de robar los estados de cuenta bancarios de cada uno de los clientes del banco (102, 103, 104...). Sin tirar una sola línea de código, vulneró a la empresa entera.
 
-Ejemplos:
+---
 
-- Un usuario normal no puede entrar al panel admin.
-- Un empleado solo ve sus propios documentos.
-- Un API key solo puede leer, no escribir.
+## 3. Escalada de Privilegios
 
-Modelos comunes:
+El Control de Acceso Roto no solo sirve para robar PDFs ajenos. Sirve para volverse Administrador (El Dueño de la Discoteca).
 
-- RBAC: permisos por rol.
-- ABAC: permisos por atributos.
-- ReBAC: permisos por relacion.
-- ACL: listas de acceso por recurso.
+A veces, las páginas web tienen menús ocultos. Cuando inicias sesión como Usuario Normal, el menú dice:
+- Ver Perfil
+- Ver Facturas
 
-El modelo exacto importa menos que validarlo siempre en servidor.
+Cuando el Administrador inicia sesión, el menú dice:
+- Ver Perfil
+- Ver Facturas
+- Borrar Usuarios (Botón Peligroso)
 
-## Ejemplo Simple
+### Security by Obscurity (El Escondite)
+Un programador malo simplemente **esconde** el botón de "Borrar Usuarios" para que los clientes normales no lo vean en su pantalla. Piensa que si no lo ves, no puedes darle clic.
 
-Escenario:
+Pero el Hacker sabe cómo piensa un programador. El Hacker intercepta el tráfico web y le escribe una petición manual (POST) al mesero:
+`POST /admin/borrar_usuario`
 
-- Inicias sesión correctamente.
-- Tu usuario es `cliente`.
-- Intentas entrar a `/admin`.
+El Servidor recibe la orden. Como el Servidor no tiene un Cadenero VIP en la puerta trasera, dice: *"Oh, alguien me mandó la orden de borrar a un usuario. Okay, lo borraré"*. El Hacker, con su cuenta de cliente gratuita, acaba de borrar a los usuarios del sistema.
 
-Resultados posibles:
+**La Regla de Oro:** Ocultar botones en la interfaz gráfica (Frontend) **jamás** es seguridad. El servidor trasero (Backend) debe desconfiar de CADA maldita orden que recibe, y verificar si la cuenta que la envía tiene el rol requerido para hacerlo en ese mismo milisegundo.
 
-- Si no estas logueado: `401 Unauthorized`.
-- Si estas logueado pero no tienes permiso: `403 Forbidden`.
+---
 
-## 401 vs 403
+## 4. Criterio de Dominio (Autoevaluación)
 
-- 401: no hay identidad valida o falta autenticación.
-- 403: hay identidad, pero no permiso.
+Revisa si tu mente ya distingue entre Guardia y Cadenero:
 
-Usarlos bien ayuda a depurar y a monitorear.
-
-## Sesiones
-
-Después del login, una aplicación suele crear una sesión.
-
-Flujo:
-
-1. Usuario envia credenciales.
-2. Servidor valida.
-3. Servidor crea sesión.
-4. Servidor envia cookie de sesión.
-5. Navegador reenvia cookie en requests futuras.
-
-Controles de sesión:
-
-- Cookie `HttpOnly`;
-- Cookie `Secure`;
-- Cookie `SameSite`;
-- Expiracion;
-- Rotación después de login;
-- Invalidacion en logout;
-- Revocacion ante riesgo;
-- Protección contra fijacion de sesión.
-
-## Tokens
-
-Algunas APIs usan tokens.
-
-Ejemplo:
-
-```http
-Authorization: Bearer eyJ...
-```
-
-Riesgos:
-
-- Token expuesto.
-- Token sin expiracion.
-- Token con demasiados permisos.
-- Token guardado en lugar inseguro.
-
-Buenas prácticas:
-
-- Expiracion corta cuando aplique;
-- Scopes;
-- Audience correcta;
-- Rotación;
-- Revocacion;
-- No guardar tokens en logs;
-- Proteger refresh tokens.
-
-## Fallas Comunes
-
-### Contraseñas Debiles
-
-Mitigacion:
-
-- Políticas razonables.
-- MFA.
-- Detección de fuerza bruta.
-
-### Falta de MFA
-
-Mitigacion:
-
-- MFA para cuentas sensibles.
-
-### Control de Acceso Roto
-
-Ejemplo:
-
-```text
-/users/1001/invoices
-/users/1002/invoices
-```
-
-Si cambias `1001` por `1002` y ves datos ajenos, hay un problema de autorización.
-
-### Sesiones Inseguras
-
-Mitigacion:
-
-- Cookies `HttpOnly`, `Secure`, `SameSite`.
-- Expiracion.
-- Rotación de sesión después de login.
-- Logout real.
-
-### Falta de Autorización por Objeto
-
-La app valida el rol general, pero no el recurso especifico.
-
-Ejemplo:
-
-```text
-Usuario A puede ver factura 1001.
-Usuario A no debería ver factura 1002.
-```
-
-### Mass Assignment
-
-La API acepta campos que el usuario no debería controlar.
-
-Ejemplo conceptual:
-
-```json
-{
-  "name": "Ana",
-  "role": "admin"
-}
-```
-
-Si el backend acepta `role` desde el cliente, hay riesgo.
-
-## Ejemplo de Matriz de Acceso
-
-Esta aplicación imaginaria permite razonar sobre roles y recursos:
-
-Roles:
-
-- Usuario.
-- Soporte.
-- Admin.
-
-Recursos:
-
-- Perfil.
-- Facturas.
-- Panel admin.
-- Logs.
-
-Una tabla de ejemplo puede verse asi:
-
-| Recurso | Usuario | Soporte | Admin |
-| --- | --- | --- | --- |
-| Perfil propio | | | |
-| Facturas propias | | | |
-| Facturas de todos | | | |
-| Panel admin | | | |
-| Logs | | | |
-
-En una revisión informativa conviene considerar:
-
-- Que endpoints existirian;
-- Que respuesta daria cada caso no permitido;
-- Que eventos registrarias;
-- Que acciones requieren MFA o reautenticacion.
-
-## Criterios de Revisión de Acceso
-
-Una matriz de acceso ayuda a razonar sobre:
-
-- Roles;
-- Recursos;
-- Acciones;
-- Reglas permitidas;
-- Reglas denegadas;
-- Respuestas esperadas;
-- Eventos de auditoria;
-- Casos donde se requiere MFA o reautenticacion.
-
-## Controles Que Deben Entenderse
-
-- MFA en cuentas sensibles reduce abuso de credenciales.
-- Rate limit en login reduce fuerza bruta y automatización.
-- Password hashing fuerte reduce impacto si se filtran hashes.
-- Cookies seguras reducen robo o envio indebido de sesión.
-- Rotar sesión después de login reduce fijacion de sesión.
-- Autorización por recurso evita Broken Access Control.
-- El backend debe validar permisos; el frontend no es confiable.
-- Errores 401/403 correctos ayudan a separar autenticación y autorización.
-- Logs de acciones sensibles permiten investigación posterior.
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Explicar autenticación.
-- Explicar autorización.
-- Explicar sesiones.
-- Entender cookies de sesión.
-- Dar un ejemplo de Broken Access Control.
-- Construir una matriz de permisos y pruebas de autorización.
+1. ¿Un ataque de IDOR (cambiar números en la URL) es un fallo en la Autenticación o un fallo en la Autorización? Justifica.
+2. Entras a la página de tu Universidad. Para ver tu boleta de calificaciones, la URL es `universidad.com/boleta?alumno_id=5000`. Al cambiar el número a `5001`, la página te devuelve una boleta, pero en blanco o con un error. Sin embargo, al cambiar el número a `5002`, te devuelve la boleta de tu amigo con todas sus calificaciones. ¿Qué error crítico de programación cometió el Backend?
+3. ¿Por qué depender del código HTML/JavaScript (Frontend) para ocultar el botón rojo de "Borrar Base de Datos" a los usuarios normales es una técnica de defensa inútil contra un hacker profesional?
+4. En términos de Severidad, si un atacante descubre un IDOR en un foro que le permite leer los "Borradores de Post" de otros usuarios antes de que los publiquen, versus un IDOR en un Banco que le permite leer las "Tarjetas de Crédito", ¿Ambos ataques tienen la misma gravedad corporativa? ¿Por qué?

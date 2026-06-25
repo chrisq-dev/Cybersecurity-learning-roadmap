@@ -1,348 +1,64 @@
-# OWASP Top 10
+# OWASP Top 10: El Catálogo Universal
 
-## Objetivo
+## Objetivo del Módulo
 
-Conocer las categorías principales de riesgos en aplicaciones web. OWASP Top 10 no es una lista de payloads; es un mapa de fallas comunes.
+Entender por qué este documento rige a la industria entera de la programación.
+En Ciberseguridad hay cientos de formas de hackear una empresa. Sin embargo, no puedes obligar a todos los programadores del mundo a aprenderse 5,000 vulnerabilidades matemáticas complejas. Necesitaban un estándar, una lista concisa y brutal de "Las 10 Formas más fáciles y comunes de destruir tu página web". Ese es el OWASP Top 10.
 
-El objetivo de esta lección es que puedas mirar una aplicación y clasificar riesgos sin depender de memorizar nombres. OWASP Top 10 sirve para hablar con desarrolladores, analistas, clientes y equipos de seguridad usando un lenguaje común.
+---
 
-## Cómo Usar OWASP Correctamente
+## 1. ¿Qué es OWASP?
 
-OWASP no reemplaza pruebas, threat modeling ni criterio técnico. Usalo para:
+**OWASP (Open Worldwide Application Security Project)** es una fundación sin fines de lucro. Imagínalos como la Organización Mundial de la Salud (OMS), pero para el Internet.
 
-- Ordenar hallazgos;
-- Explicar impacto;
-- Construir checklists;
-- Planear pruebas;
-- Justificar controles;
-- Mapear riesgos a categorías conocidas.
+Su objetivo es analizar estadísticamente cómo están hackeando a las empresas a nivel mundial y publicar guías gratuitas para que los programadores (Blue Team) dejen de cometer los mismos estúpidos errores una y otra vez.
 
-No lo uses como:
+El documento más famoso que publican es el **OWASP Top 10**.
 
-- Lista cerrada de todas las vulnerabilidades;
-- Ranking exacto para todas las empresas;
-- Excusa para ignorar contexto;
-- Colección de payloads.
+> **Importante:**
+> El OWASP Top 10 NO es un manual de hacking. Es un documento de Concientización (*Awareness*). Si quieres ser auditor de seguridad, tendrás que memorizarte esta lista, no porque vayas a hackear con ella, sino porque **tu reporte de auditoría debe incluir en qué categoría exacta del Top 10 falló la empresa.**
 
-## Mapa Mental
+---
 
-```text
-entrada -> identidad -> autorización -> lógica -> datos -> configuración -> logs
-```
+## 2. La Ley y las Multas (Compliance)
 
-Una aplicación falla cuando confia demasiado en algun punto:
+¿Por qué a una corporación millonaria le importa una lista gratuita hecha por una fundación? Por la **Ley y el Dinero**.
 
-- Confia en el usuario;
-- Confia en el frontend;
-- Confia en IDs;
-- Confia en dependencias;
-- Confia en defaults;
-- Confia en que alguien revisara logs después.
+Existen estándares de seguridad obligatorios que las empresas deben cumplir si quieren operar. Por ejemplo, el **PCI-DSS** (El estándar que te permite procesar pagos con Tarjetas de Crédito Visa o Mastercard).
+*   El PCI-DSS dice literalmente en su regla 6.5: *"Usted debe entrenar a sus programadores para prevenir las vulnerabilidades listadas en el OWASP Top 10 vigente. Si usted no cumple, le quitaremos el derecho a procesar tarjetas de crédito"*.
 
-## 1. Broken Access Control
+Si un programador novato comete el error #1 del OWASP, el atacante robará las tarjetas, Visa demandará a la empresa, y la empresa quebrará. Por eso OWASP es una Biblia corporativa.
 
-Ocurre cuando un usuario puede hacer algo que no debería.
+---
 
-Ejemplos:
+## 3. ¿Por qué la lista cambia?
 
-- Ver datos de otro usuario.
-- Acceder a panel admin.
-- Modificar recursos ajenos.
-- Saltarse validaciones cambiando IDs.
+El OWASP Top 10 se actualiza aproximadamente cada 4 años (2013, 2017, 2021). 
+Los errores de programación evolucionan al igual que la tecnología.
 
-Impacto:
+*   **En 2013:** La Inyección de código (SQL Injection) era el rey absoluto (El Error #1). Todos los atacantes destruían bases de datos porque los programadores no sabían filtrar el texto.
+*   **En 2021:** La Inyección bajó al puesto #3. ¿Por qué? ¿Los hackers se rindieron? No. Los lenguajes modernos (como React, Angular y los ORM modernos de Backend) comenzaron a integrar defensas automáticas contra inyección. El programador ya no tiene que pensarlo, la herramienta lo defiende por defecto.
+*   **El Nuevo Rey (2021):** *Broken Access Control* (Control de Acceso Roto) subió al Puesto #1. Hoy en día, el error más común no es romper el código; es que el programador olvidó verificar si el Usuario A tiene permiso legal para ver la factura del Usuario B (IDOR).
 
-- Exposición de datos.
-- Acceso no autorizado.
-- Acciones indebidas.
+---
 
-Mitigacion:
+## 4. Las Categorías Clave que Aprenderás
 
-- Validar permisos en servidor.
-- Denegar por defecto.
-- Revisar controles por rol.
-- Tests de autorización.
+A partir de este punto, los siguientes archivos de este módulo te enseñarán a atacar y defender las vulnerabilidades más críticas de esta lista:
 
-Preguntas de revisión:
+1.  **A01: Broken Access Control (Control de Acceso Roto):** Entrar a lugares que no te corresponden.
+2.  **A02: Cryptographic Failures (Fallos Criptográficos):** Guardar las contraseñas en texto plano (sin cifrar).
+3.  **A03: Injection (Inyección):** SQL Injection, XSS (Mentirle al sistema).
+4.  **A07: Identification and Authentication Failures:** Permitir contraseñas débiles como `123456` o no requerir Autenticación de Dos Factores (2FA).
+5.  **A10: Server-Side Request Forgery (SSRF):** Secuestrar al mesero (El servidor web) para que ataque a la red interna.
 
-- El backend valida permisos en cada acción?
-- Un usuario puede cambiar IDs y ver recursos ajenos?
-- Existe separación real entre usuario, admin y soporte?
-- Los endpoints internos están protegidos?
+---
 
-## 2. Cryptographic Failures
+## 5. Criterio de Dominio (Autoevaluación)
 
-Ocurre cuando se protege mal información sensible.
+¿Entiendes el peso del estándar OWASP?
 
-Ejemplos:
-
-- Contraseñas en texto plano.
-- TLS mal configurado.
-- Datos sensibles sin cifrar.
-- Uso de algoritmos obsoletos.
-
-Mitigacion:
-
-- TLS correcto.
-- Password hashing fuerte.
-- Cifrado para datos sensibles.
-- Manejo seguro de llaves.
-
-Preguntas de revisión:
-
-- Qué datos son sensibles?
-- Viajan por TLS?
-- Están cifrados en reposo cuándo aplica?
-- Las contraseñas usan hashing fuerte con salt?
-- Dónde viven las llaves?
-
-## 3. Injection
-
-Ocurre cuando datos no confiables son interpretados como comandos o consultas.
-
-Ejemplos:
-
-- SQL Injection.
-- Command Injection.
-- LDAP Injection.
-
-Mitigacion:
-
-- Consultas parametrizadas.
-- Validación de entrada.
-- Escapar salida donde aplique.
-- Mínimo privilegio.
-
-Preguntas de revisión:
-
-- Hay concatenacion de consultas?
-- Hay llamadas a comandos del sistema?
-- Los parametros llegan a interpretes cómo SQL, shell, LDAP o templates?
-- La cuenta del servicio tiene permisos mínimos?
-
-## 4. Insecure Design
-
-Ocurre cuando el problema está en el diseño, no solo en un bug.
-
-Ejemplo:
-
-- Una app permite cambiar email sin verificar contraseña o MFA.
-
-Mitigacion:
-
-- Threat modeling.
-- Revisiones de diseño.
-- Abuse cases.
-- Controles desde arquitectura.
-
-Ejemplo de pensamiento:
-
-```text
-No basta con validar que el endpoint funcione.
-Tambien debes preguntar como podria abusarse.
-```
-
-## 5. Security Misconfiguration
-
-Ocurre por configuraciones inseguras.
-
-Ejemplos:
-
-- Panel admin expuesto.
-- Debug activo.
-- Credenciales default.
-- Headers ausentes.
-- Permisos demasiado amplios.
-
-Mitigacion:
-
-- Hardening.
-- Configuración por ambiente.
-- Revisiones automatizadas.
-- Desactivar lo innecesario.
-
-Revisión rapida:
-
-- Debug apagado.
-- Credenciales default eliminadas.
-- Headers básicos configurados.
-- Servicios no usados apagados.
-- Acceso admin restringido.
-
-## 6. Vulnerable and Outdated Components
-
-Ocurre al usar dependencias vulnerables o sin mantenimiento.
-
-Mitigacion:
-
-- Inventario de dependencias.
-- Actualizaciones.
-- SCA.
-- Parches.
-
-Preguntas:
-
-- Existe inventario de dependencias?
-- Hay dependencias sin mantenimiento?
-- Se sabe qué versión está en produccion?
-- Hay proceso para actualizar?
-
-## 7. Identification and Authentication Failures
-
-Fallas de login, sesiones o identidad.
-
-Ejemplos:
-
-- Sin MFA.
-- Sesiones que no expiran.
-- Recuperación de contraseña insegura.
-- Fuerza bruta sin detección.
-
-Mitigacion:
-
-- MFA.
-- Rate limiting.
-- Sesiones seguras.
-- Detección de ataques.
-
-Preguntas:
-
-- Existe MFA para cuentas sensibles?
-- Las sesiones expiran?
-- Se detecta fuerza bruta?
-- La recuperación de contraseña es segura?
-- Las cookies tienen flags adecuados?
-
-## 8. Software and Data Integrity Failures
-
-Fallas al confiar en código, actualizaciones o datos sin verificar.
-
-Ejemplos:
-
-- CI/CD inseguro.
-- Dependencias comprometidas.
-- Updates sin firma.
-
-Mitigacion:
-
-- Firmas.
-- Verificación de integridad.
-- Protección de pipeline.
-- Revisión de dependencias.
-
-Ejemplos modernos:
-
-- Pipeline CI/CD con secretos expuestos;
-- Paquetes instalados sin control;
-- Artefactos sin firma;
-- Cambios en produccion sin revisión.
-
-## 9. Security Logging and Monitoring Failures
-
-Ocurre cuando no hay suficiente visibilidad para detectar incidentes.
-
-Ejemplos:
-
-- Logins fallidos no registrados.
-- Errores críticos sin alerta.
-- Logs sin retención.
-- Nadie revisa eventos.
-
-Mitigacion:
-
-- Logging de eventos clave.
-- Alertas.
-- Retención.
-- Monitoreo.
-- Playbooks.
-
-Eventos mínimos:
-
-- Logins fallidos y exitosos;
-- Cambios de contraseña;
-- Cambios de permisos;
-- Acceso a datos sensibles;
-- Errores de autorización;
-- Acciones administrativas;
-- Fallas de validación repetidas.
-
-## 10. Server-Side Request Forgery
-
-SSRF ocurre cuando el servidor hace requests controladas por un atacante.
-
-Riesgo:
-
-- Acceder a servicios internos.
-- Consultar metadata cloud.
-- Saltar controles de red.
-
-Mitigacion:
-
-- Validar destinos.
-- Denylist/allowlist robusta.
-- Bloquear rangos internos.
-- Controles de red.
-
-Preguntas:
-
-- El usuario controla URLs o destinos?
-- El servidor puede llegar a redes internas?
-- Hay metadata cloud accesible?
-- Existe allowlist de destinos?
-
-## Cómo Estudiar Cada Categoría
-
-Para cada categoría, una nota informativa puede incluir:
-
-- Definicion.
-- Ejemplo.
-- Impacto.
-- Lab.
-- Mitigacion.
-- Como detectarla.
-
-## Ejemplo de Revisión OWASP
-
-En una aplicación propia, una app local vulnerable o un proyecto demo autorizado, una tabla de revisión puede verse asi:
-
-| Categoría OWASP | Donde podria aparecer | Impacto | Control | Evidencia a revisar |
-| --- | --- | --- | --- | --- |
-| Broken Access Control |  |  |  |  |
-| Cryptographic Failures |  |  |  |  |
-| Injection |  |  |  |  |
-| Insecure Design |  |  |  |  |
-| Security Misconfiguration |  |  |  |  |
-| Vulnerable Components |  |  |  |  |
-| Auth Failures |  |  |  |  |
-| Integrity Failures |  |  |  |  |
-| Logging Failures |  |  |  |  |
-| SSRF |  |  |  |  |
-
-## Criterios Para Estudiar Una Categoría
-
-Una categoría de OWASP se entiende mejor cuando puedes explicar:
-
-- La categoría con tus palabras;
-- Un ejemplo seguro de laboratorio o escenario ficticio;
-- Impacto técnico;
-- Impacto para negocio o usuario;
-- Mitigacion;
-- Detección o evidencia.
-
-## Errores Comunes
-
-- Aprender solo payloads y no causas.
-- No diferenciar impacto técnico de impacto real.
-- Reportar "OWASP" sin explicar evidencia.
-- Confiar en el frontend como control.
-- No validar autorización por recurso.
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Explicar las 10 categorías.
-- Dar un ejemplo por categoría.
-- Proponer una mitigacion.
-- Distinguir causa técnica e impacto de negocio.
-- Convertir una categoría OWASP en una prueba, una evidencia y una recomendación.
+1. Entras a trabajar como Auditor (Pentester) y encuentras una vulnerabilidad de *Inyección SQL* en el servidor de pagos del cliente. En tu reporte final, ¿por qué es vital que vincules tu hallazgo explícitamente a la categoría "A03: Injection" del OWASP Top 10?
+2. Un desarrollador argumenta que no necesita leer el OWASP Top 10 porque él programa en un lenguaje modernísimo llamado Rust, que "no tiene bugs de memoria". Basado en el #1 actual (*Broken Access Control*), ¿por qué su lenguaje mágico no lo salvará de ser hackeado?
+3. ¿Por qué las vulnerabilidades de inyección matemática pura están bajando lentamente de puesto en la lista OWASP a lo largo de los años, mientras que las fallas de lógica humana (como el Control de Acceso) están subiendo?
+4. Si la fundación OWASP publicara su lista en el año 2040, ¿Crees que la lista seguiría igual o cambiaría drásticamente debido a la adopción masiva de la Inteligencia Artificial? Justifica.

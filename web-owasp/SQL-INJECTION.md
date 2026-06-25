@@ -1,186 +1,78 @@
-# SQL Injection
+# Inyección SQL (SQLi): Engañando al Archivero
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender SQL Injection como una falla de construccion de consultas, su impacto y como prevenirla.
+Entender la vulnerabilidad web más famosa, antigua y devastadora de la historia.
+A pesar de tener más de 25 años de antigüedad, la Inyección SQL sigue destruyendo empresas hoy en día. Ocurre cuando un programador confía ciegamente en lo que el usuario escribe en una caja de texto, permitiendo que el usuario envíe código malicioso directamente a la base de datos de la empresa.
 
-Esta lección se enfoca en causa, riesgo, detección y mitigacion. Las pruebas deben hacerse solo en laboratorios propios o plataformas autorizadas.
+---
 
-## Qué es
+## 1. La Analogía: El Archivero Ciego
 
-SQL Injection ocurre cuando una aplicación mezcla datos del usuario con una consulta SQL de forma insegura.
+Imagina que la Base de Datos es un enorme cuarto lleno de archiveros. Dentro del cuarto vive un **Archivero Ciego (El motor SQL)**.
+*   El archivero es una máquina perfecta. Hace exactamente lo que le pides, muy rápido, pero no tiene sentido común.
+*   El lenguaje oficial con el que le das órdenes al archivero se llama **SQL**.
 
-El problema no es SQL en si. El problema es tratar entrada no confiable como si fuera parte confiable de la consulta.
+### El Escenario Normal
+En tu página web tienes una caja de texto para que los clientes busquen productos. Un cliente escribe la palabra `Zapatos`.
+El servidor web (El Cocinero) toma la palabra `Zapatos` y construye la siguiente oración lógica en SQL:
+`"Hola Archivero, por favor ve y búscame todos los productos DONDE el nombre sea IGUAL a 'Zapatos'."`
 
-## Por Qué Ocurre
+El archivero obedece, saca los expedientes de zapatos y te los da. Todo es feliz y normal.
 
-Ejemplo inseguro conceptual:
+---
 
-```text
-"SELECT * FROM users WHERE email = '" + email + "'"
-```
+## 2. El Ataque (Inyección)
 
-Si `email` viene del usuario, la consulta puede alterarse.
+Un Hacker llega a tu página web y, en la caja de búsqueda de productos, en lugar de escribir "Zapatos", escribe lo siguiente exactamente (incluyendo la comilla simple al principio):
 
-## Impacto
+`' O 1=1 --`
 
-Puede permitir:
+El Cocinero (Backend) estúpido y mal programado toma este texto y lo pega directamente en la oración. La orden que recibe el Archivero ciego ahora queda así:
 
-- Saltar autenticación.
-- Leer datos no autorizados.
-- Modificar datos.
-- Eliminar datos.
-- Obtener información sensible.
-- En algunos casos, afectar el servidor.
+`"Hola Archivero, por favor ve y búscame todos los productos DONDE el nombre sea IGUAL a '' O 1=1 --"`
 
-## Mitigacion
+### La Descomposición Matemática de la Destrucción:
+Para el Archivero ciego, esta oración tiene lógica matemática pura:
+1.  **`''` (Vacío):** El archivero busca un producto sin nombre (Falso).
+2.  **`O (OR)`:** La palabra mágica. Significa "Si lo primero fue falso, revisa la segunda opción".
+3.  **`1=1`:** El archivero se pregunta: "¿El número 1 es igual al número 1?". La respuesta es **Verdadero**.
+4.  **`--` (Comentario):** Le dice al archivero: "Ignora cualquier otra orden que venga después de esto, no importa".
 
-Controles principales:
+**El Resultado:** Dado que "1 siempre es igual a 1", la condición es verdadera para absolutamente todos los archivos en todo el cuarto. El Archivero ciego saca **toda la base de datos** (incluyendo cuentas de usuarios, tarjetas de crédito, precios ocultos) y los escupe en la pantalla del atacante.
+El hacker acaba de robarte la empresa entera usando una comilla simple y matemática de primaria.
 
-- Consultas parametrizadas.
-- ORM usado correctamente.
-- Validación de entrada.
-- Mínimo privilegio en la cuenta de base de datos.
-- Manejo seguro de errores.
-- Logging de eventos sospechosos.
+---
 
-Ejemplo conceptual seguro:
+## 3. Las Consecuencias y Tipos de SQLi
 
-```text
-SELECT * FROM users WHERE email = ?
-```
+Robar datos es solo el principio. Si la inyección se hace en la pantalla de Login (Usuario y Contraseña), el hacker puede inyectar un código que diga:
+`"Valida mi contraseña O déjame entrar si 1=1"`.
+El sistema lo dejará entrar a la cuenta del Administrador sin saber la contraseña real (Authentication Bypass).
 
-La idea es que el valor del usuario se trate como dato, no como código SQL.
+Existen otros tipos más avanzados:
+*   **Blind SQLi (Inyección Ciega):** A veces la página web no "escupe" los datos en la pantalla, pero el hacker puede hacerle preguntas de "Sí o No" a la base de datos (Ej. *"¿La primera letra de la contraseña del administrador es la A?"*). Dependiendo de si la página tarda 5 segundos en cargar o no, el hacker adivina la respuesta (Inyección basada en tiempo).
 
-## Modelo Mental
+---
 
-```text
-input no confiable -> consulta dinamica -> base de datos -> respuesta
-```
+## 4. La Defensa (El Blue Team)
 
-El problema aparece cuando el input cambia la estructura de la consulta. La defensa busca separar estructura y datos.
+Como futuro auditor o programador, ¿cómo evitas esto? Es extremadamente fácil si se hace bien.
 
-## Dónde Suele Aparecer
+**La Regla de Oro: NUNCA CONCATENES TEXTO (No pegues con resistol).**
 
-- Login.
-- Buscadores.
-- Filtros.
-- Ordenamiento.
-- Reportes.
-- APIs con parametros.
-- Paneles admin.
-- Importadores CSV.
+*   **Mal (El Cocinero Estúpido):** Tomar el texto del usuario y pegarlo crudo en la oración SQL.
+*   **Bien (Consultas Preparadas / Prepared Statements):** El programador usa una caja blindada. Le envía la oración al Archivero primero, y le dice: *"Archivero, voy a mandarte una caja blindada. No me importa qué palabras, símbolos matemáticos o comillas vengan adentro de la caja; vas a tratar todo su contenido **estrictamente como texto literal**, no como una orden"*.
 
-## Tipos Conceptuales
+Cuando el hacker envía `' O 1=1 --`, el archivero ciego simplemente buscará en sus expedientes un producto que se llame literalmente "comilla O uno igual a uno guion guion". Al no encontrarlo, devolverá un error inofensivo.
 
-### Error-based
+---
 
-La aplicación revela errores de base de datos. El riesgo adicional es que el error puede filtrar tablas, columnas o tecnologia.
+## 5. Criterio de Dominio (Autoevaluación)
 
-### Boolean-based
+Revisa si tu mente ya ve los agujeros en las cajas de texto:
 
-La respuesta cambia según una condicion verdadera o falsa.
-
-### Time-based
-
-La respuesta tarda más o menos según una condicion. Suele aparecer cuando no hay errores visibles.
-
-### Second-order
-
-El dato malicioso se guarda primero y se usa después en otra consulta insegura.
-
-## Señales de Alerta
-
-En logs web:
-
-- Errores SQL repetidos.
-- Caracteres raros en parametros.
-- Muchas pruebas contra el mismo endpoint.
-- Respuestas 500 al enviar parametros inusuales.
-
-En código:
-
-- Concatenacion de strings para SQL.
-- Interpolacion directa de parametros.
-- Filtros de ordenamiento sin allowlist.
-- ORM usado con consultas raw sin parametros.
-- Cuenta de DB con permisos excesivos.
-
-## Preguntas de Análisis
-
-- Qué parametros llegan al servidor?
-- Se usan consultas parametrizadas?
-- Los errores revelan detalles?
-- La cuenta de DB tiene privilegios excesivos?
-- Hay logs suficientes?
-
-## Mitigacion Detallada
-
-### Consultas Parametrizadas
-
-La estructura de SQL se define antes y los valores se pasan aparte.
-
-### Allowlist para Campos Dinamicos
-
-No todo puede parametrizarse igual. Para campos como `ORDER BY`, usa allowlist:
-
-```text
-permitidos = ["name", "created_at", "status"]
-```
-
-### Mínimo Privilegio
-
-La cuenta de la aplicación no debería poder hacer más de lo necesario.
-
-Ejemplo:
-
-- Una app de lectura no necesita `DROP TABLE`;
-- Un usuario de reportes no necesita modificar usuarios;
-- Una API pública no debería conectarse como admin.
-
-### Errores Seguros
-
-El usuario recibe un mensaje generico. El detalle técnico va a logs protegidos.
-
-## Observación Segura
-
-La SQL Injection debe estudiarse solo en laboratorios autorizados o aplicaciones locales vulnerables creadas para aprendizaje.
-
-Una forma segura de analizar un caso es separar:
-
-- Causa: donde se concatena o interpreta input como SQL;
-- Flujo: que endpoint recibe el dato;
-- Impacto: que datos podrian leerse o modificarse;
-- Mitigacion: parametros, allowlists y mínimo privilegio;
-- Detección: errores, patrones raros y eventos repetidos;
-- Limitacion: que no se puede afirmar sin evidencia.
-
-## Criterios de Revisión
-
-Una revisión defensiva busca comprobar si:
-
-- No hay concatenacion directa de SQL;
-- Las consultas raw usan parametros;
-- Los campos dinamicos usan allowlist;
-- Los errores no revelan estructura interna;
-- La cuenta de base de datos tiene mínimo privilegio;
-- Eventos sospechosos quedan en logs útiles;
-- Flujos sensibles como login, busqueda, filtros y reportes tienen controles.
-
-## Errores Comunes
-
-- Pensar que un ORM elimina todo riesgo automaticamente.
-- Usar validación de entrada como unica defensa.
-- Dejar errores SQL visibles.
-- Conectar la aplicación con usuario administrador.
-- Reportar SQLi sin explicar impacto sobre datos.
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Explicar por que concatenar consultas es peligroso.
-- Explicar consultas parametrizadas.
-- Describir impacto sin exagerar.
-- Proponer mitigacion concreta.
-- Identificar señales de SQLi en código y logs.
+1. Estás auditando una página web y escribes una comilla simple (`'`) en la caja de búsqueda. La página se rompe y te devuelve un mensaje rojo gigantesco que dice: `Error Code 1064: You have an error in your SQL syntax near...`. ¿Por qué ese mensaje es oro molido para ti como *Penetration Tester*?
+2. Un programador te dice: *"Yo no sufro de SQL Injection porque programé un filtro que elimina todas las comillas simples de lo que escribe el usuario"*. ¿Por qué los filtros manuales (Blacklisting) suelen ser una mala idea de seguridad comparado con usar Consultas Preparadas (Prepared Statements)?
+3. Si un hacker no quiere robar datos, sino destruir a la empresa entera de forma vengativa, ¿Qué comando de inyección clásico (cuatro letras que empiezan con D) podría intentar insertar después del punto y coma (`;`) para borrar una tabla entera de la base de datos?
+4. En el ataque de *Authentication Bypass* (Burlar el Login), ¿por qué la declaración matemática `1=1` logra engañar a la base de datos para dejar entrar al atacante sin contraseña?

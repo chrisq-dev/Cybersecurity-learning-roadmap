@@ -1,171 +1,60 @@
-# Cross-Site Request Forgery
+# CSRF (Cross-Site Request Forgery): Falsificando Firmas
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender CSRF y por que afecta acciones autenticadas.
+Aprender cómo un atacante puede obligar a un usuario legítimo a ejecutar acciones destructivas en su propia cuenta, sin que el usuario se dé cuenta y sin robarle la contraseña.
 
-CSRF es una falla de confianza en el navegador. La aplicación cree que una request es intencional solo porque trae cookies validas, pero el navegador puede enviar cookies automaticamente aunque la acción haya sido provocada desde otro sitio.
+El **Cross-Site Request Forgery (CSRF)**, o Falsificación de Petición en Sitios Cruzados, es un ataque de engaño puro. Juega con la confianza ciega que un navegador (como Chrome) le tiene a las cookies de sesión (el post-it del mesero) cuando el usuario visita páginas de terceros.
 
-## Mapa Mental
+---
 
-```text
-usuario autenticado -> sitio externo provoca request -> navegador envia cookie -> app acepta acción
-```
+## 1. La Analogía: El Cheque con Firma Falsificada
 
-La defensa consiste en exigir una prueba adicional de intencion.
+Imagina que eres el Director de una empresa. Vas al Banco, te identificas con el Cajero (Inicias sesión) y te quedas en la sala de espera leyendo una revista. El Cajero ya sabe que eres tú y confía en cualquier papel que le entregues en los próximos 15 minutos.
 
-## Qué es
+1.  Mientras estás en la sala de espera del banco, un extraño se te acerca y te dice: *"Oye, mira esta foto de un gatito"*. 
+2.  Te entrega una hoja de papel doblada. En la portada tiene la foto del gatito, pero por detrás (la parte que tú no ves), hay una orden de transferencia bancaria hacia la cuenta del extraño.
+3.  Tú, sin saberlo, caminas hacia el Cajero y le entregas la hoja de papel doblada.
+4.  El Cajero te mira, confirma tu identidad (porque ya estabas validado en la sala), desdobla la hoja, lee la orden de transferencia y ejecuta la transacción.
 
-CSRF ocurre cuando un sitio malicioso logra que el navegador de un usuario autenticado envie una request a otra aplicación donde ya tiene sesión.
+Acabas de robarte a ti mismo, y el extraño nunca tuvo que saber tu contraseña. Solo necesitó que tú entregaras el papel por él.
 
-La clave:
+---
 
-- El navegador envia cookies automaticamente.
-- La aplicación confia solo en la cookie.
-- Falta una protección adicional.
+## 2. El Ataque CSRF en la Web
 
-## Ejemplo Conceptual
+En la web, el Banco es `banco.com`, y la foto del gatito es una página trampa creada por el hacker (`gatos-graciosos.com`).
 
-Usuario está autenticado en `bank.local`.
+1. Entras a `banco.com` y pones tu contraseña. El banco te da tu Cookie de sesión.
+2. Sin cerrar la pestaña del banco, abres otra pestaña y entras a `gatos-graciosos.com`.
+3. La página de los gatos tiene un código HTML invisible que le dice a tu navegador: *"Oye Chrome, manda una petición POST a banco.com/transferir con el monto de $1,000"*.
+4. **El error de diseño de la Web:** Por defecto, los navegadores antiguos decían: *"Ah, me están pidiendo ir a banco.com. Dejame buscar la Cookie (El post-it) que tengo guardada para el banco y pegársela a esta petición automáticamente"*.
+5. El servidor del banco recibe la petición, ve que trae tu Cookie válida, y transfiere el dinero.
 
-Otra página intenta provocar:
+El hacker "forjó" (falsificó) la petición desde un "sitio cruzado" (Cross-Site).
 
-```text
-POST /transfer
-```
+---
 
-Si la app no valida token CSRF u otros controles, podria aceptar la acción.
+## 3. La Defensa (El Blue Team)
 
-## Requisitos Conceptuales
+¿Cómo evita el Banco que un extraño falsifique cheques a tu nombre? Obligándote a usar una pluma de tinta invisible que cambia de color cada 5 minutos.
 
-CSRF normalmente requiere:
+En el desarrollo web, esto se llama el **Token Anti-CSRF**.
 
-- Usuario autenticado;
-- Cookie o credencial enviada automaticamente;
-- Acción que cambia estado;
-- Ausencia de token o control equivalente;
-- Endpoint que acepta la request.
+Cuando inicias sesión en el banco de forma legítima, el servidor (El Cocinero) no solo te da tu Cookie. También genera un código matemático larguísimo y aleatorio (El Token), y lo esconde dentro de todos los formularios de transferencias de la página oficial del banco.
 
-## Impacto
+Cuando el hacker intenta hacer el ataque desde `gatos-graciosos.com`, el hacker no sabe cuál es tu Token secreto de este segundo. Su petición falsa llegará al banco sin el Token. El servidor del banco verá la Cookie correcta, pero al ver que falta el Token matemático dirá: *"Rechazado. Esta orden no se generó dentro de nuestro edificio"*.
 
-Depende de la acción:
+> **Importante (El Atacante Llora):**
+> Hoy en día, casi todos los lenguajes de Backend modernos (Laravel, Django, Spring) incluyen protección Anti-CSRF encendida por defecto. Además, los navegadores modernos actualizaron sus políticas (el famoso atributo `SameSite` en las Cookies) para dejar de enviar Cookies automáticamente a páginas cruzadas. Encontrar un CSRF puro hoy en día es raro, pero cuando ocurre, es devastador.
 
-- Cambiar email.
-- Cambiar contraseña.
-- Crear usuarios.
-- Transferir fondos.
-- Modificar configuración.
+---
 
-Acciones más sensibles:
+## 4. Criterio de Dominio (Autoevaluación)
 
-- Cambiar email;
-- Cambiar password;
-- Agregar MFA;
-- Desactivar MFA;
-- Crear API keys;
-- Agregar usuarios;
-- Modificar permisos;
-- Hacer pagos;
-- Cambiar configuración de seguridad.
+Revisa si puedes detectar la falsificación:
 
-## Mitigacion
-
-- Tokens CSRF impredecibles.
-- SameSite en cookies.
-- Reautenticacion para acciones sensibles.
-- Validar origen cuando aplique.
-- Usar métodos adecuados.
-
-## Token CSRF
-
-Un token CSRF debe:
-
-- Ser impredecible;
-- Estar asociado a la sesión;
-- Validarse en servidor;
-- No depender solo de JavaScript;
-- No reutilizarse de forma insegura en flujos sensibles.
-
-La idea es que otro sitio no pueda fabricar una request valida porque no conoce el token.
-
-## SameSite
-
-Atributo de cookie que limita envio cross-site.
-
-Valores:
-
-- `Strict`.
-- `Lax`.
-- `None` con `Secure`.
-
-`SameSite=Lax` ayuda en muchos casos, pero no reemplaza tokens para acciones sensibles en aplicaciones críticas.
-
-## Cuándo Es Menos Probable
-
-CSRF es menos probable si:
-
-- La app usa tokens bearer en headers no enviados automaticamente.
-- Cookies tienen SameSite adecuado.
-- Acciones sensibles requieren token CSRF.
-
-## Validación de Origin y Referer
-
-Puede ser control adicional:
-
-- Verificar que `Origin` sea esperado;
-- Usar `Referer` con cuidado;
-- No depender solo de headers si el caso es crítico;
-- Registrar fallos.
-
-## Errores Comunes
-
-- Proteger solo formularios y olvidar APIs internas.
-- Usar GET para acciones que cambian estado.
-- Pensar que CORS resuelve CSRF automaticamente.
-- No proteger cambio de email o MFA.
-- Tokens predecibles o no validados.
-
-## Ejemplo de Análisis CSRF
-
-Esta acción ficticia muestra un cambio de estado sensible:
-
-```text
-POST /change-email
-Cookie: session=...
-Body: email=nuevo@example.com
-```
-
-El análisis debe cubrir:
-
-- Qué control falta?
-- Qué impacto tiene?
-- Cómo lo mitigarias?
-
-En una revisión informativa conviene considerar:
-
-- Que cookie flags usarias;
-- Si pedirias reautenticacion;
-- Que logs registrarias;
-- Que código de respuesta daria si falta token.
-
-## Criterios de Revisión
-
-Para entender si una acción es sensible, revisa:
-
-- Si cambia estado;
-- Si usa cookies automaticamente;
-- Si requiere token CSRF;
-- Que política `SameSite` aplica;
-- Si requiere reautenticacion;
-- Que evento de log ayuda a investigar abuso;
-- Que respuesta debe devolverse si falta el token.
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Explicar por que las cookies importan en CSRF.
-- Explicar token CSRF.
-- Explicar SameSite.
-- Identificar acciones sensibles.
-- Diferenciar CSRF de XSS y CORS.
+1. Estás auditando una página web antigua de un Hospital. Descubres que para cambiar la dirección de correo electrónico de un paciente, el sistema usa un método `GET` como este: `hospital.com/cambiar_correo?nuevo=hacker@mal.com`. ¿Por qué esto hace que un ataque CSRF sea ridículamente fácil de ejecutar con solo enviarle una imagen por WhatsApp a la víctima?
+2. A diferencia del ataque XSS (donde el hacker ejecuta código JavaScript en tu máquina para leer tu información), en un ataque CSRF, ¿el atacante alguna vez llega a *leer* tu contraseña o los datos de tu cuenta bancaria?
+3. Un programador añade un Token Anti-CSRF a su página web, pero decide usar un Token fijo (Ejemplo: `Token=123456`) que nunca cambia para ningún usuario del sistema. ¿Por qué esto arruina completamente el propósito de la defensa?
+4. Estás programando en Node.js y decides configurar la Cookie de sesión de tus usuarios con la bandera de seguridad `SameSite=Strict`. ¿Cómo afecta esta pequeña línea de código a la viabilidad técnica de un ataque CSRF?
