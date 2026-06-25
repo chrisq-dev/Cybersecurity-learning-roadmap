@@ -23,17 +23,17 @@ const techIcons = [
 const profileRoutes = [
   {
     title: 'Fundamentos',
-    description: 'Base tecnica para entender seguridad, redes, Linux, web y riesgo.',
+    description: 'Base técnica para entender seguridad, redes, Linux, web y riesgo.',
     links: [
-      ['Inicio Aqui', '/INICIO-AQUI'],
-      ['Computacion Basica', '/fundamentos/COMPUTACION-BASICA'],
+      ['Inicio Aquí', '/INICIO-AQUI'],
+      ['Computación Básica', '/fundamentos/COMPUTACION-BASICA'],
       ['Base de Seguridad', '/fundamentos/BASE-DE-SEGURIDAD'],
       ['Fundamentos de Redes', '/redes-cisco/FUNDAMENTOS-REDES'],
     ],
   },
   {
     title: 'Blue Team',
-    description: 'Investigacion, deteccion, SIEM, MITRE, hunting y respuesta.',
+    description: 'Investigación, detección, SIEM, MITRE, hunting y respuesta.',
     links: [
       ['Fundamentos Blue Team', '/blue-team/FUNDAMENTOS-BLUE-TEAM'],
       ['SIEM y MITRE', '/blue-team/SIEM-MITRE'],
@@ -43,7 +43,7 @@ const profileRoutes = [
   },
   {
     title: 'AppSec',
-    description: 'Seguridad web, APIs, OWASP, autenticacion, autorizacion y revisiones.',
+    description: 'Seguridad web, APIs, OWASP, autenticación, autorización y revisiones.',
     links: [
       ['Fundamentos Web', '/web-owasp/FUNDAMENTOS-WEB'],
       ['OWASP Top 10', '/web-owasp/OWASP-TOP-10'],
@@ -73,7 +73,7 @@ const profileRoutes = [
   },
   {
     title: 'Empleabilidad',
-    description: 'Portafolio, entrevistas, mapa de habilidades y preparacion laboral.',
+    description: 'Portafolio, entrevistas, mapa de habilidades y preparación laboral.',
     links: [
       ['Empleo Ready', '/empleabilidad/EMPLEO-READY'],
       ['Rutas por Rol', '/empleabilidad/RUTAS-POR-ROL'],
@@ -150,7 +150,7 @@ export default function Home() {
           Rutas por perfil
         </h2>
         <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '2rem' }}>
-          Usa estas rutas como mapas de lectura segun el enfoque que quieras explorar.
+          Usa estas rutas como mapas de lectura según el enfoque que quieras explorar.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
@@ -187,7 +187,7 @@ export default function Home() {
         }}
       >
         <p style={{ margin: 0, fontSize: '0.98rem', color: 'var(--text-muted)' }}>
-          Si esta guia te resulta util, considera dejar una estrella en{' '}
+          Si esta guía te resulta útil, considera dejar una estrella en{' '}
           <a
             href="https://github.com/chrisq-dev/Cybersecurity-learning-roadmap"
             target="_blank"
@@ -195,7 +195,7 @@ export default function Home() {
           >
             GitHub
           </a>
-          . Ayuda a que mas personas puedan encontrarla.
+          . Ayuda a que más personas puedan encontrarla.
         </p>
       </section>
 

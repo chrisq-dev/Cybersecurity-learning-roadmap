@@ -4,22 +4,23 @@ Guías de ciberseguridad en español: estructuradas, prácticas y gratuitas.
 
 **→ [cbsdev.lat](https://cbsdev.lat)**
 
-![Preview de la web](assets/preview-home.png)
+<img width="1920" height="981" alt="Captura desde 2026-06-25 02-16-05" src="https://github.com/user-attachments/assets/ec36638c-19ca-4bcf-be56-c9c4d1e0cd90" />
 
 ---
 
-Hola, soy Christian Quiñones. Diseñé esta Academia de Élite para que aprendas Ciberseguridad con mentalidad corporativa, de riesgo y negocio. Cero tutoriales genéricos; 100% de enfoque en cómo opera la industria real.
+Hola, soy Christian Quiñones. Diseñé esta web para recopilar y ordenar recursos de ciberseguridad en español, con explicaciones claras para estudiantes que quieren entender los fundamentos, conectar temas y avanzar sin perderse entre demasiada información dispersa.
 
 ## Qué Cubre
 
-Una hoja de ruta implacable de 34 módulos técnicos y gerenciales, organizados bajo una filosofía de "Defensa en Profundidad":
+Una hoja de ruta organizada por módulos técnicos, defensivos y profesionales:
 
-- **Cimiento Técnico:** Modelo OSI, Protocolos, Criptografía y Hardening en Linux/Windows.
-- **Seguridad Cloud y Arquitectura:** Infraestructura inmutable, AWS/Azure, Contenedores (Kubernetes), Zero Trust.
-- **Defensa Activa (Blue Team):** Ingeniería de Detección, SIEM, YARA, y Caza de Amenazas.
-- **Respuesta a Incidentes (Playbooks):** Protocolos militares (Ciclo PICERL) para Ransomware, Fuga de Datos y Phishing.
-- **Negocio y Cumplimiento (GRC):** La Ciberseguridad traducida al idioma del CEO. Riesgos, multas y marcos legales.
-- **Empleabilidad de Élite:** Construcción de un "Home Lab" portafolio, superación de RRHH y tácticas corporativas para conseguir empleo.
+- **Fundamentos técnicos:** computación, sistemas operativos, redes, Linux, Windows y permisos.
+- **Seguridad web y AppSec:** HTTP, OWASP Top 10, autenticación, autorización, APIs y DevSecOps.
+- **Blue Team y respuesta:** logs, SIEM, MITRE ATT&CK, detection engineering, playbooks e incident response.
+- **Cloud, identidad y arquitectura:** IAM, storage, logging, Kubernetes, Zero Trust y controles de arquitectura.
+- **Criptografía, malware y forense:** cifrado, hashing, TLS, ransomware, botnets, memoria, disco y cadena de custodia.
+- **GRC, privacidad y continuidad:** riesgo, controles, evidencia, backups, continuidad y privacidad.
+- **Empleabilidad:** rutas por rol, CV, LinkedIn, entrevistas, portafolio y criterios para aplicar.
 
 ## Por Dónde Empezar
 
@@ -34,7 +35,7 @@ Entra a la web y sigue la ruta recomendada:
 Ruta general:
 
 ```text
-fundamentos -> redes -> Linux -> web -> Arquitectura Cloud -> Blue Team -> Playbooks (IR) -> Empleabilidad
+fundamentos -> redes -> Linux -> web -> Blue Team -> cloud/AppSec -> playbooks -> empleabilidad
 ```
 
 ## Ética
@@ -59,4 +60,3 @@ Antes de proponer cambios, revisa [CONTRIBUTING.md](CONTRIBUTING.md).
 ## Apoya la Guía
 
 Si esta colección te resulta útil, considera dejar una estrella en GitHub. Ayuda a que más personas encuentren el proyecto y a seguir mejorándolo poco a poco.
-

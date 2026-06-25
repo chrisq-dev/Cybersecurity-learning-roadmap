@@ -52,6 +52,7 @@ const PUBLIC_FOLDERS = [
   'grc',
   'privacy',
   'email-security',
+  'social-engineering',
   'business-continuity',
   'cripto',
   'forense',
@@ -88,11 +89,12 @@ const PAGE_ORDER = {
   'security-architecture': ['FUNDAMENTOS-ARQUITECTURA', 'ZERO-TRUST'],
   grc: ['FUNDAMENTOS-GRC', 'RIESGO-CONTROLES'],
   privacy: ['FUNDAMENTOS-PRIVACIDAD'],
-  'email-security': ['FUNDAMENTOS-EMAIL', 'PHISHING'],
+  'email-security': ['FUNDAMENTOS-EMAIL', 'GATEWAYS-Y-FILTROS'],
+  'social-engineering': ['FUNDAMENTOS-PHISHING', 'PRETEXTING-OSINT'],
   'business-continuity': ['BACKUPS', 'CONTINUIDAD-DRP'],
-  cripto: ['HASHING-CIFRADO-TLS'],
-  forense: ['FUNDAMENTOS-FORENSE'],
-  'malware-basico': ['FUNDAMENTOS-MALWARE'],
+  cripto: ['FUNDAMENTOS-CRIPTOGRAFIA', 'HASHING-Y-PASSWORDS', 'PKI-Y-TLS'],
+  forense: ['CADENA-DE-CUSTODIA', 'FORENSE-DE-DISCO', 'FORENSE-DE-MEMORIA'],
+  'malware-basico': ['TIPOS-DE-MALWARE', 'RANSOMWARE', 'BOTNETS-Y-C2'],
   'red-team': ['METODOLOGIA-ETICA', 'RECONOCIMIENTO-ENUMERACION', 'REPORTE-REMEDIACION'],
   labs: ['PRIMEROS-LABS', 'LABS-GUIADOS-FUNDAMENTOS', 'LABS-GUIADOS-BLUE-WEB', 'PROYECTOS-GUIADOS'],
   playbooks: ['CUENTA-COMPROMETIDA', 'PHISHING', 'SERVIDOR-EXPUESTO', 'MALWARE-ENDPOINT', 'FUGA-DATOS'],
@@ -158,7 +160,11 @@ export function formatFolderName(folderName) {
     .replace('Db', 'Database')
     .replace('Edr', 'EDR')
     .replace('Vpn', 'VPN')
-    .replace('Api', 'API');
+    .replace('Api', 'API')
+    .replace('Social Engineering', 'Ingeniería Social')
+    .replace('Cripto', 'Criptografía')
+    .replace('Malware Basico', 'Malware Básico')
+    .replace('Programacion', 'Programación');
 }
 
 function inferLevel({ folder = '', fileName = '', title = '', isRoot = false }) {
@@ -331,15 +337,16 @@ export function getContentStructure() {
     'Redes Cisco',
     'Linux',
     'Windows Active Directory',
-    'Programacion',
+    'Programación',
     'Web OWASP',
     'Blue Team',
     'Security Teams',
     'Cloud Security',
-    'Cripto',
+    'Criptografía',
     'AppSec y DevSecOps',
     'Forense',
-    'Malware Basico',
+    'Malware Básico',
+    'Ingeniería Social',
     'Scripts',
     'Vulnerability Management',
     'GRC',
