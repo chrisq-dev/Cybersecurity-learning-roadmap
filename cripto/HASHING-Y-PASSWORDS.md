@@ -1,3 +1,9 @@
+---
+title: "Hashing y Passwords: La Licuadora Matemática"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 5
+---
 # Hashing y Passwords: La Licuadora Matemática
 
 ## Objetivo del Módulo

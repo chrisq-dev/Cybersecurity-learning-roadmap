@@ -1,3 +1,9 @@
+---
+title: "Fundamentos de Criptografía: La Caja Fuerte y El Buzón"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 4
+---
 # Fundamentos de Criptografía: La Caja Fuerte y El Buzón
 
 ## Objetivo del Módulo

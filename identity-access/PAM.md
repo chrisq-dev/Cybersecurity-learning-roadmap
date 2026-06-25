@@ -1,3 +1,9 @@
+---
+title: "PAM (Privileged Access Management): La Bóveda Nuclear"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 5
+---
 # PAM (Privileged Access Management): La Bóveda Nuclear
 
 ## Objetivo del Módulo

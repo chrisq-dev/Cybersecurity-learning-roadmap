@@ -1,3 +1,9 @@
+---
+title: "Fundamentos de Linux: El Idioma de los Servidores"
+tiempo_estimado: "5 min"
+minutos_lectura: 5
+secciones: 6
+---
 # Fundamentos de Linux: El Idioma de los Servidores
 
 ## Objetivo del Módulo

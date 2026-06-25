@@ -1,3 +1,9 @@
+---
+title: "YARA y SIGMA: Los Carteles de \"Se Busca\""
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 4
+---
 # YARA y SIGMA: Los Carteles de "Se Busca"
 
 ## Objetivo del Módulo
@@ -20,7 +26,7 @@ Una regla YARA se lee casi como inglés básico. Dice algo como:
 *"Se Busca: Un archivo. No me importa cómo se llame. Búscalo si por dentro contiene la palabra 'powershell.exe' Y TAMBIÉN contiene los números hexadecimales '4D 5A' (Que significa que es un ejecutable de Windows) Y TAMBIÉN pesa menos de 50 Kilobytes."*
 
 **La magia de YARA:**
-Si el Blue Team de Microsoft descubre un nuevo virus en internet, Microsoft escribe la Regla YARA de ese virus y la publica gratis en Twitter. Tú descargas esa regla, la metes a tu Antivirus corporativo, y en un segundo, todas las computadoras de tu empresa están inmunizadas contra ese virus específico. Has compartido inteligencia (Threat Intelligence).
+Si el Blue Team de Microsoft descubre un nuevo virus en internet, Microsoft escribe la Regla YARA de ese virus y la pública gratis en Twitter. Tú descargas esa regla, la metes a tu Antivirus corporativo, y en un segundo, todas las computadoras de tu empresa están inmunizadas contra ese virus específico. Has compartido inteligencia (Threat Intelligence).
 
 ---
 
@@ -49,5 +55,5 @@ Revisa si entiendes los formatos de inteligencia:
 
 1. Un atacante diseña un virus en `.exe`. Para evitar ser detectado por los Antivirus, el atacante usa una herramienta de "Ofuscación" que revuelve y cifra el código interno del virus. ¿Por qué esto inutiliza temporalmente las reglas YARA existentes que el Blue Team tenía para cazar a ese virus específico?
 2. Sabiendo que los hackers pueden cambiar el código de su virus fácilmente, ¿Por qué una regla SIGMA que detecta el comportamiento de "Borrar los Logs del Sistema" es mucho más resistente y duradera que una regla YARA que busca un virus llamado "borrador.exe"?
-3. Eres el jefe de ciberseguridad de un Banco en Colombia. Te llega una noticia de que un Banco en Europa acaba de ser hackeado, y el gobierno europeo publica públicamente las Reglas SIGMA del ataque. ¿Qué debes ordenarle inmediatamente a tu ingeniero de SIEM (Splunk) que haga con ese archivo SIGMA?
+3. Eres el jefe de ciberseguridad de un Banco en Colombia. Te llega una noticia de que un Banco en Europa acaba de ser hackeado, y el gobierno europeo pública públicamente las Reglas SIGMA del ataque. ¿Qué debes ordenarle inmediatamente a tu ingeniero de SIEM (Splunk) que haga con ese archivo SIGMA?
 4. Diferencia principal: YARA analiza _______ (ej. `malware.exe`), mientras que SIGMA analiza _______ (ej. `EventID 4624 de Windows`). Rellena los espacios.

@@ -1,3 +1,9 @@
+---
+title: "Seguridad de Gateways: El Control de Aduanas"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 4
+---
 # Seguridad de Gateways: El Control de Aduanas
 
 ## Objetivo del Módulo

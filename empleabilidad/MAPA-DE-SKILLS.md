@@ -1,3 +1,9 @@
+---
+title: "El Mapa de Skills: El Árbol de Habilidades"
+tiempo_estimado: "3 min"
+minutos_lectura: 3
+secciones: 5
+---
 # El Mapa de Skills: El Árbol de Habilidades
 
 ## Objetivo del Módulo

@@ -1,3 +1,9 @@
+---
+title: "La Búsqueda de Empleo: El Maratón Corporativo"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 5
+---
 # La Búsqueda de Empleo: El Maratón Corporativo
 
 ## Objetivo del Módulo

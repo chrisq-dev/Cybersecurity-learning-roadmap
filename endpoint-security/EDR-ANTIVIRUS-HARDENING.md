@@ -1,3 +1,9 @@
+---
+title: "Antivirus, EDR y Hardening: El Cadenero vs El Detective"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 5
+---
 # Antivirus, EDR y Hardening: El Cadenero vs El Detective
 
 ## Objetivo del Módulo

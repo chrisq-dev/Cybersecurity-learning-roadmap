@@ -1,3 +1,9 @@
+---
+title: "Python para Seguridad: La Navaja Suiza"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 6
+---
 # Python para Seguridad: La Navaja Suiza
 
 ## Objetivo del Módulo

@@ -26,11 +26,11 @@ Una hoja de ruta organizada por módulos técnicos, defensivos y profesionales:
 
 Entra a la web y sigue la ruta recomendada:
 
-1. [cbsdev.lat/INICIO-AQUI](https://cbsdev.lat/INICIO-AQUI)
-2. [cbsdev.lat/fundamentos/COMPUTACION-BASICA](https://cbsdev.lat/fundamentos/COMPUTACION-BASICA)
-3. [cbsdev.lat/fundamentos/BASE-DE-SEGURIDAD](https://cbsdev.lat/fundamentos/BASE-DE-SEGURIDAD)
-4. [cbsdev.lat/redes-cisco/FUNDAMENTOS-REDES](https://cbsdev.lat/redes-cisco/FUNDAMENTOS-REDES)
-5. [cbsdev.lat/web-owasp/FUNDAMENTOS-WEB](https://cbsdev.lat/web-owasp/FUNDAMENTOS-WEB)
+1. [cbsdev.lat/inicio-aqui](https://cbsdev.lat/inicio-aqui)
+2. [cbsdev.lat/fundamentos/computacion-basica](https://cbsdev.lat/fundamentos/computacion-basica)
+3. [cbsdev.lat/fundamentos/base-de-seguridad](https://cbsdev.lat/fundamentos/base-de-seguridad)
+4. [cbsdev.lat/redes-cisco/fundamentos-redes](https://cbsdev.lat/redes-cisco/fundamentos-redes)
+5. [cbsdev.lat/web-owasp/fundamentos-web](https://cbsdev.lat/web-owasp/fundamentos-web)
 
 Ruta general:
 

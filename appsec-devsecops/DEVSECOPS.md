@@ -1,3 +1,9 @@
+---
+title: "DevSecOps: La Fábrica de Aviones y Shift Left"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 5
+---
 # DevSecOps: La Fábrica de Aviones y Shift Left
 
 ## Objetivo del Módulo
@@ -47,7 +53,7 @@ Cuando el programador termina su código, lo pone en la banda transportadora (Gi
 2.  **Prueba SAST:** El Corrector Ortográfico lee el código buscando Inyecciones SQL.
 3.  **Prueba SCA:** Otro robot escanea las "Librerías de código abierto" gratuitas que usó el programador para asegurarse de que no tengan virus escondidos.
 4.  **Prueba DAST:** El Muñeco de Choque arranca el programa por 1 minuto y lo ataca dinámicamente.
-5.  **Despliegue (Deploy):** Si y solo si los 3 robots (SAST, SCA y DAST) levantan el pulgar verde, la aplicación se publica mágicamente en el internet público. 
+5.  **Despliegue (Deploy):** Si y solo si los 3 robots (SAST, SCA y DAST) levantan el pulgar verde, la aplicación se pública mágicamente en el internet público. 
 
 Si cualquier robot encuentra una vulnerabilidad grave, la banda transportadora se frena en seco, y la aplicación no sale al mercado. El programador recibe un correo automático para que arregle su código.
 

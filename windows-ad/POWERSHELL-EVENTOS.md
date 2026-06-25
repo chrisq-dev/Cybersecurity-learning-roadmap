@@ -1,3 +1,9 @@
+---
+title: "PowerShell y Eventos: Las Cámaras y el Misil"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 4
+---
 # PowerShell y Eventos: Las Cámaras y el Misil
 
 ## Objetivo del Módulo

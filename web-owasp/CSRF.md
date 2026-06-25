@@ -1,3 +1,9 @@
+---
+title: "CSRF (Cross-Site Request Forgery): Falsificando Firmas"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 5
+---
 # CSRF (Cross-Site Request Forgery): Falsificando Firmas
 
 ## Objetivo del Módulo

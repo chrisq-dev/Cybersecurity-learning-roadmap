@@ -25,61 +25,61 @@ const profileRoutes = [
     title: 'Fundamentos',
     description: 'Base técnica para entender seguridad, redes, Linux, web y riesgo.',
     links: [
-      ['Inicio Aquí', '/INICIO-AQUI'],
-      ['Glosario de Ciberseguridad', '/glosario/GLOSARIO'],
-      ['Computación Básica', '/fundamentos/COMPUTACION-BASICA'],
-      ['Base de Seguridad', '/fundamentos/BASE-DE-SEGURIDAD'],
-      ['Fundamentos de Redes', '/redes-cisco/FUNDAMENTOS-REDES'],
+      ['Inicio Aquí', '/inicio-aqui'],
+      ['Glosario de Ciberseguridad', '/glosario/glosario'],
+      ['Computación Básica', '/fundamentos/computacion-basica'],
+      ['Base de Seguridad', '/fundamentos/base-de-seguridad'],
+      ['Fundamentos de Redes', '/redes-cisco/fundamentos-redes'],
     ],
   },
   {
     title: 'Blue Team',
     description: 'Investigación, detección, SIEM, MITRE, hunting y respuesta.',
     links: [
-      ['Fundamentos Blue Team', '/blue-team/FUNDAMENTOS-BLUE-TEAM'],
-      ['SIEM y MITRE', '/blue-team/SIEM-MITRE'],
-      ['Detection Engineering', '/blue-team/DETECTION-ENGINEERING'],
-      ['Respuesta a Incidentes', '/blue-team/RESPUESTA-INCIDENTES'],
+      ['Fundamentos Blue Team', '/blue-team/fundamentos-blue-team'],
+      ['SIEM y MITRE', '/blue-team/siem-mitre'],
+      ['Detection Engineering', '/blue-team/detection-engineering'],
+      ['Respuesta a Incidentes', '/blue-team/respuesta-incidentes'],
     ],
   },
   {
     title: 'AppSec',
     description: 'Seguridad web, APIs, OWASP, autenticación, autorización y revisiones.',
     links: [
-      ['Fundamentos Web', '/web-owasp/FUNDAMENTOS-WEB'],
-      ['OWASP Top 10', '/web-owasp/OWASP-TOP-10'],
-      ['Fundamentos de API Security', '/api-security/FUNDAMENTOS-API'],
-      ['Fundamentos de AppSec', '/appsec-devsecops/FUNDAMENTOS-APPSEC'],
+      ['Fundamentos Web', '/web-owasp/fundamentos-web'],
+      ['OWASP Top 10', '/web-owasp/owasp-top-10'],
+      ['Fundamentos de API Security', '/api-security/fundamentos-api'],
+      ['Fundamentos de AppSec', '/appsec-devsecops/fundamentos-appsec'],
     ],
   },
   {
     title: 'Cloud',
     description: 'Responsabilidad compartida, IAM, logging, storage y Kubernetes.',
     links: [
-      ['Fundamentos Cloud', '/cloud-security/FUNDAMENTOS-CLOUD'],
-      ['IAM Avanzado', '/cloud-security/IAM-AVANZADO'],
-      ['IAM, Storage y Logging', '/cloud-security/IAM-STORAGE-LOGGING'],
-      ['Kubernetes Seguridad', '/containers-kubernetes/KUBERNETES-SEGURIDAD'],
+      ['Fundamentos Cloud', '/cloud-security/fundamentos-cloud'],
+      ['IAM Avanzado', '/cloud-security/iam-avanzado'],
+      ['IAM, Storage y Logging', '/cloud-security/iam-storage-logging'],
+      ['Kubernetes Seguridad', '/containers-kubernetes/kubernetes-seguridad'],
     ],
   },
   {
     title: 'GRC',
     description: 'Gobierno, riesgo, controles, evidencia, privacidad y continuidad.',
     links: [
-      ['Fundamentos GRC', '/grc/FUNDAMENTOS-GRC'],
-      ['Riesgo y Controles', '/grc/RIESGO-CONTROLES'],
-      ['Fundamentos de Privacidad', '/privacy/FUNDAMENTOS-PRIVACIDAD'],
-      ['Backups', '/business-continuity/BACKUPS'],
+      ['Fundamentos GRC', '/grc/fundamentos-grc'],
+      ['Riesgo y Controles', '/grc/riesgo-controles'],
+      ['Fundamentos de Privacidad', '/privacy/fundamentos-privacidad'],
+      ['Backups', '/business-continuity/backups'],
     ],
   },
   {
     title: 'Empleabilidad',
     description: 'Portafolio, entrevistas, mapa de habilidades y preparación laboral.',
     links: [
-      ['Empleo Ready', '/empleabilidad/EMPLEO-READY'],
-      ['Rutas por Rol', '/empleabilidad/RUTAS-POR-ROL'],
-      ['Proyectos de Portafolio', '/empleabilidad/PROYECTOS-PORTAFOLIO'],
-      ['CV y LinkedIn', '/empleabilidad/CV-LINKEDIN'],
+      ['Empleo Ready', '/empleabilidad/empleo-ready'],
+      ['Rutas por Rol', '/empleabilidad/rutas-por-rol'],
+      ['Proyectos de Portafolio', '/empleabilidad/proyectos-portafolio'],
+      ['CV y LinkedIn', '/empleabilidad/cv-linkedin'],
     ],
   },
 ];
@@ -115,6 +115,11 @@ export default function Home() {
   const structure = getContentStructure();
   const totalCategories = structure.length;
   const totalPages = structure.reduce((acc, cat) => acc + cat.pages.length, 0);
+  const pagesByHref = new Map(
+    structure
+      .flatMap((category) => category.pages)
+      .map((page) => [`/${page.slug.join('/')}`, page])
+  );
 
   const courseJsonLd = {
     "@context": "https://schema.org",
@@ -213,11 +218,19 @@ export default function Home() {
                 {route.description}
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
-                {route.links.map(([label, href]) => (
-                  <Link key={href} href={href} style={{ fontSize: '0.92rem', textDecoration: 'none', color: 'var(--text-muted)' }}>
-                    {label}
-                  </Link>
-                ))}
+                {route.links.map(([label, href]) => {
+                  const page = pagesByHref.get(href);
+                  return (
+                    <Link key={href} href={href} className="route-preview-link">
+                      <span>{label}</span>
+                      {page?.stats && (
+                        <small>
+                          {page.stats.previewLabel} · {page.stats.sectionLabel}
+                        </small>
+                      )}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           ))}
@@ -236,17 +249,17 @@ export default function Home() {
           boxShadow: '0 4px 12px var(--border-glow)'
         }}
       >
-        <p style={{ margin: 0, fontSize: '0.98rem', color: 'var(--text-muted)' }}>
-          Si esta guía te resulta útil, considera dejar una estrella en{' '}
-          <a
-            href="https://github.com/chrisq-dev/Cybersecurity-learning-roadmap"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-          . Ayuda a que más personas puedan encontrarla.
+        <p style={{ margin: '0 0 1rem 0', fontSize: '0.98rem', color: 'var(--text-muted)' }}>
+          Si esta guía te resulta útil, una estrella ayuda a que más personas puedan encontrarla.
         </p>
+        <a
+          className="github-star-button"
+          href="https://github.com/chrisq-dev/Cybersecurity-learning-roadmap"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ⭐ Dale una estrella en GitHub
+        </a>
       </section>
 
     </div>

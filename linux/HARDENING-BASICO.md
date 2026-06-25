@@ -1,3 +1,9 @@
+---
+title: "Hardening Básico: Blindando el Castillo"
+tiempo_estimado: "5 min"
+minutos_lectura: 5
+secciones: 6
+---
 # Hardening Básico: Blindando el Castillo
 
 ## Objetivo del Módulo

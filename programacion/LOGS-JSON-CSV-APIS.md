@@ -1,3 +1,9 @@
+---
+title: "Parseo de Logs y APIs: El Analista de Datos"
+tiempo_estimado: "3 min"
+minutos_lectura: 3
+secciones: 5
+---
 # Parseo de Logs y APIs: El Analista de Datos
 
 ## Objetivo del Módulo

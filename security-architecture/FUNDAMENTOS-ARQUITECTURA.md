@@ -1,3 +1,9 @@
+---
+title: "Arquitectura de Seguridad: El Castillo Medieval"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 5
+---
 # Arquitectura de Seguridad: El Castillo Medieval
 
 ## Objetivo del Módulo

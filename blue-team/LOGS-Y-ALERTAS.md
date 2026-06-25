@@ -1,3 +1,9 @@
+---
+title: "Logs vs Alertas: Separando la Basura del Fuego"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 5
+---
 # Logs vs Alertas: Separando la Basura del Fuego
 
 ## Objetivo del Módulo

@@ -29,6 +29,24 @@ function removeMdExtensionFromText(content) {
   }).join('');
 }
 
+function normalizeInternalHref(href, basePath) {
+  const [pathPart, hashPart] = href.split('#');
+  let normalizedPath = pathPart.replace(/\.md$/i, '');
+
+  if (normalizedPath.startsWith('./')) normalizedPath = normalizedPath.substring(2);
+
+  if (normalizedPath.startsWith('../')) {
+    normalizedPath = normalizedPath.replace(/^(\.\.\/)+/, '');
+  } else if (basePath && !normalizedPath.startsWith('/') && !normalizedPath.includes('/')) {
+    normalizedPath = `${basePath}/${normalizedPath}`;
+  }
+
+  if (!normalizedPath.startsWith('/')) normalizedPath = `/${normalizedPath}`;
+  normalizedPath = normalizedPath.replace(/\/+/g, '/').toLowerCase();
+
+  return hashPart ? `${normalizedPath}#${hashPart}` : normalizedPath;
+}
+
 export default function MarkdownRenderer({ content, basePath = '' }) {
   const processedContent = removeMdExtensionFromText(content);
   return (
@@ -56,9 +74,7 @@ export default function MarkdownRenderer({ content, basePath = '' }) {
           },
           a({ node, children, href, ...props }) {
             if (href && !href.startsWith('http') && !href.startsWith('#')) {
-              let newHref = href.replace(/\.md(#.*)?$/, '$1');
-              if (newHref.startsWith('./')) newHref = newHref.substring(2);
-              return <Link href={newHref} {...props}>{children}</Link>;
+              return <Link href={normalizeInternalHref(href, basePath)} {...props}>{children}</Link>;
             }
             return <a href={href} target="_blank" rel="noopener noreferrer" {...props}>{children}</a>;
           },

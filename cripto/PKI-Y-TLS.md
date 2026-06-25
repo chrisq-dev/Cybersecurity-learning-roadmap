@@ -1,3 +1,9 @@
+---
+title: "PKI y TLS: El Notario Público de Internet"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 4
+---
 # PKI y TLS: El Notario Público de Internet
 
 ## Objetivo del Módulo
@@ -6,7 +12,7 @@ Entender por qué puedes meter tu tarjeta de crédito con total confianza en `am
 
 En el primer archivo aprendimos que el **Cifrado Asimétrico (Llave Pública / Llave Privada)** permite que dos extraños intercambien secretos. 
 El gran problema del cifrado asimétrico es la **Suplantación de Identidad**. 
-¿Qué pasa si un hacker ruso publica una Llave Pública en internet y dice *"Hola, soy el Banco Santander, usen esta llave pública para mandarme sus contraseñas"*?
+¿Qué pasa si un hacker ruso pública una Llave Pública en internet y dice *"Hola, soy el Banco Santander, usen esta llave pública para mandarme sus contraseñas"*?
 
 Necesitamos un árbitro, un notario que certifique quién es quién. Necesitamos a PKI.
 

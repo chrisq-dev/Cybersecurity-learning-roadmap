@@ -1,3 +1,9 @@
+---
+title: "Firewalls, IDS e IPS: Los Guardias del Castillo"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 6
+---
 # Firewalls, IDS e IPS: Los Guardias del Castillo
 
 ## Objetivo del Módulo

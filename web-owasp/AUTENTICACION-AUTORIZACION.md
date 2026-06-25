@@ -1,3 +1,9 @@
+---
+title: "Autenticación vs Autorización: Robando Llaves Ajenas"
+tiempo_estimado: "5 min"
+minutos_lectura: 5
+secciones: 5
+---
 # Autenticación vs Autorización: Robando Llaves Ajenas
 
 ## Objetivo del Módulo

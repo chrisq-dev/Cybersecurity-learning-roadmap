@@ -1,3 +1,9 @@
+---
+title: "IAM Avanzado: Escalada de Privilegios y Máscaras"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 5
+---
 # IAM Avanzado: Escalada de Privilegios y Máscaras
 
 ## Objetivo del Módulo

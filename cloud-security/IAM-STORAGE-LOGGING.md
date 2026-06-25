@@ -1,3 +1,9 @@
+---
+title: "IAM, Storage y Logs: Las Piezas Clave de la Nube"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 5
+---
 # IAM, Storage y Logs: Las Piezas Clave de la Nube
 
 ## Objetivo del Módulo

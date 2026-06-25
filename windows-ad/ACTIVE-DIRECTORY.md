@@ -1,3 +1,9 @@
+---
+title: "Active Directory: El Trono de Hierro"
+tiempo_estimado: "5 min"
+minutos_lectura: 5
+secciones: 6
+---
 # Active Directory: El Trono de Hierro
 
 ## Objetivo del Módulo

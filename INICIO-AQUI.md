@@ -1,23 +1,29 @@
+---
+title: "Inicio Aquí"
+tiempo_estimado: "2 min"
+minutos_lectura: 2
+secciones: 5
+---
 # Inicio Aquí
 
 Esta es la entrada recomendada para estudiar la guía. La idea es avanzar poco a poco, en orden, entendiendo primero fundamentos y después áreas más especializadas.
 
-No necesitas leer todo en un día. Usa la web como biblioteca de recursos: abre una guía, estudia el concepto, revisa ejemplos, practica en entornos seguros y vuelve cuando necesites reforzar.
+No necesitas leer todo en un día. Usa la web como biblioteca de recursos: abre una guía, estudia el concepto, revisa ejemplos, práctica en entornos seguros y vuelve cuando necesites reforzar.
 
 ## Orden Recomendado
 
 Empieza con esta secuencia:
 
-1. [Computación Básica](fundamentos/COMPUTACION-BASICA.md)
-2. [Sistemas Operativos](fundamentos/SISTEMAS-OPERATIVOS.md)
-3. [Identidad y Permisos](fundamentos/IDENTIDAD-PERMISOS.md)
-4. [Base de Seguridad](fundamentos/BASE-DE-SEGURIDAD.md)
-5. [Fundamentos de Redes](redes-cisco/FUNDAMENTOS-REDES.md)
-6. [Modelo OSI y TCP/IP](redes-cisco/MODELO-OSI-TCPIP.md)
-7. [DNS, DHCP y NAT](redes-cisco/DNS-DHCP-NAT.md)
-8. [Fundamentos de Linux](linux/FUNDAMENTOS-LINUX.md)
-9. [Fundamentos Web](web-owasp/FUNDAMENTOS-WEB.md)
-10. [Fundamentos Blue Team](blue-team/FUNDAMENTOS-BLUE-TEAM.md)
+1. [Computación Básica](fundamentos/computacion-basica.md)
+2. [Sistemas Operativos](fundamentos/sistemas-operativos.md)
+3. [Identidad y Permisos](fundamentos/identidad-permisos.md)
+4. [Base de Seguridad](fundamentos/base-de-seguridad.md)
+5. [Fundamentos de Redes](redes-cisco/fundamentos-redes.md)
+6. [Modelo OSI y TCP/IP](redes-cisco/modelo-osi-tcpip.md)
+7. [DNS, DHCP y NAT](redes-cisco/dns-dhcp-nat.md)
+8. [Fundamentos de Linux](linux/fundamentos-linux.md)
+9. [Fundamentos Web](web-owasp/fundamentos-web.md)
+10. [Fundamentos Blue Team](blue-team/fundamentos-blue-team.md)
 
 ## Cómo Usar la Web
 
@@ -68,7 +74,7 @@ Módulos principales:
 - Database Security.
 - Containers Kubernetes.
 
-### 4. Especializacion y Portafolio
+### 4. Especialización y Portafolio
 
 Objetivo: conectar conocimiento con proyectos, reportes y perfil profesional.
 

@@ -1,3 +1,9 @@
+---
+title: "Seguridad en Kubernetes (K8s): El Director de Orquesta"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 4
+---
 # Seguridad en Kubernetes (K8s): El Director de Orquesta
 
 ## Objetivo del Módulo

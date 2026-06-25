@@ -1,3 +1,9 @@
+---
+title: "Playbook: Fuga de Datos y Extorsión"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 3
+---
 # Playbook: Fuga de Datos y Extorsión
 
 ## Objetivo del Módulo

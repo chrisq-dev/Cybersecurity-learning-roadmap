@@ -1,3 +1,9 @@
+---
+title: "SIEM y MITRE ATT&CK: El Cerebro y El Diccionario"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 5
+---
 # SIEM y MITRE ATT&CK: El Cerebro y El Diccionario
 
 ## Objetivo del Módulo

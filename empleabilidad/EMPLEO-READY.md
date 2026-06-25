@@ -1,3 +1,9 @@
+---
+title: "El Semáforo de Lanzamiento: ¿Cuándo estoy listo?"
+tiempo_estimado: "3 min"
+minutos_lectura: 3
+secciones: 4
+---
 # El Semáforo de Lanzamiento: ¿Cuándo estoy listo?
 
 ## Objetivo del Módulo

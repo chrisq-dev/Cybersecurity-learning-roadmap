@@ -1,3 +1,9 @@
+---
+title: "El Protocolo HTTP: El Mesero Sordo"
+tiempo_estimado: "5 min"
+minutos_lectura: 5
+secciones: 6
+---
 # El Protocolo HTTP: El Mesero Sordo
 
 ## Objetivo del Módulo

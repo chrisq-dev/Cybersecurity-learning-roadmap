@@ -1,3 +1,9 @@
+---
+title: "Metodología y Ética: El Ladrón Profesional"
+tiempo_estimado: "5 min"
+minutos_lectura: 5
+secciones: 4
+---
 # Metodología y Ética: El Ladrón Profesional
 
 ## Objetivo del Módulo

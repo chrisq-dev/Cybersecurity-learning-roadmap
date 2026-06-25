@@ -1,3 +1,9 @@
+---
+title: "Backups: La Máquina del Tiempo"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 4
+---
 # Backups: La Máquina del Tiempo
 
 ## Objetivo del Módulo

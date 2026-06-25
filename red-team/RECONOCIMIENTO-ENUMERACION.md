@@ -1,3 +1,9 @@
+---
+title: "Reconocimiento y Enumeración: Midiendo el Muro"
+tiempo_estimado: "5 min"
+minutos_lectura: 5
+secciones: 6
+---
 # Reconocimiento y Enumeración: Midiendo el Muro
 
 ## Objetivo del Módulo

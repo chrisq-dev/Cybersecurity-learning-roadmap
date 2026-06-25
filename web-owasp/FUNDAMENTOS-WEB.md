@@ -1,3 +1,9 @@
+---
+title: "Fundamentos Web: La Arquitectura del Restaurante"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 4
+---
 # Fundamentos Web: La Arquitectura del Restaurante
 
 ## Objetivo del Módulo

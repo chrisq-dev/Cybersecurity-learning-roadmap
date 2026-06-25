@@ -1,3 +1,9 @@
+---
+title: "Playbook: Compromiso por Phishing"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 3
+---
 # Playbook: Compromiso por Phishing
 
 ## Objetivo del Módulo

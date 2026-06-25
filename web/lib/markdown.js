@@ -106,6 +106,51 @@ const PAGE_ORDER = {
   writeups: ['PLANTILLA-REPORTE'],
 };
 
+function slugifyPart(value) {
+  return value.replace(/\.md$/i, '').toLowerCase();
+}
+
+function countSections(content) {
+  const matches = content.match(/^##\s+.+$/gm);
+  return matches ? matches.length : 0;
+}
+
+function estimateReadingTime(content) {
+  const words = createSearchText(content).split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 220));
+}
+
+function createPageStats(content, data = {}) {
+  const sectionCount = Number(data.secciones) || countSections(content);
+  const readingMinutes = Number(data.minutos_lectura) || estimateReadingTime(content);
+
+  return {
+    sectionCount,
+    readingMinutes,
+    previewLabel: data.tiempo_estimado || `${readingMinutes} min de lectura`,
+    sectionLabel: sectionCount === 1 ? '1 sección' : `${sectionCount} secciones`,
+  };
+}
+
+function resolveMarkdownFilePath(slug) {
+  const normalizedSlug = slug.map((part) => part.toLowerCase());
+
+  if (normalizedSlug.length === 1) {
+    const fileName = PUBLIC_ROOT_FILES.find((name) => slugifyPart(name) === normalizedSlug[0]);
+    return fileName ? path.join(ROOT_DIR, fileName) : null;
+  }
+
+  const folderPath = path.join(ROOT_DIR, ...normalizedSlug.slice(0, -1));
+  if (!fs.existsSync(folderPath)) return null;
+
+  const requestedFile = `${normalizedSlug[normalizedSlug.length - 1]}.md`;
+  const fileName = fs
+    .readdirSync(folderPath)
+    .find((entry) => entry.toLowerCase() === requestedFile);
+
+  return fileName ? path.join(folderPath, fileName) : null;
+}
+
 function sortPagesByStudyOrder(folder, pages) {
   const order = PAGE_ORDER[folder] || [];
 
@@ -137,7 +182,7 @@ function getMarkdownFilesRecursive(dir, relativeParts = []) {
     if (entry.isFile() && entry.name.endsWith('.md')) {
       files.push({
         filePath: path.join(dir, entry.name),
-        slugParts: [...relativeParts, entry.name.replace('.md', '')],
+        slugParts: [...relativeParts.map(slugifyPart), slugifyPart(entry.name)],
         fileName: entry.name,
       });
     }
@@ -263,13 +308,14 @@ export function getContentStructure() {
         }
 
         rootFiles.push({
-          slug: [item.name.replace('.md', '')],
+          slug: [slugifyPart(item.name)],
           title: title,
           fileName: item.name,
           isRoot: true,
           level: inferLevel({ fileName: item.name, title, isRoot: true }),
           searchText: createSearchText(fileContent),
-          excerpt: createExcerpt(fileContent)
+          excerpt: createExcerpt(fileContent),
+          stats: createPageStats(fileContent, data),
         });
       }
     }
@@ -318,7 +364,8 @@ export function getContentStructure() {
           isRoot: false,
           level: inferLevel({ folder: item.name, fileName: file.fileName, title }),
           searchText: createSearchText(fileContent),
-          excerpt: createExcerpt(fileContent)
+          excerpt: createExcerpt(fileContent),
+          stats: createPageStats(fileContent, data),
         });
       });
 
@@ -390,17 +437,9 @@ export function getContentStructure() {
 
 // Read content of a specific markdown file by its slug path
 export function getMarkdownContent(slug) {
-  let filePath = '';
+  const filePath = resolveMarkdownFilePath(slug);
 
-  if (slug.length === 1) {
-    // Root file
-    filePath = path.join(ROOT_DIR, `${slug[0]}.md`);
-  } else {
-    // Subfolder file, including nested content paths
-    filePath = path.join(ROOT_DIR, ...slug.slice(0, -1), `${slug[slug.length - 1]}.md`);
-  }
-
-  if (!fs.existsSync(filePath)) {
+  if (!filePath || !fs.existsSync(filePath)) {
     return null;
   }
 
@@ -417,6 +456,7 @@ export function getMarkdownContent(slug) {
   return {
     meta: data,
     content: content.replace(/^#\s+.+$/m, ''), // Remove title from content body to avoid duplication
-    title: title
+    title: title,
+    stats: createPageStats(content, data),
   };
 }

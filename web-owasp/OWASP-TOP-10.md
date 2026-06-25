@@ -1,3 +1,9 @@
+---
+title: "OWASP Top 10: El Catálogo Universal"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 6
+---
 # OWASP Top 10: El Catálogo Universal
 
 ## Objetivo del Módulo

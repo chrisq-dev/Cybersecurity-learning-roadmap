@@ -1,3 +1,9 @@
+---
+title: "Inyección SQL (SQLi): Engañando al Archivero"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 6
+---
 # Inyección SQL (SQLi): Engañando al Archivero
 
 ## Objetivo del Módulo

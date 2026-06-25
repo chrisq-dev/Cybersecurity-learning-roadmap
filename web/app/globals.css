@@ -137,6 +137,52 @@ a:hover {
   text-decoration-color: var(--accent-primary);
 }
 
+.route-preview-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.route-preview-link span {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.route-preview-link small {
+  color: var(--text-dark);
+  font-size: 0.78rem;
+}
+
+.route-preview-link:hover span {
+  color: var(--accent-primary);
+}
+
+.github-star-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.72rem 1.1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--text-main);
+  color: var(--bg-main);
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 8px 20px var(--border-glow);
+}
+
+.github-star-button:hover {
+  background: var(--accent-primary);
+  color: #ffffff;
+  text-decoration: none;
+  border-color: var(--accent-primary);
+}
+
 /* ── Code ───────────────────────────────────────── */
 code {
   font-family: 'Fira Code', monospace;

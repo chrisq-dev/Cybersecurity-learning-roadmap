@@ -1,3 +1,9 @@
+---
+title: "DNS, DHCP y NAT: Los Servicios Invisibles"
+tiempo_estimado: "5 min"
+minutos_lectura: 5
+secciones: 6
+---
 # DNS, DHCP y NAT: Los Servicios Invisibles
 
 ## Objetivo del Módulo

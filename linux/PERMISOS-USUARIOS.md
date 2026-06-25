@@ -1,3 +1,9 @@
+---
+title: "Permisos y Usuarios: El Castillo y Sus Reglas"
+tiempo_estimado: "5 min"
+minutos_lectura: 5
+secciones: 7
+---
 # Permisos y Usuarios: El Castillo y Sus Reglas
 
 ## Objetivo del Módulo

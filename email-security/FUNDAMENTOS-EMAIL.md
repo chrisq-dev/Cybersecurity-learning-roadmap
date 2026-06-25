@@ -1,3 +1,9 @@
+---
+title: "Fundamentos de Correo Electrónico: El Sello de Cera Real"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 4
+---
 # Fundamentos de Correo Electrónico: El Sello de Cera Real
 
 ## Objetivo del Módulo
@@ -26,7 +32,7 @@ Para arreglar esta falla masiva, la industria de Ciberseguridad no destruyó el 
 Si tu empresa no tiene configurados estos tres protocolos, tus correos se irán a la bandeja de "Spam" automáticamente, y los hackers podrán enviar correos falsos fingiendo ser tu CEO.
 
 ### 1. SPF (Sender Policy Framework): La Lista de Carteros Autorizados
-*   **La Analogía:** El CEO de la empresa publica una lista oficial pegada en la puerta que dice: *"Solamente Juan y María están autorizados para enviar cartas a mi nombre. Si reciben una carta de mi parte entregada por Pedro, es falsa"*.
+*   **La Analogía:** El CEO de la empresa pública una lista oficial pegada en la puerta que dice: *"Solamente Juan y María están autorizados para enviar cartas a mi nombre. Si reciben una carta de mi parte entregada por Pedro, es falsa"*.
 *   **La Función:** SPF es un registro público en los servidores de internet (DNS). Le dice al mundo cuáles son las Direcciones IP específicas que la empresa Microsoft ha autorizado para que envíen correos desde `@microsoft.com`. Si llega un correo desde una IP en Rusia, el receptor mira la lista pública, ve que Rusia no está en la lista de Carteros Oficiales, y sospecha.
 
 ### 2. DKIM (DomainKeys Identified Mail): El Sello de Cera Real
@@ -36,7 +42,7 @@ SPF es bueno, pero las cartas pueden ser alteradas en el camino por un Hombre en
 
 ### 3. DMARC: El Ejecutor de Órdenes
 Tengo la lista de carteros (SPF) y tengo el sello (DKIM). Pero, ¿Qué hago si una carta falla la prueba?
-*   **La Función:** DMARC es la regla final de Gobierno (Fase 20) que el dueño del dominio publica para el mundo:
+*   **La Función:** DMARC es la regla final de Gobierno (Fase 20) que el dueño del dominio pública para el mundo:
     1.  *Política "None":* "Si falla la prueba, déjalo pasar de todas formas" (Inútil).
     2.  *Política "Quarantine":* "Si falla la prueba, mándalo a la carpeta de SPAM del usuario".
     3.  *Política "Reject":* (El objetivo corporativo supremo): "Si el correo no tiene mi Sello DKIM y no viene de mi Cartero SPF... **Destrúyelo inmediatamente. No dejes que el usuario lo vea ni siquiera en su carpeta de SPAM**".

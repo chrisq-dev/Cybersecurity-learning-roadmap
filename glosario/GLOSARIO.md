@@ -1,3 +1,9 @@
+---
+title: "Glosario de Ciberseguridad"
+tiempo_estimado: "9 min"
+minutos_lectura: 9
+secciones: 8
+---
 # Glosario de Ciberseguridad
 
 Este glosario existe para que no te pierdas cuando una guía mencione términos técnicos. No está pensado para memorizar definiciones, sino para entender qué significa cada concepto, por qué importa y con qué otros temas se conecta.

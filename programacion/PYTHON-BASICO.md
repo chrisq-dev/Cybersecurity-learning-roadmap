@@ -1,3 +1,9 @@
+---
+title: "Python Básico: Escribiéndole al Robot"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 6
+---
 # Python Básico: Escribiéndole al Robot
 
 ## Objetivo del Módulo

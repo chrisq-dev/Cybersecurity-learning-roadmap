@@ -1,3 +1,9 @@
+---
+title: "Riesgos y Controles de API: Hackeando al Mesero"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 4
+---
 # Riesgos y Controles de API: Hackeando al Mesero
 
 ## Objetivo del Módulo

@@ -1,3 +1,9 @@
+---
+title: "Base de Seguridad: El Arte de Gestionar Riesgos"
+tiempo_estimado: "6 min"
+minutos_lectura: 6
+secciones: 6
+---
 # Base de Seguridad: El Arte de Gestionar Riesgos
 
 ## Objetivo del Módulo

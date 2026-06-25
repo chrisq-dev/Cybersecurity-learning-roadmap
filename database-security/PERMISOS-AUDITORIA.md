@@ -1,3 +1,9 @@
+---
+title: "Permisos y Auditoría de DB: Las Gafas Mágicas y la Cámara de Seguridad"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 4
+---
 # Permisos y Auditoría de DB: Las Gafas Mágicas y la Cámara de Seguridad
 
 ## Objetivo del Módulo

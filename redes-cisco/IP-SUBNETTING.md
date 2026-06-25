@@ -1,3 +1,9 @@
+---
+title: "Direcciones IP y Subnetting: El GPS de Internet"
+tiempo_estimado: "5 min"
+minutos_lectura: 5
+secciones: 7
+---
 # Direcciones IP y Subnetting: El GPS de Internet
 
 ## Objetivo del Módulo

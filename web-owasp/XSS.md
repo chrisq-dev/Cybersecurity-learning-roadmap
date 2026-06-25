@@ -1,3 +1,9 @@
+---
+title: "XSS (Cross-Site Scripting): El Parásito del Navegador"
+tiempo_estimado: "5 min"
+minutos_lectura: 5
+secciones: 6
+---
 # XSS (Cross-Site Scripting): El Parásito del Navegador
 
 ## Objetivo del Módulo

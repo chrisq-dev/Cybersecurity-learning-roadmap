@@ -107,7 +107,7 @@ docker compose up --build
 
 ## Nota Sobre Build
 
-`next build` puede mostrar un warning de Turbopack/NFT porque la app lee Markdown e imágenes desde el directorio padre del proyecto `web/`. Es una decisión intencional para mantener el contenido como archivos Markdown normales en la raíz del repositorio. El build sigue generando las paginas correctamente.
+`next build` puede mostrar un warning de Turbopack/NFT porque la app lee Markdown e imágenes desde el directorio padre del proyecto `web/`. Es una decisión intencional para mantener el contenido como archivos Markdown normales en la raíz del repositorio. El build sigue generando las páginas correctamente.
 
 ## Criterio de Calidad
 

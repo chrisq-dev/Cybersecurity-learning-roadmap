@@ -1,3 +1,9 @@
+---
+title: "Continuidad y DRP: El Simulacro de Incendio"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 4
+---
 # Continuidad y DRP: El Simulacro de Incendio
 
 ## Objetivo del Módulo

@@ -1,3 +1,9 @@
+---
+title: "CV y LinkedIn: El Pitch de Ventas"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 5
+---
 # CV y LinkedIn: El Pitch de Ventas
 
 ## Objetivo del Módulo
@@ -42,7 +48,7 @@ El 99% de los candidatos escribe su experiencia laboral como si fuera una lista 
 Tu CV es lo que entregas cuando pides trabajo. Tu LinkedIn es tu "Megáfono" (Fase 22) para que el trabajo te encuentre a ti.
 
 1.  **El Título (Headline):** No pongas *"Estudiante de Ciberseguridad"*. Pon *"Analista de Ciberseguridad Jr | Blue Team | SIEM & Respuesta a Incidentes"*. Véndete por el puesto que quieres, no por el que tienes.
-2.  **Publicar Valor (Open Source Intelligence):** Documenta tu aprendizaje. Cada vez que termines un laboratorio práctico (TryHackMe) o leas sobre una vulnerabilidad nueva, publica un pequeño resumen técnico en LinkedIn. Los reclutadores usan herramientas OSINT (Fase 21) para buscar talento apasionado. Alguien que publica contenido técnico una vez a la semana destruye a 100 candidatos con maestría que nunca publican nada.
+2.  **Publicar Valor (Open Source Intelligence):** Documenta tu aprendizaje. Cada vez que termines un laboratorio práctico (TryHackMe) o leas sobre una vulnerabilidad nueva, pública un pequeño resumen técnico en LinkedIn. Los reclutadores usan herramientas OSINT (Fase 21) para buscar talento apasionado. Alguien que pública contenido técnico una vez a la semana destruye a 100 candidatos con maestría que nunca publican nada.
 
 ---
 

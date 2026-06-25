@@ -1,3 +1,9 @@
+---
+title: "IAM Corporativo: La Tarjeta de Hotel"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 4
+---
 # IAM Corporativo: La Tarjeta de Hotel
 
 ## Objetivo del Módulo

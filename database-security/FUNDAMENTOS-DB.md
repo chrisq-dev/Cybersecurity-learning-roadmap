@@ -1,3 +1,9 @@
+---
+title: "Fundamentos de Bases de Datos: El Maletín y La Bóveda"
+tiempo_estimado: "4 min"
+minutos_lectura: 4
+secciones: 4
+---
 # Fundamentos de Bases de Datos: El Maletín y La Bóveda
 
 ## Objetivo del Módulo
