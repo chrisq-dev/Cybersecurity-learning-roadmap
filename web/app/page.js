@@ -1,7 +1,7 @@
 import { getContentStructure } from '../lib/markdown';
 import Link from 'next/link';
 import { SiLinux, SiPython, SiGnubash, SiCisco, SiOwasp, SiDocker, SiKubernetes, SiKalilinux } from 'react-icons/si';
-import { FaNetworkWired, FaShieldAlt, FaSatelliteDish, FaWindows, FaAws } from 'react-icons/fa';
+import { FaNetworkWired, FaShieldAlt, FaSatelliteDish, FaWindows, FaAws, FaRobot, FaMobileAlt, FaUserSecret, FaMicrochip } from 'react-icons/fa';
 
 const techIcons = [
   { Icon: SiLinux, color: '#FCC624', title: 'Linux' },
@@ -17,6 +17,10 @@ const techIcons = [
   { Icon: SiDocker, color: '#2496ED', title: 'Docker' },
   { Icon: SiKubernetes, color: '#326CE5', title: 'Kubernetes' },
   { Icon: FaAws, color: '#FF9900', title: 'AWS' },
+  { Icon: FaRobot, color: '#10A37F', title: 'Inteligencia Artificial' },
+  { Icon: FaMobileAlt, color: '#3DDC84', title: 'Seguridad Móvil' },
+  { Icon: FaUserSecret, color: 'var(--text-main)', title: 'OSINT' },
+  { Icon: FaMicrochip, color: '#E42117', title: 'Hardware Hacking / IoT' },
 ];
 
 const profileRoutes = [
