@@ -1,218 +1,102 @@
-# Python para Ciberseguridad
+# Python para Seguridad: La Navaja Suiza
 
-## Objetivo
+## Objetivo del Módulo
 
-Usar Python para automatizar tareas simples de seguridad.
+Entender por qué nadie en Ciberseguridad pierde el tiempo escribiendo programas de 1,000 líneas en C++ o Java cuando están en medio de una respuesta a incidentes.
 
-Python no te hace buen analista por si solo. Te vuelve más eficiente si lo usas para repetir menos trabajo manual, procesar evidencia, validar datos y comunicar resultados reproducibles.
+Cuando un servidor está bajo ataque, cada segundo cuenta. Necesitas una herramienta que te permita escribir un script en 3 minutos, correrlo y apagar el incendio. Python es famoso por ser un lenguaje de "pegamento": te permite conectar el Sistema Operativo, Internet y bases de datos usando un par de comandos simples gracias a sus **Librerías**.
 
-## Mapa Mental
+---
 
-```text
-entrada -> validación -> procesamiento -> resumen -> conclusión -> límites
-```
+## 1. La Analogía: El Taller y las Librerías
 
-Antes de escribir código pregunta:
+Imagina que Python es un Taller de Herramientas vacío. Tienes la mesa de trabajo (Variables) y el motor eléctrico (Bucles), pero no tienes destornilladores ni martillos.
 
-- Que dato entra;
-- Que formato tiene;
-- Que errores pueden ocurrir;
-- Que resultado necesito;
-- Como voy a documentarlo;
-- Que no debo exponer.
+Para no tener que inventar el martillo desde cero, Python te permite **Importar Librerías**. Una librería es una caja de herramientas pre-fabricada que alguien más inteligente que tú ya programó, y que tú puedes descargar gratis.
 
-## Casos de Uso
+Si quieres controlar tu computadora, importas la librería de Sistema Operativo (`os`).
+Si quieres conectarte a Internet y descargar páginas web, importas la librería `requests`.
 
-- Leer logs.
-- Contar eventos.
-- Calcular hashes.
-- Leer JSON y CSV.
-- Consultar APIs.
-- Comunicar resultados.
+> **Importante:**
+> En ciberseguridad, NUNCA escribas desde cero algo que ya existe en una librería. Un buen hacker no inventa algoritmos de criptografía nuevos; simplemente importa la librería `hashlib` y la usa.
 
-## Buenas Prácticas
+---
 
-- No pongas secretos en el código.
-- Maneja errores esperados.
-- No modifiques evidencia original.
-- Escribe salidas claras.
-- Usa nombres entendibles.
-- Documenta como ejecutar el script.
-- Valida datos antes de confiar en ellos.
-- Guarda reportes en formatos simples como Markdown o CSV.
+## 2. La Librería `os` (Controlando la Máquina)
 
-## Conceptos Base
+La librería `os` (Operating System) le da a tu script de Python el poder de interactuar con el sistema operativo (Linux o Windows) como si estuvieras tecleando en la consola.
 
-- Variables.
-- Listas.
-- Diccionarios.
-- Condiciones.
-- Loops.
-- Funciones.
-- Manejo de archivos.
-- Manejo de errores.
+¿Por qué es letal? Porque si un atacante sube un script de Python a tu servidor, puede usar la librería `os` para ejecutar comandos directamente en tu máquina.
 
-## Estructura de Script Útil
-
-```text
-1. Leer argumentos.
-2. Validar entradas.
-3. Procesar datos.
-4. Generar resumen.
-5. Escribir salida clara.
-6. Devolver código de salida claro.
-```
-
-## Ejemplo: Leer un Archivo
+**Ejemplo Defensivo (Blue Team):**
+Imagina que quieres escribir un script que borre todos los archivos basura de la carpeta temporal `/tmp` de Linux automáticamente.
 
 ```python
-from pathlib import Path
+import os # Traemos la caja de herramientas del sistema operativo
 
-path = Path("ejemplo.log")
+# Le decimos a Python que ejecute el comando clásico de borrar en Linux (rm)
+os.system("rm -rf /tmp/*")
 
-for line in path.read_text().splitlines():
-    if "failed" in line.lower():
-        print(line)
+print("Carpeta temporal limpiada con éxito.")
 ```
 
-## Ejemplo: Argumentos
+**Ejemplo Ofensivo (Red Team):**
+Un atacante usa la misma librería para pedirle a tu máquina que se conecte a su servidor para enviarle una consola inversa (Reverse Shell). Python es agnóstico: no le importa si la orden es buena o mala, solo la ejecuta.
+
+---
+
+## 3. La Librería `requests` (Robando la Web)
+
+Esta es la librería más famosa del mundo para conectarse a Internet.
+En lugar de abrir Google Chrome, escribir una URL y darle "Enter", le dices a Python que haga exactamente lo mismo por debajo del capó.
 
 ```python
-import argparse
-from pathlib import Path
+import requests # Traemos la caja de herramientas de Internet
 
-parser = argparse.ArgumentParser(description="Cuenta eventos en un log")
-parser.add_argument("logfile", help="Ruta del archivo de log")
-parser.add_argument("--word", default="failed", help="Palabra a buscar")
-args = parser.parse_args()
+# Le decimos a Python que simule ser un navegador y visite la página
+respuesta = requests.get("https://banco.com")
 
-path = Path(args.logfile)
-
-if not path.exists():
-    raise SystemExit(f"No existe el archivo: {path}")
-
-count = 0
-for line in path.read_text().splitlines():
-    if args.word.lower() in line.lower():
-        count += 1
-
-print(f"Coincidencias: {count}")
+# Python nos dirá qué le respondió el servidor (El Código HTTP)
+print(respuesta.status_code)
 ```
 
-## Ejemplo: Hash SHA256
+### ¿Por qué lo usan los atacantes?
+Si un atacante quiere hacer un ataque de "Fuerza Bruta" para adivinar tu contraseña, no va a sentarse frente al teclado a escribir contraseñas 5,000 veces en la pantalla de *Login*. Va a escribir un script con un bucle `for`, y usará `requests.post()` para inyectar 5,000 contraseñas por segundo directamente en las tuberías ocultas del sitio web.
+
+### ¿Por qué lo usan los defensores?
+Si tienes un archivo de texto con 500 correos electrónicos sospechosos, no vas a copiar y pegar uno por uno en una página web de seguridad para ver si son virus. Escribes un script que usa `requests` para enviarle los 500 correos a la base de datos de Microsoft, y te devuelve la respuesta en milisegundos.
+
+---
+
+## 4. Laboratorio Mental: El Analista Automatizado
+
+Juntemos todo lo que hemos aprendido (Variables, Condicionales, Bucles y Librerías).
+Lee este script en inglés básico e intenta entender qué está decidiendo el robot:
 
 ```python
-from hashlib import sha256
-from pathlib import Path
+import requests
 
-path = Path("archivo.txt")
-digest = sha256(path.read_bytes()).hexdigest()
-print(digest)
+lista_urls_sospechosas = ["http://malware.com", "http://google.com", "http://phishing-banco.com"]
+
+for sitio in lista_urls_sospechosas:
+    respuesta = requests.get(sitio)
+    
+    # El código HTTP 200 significa "Página Viva y Funcionando"
+    if respuesta.status_code == 200:
+        print("¡ALERTA! El sitio " + sitio + " sigue vivo y activo en internet.")
+    else:
+        print("El sitio " + sitio + " parece estar caído.")
 ```
 
-## Ejemplo de Salida Legible
+**¿Qué acaba de pasar?** En 10 líneas de código, construiste un escáner automatizado de *Threat Intelligence* que revisa si los servidores de los hackers siguen vivos en internet, sin necesidad de que tú abras Google Chrome y te arriesgues a infectar tu propia computadora.
 
-```python
-from pathlib import Path
+---
 
-total = 12
-fallos = 5
+## 5. Criterio de Dominio (Autoevaluación)
 
-report = f"""# Resumen de Log
+Revisa si dominas las herramientas tácticas:
 
-## Resultado
-
-- Total de eventos: {total}
-- Fallos: {fallos}
-"""
-
-Path("resumen.txt").write_text(report)
-```
-
-## Manejo de Errores
-
-Errores esperados:
-
-- Archivo no existe;
-- Permisos insuficientes;
-- Formato incorrecto;
-- Campo faltante;
-- API no responde;
-- JSON invalido.
-
-No ignores errores. Conviertelos en mensajes útiles.
-
-## Seguridad al Programar
-
-Evita:
-
-- Imprimir tokens;
-- Subir archivos sensibles;
-- Ejecutar comandos con input no validado;
-- Sobrescribir evidencia;
-- Mezclar datos reales con pruebas;
-- Guardar passwords en scripts.
-
-## Ejemplo de Automatización
-
-Un script de ejemplo puede:
-
-- Leer un archivo de texto.
-- Contar lineas.
-- Buscar una palabra.
-- Generar un resumen.
-
-Para hacerlo más robusto conviene considerar:
-
-- Aceptar el nombre del archivo como argumento.
-- Manejar errores si el archivo no existe.
-- Guardar resultado en un formato legible.
-
-## Ejemplo de Parser de Log
-
-Un parser de log puede leer eventos como estos:
-
-```text
-2026-06-23 user=admin src_ip=203.0.113.10 result=failed
-2026-06-23 user=admin src_ip=203.0.113.10 result=success
-```
-
-El resultado esperado debería resumir:
-
-- Total de lineas;
-- Total de `failed`;
-- Total de `success`;
-- Usuarios vistos;
-- IPs vistas;
-- Resumen legible.
-
-## Ejemplo de resultado
-
-Un resumen de parser de logs debe explicar:
-
-1. Objetivo;
-2. Comando usado;
-3. Salida;
-4. Errores encontrados;
-5. Explicación del código;
-6. Mejora futura.
-
-## Errores Comunes
-
-- Escribir scripts que solo funcionan en tu máquina.
-- No manejar archivos inexistentes.
-- No documentar uso.
-- No validar formato.
-- Mezclar credenciales con código.
-- No explicar resultados.
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Leer archivos.
-- Usar diccionarios.
-- Contar eventos.
-- Manejar errores simples.
-- Explicar tu script linea por linea.
-- Generar un reporte reproducible sin exponer secretos.
+1. ¿Por qué es un error terrible intentar escribir todo el código matemático de un escáner de red desde cero en lugar de usar un comando como `import nmap`?
+2. Si un malware de Python tiene la línea `os.system("whoami")`, ¿Qué está intentando averiguar el atacante sobre tu servidor Linux?
+3. En la librería `requests`, si el `status_code` que te devuelve la página es `404`, ¿Qué significa eso en el estándar de internet y por qué sería una buena noticia para un analista de seguridad que está cazando una URL maliciosa?
+4. El jefe te pide crear 50 carpetas nuevas en Windows, una para cada empleado. ¿Usarías la librería `requests` o la librería `os` para automatizar este trabajo?

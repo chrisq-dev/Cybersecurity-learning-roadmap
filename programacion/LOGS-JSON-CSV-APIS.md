@@ -1,278 +1,114 @@
-# Logs, JSON, CSV y APIs
+# Parseo de Logs y APIs: El Analista de Datos
 
-## Objetivo
+## Objetivo del Módulo
 
-Trabajar con formatos comunes en seguridad. Muchos datos vienen como logs de texto, JSON de APIs o CSV de inventarios.
+Aprender la habilidad número uno de un analista de seguridad defensiva (Blue Team): Leer, filtrar y entender archivos de texto gigantescos de forma automática.
 
-Un analista que sabe transformar datos trabaja mejor: convierte logs sueltos en evidencia, inventarios en prioridades y respuestas de APIs en reportes.
+Un Firewall de nivel empresarial no genera "un par" de alertas al día. Genera **20 millones de líneas de texto diarias** anotando cada paquete de red que entró o salió. Nadie en el mundo lee eso con sus propios ojos. Tu trabajo es escribir un script en Python que lea el archivo, separe la basura de la evidencia real, y te entregue un reporte de 5 líneas con las Direcciones IP de los verdaderos atacantes. A esto se le llama **Parseo (Parsing)**.
 
-## Mapa Mental
+---
 
+## 1. Archivos CSV: La Hoja de Excel Fea
+
+Un archivo CSV (Comma-Separated Values) es simplemente una tabla de Excel, pero guardada como texto puro donde las columnas están separadas por comas. Es el formato favorito de los firewalls antiguos para exportar sus bitácoras.
+
+**Ejemplo de log.csv:**
 ```text
-log/json/csv/api -> parseo -> normalizacion -> conteo -> hallazgo -> reporte
+Fecha,Hora,IP_Origen,Puerto_Destino,Accion
+2024-10-12,14:30:21,192.168.1.5,443,Permitido
+2024-10-12,14:30:22,8.8.8.8,22,Denegado
+2024-10-12,14:30:23,45.2.1.9,22,Denegado
 ```
 
-La clave es no perder contexto: usuario, host, IP, hora, acción y resultado.
-
-## Logs de Texto
-
-Ejemplo:
-
-```text
-2026-06-23 user=admin src_ip=203.0.113.10 result=failed
-```
-
-Leer y buscar:
+### Parseando el CSV con Python
+Si quieres saber todas las IPs que fueron "Denegadas", no abres Excel. Usas Python:
 
 ```python
-from pathlib import Path
+import csv # Librería oficial de Python para leer CSVs
 
-for line in Path("auth.log").read_text().splitlines():
-    if "result=failed" in line:
-        print(line)
+# Abrimos el archivo
+with open('log.csv', mode='r') as archivo:
+    lector = csv.DictReader(archivo)
+    
+    print("Las siguientes IPs fueron bloqueadas por intentar entrar:")
+    for fila in lector: # Un Bucle FOR para leer fila por fila
+        if fila['Accion'] == "Denegado":
+            print(fila['IP_Origen']) 
 ```
+**Resultado en pantalla:**
+`8.8.8.8`
+`45.2.1.9`
 
-## Parseo Simple de Campos
+En menos de 5 líneas de código, Python acaba de hacer el trabajo que a un humano le tomaría tres horas si el archivo tuviera 100,000 líneas.
 
-Para logs tipo `key=value`:
+---
 
-```python
-def parse_line(line):
-    event = {}
-    for part in line.split():
-        if "=" in part:
-            key, value = part.split("=", 1)
-            event[key] = value
-    return event
+## 2. JSON: El Idioma Universal de Internet
 
-event = parse_line("user=admin src_ip=203.0.113.10 result=failed")
-print(event["user"])
-```
+CSV es viejo. Hoy en día, casi todos los sistemas modernos (AWS, Azure, APIs web) se comunican enviándose archivos en formato **JSON** (JavaScript Object Notation). 
 
-## Contar Eventos
+JSON parece un diccionario de la vida real. Tiene una "Llave" (La palabra) y un "Valor" (La definición).
 
-```python
-from pathlib import Path
-
-count = 0
-
-for line in Path("auth.log").read_text().splitlines():
-    if "result=failed" in line:
-        count += 1
-
-print(f"Fallos: {count}")
-```
-
-## Agrupar Eventos
-
-```python
-from collections import Counter
-
-users = Counter()
-
-for line in Path("auth.log").read_text().splitlines():
-    event = parse_line(line)
-    if event.get("result") == "failed":
-        users[event.get("user", "unknown")] += 1
-
-print(users)
-```
-
-## JSON
-
-JSON es común en APIs y logs modernos.
-
-Ejemplo:
-
+**Ejemplo de un log de AWS en JSON:**
 ```json
 {
-  "user": "admin",
-  "src_ip": "203.0.113.10",
-  "result": "failed"
+  "usuario": "juan.perez",
+  "ip_conexion": "187.20.10.5",
+  "exito": false,
+  "razon": "Contrasena incorrecta"
 }
 ```
 
-Leer JSON:
+En Python, trabajar con JSON es un sueño porque se convierte automáticamente en un **Diccionario** (Otra "caja" de almacenamiento, como las Listas). Si quieres saber la IP del atacante, simplemente le preguntas al diccionario por su llave: `print(log["ip_conexion"])`.
 
-```python
-import json
-from pathlib import Path
+---
 
-data = json.loads(Path("evento.json").read_text())
-print(data["user"])
-```
+## 3. APIs: Hablando con otros Robots (VirusTotal)
 
-Buenas prácticas:
+Una **API (Application Programming Interface)** es un enchufe o un puerto de servicio. Es la forma en que un robot (tu script de Python) le habla a otro robot en internet sin necesidad de interfaces gráficas.
 
-- Usa `.get()` si un campo puede faltar;
-- Valida tipos;
-- Captura errores de JSON invalido;
-- No asumas que todas las APIs responden igual.
+### El Caso Práctico: Threat Intelligence
+Usando el script de la sección 1, acabas de aislar 500 IPs que fueron "Denegadas" por tu Firewall hoy. El problema es que no sabes si son simples errores de empleados, o si son hackers rusos reales.
 
-## CSV
-
-CSV es común en inventarios y reportes.
-
-Ejemplo:
-
-```csv
-hostname,owner,criticality
-web01,team-web,high
-db01,team-data,critical
-test01,,low
-```
-
-Leer CSV:
-
-```python
-import csv
-from pathlib import Path
-
-with Path("assets.csv").open() as f:
-    reader = csv.DictReader(f)
-    for row in reader:
-        print(row["hostname"], row["owner"])
-```
-
-Preguntas útiles:
-
-- Que filas no tienen owner;
-- Que activos son críticos;
-- Que activos están expuestos;
-- Que campos faltan;
-- Que datos no deberian estar en CSV sin protección.
-
-## APIs
-
-Una API permite consultar o enviar datos entre sistemas.
-
-Ejemplo con `requests`:
+La solución es preguntarle a la base de datos de malware más grande del mundo: **VirusTotal**. Pero no vas a entrar a la página web 500 veces. Vas a usar su API y tu librería `requests`.
 
 ```python
 import requests
 
-response = requests.get("https://api.github.com")
-print(response.status_code)
-print(response.json())
+# Supongamos que esta IP salió de nuestro archivo CSV
+ip_sospechosa = "45.2.1.9"
+
+# La URL mágica de la API de VirusTotal para revisar IPs
+url_api = "https://www.virustotal.com/api/v3/ip_addresses/" + ip_sospechosa
+
+# Nuestra contraseña de acceso (API Key) para que VirusTotal nos deje pasar
+headers = {
+    "x-apikey": "tu_codigo_secreto_aqui12345"
+}
+
+# Hacemos la pregunta a internet (usando requests)
+respuesta = requests.get(url_api, headers=headers)
+
+# VirusTotal siempre responde en formato JSON (El idioma universal).
+# Así que usamos .json() para leerlo
+datos = respuesta.json()
+
+# Parseamos la respuesta para ver cuántos antivirus mundiales marcaron esta IP como "Maliciosa"
+votos_maliciosos = datos['data']['attributes']['last_analysis_stats']['malicious']
+
+print("Esta IP fue marcada como virus por " + str(votos_maliciosos) + " empresas de seguridad.")
 ```
 
-Nota: evita poner tokens directamente en código.
+> **El Ángulo de Ciberseguridad (SOAR):**
+> Lo que acabas de ver arriba es el principio de lo que en el mundo corporativo se llama **SOAR (Security Orchestration, Automation, and Response)**. Las empresas de un billón de dólares no usan analistas humanos para revisar IPs; conectan Firewalls, Python y APIs (como la de VirusTotal o CrowdStrike) para que los sistemas se defiendan, bloqueen atacantes y se manden reportes entre ellos de forma 100% automatizada.
 
-## Tokens y Variables de Entorno
+---
 
-Ejemplo conceptual:
+## 4. Criterio de Dominio (Autoevaluación)
 
-```python
-import os
+Revisa si tu mente ya piensa como un Analista de Datos de Seguridad:
 
-token = os.environ.get("API_TOKEN")
-
-if not token:
-    raise SystemExit("Falta API_TOKEN")
-```
-
-Nunca pegues tokens en el repositorio.
-
-## Manejo de Respuestas
-
-Revisa:
-
-- Status code;
-- Timeout;
-- Errores;
-- Paginacion;
-- Límites de rate;
-- Campos faltantes.
-
-Ejemplo:
-
-```python
-import requests
-
-response = requests.get("https://api.github.com", timeout=10)
-
-if response.status_code != 200:
-    raise SystemExit(f"Error API: {response.status_code}")
-```
-
-## Salida Legible
-
-```python
-from pathlib import Path
-
-reporte = """# Reporte
-
-## Resultado
-
-Se encontraron 3 eventos fallidos.
-"""
-
-Path("resumen.txt").write_text(reporte)
-```
-
-## Ejemplo de Automatización
-
-Un script de ejemplo puede:
-
-- Leer un CSV de activos.
-- Detectar filas sin owner.
-- Generar un resumen legible.
-
-Campos sugeridos:
-
-```csv
-hostname,owner,criticality
-web01,team-web,high
-test01,,low
-db01,team-data,critical
-```
-
-## Ejemplo de Inventario
-
-Entrada:
-
-```csv
-hostname,owner,criticality,exposure
-web01,team-web,high,internet
-test01,,low,internal
-db01,team-data,critical,internal
-vpn01,infra,critical,internet
-```
-
-Salida esperada:
-
-- Total de activos;
-- Activos sin owner;
-- Activos críticos;
-- Activos expuestos a internet;
-- Recomendaciones.
-
-## Ejemplo de resultado
-
-Un resumen de inventario debe incluir:
-
-1. Resumen;
-2. Tabla de hallazgos;
-3. Riesgos;
-4. Recomendaciones;
-5. Limitaciones del script.
-
-## Errores Comunes
-
-- Asumir que todos los campos existen.
-- No manejar CSV mal formado.
-- No usar timeout en APIs.
-- Guardar tokens en código.
-- No documentar versión o fuente de datos.
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Leer logs.
-- Contar eventos.
-- Leer JSON.
-- Leer CSV.
-- Consultar una API simple.
-- Comunicar resultados en un formato legible.
-- Manejar errores de formato, API y campos faltantes.
+1. ¿Cuál es la diferencia visual y de estructura básica entre un archivo CSV (viejo) y un archivo JSON (moderno)?
+2. En el script de VirusTotal, ¿para qué sirve la variable secreta llamada `API Key` y qué pasaría si no la enviaras en la petición web?
+3. Tienes un archivo JSON gigante de un servidor web. El archivo contiene un diccionario con la llave `"user_agent"` que guarda qué navegador usó el usuario (Ej. Chrome, Firefox). Estás buscando un atacante que usó una herramienta hacker llamada "Nmap". ¿Cómo usarías un bucle `for` y una condicional `if` mentalmente para cazarlo?
+4. ¿Por qué es infinitamente más valioso para un analista *Junior* de ciberseguridad aprender a parsear JSONs y CSVs que aprender a desarrollar videojuegos en C++?
