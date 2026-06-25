@@ -19,13 +19,14 @@ Hola, soy Christian Quiñones. Diseñé esta web para recopilar y ordenar recurs
 Un mapa vivo organizado por áreas de conocimiento técnico, defensivo y profesional:
 
 - **Fundamentos técnicos:** computación, sistemas operativos, redes, Linux, Windows y permisos.
-- **Seguridad web y AppSec:** HTTP, OWASP Top 10, autenticación, autorización, APIs y DevSecOps.
-- **Blue Team y respuesta:** logs, SIEM, MITRE ATT&CK, detection engineering, playbooks e incident response.
-- **Cloud, identidad y arquitectura:** IAM, storage, logging, Kubernetes, Zero Trust y controles de arquitectura.
+- **Seguridad web, AppSec y Móvil:** HTTP, OWASP Top 10, APIs, DevSecOps, Mobile Pentesting e Ingeniería Inversa.
+- **Blue Team, OSINT y respuesta:** logs, SIEM, MITRE ATT&CK, Threat Intelligence (CTI), OSINT y respuesta a incidentes.
+- **Cloud, IoT y arquitectura:** IAM, Kubernetes, Zero Trust, SCADA/OT, IoT y Hardware Hacking.
+- **Seguridad en IA:** ataques semánticos, OWASP Top 10 para LLMs, Prompt Injection y defensa con IA.
 - **Criptografía, malware y forense:** cifrado, hashing, TLS, ransomware, botnets, memoria, disco y cadena de custodia.
 - **GRC, privacidad y continuidad:** riesgo, controles, evidencia, backups, continuidad y privacidad.
 - **Empleabilidad:** rutas por rol, CV, LinkedIn, entrevistas, portafolio y criterios para aplicar.
-- **Recursos y cultura tech:** cómo usar la guía, roadmap inicial, plataformas de práctica, glosario hacker, cursos, certificaciones, Mr. Robot, open source y referencias geek.
+- **Recursos y cultura tech:** cómo usar la guía, roadmap inicial, plataformas de práctica, glosario hacker, certificaciones y referencias geek.
 
 ## Por Dónde Empezar
 
@@ -40,7 +41,7 @@ Entra a la web y sigue la ruta recomendada:
 Ruta general:
 
 ```text
-fundamentos -> redes -> Linux -> web -> Blue Team -> cloud/AppSec -> playbooks -> empleabilidad -> recursos
+fundamentos -> redes -> Linux -> web -> OSINT/Blue Team -> cloud/AppSec/Mobile -> IoT/IA -> playbooks -> empleabilidad -> recursos
 ```
 
 ## Ética
