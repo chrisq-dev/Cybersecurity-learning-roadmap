@@ -1,251 +1,54 @@
-# Fundamentos de Arquitectura de Seguridad
+# Arquitectura de Seguridad: El Castillo Medieval
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender como diseñar sistemas con controles coherentes, no solo herramientas sueltas.
+Aprender la ley fundamental del diseño de redes corporativas: **Nunca confíes tu empresa a un solo candado.**
 
-## Defensa en Profundidad
+En las fases anteriores aprendiste herramientas individuales: Antivirus (Fase 14), Firewalls (Fase 13), Backups (Fase 22). 
+La Arquitectura de Seguridad es el arte de ensamblar todas esas piezas como si fueran bloques de Lego para crear un ecosistema donde, si una pieza falla, la siguiente detenga la catástrofe.
 
-Significa tener varias capas de defensa.
+---
 
-Ejemplo:
+## 1. El Problema del M&M (Duro por fuera, suave por dentro)
 
-- MFA.
-- Mínimo privilegio.
-- Segmentación.
-- EDR.
-- Logs.
-- Backups.
-- Respuesta a incidentes.
+Históricamente, las empresas diseñaban sus redes como un dulce M&M.
+*   **La Capa Dura:** Compraban el Firewall más caro del mundo y lo ponían en la entrada del internet corporativo. Creían que eso era suficiente para detener a los hackers.
+*   **El Interior Suave:** Si el hacker lograba cruzar el Firewall (Ej. Enviándole un Phishing a una secretaria), se encontraba con una red interna completamente plana y sin seguridad. El hacker podía saltar de la computadora de la secretaria directamente al Servidor de Tarjetas de Crédito sin que nadie se lo impidiera.
 
-Si una capa falla, otra puede reducir impacto.
+Esta arquitectura obsoleta fue la causa de los hackeos más devastadores de la década de 2010.
 
-El punto no es acumular herramientas. El punto es que cada capa tenga una función clara:
+---
 
-- Reducir probabilidad de ataque.
-- Limitar impacto.
-- Detectar actividad anormal.
-- Responder rápido.
-- Recuperar operación.
+## 2. Defensa en Profundidad (Defense in Depth)
 
-Una arquitectura madura combina controles preventivos, detectivos y correctivos. Si solo previene, queda ciega. Si solo detecta, llega tarde. Si solo recupera, acepta demasiado dano.
+Para resolver el problema del M&M, la milicia y los Arquitectos de Ciberseguridad adoptaron la filosofía del **Castillo Medieval**. 
 
-## Superficie de Ataque
+El diseño del castillo asume que, eventualmente, el enemigo cruzará el foso con agua. Por lo tanto, no pones a tu Rey justo detrás del foso. Lo proteges con múltiples capas concéntricas (Defensa en Profundidad).
 
-Todo lo que puede ser atacado:
+1.  **El Foso con Cocodrilos (Seguridad Perimetral):** El Firewall (Fase 13) bloquea a los escáneres automatizados de Rusia y China.
+2.  **La Muralla Exterior (Seguridad de Red):** Sistemas IPS (Intrusion Prevention System) analizan los paquetes de red buscando patrones maliciosos.
+3.  **Los Guardias Armados (Seguridad de Endpoint):** Si el virus logra entrar a la computadora del empleado, el EDR / Antivirus (Fase 14) lo detecta y lo elimina.
+4.  **La Puerta de Hierro (Identidad y Accesos - IAM):** El empleado intenta entrar a la Base de Datos, pero el sistema le exige un Token MFA (Fase 15) en su celular.
+5.  **La Bóveda Subterránea (Seguridad de Datos):** El hacker robó el Token MFA de alguna forma y extrajo la base de datos. Pero como los datos tienen **Cifrado en Reposo** (Fase 19), lo que se roba es basura inútil.
 
-- Puertos.
-- APIs.
-- Usuarios.
-- Aplicaciones.
-- Proveedores.
-- Credenciales.
-- Repositorios.
+Si el atacante quiere el oro, tiene que derrotar exitosamente 5 tecnologías de seguridad diferentes (de diferentes fabricantes), lo cual retrasa el ataque y dispara las alarmas del Blue Team (Fase 8).
 
-Reducir superficie:
+---
 
-- Desactivar servicios innecesarios.
-- Restringir acceso.
-- Parchar.
-- Eliminar cuentas antiguas.
+## 3. Segmentación de Red: Los Compartimentos Estancos
 
-## Activos, Amenazas y Controles
+Otra regla crítica de la Defensa en Profundidad es la Segmentación.
 
-Antes de elegir controles, entiende que estas protegiendo.
+*   **La Analogía (El Submarino):** Los submarinos nucleares no son un tubo hueco gigante. Están divididos en "Compartimentos Estancos" separados por puertas de acero. Si un torpedo impacta la parte delantera, cierras la puerta de acero. Ese compartimento se inunda, pero el resto del submarino sobrevive y no se hunde.
+*   **En Informática:** No puedes conectar el departamento de "Ventas" en la misma red que el departamento de "Recursos Humanos". Creas **VLANs** (Fase 2) separadas por Firewalls internos. Si la computadora de Ventas se infecta con un Ransomware, el virus no puede "inundar" la red de Recursos Humanos porque la puerta de acero (El Firewall interno) bloqueará el tráfico lateral.
 
-| Pregunta | Ejemplo |
-| --- | --- |
-| Qué activo importa? | Base de datos de clientes |
-| Qué amenaza aplica? | Robo de credenciales, SQL Injection, exfiltración |
-| Qué vulnerabilidad podria existir? | App sin consultas parametrizadas |
-| Qué impacto tendria? | Fuga de PII, multas, pérdida de confianza |
-| Qué control reduce el riesgo? | Parametrizacion, WAF, permisos mínimos, logs |
-| Cómo se verifica? | Pruebas, revisión de permisos, alertas |
+---
 
-Este razonamiento evita comprar o implementar controles sin relacion con un riesgo real.
+## 4. Criterio de Dominio (Autoevaluación)
 
-## Segmentación
+Revisa si puedes diseñar la fortaleza corporativa:
 
-Separar sistemas para limitar movimiento lateral.
-
-Ejemplos:
-
-- Usuarios.
-- Servidores.
-- Administracion.
-- Invitados.
-- Produccion.
-- Desarrollo.
-
-## Principio de Mínimo Privilegio
-
-Aplica a:
-
-- Usuarios.
-- Cuentas de servicio.
-- Bases de datos.
-- Redes.
-- Buckets/storage.
-- Pipelines CI/CD.
-- Contenedores.
-- APIs.
-
-La pregunta clave es:
-
-```text
-Qué acceso necesita para cumplir su función y nada más?
-```
-
-Mínimo privilegio no es solo permisos de usuario. También es limitar origen, destino, acción, duración y contexto.
-
-## Controles
-
-### Preventivos
-
-Evitan:
-
-- MFA.
-- Firewall.
-- Validación de entrada.
-
-### Detectivos
-
-Detectan:
-
-- Logs.
-- SIEM.
-- EDR.
-
-### Correctivos
-
-Corrigen o recuperan:
-
-- Backups.
-- Rotación de credenciales.
-- Reimagen de equipos.
-
-### Disuasivos
-
-Reducen probabilidad por advertencia o política:
-
-- Banners legales.
-- Políticas aceptadas.
-- Concientizacion.
-
-### Compensatorios
-
-Reducen riesgo cuando no puedes corregir directamente:
-
-- WAF frente a una app legacy.
-- Segmentación si un sistema no puede parchearse aún.
-- Monitoreo extra en sistemas críticos.
-
-## Patrones de Arquitectura Segura
-
-### Aplicación Web Clasica
-
-```text
-Internet -> CDN/WAF -> Load Balancer -> App -> Database privada
-                              |
-                              v
-                            Logs/SIEM
-```
-
-Controles esperados:
-
-- TLS.
-- WAF o protección HTTP.
-- App sin secretos en código.
-- DB no pública.
-- Logs centralizados.
-- Backups probados.
-- Separación de admin.
-
-### Administracion Segura
-
-```text
-Admin -> MFA -> VPN/ZTNA -> Jump Box -> Servidores
-```
-
-Controles esperados:
-
-- MFA.
-- Acceso just-in-time si es posible.
-- Sesiones registradas.
-- No RDP/SSH directo desde internet.
-- Cuentas separadas de uso diario.
-
-### Datos Sensibles
-
-```text
-App autorizada -> API/servicio -> DB cifrada -> Backup cifrado
-```
-
-Controles esperados:
-
-- Autorización por objeto.
-- Auditoria de accesos.
-- Cifrado en transito.
-- Cifrado en reposo.
-- Retención definida.
-- Minimizacion de datos.
-
-## Trade-offs
-
-Seguridad real tiene compromisos:
-
-- Más controles pueden aumentar friccion.
-- Menos friccion puede aumentar riesgo.
-- Bloqueos automáticos pueden afectar disponibilidad.
-- Logs excesivos pueden generar ruido o guardar datos sensibles.
-- Cifrado ayuda, pero no corrige permisos malos.
-
-Un buen arquitecto de seguridad explica el riesgo y propone controles proporcionales, no solo dice "bloquea todo".
-
-## Errores Comunes
-
-- Poner herramientas sin modelo de riesgo.
-- Confiar en red interna como si fuera segura.
-- No separar administracion.
-- No revisar cuentas de servicio.
-- Guardar secretos en repositorios.
-- No centralizar logs.
-- No probar backups.
-- Documentar diagramas que no reflejan reglas reales.
-
-## Ejemplo de Arquitectura Segura
-
-Una arquitectura segura para una app debe considerar:
-
-- Frontend.
-- Backend.
-- Base de datos.
-- Admin.
-- Logs.
-
-Define:
-
-- Segmentos.
-- Controles preventivos.
-- Controles detectivos.
-- Controles correctivos.
-
-## Preguntas de Comprensión
-
-- Cuál es el activo más crítico del sistema?
-- Qué atacante o escenario te preocupa más?
-- Qué pasaria si una cuenta de usuario se compromete?
-- Qué pasaria si el backend se compromete?
-- Dónde se detectaria una extraccion masiva de datos?
-- Cómo se recuperaria el servicio si hay ransomware?
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Explicar defensa en profundidad.
-- Explicar segmentación.
-- Identificar superficie de ataque.
-- Elegir controles por riesgo.
-- Dibujar una arquitectura simple con controles razonados.
-- Explicar trade-offs entre seguridad, operación y costo.
+1. El Director de Sistemas de una empresa decide gastar $500,000 dólares en el mejor Firewall de próxima generación (NGFW) del mercado, argumentando que con esa protección perimetral ya no es necesario instalar software Antivirus (EDR) en las computadoras de los empleados. Usando el concepto de "Defensa en Profundidad", ¿Por qué esta es una decisión arquitectónica catastrófica?
+2. Un empleado del departamento de "Marketing" inserta un USB infectado en su computadora. El Ransomware se ejecuta, pero misteriosamente es incapaz de escanear o infectar los servidores del departamento de "Contabilidad". Explica cómo el principio de **Segmentación de Red** (El Submarino) logró salvar a la empresa de una crisis total.
+3. El concepto de "Defensa en Profundidad" exige controles superpuestos. Si tu empresa ya utiliza **Cifrado en Reposo (TDE)** en la base de datos (La Bóveda), explica cómo la adición de **Autenticación Multi-Factor (MFA)** para los administradores actúa como una capa concéntrica adicional antes de llegar a los datos.
+4. Explica el problema histórico de la arquitectura "M&M" (Duro por fuera, suave por dentro) y cómo un simple ataque de **Phishing** (Fase 21) es todo lo que un atacante necesita para eludir por completo la seguridad perimetral de este modelo obsoleto.

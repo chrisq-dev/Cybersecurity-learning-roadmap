@@ -1,177 +1,49 @@
-# Zero Trust
+# Zero Trust: El Laboratorio Secreto
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender Zero Trust sin marketing: verificar explicitamente, usar mínimo privilegio y asumir compromiso.
+Aprender la arquitectura definitiva del siglo XXI: **Asume la brecha (Assume Breach).**
 
-## Idea Principal
+La "Defensa en Profundidad" del módulo anterior asume que las murallas del castillo son sagradas. Pero, ¿qué pasa cuando la secretaria se lleva su laptop a Starbucks, se conecta a un Wi-Fi falso (Fase 22), se infecta, y luego regresa a la oficina y conecta la laptop directamente a la red interna, detrás del Firewall?
+El modelo del castillo fracasa porque confió ciegamente en la laptop de la secretaria. 
+Aquí nace **Zero Trust (Confianza Cero)**.
 
-No confiar automaticamente por estar "dentro de la red".
+---
 
-Antes:
+## 1. La Muerte del Perímetro
 
-```text
-Dentro de la red = confiable
-```
+Históricamente, la red de la oficina era el "Paraíso".
+*   **La Analogía Antigua:** Trabajabas en un edificio corporativo. Mostrabas tu credencial al guardia de seguridad en la puerta principal. Una vez adentro del edificio, el guardia te dejaba en paz. Podías caminar libremente por todos los pasillos, usar todas las impresoras y abrir todas las puertas porque "ya estabas adentro, así que eras de confianza".
+*   **La Analogía de Zero Trust (El Laboratorio Secreto):** Trabajas en un centro de investigación de Biorriesgos. Muestras tu credencial al guardia en la entrada. Entras al edificio. Giras a la derecha e intentas abrir la puerta de la sala de Rayos X. La puerta está bloqueada y te exige que escanees tu credencial y tu huella dactilar **otra vez**. 
+    *   No importa que "ya estés adentro del edificio". La sala de Rayos X **no confía en ti** por defecto.
+    *   Zero Trust elimina la palabra "confianza" del diccionario técnico.
 
-Mejor:
+---
 
-```text
-Cada acceso debe validarse con identidad, contexto y permisos.
-```
+## 2. Los 3 Pilares de Zero Trust
 
-Zero Trust no significa "no confiar en nadie" de forma absoluta. Significa no usar la ubicación de red como prueba suficiente de confianza. Cada solicitud debe evaluarse con señales verificables.
+Para construir este "Laboratorio Secreto" en una red corporativa, Microsoft y Google utilizan tres principios inquebrantables:
 
-## Principios
+### 1. Verificar Explícitamente (Verify Explicitly)
+*   **El Concepto:** No importa si estás conectado al Wi-Fi de tu casa o al cable de red de la oficina central del banco. La red te tratará exactamente igual: como un extraño peligroso.
+*   **La Ejecución:** Cada vez que intentes abrir un archivo o acceder a una Base de Datos, el sistema verificará quién eres (MFA), el estado de salud de tu computadora (¿Tienes el Antivirus encendido?), y desde dónde te conectas, **antes** de dejarte pasar.
 
-### Verificar Explicitamente
+### 2. Principio de Menor Privilegio (Least Privilege)
+*   Ya lo vimos en IAM (Fase 15). Dale al usuario el mínimo nivel de acceso necesario para hacer su trabajo, y solo por el tiempo que lo necesite (JIT - Just-In-Time access).
+*   Si eres el Diseñador Gráfico, puedes acceder a la carpeta de "Logotipos". Pero si intentas abrir la carpeta de "Nómina", el sistema te bloqueará el paso violentamente, porque tu puesto no requiere ver la nómina.
 
-Validar:
+### 3. Asumir la Brecha (Assume Breach)
+*   Es la filosofía más oscura y realista de la ciberseguridad. 
+*   **La Regla:** Trabaja bajo la suposición matemática de que los Hackers **ya están adentro** de tu red en este preciso momento.
+*   Si asumes que el enemigo ya está adentro, diseñarás tu red con Segmentación Extrema (Los compartimentos estancos del submarino) y cifrarás todas las comunicaciones internas de extremo a extremo, para evitar que el atacante (que ya está adentro) pueda moverse lateralmente hacia los servidores vitales.
 
-- Usuario.
-- Dispositivo.
-- Ubicación.
-- Riesgo.
-- MFA.
-- Estado del dispositivo.
+---
 
-### Mínimo Privilegio
+## 3. Criterio de Dominio (Autoevaluación)
 
-Dar solo acceso necesario.
+Revisa si puedes eliminar la confianza de la ecuación:
 
-### Asumir Compromiso
-
-Diseñar pensando que alguna cuenta o equipo puede estar comprometido.
-
-Esto cambia el diseño:
-
-- Si un usuario cae en phishing, no debe poder acceder a todo.
-- Si una laptop se infecta, debe haber detección y aislamiento.
-- Si una app se compromete, la base de datos debe limitar impacto.
-- Si una llave se filtra, debe rotarse y tener permisos acotados.
-
-## Controles Relacionados
-
-- MFA.
-- Conditional Access.
-- Device compliance.
-- Segmentación.
-- Just-in-time access.
-- Logging.
-- EDR.
-- DLP.
-
-## Señales Para Tomar Decisiones
-
-| Señal | Pregunta |
-| --- | --- |
-| Identidad | Quién solicita acceso? |
-| Dispositivo | Está administrado y saludable? |
-| Ubicación | Es una ubicación esperada o riesgosa? |
-| Recurso | Qué tan sensible es lo qué pide? |
-| Acción | Solo lee o modifica datos? |
-| Riesgo | Hay alertas recientes de esa cuenta o equipo? |
-| Tiempo | Es un horario normal? |
-
-Zero Trust combina estas señales para permitir, negar, pedir MFA, limitar sesión o registrar con mayor detalle.
-
-## Ejemplos Prácticos
-
-### Acceso a Correo
-
-```text
-Usuario + password + MFA + dispositivo conocido -> permitir
-Usuario + password sin MFA desde pais inusual -> bloquear o desafiar
-```
-
-### Acceso a Panel Administrativo
-
-```text
-Admin -> MFA fuerte -> dispositivo administrado -> acceso JIT -> logs de sesion
-```
-
-### Acceso de Servicio a Base de Datos
-
-```text
-Backend -> rol especifico -> red privada -> puerto necesario -> queries auditadas
-```
-
-## Zero Trust y Segmentación
-
-Zero Trust no elimina la necesidad de segmentar. La refuerza.
-
-Antes:
-
-```text
-Una vez dentro de VPN, acceso amplio.
-```
-
-Mejor:
-
-```text
-VPN/ZTNA valida identidad, dispositivo y rol.
-Cada segmento acepta solo trafico necesario.
-Cada app valida autorización propia.
-```
-
-## Error Común
-
-Pensar que Zero Trust es una herramienta. Es un enfoque de arquitectura.
-
-Otros errores:
-
-- Comprar una solucion y no cambiar permisos.
-- Mantener cuentas admin permanentes.
-- No monitorear cuentas de servicio.
-- Confiar solo en MFA sin revisar autorización.
-- No inventariar recursos y flujos.
-- Implementar controles tan molestos que usuarios buscan saltarlos.
-
-## Camino de Implementacion
-
-Orden razonable:
-
-1. Inventariar identidades, dispositivos, apps y datos.
-2. Activar MFA en cuentas importantes.
-3. Separar cuentas admin y cuentas normales.
-4. Revisar permisos excesivos.
-5. Centralizar logs de identidad y acceso.
-6. Segmentar recursos críticos.
-7. Aplicar acceso condicional.
-8. Medir, ajustar y documentar excepciones.
-
-No se implementa Zero Trust en una tarde. Se madura por etapas.
-
-## Ejemplo de Acceso Condicional
-
-Caso:
-
-```text
-Empleado remoto quiere acceder a panel administrativo.
-```
-
-El análisis debe definir:
-
-- Que verificas.
-- Que permisos das.
-- Que logs guardas.
-- Que haces si el dispositivo no cumple.
-
-## Preguntas de Comprensión
-
-- Qué señales usarias antes de permitir acceso a un recurso sensible?
-- Por qué MFA no es suficiente por si solo?
-- Cómo limitarias impacto si una cuenta de usuario cae en phishing?
-- Qué diferencia hay entre VPN tradicional y acceso con controles Zero Trust?
-- Qué cuentas de servicio requieren revisión en una empresa?
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Explicar Zero Trust.
-- Explicar mínimo privilegio.
-- Explicar acceso condicional.
-- Diseñar acceso con validaciones.
-- Proponer etapas realistas de adopcion.
-- Explicar por que red interna no equivale a confianza.
+1. El CEO argumenta: *"Dado que hemos gastado millones en el mejor Firewall perimetral y guardias físicos armados, cualquier dispositivo que esté conectado a nuestro cable de red local debe considerarse 100% seguro y de confianza"*. Utilizando el modelo **Zero Trust**, destruye este argumento.
+2. Explica la analogía del "Laboratorio Secreto de Biorriesgos" y cómo esto evita el "Movimiento Lateral" de un Hacker que logró comprometer la computadora del recepcionista (que ya está físicamente dentro de la oficina).
+3. Uno de los pilares de Zero Trust es "Verificar Explícitamente". Si un usuario proporciona la contraseña correcta y el Token MFA (Autenticación Multi-Factor) correcto, ¿Por qué un sistema Zero Trust maduro podría **rechazar** su conexión si detecta que el Antivirus de la computadora de ese usuario lleva 3 meses sin actualizarse?
+4. El pilar de "Assume Breach" (Asumir la Brecha) dicta que debes operar como si los atacantes ya estuvieran dentro de la red corporativa. Basado en esta filosofía pesimista, ¿Por qué es obligatorio que la comunicación entre dos servidores internos (Ej. El Servidor Web y la Base de Datos) esté encriptada con TLS, aunque ambos servidores estén físicamente en el mismo cuarto seguro?
