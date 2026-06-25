@@ -3,7 +3,7 @@ title: "DNS, DHCP y NAT: Los Servicios Invisibles"
 ---
 # DNS, DHCP y NAT: Los Servicios Invisibles
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Desmitificar los tres servicios fundamentales que hacen que Internet sea usable para los seres humanos.
 
@@ -48,7 +48,7 @@ Si no existiera DHCP, tendrías que abrir los ajustes de red de tu celular y esc
 
 ## 3. NAT (Network Address Translation): El Traductor Mágico
 
-¿Recuerdas que en el módulo anterior vimos que las IPs públicas (IPv4) se agotaron en el mundo?
+¿Recuerdas que en la guía anterior vimos que las IPs públicas (IPv4) se agotaron en el mundo?
 Si se acabaron, ¿cómo es posible que en tu casa haya 4 celulares, 2 laptops, una Smart TV y una consola, todos navegando en Internet al mismo tiempo? 
 La respuesta es la magia del **NAT**.
 

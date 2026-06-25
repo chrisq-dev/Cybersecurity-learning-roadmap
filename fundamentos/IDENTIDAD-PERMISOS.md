@@ -3,7 +3,7 @@ title: "Identidad y Permisos: ¿Quién eres y qué puedes hacer?"
 ---
 # Identidad y Permisos: ¿Quién eres y qué puedes hacer?
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender por qué probar quién eres (Autenticación) y controlar a dónde puedes entrar (Autorización) es el corazón de la seguridad corporativa moderna.
 

@@ -3,11 +3,11 @@ title: "Continuidad y DRP: El Simulacro de Incendio"
 ---
 # Continuidad y DRP: El Simulacro de Incendio
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la diferencia entre saber qué hacer en teoría, y saber qué hacer cuando el edificio realmente está en llamas.
 
-Los respaldos (Módulo anterior) son solo los datos brutos. Si tienes los planos del motor de un avión guardados en un USB (El Backup), no significa que tengas un avión listo para volar. Necesitas reconstruirlo.
+Los respaldos (Guía anterior) son solo los datos brutos. Si tienes los planos del motor de un avión guardados en un USB (El Backup), no significa que tengas un avión listo para volar. Necesitas reconstruirlo.
 El plan paso a paso para reconstruir la empresa desde las cenizas se llama **Disaster Recovery Plan (DRP)**.
 
 ---

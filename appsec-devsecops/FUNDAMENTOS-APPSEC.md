@@ -3,7 +3,7 @@ title: "Fundamentos de AppSec: El Corrector y el Muñeco de Choque"
 ---
 # Fundamentos de AppSec: El Corrector y el Muñeco de Choque
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender cómo auditar el código fuente que escriben los programadores de tu empresa.
 

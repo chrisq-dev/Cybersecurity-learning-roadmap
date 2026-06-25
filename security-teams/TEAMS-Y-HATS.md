@@ -3,7 +3,7 @@ title: "Equipos de Seguridad: Los Juegos de Guerra"
 ---
 # Equipos de Seguridad: Los Juegos de Guerra
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Destruir el mito de Hollywood de que la ciberseguridad se trata exclusivamente de ponerse una capucha negra y hackear bancos. 
 

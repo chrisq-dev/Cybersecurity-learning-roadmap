@@ -3,7 +3,7 @@ title: "AWS, Azure y GCP: Los Tres Reyes de la Nube"
 ---
 # AWS, Azure y GCP: Los Tres Reyes de la Nube
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender a no dejarte intimidar por el marketing. Entender que sin importar si la empresa usa Amazon, Microsoft o Google, la infraestructura subyacente que vas a hackear o defender es exactamente la misma; solo le cambian el nombre comercial.
 
@@ -70,6 +70,6 @@ El objetivo (robar datos) es el mismo; solo cambia la herramienta de control rem
 Revisa si tu mente ya traduce los conceptos comerciales a conceptos de ingeniería:
 
 1. Estás leyendo un reporte de inteligencia y dice: *"El atacante vulneró una instancia EC2 y luego exfiltró datos de un bucket S3"*. Traduce esta oración al idioma de Microsoft Azure.
-2. Un desarrollador te dice: *"Vamos a mover nuestro servidor local a la nube de AWS (IaaS). Como AWS tiene ingenieros de seguridad brillantes, ya no necesito parchear las vulnerabilidades de mi Linux"*. Basado en lo que aprendiste en el módulo anterior, ¿Por qué este desarrollador está equivocado?
+2. Un desarrollador te dice: *"Vamos a mover nuestro servidor local a la nube de AWS (IaaS). Como AWS tiene ingenieros de seguridad brillantes, ya no necesito parchear las vulnerabilidades de mi Linux"*. Basado en lo que aprendiste en la guía anterior, ¿Por qué este desarrollador está equivocado?
 3. Si descubres que la página web de tu cliente es vulnerable a Inyección SQL (SQLi). ¿La forma de ejecutar el ataque matemático SQLi cambia dependiendo de si el servidor está en AWS, Azure o GCP? ¿Por qué?
 4. ¿Por qué el servicio "Entra ID" (Azure AD) es el objetivo final y más codiciado para cualquier atacante que vulnera una red corporativa moderna alojada en la nube de Microsoft?

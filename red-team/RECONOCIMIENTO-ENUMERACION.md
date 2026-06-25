@@ -3,7 +3,7 @@ title: "Reconocimiento y Enumeración: Midiendo el Muro"
 ---
 # Reconocimiento y Enumeración: Midiendo el Muro
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la habilidad más importante y menos valorada del Hacking: Cómo recopilar información de tu víctima sin que ella se dé cuenta.
 

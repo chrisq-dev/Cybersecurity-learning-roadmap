@@ -3,7 +3,7 @@ title: "Subida de Archivos (File Upload): El Caballo de Troya"
 ---
 # Subida de Archivos (File Upload): El Caballo de Troya
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender por qué darle al usuario el poder de subir archivos a tu servidor es la acción técnica más peligrosa que un programador puede programar, y cómo un atacante usa esta función para destruir el sistema desde adentro.
 

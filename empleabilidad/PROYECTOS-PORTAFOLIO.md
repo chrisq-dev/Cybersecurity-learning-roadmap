@@ -3,7 +3,7 @@ title: "Proyectos y Portafolio: El Arquitecto vs El Albañil"
 ---
 # Proyectos y Portafolio: El Arquitecto vs El Albañil
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender a romper la paradoja de *"No me contratan porque no tengo experiencia, y no tengo experiencia porque no me contratan"*.
 

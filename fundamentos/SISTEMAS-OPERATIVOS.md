@@ -3,11 +3,11 @@ title: "Sistemas Operativos: El Administrador del Caos"
 ---
 # Sistemas Operativos: El Administrador del Caos
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender por qué el Sistema Operativo (OS) es la barrera más importante entre el hardware de la computadora y el mundo exterior, y cómo los atacantes abusan de sus reglas para tomar el control de una máquina.
 
-El hardware por sí solo no entiende qué es un usuario, qué es una contraseña o qué es un archivo. Toda esa "ilusión" la crea el Sistema Operativo. En este módulo, vamos a abrir el capó de Windows y Linux para entender sus diferencias críticas desde el punto de vista de la seguridad (mapeado a los conceptos de **CompTIA Security+**).
+El hardware por sí solo no entiende qué es un usuario, qué es una contraseña o qué es un archivo. Toda esa "ilusión" la crea el Sistema Operativo. En esta guía, vamos a abrir el capó de Windows y Linux para entender sus diferencias críticas desde el punto de vista de la seguridad (mapeado a los conceptos de **CompTIA Security+**).
 
 ---
 

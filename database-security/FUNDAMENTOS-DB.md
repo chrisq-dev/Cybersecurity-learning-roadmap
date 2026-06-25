@@ -3,7 +3,7 @@ title: "Fundamentos de Bases de Datos: El Maletín y La Bóveda"
 ---
 # Fundamentos de Bases de Datos: El Maletín y La Bóveda
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la diferencia exacta entre proteger los datos cuando están viajando y protegerlos cuando están guardados.
 

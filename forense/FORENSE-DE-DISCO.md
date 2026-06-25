@@ -3,7 +3,7 @@ title: "Forense de Disco: Recuperando Fantasmas"
 ---
 # Forense de Disco: Recuperando Fantasmas
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender el secreto más sucio de la computación comercial: Cuando le das clic a "Vaciar Papelera de Reciclaje", tu computadora te miente descaradamente. Nada se ha borrado.
 

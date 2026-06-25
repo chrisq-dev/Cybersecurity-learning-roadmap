@@ -3,7 +3,7 @@ title: "Fundamentos de Redes: El Sistema Postal Digital"
 ---
 # Fundamentos de Redes: El Sistema Postal Digital
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Desmitificar cómo las computadoras hablan entre sí. En ciberseguridad, si no entiendes cómo viaja la información desde el punto A hasta el punto B, es imposible defender ese camino o entender cómo un atacante lo interceptó.
 

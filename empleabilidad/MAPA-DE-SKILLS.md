@@ -3,7 +3,7 @@ title: "El Mapa de Skills: El Árbol de Habilidades"
 ---
 # El Mapa de Skills: El Árbol de Habilidades
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender a conectar los puntos. Ninguna herramienta de ciberseguridad vive aislada.
 

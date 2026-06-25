@@ -3,7 +3,7 @@ title: "VPN, Proxy y Segmentación: El Submarino y el Túnel"
 ---
 # VPN, Proxy y Segmentación: El Submarino y el Túnel
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender cómo la ingeniería civil se aplica al diseño de redes. No puedes construir un castillo gigantesco con una sola pared perimetral, porque si el enemigo rompe esa pared, conquistará toda la ciudad en minutos. Tienes que usar túneles secretos y compartimentos herméticos.
 

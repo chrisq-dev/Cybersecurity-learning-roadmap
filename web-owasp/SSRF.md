@@ -3,7 +3,7 @@ title: "SSRF (Server-Side Request Forgery): Secuestrando al Mesero"
 ---
 # SSRF (Server-Side Request Forgery): Secuestrando al Mesero
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender cómo un atacante usa el propio servidor de la empresa como un Caballo de Troya para atacar bases de datos secretas a las que es imposible acceder desde el internet público.
 

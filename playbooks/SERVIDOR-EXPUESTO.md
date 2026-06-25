@@ -3,7 +3,7 @@ title: "Playbook: Servidor Comprometido (Expuesto a Internet)"
 ---
 # Playbook: Servidor Comprometido (Expuesto a Internet)
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender qué hacer cuando el castillo ha sido penetrado no por engañar al usuario, sino por la fuerza bruta técnica.
 

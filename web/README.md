@@ -2,7 +2,7 @@
 
 Aplicación Next.js para leer las guías del repositorio como una plataforma web en español.
 
-La app lee los archivos Markdown del directorio padre, genera rutas estaticas y permite navegar los módulos como una plataforma local de estudio.
+La app lee los archivos Markdown del directorio padre, genera rutas estaticas y permite navegar las guías como una plataforma local de estudio.
 
 ## Requisitos
 
@@ -42,7 +42,7 @@ npm run lint
 - `lib/markdown.js` lee los Markdown del repositorio.
 - El indice público está curado: la web muestra guías de estudio, no documentos internos del repo.
 - `app/page.js` genera la portada con categorías y buscador.
-- `app/[...slug]/page.js` renderiza cada lección.
+- `app/[...slug]/page.js` renderiza cada lectura.
 - `app/api/health/route.js` expone healthcheck para Docker/Easypanel.
 - `components/MarkdownRenderer.jsx` convierte Markdown a HTML.
 - `components/TableOfContents.jsx` genera la tabla de contenido.
@@ -50,7 +50,7 @@ npm run lint
 
 ## Convenciones de Contenido
 
-Para que una lección funcione bien en la web:
+Para que una lectura funcione bien en la web:
 
 - Usa un solo `# Titulo` principal;
 - Separa secciones con `##`;

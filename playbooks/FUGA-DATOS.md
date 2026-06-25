@@ -3,7 +3,7 @@ title: "Playbook: Fuga de Datos y Extorsión"
 ---
 # Playbook: Fuga de Datos y Extorsión
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender qué hacer cuando la solución tecnológica ("Restaurar un Backup") es completamente inútil.
 

@@ -3,11 +3,11 @@ title: "Seguridad de Gateways: El Control de Aduanas"
 ---
 # Seguridad de Gateways: El Control de Aduanas
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender cómo la empresa detiene los misiles balísticos (Ransomware adjunto) antes de que lleguen al escritorio del empleado.
 
-El protocolo DMARC (Visto en el módulo anterior) detiene las falsificaciones de identidad. ¿Pero qué pasa si un atacante envía un correo desde una cuenta de Gmail 100% real, y le adjunta un archivo PDF con un virus adentro? DMARC dejará pasar el correo porque técnicamente es un correo válido de Gmail. 
+El protocolo DMARC (Visto en la guía anterior) detiene las falsificaciones de identidad. ¿Pero qué pasa si un atacante envía un correo desde una cuenta de Gmail 100% real, y le adjunta un archivo PDF con un virus adentro? DMARC dejará pasar el correo porque técnicamente es un correo válido de Gmail. 
 Necesitamos un sistema de Aduanas.
 
 ---
@@ -37,7 +37,7 @@ Necesitamos un sistema de Aduanas.
 
 Revisa si puedes asegurar las fronteras digitales:
 
-1. El protocolo DMARC (Módulo anterior) verifica la autenticidad matemática del remitente, mientras que un **Secure Email Gateway (SEG)** inspecciona el contenido del correo. Explica, usando la analogía de "Aduanas", por qué una empresa moderna necesita implementar ambos controles y no puede depender de uno solo.
+1. El protocolo DMARC (Guía anterior) verifica la autenticidad matemática del remitente, mientras que un **Secure Email Gateway (SEG)** inspecciona el contenido del correo. Explica, usando la analogía de "Aduanas", por qué una empresa moderna necesita implementar ambos controles y no puede depender de uno solo.
 2. Un empleado del departamento de Recursos Humanos recibe cientos de currículums en formato PDF todos los días. Un atacante le envía un PDF infectado con un Malware "Zero-Day" (Totalmente desconocido para los Antivirus tradicionales). Explica cómo el proceso de **Sandboxing** en el Gateway de correo logrará detectar que el PDF es malicioso a pesar de no tener una firma de virus conocida.
 3. El SEG de tu empresa incluye la función de "URL Rewriting". Un usuario hace clic en un enlace de un correo para rastrear un paquete de Amazon. Usando la lógica del "Hombre en el Medio", explica qué hace la tecnología de URL Rewriting en el milisegundo entre que el usuario hace clic y la página web carga en su navegador.
 4. Si la tecnología de *Sandboxing* es tan buena detonando bombas virtuales antes de que lleguen al usuario, ¿Por qué crees que los creadores de Malware avanzados programan sus virus para "dormir" y no hacer nada durante los primeros 10 minutos después de ser ejecutados? (Pista: Piensa en el tiempo de análisis del agente de aduanas).

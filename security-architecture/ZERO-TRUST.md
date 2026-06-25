@@ -3,11 +3,11 @@ title: "Zero Trust: El Laboratorio Secreto"
 ---
 # Zero Trust: El Laboratorio Secreto
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la arquitectura definitiva del siglo XXI: **Asume la brecha (Assume Breach).**
 
-La "Defensa en Profundidad" del módulo anterior asume que las murallas del castillo son sagradas. Pero, ¿qué pasa cuando la secretaria se lleva su laptop a Starbucks, se conecta a un Wi-Fi falso (Fase 22), se infecta, y luego regresa a la oficina y conecta la laptop directamente a la red interna, detrás del Firewall?
+La "Defensa en Profundidad" de la guía anterior asume que las murallas del castillo son sagradas. Pero, ¿qué pasa cuando la secretaria se lleva su laptop a Starbucks, se conecta a un Wi-Fi falso (Fase 22), se infecta, y luego regresa a la oficina y conecta la laptop directamente a la red interna, detrás del Firewall?
 El modelo del castillo fracasa porque confió ciegamente en la laptop de la secretaria. 
 Aquí nace **Zero Trust (Confianza Cero)**.
 

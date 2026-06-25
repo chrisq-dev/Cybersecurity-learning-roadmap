@@ -3,7 +3,7 @@ title: "Cadena de Custodia: La Ley y el Orden"
 ---
 # Cadena de Custodia: La Ley y el Orden
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender que la Informática Forense no se trata de usar herramientas de hacking geniales. Se trata de usar herramientas aburridas de forma legalmente perfecta para que un Juez Federal no deseche tu evidencia.
 
@@ -27,7 +27,7 @@ Un verdadero Analista Forense jamás enciende la computadora original. Saca el d
 ## 2. El Hashing como Sello Legal
 
 ¿Cómo le demuestras al juez que la copia que hiciste es **exactamente idéntica** al disco duro original incautado?
-Usando la Licuadora Matemática que vimos en el módulo de Criptografía: **El Hash**.
+Usando la Licuadora Matemática que vimos en la guía de Criptografía: **El Hash**.
 
 1. Tomas el disco duro original de 500 Gigabytes. Le calculas su Hash SHA-256. (Ej. `A9F5...`)
 2. Haces la copia a tu disco duro forense.

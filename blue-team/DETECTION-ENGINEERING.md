@@ -3,7 +3,7 @@ title: "Detection Engineering: El Ingeniero de Trampas"
 ---
 # Detection Engineering: El Ingeniero de Trampas
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender por qué el SOC moderno no depende de que los guardias estén despiertos, sino de que las trampas estén bien diseñadas.
 

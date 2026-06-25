@@ -160,7 +160,7 @@ export default function Home() {
         </div>
         <span className="stats-divider">|</span>
         <div>
-          <strong style={{ color: 'var(--text-main)' }}>{totalCategories}</strong> módulos temáticos
+          <strong style={{ color: 'var(--text-main)' }}>{totalCategories}</strong> áreas de conocimiento
         </div>
         <span className="stats-divider">|</span>
         <div>
@@ -186,7 +186,7 @@ export default function Home() {
 
       <section style={{ textAlign: 'left', margin: '0 auto 2.5rem auto' }}>
         <h2 className="serif-title" style={{ fontSize: '2rem', borderBottom: 'none', marginBottom: '0.75rem' }}>
-          Qué puedes estudiar aquí
+          El mapa de conocimiento
         </h2>
         <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '2rem', maxWidth: '760px' }}>
           La meta no es memorizar herramientas ni dominar todo al mismo tiempo. Usa esta guía como un mapa para ubicar temas, conectar conceptos y elegir una ruta principal.

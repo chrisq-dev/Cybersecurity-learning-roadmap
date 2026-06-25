@@ -3,7 +3,7 @@ title: "Hardening Básico: Blindando el Castillo"
 ---
 # Hardening Básico: Blindando el Castillo
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender qué es el "Hardening" y cómo transformar un servidor Linux recién instalado (que es como una casa con las puertas abiertas) en una fortaleza corporativa paranoica.
 

@@ -3,7 +3,7 @@ title: "El Protocolo HTTP: El Mesero Sordo"
 ---
 # El Protocolo HTTP: El Mesero Sordo
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender el lenguaje en el que hablan los navegadores y los servidores.
 

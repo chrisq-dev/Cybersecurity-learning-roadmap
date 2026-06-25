@@ -3,7 +3,7 @@ title: "Backups: La Máquina del Tiempo"
 ---
 # Backups: La Máquina del Tiempo
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la diferencia financiera entre perder 5 minutos de datos y perder 24 horas de datos.
 

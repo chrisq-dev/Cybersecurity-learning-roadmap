@@ -3,7 +3,7 @@ title: "SIEM y MITRE ATT&CK: El Cerebro y El Diccionario"
 ---
 # SIEM y MITRE ATT&CK: El Cerebro y El Diccionario
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender qué es la pantalla negra gigantesca que miran todos los Analistas SOC y cómo la industria mundial se puso de acuerdo en un solo lenguaje para describir a los criminales cibernéticos.
 
@@ -11,7 +11,7 @@ Entender qué es la pantalla negra gigantesca que miran todos los Analistas SOC 
 
 ## 1. El SIEM: El Cerebro Central (La Pantalla Gigante)
 
-En el módulo anterior aprendimos que un banco tiene "cámaras" por todas partes (Firewalls, Antivirus, Servidores Web, Windows).
+En la guía anterior aprendimos que un banco tiene "cámaras" por todas partes (Firewalls, Antivirus, Servidores Web, Windows).
 
 El problema físico es que no puedes poner a un Analista SOC a mirar 50 monitores diferentes (uno para el Firewall, otro para Windows, otro para Linux). Se volvería loco.
 
@@ -63,5 +63,5 @@ Revisa si hablas el idioma universal:
 
 1. Estás configurando un SIEM nuevo. Decides conectar los Logs del Firewall (Cisco) y los Logs de Windows. Cisco escribe la palabra `source_ip` para referirse al origen, mientras que Windows escribe `ClientAddress`. ¿Por qué es obligatorio que el SIEM pase por un proceso de "Normalización" antes de guardar esos logs?
 2. Un reporte de auditoría del Red Team dice: *"Logramos vulnerar el servidor usando la técnica T1110 (Brute Force) de MITRE ATT&CK"*. Si buscas `T1110` en Google, ¿Encontrarás un tutorial de cómo hackear a tu empresa específica, o encontrarás un resumen teórico universal de cómo funciona la Fuerza Bruta?
-3. ¿Por qué el Framework MITRE ATT&CK es más útil para el Blue Team (Defensores) que la propia calculadora de miedo CVSS que vimos en el módulo anterior?
+3. ¿Por qué el Framework MITRE ATT&CK es más útil para el Blue Team (Defensores) que la propia calculadora de miedo CVSS que vimos en la guía anterior?
 4. Un directivo te pregunta: *"¿Para qué pagamos $50,000 USD al año por la licencia del SIEM Splunk si ya tenemos un Antivirus y un Firewall instalados que hacen su propio trabajo?"*. Usando la analogía de las cámaras y la visión global, ¿Cómo justificas la compra del SIEM?

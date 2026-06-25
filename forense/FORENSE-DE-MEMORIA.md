@@ -3,7 +3,7 @@ title: "Forense de Memoria: Atrapando Sombras"
 ---
 # Forense de Memoria: Atrapando Sombras
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la cacería de fantasmas de la era moderna. El forense de disco (archivos borrados) es genial, pero los hackers más letales de hoy (State-Sponsored Hackers, Rusia, China) ya no tocan tu disco duro. Atacan directamente tu Memoria RAM. Si reinicias la computadora, desaparecen para siempre.
 

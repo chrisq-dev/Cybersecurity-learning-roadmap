@@ -3,7 +3,7 @@ title: "Inyección SQL (SQLi): Engañando al Archivero"
 ---
 # Inyección SQL (SQLi): Engañando al Archivero
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender la vulnerabilidad web más famosa, antigua y devastadora de la historia.
 A pesar de tener más de 25 años de antigüedad, la Inyección SQL sigue destruyendo empresas hoy en día. Ocurre cuando un programador confía ciegamente en lo que el usuario escribe en una caja de texto, permitiendo que el usuario envíe código malicioso directamente a la base de datos de la empresa.

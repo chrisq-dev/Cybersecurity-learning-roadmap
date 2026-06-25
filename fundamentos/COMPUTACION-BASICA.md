@@ -3,7 +3,7 @@ title: "Computación Básica: Entendiendo la Máquina"
 ---
 # Computación Básica: Entendiendo la Máquina
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender cómo funciona una computadora a nivel de hardware y componentes lógicos, y por qué este conocimiento es la **base innegociable** de la ciberseguridad.
 

@@ -3,7 +3,7 @@ title: "Riesgo y Controles: Las Matemáticas de la Seguridad"
 ---
 # Riesgo y Controles: Las Matemáticas de la Seguridad
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la habilidad más escasa en el mercado laboral técnico: Hablar el lenguaje del Dinero.
 

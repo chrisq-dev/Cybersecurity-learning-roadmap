@@ -3,11 +3,11 @@ title: "Pretexting y OSINT: El Actor y la Basura Digital"
 ---
 # Pretexting y OSINT: El Actor y la Basura Digital
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender cómo los criminales cibernéticos usan la actuación teatral y el buceo de información pública para vulnerar tu red.
 
-El Phishing (Módulo anterior) depende de que la víctima le dé clic a un enlace ciego. Pero los ataques de alto nivel (Hacking a corporaciones Fortune 500) requieren una estrategia psicológica mucho más invasiva. El atacante necesita conocer tu vida entera antes de dar el golpe.
+El Phishing (Guía anterior) depende de que la víctima le dé clic a un enlace ciego. Pero los ataques de alto nivel (Hacking a corporaciones Fortune 500) requieren una estrategia psicológica mucho más invasiva. El atacante necesita conocer tu vida entera antes de dar el golpe.
 
 ---
 
@@ -48,9 +48,9 @@ Entrenamientos corporativos agresivos (Security Awareness) y políticas estricta
 
 ## 4. Criterio de Dominio (Autoevaluación)
 
-Cierre maestro del curso de Ciberseguridad. Revisa si logras pensar como el enemigo:
+Cierre maestro del mapa de Ciberseguridad. Revisa si logras pensar como el enemigo:
 
 1. Un hacker descubre en LinkedIn que el nuevo empleado del departamento de Pagos de una empresa comenzó a trabajar hace solo 3 días (lo que significa que aún no conoce los procedimientos internos). Usando una táctica de **Pretexting**, describe un escenario telefónico que el hacker podría usar contra este nuevo empleado para lograr que realice una transferencia de fondos no autorizada.
-2. Explica la relación directa entre el concepto de **OSINT** (Inteligencia de Fuentes Abiertas) y la eficacia de un ataque de *Spear Phishing* (Visto en el módulo anterior). ¿Por qué investigar primero hace que el ataque sea letal?
+2. Explica la relación directa entre el concepto de **OSINT** (Inteligencia de Fuentes Abiertas) y la eficacia de un ataque de *Spear Phishing* (Visto en la guía anterior). ¿Por qué investigar primero hace que el ataque sea letal?
 3. Sabiendo que el ser humano es el eslabón más débil, ¿Por qué las herramientas tecnológicas de la Fase 14 (EDR) y la Fase 13 (IPS) no sirven para detectar y detener un ataque de Ingeniería Social (Ej. Que la secretaria le dicte voluntariamente su contraseña a un supuesto técnico por teléfono)?
 4. Con todo el conocimiento que has adquirido en las 21 fases de este mapa de aprendizaje (Desde Redes hasta DevSecOps), ¿Cuál consideras que es el vector de ataque más peligroso y difícil de mitigar para una empresa global, y por qué recae casi siempre en el factor humano?

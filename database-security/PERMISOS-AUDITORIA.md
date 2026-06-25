@@ -3,11 +3,11 @@ title: "Permisos y Auditoría de DB: Las Gafas Mágicas y la Cámara de Segurida
 ---
 # Permisos y Auditoría de DB: Las Gafas Mágicas y la Cámara de Seguridad
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender cómo proteger la base de datos contra el "Enemigo Interno" (Insider Threat). 
 
-El "Cifrado en Reposo" del módulo anterior es perfecto si alguien se roba el disco duro físico. Pero, ¿qué pasa si el ladrón no es un hacker ruso, sino el empleado de Recursos Humanos de tu propia empresa usando sus credenciales legítimas?
+El "Cifrado en Reposo" de la guía anterior es perfecto si alguien se roba el disco duro físico. Pero, ¿qué pasa si el ladrón no es un hacker ruso, sino el empleado de Recursos Humanos de tu propia empresa usando sus credenciales legítimas?
 
 ---
 

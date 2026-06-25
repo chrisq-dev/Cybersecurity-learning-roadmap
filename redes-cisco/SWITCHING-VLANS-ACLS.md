@@ -3,7 +3,7 @@ title: "Switching, VLANs y ACLs: Dividiendo el Edificio"
 ---
 # Switching, VLANs y ACLs: Dividiendo el Edificio
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender cómo los Arquitectos de Red aíslan y protegen departamentos enteros dentro de una misma empresa usando paredes virtuales (VLANs) y guardias de seguridad invisibles (ACLs).
 

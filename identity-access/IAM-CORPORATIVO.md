@@ -3,7 +3,7 @@ title: "IAM Corporativo: La Tarjeta de Hotel"
 ---
 # IAM Corporativo: La Tarjeta de Hotel
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la diferencia exacta entre "Autenticación" y "Autorización". Estos dos conceptos se confunden constantemente, pero en ciberseguridad, confundirlos significa dejar la puerta de la bóveda del banco abierta.
 

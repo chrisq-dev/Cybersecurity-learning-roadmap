@@ -3,7 +3,7 @@ title: "Arquitectura de Seguridad: El Castillo Medieval"
 ---
 # Arquitectura de Seguridad: El Castillo Medieval
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la ley fundamental del diseño de redes corporativas: **Nunca confíes tu empresa a un solo candado.**
 

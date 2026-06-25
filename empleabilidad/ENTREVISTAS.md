@@ -3,7 +3,7 @@ title: "Hackeando la Entrevista Técnica"
 ---
 # Hackeando la Entrevista Técnica
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender que las entrevistas de ciberseguridad no buscan probar que eres el mejor hacker del mundo. Buscan probar que **eres un adulto responsable al que se le pueden confiar las llaves del reino.**
 
@@ -48,4 +48,4 @@ Revisa si puedes asegurar tu primer empleo:
 1. Durante la entrevista, el Gerente de IT te presenta el siguiente escenario: "Tenemos un sistema antiguo (Windows XP) que controla los brazos robóticos de la fábrica. No podemos actualizarlo porque el software dejaría de funcionar, pero es extremadamente vulnerable a Ransomware". Utilizando el concepto de "Segmentación de Red y Compartimentos Estancos" (Fase 23), ¿Cuál es tu respuesta técnica madura para gestionar este riesgo?
 2. Explica por qué utilizar el **Formato STAR** (Situación, Tarea, Acción, Resultado) durante las respuestas verbales hace que parezcas un profesional experimentado (Senior) en lugar de un estudiante técnico novato.
 3. El entrevistador te pregunta sobre tus motivaciones y tú respondes: "Amo la adrenalina de hackear páginas web y encontrar contraseñas". ¿Por qué esta respuesta es una "Bandera Roja" gigantesca para el área de **Recursos Humanos** corporativa y cómo deberías reformularla enfocándote en el **Blue Team**?
-4. Repasa todos los módulos de este Roadmap de Aprendizaje (De la Fase 1 a la Fase 24). Si tuvieras que elegir una sola **Analogía** (Ej. El Mesero, El Maletín Blindado, El Sello de Cera) para explicársela al reclutador durante la entrevista, ¿Cuál usarías para demostrar tu profunda capacidad de comunicación técnica, y por qué?
+4. Repasa todos las guías de este Roadmap de Aprendizaje (De la Fase 1 a la Fase 24). Si tuvieras que elegir una sola **Analogía** (Ej. El Mesero, El Maletín Blindado, El Sello de Cera) para explicársela al reclutador durante la entrevista, ¿Cuál usarías para demostrar tu profunda capacidad de comunicación técnica, y por qué?

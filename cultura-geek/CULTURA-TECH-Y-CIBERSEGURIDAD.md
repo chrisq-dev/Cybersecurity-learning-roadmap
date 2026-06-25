@@ -4,7 +4,7 @@ title: "Cultura Tech y Ciberseguridad"
 
 # Cultura Tech y Ciberseguridad
 
-No todo lo que te acerca a la ciberseguridad tiene que ser un curso, una certificación o un laboratorio.
+No todo lo que te acerca a la ciberseguridad tiene que ser un mapa, una certificación o un laboratorio.
 
 A veces una serie, una película, un libro, un juego o una historia real te deja una idea dando vueltas en la cabeza. Esa curiosidad también importa. La diferencia está en saber usarla bien: como inspiración y contexto, no como reemplazo de estudiar fundamentos.
 
@@ -96,7 +96,7 @@ No la vería como guía técnica, sino como una colección de advertencias: "est
 
 Ghost in the Wires cuenta la historia de Kevin Mitnick.
 
-Es un libro muy útil para entender ingeniería social. La lección principal no es "qué herramienta usó", sino cómo una persona puede obtener información manipulando confianza, rutina, autoridad o descuidos.
+Es un libro muy útil para entender ingeniería social. La lectura principal no es "qué herramienta usó", sino cómo una persona puede obtener información manipulando confianza, rutina, autoridad o descuidos.
 
 Te deja claro que muchas puertas se abren antes por conversación que por código.
 
@@ -374,7 +374,7 @@ Su historia es importante porque muestra que la ingeniería social puede ser tan
 
 Clifford Stoll escribió The Cuckoo's Egg.
 
-Su historia empieza con un detalle pequeño y termina en una investigación internacional. Es una buena lección para Blue Team: los logs, la paciencia y la atención al detalle importan.
+Su historia empieza con un detalle pequeño y termina en una investigación internacional. Es una buena lectura para Blue Team: los logs, la paciencia y la atención al detalle importan.
 
 ### Edward Snowden
 

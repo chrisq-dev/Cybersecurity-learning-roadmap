@@ -3,7 +3,7 @@ title: "Fundamentos de Linux: El Idioma de los Servidores"
 ---
 # Fundamentos de Linux: El Idioma de los Servidores
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender por qué Linux domina el mundo de la ciberseguridad corporativa y comprender su filosofía de diseño ("Todo es un archivo") y su geografía básica.
 

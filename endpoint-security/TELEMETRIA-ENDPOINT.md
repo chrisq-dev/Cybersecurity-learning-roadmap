@@ -3,7 +3,7 @@ title: "Telemetría del Endpoint: Las Cámaras Corporales"
 ---
 # Telemetría del Endpoint: Las Cámaras Corporales
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender de dónde diablos saca un *SOC Analyst* (Fase 8) la información para saber que un empleado a tres mil kilómetros de distancia abrió un virus de Excel en su computadora.
 
@@ -60,4 +60,4 @@ Revisa si puedes darle visión al Blue Team:
 1. Un Analista del SOC revisa su pantalla del SIEM y nota que no ha recibido ni un solo log de eventos de las laptops del departamento de Finanzas durante las últimas 48 horas. Usando la analogía de la Bodycam, explica qué significa este "Silencio de Telemetría" y por qué es una emergencia crítica.
 2. ¿Por qué depender exclusivamente de la lectura de los "Event Logs" locales guardados en la laptop del usuario comprometido es una falla técnica durante una investigación de *Incident Response* o Forense? (Pista: Piensa en lo primero que hace un hacker profesional cuando obtiene permisos de Administrador).
 3. ¿Cuál es la diferencia principal entre los Event Logs que vienen por defecto en Windows y la telemetría hiper-detallada que provee la herramienta avanzada **Sysmon**?
-4. El SIEM levanta una alerta basada en la Telemetría (Sysmon Event ID 1): `powershell.exe -ExecutionPolicy Bypass -encodedCommand aW52b2tlLW1pbWlrYXR6...`. Como vimos en los módulos anteriores, ¿Por qué este simple evento (un programa legal ejecutando código ofuscado) es suficiente para que el Analista de Seguridad desconecte la máquina de la red inmediatamente?
+4. El SIEM levanta una alerta basada en la Telemetría (Sysmon Event ID 1): `powershell.exe -ExecutionPolicy Bypass -encodedCommand aW52b2tlLW1pbWlrYXR6...`. Como vimos en las guías anteriores, ¿Por qué este simple evento (un programa legal ejecutando código ofuscado) es suficiente para que el Analista de Seguridad desconecte la máquina de la red inmediatamente?

@@ -3,7 +3,7 @@ title: "Fundamentos de Phishing: El Espejismo Digital"
 ---
 # Fundamentos de Phishing: El Espejismo Digital
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la vulnerabilidad "Zero-Day" definitiva: **El Cerebro Humano**.
 

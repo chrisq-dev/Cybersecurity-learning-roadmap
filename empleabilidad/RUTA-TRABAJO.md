@@ -3,7 +3,7 @@ title: "La Búsqueda de Empleo: El Maratón Corporativo"
 ---
 # La Búsqueda de Empleo: El Maratón Corporativo
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender que buscar trabajo es un Trabajo a Tiempo Completo.
 

@@ -3,7 +3,7 @@ title: "Respuesta a Incidentes (IR): Los Bomberos"
 ---
 # Respuesta a Incidentes (IR): Los Bomberos
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la habilidad más estresante y crítica de la ciberseguridad: Qué hacer en el momento exacto en que la pantalla se vuelve roja y el CEO está gritando por teléfono porque la base de datos acaba de ser encriptada.
 
@@ -41,7 +41,7 @@ Una vez que la amenaza está contenida y ya tomaste fotografías de la evidencia
 ### 5. Recuperación (Reconstrucción)
 Restauras el servidor usando las copias de seguridad (Backups) del día anterior. Lo conectas de nuevo a la red de producción con precaución, observando los monitores por si el hacker dejó una "Bomba de Tiempo" escondida.
 
-### 6. Lecciones Aprendidas (El Reporte Post-Mortem)
+### 6. Lecturas Aprendidas (El Reporte Post-Mortem)
 El paso más importante. Dos semanas después del ataque, el equipo se reúne y escribe un documento de 20 páginas explicando cómo entró el hacker (Ej. *Le hizo Phishing al gerente*) y qué van a comprar o configurar para asegurarse de que ese método exacto jamás vuelva a funcionar.
 
 ---

@@ -3,7 +3,7 @@ title: "Playbook: Compromiso por Phishing"
 ---
 # Playbook: Compromiso por Phishing
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender el protocolo de emergencia militar cuando las barreras psicológicas han fallado.
 
@@ -55,4 +55,4 @@ Revisa si puedes asegurar las comunicaciones:
 1. ¿Por qué el paso 1 de Contención debe ser "Forzar el cierre de todas las sesiones activas" (Revocar Tokens) *antes* de resetear la contraseña? Si solo cambias la contraseña en el panel de administración, ¿Qué pasará con la conexión en vivo que el hacker ya tiene establecida en su navegador?
 2. Explica la importancia vital de buscar "Reglas de Reenvío" (Forwarding Rules) en la fase de Erradicación. Usando el concepto de "Persistencia" (Fase 16), justifica por qué un analista inexperto que omite este paso dejará a la empresa vulnerable a espionaje permanente.
 3. Si el atacante utilizó la cuenta comprometida de Finanzas para enviarle un correo malicioso al CEO de la empresa, ¿A qué fase de la cadena de ataque militar (Cyber Kill Chain) corresponde esta acción y cómo se relaciona con el "Movimiento Lateral"?
-4. Después de resolver el incidente, el **Purple Team** se reúne. Como resultado de esta crisis, recomiendan instalar un **Secure Email Gateway (SEG)** (Fase 22) para escanear y reescribir las URLs antes de que lleguen a los buzones. ¿A qué fase del Ciclo de Vida de Respuesta a Incidentes (PICERL) corresponde implementar nuevas defensas para evitar que el mismo error vuelva a suceder en el futuro? (Lecciones Aprendidas).
+4. Después de resolver el incidente, el **Purple Team** se reúne. Como resultado de esta crisis, recomiendan instalar un **Secure Email Gateway (SEG)** (Fase 22) para escanear y reescribir las URLs antes de que lleguen a los buzones. ¿A qué fase del Ciclo de Vida de Respuesta a Incidentes (PICERL) corresponde implementar nuevas defensas para evitar que el mismo error vuelva a suceder en el futuro? (Lecturas Aprendidas).

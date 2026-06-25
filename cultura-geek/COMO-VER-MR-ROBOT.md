@@ -39,7 +39,7 @@ Elliot es un personaje complejo. Reducirlo a "el hacker cool" es perder casi tod
 - Tiene capacidad técnica, pero eso no elimina las consecuencias de sus actos.
 - Ve fallas reales, pero sus decisiones abren dilemas éticos.
 
-La lección no es "sé como Elliot". La lección es: **aprende lo técnico, entiende lo humano y mantén una línea ética clara.**
+La lectura no es "sé como Elliot". La lectura es: **aprende lo técnico, entiende lo humano y mantén una línea ética clara.**
 
 ## Cómo Ver un Episodio (El Ejercicio)
 

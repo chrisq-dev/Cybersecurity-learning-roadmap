@@ -3,7 +3,7 @@ title: "Fundamentos de Correo Electrónico: El Sello de Cera Real"
 ---
 # Fundamentos de Correo Electrónico: El Sello de Cera Real
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la falla técnica más grande del internet antiguo, y cómo tres protocolos matemáticos intentan salvar el mundo corporativo.
 

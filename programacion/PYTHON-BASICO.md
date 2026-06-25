@@ -3,7 +3,7 @@ title: "Python Básico: Escribiéndole al Robot"
 ---
 # Python Básico: Escribiéndole al Robot
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Perderle el terror a la palabra "Programación".
 A diferencia de los Ingenieros de Software, que construyen aplicaciones gigantescas de millones de líneas de código durante meses (como WhatsApp o Excel), en Ciberseguridad usamos la programación para crear **Scripts Tácticos**.

@@ -3,7 +3,7 @@ title: "IAM, Storage y Logs: Las Piezas Clave de la Nube"
 ---
 # IAM, Storage y Logs: Las Piezas Clave de la Nube
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender las tres piezas maestras que conforman cualquier infraestructura en la nube.
 Si le preguntas a un ingeniero de AWS experto qué necesitas proteger para asegurar una empresa millonaria, te responderá tres cosas: **Quién tiene las llaves (IAM)**, **Dónde están los datos (Storage)** y **Quién te está vigilando (Logs)**.

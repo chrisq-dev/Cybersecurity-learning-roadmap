@@ -3,7 +3,7 @@ title: "Playbook: Cuenta Comprometida (Insider Threat)"
 ---
 # Playbook: Cuenta Comprometida (Insider Threat)
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la letalidad silenciosa de un ataque cuando el enemigo ya tiene las llaves de la puerta principal.
 
@@ -41,7 +41,7 @@ Una vez que las ventanas traseras están cerradas y el espía no tiene forma de 
 
 1.  **Restablecimiento Fuerte:** El usuario legítimo debe presentarse con IT (Físicamente o por videollamada verificada) para recibir su nueva contraseña temporal. No se debe enviar por correo ni SMS sin verificar identidad.
 2.  **Análisis Forense Rápido:** Escanear la computadora del Director de Recursos Humanos para asegurar que el compromiso de la cuenta no provino de un malware persistente.
-3.  **Post-Mortem (Lecciones Aprendidas):** El CISO investiga por qué la Autenticación Multi-Factor (MFA) falló en detener al atacante en China, descubriendo posiblemente un ataque de *MFA Fatigue* (Ingeniería Social avanzada).
+3.  **Post-Mortem (Lecturas Aprendidas):** El CISO investiga por qué la Autenticación Multi-Factor (MFA) falló en detener al atacante en China, descubriendo posiblemente un ataque de *MFA Fatigue* (Ingeniería Social avanzada).
 
 ---
 

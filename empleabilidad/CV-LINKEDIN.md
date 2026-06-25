@@ -3,7 +3,7 @@ title: "CV y LinkedIn: El Pitch de Ventas"
 ---
 # CV y LinkedIn: El Pitch de Ventas
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la falla más grande de los ingenieros Jr: **Creen que el reclutador entiende de tecnología**.
 

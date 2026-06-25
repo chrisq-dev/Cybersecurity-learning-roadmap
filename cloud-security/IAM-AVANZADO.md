@@ -3,7 +3,7 @@ title: "IAM Avanzado: Escalada de Privilegios y Máscaras"
 ---
 # IAM Avanzado: Escalada de Privilegios y Máscaras
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender por qué el hacking en la nube es un juego de ajedrez donde el atacante roba una llave de nivel muy bajo y hace malabares con el sistema de políticas para convertirse en Dios (Administrador).
 

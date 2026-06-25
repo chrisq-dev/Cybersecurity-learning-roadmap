@@ -3,11 +3,11 @@ title: "Inicio Aquí"
 ---
 # Inicio Aquí
 
-Esta es la entrada recomendada para estudiar la guía. La idea es avanzar poco a poco, en orden, entendiendo primero fundamentos y después áreas más especializadas.
+Este es el punto de partida sugerido para explorar el mapa. La idea es avanzar poco a poco, entendiendo primero los fundamentos y después adentrándote en territorios más especializados.
 
-No necesitas leer todo en un día. Usa la web como biblioteca de recursos: abre una guía, estudia el concepto, revisa ejemplos, practica en entornos seguros y vuelve cuando necesites reforzar.
+No necesitas leer todo en un día. Usa la web como tu brújula y biblioteca de recursos: abre una guía, explora el concepto, revisa ejemplos, practica en entornos seguros y vuelve cuando necesites reforzar.
 
-## Orden Recomendado
+## Una Ruta Sugerida (Para tus primeros pasos)
 
 Empieza con esta secuencia:
 
@@ -38,7 +38,7 @@ Además de la ruta técnica, puedes revisar estas guías cuando quieras orientar
 
 ## Cómo Usar la Web
 
-- Sigue el orden sugerido de módulos si estás empezando desde cero.
+- Sigue el orden sugerido de guías si estás empezando desde cero.
 - Usa la navegación lateral para saltar directamente al área que más te interese estudiar.
 - Vuelve a la sección de "Fundamentos Técnicos" cuando una guía avanzada se sienta confusa.
 
@@ -48,7 +48,7 @@ Además de la ruta técnica, puedes revisar estas guías cuando quieras orientar
 
 Objetivo: entender computadoras, sistemas operativos, permisos, redes, Linux y HTTP.
 
-Módulos principales:
+Áreas clave:
 
 - Fundamentos.
 - Redes Cisco.
@@ -61,7 +61,7 @@ Módulos principales:
 
 Objetivo: entender logs, alertas, detección, respuesta e investigación.
 
-Módulos principales:
+Áreas clave:
 
 - Blue Team.
 - SIEM y MITRE.
@@ -74,7 +74,7 @@ Módulos principales:
 
 Objetivo: entender como se protegen aplicaciones, APIs, cloud, datos e identidad.
 
-Módulos principales:
+Áreas clave:
 
 - AppSec y DevSecOps.
 - API Security.
@@ -87,7 +87,7 @@ Módulos principales:
 
 Objetivo: conectar conocimiento con la construcción de un "Home Lab" y el perfil profesional.
 
-Módulos principales:
+Áreas clave:
 
 - GRC.
 - Forense.
@@ -95,9 +95,9 @@ Módulos principales:
 - Red Team autorizado.
 - Empleabilidad y Portafolio de Élite.
 
-## Criterio Para Avanzar
+## Tu Checkpoint Personal
 
-Avanza a la siguiente guía cuando puedas:
+Usa esta lista como tu brújula personal para saber si dominas el concepto antes de saltar a la siguiente ruta. Sabrás que estás listo cuando puedas:
 
 - Explicar el concepto con tus palabras;
 - Dar un ejemplo realista;

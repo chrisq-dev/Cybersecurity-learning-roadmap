@@ -3,7 +3,7 @@ title: "Firewalls, IDS e IPS: Los Guardias del Castillo"
 ---
 # Firewalls, IDS e IPS: Los Guardias del Castillo
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la diferencia exacta entre las tres grandes piezas de hardware y software que protegen el perímetro de una empresa.
 

@@ -3,7 +3,7 @@ title: "YARA y SIGMA: Los Carteles de \"Se Busca\""
 ---
 # YARA y SIGMA: Los Carteles de "Se Busca"
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender cómo los Defensores comparten información sobre los hackers para que, si un hacker ataca un banco en China, los bancos en México estén automáticamente protegidos al día siguiente.
 

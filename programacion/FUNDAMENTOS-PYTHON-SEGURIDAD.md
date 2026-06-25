@@ -3,7 +3,7 @@ title: "Python para Seguridad: La Navaja Suiza"
 ---
 # Python para Seguridad: La Navaja Suiza
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender por qué nadie en Ciberseguridad pierde el tiempo escribiendo programas de 1,000 líneas en C++ o Java cuando están en medio de una respuesta a incidentes.
 

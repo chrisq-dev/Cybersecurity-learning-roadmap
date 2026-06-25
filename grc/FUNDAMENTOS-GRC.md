@@ -3,7 +3,7 @@ title: "Fundamentos de GRC: El Inspector del Casino"
 ---
 # Fundamentos de GRC: El Inspector del Casino
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender por qué el mundo corporativo gasta billones de dólares en Ciberseguridad. 
 Spoiler: No lo hacen por un sentido heroico de proteger el mundo. Lo hacen para **evitar multas, demandas y la quiebra financiera**.

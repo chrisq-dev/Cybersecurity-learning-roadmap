@@ -3,11 +3,11 @@ title: "Comandos Básicos: Navegación Táctica y Búsqueda"
 ---
 # Comandos Básicos: Navegación Táctica y Búsqueda
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender a moverse rápido y encontrar agujas en pajares de texto.
 
-Un Analista de Seguridad o un Hacker no usa el ratón para abrir carpetas una por una buscando un archivo escondido. Usan la consola porque es **exponencialmente más rápida y poderosa** que cualquier interfaz gráfica. En este módulo, aprenderás a moverte a ciegas por el sistema operativo y a encadenar comandos para que la máquina haga el trabajo pesado de buscar evidencias.
+Un Analista de Seguridad o un Hacker no usa el ratón para abrir carpetas una por una buscando un archivo escondido. Usan la consola porque es **exponencialmente más rápida y poderosa** que cualquier interfaz gráfica. En esta guía, aprenderás a moverte a ciegas por el sistema operativo y a encadenar comandos para que la máquina haga el trabajo pesado de buscar evidencias.
 
 ---
 

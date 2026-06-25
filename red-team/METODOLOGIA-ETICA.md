@@ -3,7 +3,7 @@ title: "Metodología y Ética: El Ladrón Profesional"
 ---
 # Metodología y Ética: El Ladrón Profesional
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Matar la fantasía de Hollywood y entender que el hacking profesional es un trabajo militarmente estructurado, altamente burocrático y estrictamente regulado por la Ley.
 
@@ -50,7 +50,7 @@ Encuentras que una de las puertas tiene la cerradura oxidada y aplicas una palan
 
 ### Fase 4: Mantener Acceso (Persistencia)
 Estás adentro, pero si el servidor se reinicia, te botan a la calle. 
-*   *En Ciberseguridad:* Creas un usuario administrador falso llamado `Soporte_IT`, o editas el Registro de Windows (como vimos en el módulo anterior) para asegurar que el malware arranque cada vez que la máquina se enciende.
+*   *En Ciberseguridad:* Creas un usuario administrador falso llamado `Soporte_IT`, o editas el Registro de Windows (como vimos en la guía anterior) para asegurar que el malware arranque cada vez que la máquina se enciende.
 
 ### Fase 5: Borrado de Huellas
 El ladrón limpia el polvo de sus zapatos y quita el video de las cámaras de seguridad.
@@ -63,6 +63,6 @@ El ladrón limpia el polvo de sus zapatos y quita el video de las cámaras de se
 ¿Entiendes cómo piensa el Red Team?
 
 1. Un amigo te dice que acaba de aprender a usar Kali Linux y te pide que le ayudes a escanear los puertos (Nmap) de la página de la Universidad "solo para ver qué tienen abierto", sin hacer ningún daño. Como profesional de ciberseguridad, ¿por qué te niegas inmediatamente?
-2. Usando las 5 fases del hacking, ¿en qué fase exacta usarías el ataque de *SQL Injection* que aprendiste en el módulo de Web, y en qué fase usarías un ataque de *Fileless Malware* modificado en el Registro para asegurar que sigues vivo el mes siguiente?
+2. Usando las 5 fases del hacking, ¿en qué fase exacta usarías el ataque de *SQL Injection* que aprendiste en la guía de Web, y en qué fase usarías un ataque de *Fileless Malware* modificado en el Registro para asegurar que sigues vivo el mes siguiente?
 3. Durante la fase de "Scope" (Alcance), el cliente te da permiso para atacar la página principal `empresa.com`. A las 2:00 AM, descubres que la base de datos de esa página no está alojada físicamente en los servidores de la empresa, sino en un servicio tercerizado de Amazon AWS que no estaba en tu contrato. ¿Atacas la base de datos de Amazon? Justifica legalmente tu respuesta.
 4. ¿Por qué la fase de "Reconocimiento" (Fase 1) es tan lenta y aburrida comparada con la fase de "Explotación" (Fase 3), pero a la vez es la que determina el éxito del ataque?

@@ -3,7 +3,7 @@ title: "Fundamentos de la Nube: La Computadora de Alguien Más"
 ---
 # Fundamentos de la Nube: La Computadora de Alguien Más
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Destruir la ilusión de que la "Nube" es un ente mágico y etéreo, y entender la vulnerabilidad más grande y peligrosa de migrar los servidores de tu empresa a Amazon, Google o Microsoft.
 
@@ -35,7 +35,7 @@ Para entender la seguridad en la nube, debes entender los 3 modelos de servicio.
 
 ## 2. El Modelo de Responsabilidad Compartida
 
-Si hay un solo concepto que debes memorizar en este módulo para no ir a prisión, es el **Modelo de Responsabilidad Compartida (Shared Responsibility Model)**.
+Si hay un solo concepto que debes memorizar en esta guía para no ir a prisión, es el **Modelo de Responsabilidad Compartida (Shared Responsibility Model)**.
 
 Cuando una empresa migra a AWS y es hackeada a la semana siguiente, el CEO de la empresa siempre sale a la prensa a decir: *"Amazon fue hackeado, es culpa de la Nube"*. 
 Esto es falso en el 99.9% de los casos.

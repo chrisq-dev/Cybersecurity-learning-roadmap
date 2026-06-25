@@ -3,7 +3,7 @@ title: "XSS (Cross-Site Scripting): El Parásito del Navegador"
 ---
 # XSS (Cross-Site Scripting): El Parásito del Navegador
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender por qué el navegador del usuario (Chrome, Safari) es el eslabón más débil de la cadena, y cómo un atacante puede ejecutar código malicioso en tu computadora sin enviarte ningún archivo virus `.exe`.
 

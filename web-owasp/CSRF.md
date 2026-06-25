@@ -3,7 +3,7 @@ title: "CSRF (Cross-Site Request Forgery): Falsificando Firmas"
 ---
 # CSRF (Cross-Site Request Forgery): Falsificando Firmas
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender cómo un atacante puede obligar a un usuario legítimo a ejecutar acciones destructivas en su propia cuenta, sin que el usuario se dé cuenta y sin robarle la contraseña.
 

@@ -3,7 +3,7 @@ title: "DevSecOps: La Fábrica de Aviones y Shift Left"
 ---
 # DevSecOps: La Fábrica de Aviones y Shift Left
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender que la seguridad no es un botón mágico que presionas al final del día. La seguridad es una línea de ensamblaje.
 

@@ -3,11 +3,11 @@ title: "Direcciones IP y Subnetting: El GPS de Internet"
 ---
 # Direcciones IP y Subnetting: El GPS de Internet
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender cómo las computadoras se encuentran entre sí a nivel mundial y por qué dividir las redes (Subnetting) es la primera línea de defensa para contener a un atacante.
 
-Las matemáticas detrás de las direcciones IP y el *subnetting* suelen asustar a los principiantes. En este módulo no te haré convertir números binarios a mano (para eso existen calculadoras). Aquí vas a entender la **lógica arquitectónica** que exige la certificación Cisco CCNA: por qué existen las IP, cómo se leen, y por qué cortamos las redes en pedazos por seguridad.
+Las matemáticas detrás de las direcciones IP y el *subnetting* suelen asustar a los principiantes. En esta guía no te haré convertir números binarios a mano (para eso existen calculadoras). Aquí vas a entender la **lógica arquitectónica** que exige la certificación Cisco CCNA: por qué existen las IP, cómo se leen, y por qué cortamos las redes en pedazos por seguridad.
 
 ---
 

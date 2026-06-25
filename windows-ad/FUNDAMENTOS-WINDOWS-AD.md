@@ -3,7 +3,7 @@ title: "Fundamentos de Windows Corporativo: La Isla vs El Imperio"
 ---
 # Fundamentos de Windows Corporativo: La Isla vs El Imperio
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Desaprender lo que crees saber sobre Windows.
 Es muy probable que hayas usado Windows toda tu vida para jugar, hacer tareas o navegar por internet. Pero el Windows que usas en tu casa es fundamentalmente diferente al Windows que usan en un corporativo, un banco o un hospital. En ciberseguridad, el 95% del Ransomware del mundo busca aprovecharse de cómo las empresas conectan miles de computadoras Windows juntas.

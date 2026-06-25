@@ -3,7 +3,7 @@ title: "Logs vs Alertas: Separando la Basura del Fuego"
 ---
 # Logs vs Alertas: Separando la Basura del Fuego
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la diferencia crítica entre tener un dato guardado en un disco duro (Log) y tener una llamada de emergencia a las 3:00 AM (Alerta).
 
@@ -19,7 +19,7 @@ Cualquier computadora moderna genera miles de logs por segundo sin que te des cu
 *   Si mueves el mouse de tu Windows, la computadora internamente anota un log de que el cursor cambió de píxel.
 *   Si Juan entra a su computadora a las 8:00 AM usando su contraseña correcta, el servidor de Windows (Active Directory) anota: `Evento 4624: Juan inició sesión con éxito`.
 
-**El Log es estúpido y ciego.** No sabe si la acción fue buena o mala, solo es un notario que certifica que el evento ocurrió y lo archiva en un disco duro (como lo vimos en el módulo de Python y Parsing de CSVs/JSONs).
+**El Log es estúpido y ciego.** No sabe si la acción fue buena o mala, solo es un notario que certifica que el evento ocurrió y lo archiva en un disco duro (como lo vimos en la guía de Python y Parsing de CSVs/JSONs).
 
 ### El Problema de Leer Logs Crudos
 Imagina ser el Analista SOC Tier 1 e intentar leer esto en tu pantalla:

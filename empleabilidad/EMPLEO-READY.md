@@ -3,7 +3,7 @@ title: "El Semáforo de Lanzamiento: ¿Cuándo estoy listo?"
 ---
 # El Semáforo de Lanzamiento: ¿Cuándo estoy listo?
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Destruir el Síndrome del Impostor y la barrera del "Falso Nivel Junior".
 

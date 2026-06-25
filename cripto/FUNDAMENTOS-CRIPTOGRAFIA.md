@@ -3,7 +3,7 @@ title: "Fundamentos de Criptografía: La Caja Fuerte y El Buzón"
 ---
 # Fundamentos de Criptografía: La Caja Fuerte y El Buzón
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la diferencia matemática entre los dos grandes pilares del cifrado mundial. Toda la seguridad de internet, las VPNs militares y hasta los ataques de Ransomware dependen de que entiendas perfectamente estos dos conceptos.
 

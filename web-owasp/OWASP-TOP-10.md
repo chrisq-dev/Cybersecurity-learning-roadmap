@@ -3,7 +3,7 @@ title: "OWASP Top 10: El Catálogo Universal"
 ---
 # OWASP Top 10: El Catálogo Universal
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender por qué este documento rige a la industria entera de la programación.
 En Ciberseguridad hay cientos de formas de hackear una empresa. Sin embargo, no puedes obligar a todos los programadores del mundo a aprenderse 5,000 vulnerabilidades matemáticas complejas. Necesitaban un estándar, una lista concisa y brutal de "Las 10 Formas más fáciles y comunes de destruir tu página web". Ese es el OWASP Top 10.
@@ -47,7 +47,7 @@ Los errores de programación evolucionan al igual que la tecnología.
 
 ## 4. Las Categorías Clave que Aprenderás
 
-A partir de este punto, los siguientes archivos de este módulo te enseñarán a atacar y defender las vulnerabilidades más críticas de esta lista:
+A partir de este punto, los siguientes archivos de esta guía te enseñarán a atacar y defender las vulnerabilidades más críticas de esta lista:
 
 1.  **A01: Broken Access Control (Control de Acceso Roto):** Entrar a lugares que no te corresponden.
 2.  **A02: Cryptographic Failures (Fallos Criptográficos):** Guardar las contraseñas en texto plano (sin cifrar).

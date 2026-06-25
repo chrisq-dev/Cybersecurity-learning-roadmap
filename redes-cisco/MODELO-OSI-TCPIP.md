@@ -3,7 +3,7 @@ title: "Modelo OSI y TCP/IP: Diseccionando la Red"
 ---
 # Modelo OSI y TCP/IP: Diseccionando la Red
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender cómo se divide la comunicación de red en capas lógicas y por qué este "modelo mental" es la herramienta de diagnóstico más importante para un analista de ciberseguridad.
 

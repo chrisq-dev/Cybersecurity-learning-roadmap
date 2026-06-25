@@ -3,7 +3,7 @@ title: "Contenedores (Docker): La Caja de Cristal"
 ---
 # Contenedores (Docker): La Caja de Cristal
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender por qué la Nube moderna abandonó las Máquinas Virtuales pesadas y abrazó las "Burbujas" ultraligeras, y cómo esto afecta la seguridad y el aislamiento.
 

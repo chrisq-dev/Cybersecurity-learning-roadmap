@@ -3,11 +3,11 @@ title: "Seguridad en Kubernetes (K8s): El Director de Orquesta"
 ---
 # Seguridad en Kubernetes (K8s): El Director de Orquesta
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender qué hace Kubernetes, por qué es el rey absoluto de la Nube, y cómo hackearlo significa ganar el juego instantáneamente.
 
-Si tienes 3 contenedores de Docker (Las cajas de cristal del módulo anterior), puedes encenderlos a mano escribiendo comandos en la terminal de Linux.
+Si tienes 3 contenedores de Docker (Las cajas de cristal de la guía anterior), puedes encenderlos a mano escribiendo comandos en la terminal de Linux.
 Pero las empresas como Netflix o Spotify no tienen 3 contenedores. Tienen **50,000 contenedores** encendiéndose y apagándose cada segundo alrededor del mundo. Un humano no puede administrar eso. Necesitas un robot automatizado: **Kubernetes**.
 
 ---

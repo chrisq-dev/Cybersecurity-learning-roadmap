@@ -3,7 +3,7 @@ title: "Fundamentos de API: El Mesero del Restaurante"
 ---
 # Fundamentos de API: El Mesero del Restaurante
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Desmitificar el acrónimo más usado en todo Silicon Valley: **API (Application Programming Interface)**.
 

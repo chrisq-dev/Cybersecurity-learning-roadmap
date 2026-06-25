@@ -1,13 +1,13 @@
 # Contribuir
 
-Este repositorio es una web pública de recursos de ciberseguridad en español. La meta es mantener guías claras, prácticas y éticas para estudiantes que quieren aprender con orden.
+Este repositorio es una web pública de recursos de ciberseguridad en español. La meta es mantener guías claras, prácticas y éticas para personas y exploradores que quieren aprender con orden.
 
 ## Qué Tipo de Contribuciones Sirven
 
 - Correcciones de errores técnicos.
 - Mejoras de claridad.
 - Nuevos labs seguros y autorizados.
-- Preguntas de evaluación.
+- Preguntas de auto-reflexión / Checkpoints.
 - Cheatsheets.
 - Plantillas de reportes.
 - Recursos gratuitos y legales.
@@ -45,7 +45,7 @@ Este repositorio es una web pública de recursos de ciberseguridad en español. 
 
 ## Observacion Segura
 
-## Preguntas de Repaso
+## Preguntas de Exploración
 
 ## Puntos a Observar
 ```

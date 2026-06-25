@@ -3,7 +3,7 @@ title: "Base de Seguridad: El Arte de Gestionar Riesgos"
 ---
 # Base de Seguridad: El Arte de Gestionar Riesgos
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender a pensar como un Arquitecto de Seguridad. 
 

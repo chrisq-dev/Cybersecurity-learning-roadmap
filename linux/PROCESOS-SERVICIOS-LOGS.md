@@ -3,7 +3,7 @@ title: "Procesos, Servicios y Logs: El Pulso de la Máquina"
 ---
 # Procesos, Servicios y Logs: El Pulso de la Máquina
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender a tomarle el pulso a un servidor Linux. Un Analista de Seguridad (Blue Team) o Cazador de Amenazas (Threat Hunter) pasa la mayor parte de su vida mirando tres cosas: ¿Qué está vivo en la memoria RAM? ¿Qué arranca en secreto? y ¿Qué quedó escrito en las bitácoras?
 
@@ -35,7 +35,7 @@ Escribe el comando `top` y presiona Enter. Verás una pantalla que se actualiza 
 
 ### `ps` (La Fotografía Congelada)
 El comando `ps aux` toma una fotografía estática (un flashazo) de absolutamente todo lo que está respirando en tu memoria RAM en este milisegundo.
-*   **Combinación Maestra Hacker:** `ps aux | grep "python"`. Esta combinación (usando la tubería `|` que aprendimos en el módulo anterior) fotografía la RAM y busca *únicamente* si algún proceso vivo tiene la palabra "python" en su nombre.
+*   **Combinación Maestra Hacker:** `ps aux | grep "python"`. Esta combinación (usando la tubería `|` que aprendimos en la guía anterior) fotografía la RAM y busca *únicamente* si algún proceso vivo tiene la palabra "python" en su nombre.
 
 ---
 

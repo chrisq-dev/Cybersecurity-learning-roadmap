@@ -3,7 +3,7 @@ title: "Hashing y Passwords: La Licuadora Matemática"
 ---
 # Hashing y Passwords: La Licuadora Matemática
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Desaprender un error gravísimo: **El Hashing NO es Cifrado.**
 Cifrar algo (como vimos en el archivo anterior) significa que alguien tiene la llave para descifrarlo y leer el secreto original. 

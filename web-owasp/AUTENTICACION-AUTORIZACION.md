@@ -3,7 +3,7 @@ title: "Autenticación vs Autorización: Robando Llaves Ajenas"
 ---
 # Autenticación vs Autorización: Robando Llaves Ajenas
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender por qué el "Control de Acceso Roto" (Broken Access Control) se ha convertido en el Error #1 del mundo en el ranking de OWASP.
 

@@ -3,7 +3,7 @@ title: "Parseo de Logs y APIs: El Analista de Datos"
 ---
 # Parseo de Logs y APIs: El Analista de Datos
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la habilidad número uno de un analista de seguridad defensiva (Blue Team): Leer, filtrar y entender archivos de texto gigantescos de forma automática.
 

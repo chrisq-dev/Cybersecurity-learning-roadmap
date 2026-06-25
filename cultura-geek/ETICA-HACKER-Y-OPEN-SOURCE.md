@@ -67,7 +67,7 @@ Te permite leer código real, aprender de otros y construir reputación técnica
 
 **La Perspectiva de Riesgo (Supply Chain Attacks):**
 Si dependes de código gratuito hecho por voluntarios en internet, estás heredando su riesgo.
-Casos como **Log4j** (una vulnerabilidad en una simple librería de registro de Java que afectó a millones de servidores globalmente) o el **Backdoor de xz-utils** (donde un atacante pasó años ganándose la confianza de una comunidad open source para inyectar código malicioso sutil) nos enseñan una lección crítica de seguridad:
+Casos como **Log4j** (una vulnerabilidad en una simple librería de registro de Java que afectó a millones de servidores globalmente) o el **Backdoor de xz-utils** (donde un atacante pasó años ganándose la confianza de una comunidad open source para inyectar código malicioso sutil) nos enseñan una lectura crítica de seguridad:
 *Que el código sea abierto no significa que sea seguro.* Si tu empresa usa una librería, tu empresa es responsable de auditarla.
 
 ## Internet Libre y Privacidad

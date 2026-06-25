@@ -3,7 +3,7 @@ title: "Antivirus, EDR y Hardening: El Cadenero vs El Detective"
 ---
 # Antivirus, EDR y Hardening: El Cadenero vs El Detective
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la diferencia tecnológica entre el software que instalas en la computadora de tu casa (Antivirus de 20 dólares) y el software que instala un Banco Internacional en sus computadoras (EDR de 500 dólares).
 
@@ -23,7 +23,7 @@ El Antivirus que conoces desde los años 90 (McAfee, Norton, Avast) funciona baj
 ¿Qué hace el hacker ruso? Entra a Photoshop, le pinta un bigote falso a la foto del criminal, y lo manda de nuevo a la discoteca. (A esto se le llama ofuscar el malware, cambiar su Hash).
 El cadenero mira la cara con bigote, mira su hoja de papel... y como la cara con bigote no está en su lista, **el cadenero lo deja entrar**.
 
-A esto se le llama un ataque de **Día Cero (Zero-Day)**. Una variante nueva de un virus que la lista de firmas del Antivirus aún no conoce. Contra el Fileless Malware (Visto en el módulo Forense), el Antivirus clásico es completamente inútil.
+A esto se le llama un ataque de **Día Cero (Zero-Day)**. Una variante nueva de un virus que la lista de firmas del Antivirus aún no conoce. Contra el Fileless Malware (Visto en la guía Forense), el Antivirus clásico es completamente inútil.
 
 ---
 

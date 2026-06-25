@@ -3,11 +3,11 @@ title: "PAM (Privileged Access Management): La Bóveda Nuclear"
 ---
 # PAM (Privileged Access Management): La Bóveda Nuclear
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender cómo proteger a los "Dioses" de la red corporativa.
 
-En el módulo anterior (IAM) hablamos de empleados normales como la recepcionista o el de ventas. Pero en toda empresa existe un pequeño grupo de humanos (El equipo de IT / Administradores de Sistemas) cuyas cuentas tienen poder absoluto.
+En la guía anterior (IAM) hablamos de empleados normales como la recepcionista o el de ventas. Pero en toda empresa existe un pequeño grupo de humanos (El equipo de IT / Administradores de Sistemas) cuyas cuentas tienen poder absoluto.
 *   Si le robas la contraseña al de ventas, puedes leer el Excel de los clientes.
 *   Si le robas la contraseña al Administrador de Red (Domain Admin), **eres el dueño de la empresa entera**. Puedes borrar servidores, apagar el Antivirus, y robar bases de datos encriptadas.
 

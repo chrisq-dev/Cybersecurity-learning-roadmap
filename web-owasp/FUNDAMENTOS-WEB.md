@@ -3,7 +3,7 @@ title: "Fundamentos Web: La Arquitectura del Restaurante"
 ---
 # Fundamentos Web: La Arquitectura del Restaurante
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Desmitificar cómo funciona el internet por debajo del capó.
 No puedes hackear ni defender una página web si no entiendes sus piezas móviles. Para el 99% de las personas, "Internet" es simplemente un ícono de Chrome en su celular donde escriben cosas y mágicamente aparecen fotos. Para un profesional de la ciberseguridad, cada página web es un complejo sistema de tres niveles donde la confianza es la mayor vulnerabilidad.

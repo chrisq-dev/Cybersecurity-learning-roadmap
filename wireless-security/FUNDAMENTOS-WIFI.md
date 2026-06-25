@@ -3,7 +3,7 @@ title: "Fundamentos de Wi-Fi: El Megáfono Invisible"
 ---
 # Fundamentos de Wi-Fi: El Megáfono Invisible
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender por qué la comodidad del internet inalámbrico es el sueño hecho realidad de cualquier hacker con $20 dólares.
 

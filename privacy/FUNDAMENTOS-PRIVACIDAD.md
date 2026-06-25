@@ -3,7 +3,7 @@ title: "Fundamentos de Privacidad: La Cortina y la Máscara"
 ---
 # Fundamentos de Privacidad: La Cortina y la Máscara
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Resolver la peor y más peligrosa confusión conceptual en la historia del internet: Creer que Privacidad es lo mismo que Anonimato.
 
@@ -40,7 +40,7 @@ La red Tor, diseñada originalmente por la Marina de EE. UU., es la máscara de 
 
 Revisa si puedes separar la ilusión comercial de la seguridad táctica:
 
-1. Un empleado utiliza una VPN comercial pública instalada en su computadora corporativa para trabajar desde una cafetería Wi-Fi. Basado en la analogía de "Las Cortinas Cerradas", explica cómo esta VPN lo protege de un ataque de "Evil Twin" (Módulo anterior) orquestado por el Hacker de la mesa de al lado, proporcionándole Privacidad.
+1. Un empleado utiliza una VPN comercial pública instalada en su computadora corporativa para trabajar desde una cafetería Wi-Fi. Basado en la analogía de "Las Cortinas Cerradas", explica cómo esta VPN lo protege de un ataque de "Evil Twin" (Guía anterior) orquestado por el Hacker de la mesa de al lado, proporcionándole Privacidad.
 2. Un activista político disidente intenta usar la misma VPN comercial (pagada con su propia tarjeta de crédito) para publicar documentos clasificados del gobierno de forma anónima. ¿Por qué es técnicamente incorrecto decir que es "anónimo" y cómo el gobierno podría rastrearlo fácilmente a través de citaciones legales?
 3. Explica el concepto de "Enrutamiento de Cebolla" (Onion Routing) en la red Tor. ¿Cómo la división del conocimiento entre los "Tres Nodos" garantiza matemáticamente que nadie sepa al mismo tiempo "Quién eres" y "A dónde vas"?
 4. La red Tor sacrifica drásticamente la velocidad (ancho de banda) a cambio de otorgar anonimato. Si un banco internacional necesita conectar en tiempo real sus bases de datos entre Nueva York y Londres usando **Cifrado en Tránsito** (Fase 19), ¿Por qué el Banco siempre elegirá una arquitectura VPN Corporativa privada en lugar de usar la red Tor?

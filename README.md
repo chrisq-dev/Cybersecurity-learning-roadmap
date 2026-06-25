@@ -1,6 +1,10 @@
 # Cybersecurity Learning Roadmap
 
-Guías de ciberseguridad en español: estructuradas, prácticas y gratuitas.
+Tu hoja de ruta para aprender ciberseguridad en español sin perderte.
+
+## La Filosofía de esta Guía
+
+Esto no es un mapa cerrado que promete enseñarte todo. La ciberseguridad es infinita. Esto es un mapa vivo y estructurado para que no te pierdas, vayas a tu propio ritmo y lo uses como brújula de consulta constante.
 
 **→ [cbsdev.lat](https://cbsdev.lat)**
 
@@ -8,11 +12,11 @@ Guías de ciberseguridad en español: estructuradas, prácticas y gratuitas.
 
 ---
 
-Hola, soy Christian Quiñones. Diseñé esta web para recopilar y ordenar recursos de ciberseguridad en español, con explicaciones claras para estudiantes que quieren entender los fundamentos, conectar temas y avanzar sin perderse entre demasiada información dispersa.
+Hola, soy Christian Quiñones. Diseñé esta web para recopilar y ordenar recursos de ciberseguridad en español, con explicaciones claras para personas que quieren entender los fundamentos, conectar temas y avanzar sin perderse entre demasiada información dispersa.
 
-## Qué Cubre
+## El Mapa (Qué encontrarás aquí)
 
-Una hoja de ruta organizada por módulos técnicos, defensivos y profesionales:
+Un mapa vivo organizado por áreas de conocimiento técnico, defensivo y profesional:
 
 - **Fundamentos técnicos:** computación, sistemas operativos, redes, Linux, Windows y permisos.
 - **Seguridad web y AppSec:** HTTP, OWASP Top 10, autenticación, autorización, APIs y DevSecOps.

@@ -3,7 +3,7 @@ title: "PowerShell y Eventos: Las Cámaras y el Misil"
 ---
 # PowerShell y Eventos: Las Cámaras y el Misil
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender qué herramientas usa un Defensor (Blue Team) para cazar atacantes invisibles en Windows, y qué herramientas usa el Hacker (Red Team) para volverse invisible en primer lugar.
 

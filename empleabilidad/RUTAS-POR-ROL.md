@@ -3,7 +3,7 @@ title: "Rutas de Carrera: Las Clases RPG"
 ---
 # Rutas de Carrera: Las Clases RPG
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender que la Ciberseguridad no es una carrera, es una industria entera. No puedes ser "Experto en Ciberseguridad", de la misma forma que un médico no es "Experto en Medicina", sino Especialista en Cardiología o Neurología.
 

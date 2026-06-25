@@ -3,7 +3,7 @@ title: "Windows Básico: Las Catacumbas del Sistema"
 ---
 # Windows Básico: Las Catacumbas del Sistema
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender cómo funciona Windows por debajo de las ventanas bonitas.
 Cuando un usuario normal tiene un problema en Windows, reinicia la computadora. Cuando un malware tiene un problema en Windows, excava en las catacumbas del sistema (El Registro) para asegurarse de sobrevivir incluso si el usuario formatea el disco duro. 
@@ -32,7 +32,7 @@ Imagina que el Registro es **el código de ADN de la computadora**. Es una base 
 
 ## 2. Permisos NTFS (Más allá de `rwx`)
 
-En el módulo de Linux aprendimos que los permisos son simples: Dueño, Grupo y Otros tienen Lectura, Escritura o Ejecución (`rwx`). 
+En la guía de Linux aprendimos que los permisos son simples: Dueño, Grupo y Otros tienen Lectura, Escritura o Ejecución (`rwx`). 
 
 Windows utiliza el sistema de archivos **NTFS (New Technology File System)**. Los permisos en NTFS son brutalmente complejos. En lugar de una regla de 3 letras, Windows usa **Listas de Control de Acceso (ACLs)** para cada carpeta.
 

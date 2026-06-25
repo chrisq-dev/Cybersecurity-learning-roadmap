@@ -3,7 +3,7 @@ title: "Permisos y Usuarios: El Castillo y Sus Reglas"
 ---
 # Permisos y Usuarios: El Castillo y Sus Reglas
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Comprender que la seguridad de un servidor Linux no recae en un Antivirus mágico, sino en su **sistema paranoico de permisos**. 
 

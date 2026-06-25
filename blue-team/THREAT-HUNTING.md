@@ -3,7 +3,7 @@ title: "Threat Hunting: El Patrullaje Nocturno"
 ---
 # Threat Hunting: El Patrullaje Nocturno
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender por qué esperar pasivamente a que suene la alarma del Antivirus es una garantía matemática de que serás hackeado, y cómo los mejores equipos defensivos del mundo operan bajo la mentalidad de "El hacker ya está adentro".
 
@@ -58,6 +58,6 @@ De esta forma, la trampa manual se vuelve automática, y el ciclo de defensa de 
 Revisa si tienes el instinto de cazador:
 
 1. ¿Por qué el principio táctico de "Assumed Breach" (Asumir la Brecha) es mentalmente superior a la creencia clásica de "Nuestro Antivirus bloqueará todos los ataques"?
-2. Un Threat Hunter lanza una búsqueda en el SIEM buscando procesos de Windows que intenten comunicarse directamente con la IP `169.254.169.254` (La IP mágica de AWS). ¿Qué vulnerabilidad clásica de la fase ofensiva está intentando cazar este Defensor? *(Pista: Revisa el módulo de OWASP Top 10).*
+2. Un Threat Hunter lanza una búsqueda en el SIEM buscando procesos de Windows que intenten comunicarse directamente con la IP `169.254.169.254` (La IP mágica de AWS). ¿Qué vulnerabilidad clásica de la fase ofensiva está intentando cazar este Defensor? *(Pista: Revisa la guía de OWASP Top 10).*
 3. Explica por qué el éxito a largo plazo del Threat Hunting depende de tener un **Detection Engineer** competente en el equipo.
 4. "Para ser un buen Threat Hunter, necesitas ser un buen Red Teamer". Argumenta a favor o en contra de esta afirmación basándote en cómo el cazador elige qué anomalías buscar en los logs.

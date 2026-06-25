@@ -3,7 +3,7 @@ title: "Riesgos y Controles de API: Hackeando al Mesero"
 ---
 # Riesgos y Controles de API: Hackeando al Mesero
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la vulnerabilidad número 1 de las APIs en el mundo entero (BOLA) y cómo el equipo defensivo utiliza pulseras criptográficas para detenerla.
 

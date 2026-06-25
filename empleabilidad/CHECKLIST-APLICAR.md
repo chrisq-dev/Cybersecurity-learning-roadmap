@@ -3,7 +3,7 @@ title: "El Checklist de Aplicación: Protocolo de Despegue"
 ---
 # El Checklist de Aplicación: Protocolo de Despegue
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la disciplina operativa antes de enviar tu Currículum. Buscar trabajo en Ciberseguridad no es una lotería; es una operación calculada.
 

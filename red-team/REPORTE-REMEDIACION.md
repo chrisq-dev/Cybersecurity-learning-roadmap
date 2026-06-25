@@ -3,7 +3,7 @@ title: "El Reporte: El Único Entregable Real"
 ---
 # El Reporte: El Único Entregable Real
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Aprender la dura verdad del Red Team: A la empresa no le importa qué tan rápido tecleas ni cuántas consolas negras abriste. Lo único que compran con sus $10,000 USD es un archivo PDF de 40 páginas.
 

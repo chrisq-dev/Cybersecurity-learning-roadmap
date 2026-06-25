@@ -3,7 +3,7 @@ title: "Fundamentos del Blue Team: El Centro de Mando"
 ---
 # Fundamentos del Blue Team: El Centro de Mando
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Desmitificar el trabajo del 90% de los profesionales de Ciberseguridad en el mundo. 
 
@@ -48,7 +48,7 @@ En Ciberseguridad, las "cámaras" son los softwares que recolectan información 
 
 *   **EDR (Endpoint Detection and Response):** Es un software avanzado (mucho más inteligente que un simple Antivirus) que se instala en la laptop de cada empleado. El EDR graba exactamente qué programa se abrió, a qué hora, y a qué IP de internet se conectó.
 *   **Firewalls y Proxies:** Las cámaras que vigilan la puerta de entrada y salida del edificio. Anotan quién entró y quién salió.
-*   **Logs del Servidor:** La bitácora del Mesero (Como vimos en el módulo de Web).
+*   **Logs del Servidor:** La bitácora del Mesero (Como vimos en la guía de Web).
 
 Toda esta información gigantesca se envía por tuberías hacia el SOC para que el Analista (Tier 1) pueda verla.
 

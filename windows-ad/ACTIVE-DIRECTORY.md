@@ -3,7 +3,7 @@ title: "Active Directory: El Trono de Hierro"
 ---
 # Active Directory: El Trono de Hierro
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Desmitificar el sistema que controla al 95% de las empresas Fortune 500 del mundo.
 Si tu objetivo es ser un *Penetration Tester* (Red Team) o un analista de SOC corporativo (Blue Team), tu mundo entero girará en torno a Active Directory (AD). Entender cómo atacar o defender AD es la diferencia entre jugar a ser hacker y cobrar un sueldo de 6 cifras.

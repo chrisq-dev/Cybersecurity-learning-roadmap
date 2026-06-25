@@ -3,7 +3,7 @@ title: "PKI y TLS: El Notario Público de Internet"
 ---
 # PKI y TLS: El Notario Público de Internet
 
-## Objetivo del Módulo
+## Objetivo de esta Guía
 
 Entender por qué puedes meter tu tarjeta de crédito con total confianza en `amazon.com`, sin temor a que un hacker ruso sentado en medio del cable de internet pueda leer los números de tu tarjeta, y más importante aún: ¿Cómo estás seguro de que esa página realmente es Amazon?
 
