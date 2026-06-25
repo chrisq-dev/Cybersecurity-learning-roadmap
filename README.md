@@ -21,17 +21,17 @@ Una hoja de ruta organizada por módulos técnicos, defensivos y profesionales:
 - **Criptografía, malware y forense:** cifrado, hashing, TLS, ransomware, botnets, memoria, disco y cadena de custodia.
 - **GRC, privacidad y continuidad:** riesgo, controles, evidencia, backups, continuidad y privacidad.
 - **Empleabilidad:** rutas por rol, CV, LinkedIn, entrevistas, portafolio y criterios para aplicar.
-- **Recursos y cultura tech:** cursos, certificaciones, Mr. Robot, ética hacker, open source y referencias geek.
+- **Recursos y cultura tech:** cómo usar la guía, roadmap inicial, plataformas de práctica, glosario hacker, cursos, certificaciones, Mr. Robot, open source y referencias geek.
 
 ## Por Dónde Empezar
 
 Entra a la web y sigue la ruta recomendada:
 
 1. [cbsdev.lat/inicio-aqui](https://cbsdev.lat/inicio-aqui)
-2. [cbsdev.lat/fundamentos/computacion-basica](https://cbsdev.lat/fundamentos/computacion-basica)
-3. [cbsdev.lat/fundamentos/base-de-seguridad](https://cbsdev.lat/fundamentos/base-de-seguridad)
-4. [cbsdev.lat/redes-cisco/fundamentos-redes](https://cbsdev.lat/redes-cisco/fundamentos-redes)
-5. [cbsdev.lat/web-owasp/fundamentos-web](https://cbsdev.lat/web-owasp/fundamentos-web)
+2. [cbsdev.lat/recursos/como-usar-esta-guia](https://cbsdev.lat/recursos/como-usar-esta-guia)
+3. [cbsdev.lat/recursos/roadmap-90-dias](https://cbsdev.lat/recursos/roadmap-90-dias)
+4. [cbsdev.lat/fundamentos/computacion-basica](https://cbsdev.lat/fundamentos/computacion-basica)
+5. [cbsdev.lat/redes-cisco/fundamentos-redes](https://cbsdev.lat/redes-cisco/fundamentos-redes)
 
 Ruta general:
 

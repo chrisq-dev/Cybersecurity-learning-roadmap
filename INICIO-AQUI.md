@@ -26,6 +26,10 @@ Empieza con esta secuencia:
 
 Además de la ruta técnica, puedes revisar estas guías cuando quieras orientar decisiones de estudio o conectar la ciberseguridad con cultura tech:
 
+- [Cómo Usar Esta Guía](recursos/como-usar-esta-guia.md)
+- [Roadmap Inicial de 90 Días](recursos/roadmap-90-dias.md)
+- [Plataformas de Práctica](recursos/plataformas-de-practica.md)
+- [Glosario de Cultura Hacker](recursos/glosario-cultura-hacker.md)
 - [Cursos y Certificaciones Recomendadas](recursos/cursos-y-certificaciones.md)
 - [Inspiración: Mr. Robot](cultura-geek/inspiracion-mr-robot.md)
 - [Cómo Ver Mr. Robot Estudiando Ciberseguridad](cultura-geek/como-ver-mr-robot.md)

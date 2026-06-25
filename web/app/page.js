@@ -84,13 +84,13 @@ const profileRoutes = [
   },
   {
     title: 'Recursos y cultura',
-    description: 'Certificaciones, cursos, cultura hacker, Mr. Robot, ética y referencias geek.',
+    description: 'Cómo estudiar, roadmap inicial, práctica, glosario, certificaciones y cultura hacker.',
     links: [
+      ['Cómo Usar Esta Guía', '/recursos/como-usar-esta-guia'],
+      ['Roadmap 90 Días', '/recursos/roadmap-90-dias'],
+      ['Plataformas de Práctica', '/recursos/plataformas-de-practica'],
+      ['Glosario Cultura Hacker', '/recursos/glosario-cultura-hacker'],
       ['Cursos y Certificaciones', '/recursos/cursos-y-certificaciones'],
-      ['Inspiración: Mr. Robot', '/cultura-geek/inspiracion-mr-robot'],
-      ['Cómo Ver Mr. Robot', '/cultura-geek/como-ver-mr-robot'],
-      ['Cultura Tech y Ciberseguridad', '/cultura-geek/cultura-tech-y-ciberseguridad'],
-      ['Ética Hacker y Open Source', '/cultura-geek/etica-hacker-y-open-source'],
     ],
   },
 ];
