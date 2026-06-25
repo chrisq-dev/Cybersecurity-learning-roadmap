@@ -1,8 +1,5 @@
 ---
 title: "Fundamentos de Wi-Fi: El Megáfono Invisible"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 4
 ---
 # Fundamentos de Wi-Fi: El Megáfono Invisible
 

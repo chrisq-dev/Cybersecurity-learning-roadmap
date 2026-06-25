@@ -1,8 +1,5 @@
 ---
 title: "Fundamentos de la Nube: La Computadora de Alguien Más"
-tiempo_estimado: "5 min"
-minutos_lectura: 5
-secciones: 5
 ---
 # Fundamentos de la Nube: La Computadora de Alguien Más
 

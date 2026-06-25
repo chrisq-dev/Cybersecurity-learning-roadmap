@@ -1,8 +1,5 @@
 ---
 title: "Comandos Básicos: Navegación Táctica y Búsqueda"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 6
 ---
 # Comandos Básicos: Navegación Táctica y Búsqueda
 

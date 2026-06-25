@@ -1,8 +1,5 @@
 ---
 title: "DevSecOps: La Fábrica de Aviones y Shift Left"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 5
 ---
 # DevSecOps: La Fábrica de Aviones y Shift Left
 

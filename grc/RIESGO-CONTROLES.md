@@ -1,8 +1,5 @@
 ---
 title: "Riesgo y Controles: Las Matemáticas de la Seguridad"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 5
 ---
 # Riesgo y Controles: Las Matemáticas de la Seguridad
 

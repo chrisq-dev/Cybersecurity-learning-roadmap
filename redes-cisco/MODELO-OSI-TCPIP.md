@@ -1,8 +1,5 @@
 ---
 title: "Modelo OSI y TCP/IP: Diseccionando la Red"
-tiempo_estimado: "6 min"
-minutos_lectura: 6
-secciones: 7
 ---
 # Modelo OSI y TCP/IP: Diseccionando la Red
 

@@ -1,8 +1,5 @@
 ---
 title: "Switching, VLANs y ACLs: Dividiendo el Edificio"
-tiempo_estimado: "5 min"
-minutos_lectura: 5
-secciones: 6
 ---
 # Switching, VLANs y ACLs: Dividiendo el Edificio
 

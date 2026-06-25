@@ -1,8 +1,5 @@
 ---
 title: "Detection Engineering: El Ingeniero de Trampas"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 5
 ---
 # Detection Engineering: El Ingeniero de Trampas
 

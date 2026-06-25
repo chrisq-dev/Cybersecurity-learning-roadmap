@@ -1,8 +1,5 @@
 ---
 title: "Procesos, Servicios y Logs: El Pulso de la Máquina"
-tiempo_estimado: "5 min"
-minutos_lectura: 5
-secciones: 6
 ---
 # Procesos, Servicios y Logs: El Pulso de la Máquina
 

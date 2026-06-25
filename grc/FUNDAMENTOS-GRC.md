@@ -1,8 +1,5 @@
 ---
 title: "Fundamentos de GRC: El Inspector del Casino"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 4
 ---
 # Fundamentos de GRC: El Inspector del Casino
 

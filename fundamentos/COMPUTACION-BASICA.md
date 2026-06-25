@@ -1,8 +1,5 @@
 ---
 title: "Computación Básica: Entendiendo la Máquina"
-tiempo_estimado: "9 min"
-minutos_lectura: 9
-secciones: 8
 ---
 # Computación Básica: Entendiendo la Máquina
 

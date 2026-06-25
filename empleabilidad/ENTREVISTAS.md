@@ -1,8 +1,5 @@
 ---
 title: "Hackeando la Entrevista Técnica"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 4
 ---
 # Hackeando la Entrevista Técnica
 

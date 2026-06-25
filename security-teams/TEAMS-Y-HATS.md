@@ -1,8 +1,5 @@
 ---
 title: "Equipos de Seguridad: Los Juegos de Guerra"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 5
 ---
 # Equipos de Seguridad: Los Juegos de Guerra
 

@@ -1,8 +1,5 @@
 ---
 title: "Telemetría del Endpoint: Las Cámaras Corporales"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 5
 ---
 # Telemetría del Endpoint: Las Cámaras Corporales
 

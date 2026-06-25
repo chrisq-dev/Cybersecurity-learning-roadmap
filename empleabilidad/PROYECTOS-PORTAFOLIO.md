@@ -1,8 +1,5 @@
 ---
 title: "Proyectos y Portafolio: El Arquitecto vs El Albañil"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 4
 ---
 # Proyectos y Portafolio: El Arquitecto vs El Albañil
 

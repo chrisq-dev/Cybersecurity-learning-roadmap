@@ -1,8 +1,5 @@
 ---
 title: "Subida de Archivos (File Upload): El Caballo de Troya"
-tiempo_estimado: "5 min"
-minutos_lectura: 5
-secciones: 5
 ---
 # Subida de Archivos (File Upload): El Caballo de Troya
 

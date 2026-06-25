@@ -1,8 +1,5 @@
 ---
 title: "Identidad y Permisos: ¿Quién eres y qué puedes hacer?"
-tiempo_estimado: "5 min"
-minutos_lectura: 5
-secciones: 5
 ---
 # Identidad y Permisos: ¿Quién eres y qué puedes hacer?
 

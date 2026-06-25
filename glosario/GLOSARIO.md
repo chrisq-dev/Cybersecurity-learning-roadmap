@@ -1,8 +1,5 @@
 ---
 title: "Glosario de Ciberseguridad"
-tiempo_estimado: "9 min"
-minutos_lectura: 9
-secciones: 8
 ---
 # Glosario de Ciberseguridad
 

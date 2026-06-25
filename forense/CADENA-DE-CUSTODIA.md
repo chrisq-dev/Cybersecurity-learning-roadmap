@@ -1,8 +1,5 @@
 ---
 title: "Cadena de Custodia: La Ley y el Orden"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 5
 ---
 # Cadena de Custodia: La Ley y el Orden
 

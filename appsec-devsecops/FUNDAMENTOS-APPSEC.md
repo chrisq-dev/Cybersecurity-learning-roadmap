@@ -1,8 +1,5 @@
 ---
 title: "Fundamentos de AppSec: El Corrector y el Muñeco de Choque"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 5
 ---
 # Fundamentos de AppSec: El Corrector y el Muñeco de Choque
 

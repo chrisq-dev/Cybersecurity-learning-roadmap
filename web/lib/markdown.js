@@ -64,6 +64,8 @@ const PUBLIC_FOLDERS = [
   'capstone-projects',
   'cheatsheets',
   'empleabilidad',
+  'recursos',
+  'cultura-geek',
   'writeups',
 ];
 
@@ -103,33 +105,13 @@ const PAGE_ORDER = {
   'capstone-projects': ['SOC-INVESTIGATION', 'APPSEC-REVIEW', 'CLOUD-SECURITY-REVIEW', 'SECURE-SMALL-BUSINESS'],
   cheatsheets: ['GLOSARIO', 'REDES', 'LINUX', 'WEB', 'BLUE-TEAM', 'PYTHON'],
   empleabilidad: ['RUTA-TRABAJO', 'RUTAS-POR-ROL', 'EMPLEO-READY', 'PROYECTOS-PORTAFOLIO', 'MAPA-DE-SKILLS', 'CV-LINKEDIN', 'ENTREVISTAS', 'CHECKLIST-APLICAR'],
+  recursos: ['CURSOS-Y-CERTIFICACIONES'],
+  'cultura-geek': ['INSPIRACION-MR-ROBOT', 'COMO-VER-MR-ROBOT', 'CULTURA-TECH-Y-CIBERSEGURIDAD', 'ETICA-HACKER-Y-OPEN-SOURCE'],
   writeups: ['PLANTILLA-REPORTE'],
 };
 
 function slugifyPart(value) {
   return value.replace(/\.md$/i, '').toLowerCase();
-}
-
-function countSections(content) {
-  const matches = content.match(/^##\s+.+$/gm);
-  return matches ? matches.length : 0;
-}
-
-function estimateReadingTime(content) {
-  const words = createSearchText(content).split(/\s+/).filter(Boolean).length;
-  return Math.max(1, Math.ceil(words / 220));
-}
-
-function createPageStats(content, data = {}) {
-  const sectionCount = Number(data.secciones) || countSections(content);
-  const readingMinutes = Number(data.minutos_lectura) || estimateReadingTime(content);
-
-  return {
-    sectionCount,
-    readingMinutes,
-    previewLabel: data.tiempo_estimado || `${readingMinutes} min de lectura`,
-    sectionLabel: sectionCount === 1 ? '1 sección' : `${sectionCount} secciones`,
-  };
 }
 
 function resolveMarkdownFilePath(slug) {
@@ -209,6 +191,7 @@ export function formatFolderName(folderName) {
     .replace('Vpn', 'VPN')
     .replace('Api', 'API')
     .replace('Social Engineering', 'Ingeniería Social')
+    .replace('Cultura Geek', 'Cultura Geek')
     .replace('Glosario', 'Glosario')
     .replace('Cripto', 'Criptografía')
     .replace('Malware Basico', 'Malware Básico')
@@ -264,6 +247,10 @@ function inferLevel({ folder = '', fileName = '', title = '', isRoot = false }) 
     return 'intermedio';
   }
 
+  if (folder === 'recursos' || folder === 'cultura-geek') {
+    return 'referencia';
+  }
+
   return 'inicial';
 }
 
@@ -315,7 +302,6 @@ export function getContentStructure() {
           level: inferLevel({ fileName: item.name, title, isRoot: true }),
           searchText: createSearchText(fileContent),
           excerpt: createExcerpt(fileContent),
-          stats: createPageStats(fileContent, data),
         });
       }
     }
@@ -365,7 +351,6 @@ export function getContentStructure() {
           level: inferLevel({ folder: item.name, fileName: file.fileName, title }),
           searchText: createSearchText(fileContent),
           excerpt: createExcerpt(fileContent),
-          stats: createPageStats(fileContent, data),
         });
       });
 
@@ -418,7 +403,9 @@ export function getContentStructure() {
     'Writeups',
     'Cheatsheets',
     'Evaluaciones',
-    'Empleabilidad'
+    'Empleabilidad',
+    'Recursos',
+    'Cultura Geek'
   ];
 
   // Sort structure according to didactical study order
@@ -457,6 +444,5 @@ export function getMarkdownContent(slug) {
     meta: data,
     content: content.replace(/^#\s+.+$/m, ''), // Remove title from content body to avoid duplication
     title: title,
-    stats: createPageStats(content, data),
   };
 }

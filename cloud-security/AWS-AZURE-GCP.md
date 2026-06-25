@@ -1,8 +1,5 @@
 ---
 title: "AWS, Azure y GCP: Los Tres Reyes de la Nube"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 6
 ---
 # AWS, Azure y GCP: Los Tres Reyes de la Nube
 

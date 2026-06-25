@@ -1,8 +1,5 @@
 ---
 title: "Zero Trust: El Laboratorio Secreto"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 4
 ---
 # Zero Trust: El Laboratorio Secreto
 

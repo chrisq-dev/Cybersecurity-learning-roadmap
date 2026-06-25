@@ -1,8 +1,5 @@
 ---
 title: "YARA y SIGMA: Los Carteles de \"Se Busca\""
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 4
 ---
 # YARA y SIGMA: Los Carteles de "Se Busca"
 

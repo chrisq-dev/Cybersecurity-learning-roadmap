@@ -1,8 +1,5 @@
 ---
 title: "El Checklist de Aplicación: Protocolo de Despegue"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 3
 ---
 # El Checklist de Aplicación: Protocolo de Despegue
 

@@ -1,8 +1,5 @@
 ---
 title: "Fundamentos de Phishing: El Espejismo Digital"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 4
 ---
 # Fundamentos de Phishing: El Espejismo Digital
 

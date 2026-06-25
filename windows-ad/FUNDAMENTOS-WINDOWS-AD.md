@@ -1,8 +1,5 @@
 ---
 title: "Fundamentos de Windows Corporativo: La Isla vs El Imperio"
-tiempo_estimado: "5 min"
-minutos_lectura: 5
-secciones: 6
 ---
 # Fundamentos de Windows Corporativo: La Isla vs El Imperio
 

@@ -1,8 +1,5 @@
 ---
 title: "CV y LinkedIn: El Pitch de Ventas"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 5
 ---
 # CV y LinkedIn: El Pitch de Ventas
 

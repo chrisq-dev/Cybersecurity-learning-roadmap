@@ -1,8 +1,5 @@
 ---
 title: "Fundamentos de Redes: El Sistema Postal Digital"
-tiempo_estimado: "7 min"
-minutos_lectura: 7
-secciones: 7
 ---
 # Fundamentos de Redes: El Sistema Postal Digital
 

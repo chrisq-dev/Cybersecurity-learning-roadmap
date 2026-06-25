@@ -1,8 +1,5 @@
 ---
 title: "VPN, Proxy y Segmentación: El Submarino y el Túnel"
-tiempo_estimado: "5 min"
-minutos_lectura: 5
-secciones: 5
 ---
 # VPN, Proxy y Segmentación: El Submarino y el Túnel
 

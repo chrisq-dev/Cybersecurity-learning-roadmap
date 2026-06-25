@@ -1,8 +1,5 @@
 ---
 title: "PKI y TLS: El Notario Público de Internet"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 4
 ---
 # PKI y TLS: El Notario Público de Internet
 

@@ -1,8 +1,5 @@
 ---
 title: "Windows Básico: Las Catacumbas del Sistema"
-tiempo_estimado: "5 min"
-minutos_lectura: 5
-secciones: 5
 ---
 # Windows Básico: Las Catacumbas del Sistema
 

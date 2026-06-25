@@ -1,8 +1,5 @@
 ---
 title: "El Reporte: El Único Entregable Real"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 5
 ---
 # El Reporte: El Único Entregable Real
 

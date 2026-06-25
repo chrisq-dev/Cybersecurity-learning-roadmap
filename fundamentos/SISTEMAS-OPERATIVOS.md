@@ -1,8 +1,5 @@
 ---
 title: "Sistemas Operativos: El Administrador del Caos"
-tiempo_estimado: "6 min"
-minutos_lectura: 6
-secciones: 7
 ---
 # Sistemas Operativos: El Administrador del Caos
 

@@ -1,8 +1,5 @@
 ---
 title: "Forense de Disco: Recuperando Fantasmas"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 5
 ---
 # Forense de Disco: Recuperando Fantasmas
 

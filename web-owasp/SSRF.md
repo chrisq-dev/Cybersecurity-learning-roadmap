@@ -1,8 +1,5 @@
 ---
 title: "SSRF (Server-Side Request Forgery): Secuestrando al Mesero"
-tiempo_estimado: "5 min"
-minutos_lectura: 5
-secciones: 6
 ---
 # SSRF (Server-Side Request Forgery): Secuestrando al Mesero
 

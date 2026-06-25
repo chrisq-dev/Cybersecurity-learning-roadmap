@@ -1,8 +1,5 @@
 ---
 title: "Playbook: Servidor Comprometido (Expuesto a Internet)"
-tiempo_estimado: "4 min"
-minutos_lectura: 4
-secciones: 3
 ---
 # Playbook: Servidor Comprometido (Expuesto a Internet)
 

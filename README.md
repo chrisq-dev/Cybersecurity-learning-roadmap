@@ -21,6 +21,7 @@ Una hoja de ruta organizada por módulos técnicos, defensivos y profesionales:
 - **Criptografía, malware y forense:** cifrado, hashing, TLS, ransomware, botnets, memoria, disco y cadena de custodia.
 - **GRC, privacidad y continuidad:** riesgo, controles, evidencia, backups, continuidad y privacidad.
 - **Empleabilidad:** rutas por rol, CV, LinkedIn, entrevistas, portafolio y criterios para aplicar.
+- **Recursos y cultura tech:** cursos, certificaciones, Mr. Robot, ética hacker, open source y referencias geek.
 
 ## Por Dónde Empezar
 
@@ -35,7 +36,7 @@ Entra a la web y sigue la ruta recomendada:
 Ruta general:
 
 ```text
-fundamentos -> redes -> Linux -> web -> Blue Team -> cloud/AppSec -> playbooks -> empleabilidad
+fundamentos -> redes -> Linux -> web -> Blue Team -> cloud/AppSec -> playbooks -> empleabilidad -> recursos
 ```
 
 ## Ética
