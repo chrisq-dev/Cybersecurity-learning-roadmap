@@ -1,357 +1,61 @@
-# VPN, Proxy y Segmentación
+# VPN, Proxy y Segmentación: El Submarino y el Túnel
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender controles de acceso remoto, salida a internet y separación de redes.
+Aprender cómo la ingeniería civil se aplica al diseño de redes. No puedes construir un castillo gigantesco con una sola pared perimetral, porque si el enemigo rompe esa pared, conquistará toda la ciudad en minutos. Tienes que usar túneles secretos y compartimentos herméticos.
 
-Estos controles definen como entran usuarios remotos, como salen sistemas a internet y como se limita el movimiento dentro de la red. Son temas esenciales para reducir impacto cuando una cuenta, laptop, servidor o aplicación se compromete.
+---
 
-## Modelo Mental
+## 1. La VPN: El Túnel Subacuático Blindado
 
-```text
-identidad -> dispositivo -> acceso -> segmento -> permiso -> log
-```
+En la pandemia del 2020, millones de empleados tuvieron que trabajar desde casa. El problema es que conectarse directamente a la Base de Datos de la empresa a través del internet público de su casa es como intentar pasar un cofre del tesoro nadando por un río infestado de pirañas (Hackers, ISPs, Gobiernos).
 
-Una arquitectura madura no pregunta solo "está conectado a la VPN?". Pregunta:
+Aquí entra la **VPN (Virtual Private Network)**.
 
-- Quien es el usuario;
-- Desde que dispositivo entra;
-- Que postura tiene el dispositivo;
-- A que segmento necesita llegar;
-- Que puertos requiere;
-- Que se registra;
-- Que se bloquea por defecto.
+*   **La Analogía:** No nadas por el río. Construyes un **Tubo de Acero Subacuático** desde tu casa directamente hasta el servidor de la empresa.
+*   Todo el tráfico (Tus contraseñas, documentos, correos) viaja por adentro del tubo. Las pirañas pueden ver el tubo de acero cruzando el río, pero no pueden morder lo que va adentro, ni pueden ver de qué color es el cofre.
 
-## VPN
+**El Riesgo de Seguridad:**
+El tubo de acero es de dos vías. Si la computadora del empleado en su casa tiene un virus, y el empleado se conecta a la VPN de la empresa, el virus usará ese mismo tubo de acero para meterse a la red corporativa, saltándose por completo a los guardias de la puerta principal (El Firewall).
+Por eso, las VPNs modernas obligan a la computadora a pasar por un escáner de Antivirus antes de dejarla entrar al tubo.
 
-Una VPN crea un canal cifrado hacia una red o servicio.
+---
 
-Usos:
+## 2. El Proxy Forward y Reverse: La Secretaria
 
-- Acceso remoto.
-- Conexión site-to-site.
-- Administracion segura.
+Un Proxy es un intermediario. Un servidor que habla con internet en tu lugar.
 
-Riesgos:
+### Forward Proxy (La Secretaria del Empleado)
+*   **La Analogía:** Eres un oficinista. En lugar de gritarle a la tienda de la esquina para pedir un café, le das el dinero a la secretaria. Ella va a la calle, compra el café y te lo trae.
+*   **La Ventaja (Privacidad):** La tienda nunca supo quién eras tú, solo vio a la secretaria. Además, si le pides a la secretaria que compre drogas, ella te dirá *"No, las políticas de la empresa no me permiten comprar eso"* y bloqueará la conexión. (Filtro de Contenido / Bloqueo de Facebook).
 
-- Sin MFA.
-- Acceso plano a toda la red.
-- Usuarios antiguos activos.
-- Clientes sin postura de seguridad.
+### Reverse Proxy (El Guardaespaldas del Servidor)
+*   **La Analogía:** Eres el CEO de la empresa. En lugar de atender directamente a mil clientes enojados, pones a un Guardaespaldas gigante en la puerta de tu oficina. Los clientes le dan la carta al guardaespaldas, él la revisa buscando cuchillos (Virus), y si está limpia, te la pasa.
+*   **La Ventaja (Protección del Servidor):** El servidor principal de Amazon nunca "toca" directamente internet. El tráfico sucio choca contra el Reverse Proxy (Ej. Nginx), y el Reverse Proxy es quien recibe los golpes de los hackers (Protección contra ataques de Denegación de Servicio - DDoS).
 
-Controles:
+---
 
-- MFA.
-- Acceso por rol.
-- Segmentación.
-- Logs.
-- Device compliance.
+## 3. Segmentación de Red: El Submarino
 
-Una VPN no debe significar "ya estas dentro de todo". El acceso remoto debe seguir mínimo privilegio: entrar solo a los sistemas necesarios, con identidad fuerte y registro.
+Este es el concepto más importante que usan los Arquitectos de Seguridad modernos para detener el movimiento lateral de los hackers.
 
-Modelo débil:
+*   **El Error Histórico:** Una red "Plana". Como un globo gigante. Si el hacker le hace phishing a la recepcionista, el hacker entra al globo y tiene acceso libre e inmediato a los servidores financieros, las bases de datos y el CEO.
+*   **La Arquitectura Correcta (Segmentación):** La analogía es **Un Submarino Nuclear**. 
+El submarino no está hueco por dentro; está dividido en 20 compartimentos separados por compuertas de titanio (VLANs y Firewalls Internos).
 
-```text
-Usuario remoto -> VPN -> Toda la red interna
-```
+Si un torpedo impacta la cocina del submarino, suena la alarma, se cierran las puertas herméticas y la cocina se inunda. La empresa perdió la cocina, pero el submarino no se hunde.
 
-Modelo mejor:
+**¿Cómo funciona técnicamente?**
+La computadora de la recepcionista se pone en una "VLAN" aislada (Segmento de Red A). El servidor de Finanzas se pone en otro segmento (Segmento de Red B). Entre el Segmento A y el Segmento B, se coloca un Firewall Interno que dice: *"Prohibido que la recepcionista hable con Finanzas"*.
+Si el hacker infecta a la recepcionista, se quedará atrapado en el compartimento de la recepción para siempre.
 
-```text
-Usuario remoto -> VPN con MFA -> Segmento segun rol -> Sistemas necesarios
-```
+---
 
-## VPN Site-to-Site vs Acceso Remoto
+## 4. Criterio de Dominio (Autoevaluación)
 
-### Acceso remoto
+Revisa si podrías diseñar la arquitectura de un banco:
 
-Un usuario se conecta desde su dispositivo hacia recursos internos.
-
-Riesgos:
-
-- Credenciales robadas;
-- Dispositivo infectado;
-- Falta de MFA;
-- Acceso excesivo.
-
-### Site-to-site
-
-Conecta redes completas entre oficinas, cloud o proveedores.
-
-Riesgos:
-
-- Confianza excesiva entre redes;
-- Rutas demasiado amplias;
-- Proveedor comprometido;
-- Falta de monitoreo este-oeste.
-
-En ambos casos, la VPN cifra el canal, pero no reemplaza segmentación ni autorización.
-
-## Proxy
-
-Un proxy intermedia tráfico, normalmente web.
-
-Puede ayudar a:
-
-- Filtrar URLs.
-- Registrar navegación.
-- Bloquear categorías.
-- Inspeccionar tráfico según política.
-
-Un proxy ayuda a controlar salida a internet. Es útil para reducir acceso a sitios maliciosos, detectar descargas sospechosas y tener visibilidad de navegación corporativa según política.
-
-Riesgos:
-
-- Usuarios saltandolo con redes externas.
-- Falta de logs.
-- Reglas demasiado permisivas.
-- Inspeccion TLS mal comunicada o mal configurada.
-
-## Proxy Directo y Proxy Reverso
-
-### Proxy directo
-
-Intermedia salida de usuarios o sistemas hacia internet.
-
-Ejemplo:
-
-```text
-usuario -> proxy -> internet
-```
-
-Usos:
-
-- Filtrar URLs;
-- Registrar navegación;
-- Aplicar políticas;
-- Bloquear descargas peligrosas.
-
-### Proxy reverso
-
-Intermedia entrada desde usuarios externos hacia una aplicación interna.
-
-Ejemplo:
-
-```text
-internet -> reverse proxy -> aplicacion
-```
-
-Usos:
-
-- TLS termination;
-- Balanceo;
-- WAF;
-- Autenticación centralizada;
-- Ocultar infraestructura interna.
-
-No confundas ambos. Uno controla salida; el otro controla entrada hacia servicios.
-
-## Egress Filtering
-
-Controlar tráfico saliente.
-
-Importa porque:
-
-- Malware necesita comunicarse.
-- Exfiltración usa salida.
-- SSRF puede abusar salida del servidor.
-
-Ejemplo:
-
-```text
-Servidor web puede salir a internet por 443 solo a servicios necesarios.
-Servidor web no puede conectarse libremente a cualquier IP interna.
-```
-
-Egress filtering es importante porque muchas organizaciones solo piensan en bloquear entrada. Un atacante que ya logro ejecutar código necesita salida para descargar herramientas, comunicarse o sacar datos.
-
-Ejemplo de política:
-
-```text
-Servidor de aplicacion puede salir a proveedor de pagos por 443.
-Servidor de aplicacion no puede conectarse por SSH a internet.
-Base de datos no inicia conexiones a internet.
-```
-
-Egress filtering reduce:
-
-- Command and control;
-- Descarga de herramientas;
-- Exfiltración;
-- Abuso de SSRF;
-- Conexiones inesperadas desde servidores.
-
-## DMZ
-
-Zona para sistemas expuestos, separada de red interna.
-
-Ejemplo:
-
-- Web público en DMZ.
-- Base de datos en red interna.
-- Admin desde red separada.
-
-Una DMZ reduce impacto porque un sistema expuesto no queda en la misma zona que datos internos. No significa que el sistema de DMZ sea confiable; significa que se asume mayor riesgo y se limita lo que puede alcanzar.
-
-## Segmentación
-
-Separar por función y riesgo:
-
-- Usuarios.
-- Servidores.
-- Admin.
-- Invitados.
-- Produccion.
-- Desarrollo.
-
-La segmentación responde una pregunta clave:
-
-```text
-Si este activo cae, qué más puede alcanzar?
-```
-
-No basta con crear VLANs. La segmentación existe de verdad cuando hay reglas, logs y revisiones.
-
-## Microsegmentacion
-
-Segmentación clasica separa redes grandes. Microsegmentacion busca controlar comunicación entre cargas o servicios especificos.
-
-Ejemplo:
-
-```text
-frontend solo habla con backend
-backend solo habla con database
-database no inicia conexiones a internet
-```
-
-En cloud o Kubernetes esto puede implementarse con security groups, network policies, service mesh o políticas equivalentes.
-
-La microsegmentacion es especialmente útil cuando muchos servicios viven en la misma nube, cluster o red virtual. En vez de confiar en que "todo backend puede hablar con todo", define relaciones concretas.
-
-## Zonas Sugeridas
-
-| Zona | Ejemplos | Controles |
-| --- | --- | --- |
-| Usuarios | Laptops, estaciones | EDR, proxy, acceso limitado |
-| Servidores | Apps internas | Firewall interno, hardening, logs |
-| DMZ | Servicios públicos | WAF, monitoreo, acceso restringido a interno |
-| Datos | Bases, storage sensible | Acceso solo desde apps autorizadas |
-| Administracion | Jump boxes, consolas | MFA, PAM, logging fuerte |
-| Invitados/IoT | Visitantes, dispositivos no confiables | Internet solamente o acceso mínimo |
-
-## Errores Comunes
-
-- VPN sin MFA.
-- VPN que da acceso plano a toda la red.
-- Proxy sin monitoreo.
-- Servidores con salida libre a internet.
-- DMZ con acceso excesivo a bases internas.
-- Segmentos definidos en diagrama pero no aplicados en reglas.
-- Reglas temporales que nunca expiran.
-
-## Ejemplo de Diseño de Acceso
-
-Ejemplo de diseño de acceso remoto para administradores:
-
-- Quién entra?
-- MFA?
-- A qué segmento?
-- Qué puertos?
-- Qué logs?
-- Qué pasa si el dispositivo no cumple?
-
-Diseño razonable:
-
-| Pregunta | Respuesta esperada |
-| --- | --- |
-| Quién entra? | Administradores nominales |
-| MFA? | Obligatorio |
-| Dispositivo | Corporativo y saludable |
-| Segmento | Administracion |
-| Acceso | Jump box, no red completa |
-| Logs | VPN, jump box, comandos críticos |
-| Incumplimiento | Bloquear o acceso limitado |
-
-## Patrones de Arquitectura
-
-### Patron débil
-
-```text
-VPN -> red completa -> servidores y usuarios
-```
-
-Problema:
-
-Una cuenta VPN comprometida puede explorar demasiado.
-
-### Patron mejor
-
-```text
-VPN con MFA -> segmento por rol -> jump box -> sistemas necesarios
-```
-
-Ventaja:
-
-La identidad, el dispositivo y el rol limitan alcance.
-
-### Patron para aplicaciones públicas
-
-```text
-internet -> WAF/reverse proxy -> app -> database
-```
-
-La base de datos no debe exponerse directamente a internet ni a usuarios.
-
-## Logs Importantes
-
-Para VPN:
-
-- Usuario;
-- IP origen;
-- Hora de conexión;
-- MFA exitoso o fallido;
-- Dispositivo;
-- IP asignada;
-- Bytes transferidos;
-- Desconexion.
-
-Para proxy:
-
-- Usuario o IP;
-- URL o dominio;
-- Categoría;
-- Acción;
-- Bytes;
-- User-agent;
-- Reputación.
-
-Para segmentación:
-
-- Regla aplicada;
-- Origen;
-- Destino;
-- Puerto;
-- Acción;
-- Zona.
-
-Sin logs, estos controles son dificiles de auditar.
-
-## Preguntas de Comprensión
-
-- Qué debe poder hacer un usuario al conectarse por VPN?
-- Qué no debería poder hacer?
-- Qué tráfico saliente necesita una app y cuál seria sospechoso?
-- Qué diferencia hay entre segmentación y microsegmentacion?
-- Cómo separarias usuarios, servidores, invitados y administracion?
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Explicar VPN.
-- Explicar proxy.
-- Explicar DMZ.
-- Explicar egress filtering.
-- Diseñar segmentación básica.
-- Explicar por que VPN no debe dar acceso plano.
-- Proponer zonas de red con reglas razonables.
+1. Un empleado de ventas trabaja desde su laptop en una cafetería pública usando el Wi-Fi gratuito para subir los reportes financieros a la red corporativa. Si un Hacker está sentado en la misma cafetería haciendo un ataque *Man-in-the-Middle* (MitM), ¿Por qué la activación de la VPN de la empresa en la laptop del vendedor anula completamente la capacidad del hacker para robar los reportes?
+2. La arquitectura de red de tu empresa es "plana" (no hay segmentación). Un atacante envía un Phishing al Departamento de Recursos Humanos, infecta una PC y desde ahí logra acceder directamente al Servidor de Producción de la Tienda en Línea para borrarlo. Usando la analogía del Submarino, diseña la solución de arquitectura (Segmentación y Firewalls Internos) para asegurar que este ataque sea imposible en el futuro.
+3. Estás implementando un servidor web público. ¿Por qué exponer directamente el servidor *Apache* de tu aplicación al internet es una mala práctica de seguridad, y por qué deberías colocar un "Reverse Proxy" (como *Nginx* o *Cloudflare*) en frente de él?
+4. Un "Forward Proxy" corporativo se utiliza mucho para el Filtrado de Contenido y Control de Empleados. Explica cómo la Analogía de la Secretaria ayuda a entender por qué el empleado nunca interactúa de forma directa con la dirección IP de `youtube.com`.
