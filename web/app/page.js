@@ -62,6 +62,15 @@ const profileRoutes = [
     ],
   },
   {
+    title: 'AI Security',
+    description: 'Ataques semánticos, OWASP Top 10 para LLMs, Prompt Injection y defensa con IA.',
+    links: [
+      ['Fundamentos de IA', '/ai-security/fundamentos-ia'],
+      ['OWASP Top 10 para LLMs', '/ai-security/owasp-top-10-llm'],
+      ['IA en Defensa', '/ai-security/ia-en-defensa'],
+    ],
+  },
+  {
     title: 'GRC',
     description: 'Gobierno, riesgo, controles, evidencia, privacidad y continuidad.',
     links: [
@@ -110,6 +119,10 @@ const studyAreas = [
   {
     title: 'Cloud y arquitectura',
     text: 'IAM, storage, logging, contenedores, Kubernetes, Zero Trust y controles de arquitectura.',
+  },
+  {
+    title: 'Seguridad en Inteligencia Artificial',
+    text: 'Ataques semánticos, Prompt Injection, Data Poisoning y el uso de IA como copiloto defensivo.',
   },
   {
     title: 'Riesgo y empleabilidad',
