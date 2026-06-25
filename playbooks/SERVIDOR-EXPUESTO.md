@@ -1,106 +1,53 @@
-# Playbook: Servidor Expuesto
+# Playbook: Servidor Comprometido (Expuesto a Internet)
 
-## Objetivo
+## Objetivo del Módulo
 
-Responder a un servidor o servicio expuesto indebidamente.
+Aprender qué hacer cuando el castillo ha sido penetrado no por engañar al usuario, sino por la fuerza bruta técnica.
 
-Un servicio expuesto no siempre significa incidente confirmado, pero si requiere análisis rápido. La prioridad es entender que está expuesto, si debería estarlo, que datos o funciones permite, desde cuando ocurre y si alguien lo uso. La contención debe reducir riesgo sin destruir información necesaria para entender impacto.
+En los Playbooks anteriores enfrentamos Phishing (Engaño) y Malware (Infección de usuario). En un escenario de **Servidor Expuesto**, no hay usuarios engañados. 
+Un administrador olvidó configurar el Firewall (Fase 13). Dejó el puerto 22 (SSH) abierto al internet público. Un escáner automatizado en Rusia detectó la puerta abierta y rompió la cerradura mediante fuerza bruta. El atacante ahora es dueño (Root) del Servidor Web corporativo.
 
-## Severidad Inicial
+---
 
-Sube severidad si:
+## Fases de Respuesta a Incidentes (El Ciclo PICERL)
 
-- El servicio tiene datos sensibles;
-- No requiere autenticación;
-- Usa credenciales default;
-- El puerto es administrativo;
-- Hay evidencia de acceso externo;
-- El activo es crítico.
+### Escenario (La Alerta Técnica)
+**Sábado 11:30 PM:** El sistema IPS (Prevención de Intrusiones) lanza una alerta crítica. Detectó comandos de terminal (Linux Shell) inyectados hacia la IP externa del Servidor Web de la empresa. El servidor ha descargado un minero de criptomonedas y está consumiendo el 100% del procesador.
 
-## Señales
+---
 
-- Puerto administrativo abierto.
-- Base de datos accesible desde internet.
-- Panel admin público.
-- Bucket público.
-- Servicio sin autenticación.
+### Paso 1: Contención (El Cerco Militar)
+El atacante está adentro del Servidor Web. El riesgo principal es que salte hacia la Base de Datos Financiera (Movimiento Lateral).
 
-## Evidencia
+1.  **Aislamiento en DMZ:** Reconfigurar el Firewall de inmediato para mover el Servidor Web comprometido a una **VLAN de Cuarentena (DMZ)**. Esto significa que el servidor no puede hablar con ningún otro servidor de la red corporativa. Es una celda de confinamiento.
+2.  **¡No Apagar la Máquina! (Captura de RAM):** De nuevo, la regla máxima Forense. El atacante suele esconder su malware en la Memoria RAM. Si apagas el servidor físico, borras la evidencia. El equipo DFIR (Digital Forensics and Incident Response) procede a tomar un *Volcado de Memoria RAM* (RAM Dump).
+3.  **Imagen de Disco Duro:** Tomar una "Fotografía (Snapshot)" completa del disco duro (Fase 12) para que el equipo Forense pueda diseccionar el ataque mañana, asegurando la Cadena de Custodia Legal.
 
-- IP.
-- Puerto.
-- Servicio.
-- Owner.
-- Exposición.
-- Logs de acceso.
-- Datos accesibles.
+---
 
-En este contexto, evidencia significa datos técnicos para tomar decisiones: configuración, logs, owner, exposición y cambios recientes. No se trata de llenar una plantilla, sino de evitar conclusiones sin base.
+### Paso 2: Erradicación (Quemar la Casa)
+En servidores críticos en la Nube (AWS/Azure), la erradicación no consiste en borrar el virus. Consiste en destruir todo el servidor comprometido y reconstruirlo. 
 
-## Primeros 15 Minutos
+1.  **Terminar el Servidor:** Si usamos infraestructura moderna como contenedores (Kubernetes - Fase 23) o Servidores Virtuales, simplemente presionamos el botón de "Terminar/Eliminar Servidor". Quemamos el castillo entero (el servidor virtual) con el atacante adentro.
+2.  **Cerrar la Ventana Rota:** El Firewall (Fase 13) se reconfigura para cerrar definitivamente el Puerto 22 al mundo. El acceso por SSH a los servidores ahora solo será permitido si el administrador se conecta usando una VPN corporativa con MFA (Zero Trust - Fase 23).
+3.  **Auditoría de Bases de Datos:** Verificar los logs (Fase 8) para saber si el atacante logró enviar peticiones a la Base de Datos interna antes del aislamiento. (Verificar si esto escaló a una Fuga de Datos - Fase 25).
 
-1. Confirmar exposición desde fuente autorizada.
-2. Identificar owner.
-3. Determinar si el servicio debe ser público.
-4. Restringir acceso si el riesgo es claro.
-5. Preservar logs.
-6. Revisar si hubo accesos externos.
+---
 
-## Pasos
+### Paso 3: Recuperación (El Clon Limpio)
+El servidor malo fue destruido. Hay que levantar las operaciones para que la empresa vuelva a vender.
 
-1. Confirmar exposición.
-2. Identificar owner.
-3. Determinar si hay datos sensibles.
-4. Revisar logs de acceso.
-5. Restringir acceso.
-6. Rotar credenciales si hubo exposición.
-7. Aplicar hardening.
-8. Documentar impacto.
+1.  **Despliegue Inmutable:** El equipo de desarrollo utiliza código automatizado (Terraform/Ansible) para crear una copia exacta y 100% limpia del servidor web en 5 minutos, conectada al entorno sano de la red.
+2.  **Rotación de Contraseñas y Secretos:** El atacante tuvo acceso root al servidor antiguo. Es probable que se haya robado las contraseñas de las Bases de Datos (API Keys) guardadas en el código fuente de ese servidor. Deben rotarse todas las contraseñas usadas por esa máquina antes de conectar la nueva.
+3.  **Monitoreo Reforzado:** Dejar el nuevo servidor bajo "Libertad Condicional". El Blue Team aplicará reglas más estrictas de detección de IDS/IPS durante las siguientes 72 horas para asegurar que el atacante no intente volver a entrar.
 
-## Análisis
+---
 
-Preguntas:
+## 4. Criterio de Dominio (Autoevaluación)
 
-- Desde cuándo estuvo expuesto?
-- Qué IPs accedieron?
-- Hubo autenticación exitosa?
-- Qué datos eran visibles?
-- Qué cambio lo expuso?
-- Hay secretos qué rotar?
+Revisa si puedes responder como un bombero forense:
 
-La severidad depende del contexto. Un puerto público con una página estatica no equivale a una base de datos sin autenticación. También importa si hay controles compensatorios, allowlists, MFA, WAF, VPN o logs suficientes para revisar accesos.
-
-## Contención
-
-- Cerrar puerto.
-- Limitar por IP/VPN.
-- Mover a red privada.
-- Habilitar autenticación.
-- Revocar secretos.
-
-## Remediación
-
-- Reglas firewall.
-- Segmentación.
-- Monitoreo.
-- Inventario actualizado.
-
-## Errores Comunes
-
-- Cerrar el puerto sin avisar al owner y causar caida.
-- Asumir que no hubo acceso porque no hay alerta.
-- No rotar secretos expuestos.
-- No revisar cambios recientes de firewall, cloud o deploy.
-- No actualizar inventario después de corregir.
-- Confundir exposición intencional con configuración segura.
-
-## Cierre
-
-Puedes cerrar cuando:
-
-- Exposición fue eliminada o justificada;
-- Logs revisados;
-- Credenciales rotadas si aplica;
-- Owner confirma configuración esperada;
-- Inventario actualizado;
-- Detección preventiva creada.
+1. Un servidor virtual ha sido comprometido por un grupo APT (Hacker Avanzado). El administrador local de TI, tratando de ser útil, "Apaga el servidor y lo borra inmediatamente de AWS" para detener la amenaza. Explica el desastre irreparable que acaba de cometer desde una perspectiva de **Respuesta Forense (DFIR - Fase 12)** y la pérdida del *Volcado de RAM*.
+2. El concepto moderno de operaciones en la Nube asume "Infraestructura Inmutable". En la fase de **Erradicación**, en lugar de perder horas corriendo el Antivirus tratando de limpiar el servidor hackeado, ¿Cuál es la estrategia táctica más eficiente (Quemar la Casa) para servidores virtuales?
+3. En la fase de Contención, el servidor se mueve a una "VLAN de Cuarentena (Celda de Aislamiento)". Usando la filosofía de "Zero Trust" (Fase 23), ¿Por qué este paso previene el ataque mortal de "Movimiento Lateral"?
+4. El servidor hackeado guardaba las credenciales para acceder a la pasarela de pagos de PayPal de la empresa. En la fase de **Recuperación**, si el administrador levanta un servidor nuevo idéntico pero se olvida de ejecutar el paso de **"Rotación de Contraseñas y Secretos"**, ¿Qué podría hacer el hacker al día siguiente, aunque ya no tenga acceso al servidor físico?

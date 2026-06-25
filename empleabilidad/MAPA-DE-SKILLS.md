@@ -1,124 +1,42 @@
-# Mapa de Skills
+# El Mapa de Skills: El Árbol de Habilidades
 
-Este archivo conecta habilidades con señales de comprensión. No funciona como lista de tareas obligatorias ni exige archivos generados. Sirve para saber que deberías poder explicar con tus propias palabras después de estudiar cada área.
+## Objetivo del Módulo
 
-## Redes
+Aprender a conectar los puntos. Ninguna herramienta de ciberseguridad vive aislada.
 
-Skill:
+En un videojuego, tienes un "Árbol de Habilidades" (Skill Tree). No puedes desbloquear la habilidad de "Lanzar Fuego" Nivel 3 si no aprendiste primero a "Encender una chispa" Nivel 1.
+Los estudiantes de Ciberseguridad novatos cometen el error de querer aprender Kubernetes (Fase 23) sin saber cómo funciona una Dirección IP (Fase 2). Esto crea "Agujeros de Conocimiento" que los destruirán en las entrevistas de trabajo.
 
-- Explicar TCP/IP, DNS, HTTP, TLS.
+---
 
-Señales de comprensión:
+## 1. El Árbol de la Infraestructura (El Cimiento)
 
-- Puedes explicar el flujo cliente, DNS, TCP, TLS, HTTP y respuesta.
-- Puedes diferenciar IP, puerto, protocolo, servicio y ruta.
-- Puedes interpretar salidas de comandos de red sin copiar conclusiones.
+Si no sabes cómo se construye el castillo, no puedes defenderlo.
 
-## Linux
+*   **Nivel 1 (Redes y Sistemas):** Tienes que dominar el Modelo OSI, TCP/IP, Linux y Windows (Fases 1 a 4). Esta es tu fundación. Si dominas la terminal de Linux, entenderás cualquier herramienta de seguridad del mercado en 2 horas, porque el 90% de las herramientas de seguridad corporativas están escritas para servidores Linux.
+*   **Nivel 2 (La Nube y la Orquestación):** Una vez que dominas un servidor físico, saltas a la Nube (AWS/Azure - Fase 10) y a los Contenedores (Docker/K8s - Fase 23). Aquí aprendes a multiplicar tu servidor por mil usando código.
 
-Skill:
+## 2. El Árbol de la Defensa (La Muralla)
 
-- Usar terminal, permisos, logs y servicios.
+El núcleo del Blue Team.
 
-Señales de comprensión:
+*   **Nivel 1 (Visibilidad):** No puedes defender lo que no puedes ver. Aquí entra tu dominio de la Arquitectura de Seguridad (Fase 23) y la ingesta de Logs en el SIEM (Fase 8).
+*   **Nivel 2 (Respuesta Rápida):** Ya ves al atacante, ¿Qué haces? Dominar los Playbooks Militares de Respuesta a Incidentes (Fases 24 y 26). Saber aislar la red de una máquina comprometida.
+*   **Nivel 3 (Forense):** El atacante está contenido. Ahora debes diseccionar el cadáver. Análisis Forense de RAM y Discos Duros (Fase 12) para encontrar cómo entró y parchar el agujero.
 
-- Puedes explicar permisos, owners, grupos, procesos, servicios y logs.
-- Puedes distinguir observación segura de cambios destructivos.
-- Puedes leer eventos básicos sin borrar evidencia ni alterar sistemas.
+## 3. El Árbol del Negocio (La Cúspide Ejecutiva)
 
-## Windows
+Aquí es donde la tecnología se traduce en Dinero y Leyes. Es la habilidad que separa a un Analista Junior de un Director (CISO).
 
-Skill:
+*   **Nivel Único (GRC - Gobierno, Riesgo y Cumplimiento):** (Fase 20). Entender que la Ciberseguridad no es sobre "Hackear". Es sobre calcular que si el servidor de la Base de Datos se cae, la empresa pierde $100,000 dólares por hora. Entender la ley Europea (GDPR) y la ley de tarjetas de crédito (PCI-DSS). Si sabes unir el Nivel 1 Técnico con el Nivel Único de Negocios, tu salario se multiplicará por cinco.
 
-- Revisar eventos y usuarios.
+---
 
-Señales de comprensión:
+## 4. Criterio de Dominio (Autoevaluación)
 
-- Puedes ubicar Event Viewer, usuarios, grupos, servicios y eventos relevantes.
-- Puedes explicar logons exitosos, fallidos y cambios de privilegios.
-- Puedes usar PowerShell para observar información básica sin automatizar acciones riesgosas.
+Revisa si tu Árbol de Habilidades está balanceado:
 
-## Blue Team
-
-Skill:
-
-- Investigar alerta.
-
-Señales de comprensión:
-
-- Puedes construir una hipótesis defensiva.
-- Puedes separar evidencia, interpretacion, falso positivo e impacto.
-- Puedes mapear comportamiento a MITRE ATT&CK de forma razonada.
-- Puedes explicar que logs faltan antes de afirmar un incidente.
-
-## Web Security
-
-Skill:
-
-- Explicar OWASP y mitigaciones.
-
-Señales de comprensión:
-
-- Puedes explicar causa, impacto y mitigacion de categorías OWASP.
-- Puedes distinguir autenticación, autorización, validación y manejo de sesión.
-- Puedes razonar sobre una falla sin depender de explotar sistemas reales.
-
-## Python
-
-Skill:
-
-- Automatizar análisis simple.
-
-Señales de comprensión:
-
-- Puedes leer archivos, estructuras de datos y errores comunes en scripts.
-- Puedes explicar como Python ayuda a analizar logs, CSV y APIs.
-- Puedes identificar riesgos como secretos en código, manejo inseguro de archivos y salidas con datos sensibles.
-
-## Cloud
-
-Skill:
-
-- Revisar IAM, storage, logs y secretos.
-
-Señales de comprensión:
-
-- Puedes explicar responsabilidad compartida.
-- Puedes revisar IAM, storage, logging, secretos y exposición pública.
-- Puedes priorizar riesgos cloud por impacto y explotabilidad.
-
-## GRC
-
-Skill:
-
-- Relacionar riesgo, control y evidencia.
-
-Señales de comprensión:
-
-- Puedes diferenciar activo, amenaza, vulnerabilidad, riesgo, control y evidencia.
-- Puedes explicar riesgo inherente y residual.
-- Puedes conectar controles técnicos con impacto de negocio.
-
-## Entrevista
-
-Skill:
-
-- Comunicar claramente.
-
-Señales de comprensión:
-
-- Puedes explicar un hallazgo de forma técnica y ejecutiva.
-- Puedes comunicar impacto, incertidumbre, supuestos y siguiente paso.
-- Puedes hablar de tu aprendizaje sin exagerar experiencia real.
-
-## Estado Empleo-Ready
-
-Usa [EMPLEO-READY.md](EMPLEO-READY.md) para marcar tu nivel:
-
-- Nivel 1: Base técnica.
-- Nivel 2: Práctica visible.
-- Nivel 3: Portafolio junior.
-- Nivel 4: Candidato fuerte.
-- Nivel 5: Ruta a experto.
-
-El objetivo mínimo para aplicar es Nivel 3.
+1. Un estudiante decide que las "Redes de Computadoras" (Modelo OSI, TCP/IP) son muy aburridas y decide saltarse esa fase para estudiar directamente "Seguridad en la Nube de AWS". Explica el "Agujero de Conocimiento" fatal que enfrentará cuando AWS le pida configurar un *VPC (Virtual Private Cloud)* y subredes para aislar sus servidores.
+2. Compara el **Árbol de la Defensa** con el **Árbol del Negocio**. Si un Analista SOC domina la detección técnica de un ataque de Phishing (Árbol de Defensa), ¿Por qué necesita el Árbol del Negocio para explicarle la gravedad de este ataque al Director Financiero (CFO) de la empresa?
+3. En la analogía del "Árbol de Habilidades", ¿Por qué el dominio del Sistema Operativo Linux (Terminal, Permisos, Procesos) se considera un requisito bloqueante (Nivel 1) antes de intentar entender la tecnología de Contenedores y Docker (Nivel 2)?
+4. En una entrevista de trabajo, el CISO te pregunta cuál es tu fortaleza principal. Tú respondes: *"Entender la trazabilidad de los ataques desde los paquetes de red (Cimiento) hasta su impacto financiero en el cumplimiento normativo (GRC)"*. ¿Qué le estás diciendo al CISO sobre la estructura de tu propio Árbol de Habilidades?

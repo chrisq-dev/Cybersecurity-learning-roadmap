@@ -1,112 +1,42 @@
-# Criterios Para Aplicar a Trabajos
+# El Checklist de Aplicación: Protocolo de Despegue
 
-Esta guía no es una lista de tareas obligatorias. Sirve para entender que señales indican que una persona ya puede empezar a aplicar a roles iniciales de ciberseguridad con más seguridad.
+## Objetivo del Módulo
 
-La idea central es simple: no necesitas saberlo todo, pero si necesitas poder explicar fundamentos, leer evidencia básica y hablar de tus proyectos con claridad.
+Aprender la disciplina operativa antes de enviar tu Currículum. Buscar trabajo en Ciberseguridad no es una lotería; es una operación calculada.
 
-## GitHub y Perfil Público
+Al igual que en un Playbook de Respuesta a Incidentes (Fase 26) no te saltas el paso de "Contención", antes de enviar un CV no puedes simplemente hacer clic en "Aplicar a todo" en LinkedIn. 
+Si el piloto de un avión no revisa el combustible (Pre-Flight Checklist) antes de despegar, el avión se estrella. Si tú no revisas tu perfil antes de aplicar, tu CV se estrellará contra el filtro automático de Recursos Humanos (ATS).
 
-Un perfil público se ve más fuerte cuando:
+---
 
-- El README explica quien eres y que estas construyendo;
-- La ruta de estudio o proyectos son faciles de entender;
-- Los laboratorios usan datos ficticios o autorizados;
-- No hay secretos, tokens ni datos reales sensibles;
-- Los commits tienen mensajes claros;
-- Cada proyecto explica problema, análisis, riesgo y aprendizaje.
+## 1. El Protocolo de Despegue (Checklist de 5 Pasos)
 
-No se trata de tener muchos repositorios. Se trata de que lo que muestras tenga contexto.
+### Paso 1: Limpieza Forense (La Regla de OSINT)
+*   **La Acción:** Busca tu propio nombre en Google (Doxing a ti mismo - Fase 21). Asegúrate de que tus redes sociales públicas (Twitter, Instagram) no tengan contenido extremo, radical o poco profesional.
+*   **Por qué importa:** El reclutador y el Blue Team harán un Análisis OSINT sobre tu perfil antes de contratarte. Si tu puesto requiere manejar contraseñas de bancos y tu perfil de internet grita "Inmadurez", serás rechazado por riesgo corporativo.
 
-## Fundamentos
+### Paso 2: La Metodología de Espejo (Tailoring)
+*   **La Acción:** Nunca envíes el mismo CV a todas las empresas. 
+*   **El Protocolo:** Abre la descripción del puesto. Si el puesto dice *"Buscamos experiencia en gestión de identidades y Active Directory"*, asegúrate de que esas palabras exactas estén en tu CV (En formato de Pitch de Ventas - Fase 24). Si dice *"Analizar registros en Splunk"*, incluye tu proyecto de Home Lab con Splunk. Refleja las necesidades del negocio.
 
-Antes de aplicar conviene poder explicar:
+### Paso 3: El Chequeo del ATS (Robot Reclutador)
+*   **La Acción:** Asegúrate de que tu CV (PDF) pueda ser leído copiando todo el texto y pegándolo en un bloc de notas. Si el texto se pega desordenado, el robot (ATS) de Recursos Humanos lo leerá desordenado y te descartará automáticamente.
+*   **La Regla:** Cero formatos locos, cero columnas dobles. Puro texto secuencial.
 
-- TCP/IP, DNS, HTTP y TLS;
-- Linux básico;
-- Windows y eventos;
-- Autenticación vs autorización;
-- CIA triad y riesgo.
+### Paso 4: La Preparación del Portafolio
+*   **La Acción:** Verifica que todos los enlaces a tu GitHub (Home Lab - Fase 25) funcionen. Asegúrate de que el primer proyecto que vea el reclutador sea el más espectacular (Ej. Configuración de un SIEM en tiempo real o Detección de Ransomware).
 
-Si no puedes explicar estos temas en palabras simples, una entrevista técnica se vuelve difícil aunque hayas usado muchas herramientas.
+### Paso 5: La Red de Contacto (El "Side Channel Attack")
+*   **La Acción:** Aplicar a través del botón genérico de la empresa tiene una tasa de éxito del 5%. En su lugar, usa LinkedIn para encontrar a un Reclutador IT o a un Analista SOC Senior que ya trabaje en esa empresa. 
+*   **El Mensaje:** Envíales un mensaje educado de 3 líneas diciendo que admiras su trabajo, que estás interesado en el puesto abierto, y pregunta si podrían darle una mirada rápida a tu perfil. Las empresas confían mil veces más en una recomendación interna que en un currículum anónimo.
 
-## Blue Team
+---
 
-Para roles SOC o analista junior conviene entender:
+## 2. Criterio de Dominio (Autoevaluación)
 
-- Lectura de logs simples;
-- Diferencia entre evento, alerta e incidente;
-- Como escribir una conclusión;
-- MITRE ATT&CK a nivel básico;
-- Falsos positivos;
-- Respuesta a incidentes.
+Revisa si tu avión corporativo está listo para despegar:
 
-La meta no es sonar experto. La meta es demostrar que sabes razonar con evidencia incompleta.
-
-## Seguridad Web
-
-Para web, AppSec o perfiles backend con seguridad conviene explicar:
-
-- OWASP Top 10;
-- SQL Injection;
-- XSS;
-- Broken Access Control;
-- Autenticación y sesiones;
-- Mitigaciones y controles.
-
-Un buen candidato no solo dice el nombre de la vulnerabilidad. Explica causa, impacto y remediación.
-
-## Automatización
-
-Automatizar ayuda, pero no debe ser teatro. Un proyecto pequeño puede ser suficiente si resuelve algo claro.
-
-Ideas que demuestran criterio:
-
-- Calcular hashes;
-- Resumir logs;
-- Leer CSV/JSON;
-- Generar una tabla de hallazgos;
-- Consultar una API;
-- Convertir datos en una conclusión.
-
-Lo importante es poder explicar el código, las entradas, las salidas, las limitaciones y los falsos positivos.
-
-## Proyectos Iniciales
-
-Buenos proyectos iniciales:
-
-- Análisis de logs;
-- Hardening Linux;
-- Caso OWASP explicado;
-- Investigación de alerta simulada;
-- Revisión cloud o IAM conceptual;
-- Red segmentada.
-
-No todos requieren código. Algunos demuestran mejor criterio con explicación, arquitectura y análisis.
-
-## Entrevista
-
-Antes de aplicar, conviene poder:
-
-- Explicar un proyecto en dos minutos;
-- Contar un problema que resolviste;
-- Decir que harias cuando no sabes algo;
-- Leer una alerta simple;
-- Proponer una remediación;
-- Hablar de limitaciones sin inventar.
-
-La honestidad técnica importa. Decir "no lo se, pero lo investigaria asi" suele ser mejor que improvisar.
-
-## Aplicación Constante
-
-Aplicar a trabajos también se entrena. Conviene:
-
-- Revisar vacantes para entender patrones;
-- Mejorar tu CV con evidencia real;
-- Hablar con comunidades;
-- Publicar aprendizajes;
-- Pedir feedback;
-- Ajustar tu ruta según los roles que te interesan.
-
-## Criterio Final
-
-Puedes empezar a aplicar cuando puedas defender tus fundamentos y explicar ejemplos concretos. No esperes sentirte experto. Aplica cuando tengas suficiente evidencia para sostener una conversacion técnica honesta.
+1. Un estudiante recién graduado se queja de que envió exactamente el mismo Currículum Vitae a 500 empresas de Ciberseguridad diferentes en un fin de semana y nadie le respondió. Explica el fracaso de esta estrategia utilizando el concepto de "Metodología de Espejo" (Tailoring) frente a los algoritmos de filtrado automático (ATS).
+2. Según el paso de "Limpieza Forense", ¿Por qué el equipo de Recursos Humanos tiene el mandato corporativo de buscar tu nombre en internet (OSINT) antes de contratarte para un equipo defensivo (Blue Team)? ¿Qué concepto de Riesgo están evaluando?
+3. En la fase final de aplicación (El Side Channel Attack), te contactas directamente con un analista interno de la empresa en LinkedIn en lugar de usar el botón oficial de la página web. ¿Cómo se relaciona esta táctica de "aprovechar la confianza humana" con los conceptos que aprendimos sobre Ingeniería Social y Phishing (Fase 21), aplicados para tu propio beneficio laboral?
+4. El "Pre-Flight Checklist" establece que buscar trabajo no es una lotería, es un proceso. Elabora una analogía final explicando por qué omitir el chequeo de "Legibilidad ATS" es equivalente a intentar enviarle un archivo encriptado a alguien que no tiene la llave de descifrado (Fase 11 - Criptografía).

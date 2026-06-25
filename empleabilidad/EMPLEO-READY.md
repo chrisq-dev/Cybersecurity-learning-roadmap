@@ -1,179 +1,53 @@
-# Sistema Empleo-Ready
+# El Semáforo de Lanzamiento: ¿Cuándo estoy listo?
 
-Esta guía explica que nivel de comprensión conviene alcanzar antes de buscar un primer rol en ciberseguridad. No garantiza empleo por si sola; ningún recurso puede hacerlo. Lo que si hace es darte criterios para demostrar habilidades reales: fundamentos, razonamiento técnico, comunicación, proyectos y respuestas de entrevista.
+## Objetivo del Módulo
 
-## Objetivo
+Destruir el Síndrome del Impostor y la barrera del "Falso Nivel Junior".
 
-Llegar a un punto donde puedas aplicar a roles junior y explicar con seguridad:
+En la industria espacial, antes de lanzar un cohete, el equipo pasa por un protocolo llamado "Go / No-Go". Si un sensor clave falla, el lanzamiento se cancela. 
+En Ciberseguridad, miles de estudiantes brillantes nunca envían su CV porque sienten que su "lanzamiento" no está listo. Creen que necesitan saber hackear al Pentágono para conseguir un puesto Junior. Esto es un error corporativo.
 
-- Que sabes.
-- Que practicaste.
-- Que señales muestran tu avance.
-- Como piensas ante un problema.
-- Como comunicas riesgo, impacto y remediación.
+---
 
-## Roles Objetivo Iniciales
+## 1. El Falso Nivel Junior (La Realidad de RRHH)
 
-Prioriza estos roles:
+Entras a LinkedIn y ves una oferta para "Analista SOC Junior (Nivel Inicial)". Lees los requisitos y piden:
+*   3 años de experiencia comprobable.
+*   Conocimientos nivel Experto en AWS, Azure y Google Cloud.
+*   Certificación CISSP (Que por ley requiere 5 años de experiencia previa para sacarla).
 
-- SOC Analyst Junior.
-- Cybersecurity Analyst Junior.
-- IT Support con enfoque en seguridad.
-- NOC Analyst con ruta a seguridad.
-- Vulnerability Management Junior.
-- Cloud Security Intern / Junior.
-- AppSec Intern / Junior.
-- GRC Junior.
+**El Síndrome del Impostor:** Tú lees eso, cierras la página y te sientes miserable porque llevas 6 meses estudiando y crees que no sabes nada.
+**La Realidad Corporativa:** El equipo de Recursos Humanos (RRHH) **no sabe** de ciberseguridad. RRHH simplemente buscó en Google "Qué hace un Analista de Ciberseguridad", copió una lista gigante de herramientas de la NASA y la pegó en la oferta de trabajo.
 
-## Niveles de Preparacion
+### La Regla del 40% (Luz Verde para Despegar)
+Si cumples con el 40% o 50% de los requisitos técnicos listados en una oferta Junior, **APLICA.** El CISO (Director de Seguridad) sabe que el candidato "ideal" que escribió RRHH no existe en el mundo real. 
+El CISO te va a contratar por tu potencial analítico, no porque te sepas de memoria todos los comandos de Linux.
 
-### Nivel 1: Base Técnica
+---
 
-Puedes explicar fundamentos, pero aún tienes poca práctica defendible.
+## 2. El Semáforo (Tu Checklist Interno)
 
-Debes poder:
+¿Cómo sabes si tú estás listo? No midas tus certificados, mide tus habilidades.
 
-- Explicar computación básica.
-- Explicar redes.
-- Usar Linux básico.
-- Entender Windows a nivel usuario y administrador inicial.
-- Definir terminos comunes de seguridad con tus palabras.
-- Responder 10 preguntas básicas de entrevista sin memorizar.
+🔴 **ROJO (No-Go): Aún no apliques si...**
+*   No sabes la diferencia entre una IP Pública y una Privada (Fase 2).
+*   No sabes cómo leer la ruta de un archivo en Linux (Fase 3).
+*   Crees que un Firewall y un Antivirus son exactamente lo mismo (Fase 13 y 14).
+*   No tienes un Portafolio (Fase 25). Si tu única experiencia es "Ver videos", te estrellarás en la entrevista.
 
-### Nivel 2: Práctica Visible
+🟢 **VERDE (Go): APLICA AHORA MISMO si...**
+*   Entiendes el Modelo OSI (Fase 2) y puedes explicar cómo viajan los datos.
+*   Sabes qué es un SIEM (Fase 8) y has ingestados logs en un Home Lab (Fase 25).
+*   Puedes explicar la diferencia corporativa entre un Riesgo, una Vulnerabilidad y una Amenaza (Fase 20).
+*   Conoces los tres pasos militares de Respuesta a Incidentes (Contener, Erradicar, Recuperar - Fase 24).
 
-Ya no solo lees: puedes explicar casos simples.
+---
 
-Debes poder explicar:
+## 3. Criterio de Dominio (Autoevaluación)
 
-- Casos básicos de redes, Linux, Windows y logs.
-- Como una automatización simple ayuda a revisar datos.
-- Como comunicar un hallazgo técnico.
-- Como revisar hardening o controles de seguridad.
-- Que estudiaste, que entendiste y que dudas quedan.
+Revisa si tu mente está lista para soportar la presión del mercado:
 
-### Nivel 3: Portafolio Junior
-
-Ya puedes empezar a aplicar a roles junior.
-
-Debes poder explicar:
-
-- Casos completos de Blue Team, Web/AppSec, Cloud o GRC.
-- Automatizaciones simples y sus límites.
-- Hallazgos técnicos con impacto y remediación.
-- Un resumen ejecutivo.
-- Una investigación de alerta simulada.
-- Un caso permitido de web security.
-- Tu CV/LinkedIn con aprendizaje claro y honesto.
-- Preguntas de entrevista sin memorizar respuestas vacias.
-
-### Nivel 4: Candidato Fuerte
-
-Ya puedes defender tu perfil en entrevista con ejemplos concretos.
-
-Debes poder defender:
-
-- 1 capstone completo.
-- 1 proyecto Blue Team.
-- 1 proyecto Web/AppSec.
-- 1 proyecto Python.
-- 1 proyecto Cloud o GRC.
-- Claridad para explicar una simulacion de entrevista.
-- Un mapa claro entre skills, comprensión y aprendizajes.
-
-### Nivel 5: Ruta a Experto
-
-Experto no significa "lo se todo". Significa que puedes resolver problemas, explicar tradeoffs, razonar con evidencia y mejorar sistemas reales.
-
-Debes desarrollar:
-
-- Profundidad en una especialidad.
-- Proyectos repetibles.
-- Detecciones o automatizaciones propias.
-- Comunicación técnica clara.
-- Práctica constante.
-- Feedback externo.
-- Historial de mejora.
-
-## Casos Recomendados Para Aplicar
-
-No son obligatorios ni deben vivir como entregas dentro del repositorio. Son casos que conviene entender porque aparecen mucho en entrevistas y trabajo junior:
-
-1. Analizador de logs de autenticación.
-2. Investigación de alerta simulada.
-3. Guía de hardening Linux.
-4. OWASP Top 10 con labs permitidos.
-5. Inventario de activos con priorización.
-6. Cloud security review.
-7. AppSec review.
-8. SOC investigation capstone.
-9. Secure small business capstone.
-
-## Comprensión Mínima Por Caso
-
-Cada caso debe poder explicarse con:
-
-- Problema.
-- Objetivo.
-- Entorno o datos usados.
-- Razonamiento.
-- Datos observados.
-- Hallazgos.
-- Riesgo.
-- Impacto.
-- Remediación.
-- Limitaciones.
-- Que aprendiste.
-
-Si no puedes explicar un proyecto en entrevista, no cuenta como proyecto terminado.
-
-## Checklist Para Empezar a Aplicar
-
-Puedes empezar a aplicar cuando cumplas:
-
-- Puedes explicar TCP/IP, DNS, HTTP, TLS y puertos comunes.
-- Puedes usar Linux básico sin copiar todo.
-- Puedes explicar autenticación, autorización, IAM y mínimo privilegio.
-- Puedes leer logs y escribir una conclusión.
-- Puedes explicar OWASP Top 10 con ejemplos.
-- Puedes escribir un reporte con impacto y remediación.
-- Tienes 5 evidencias públicas en GitHub.
-- Tienes CV y LinkedIn alineados a tu evidencia.
-- Puedes hablar de 3 proyectos sin leer.
-- Puedes responder preguntas básicas de entrevista.
-
-## Rutina Semanal Para Conseguir Trabajo
-
-Cada semana:
-
-- Mejorar 1 evidencia del repo.
-- Practicar 10 preguntas.
-- Aplicar a 5 vacantes.
-- Contactar 2 personas o recruiters.
-- Mejorar 1 sección de CV/LinkedIn.
-- Hacer 1 simulacion corta de entrevista.
-
-No esperes sentirte experto para aplicar. Aplica cuando tengas evidencia suficiente y puedas explicar lo que hiciste.
-
-## Cómo Usar Esta Guía
-
-1. Identifica tu nivel actual.
-2. Elige el siguiente requisito que todavía no puedas explicar o demostrar.
-3. Trabaja una semana en esa evidencia.
-4. Relaciona lo que hiciste con una habilidad concreta.
-5. Actualiza tu CV, LinkedIn o portafolio cuando tengas evidencia real.
-6. Repite.
-
-## Verdad Importante
-
-El repo no te hace experto automaticamente. Te vuelve fuerte si lo usas asi:
-
-- Estudias.
-- Prácticas.
-- Documentas.
-- Corriges.
-- Repites.
-- Pides feedback.
-- Aplicas a trabajos.
-
-La meta no es tener muchos archivos. La meta es poder demostrar habilidad real.
+1. Un estudiante encuentra una oferta laboral "Junior" que exige 5 años de experiencia previa en análisis avanzado de Malware con ingeniería inversa. ¿Por qué el estudiante debe aplicar a este puesto a pesar de no cumplir el requisito de experiencia, basándose en la "Falsa Realidad de RRHH"?
+2. El Director Técnico (CISO) te entrevista para un puesto de defensa de redes. Te pregunta si tienes experiencia usando un "Firewall marca Palo Alto". Tú nunca has usado esa marca, solo has usado Firewalls genéricos en Linux (Iptables). ¿Cómo le responderías demostrando que tu conocimiento "Base" te permite aprender cualquier marca rápidamente?
+3. En la "Regla del 40%", establecimos que las empresas no contratan "Herramientas", contratan "Potencial Analítico". Explica qué significa "Potencial Analítico" durante el análisis de un ataque de Phishing (Fase 24).
+4. El semáforo "Rojo" indica que no debes aplicar si no tienes un "Home Lab" (Fase 25). ¿Por qué la falta de proyectos prácticos documentados es un indicador definitivo de que fallarás la entrevista técnica, por más teoría que sepas?
