@@ -92,12 +92,4 @@ Una buena regla para estudiar:
 
 Eso cambia la mentalidad. Ya no estudias para impresionar, sino para entender, reducir riesgos y tomar mejores decisiones.
 
----
 
-## Criterio de Dominio (Autoevaluación)
-
-¿Entiendes el peso de la ética y la cadena de suministro?
-
-1. Un desarrollador junior copia una herramienta de escaneo de red que encontró en GitHub y la ejecuta directamente dentro de la red corporativa del banco donde trabaja. Explica detalladamente el concepto de "Ataque de Cadena de Suministro" (Supply Chain Attack) y por qué esta acción podría comprometer la seguridad de todo el banco.
-2. ¿Cuál es la diferencia técnica y legal entre utilizar nmap para escanear tu propia máquina virtual de laboratorio (Metasploitable) frente a escanear el sitio web oficial de una universidad "solo para ver qué puertos tienen abiertos"?
-3. El caso del Backdoor de `xz-utils` en Linux fue orquestado durante años mediante ingeniería social dentro de la comunidad Open Source. Si el código fuente es público y cualquiera puede leerlo, ¿Por qué vulnerabilidades masivas como esta o como *Log4j* pasan desapercibidas durante años?

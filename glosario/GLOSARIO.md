@@ -191,11 +191,12 @@ Este glosario existe para que no te pierdas cuando una guía mencione términos 
 
 ### IDOR
 
-**Qué es:** Fallo de autorización donde cambiar un identificador permite acceder a recursos ajenos.
+**Qué es:** Fallo de autorización (Insecure Direct Object Reference) donde cambiar un identificador permite acceder a recursos ajenos.
 
 **Ejemplo simple:** Cambiar `factura=100` por `factura=101` y ver una factura de otro usuario.
 
 **Por qué importa:** Es común, fácil de entender y puede causar fuga de datos.
+> **Contexto Corporativo:** Es la vulnerabilidad más frecuente y devastadora en APIs REST modernas. Las empresas gastan millones en Firewalls Perimetrales, pero un IDOR se salta todas las defensas porque ocurre en la lógica de negocio, no en la red.
 
 **Relacionado con:** autorización, control de acceso, APIs.
 
@@ -320,6 +321,7 @@ Este glosario existe para que no te pierdas cuando una guía mencione términos 
 **Ejemplo simple:** API key, token, contraseña, llave privada o cadena de conexión.
 
 **Por qué importa:** Un secret expuesto puede abrir acceso directo a sistemas o datos.
+> **Contexto Corporativo:** Subir *secrets* en código fuente a GitHub de forma accidental (hardcoding) es la causa principal de más del 60% de los hackeos masivos en infraestructura Cloud hoy en día.
 
 **Relacionado con:** vault, rotación, CI/CD, cloud.
 
@@ -342,6 +344,7 @@ Este glosario existe para que no te pierdas cuando una guía mencione términos 
 **Ejemplo simple:** Una empresa no puede abrir sus archivos y recibe una nota de rescate.
 
 **Por qué importa:** Afecta disponibilidad, continuidad, reputación y datos sensibles.
+> **Contexto Corporativo:** El costo de un ataque de ransomware rara vez es el "rescate" en sí. El verdadero costo millonario viene de las semanas de inoperatividad del negocio y las multas regulatorias por fuga de datos.
 
 **Relacionado con:** backups, respuesta a incidentes, malware, continuidad.
 

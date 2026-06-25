@@ -301,11 +301,4 @@ Antes de pagar cientos de dólares por una certificación, haz un análisis corp
 
 Si no puedes responder esas preguntas, detente. Construir un proyecto práctico en tu computadora es casi siempre mejor inversión que comprar un examen por ansiedad.
 
----
 
-## Criterio de Dominio (Autoevaluación)
-
-¿Entiendes el propósito corporativo de una certificación?
-
-1. Llevas 6 meses estudiando Ciberseguridad de forma autodidacta y has montado tu propio Active Directory. Envías tu CV a 30 empresas pero nadie te llama. Explicando la teoría del Algoritmo ATS (Applicant Tracking System), argumenta por qué obtener la certificación "CompTIA Security+" de repente haría que tu teléfono empiece a sonar, aunque no hayas aprendido nada "nuevo" técnicamente.
-2. ¿Por qué depender exclusivamente de tener 5 certificaciones te ayudará a pasar la entrevista con Recursos Humanos, pero te garantizará el rechazo inmediato cuando te toque la entrevista final con el Arquitecto de Seguridad? (Pista: Certificaciones vs. Proyectos Prácticos).

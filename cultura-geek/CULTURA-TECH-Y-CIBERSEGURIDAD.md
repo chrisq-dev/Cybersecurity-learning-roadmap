@@ -193,12 +193,4 @@ Algunos recursos son introductorios, otros son más técnicos. No consumas conte
 - Una alerta no es un incidente hasta que hay evidencia.
 - Saber explicar es parte del trabajo.
 
----
 
-## Criterio de Dominio (Autoevaluación)
-
-¿Eres capaz de separar el espectáculo de la realidad técnica?
-
-1. Acabas de ver una película donde un Hacker escribe frenéticamente en un teclado durante 10 segundos y logra penetrar las defensas del FBI. Como profesional de ciberseguridad corporativa, explica detalladamente por qué este escenario es un mito y cómo ocurre un proceso de Intrusión (Kill Chain) en el mundo real.
-2. Analizando la historia de **Kevin Mitnick**, ¿Por qué un atacante moderno en Rusia preferiría utilizar OSINT y enviar un correo de *Spear Phishing* a la secretaria del CEO en lugar de intentar buscar vulnerabilidades matemáticas de *Día Cero* en el Firewall corporativo?
-3. Estudia la filosofía empresarial inicial de **Mark Zuckerberg** (*Move Fast and Break Things*). Si tú fueras el CISO (Director de Seguridad) de una startup con esa filosofía y el CEO te exige ignorar los controles de privacidad para lanzar una App más rápido, ¿Cómo argumentarías el Riesgo de Negocio (Multas GDPR, daño reputacional) para detener ese despliegue?
