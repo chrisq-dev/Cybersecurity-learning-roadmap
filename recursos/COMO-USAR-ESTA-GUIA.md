@@ -107,8 +107,10 @@ No intentes dominar todas las áreas al mismo tiempo.
 Puedes explorar varias, pero elige una ruta principal por un tiempo:
 
 - SOC / Blue Team.
-- AppSec.
-- Cloud Security.
+- OSINT y Threat Intelligence.
+- AppSec y Seguridad Móvil.
+- Cloud Security e IoT.
+- Seguridad en IA.
 - Vulnerability Management.
 - GRC.
 - Red Team ético.

@@ -131,8 +131,10 @@ Objetivo: elegir una dirección inicial.
 Elige una:
 
 - SOC / Blue Team.
-- AppSec.
-- Cloud Security.
+- OSINT y Threat Intelligence.
+- AppSec y Seguridad Móvil.
+- Cloud Security e IoT.
+- Seguridad en IA.
 - Vulnerability Management.
 - GRC.
 - Red Team ético.
@@ -142,8 +144,10 @@ No tienes que casarte con esa ruta para siempre. Solo necesitas una dirección p
 Practica según tu ruta:
 
 - SOC: logs, SIEM, CyberDefenders.
-- AppSec: PortSwigger, OWASP, APIs.
-- Cloud: IAM, storage, logging, AWS/Azure básico.
+- OSINT: perfiles falsos, Google Dorks, Maltego.
+- AppSec / Mobile: PortSwigger, OWASP, APIs, Frida.
+- Cloud / IoT: IAM, AWS/Azure, SCADA/hardware hacking.
+- IA: Prompt Injection, bypass de filtros en LLMs.
 - Vulnerability Management: CVE, CVSS, priorización.
 - GRC: riesgo, controles, evidencia.
 - Red Team ético: Linux, redes, enumeración, CTFs legales.
