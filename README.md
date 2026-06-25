@@ -4,7 +4,7 @@ Guías de ciberseguridad en español: estructuradas, prácticas y gratuitas.
 
 **→ [cbsdev.lat](https://cbsdev.lat)**
 
-<img width="1920" height="981" alt="Captura desde 2026-06-25 02-16-05" src="https://github.com/user-attachments/assets/ec36638c-19ca-4bcf-be56-c9c4d1e0cd90" />
+<img width="1920" height="995" alt="image" src="https://github.com/user-attachments/assets/d5a30785-b59c-45d9-a414-2ab6e7bc6324" />
 
 ---
 
