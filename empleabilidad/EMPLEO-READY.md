@@ -29,13 +29,13 @@ El CISO te va a contratar por tu potencial analítico, no porque te sepas de mem
 
 ¿Cómo sabes si tú estás listo? No midas tus certificados, mide tus habilidades.
 
-🔴 **ROJO (No-Go): Aún no apliques si...**
+**[ROJO] (No-Go): Aún no apliques si...**
 *   No sabes la diferencia entre una IP Pública y una Privada (Fase 2).
 *   No sabes cómo leer la ruta de un archivo en Linux (Fase 3).
 *   Crees que un Firewall y un Antivirus son exactamente lo mismo (Fase 13 y 14).
 *   No tienes un Portafolio (Fase 25). Si tu única experiencia es "Ver videos", te estrellarás en la entrevista.
 
-🟢 **VERDE (Go): APLICA AHORA MISMO si...**
+**[VERDE] (Go): APLICA AHORA MISMO si...**
 *   Entiendes el Modelo OSI (Fase 2) y puedes explicar cómo viajan los datos.
 *   Sabes qué es un SIEM (Fase 8) y has ingestados logs en un Home Lab (Fase 25).
 *   Puedes explicar la diferencia corporativa entre un Riesgo, una Vulnerabilidad y una Amenaza (Fase 20).
