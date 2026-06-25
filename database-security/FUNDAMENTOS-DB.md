@@ -1,199 +1,50 @@
-# Fundamentos de Database Security
+# Fundamentos de Bases de Datos: El Maletín y La Bóveda
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender riesgos comunes en bases de datos y controles básicos.
+Aprender la diferencia exacta entre proteger los datos cuando están viajando y protegerlos cuando están guardados.
 
-## Qué Protege una Base de Datos
+En la Fase 11 (Criptografía) y Fase 6 (Web) aprendimos que el protocolo HTTPS (TLS) cifra la información para que los hackers no puedan robar contraseñas desde el Wi-Fi de un café. A esto se le llama **Cifrado en Tránsito**. 
 
-Puede contener:
+El problema es que muchos ingenieros asumen que con HTTPS ya están seguros. Eso es un error catastrófico. HTTPS solo protege el viaje. ¿Qué pasa cuando el viaje termina?
 
-- Usuarios.
-- Contraseñas hasheadas.
-- Datos personales.
-- Datos financieros.
-- Logs.
-- Configuraciones.
-- Información de negocio.
+---
 
-La base de datos suele ser uno de los activos más importantes porque concentra datos que tienen valor operativo, legal y economico. Una aplicación puede reconstruirse, pero una fuga de datos personales, credenciales o información financiera puede afectar clientes, reputación, cumplimiento y continuidad del negocio.
+## 1. La Analogía: El Transporte de Valores
 
-En seguridad conviene pensar la base de datos como un sistema completo:
+### Cifrado en Tránsito (El Maletín Blindado)
+Imagina que eres un banco y necesitas enviar 1 millón de dólares a otra sucursal.
+*   Pones el dinero en un **Maletín Blindado** y contratas un Camión de Valores (Este camión es el HTTPS / TLS).
+*   El camión conduce por la autopista (El Internet). Si una banda de asaltantes (Hackers) ataca el camión a mitad del camino, no podrán abrir el maletín de titanio. El dinero está seguro *durante el viaje*.
 
-- Motor de base de datos.
-- Usuarios y roles.
-- Red desde donde se accede.
-- Aplicaciones que consultan.
-- Backups.
-- Logs.
-- Administradores.
-- Datos copiados a desarrollo o pruebas.
+### El Problema de la Llegada (Data in Use)
+El camión llega sano y salvo a la sucursal de destino. El guardia saca el dinero del maletín blindado y... **lo tira en el piso del banco**.
+El viaje terminó. El camión blindado ya no sirve de nada. Si un empleado malicioso de limpieza está caminando por el banco, puede simplemente agacharse y robarse el millón de dólares.
 
-## Riesgos Comunes
+*   **En Informática:** Tu usuario escribe su contraseña en la página web usando HTTPS. Viaja encriptada y segura. Pero cuando llega al servidor web, el servidor le quita la encriptación para poder leerla, y la guarda en la Base de Datos en texto completamente plano (`contraseña123`). Si un hacker logra entrar a la red interna y copia la Base de Datos, se lleva todo.
 
-- Credenciales debiles.
-- Usuarios con permisos excesivos.
-- Base expuesta a internet.
-- Backups sin cifrar.
-- Logs con datos sensibles.
-- Falta de auditoria.
-- Datos de produccion en ambientes de prueba.
-- SQL Injection desde aplicaciones.
+---
 
-## Tipos de Datos Sensibles
+## 2. Cifrado en Reposo (La Bóveda de Titanio)
 
-No todos los datos tienen el mismo riesgo. Clasificarlos ayuda a decidir controles.
+Para arreglar el error de dejar el dinero tirado en el piso, inventamos el **Cifrado en Reposo (Encryption at Rest)**. La tecnología más común para esto se llama **TDE (Transparent Data Encryption)**.
 
-| Tipo de dato | Riesgo principal | Controles comunes |
-| --- | --- | --- |
-| Credenciales | Toma de cuentas | Hash fuerte, sal, rotación, acceso restringido |
-| Datos personales | Privacidad y cumplimiento | Minimizacion, cifrado, auditoria |
-| Datos financieros | Fraude | Segregacion de funciones, monitoreo, permisos estrictos |
-| Tokens/API keys | Acceso no autorizado | Secret manager, rotación, no logs |
-| Logs | Exposición indirecta | Redaccion, retención, acceso limitado |
-| Backups | Fuga masiva | Cifrado, aislamiento, pruebas de restore |
+*   **La Analogía:** Cuando el camión blindado llega al banco, el dinero no se tira al piso. Se mete inmediatamente dentro de una Bóveda Subterránea que pesa 50 toneladas y tiene cerraduras matemáticas.
+*   **En Informática:** El Disco Duro físico donde la Base de Datos guarda su información (Los archivos `.mdf` o `/var/lib/mysql`) se encripta matemáticamente usando AES-256 (Fase 11).
 
-## Principios
+### El Escenario Definitivo (Zero Trust)
+La empresa es hackeada. El hacker salta el Firewall. El hacker vulnera el Servidor Web. El hacker logra descargar el archivo físico gigantesco que contiene la Base de Datos de Clientes y se lo lleva a su computadora en Rusia.
 
-- Mínimo privilegio.
-- Cifrado en transito.
-- Cifrado en reposo cuando aplique.
-- Backups protegidos.
-- Auditoria.
-- Separación de ambientes.
-- Parches.
+El hacker abre el archivo esperando ver 5 millones de tarjetas de crédito. En su lugar, el hacker solo ve basura ilegible (`x9$Lp@...`). 
+Como la base de datos tenía "Cifrado en Reposo", y el hacker no tiene la Llave Maestra (que está guardada en un HSM o Bóveda PAM, como vimos en la Fase 15), el botín que robó es matemáticamente inútil. La empresa se salvó de la multa millonaria.
 
-## Superficie de Ataque en Bases de Datos
+---
 
-Una base de datos puede ser atacada por varios caminos:
+## 3. Criterio de Dominio (Autoevaluación)
 
-- Aplicación vulnerable que ejecuta consultas inseguras.
-- Credenciales filtradas en código, logs o repositorios.
-- Puerto expuesto a internet.
-- Panel de administracion sin MFA.
-- Cuenta de servicio con permisos excesivos.
-- Backup descargable sin autenticación fuerte.
-- Replicas, dumps o ambientes de prueba sin protección.
+Revisa si puedes diseñar la defensa final:
 
-Por eso no basta con "poner contraseña". La defensa debe cubrir identidad, red, aplicación, datos, monitoreo y recuperación.
-
-## Exposición
-
-Una base de datos normalmente no debería exponerse publicamente.
-
-Mejor diseño:
-
-```text
-Internet -> App -> Database
-```
-
-No:
-
-```text
-Internet -> Database
-```
-
-## Capas de Defensa
-
-### Red
-
-- La base vive en una red privada.
-- Solo la aplicación o hosts autorizados pueden conectarse.
-- Los puertos administrativos no están abiertos a usuarios normales.
-- Las reglas de firewall tienen owner, justificacion y expiracion.
-
-### Identidad
-
-- Cuentas separadas por función.
-- MFA para administradores cuando el motor/plataforma lo permita.
-- Rotación de credenciales.
-- Preferir roles temporales o secret managers cuando sea posible.
-
-### Permisos
-
-- La aplicación no usa cuenta DBA.
-- Lectura y escritura se separan si el sistema lo permite.
-- Las tareas de backup tienen permisos especificos.
-- Los analistas tienen acceso read-only y preferentemente a vistas limitadas.
-
-### Datos
-
-- Cifrado en transito con TLS.
-- Cifrado en reposo cuando el riesgo o regulacion lo requiere.
-- Hash fuerte para contraseñas, no cifrado reversible.
-- Mascaramiento o tokenizacion en datos sensibles cuando aplique.
-
-### Monitoreo
-
-- Logins fallidos y exitosos.
-- Cambios de permisos.
-- Accesos a tablas sensibles.
-- Exportaciones grandes.
-- Consultas inusuales por horario, volumen o origen.
-
-### Recuperación
-
-- Backups cifrados.
-- Backups aislados de la cuenta principal.
-- Pruebas reales de restore.
-- RPO/RTO definidos.
-
-## Errores Comunes
-
-| Error | Por que importa | Mejor enfoque |
-| --- | --- | --- |
-| Usar root/admin en la app | Si la app cae, cae toda la DB | Cuenta limitada por tablas y acciones |
-| Exponer puerto de DB | Aumenta fuerza bruta y explotación | DB privada detras de la app |
-| Guardar dumps en carpetas públicas | Fuga completa de datos | Storage privado, cifrado y expiracion |
-| Copiar produccion a dev | Datos reales quedan sin controles | Datos sinteticos o anonimizados |
-| No probar restore | Backup puede ser inutil | Simulacros periodicos |
-| Loggear consultas con secretos | El log se vuelve sensible | Redactar tokens, passwords y PII |
-
-## Relacion con SQL Injection
-
-SQL Injection ocurre en la aplicación, pero el impacto depende mucho de la base de datos. Si la app usa una cuenta con permisos excesivos, una inyección puede leer muchas tablas, modificar datos o ejecutar funciones peligrosas. Si la cuenta tiene permisos mínimos, el dano se reduce.
-
-Ejemplo:
-
-```text
-App vulnerable + cuenta DBA = impacto critico
-App vulnerable + cuenta limitada = impacto acotado
-```
-
-La mitigacion principal de SQL Injection sigue siendo usar consultas parametrizadas, validación y diseño seguro. Los permisos de DB son una capa adicional para limitar impacto.
-
-## Ejemplo de Controles
-
-Una base de datos de clientes usada por una app web requiere controles sobre:
-
-```text
-Base de datos de clientes usada por una app web.
-```
-
-Define:
-
-- Quien accede.
-- Desde donde.
-- Que permisos tiene la app.
-- Que logs se guardan.
-- Como se respaldan datos.
-
-## Preguntas de Comprensión
-
-- Qué datos de la base tendrian mayor impacto si se filtran?
-- Qué cuentas existen y por qué permisos necesitan?
-- La base es accesible desde internet o solo desde red privada?
-- Dónde se guardan backups y quién puede leerlos?
-- Qué eventos quedarian registrados si alguien exporta miles de registros?
-- Qué pasaria si la app web es vulnerable a SQL Injection?
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Explicar mínimo privilegio en DB.
-- Explicar riesgo de exposición pública.
-- Explicar backups protegidos.
-- Relacionar SQL Injection con permisos de DB.
-- Diferenciar cifrado, hashing, mascaramiento y backups.
-- Proponer una arquitectura básica app -> DB con controles defensivos.
+1. El Arquitecto de Software de tu empresa argumenta: "No necesitamos cifrar los discos duros de la base de datos (Cifrado en Reposo) porque nuestra página web ya tiene un certificado HTTPS muy seguro". Usando la analogía del "Camión de Valores", explica por qué este argumento es técnicamente incorrecto y peligroso.
+2. Un empleado del Centro de Datos entra físicamente a la sala de servidores de la empresa a las 3:00 AM, roba físicamente el Disco Duro del servidor de Base de Datos principal, y se lo lleva a su casa. Si la base de datos estaba configurada con **TDE (Transparent Data Encryption)**, ¿Qué verá el empleado cuando conecte el disco duro robado en su computadora personal?
+3. Sabiendo que el Cifrado en Reposo protege contra el robo físico de los discos, ¿Por qué un ataque de Inyección SQL (Visto en AppSec Fase 17) ejecutado a través de la página web sí lograría extraer los datos de forma legible a pesar de que el disco duro esté encriptado con TDE? (Pista: Piensa en quién está "leyendo" legalmente los datos y entregándoselos al atacante).
+4. El equipo de seguridad decide implementar Cifrado en Reposo (AES-256) en la Base de Datos. Matemáticamente, esto requiere una "Llave Maestra de Encriptación". Basándote en lo aprendido en la Fase 15, ¿Por qué guardar esta Llave Maestra en un archivo de texto plano en el mismo servidor web anula completamente todo el propósito del cifrado?

@@ -1,190 +1,46 @@
-# Permisos y Auditoria en Bases de Datos
+# Permisos y Auditoría de DB: Las Gafas Mágicas y la Cámara de Seguridad
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender roles, permisos y monitoreo de actividad.
+Aprender cómo proteger la base de datos contra el "Enemigo Interno" (Insider Threat). 
 
-## Usuarios y Roles
+El "Cifrado en Reposo" del módulo anterior es perfecto si alguien se roba el disco duro físico. Pero, ¿qué pasa si el ladrón no es un hacker ruso, sino el empleado de Recursos Humanos de tu propia empresa usando sus credenciales legítimas?
 
-Una base de datos puede tener usuarios y roles.
+---
 
-Ejemplos:
+## 1. Enmascaramiento Dinámico (Data Masking)
 
-- App read/write limitada.
-- Analista read-only.
-- DBA admin.
-- Servicio de backup.
+El Principio de Menor Privilegio (Fase 15) dicta que un empleado solo debe ver la información estrictamente necesaria para hacer su trabajo.
 
-El objetivo no es crear muchos roles por crear complejidad. El objetivo es que cada identidad tenga una razon clara para existir, permisos limitados y evidencia revisable.
+*   **El Problema:** Tienes a 500 operadores de *Call Center* atendiendo llamadas telefónicas de clientes. Ellos necesitan confirmar la identidad del cliente pidiéndole los últimos 4 dígitos de su tarjeta de crédito. Pero si les muestras la tarjeta completa en su pantalla, los operadores podrían tomarle una foto con su celular y hacer fraude.
+*   **La Analogía (Las Gafas Mágicas):** En el disco duro de la Base de Datos, la tarjeta de crédito está guardada intacta y real: `4555 1234 1234 9876`. Cuando el sistema detecta que el usuario que está pidiendo ver la tabla es un "Empleado de Call Center", la Base de Datos le pone unas "gafas mágicas" de manera dinámica antes de mandarle la información a la pantalla.
+*   **El Resultado:** El empleado mira su pantalla y solo ve esto: `XXXX XXXX XXXX 9876`. Puede confirmar la identidad del cliente, puede hacer su trabajo, pero es físicamente imposible que robe la tarjeta completa porque la Base de Datos se rehusó a enviarla.
 
-Una identidad puede ser:
+A esto se le llama **Dynamic Data Masking (Enmascaramiento Dinámico de Datos)**.
 
-- Persona: DBA, analista, desarrollador.
-- Servicio: aplicación, worker, tarea programada, backup.
-- Integración: BI, ETL, monitoreo, auditoria.
+---
 
-Cada una debe responder:
+## 2. Auditoría Avanzada (DAM)
 
-- Para qué existe?
-- Quién es responsable?
-- Desde dónde se conecta?
-- Qué datos necesita?
-- Qué acciones puede ejecutar?
-- Cuándo se reviso por ultima vez?
+En las Fases 12 y 14 hablamos de recolección de Telemetría y Análisis Forense en Windows. Las Bases de Datos gigantes (Oracle, SQL Server) tienen su propio ecosistema de auditoría llamado **DAM (Database Activity Monitoring)**.
 
-## Mínimo Privilegio
+*   **La Analogía:** Es la cámara de seguridad 4K que graba el interior de la Bóveda del Banco.
+*   **La Necesidad:** Los Administradores de Bases de Datos (DBAs) tienen el poder absoluto ("Modo Dios"). Pueden borrar las tablas y pueden ver todas las tarjetas de crédito sin máscara. ¿Quién vigila al vigilante?
+*   **La Ejecución:** Las herramientas de DAM operan independientemente de la Base de Datos. Graban cada orden (Query SQL) que ejecuta cada persona.
 
-La app debe tener solo permisos necesarios.
+Si el Administrador de Base de Datos ejecuta el comando `SELECT Salario FROM Empleados WHERE Nombre = 'CEO'`, el sistema DAM:
+1. Graba el evento en una bóveda forense inalterable.
+2. Inmediatamente envía una Alerta Crítica al Analista del SOC (Fase 8), notificándole que el empleado con mayores privilegios de la empresa acaba de intentar espiar la nómina del Director General a las 2:00 AM.
 
-Mal:
+El objetivo del DAM no es detener al Administrador (porque técnicamente tiene los permisos), el objetivo es la **No-Repudiación**. Que el día de mañana no pueda decir "Yo no fui".
 
-```text
-App usa cuenta DBA.
-```
+---
 
-Mejor:
+## 3. Criterio de Dominio (Autoevaluación)
 
-```text
-App puede leer/escribir tablas necesarias, no administrar servidor.
-```
+Revisa si puedes mitigar el Riesgo Interno:
 
-## Modelo de Roles Sugerido
-
-| Rol | Uso | Permisos tipicos | Riesgo si se abusa |
-| --- | --- | --- | --- |
-| `app_rw` | Backend principal | Leer/escribir tablas necesarias | Modificacion o lectura de datos de negocio |
-| `app_readonly` | Consultas internas | Solo lectura limitada | Exfiltración si lee demasiado |
-| `analyst_ro` | Análisis/BI | Vistas o tablas anonimizadas | Fuga de PII o secretos |
-| `backup_svc` | Respaldos | Lectura/exportacion controlada | Fuga masiva por dumps |
-| `migration_svc` | Migraciones | Cambios de esquema controlados | Alteracion de estructura |
-| `dba_admin` | Administracion | Privilegios altos | Control total de DB |
-
-La cuenta admin debe usarse solo para administracion real, no para operación diaria de la app.
-
-## Permisos Peligrosos
-
-Estos permisos requieren justificacion fuerte:
-
-- Crear usuarios.
-- Modificar roles.
-- Otorgar permisos a otros.
-- Ejecutar comandos del sistema desde DB.
-- Leer todas las bases o esquemas.
-- Exportar datos completos.
-- Desactivar auditoria.
-- Modificar logs o configuración de seguridad.
-
-No siempre se llaman igual en cada motor, pero el criterio es el mismo: si permite ampliar privilegios, borrar evidencia o extraer todo, es sensible.
-
-## Separación de Ambientes
-
-Ambientes:
-
-- Desarrollo.
-- Pruebas.
-- Produccion.
-
-Riesgo:
-
-- Copiar datos reales a desarrollo sin protección.
-
-Buenas prácticas:
-
-- Produccion tiene controles más estrictos.
-- Desarrollo usa datos sinteticos o anonimizados.
-- Las credenciales de desarrollo no sirven en produccion.
-- Las redes de dev/test no tienen acceso directo a produccion.
-- Los backups de produccion no se restauran en equipos personales.
-
-## Auditoria
-
-Eventos importantes:
-
-- Login exitoso/fallido.
-- Cambios de permisos.
-- Creación de usuarios.
-- Consultas a tablas sensibles.
-- Exportaciones masivas.
-- Cambios de esquema.
-
-La auditoria debe ayudar a contestar:
-
-- Quién accedio?
-- Desde dónde?
-- A qué datos?
-- Qué cambio?
-- Cuándo ocurrio?
-- Fue normal para ese usuario?
-- Hay evidencia suficiente para investigar?
-
-Auditar todo sin criterio puede generar demasiado ruido. Lo importante es registrar eventos de seguridad y operaciones sensibles con suficiente contexto.
-
-## Alertas
-
-Ejemplos:
-
-- Usuario nuevo con rol admin.
-- Muchos logins fallidos.
-- Exportacion fuera de horario.
-- Consulta masiva a datos sensibles.
-- Acceso desde IP inusual.
-
-## Señales de Riesgo
-
-| Señal | Posible explicación | Acción inicial |
-| --- | --- | --- |
-| Muchos logins fallidos | Fuerza bruta, error de app o credencial vieja | Revisar origen, usuario y patron |
-| Nuevo usuario admin | Cambio autorizado o escalacion indebida | Confirmar ticket/aprobacion |
-| Exportacion grande | BI, backup o exfiltración | Validar owner, horario y destino |
-| Acceso fuera de pais/region | VPN legitima o cuenta comprometida | Correlacionar con identidad y MFA |
-| Cambios de esquema no planeados | Deploy, migracion o actividad maliciosa | Revisar pipeline y usuario |
-| Auditoria desactivada | Mantenimiento o intento de ocultar actividad | Escalar de inmediato |
-
-## Matriz de Permisos
-
-Matriz de ejemplo:
-
-| Identidad | Permiso | Justificacion | Riesgo | Control |
-| --- | --- | --- | --- | --- |
-
-Incluye:
-
-- App.
-- Analista.
-- DBA.
-- Backup.
-
-Ejemplo:
-
-| Identidad | Permiso | Justificacion | Riesgo | Control |
-| --- | --- | --- | --- | --- |
-| `app_rw` | SELECT/INSERT/UPDATE en tablas de negocio | Funcionamiento de la app | Abuso si app se compromete | Consultas parametrizadas, red privada, logs |
-| `analyst_ro` | SELECT en vistas anonimizadas | Reportes | Fuga de información | Sin PII, MFA, auditoria |
-| `backup_svc` | Lectura/exportacion controlada | Respaldos | Dump completo robado | Cifrado, storage privado, rotación |
-| `dba_admin` | Administracion | Mantenimiento | Control total | JIT, MFA, aprobacion, logs |
-
-## Revisión Periodica
-
-Una revisión útil busca:
-
-- Cuentas sin uso.
-- Llaves o passwords antiguos.
-- Permisos wildcard.
-- Usuarios personales con privilegios permanentes.
-- Roles duplicados.
-- Accesos de proveedores.
-- Cuentas compartidas.
-- Logs desactivados.
-
-La pregunta central es: si está identidad se compromete hoy, qué puede hacer?
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Diseñar roles básicos.
-- Identificar permisos excesivos.
-- Proponer auditoria.
-- Crear alertas de DB conceptuales.
-- Explicar por que una cuenta de aplicación no debe ser DBA.
-- Revisar una matriz de permisos y detectar riesgos.
+1. El equipo Legal de la empresa prohíbe que el equipo de programadores (Desarrollo) tenga acceso a los números de Seguro Social reales de los clientes mientras hacen pruebas de software. Usando el concepto de "Data Masking", explica cómo los programadores pueden seguir probando el software sin ver los datos reales.
+2. Explica la diferencia entre usar Cifrado en Reposo (TDE) para proteger una Base de Datos contra un robo físico, y usar Enmascaramiento Dinámico de Datos (Masking) para protegerla contra un "Insider Threat" (Empleado malicioso).
+3. ¿Por qué es fundamental que la herramienta de Auditoría de Base de Datos (DAM) envíe los logs de monitoreo a un servidor SIEM centralizado de forma inmediata, en lugar de guardar los registros (logs) dentro del mismo servidor de Base de Datos? (Pista: Piensa en el "Modo Dios" del Administrador).
+4. Un atacante logra hacer un ataque exitoso de Inyección SQL (Fase 17) desde la página web pública, ordenándole a la Base de Datos que extraiga la tabla de "Usuarios". Si el sistema de Base de Datos tiene configurado **Dynamic Data Masking** para las columnas de Contraseñas y Correos, ¿Qué información recibirá el atacante en su pantalla?
