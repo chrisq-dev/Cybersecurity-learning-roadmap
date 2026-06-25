@@ -1,184 +1,49 @@
-# Rutas por Rol
+# Rutas de Carrera: Las Clases RPG
 
-Elige una ruta principal y una secundaria. No intentes dominar todas al mismo tiempo. En ciberseguridad hay demasiadas áreas; avanzar mejor significa construir una base común y después profundizar en el tipo de problemas que quieres resolver.
+## Objetivo del Módulo
 
-Una ruta no es una lista de archivos ni una colección de entregas. Es una forma de ordenar el estudio: qué conceptos debes entender, cómo se conectan entre sí y qué señales muestran que ya puedes hablar del tema con criterio.
+Aprender que la Ciberseguridad no es una carrera, es una industria entera. No puedes ser "Experto en Ciberseguridad", de la misma forma que un médico no es "Experto en Medicina", sino Especialista en Cardiología o Neurología.
 
-## SOC Analyst Junior
+En los videojuegos de rol (RPG), tú no eliges jugar como "Aventurero". Tienes que elegir una Clase: El Guerrero (Tanque), el Arquero (Ataque a distancia) o el Mago (Soporte). 
+En Ciberseguridad Corporativa (Fase 24), ocurre exactamente lo mismo. Debes elegir tu Clase.
 
-### Debes estudiar
+---
 
-- Redes básicas.
-- Linux y Windows.
-- Logs.
-- SIEM.
-- MITRE ATT&CK.
-- Respuesta a incidentes.
-- Sigma básico.
-- Python para leer y resumir datos simples.
+## 1. El Guardia de la Torre (SOC Analyst Nivel 1)
 
-### Cómo se conecta
+Es la clase con la que el 80% de las personas entran a la industria (Entry-Level).
+*   **La Misión:** Estás sentado en la torre más alta del castillo mirando 5 monitores. Tu trabajo es mirar el Radar (SIEM - Fase 8) y decidir si la mancha roja que se acerca es un dragón real (Un Hacker) o simplemente una paloma grande (Un Falso Positivo).
+*   **Las Habilidades (Skills):**
+    *   Entender de Redes (Fase 2) para saber si la IP pertenece a Rusia o a la oficina de ventas.
+    *   Saber leer Logs de Windows y Linux (Fase 3 y 4).
+    *   Si detectas al dragón, tocas la alarma y escalas el problema al Nivel 2.
+*   **Ideal para:** Personas analíticas que disfrutan resolviendo rompecabezas de datos y buscando agujas en pajares.
 
-SOC se trata de convertir señales incompletas en decisiones razonables. Una alerta aislada rara vez cuenta toda la historia. Necesitas entender de dónde viene el evento, qué activo está involucrado, qué usuario aparece, qué comportamiento es normal y qué información falta.
+## 2. El Bombero (Incident Responder / DFIR)
 
-Redes te ayuda a interpretar origen, destino, puertos y protocolos. Linux y Windows te ayudan a entender endpoints y servidores. SIEM centraliza eventos. MITRE ATT&CK te da lenguaje común para describir comportamiento. Respuesta a incidentes te ayuda a decidir contención, escalamiento y comunicación.
+Es la evolución natural del Analista SOC. (Mid a Senior-Level).
+*   **La Misión:** La alarma del castillo sonó. El dragón (Ransomware) ya está quemando el patio principal. El Analista SOC Nivel 1 te llama a las 3:00 AM. Tú eres el bombero forense que llega con el extintor (Playbooks - Fase 24) a apagar el fuego, erradicar el virus, y luego usar pinzas para recoger las escamas del dragón (Evidencia Forense - Fase 12) para saber exactamente por dónde entró.
+*   **Las Habilidades (Skills):**
+    *   Nervios de acero absoluto (Manejo de Crisis).
+    *   Análisis de Malware (Fase 16) y Forense Digital (Fase 12).
+*   **Ideal para:** Adictos a la adrenalina que funcionan perfectamente bajo presión extrema corporativa.
 
-### Señales de comprensión
+## 3. El Arquitecto Defensivo (Cloud Security Engineer)
 
-- Puedes explicar una alerta sin asumir que todo es incidente.
-- Separas datos observados, hipótesis, falsos positivos e impacto.
-- Entiendes que logs faltan antes de afirmar una conclusión.
-- Puedes describir una detección conceptual y sus límites.
-- Puedes comunicar severidad, impacto y siguientes pasos.
+La clase mejor pagada y más compleja técnicamente. (Senior-Level).
+*   **La Misión:** Eres el ingeniero que diseña y construye el castillo desde cero para que el dragón nunca pueda entrar. Construyes los fosos con cocodrilos (Firewalls - Fase 13), diseñas las bóvedas blindadas (Cifrado - Fase 19) y aíslas a los habitantes en burbujas de cristal impenetrables (Contenedores/Kubernetes - Fase 23).
+*   **Las Habilidades (Skills):**
+    *   Dominio absoluto de la Nube (AWS, Azure - Fase 10).
+    *   Principios avanzados de Zero Trust y Defensa en Profundidad (Fase 23).
+*   **Ideal para:** Constructores metódicos que odian las emergencias a las 3:00 AM y prefieren prevenir el desastre diseñando infraestructuras inquebrantables.
 
-### Puedes aplicar cuando
+---
 
-- Explicas qué pasó, dónde pasó y por qué importa.
-- Propones contención proporcional al riesgo.
-- Reconoces incertidumbre sin inventar conclusiones.
-- Comunicas una conclusión clara para un analista o un responsable técnico.
+## 4. Criterio de Dominio (Autoevaluación)
 
-## AppSec Junior
+Revisa si sabes elegir tu clase:
 
-### Debes estudiar
-
-- HTTP.
-- APIs.
-- OWASP Top 10.
-- Autenticación y autorización.
-- SQL Injection.
-- XSS.
-- SSRF.
-- DevSecOps.
-- Threat modeling.
-
-### Cómo se conecta
-
-AppSec busca entender como fallan las aplicaciones y como reducir esos riesgos desde diseño, desarrollo y pruebas. No se trata solo de encontrar vulnerabilidades; también importa explicar causa raíz, impacto, controles y remediación.
-
-HTTP te da la base de cliente, servidor, métodos, headers, cookies y sesiones. APIs agregan contratos, tokens, permisos y abuso automatizado. OWASP ayuda a clasificar riesgos comunes. Threat modeling permite pensar antes de que la app esté terminada. DevSecOps conecta esos controles con el ciclo real de desarrollo.
-
-### Señales de comprensión
-
-- Puedes diferenciar autenticación de autorización.
-- Explicas Broken Access Control con ejemplos claros.
-- Conectas causa, impacto y mitigacion.
-- Entiendes por qué validar solo en frontend no protege.
-- Puedes revisar una API pensando en identidad, permisos, entrada, errores y logs.
-
-### Puedes aplicar cuando
-
-- Propones mitigaciones realistas, no solo recomendaciones genericas.
-- Puedes explicar una vulnerabilidad sin glorificar explotación.
-- Entiendes como prevenir fallas desde diseño.
-- Hablas de riesgo para usuarios, datos y negocio.
-
-## Cloud Security Junior
-
-### Debes estudiar
-
-- Responsabilidad compartida.
-- IAM.
-- Storage.
-- Logging.
-- Networking cloud.
-- Secret management.
-- Contenedores básicos.
-- Seguridad en CI/CD.
-
-### Cómo se conecta
-
-Cloud security combina identidad, configuración, datos y visibilidad. Muchos incidentes cloud no empiezan con exploits complejos, sino con permisos excesivos, buckets públicos, llaves expuestas, logs desactivados o redes abiertas sin justificacion.
-
-Responsabilidad compartida aclara qué protege el proveedor y qué debe proteger el cliente. IAM define quién puede hacer qué. Storage concentra datos. Logging permite investigar. Networking cloud define exposición. Secret management evita que credenciales vivan en código, imágenes o pipelines.
-
-### Señales de comprensión
-
-- Puedes explicar mínimo privilegio en IAM.
-- Identificas riesgos de storage público.
-- Entiendes por que los logs deben estar activos antes del incidente.
-- Sabes que una llave expuesta requiere rotación, no solo borrado.
-- Puedes priorizar hallazgos cloud por impacto y exposición.
-
-### Puedes aplicar cuando
-
-- Explicas riesgos cloud sin depender de una marca especifica.
-- Propones controles para identidad, datos, red y secretos.
-- Sabes qué preguntas hacer en una revisión inicial.
-- Entiendes que cloud no es seguro por defecto.
-
-## Vulnerability Management Junior
-
-### Debes estudiar
-
-- Inventario.
-- CVE.
-- CVSS.
-- Priorización.
-- Remediación.
-- Verificación.
-- Comunicación técnica.
-
-### Cómo se conecta
-
-Vulnerability Management no es perseguir todos los CVEs en orden numérico. Es decidir qué corregir primero con base en activo, exposición, criticidad, explotabilidad, controles existentes y capacidad real del equipo.
-
-El inventario es la base porque no puedes proteger lo que no sabes que existe. CVE identifica vulnerabilidades conocidas. CVSS ayuda, pero no reemplaza contexto. Remediación necesita owner y verificación. Comunicación técnica traduce hallazgos en decisiones accionables.
-
-### Señales de comprensión
-
-- Puedes explicar por qué el inventario es la base.
-- Priorizas por riesgo, no solo por severidad.
-- Distingues vulnerabilidad técnica de impacto real.
-- Propones remediación verificable.
-- Entiendes cuando un control compensatorio reduce urgencia.
-
-### Puedes aplicar cuando
-
-- Justificas por qué un hallazgo va antes que otro.
-- Explicas impacto de negocio.
-- Comunicas una recomendación concreta.
-- Reconoces información faltante antes de decidir prioridad.
-
-## GRC Junior
-
-### Debes estudiar
-
-- Riesgo.
-- Controles.
-- Pruebas de control.
-- Políticas.
-- Auditoria.
-- Excepciones.
-- Privacidad.
-
-### Cómo se conecta
-
-GRC conecta seguridad con gobierno, riesgo, cumplimiento y negocio. No siempre implementa controles técnicos directamente, pero ayuda a definir qué debe existir, cómo se valida y quién acepta el riesgo cuando algo no se corrige de inmediato.
-
-Riesgo combina probabilidad e impacto. Los controles reducen riesgo. Las pruebas de control muestran si algo existe y funciona. Las políticas establecen expectativas. Auditoria revisa cumplimiento. Privacidad protege datos personales y reduce abuso de información.
-
-### Señales de comprensión
-
-- Diferencias amenaza, vulnerabilidad, riesgo y control.
-- Explicas controles preventivos, detectivos y correctivos.
-- Entiendes riesgo inherente y residual.
-- Puedes leer una política sin tratarla como burocracia vacia.
-- Sabes pedir pruebas de control adecuadas al contexto.
-
-### Puedes aplicar cuando
-
-- Explicas riesgo en lenguaje técnico y de negocio.
-- Conectas controles con impacto real.
-- Entiendes excepciones y aceptacion de riesgo.
-- Comunicas límites, responsables y decisiones pendientes.
-
-## Ruta Recomendada Inicial
-
-Si no sabes cual elegir, empieza por:
-
-1. SOC Analyst Junior.
-2. Vulnerability Management Junior.
-3. Cloud Security Junior como ruta secundaria.
-
-Esta combinación da buena base laboral porque mezcla fundamentos defensivos, criterio de priorización y comprensión de entornos modernos.
+1. Un estudiante recién graduado aplica directamente a un puesto de "Ingeniero Arquitecto Cloud Security" y es rechazado de inmediato, a pesar de tener un currículum excelente. Basado en la analogía de las "Clases RPG", explica por qué el rol de "Arquitecto Defensivo" no es una clase para novatos (Entry-Level) y requiere haber pasado primero por las trincheras.
+2. Compara el día a día de un **Analista SOC Nivel 1** ("El Guardia de la Torre") frente al de un **Incident Responder** ("El Bombero"). ¿Cuál de los dos roles tiene la responsabilidad de ejecutar los Playbooks de Erradicación (Fase 24) cuando el ataque se confirma como verdadero?
+3. Un profesional disfruta construir laboratorios complejos, configurar reglas de segmentación de red y crear entornos de "Zero Trust", pero odia las emergencias de madrugada y el pánico del código rojo. De las tres Clases de RPG mencionadas, ¿Cuál es la ruta de carrera perfecta para él y por qué?
+4. El trabajo del **Analista SOC** consiste en diferenciar los ataques reales (Dragones) de los "Falsos Positivos" (Palomas grandes). Explica por qué un exceso de Falsos Positivos (Alert Fatigue) en el SIEM de la empresa puede causar que un ataque de Ransomware real logre destruir la red sin que el Analista se dé cuenta.

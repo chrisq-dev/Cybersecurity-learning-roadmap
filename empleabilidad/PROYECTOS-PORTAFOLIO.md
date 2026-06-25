@@ -1,272 +1,49 @@
-# Proyectos de Portafolio
+# Proyectos y Portafolio: El Arquitecto vs El Albañil
 
-Un portafolio de ciberseguridad no debe ser una carpeta llena de archivos sin explicación. Debe demostrar que entiendes problemas, riesgos, evidencia, controles y comunicación técnica.
+## Objetivo del Módulo
 
-Los proyectos de esta sección son ideas de estudio y demostracion. No son tareas obligatorias ni tienen que vivir en carpetas especificas. Lo importante es que puedas explicar el razonamiento detras de cada proyecto.
+Aprender a romper la paradoja de *"No me contratan porque no tengo experiencia, y no tengo experiencia porque no me contratan"*.
 
-## Qué Debe Demostrar un Proyecto
+En Recursos Humanos hay un secreto a voces: Un candidato que ha leído 100 libros sobre cómo funciona un SIEM (El Arquitecto Teórico) siempre perderá la entrevista técnica contra el candidato que instaló un SIEM gratuito en una computadora vieja en su casa y lo rompió intentando configurarlo (El Albañil Práctico).
+**La experiencia no se obtiene solo en un trabajo pagado. La experiencia se construye en el laboratorio de tu casa.**
 
-Un proyecto fuerte demuestra:
+---
 
-- Comprensión del problema;
-- Uso de datos ficticios o autorizados;
-- Análisis claro;
-- Identificación de riesgos;
-- Mitigaciones razonables;
-- Limitaciones;
-- Comunicación simple.
+## 1. El Laboratorio Casero (Home Lab)
 
-Si un proyecto no se puede explicar en una entrevista, todavía no está maduro aunque tenga código.
+Un "Home Lab" es tu currículum vivo. Es la demostración física de que la Ciberseguridad no es solo un pasatiempo teórico para ti.
 
-## Proyecto 1: Análisis de Logs de Autenticación
+### ¿Qué necesitas?
+No necesitas comprar servidores de $5,000 dólares.
+*   Una computadora personal con 16GB de RAM.
+*   VirtualBox o VMware Player (Gratis).
+*   Una cuenta en AWS, Azure o Google Cloud (Tienen capas gratuitas o "Free Tiers").
 
-Área: Blue Team / Python.
+### Proyecto Nivel 1: El Radar del SOC (Blue Team)
+*   **La Tarea:** Instala una Máquina Virtual con Ubuntu Linux (Fase 3). Instala un software de SIEM de código abierto como **Wazuh** o **Splunk** (Versión gratuita).
+*   **La Acción:** Conecta la laptop de tu hermano menor al SIEM. Configura reglas para que te llegue una alerta a tu celular cada vez que tu hermano falle 5 veces seguidas la contraseña de Windows.
+*   **El Impacto en Entrevista:** Cuando el CISO te pregunte si tienes experiencia, le responderás: *"No he trabajado en una empresa, pero en mi casa administro un SIEM que ingiere logs en tiempo real y detecta ataques de fuerza bruta usando reglas personalizadas"*. Estás contratado.
 
-### Qué Enseña
+### Proyecto Nivel 2: La Nube Cifrada (Arquitectura)
+*   **La Tarea:** Crea una cuenta gratuita en AWS (Fase 10). Crea una Máquina Virtual (EC2) y expón una página web básica a Internet.
+*   **La Acción:** Configura un Firewall Perimetral (Security Group) para que solo tú puedas conectarte por SSH. Configura un Balanceador de Carga y un Certificado SSL para forzar HTTPS (Fase 11).
+*   **El Impacto en Entrevista:** Demuestras que sabes desplegar infraestructura segura en la Nube aplicando "Defensa en Profundidad" (Fase 23).
 
-Este proyecto enseña a interpretar eventos de autenticación y distinguir entre actividad normal, error operativo, fuerza bruta o password spraying.
+---
 
-### Conceptos Clave
+## 2. Documentación Pública (GitHub)
 
-- Logins fallidos;
-- Logins exitosos;
-- IP origen;
-- Usuario objetivo;
-- Horario;
-- Privilegios;
-- Falsos positivos;
-- Severidad.
+Hacer el laboratorio en tu casa no sirve de nada si el Reclutador no puede verlo.
+*   **El Repositorio:** Crea una cuenta de GitHub. Por cada proyecto que hagas en tu Home Lab, escribe un artículo en Markdown explicando el problema, los pasos que seguiste y capturas de pantalla del resultado.
+*   **El Pitch:** Pon el enlace de tu GitHub hasta arriba en tu CV (Fase 24). Recursos Humanos probablemente no lo lea, pero cuando tu CV llegue al Director Técnico (CISO), él hará clic en el enlace, verá tus capturas de pantalla de Splunk y sabrá que eres material de élite.
 
-### Cómo Explicarlo
+---
 
-Una explicación madura no dice solo "conte fallos". Dice:
+## 3. Criterio de Dominio (Autoevaluación)
 
-```text
-Observe múltiples fallos contra una cuenta, revise si hubo exito posterior, compare origen y horario, considere falsos positivos y propuse acciones proporcionales.
-```
+Revisa si tu portafolio está listo para el mundo real:
 
-### Falsos Positivos
-
-Posibles causas benignas:
-
-- Usuario con contraseña antigua;
-- Servicio mal configurado;
-- Dispositivo intentando reconectar;
-- Cambio reciente de credenciales;
-- Pruebas internas autorizadas.
-
-### Habilidades Demostradas
-
-- Lectura de logs;
-- Análisis de patrones;
-- Pensamiento defensivo;
-- Comunicación de hallazgos;
-- Automatización si decides usar código.
-
-## Proyecto 2: Hardening Linux
-
-Área: Linux / Blue Team.
-
-### Qué Enseña
-
-Hardening enseña a reducir superficie de ataque. El valor no está en listar controles, sino en explicar por que cada control existe.
-
-### Controles Relevantes
-
-- Actualizaciones;
-- Usuarios y sudo;
-- SSH seguro;
-- Firewall local;
-- Permisos;
-- Logs;
-- Servicios innecesarios.
-
-### Cómo Explicarlo
-
-Una buena explicación conecta control con riesgo:
-
-```text
-Restringir SSH reduce exposición administrativa. Revisar sudo reduce impacto si una cuenta normal se compromete. Logs permiten investigar eventos posteriores.
-```
-
-### Habilidades Demostradas
-
-- Administracion básica;
-- Criterio de permisos;
-- Reducción de superficie;
-- Lectura de logs;
-- Documentacion técnica.
-
-## Proyecto 3: OWASP Top 10 con Casos
-
-Área: Seguridad web.
-
-### Qué Enseña
-
-Este proyecto demuestra que entiendes vulnerabilidades web por causa, impacto y mitigacion, no solo por nombre.
-
-### Vulnerabilidades Iniciales
-
-- Broken Access Control.
-- SQL Injection.
-- XSS.
-- SSRF.
-- Security Misconfiguration.
-
-### Cómo Explicarlo
-
-Para cada caso, debes poder decir:
-
-- Que confianza se rompio;
-- Que dato o acción no se valido;
-- Que impacto tendria;
-- Que control lo reduce;
-- Como se detectaria.
-
-### Habilidades Demostradas
-
-- HTTP;
-- Autorización;
-- Validación de entrada;
-- Lectura de requests;
-- Remediación;
-- Comunicación de riesgo.
-
-## Proyecto 4: Red Segmentada
-
-Área: Redes / Cisco.
-
-### Qué Enseña
-
-Este proyecto demuestra que entiendes segmentación, VLANs, ACLs y control de movimiento lateral.
-
-### Conceptos Clave
-
-- VLANs;
-- Subredes;
-- Routing entre VLANs;
-- ACLs;
-- Zonas de red;
-- Administracion separada.
-
-### Cómo Explicarlo
-
-Una explicación madura:
-
-```text
-Separe usuarios, servidores, invitados y administracion para que un compromiso en un segmento no permita acceso plano a toda la red.
-```
-
-### Habilidades Demostradas
-
-- Diseño de red;
-- Seguridad por zonas;
-- Reglas de acceso;
-- Mínimo privilegio en red;
-- Documentacion de flujos.
-
-## Proyecto 5: Investigación de Alerta Simulada
-
-Área: SOC / Blue Team.
-
-### Qué Enseña
-
-Este proyecto demuestra capacidad de triage: reunir evidencia, formular hipótesis, evaluar impacto y concluir con claridad.
-
-### Cómo Pensarlo
-
-Una alerta no es una conclusión. Es una señal.
-
-Debes poder diferenciar:
-
-- Hecho observado;
-- Hipótesis;
-- Falso positivo;
-- Incidente confirmado;
-- Acción recomendada.
-
-### Habilidades Demostradas
-
-- Análisis defensivo;
-- Manejo de incertidumbre;
-- MITRE ATT&CK;
-- Severidad;
-- Comunicación ejecutiva y técnica.
-
-## Proyecto 6: Inventario de Activos
-
-Área: Seguridad Operativa.
-
-### Qué Enseña
-
-No puedes proteger bien lo que no sabes que existe. Inventario de activos conecta seguridad con operación.
-
-### Conceptos Clave
-
-- Owner;
-- Criticidad;
-- Exposición;
-- Sistema operativo;
-- Fecha de actualizacion;
-- Datos que maneja;
-- Dependencia de negocio.
-
-### Cómo Explicarlo
-
-El valor está en priorizar:
-
-```text
-Un servidor expuesto, sin owner y con datos sensibles merece más atencion que un activo interno de baja criticidad.
-```
-
-## Proyecto 7: Cloud Security Review
-
-Área: Cloud Security.
-
-### Qué Enseña
-
-Cloud security demuestra criterio sobre identidad, storage, logging, redes y secretos.
-
-### Áreas Clave
-
-- IAM;
-- MFA;
-- Storage;
-- Logs;
-- Security groups;
-- Secretos;
-- Backups.
-
-### Cómo Explicarlo
-
-Una explicación fuerte conecta configuración con riesgo:
-
-```text
-Un bucket público no siempre es malo, pero si contiene datos sensibles y no hay logs, el riesgo de fuga y falta de evidencia aumenta mucho.
-```
-
-## Cómo Presentar un Proyecto
-
-Cuando hables de un proyecto, la estructura clara es:
-
-1. Problema.
-2. Contexto.
-3. Riesgo.
-4. Análisis.
-5. Controles.
-6. Limitaciones.
-7. Aprendizaje.
-
-No necesitas prometer que resolviste todo. Necesitas demostrar que piensas con criterio.
-
-## Prioridad Recomendada
-
-Para empezar, conviene dominar primero:
-
-1. Análisis de logs.
-2. Hardening Linux.
-3. OWASP Top 10 con casos.
-4. Investigación de alerta simulada.
-5. Red segmentada.
-
-Ese orden construye base: sistemas, evidencia, web, defensa y arquitectura.
+1. El concepto de "Home Lab" (Laboratorio Casero) rompe la paradoja de la experiencia laboral. Utilizando la analogía del "Arquitecto Teórico vs el Albañil Práctico", explica por qué un Director Técnico valorará más a un candidato con un repositorio de GitHub lleno de capturas de pantalla de servidores configurados en su casa, que a un candidato con 3 certificaciones teóricas sin experiencia práctica.
+2. Un estudiante decide hacer un proyecto instalando un software EDR (Fase 14) en la computadora de su familia. Si el estudiante omite publicar este proceso en un "Repositorio de GitHub", ¿Por qué este esfuerzo será financieramente inútil al momento de buscar empleo?
+3. En el Proyecto Nivel 1 (El Radar del SOC), el estudiante configura una alerta para intentos fallidos de contraseña. Explica cómo este proyecto casero demuestra entendimiento directo de la **Fase 15 (Gestión de Identidades - IAM)** y la detección de ataques de Fuerza Bruta.
+4. Un reclutador técnico (CISO) entra a tu perfil de LinkedIn y ve una publicación donde relatas cómo intentaste configurar un Firewall en tu cuenta gratuita de AWS, pero cometiste un error y perdiste acceso a tu propio servidor durante 3 horas antes de poder arreglarlo. ¿Por qué documentar y publicar tus **fracasos técnicos** en un Home Lab te hace un candidato mucho más atractivo para las empresas que alguien que finge saberlo todo?
