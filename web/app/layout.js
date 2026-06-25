@@ -7,10 +7,10 @@ const BASE_URL = "https://cbsdev.lat";
 export const metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Ciberseguridad — Guías gratis en español",
+    default: "Ciberseguridad — El Mapa de Conocimiento",
     template: "%s | Ciberseguridad",
   },
-  description: "Ruta estructurada para aprender ciberseguridad en español: fundamentos, redes, Linux, seguridad web, Blue Team, cloud, respuesta a incidentes y empleabilidad.",
+  description: "Una guía abierta para explorar la ciberseguridad sin perderse. Descubre fundamentos, Linux, hacking, Blue Team y empleabilidad a tu propio ritmo.",
   keywords: ["ciberseguridad en español", "aprender ciberseguridad", "blue team", "seguridad web", "owasp", "linux seguridad", "cloud security", "guías ciberseguridad gratis"],
   authors: [{ name: "Christian Quiñones", url: BASE_URL }],
   creator: "Christian Quiñones",
@@ -18,8 +18,8 @@ export const metadata = {
     canonical: BASE_URL,
   },
   openGraph: {
-    title: "Ciberseguridad — Guías gratis en español",
-    description: "Ruta estructurada para aprender ciberseguridad en español: fundamentos, redes, Linux, seguridad web, Blue Team, cloud y empleabilidad.",
+    title: "Ciberseguridad — El Mapa de Conocimiento",
+    description: "Una guía abierta para explorar la ciberseguridad sin perderse. Descubre fundamentos, Linux, hacking, Blue Team y empleabilidad a tu propio ritmo.",
     url: BASE_URL,
     siteName: "Ciberseguridad",
     images: [
@@ -27,7 +27,7 @@ export const metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Ciberseguridad — Guías gratis en español · cbsdev.lat",
+        alt: "Ciberseguridad — El Mapa de Conocimiento · cbsdev.lat",
       },
     ],
     locale: "es_MX",
@@ -35,8 +35,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ciberseguridad — Guías gratis en español",
-    description: "Guías ordenadas para aprender ciberseguridad en español desde cero.",
+    title: "Ciberseguridad — El Mapa de Conocimiento",
+    description: "Una guía abierta para explorar la ciberseguridad sin perderse. Descubre fundamentos, Linux, hacking, Blue Team y empleabilidad a tu propio ritmo.",
     images: ["/og-image.png"],
   },
   robots: {
