@@ -1,417 +1,78 @@
-# Fundamentos de Linux
+# Fundamentos de Linux: El Idioma de los Servidores
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender Linux con suficiente claridad para administrar sistemas, leer evidencia y comprender muchas herramientas de ciberseguridad.
+Entender por qué Linux domina el mundo de la ciberseguridad corporativa y comprender su filosofía de diseño ("Todo es un archivo") y su geografía básica.
 
-Linux aparece en servidores, contenedores, cloud, appliances, routers, laboratorios, herramientas ofensivas autorizadas, herramientas defensivas, pipelines, SIEMs y entornos de respuesta a incidentes. No necesitas memorizar todos los comandos. Necesitas entender el sistema: usuarios, permisos, procesos, servicios, red, archivos, logs y configuración.
+Si quieres ser un profesional de seguridad, hay una verdad innegable: **Casi el 100% de la infraestructura crítica del mundo corre en Linux**. Los servidores web, las bases de datos de los bancos, los satélites, los routers y las herramientas de hackeo (como Kali Linux) usan este sistema operativo. Si solo sabes usar Windows, eres ciego al 90% de los ataques reales. Esta guía te quitará el miedo a la "pantalla negra".
 
-El objetivo real es que puedas mirar un sistema Linux y responder:
+---
 
-- Quien soy;
-- Que permisos tengo;
-- Que procesos corren;
-- Que servicios escuchan;
-- Que archivos son sensibles;
-- Que logs explican lo ocurrido;
-- Que cambios podrian afectar seguridad.
+## 1. La Analogía: El Conductor vs El Mecánico
 
-## Modelo Mental
+¿Por qué Linux se siente tan intimidante al principio si vienes de usar Windows o macOS toda tu vida?
 
-```text
-usuario -> permisos -> archivos -> procesos -> servicios -> red -> logs -> evidencia
-```
+*   **Windows / macOS (El Conductor):** Están diseñados para que manejes el auto sin saber de mecánica. Tienen tableros brillantes, volantes suaves e interfaces gráficas (GUI) hermosas. Si el motor falla, el auto se detiene y te sale una "Pantalla Azul" que no te deja hacer nada. No tienes acceso al motor.
+*   **Linux (El Mecánico):** Linux te quita el volante, te quita el tablero brillante, te abre el capó del auto y te dice: *"Aquí está el motor. Haz lo que quieras"*. No hay botones mágicos. Tienes que hablarle a la máquina usando comandos de texto directamente. 
 
-Linux se entiende mejor como un sistema de texto, procesos y permisos. Casi todo puede inspeccionarse con archivos, comandos y logs.
+La ciberseguridad requiere precisión quirúrgica. Un hacker no usa botones; le susurra comandos directamente al motor para que haga cosas que el creador original jamás planeó.
 
-## Por Qué Linux Importa en Ciberseguridad
+---
 
-Linux es común en:
+## 2. La Filosofía Hacker: "Todo es un archivo"
 
-- Servidores web;
-- Bases de datos;
-- Contenedores;
-- Kubernetes;
-- Herramientas de seguridad;
-- Firewalls y appliances;
-- Sistemas cloud;
-- Pipelines CI/CD;
-- Laboratorios de práctica.
+Esta es la regla dorada de Linux. Literalmente, **todo** en el sistema operativo es tratado como si fuera un archivo de texto.
 
-Si entiendes Linux, puedes interpretar mejor:
+*   Tu disco duro no es una letra `C:\` mágica; es un archivo llamado `/dev/sda`.
+*   Tu cámara web es un archivo llamado `/dev/video0`.
+*   Incluso la memoria RAM, los procesos corriendo y el teclado se representan como simples archivos de texto.
 
-- Hardening;
-- Permisos;
-- Procesos sospechosos;
-- Conexiones activas;
-- Servicios expuestos;
-- Logs de autenticación;
-- Persistencia básica;
-- Errores de configuración.
+> **Importante para la Seguridad:**
+> Si un teclado es solo un archivo de texto para Linux, significa que si un hacker logra obtener permisos para leer ese archivo, ¡estará leyendo todo lo que tecleas en tiempo real (un Keylogger)! La seguridad entera de Linux se reduce a una sola cosa: **Proteger quién puede leer y quién puede modificar archivos.**
 
-## Estructura del Sistema
+---
 
-Directorios comunes:
+## 3. Geografía del Sistema: El Árbol Invertido
 
-| Ruta | Uso |
-| --- | --- |
-| `/` | Raíz del sistema |
-| `/home` | Directorios de usuarios |
-| `/etc` | Configuración del sistema |
-| `/var` | Datos variables, logs, colas |
-| `/var/log` | Logs |
-| `/tmp` | Archivos temporales |
-| `/usr` | Programas y librerías |
-| `/bin`, `/sbin` | Binarios esenciales |
-| `/opt` | Software adicional |
-| `/proc` | Información del kernel y procesos |
+En Windows, tu vida gira alrededor de la unidad `C:\`. Si metes una memoria USB, mágicamente aparece la unidad `D:\`.
+En Linux, **no existen las unidades (letras)**. Existe un gran Árbol Invertido.
 
-En seguridad, las rutas importan porque ayudan a distinguir normalidad de anomalia. Un binario desconocido en una ruta temporal, un script raro en un directorio de inicio o permisos inseguros en `/etc` pueden ser señales relevantes.
+Todo nace desde la Raíz, representada por una simple barra diagonal: `/` (Root directory).
+Cualquier disco duro, USB o red que conectes, simplemente se cuelga como una rama más de este árbol gigante.
 
-## Usuarios
+### Las 5 Ramas (Directorios) Críticas para un Analista:
 
-Linux es multiusuario. Cada proceso corre como algun usuario.
+1.  **`/` (Raíz):** El inicio de todo. Solo el Administrador Supremo tiene poder absoluto aquí.
+2.  **`/home` (Los Apartamentos):** Aquí viven los usuarios normales. Si tu usuario es "juan", tus documentos, fotos y descargas estarán en `/home/juan`. 
+3.  **`/etc` (El Cerebro de Configuración):** (Se pronuncia "etsy"). Aquí viven los archivos de texto que controlan cómo se comporta la computadora.
+    *   *Ángulo Hacker:* Aquí está el famoso archivo `/etc/shadow`, que es la caja fuerte que guarda todas las contraseñas del sistema. Es el Santo Grial de un atacante local.
+4.  **`/var` (La Caja Negra):** Especialmente la carpeta `/var/log`. Aquí el sistema guarda las bitácoras (Logs) de todo lo que pasa. Si alguien intentó hackear la máquina a las 3 AM, la evidencia de las IPs y contraseñas fallidas está escrita aquí.
+5.  **`/tmp` (El Basurero Temporal):** Una carpeta especial donde cualquier usuario (sin importar sus privilegios) puede crear y borrar archivos, pero que se vacía sola cada vez que la PC se reinicia.
+    *   *Ángulo Hacker:* Como cualquiera puede escribir aquí, el 99% de los malwares y scripts de hackeo se descargan inicialmente en la carpeta `/tmp` para esconderse temporalmente.
 
-Comandos útiles:
+---
 
-```bash
-whoami
-id
-groups
-cat /etc/passwd
-cat /etc/group
-```
+## 4. Distribuciones (Los Sabores del Helado)
 
-Conceptos:
+A diferencia de Windows o Mac, que son de una sola compañía (Microsoft / Apple), Linux es de código abierto (Open Source). Esto significa que cualquiera puede tomar el "Kernel" (el motor matemático de Linux) y construir su propia versión del sistema operativo poniéndole las aplicaciones que quiera. A estas versiones se les llama **Distribuciones** o *Distros*.
 
-- `root`: usuario con máximo privilegio.
-- Usuario normal: permisos limitados.
-- Usuario de servicio: cuenta usada por una aplicación.
-- Grupo: conjunto de usuarios con permisos compartidos.
+Imagina que el Kernel de Linux es el helado de vainilla. Diferentes comunidades le ponen chispas de chocolate o galleta y lo empaquetan con un nombre distinto.
 
-En seguridad, el usuario que ejecuta una acción importa tanto como la acción misma.
+### Las Distros que verás en Ciberseguridad:
+*   **Ubuntu / Debian:** Las más populares y amigables. Usadas en millones de servidores web en la nube.
+*   **CentOS / Red Hat (RHEL):** Usadas en servidores corporativos ultra-estables (Bancos, Gobierno).
+*   **Kali Linux / Parrot OS:** Las versiones "Hacker". Son helados de vainilla pero pre-empaquetados de fábrica con cientos de herramientas de ataque, escaneo de redes y análisis forense.
 
-Ejemplo:
+> **Consejo:** 
+> No importa si aprendes a usar Ubuntu o Kali; el motor interno es exactamente el mismo. Los comandos que aprendas en uno, te servirán en el otro.
 
-```text
-nginx corriendo como www-data = esperado
-nginx corriendo como root = mayor impacto si se compromete
-```
+---
 
-## Sudo
+## 5. Criterio de Dominio (Autoevaluación)
 
-`sudo` permite ejecutar comandos con privilegios elevados.
+¿Estás listo para empezar a escribir comandos? Responde esto primero:
 
-Comando útil:
-
-```bash
-sudo -l
-```
-
-Preguntas de seguridad:
-
-- Qué usuarios pueden usar sudo?
-- Pueden ejecutar cualquier comando?
-- Requieren contraseña?
-- Hay comandos peligrosos permitidos?
-- Hay registros de uso?
-
-Dar sudo completo a demasiados usuarios aumenta el impacto de cualquier cuenta comprometida.
-
-## Permisos
-
-Ejemplo:
-
-```text
--rwxr-x---
-```
-
-Interpretacion:
-
-```text
--   rwx   r-x   ---
-|    |     |     |
-|    |     |     otros
-|    |     grupo
-|    owner
-tipo de archivo
-```
-
-Permisos:
-
-- `r`: leer.
-- `w`: escribir.
-- `x`: ejecutar o atravesar directorio.
-
-Ejemplos:
-
-```bash
-chmod 600 secreto.txt
-chmod 755 script.sh
-chown usuario:grupo archivo.txt
-```
-
-En seguridad, permisos incorrectos pueden permitir:
-
-- Leer secretos;
-- Modificar configuraciones;
-- Ejecutar scripts;
-- Reemplazar binarios;
-- Acceder a logs sensibles;
-- Alterar evidencia.
-
-## Archivos Sensibles
-
-Ejemplos:
-
-- `/etc/passwd`
-- `/etc/shadow`
-- `/etc/sudoers`
-- Llaves SSH;
-- Archivos `.env`;
-- Certificados;
-- Tokens;
-- Configuraciones de bases de datos;
-- Logs con datos sensibles.
-
-No todo archivo sensible debe ser secreto absoluto, pero su acceso debe tener una razon.
-
-## Procesos
-
-Un proceso es un programa en ejecucion.
-
-Comandos:
-
-```bash
-ps aux
-top
-htop
-pgrep nombre
-```
-
-Preguntas:
-
-- Qué proceso está corriendo?
-- Qué usuario lo ejecuta?
-- Desde qué ruta?
-- Cuál es su proceso padre?
-- Consume recursos de forma anormal?
-- Tiene conexiones de red?
-
-En seguridad, los procesos ayudan a detectar actividad inesperada. Un proceso raro no prueba ataque por si solo, pero abre preguntas.
-
-## Servicios
-
-Un servicio es un proceso administrado para correr en segundo plano.
-
-Comandos:
-
-```bash
-systemctl status ssh
-systemctl list-units --type=service --state=running
-journalctl -u ssh
-```
-
-Ejemplos:
-
-- SSH.
-- Nginx.
-- PostgreSQL.
-- Docker.
-- Cron.
-
-Preguntas:
-
-- El servicio debería existir?
-- Está habilitado al arranque?
-- Escucha en red?
-- Corre cómo usuario limitado?
-- Tiene logs?
-- Está actualizado?
-
-## Red en Linux
-
-Comandos:
-
-```bash
-ip addr
-ip route
-ss -tuln
-ss -tunap
-```
-
-Ideas clave:
-
-- `ip addr` muestra interfaces e IPs.
-- `ip route` muestra gateway y rutas.
-- `ss -tuln` muestra puertos escuchando.
-- `ss -tunap` puede asociar conexiones con procesos si tienes permisos.
-
-En seguridad, un puerto escuchando significa superficie de ataque. No todo puerto abierto es malo, pero todo puerto abierto debe tener una razon.
-
-## Logs
-
-Los logs explican que paso.
-
-Ubicaciones comunes:
-
-- `/var/log/auth.log`
-- `/var/log/syslog`
-- `/var/log/secure`
-- `/var/log/nginx/`
-- `/var/log/apache2/`
-- `journalctl`
-
-Comandos:
-
-```bash
-journalctl -xe
-journalctl -u ssh
-sudo tail -n 50 /var/log/auth.log
-sudo grep -i "failed" /var/log/auth.log
-```
-
-Preguntas:
-
-- Qué usuario aparece?
-- Desde qué IP?
-- A qué hora?
-- Fue exitoso o fallido?
-- Hay repeticion?
-- Hay cambios cerca del evento?
-
-## Cron y Tareas Programadas
-
-Cron ejecuta tareas programadas.
-
-Ubicaciones:
-
-- `/etc/crontab`
-- `/etc/cron.d/`
-- `crontab -l`
-
-En seguridad importa porque tareas programadas pueden usarse para automatización legitima o persistencia maliciosa.
-
-Preguntas:
-
-- Qué tarea corre?
-- Con qué usuario?
-- Qué script ejecuta?
-- Dónde está ese script?
-- Quién puede modificarlo?
-
-## Variables de Entorno
-
-Las variables de entorno guardan configuración para procesos.
-
-Ejemplos:
-
-- `PATH`
-- `HOME`
-- `USER`
-- `DATABASE_URL`
-- `API_KEY`
-
-Riesgo:
-
-Si secretos viven en variables de entorno, pueden aparecer en procesos, logs, dumps o configuraciones mal protegidas.
-
-## Paquetes y Actualizaciones
-
-Linux instala software por gestores de paquetes.
-
-Ejemplos:
-
-```bash
-apt list --upgradable
-dpkg -l
-rpm -qa
-```
-
-En seguridad, paquetes desactualizados pueden tener vulnerabilidades conocidas. Pero actualizar sin control también puede romper servicios. La madurez está en parchar con pruebas, respaldos y ventanas de cambio.
-
-## Hardening Básico
-
-Hardening significa reducir superficie de ataque.
-
-Ejemplos:
-
-- Desactivar servicios innecesarios;
-- Restringir SSH;
-- Usar usuarios sin privilegios;
-- Configurar firewall;
-- Aplicar parches;
-- Proteger llaves;
-- Revisar permisos;
-- Habilitar logs;
-- Monitorear cambios.
-
-Hardening no es una lista magica. Es adaptar controles al riesgo del sistema.
-
-## Ejemplo de Investigación
-
-Escenario:
-
-Un servidor muestra múltiples intentos fallidos de SSH.
-
-Análisis:
-
-1. Revisar logs de autenticación.
-2. Identificar usuario objetivo.
-3. Identificar IP origen.
-4. Ver si hubo login exitoso después.
-5. Revisar si el usuario tiene sudo.
-6. Revisar procesos recientes.
-7. Revisar conexiones activas.
-8. Recomendar controles.
-
-Controles posibles:
-
-- Deshabilitar login por password;
-- Usar llaves SSH;
-- Restringir IPs;
-- Activar MFA si aplica;
-- Alertar por fuerza bruta;
-- Revisar usuarios validos.
-
-## Errores Comunes
-
-- Ejecutar todo con `sudo` sin entender impacto.
-- Copiar comandos destructivos sin leerlos.
-- No revisar permisos después de crear archivos sensibles.
-- No diferenciar proceso, servicio y puerto.
-- Borrar logs o evidencia durante una investigación.
-- Pensar que un puerto abierto siempre es ataque.
-- Ignorar usuarios de servicio.
-- No documentar cambios.
-
-## Observación Segura
-
-En un entorno propio puedes observar:
-
-```bash
-whoami
-id
-pwd
-ls -la
-ps aux | head
-ss -tuln
-ip route
-journalctl -n 20
-```
-
-No ejecutes comandos destructivos si no entiendes su efecto. En Linux, un comando corto puede hacer cambios amplios.
-
-## Criterio de Dominio
-
-Dominas este tema cuando puedes:
-
-- Orientarte en el sistema de archivos;
-- Explicar usuarios, grupos y sudo;
-- Interpretar permisos;
-- Ver procesos y servicios;
-- Identificar puertos escuchando;
-- Leer logs básicos;
-- Explicar por que root aumenta impacto;
-- Describir controles de hardening;
-- Analizar un login sospechoso con evidencia.
+1. Un compañero de trabajo inserta una memoria USB en el servidor Linux y te pregunta: *"¿En qué letra (D:, E:) encuentro la USB?"*. ¿Cómo le explicas que en Linux eso no existe?
+2. Si un malware de minería de criptomonedas está intentando esconder sus archivos temporales en el servidor sin tener permisos de administrador, ¿En qué directorio crítico del sistema es más probable que intente guardarlos?
+3. Sabiendo que "Todo es un archivo" en Linux, ¿Por qué la seguridad de un servidor se reduce drásticamente a dominar la gestión de permisos?
+4. Entras a trabajar a un Banco y te dicen que el servidor usa `Red Hat` en vez de `Kali Linux`. ¿Tienes que aprender a usar Linux desde cero otra vez? ¿Por qué?
