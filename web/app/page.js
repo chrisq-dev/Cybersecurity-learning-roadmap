@@ -174,8 +174,8 @@ export default function Home() {
         Guías <em>gratis</em> de <br/> ciberseguridad en español
       </h1>
       
-      <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto 1.5rem auto' }}>
-        Una ruta organizada para estudiar ciberseguridad sin perderte entre tantos temas: fundamentos, redes, Linux, web, Blue Team, cloud, laboratorios y empleabilidad.
+      <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', maxWidth: '650px', margin: '0 auto 1.5rem auto' }}>
+        Una ruta organizada para estudiar ciberseguridad sin perderte entre tantos temas: fundamentos, redes, Linux, web, OSINT, Blue Team, cloud, seguridad móvil, IA, hardware hacking y empleabilidad.
       </p>
 
       {/* Dynamic Statistics Banner */}
