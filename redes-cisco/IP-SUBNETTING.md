@@ -1,289 +1,100 @@
-# IP y Subnetting
+# Direcciones IP y Subnetting: El GPS de Internet
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender direcciones IP, mascaras, CIDR y subredes. Esto es esencial para redes, Cisco, firewalls, cloud, seguridad defensiva y análisis de logs.
+Aprender cómo las computadoras se encuentran entre sí a nivel mundial y por qué dividir las redes (Subnetting) es la primera línea de defensa para contener a un atacante.
 
-Subnetting no se estudia solo para hacer ejercicios. Se estudia para saber que sistemas pertenecen a un segmento, que tráfico debería permitirse, que rangos pueden analizarse en un laboratorio autorizado y como diseñar redes con menor impacto ante incidentes.
+Las matemáticas detrás de las direcciones IP y el *subnetting* suelen asustar a los principiantes. En este módulo no te haré convertir números binarios a mano (para eso existen calculadoras). Aquí vas a entender la **lógica arquitectónica** que exige la certificación Cisco CCNA: por qué existen las IP, cómo se leen, y por qué cortamos las redes en pedazos por seguridad.
 
-## Qué es una Dirección IP
+---
 
-Una dirección IP identifica una interfaz en una red.
+## 1. La Analogía: Calles y Códigos Postales
 
-Ejemplo:
+Si quieres enviarle un paquete a tu amigo Juan, no basta con decirle al cartero: *"Entrégaselo a Juan"*. Hay millones de Juanes. Necesitas una dirección lógica estructurada: País, Estado, Código Postal, Calle y Número de Casa.
 
-```text
-192.168.1.10
-```
+En las redes informáticas:
+*   **La Dirección MAC:** Es el nombre completo de Juan (ej. Juan Pérez Gómez). Viene de fábrica y nunca cambia. Pero no te dice *dónde* vive.
+*   **La Dirección IP:** Es la dirección de su casa (ej. Calle Maple #123, Código Postal 5000). Cambia si Juan se muda a otra ciudad. 
 
-IPv4 usa 32 bits divididos en 4 octetos.
+Las Direcciones IP le permiten a los Routers (las oficinas de correo) saber en qué país y en qué edificio del mundo estás conectado ahora mismo.
 
-```text
-192 . 168 . 1 . 10
-```
+---
 
-Cada octeto va de 0 a 255 porque representa 8 bits.
+## 2. IPv4 vs IPv6 (Se nos acabaron las casas)
 
-Importante: una IP no identifica permanentemente a una persona. Puede cambiar por DHCP, puede estar detras de NAT, puede compartirse entre sistemas o puede pertenecer a una interfaz temporal.
+### IPv4 (El estándar clásico)
+Una dirección IPv4 se ve así: `192.168.1.55`. 
+Está compuesta por 4 bloques de números, donde cada número solo puede ir del **0 al 255**.
+El problema con este diseño antiguo es que solo permite **4,300 millones de direcciones posibles**. A principios de los años 2010, nos quedamos literalmente sin IPs en el mundo. Hay más celulares, relojes inteligentes y computadoras que direcciones disponibles.
 
-## IP Privada vs IP Pública
+### IPv6 (La solución del futuro)
+Para solucionar el fin del mundo de las IPs, se inventó IPv6. 
+Se ve así: `2001:0db8:85a3:0000:0000:8a2e:0370:7334`.
+Es un formato mucho más largo y usa letras y números. Es tan inmensamente grande que podríamos darle una dirección IP única a cada grano de arena del planeta Tierra y nos sobrarían. Aunque IPv6 es el futuro, **IPv4 seguirá siendo el rey en las redes corporativas internas por muchos años más**.
 
-Rangos privados comunes:
+---
 
-| Rango | Uso |
-| --- | --- |
-| `10.0.0.0/8` | redes privadas grandes |
-| `172.16.0.0/12` | redes privadas |
-| `192.168.0.0/16` | redes domesticas y pequeñas |
+## 3. IP Pública vs IP Privada (El Truco para sobrevivir)
 
-Una IP privada no se enruta directamente en internet. Normalmente sale por NAT usando una IP pública.
+Si se nos acabaron las IPv4, ¿por qué tu casa sigue teniendo internet? Por un truco brillante llamado **IPs Privadas**.
 
-En seguridad:
+Los ingenieros de internet acordaron reservar unos "Códigos Postales Especiales" que no existen en el mapa público mundial. Son como direcciones de departamentos dentro de un edificio.
 
-- Logs internos suelen mostrar IP privada;
-- Logs externos suelen mostrar IP pública;
-- Para atribución necesitas correlacionar DHCP, NAT, usuario y timestamp.
+*   **IP Pública (Tu Edificio):** Es la dirección de la puerta principal de tu edificio hacia la calle (Internet). Es única en todo el mundo.
+*   **IP Privada (Tu Departamento):** Es tu número de departamento (`Apt 101`, `Apt 102`). Muchos edificios pueden tener un "Departamento 101", pero no hay conflicto porque están puertas adentro.
 
-## Red y Host
+**Los Rangos Privados Famosos:**
+Si ves una IP que empieza con estos números, **sabes que es una IP privada local** que no puede navegar directamente a Internet sin pedirle permiso al Router:
+*   `10.x.x.x` (Muy usada en grandes empresas)
+*   `172.16.x.x` a `172.31.x.x`
+*   `192.168.x.x` (La clásica de todas las casas del mundo)
 
-Una IP tiene dos partes:
+---
 
-- Parte de red;
-- Parte de host.
+## 4. Subnetting: Cortando el Pastel (El famoso `/24`)
 
-La mascara indica que parte pertenece a la red.
+Imagínate que administras una Universidad con 1,000 computadoras. Si las pones todas en la misma "calle" (misma red local), vas a tener un caos masivo de tráfico, y si un estudiante descarga un gusano (worm) maligno, el virus infectará a las 1,000 máquinas en segundos.
 
-Ejemplo:
+La solución es el **Subnetting (Subredes)**: Cortar ese pastel gigante en pedazos más pequeños y poner muros entre ellos. Pones a los Alumnos en una red, a Finanzas en otra, y a los Profesores en otra.
 
-```text
-IP:      192.168.1.10
-Mascara: 255.255.255.0
-CIDR:    /24
-Red:     192.168.1.0
-Host:    10
-```
+### La Máscara de Red (El Cuchillo)
+Para decirle a la computadora qué parte de su dirección es "El nombre de la calle" y qué parte es "El número de la casa", usamos la Máscara de Red.
 
-Los equipos dentro de la misma red pueden comunicarse localmente. Para llegar a otra red necesitan gateway.
+*   **IP:** `192.168.1.55`
+*   **Máscara (Estilo antiguo):** `255.255.255.0`
+*   **Máscara (Estilo moderno / CIDR):** `/24`
 
-## CIDR
+¿Qué diablos significa `/24`?
+En lenguaje humano significa: *"Los primeros 3 bloques de la IP (`192.168.1`) son el nombre de la calle. El último bloque (`.55`) es el número de la casa. Solo caben 254 casas en esta calle"*.
 
-CIDR indica cuantos bits son de red.
+> **Importante en Ciberseguridad:** 
+> La regla de oro del Subnetting es que **las casas de la calle A no pueden hablar con las casas de la calle B a menos que pasen por un guardia de seguridad (Router/Firewall)**. Si aislas los servidores de la empresa en una subred `/24` separada del Wi-Fi de invitados, cortaste el 90% del riesgo de infección cruzada.
 
-Ejemplos comunes:
+---
 
-| CIDR | Mascara | Direcciones totales | Hosts usables tradicionales |
-| --- | --- | --- | --- |
-| /24 | 255.255.255.0 | 256 | 254 |
-| /25 | 255.255.255.128 | 128 | 126 |
-| /26 | 255.255.255.192 | 64 | 62 |
-| /27 | 255.255.255.224 | 32 | 30 |
-| /28 | 255.255.255.240 | 16 | 14 |
-| /29 | 255.255.255.248 | 8 | 6 |
-| /30 | 255.255.255.252 | 4 | 2 |
+## 5. Laboratorio Práctico: Descubre tu IP Real vs Privada
 
-Se restan 2 direcciones en redes tradicionales:
+Vamos a ver cómo la analogía del "edificio y el departamento" funciona en tu propia máquina.
 
-- Dirección de red;
-- Broadcast.
+### Paso 1: Tu IP Privada (El Departamento)
+1.  Abre la terminal (`cmd` en Windows, `Terminal` en Mac/Linux).
+2.  Escribe `ipconfig` (Windows) o `ip addr` (Mac/Linux).
+3.  Busca tu dirección IP (probablemente dirá algo como `192.168.0.15`).
+4.  Esta es tu dirección privada. Desde aquí solo puedes hablar con tu Smart TV, tu celular y otros equipos **dentro de tu casa**.
 
-En algunos entornos cloud hay reglas especiales y direcciones reservadas adicionales.
+### Paso 2: Tu IP Pública (El Edificio hacia Internet)
+1.  Abre tu navegador web y entra a [https://www.cual-es-mi-ip.net/](https://www.cual-es-mi-ip.net/) o busca en Google "What is my IP".
+2.  Verás un número completamente diferente (Ej. `187.144.20.100`).
+3.  Esa es la IP Pública que tu proveedor de internet (Telmex, Movistar) le asignó a tu casa. 
+4.  **Cuando entras a Facebook**, Facebook no ve tu IP privada `192.168.0.15`. Facebook solo ve tu IP pública `187.144.20.100`.
 
-## Cómo Pensar Bloques
+---
 
-El tamaño del bloque depende de cuantos bits quedan para hosts.
+## 6. Criterio de Dominio (Autoevaluación)
 
-```text
-/24 -> bloques de 256
-/25 -> bloques de 128
-/26 -> bloques de 64
-/27 -> bloques de 32
-/28 -> bloques de 16
-```
+¿Puedes responder a esto con seguridad?
 
-Ejemplo con /26:
-
-```text
-0, 64, 128, 192
-```
-
-Esos son los inicios de subred dentro del ultimo octeto.
-
-## Ejemplo /24
-
-```text
-Red: 192.168.1.0/24
-Rango usable: 192.168.1.1 - 192.168.1.254
-Broadcast: 192.168.1.255
-```
-
-Uso común:
-
-- Red pequeña de usuarios;
-- Laboratorio local;
-- Segmento simple.
-
-Riesgo:
-
-Si todo vive en un solo /24 sin controles, un equipo comprometido puede intentar descubrir muchos vecinos.
-
-## Ejemplo /26
-
-Una red /26 tiene bloques de 64 direcciones.
-
-```text
-192.168.1.0/26
-192.168.1.64/26
-192.168.1.128/26
-192.168.1.192/26
-```
-
-Primera subred:
-
-```text
-Red: 192.168.1.0
-Usables: 192.168.1.1 - 192.168.1.62
-Broadcast: 192.168.1.63
-```
-
-Segunda subred:
-
-```text
-Red: 192.168.1.64
-Usables: 192.168.1.65 - 192.168.1.126
-Broadcast: 192.168.1.127
-```
-
-## Gateway
-
-El gateway debe pertenecer a la misma red que el host.
-
-Ejemplo valido:
-
-```text
-Host:    192.168.10.25/24
-Gateway: 192.168.10.1
-```
-
-Ejemplo problematico:
-
-```text
-Host:    192.168.10.25/24
-Gateway: 192.168.20.1
-```
-
-Ese gateway está fuera de la red del host, por lo que la configuración no tiene sentido para comunicación normal.
-
-## Subredes Traslapadas
-
-Dos subredes traslapadas crean problemas de routing y seguridad.
-
-Ejemplo:
-
-```text
-Red A: 10.0.0.0/24
-Red B: 10.0.0.128/25
-```
-
-`10.0.0.150` pertenece a ambas. Esto puede causar rutas ambiguas, reglas incorrectas y problemas en VPN o cloud.
-
-## 0.0.0.0/0
-
-`0.0.0.0/0` significa cualquier dirección IPv4.
-
-En firewalls y cloud puede significar:
-
-```text
-permitir desde todo internet
-```
-
-No siempre es incorrecto. Un sitio web público puede aceptar `0.0.0.0/0` hacia `443`. Pero exponer SSH, RDP, bases de datos o paneles administrativos a `0.0.0.0/0` suele ser riesgoso.
-
-## Por Qué Importa en Seguridad
-
-Subnetting ayuda a:
-
-- Segmentar redes;
-- Separar usuarios, servidores y administracion;
-- Crear reglas de firewall;
-- Definir rangos de análisis autorizados;
-- Entender logs de origen/destino;
-- Diseñar redes cloud;
-- Limitar movimiento lateral;
-- Documentar alcance de pruebas.
-
-Ejemplo:
-
-```text
-Usuarios:       10.10.10.0/24
-Servidores:     10.10.20.0/24
-Administracion: 10.10.99.0/24
-Invitados:      10.10.30.0/24
-```
-
-Con esa separación puedes aplicar reglas distintas por función.
-
-## Ejemplo de Regla
-
-```text
-Permitir 10.10.10.0/24 -> 10.10.20.50 tcp/443
-Bloquear 10.10.30.0/24 -> 10.10.20.0/24 any
-Permitir 10.10.99.0/24 -> switches tcp/22
-```
-
-La red no solo organiza direcciones. También define límites de confianza.
-
-## Errores Comunes
-
-- Mascara incorrecta.
-- Gateway fuera de la red.
-- Subredes traslapadas.
-- Reglas de firewall demasiado amplias.
-- Usar `0.0.0.0/0` sin entender que significa.
-- Escanear rangos no autorizados.
-- Confundir IP pública con IP privada.
-- No registrar que rango pertenece a que función.
-
-## Ejemplos de Lectura
-
-### Red 10.0.0.0/24
-
-```text
-Mascara: 255.255.255.0
-Primera IP usable: 10.0.0.1
-Ultima IP usable: 10.0.0.254
-Broadcast: 10.0.0.255
-Hosts tradicionales: 254
-```
-
-### Red 192.168.10.0/26
-
-```text
-Mascara: 255.255.255.192
-Primera IP usable: 192.168.10.1
-Ultima IP usable: 192.168.10.62
-Broadcast: 192.168.10.63
-Hosts tradicionales: 62
-```
-
-### Red 172.16.5.0/28
-
-```text
-Mascara: 255.255.255.240
-Primera IP usable: 172.16.5.1
-Ultima IP usable: 172.16.5.14
-Broadcast: 172.16.5.15
-Hosts tradicionales: 14
-```
-
-## Criterio de Dominio
-
-Dominas este tema cuando puedes:
-
-- Explicar IP, mascara y CIDR;
-- Diferenciar IP privada y pública;
-- Calcular hosts de /24, /25, /26, /27 y /28;
-- Identificar red, rango usable y broadcast;
-- Validar si un gateway pertenece a la red;
-- Explicar por que subredes traslapadas causan problemas;
-- Interpretar `0.0.0.0/0`;
-- Explicar por que segmentar reduce riesgo.
+1. En una auditoría de seguridad, un reporte dice que "El atacante se conectó desde la IP `192.168.1.40`". ¿El atacante está en otro país hackeando por internet, o está físicamente conectado al Wi-Fi de tu edificio?
+2. Si un colega te dice que configuró la red como `10.0.0.0 /24`, ¿Qué significa ese `/24` en términos simples sobre el tamaño de la red?
+3. ¿Por qué el Subnetting es considerado una técnica de seguridad y no solo una técnica de organización de redes?
+4. ¿Cuál es la diferencia de utilidad entre una Dirección MAC y una Dirección IP usando la analogía postal?

@@ -1,326 +1,101 @@
-# Modelo OSI y TCP/IP
+# Modelo OSI y TCP/IP: Diseccionando la Red
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender como se divide la comunicación de red en capas y por que ese modelo ayuda a diagnosticar problemas, explicar tráfico y analizar incidentes de seguridad.
+Entender cómo se divide la comunicación de red en capas lógicas y por qué este "modelo mental" es la herramienta de diagnóstico más importante para un analista de ciberseguridad.
 
-El modelo OSI no se estudia para recitar siete nombres en una entrevista. Se estudia porque ordena el pensamiento. Cuando algo no funciona o parece sospechoso, las capas te ayudan a preguntar donde está el problema: cable, Wi-Fi, MAC, IP, puerto, TLS, DNS, HTTP, aplicación o usuario.
+Nadie en el mundo real estudia el Modelo OSI para memorizar siete nombres en latín y pasar un examen. Lo estudiamos porque **ordena el pensamiento bajo presión**. Cuando un servidor de la empresa se cae, o sospechas que hay un malware robando datos, no puedes simplemente decir "El internet falló". Las capas te ayudan a aislar el problema y preguntar exactamente dónde está la falla o el ataque: ¿Es un cable cortado? ¿Es la IP bloqueada? ¿Es un puerto cerrado? ¿O es una contraseña incorrecta?
 
-## Idea Principal
+---
 
-Una comunicación de red no es una sola acción. Es una cadena de responsabilidades.
+## 1. La Idea Principal (Desmitificando el Modelo)
 
-```text
-aplicacion -> datos -> transporte -> IP -> enlace -> medio fisico
-```
+Una comunicación de red no es una sola acción mágica. Es una cadena de responsabilidades.
+El Modelo OSI (Open Systems Interconnection) tiene 7 capas. El modelo TCP/IP es una versión simplificada de 4 capas que usamos más en el mundo real.
 
-Si una parte falla, la comunicación completa puede fallar. Si una parte está mal protegida, puede crear riesgo.
+**Un gran secreto de la industria:** El Modelo OSI no existe físicamente dentro de tu computadora. No vas a abrir la carcasa y encontrar un chip llamado "Capa 4". Es puramente un **modelo conceptual** (un mapa) para que los ingenieros de diferentes empresas puedan construir piezas que encajen juntas sin conocerse.
 
-## Por Qué Existen Capas
+---
 
-Las capas separan responsabilidades.
+## 2. La Analogía de la Fábrica de Envíos (Las 7 Capas OSI)
 
-Ejemplo: cuando visitas una página web, no todo ocurre en un solo bloque. Hay partes encargadas de:
+Para entender cómo la información viaja, imagina una inmensa corporación internacional enviando un paquete de máxima seguridad de una fábrica a otra.
 
-- Transmitir bits por cable o Wi-Fi;
-- Identificar equipos dentro de la red local;
-- Enrutar paquetes entre redes;
-- Conectar procesos por puertos;
-- Cifrar datos;
-- Interpretar HTTP;
-- Ejecutar lógica de aplicación.
+### Las Capas Superiores (El Software y el Usuario)
+*   **Capa 7: Aplicación (Application) - *El Jefe***
+    El Jefe escribe la carta que quiere enviar. Él no sabe de aviones ni de rutas; solo sabe qué mensaje quiere mandar. (En tu PC: Tu navegador web, o la app de WhatsApp).
+*   **Capa 6: Presentación (Presentation) - *El Traductor y Cifrador***
+    El Secretario toma la carta del Jefe, la traduce al idioma destino (Formato/JSON) y la mete en un sobre a prueba de rayos X con candado para que nadie la lea en el camino (Cifrado TLS/SSL).
+*   **Capa 5: Sesión (Session) - *El Recepcionista***
+    Abre una línea telefónica con la fábrica destino diciendo: *"Oye, te voy a mandar una carta importante, avísame cuando estés listo para recibirla"*. 
 
-Separar por capas ayuda a preguntar:
+### Las Capas Inferiores (El Transporte y el Hardware)
+*   **Capa 4: Transporte (Transport) - *El Gestor de Logística (TCP/UDP)***
+    Toma el sobre cerrado, lo pesa y decide si lo envía por **Correo Certificado (TCP)**, donde el cartero debe pedirle una firma de recibido al destino, o por **Correo Normal (UDP)**, donde simplemente lo lanza a la puerta y se va rápido, sin importar si el paquete se perdió. Le pone un número de "Puerto" para saber a qué departamento de la fábrica destino va dirigido.
+*   **Capa 3: Red (Network) - *El Departamento de Enrutamiento (IP y Routers)***
+    Pega una etiqueta con la Dirección GPS completa (Dirección IP de origen y destino). Ellos miran el mapa del mundo y deciden por qué país y carreteras es mejor enviar el camión para evitar el tráfico.
+*   **Capa 2: Enlace de Datos (Data Link) - *El Chofer Local (MAC y Switches)***
+    Es el conductor del camión. Solo conoce las calles de su propia ciudad. Lee la dirección física de la siguiente parada (Dirección MAC) y maneja hasta entregárselo al siguiente centro de distribución.
+*   **Capa 1: Física (Physical) - *La Carretera y el Camión***
+    Son los cables de cobre, la fibra óptica, las ondas de radio Wi-Fi, y la electricidad pura viajando.
 
-- El problema es fisico?
-- Es de red local?
-- Es de IP?
-- Es de ruta?
-- Es de puerto?
-- Es de TLS?
-- Es de DNS?
-- Es de HTTP?
-- Es de aplicación?
+> **Importante:** Cuando el paquete llega a la fábrica destino, hace **exactamente el proceso inverso**. Sube desde la Carretera (Capa 1) hasta que se le entrega en la mano al Jefe destino (Capa 7). A este proceso de meter el paquete en sobres cada vez más grandes se le llama **Encapsulación**.
 
-En seguridad, esa separación evita conclusiones apresuradas. Un error `403` no es un problema de firewall. Un timeout TCP no es lo mismo que un error HTTP. Un DNS que resuelve a una IP rara no significa que el puerto este abierto.
+---
 
-## Modelo OSI
+## 3. Ejemplo Real: El Viaje de un mensaje de WhatsApp
 
-El modelo OSI tiene siete capas. En redes reales muchas tecnologías mezclan responsabilidades, pero el modelo sigue siendo útil para razonar.
+¿Qué pasa realmente cuando escribes "Hola" y le das enviar?
 
-### Capa 1: Fisica
+1.  **(Capa 7 - App):** La aplicación de WhatsApp registra que presionaste "Enviar".
+2.  **(Capa 6 - Presentación):** Tu celular toma el texto "Hola" y le aplica un cifrado militar (*End-to-End Encryption*) convirtiéndolo en basura matemática: `x$f29Jk!`.
+3.  **(Capa 5 - Sesión):** Tu celular verifica si el servidor de Meta (Facebook) está despierto.
+4.  **(Capa 4 - Transporte):** TCP divide tu mensaje en mini-pedazos y le pone el **Puerto 443** (el puerto para tráfico web seguro).
+5.  **(Capa 3 - Red):** Se le pega la Dirección IP pública de los servidores de WhatsApp.
+6.  **(Capa 2 - Enlace):** Se le pega la Dirección MAC del router Wi-Fi de tu casa.
+7.  **(Capa 1 - Física):** El mensaje se convierte en pulsos de ondas de radio que salen volando de la antena de tu celular hacia tu modem.
 
-Transmite bits por cable, fibra, radio o señales electricas.
+---
 
-Ejemplos:
+## 4. Diagnóstico por Capas (Troubleshooting de Seguridad)
 
-- Cable Ethernet;
-- Fibra;
-- Wi-Fi;
-- Puertos fisicos;
-- Señal.
+Aquí es donde el modelo te convierte en un experto. Si una página web no carga (ej. `banco.com`), o estás analizando un ataque, vas escalando las capas desde abajo hacia arriba (De la 1 a la 7):
 
-Problemas comunes:
+*   **Problema Capa 1 (Físico):** ¿Tienes el cable de red conectado? ¿Hay luz en el módem?
+*   **Problema Capa 2 (Enlace):** ¿Estás conectado al Wi-Fi correcto o hay interferencia?
+*   **Problema Capa 3 (Red):** Intenta hacer `ping 8.8.8.8`. Si falla, tu Router no tiene internet, tienes una IP inválida, o te banearon la IP.
+*   **Problema Capa 4 (Transporte):** El internet funciona, pero el servidor del banco tiene el Puerto bloqueado (Firewall) o está caído. (El `ping` funciona, pero la web no carga).
+*   **Problema Capa 6 (Presentación):** La web carga, pero tu navegador saca una pantalla roja gigante de advertencia porque el certificado SSL/TLS (Cifrado) expiró o es falso.
+*   **Problema Capa 7 (Aplicación):** La web carga perfecto, ves el logo del banco, pero cuando metes tu contraseña sale "Error HTTP 500: Fallo en el servidor" o "Contraseña incorrecta".
 
-- Cable desconectado;
-- Señal Wi-Fi débil;
-- Puerto fisico dañado;
-- Interferencia;
-- Velocidad o duplex mal negociado.
+### El Ángulo Hacker
+Los atacantes también se especializan por capas:
+*   Un terrorista que corta un cable submarino de fibra óptica es un ataque de **Capa 1**.
+*   Un atacante inundando un servidor web con miles de peticiones falsas para tirarlo (DDoS) suele ser un ataque de **Capa 3 o 4**.
+*   Un hacker usando SQL Injection para robar contraseñas de la base de datos a través de un formulario de login es un ataque puro de **Capa 7**.
 
-En seguridad:
+---
 
-- Acceso fisico puede permitir conectar dispositivos no autorizados;
-- Wi-Fi expone medio compartido por radio;
-- Puertos fisicos sin control pueden habilitar acceso interno.
+## 5. El Modelo TCP/IP vs OSI
 
-### Capa 2: Enlace de Datos
+El Modelo TCP/IP es simplemente el Modelo OSI pero compactado en 4 grandes bloques para hacerlo más práctico.
 
-Comunica equipos dentro de la misma red local.
+| TCP/IP (4 Capas) | OSI (7 Capas) | Protocolos Clave de Seguridad |
+| :--- | :--- | :--- |
+| **Aplicación** | Capas 5, 6, 7 | HTTP, HTTPS, DNS, SSH, FTP |
+| **Transporte** | Capa 4 | TCP, UDP |
+| **Internet** | Capa 3 | IPv4, IPv6, ICMP (Ping) |
+| **Acceso a Red** | Capas 1, 2 | Ethernet, Wi-Fi (802.11) |
 
-Conceptos:
+No te estreses peleando si un protocolo es exactamente Capa 5 o 6. Lo que necesitas entender es qué problema resuelve y qué evidencia de ataque deja.
 
-- MAC address;
-- Switch;
-- VLAN;
-- ARP;
-- Tramas Ethernet.
+---
 
-Problemas comunes:
+## 6. Criterio de Dominio (Autoevaluación)
 
-- VLAN incorrecta;
-- Loops de switching;
-- Problemas de ARP;
-- MAC flapping;
-- Puertos mal configurados.
+¿Puedes responder estas preguntas sin mirar el texto?
 
-En seguridad:
-
-- ARP spoofing puede manipular tráfico local;
-- VLANs mal configuradas pueden romper segmentación;
-- Puertos sin control pueden permitir dispositivos no autorizados;
-- Ataques locales suelen vivir en esta capa.
-
-### Capa 3: Red
-
-Permite comunicación entre redes.
-
-Conceptos:
-
-- IP;
-- Router;
-- Gateway;
-- ICMP;
-- Rutas;
-- Subredes.
-
-Problemas comunes:
-
-- IP incorrecta;
-- Mascara incorrecta;
-- Gateway incorrecto;
-- Ruta faltante;
-- Conflicto de IP;
-- Bloqueo ICMP.
-
-En seguridad:
-
-- Reglas de firewall suelen depender de IP origen/destino;
-- Logs de red usan IPs;
-- Segmentación depende de subredes;
-- NAT puede complicar atribución.
-
-### Capa 4: Transporte
-
-Maneja comunicación entre procesos usando puertos.
-
-Protocolos:
-
-- TCP;
-- UDP.
-
-Problemas comunes:
-
-- Puerto cerrado;
-- Servicio caido;
-- Firewall bloqueando;
-- Timeout;
-- Reset;
-- UDP sin respuesta.
-
-En seguridad:
-
-- Escaneos de puertos observan esta capa;
-- Servicios expuestos viven en puertos;
-- Firewalls permiten o bloquean según protocolo y puerto;
-- Conexiones salientes pueden indicar actividad maliciosa.
-
-### Capa 5: Sesión
-
-Gestiona sesiones de comunicación. En la práctica moderna muchas funciones de sesión se mezclan con TLS, HTTP, aplicaciones o librerías.
-
-Ejemplos:
-
-- Mantener una sesión activa;
-- Reconectar;
-- Controlar estado de comunicación.
-
-En seguridad:
-
-- Sesiones mal gestionadas pueden permitir secuestro o reutilizacion;
-- Timeouts incorrectos aumentan riesgo;
-- Sesiones sin invalidacion pueden quedar activas después de logout.
-
-### Capa 6: Presentacion
-
-Define formato, codificacion, compresion y cifrado.
-
-Ejemplos:
-
-- TLS;
-- JSON;
-- XML;
-- Base64;
-- Compresion;
-- Encoding.
-
-En seguridad:
-
-- TLS protege datos en transito;
-- Encoding puede ocultar payloads;
-- Parseo incorrecto puede crear vulnerabilidades;
-- Formatos complejos pueden ampliar superficie de ataque.
-
-### Capa 7: Aplicación
-
-Protocolos usados directamente por aplicaciones.
-
-Ejemplos:
-
-- HTTP;
-- DNS;
-- SMTP;
-- SSH;
-- FTP;
-- SMB.
-
-En seguridad:
-
-- Aqui aparecen muchas vulnerabilidades web;
-- Autenticación y autorización suelen vivir aqui;
-- Logs de aplicación dan contexto;
-- Errores HTTP ayudan a diagnosticar comportamiento.
-
-## Modelo TCP/IP
-
-El modelo TCP/IP es más usado en redes reales y agrupa algunas capas OSI.
-
-| TCP/IP | OSI Aproximado | Ejemplos |
-| --- | --- | --- |
-| Aplicación | 5-7 | HTTP, DNS, SSH, SMTP |
-| Transporte | 4 | TCP, UDP |
-| Internet | 3 | IP, ICMP |
-| Acceso a red | 1-2 | Ethernet, Wi-Fi |
-
-No necesitas pelear por si un protocolo pertenece exactamente a una capa. Necesitas entender que problema resuelve y que evidencia deja.
-
-## Ejemplo: Abrir una Web
-
-Visitas:
-
-```text
-https://example.com
-```
-
-Flujo:
-
-1. El navegador interpreta la URL.
-2. DNS resuelve el nombre a una IP.
-3. Tu equipo revisa si el destino está en su red local.
-4. Si no está local, envia tráfico al gateway.
-5. Se establece conexión TCP al puerto 443.
-6. Se negocia TLS.
-7. El navegador envia una petición HTTP.
-8. El servidor responde.
-9. El navegador procesa HTML, CSS, JavaScript e imágenes.
-
-Vista por capas:
-
-| Paso | Capa aproximada |
-| --- | --- |
-| Wi-Fi/Ethernet transmite bits | 1-2 |
-| ARP resuelve MAC local | 2 |
-| IP enruta hacia destino | 3 |
-| TCP conecta al puerto 443 | 4 |
-| TLS cifra comunicación | 6 |
-| HTTP pide recurso | 7 |
-
-## Diagnóstico por Capas
-
-Si una web no carga, puedes pensar asi:
-
-- Capa 1: hay cable, Wi-Fi o señal?
-- Capa 2: estoy en la VLAN correcta?
-- Capa 3: tengo IP, mascara, gateway y ruta?
-- Capa 4: el puerto 443 responde?
-- Capa 6: TLS negocia correctamente?
-- Capa 7: el servidor responde HTTP?
-
-Ejemplos:
-
-```text
-ping 8.8.8.8 funciona, pero dig falla -> probable problema DNS.
-dig funciona, pero curl timeout -> posible bloqueo de puerto, ruta o servicio caido.
-curl responde 403 -> red funciona; el problema es autorización o política de aplicacion.
-curl responde certificado invalido -> problema TLS o inspeccion.
-```
-
-## Capas y Controles de Seguridad
-
-| Capa | Control común |
-| --- | --- |
-| Fisica | control de acceso a puertos, salas y cableado |
-| Enlace | VLANs, port security, DHCP snooping |
-| Red | routing, ACLs, firewalls, segmentación |
-| Transporte | filtrado por puerto, stateful firewall |
-| Presentacion | TLS, certificados, configuración criptografica |
-| Aplicación | autenticación, autorización, validación, WAF, logging |
-
-La defensa madura combina controles en varias capas.
-
-## Herramientas y Que Observan
-
-| Herramienta | Ayuda a ver |
-| --- | --- |
-| `ip addr` | interfaces e IPs |
-| `ip route` | rutas y gateway |
-| `ping` | conectividad ICMP básica |
-| `traceroute` | saltos hacia destino |
-| `dig` | resolucion DNS |
-| `curl -I` | respuesta HTTP y headers |
-| `ss -tuln` | puertos escuchando |
-| `tcpdump` | paquetes en red |
-
-No uses herramientas sobre redes ajenas sin permiso. Para aprender, trabaja en tus equipos o laboratorios autorizados.
-
-## Errores Comunes
-
-- Memorizar capas sin saber usarlas.
-- Decir "fallo la red" cuando el problema es HTTP.
-- Confundir DNS con conectividad.
-- Confundir firewall con autenticación.
-- No revisar gateway o ruta.
-- Ignorar TLS al diagnosticar HTTPS.
-- Pensar que una capa segura protege todas las demas.
-
-## Criterio de Dominio
-
-Dominas este tema cuando puedes:
-
-- Explicar las capas OSI con ejemplos;
-- Mapear OSI a TCP/IP;
-- Describir que ocurre al abrir una página web;
-- Diagnosticar un fallo por capas;
-- Diferenciar problemas de DNS, TCP, TLS y HTTP;
-- Ubicar controles de seguridad en distintas capas;
-- Leer una evidencia de red y decir que capa ayuda a explicar.
+1. Un empleado se queja de que "el internet corporativo fue hackeado porque no funciona". Tú vas a su escritorio y ves que el cable Ethernet debajo de su mesa está mordido por su perro. ¿En qué capa del modelo OSI acabas de arreglar el problema?
+2. Un atacante roba tus paquetes de red usando una antena en una cafetería, pero no puede leer tus mensajes porque se ven como texto sin sentido (`xH2k!9`). ¿Qué capa OSI fue la encargada de cifrar esos datos para protegerte?
+3. ¿Cuál es la diferencia entre que el Firewall bloquee la conexión (Capa 4) a que la aplicación web te diga "Contraseña incorrecta" (Capa 7)? 
+4. Nombra los dos protocolos más famosos de la Capa 4 (Transporte) y cuál usarías si quieres confirmación absoluta de que tu archivo llegó completo.

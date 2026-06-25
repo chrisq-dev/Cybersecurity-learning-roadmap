@@ -1,288 +1,93 @@
-# Switching, VLANs y ACLs
+# Switching, VLANs y ACLs: Dividiendo el Edificio
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender como se separa y controla tráfico dentro de redes. Esto es clave para Cisco, firewalls, segmentación, redes corporativas y seguridad defensiva.
+Entender cómo los Arquitectos de Red aíslan y protegen departamentos enteros dentro de una misma empresa usando paredes virtuales (VLANs) y guardias de seguridad invisibles (ACLs).
 
-Este tema conecta capa 2, capa 3 y controles de acceso. Si lo entiendes, puedes explicar por que no todos los equipos deben estar en la misma red, como limitar movimiento lateral y donde aplicar reglas para reducir riesgo.
+En ciberseguridad, asumir que un atacante no va a entrar a tu red es pecar de inocente. La mentalidad moderna dicta que **el atacante ya está adentro**. Si el hacker vulnera la computadora de la recepcionista, el trabajo de la red no es evitar que entre, sino **evitar que pueda saltar desde la recepción hasta el servidor de recursos humanos**. Aquí es donde brillan las VLANs y las ACLs.
 
-## Switching
+---
 
-Un switch conecta equipos dentro de una red local.
+## 1. La Analogía: El Edificio de Cristal
 
-Trabaja principalmente en capa 2 y usa direcciones MAC para decidir por que puerto enviar tramas.
+Imagina que tu empresa (La Red Local o LAN) es un gran edificio de oficinas.
 
-Modelo simple:
+Si no configuras nada, tu red será como un edificio sin paredes internas, estilo "espacio abierto" enorme.
+*   **El Problema de Seguridad:** Si alguien entra gritando "¡Hola!" (Un mensaje de *Broadcast* de red), todos en el edificio entero, desde el contador hasta el diseñador, van a escucharlo. Si un empleado se roba un documento financiero secreto que alguien dejó en una mesa, no hay puertas que lo detengan.
 
+Para arreglar esto, instalamos **VLANs (Virtual Local Area Networks)**.
+
+### ¿Qué es una VLAN?
+Una VLAN es como levantar **paredes de cristal insonorizadas** en el edificio.
+A través de la configuración del *Switch* (sin tener que comprar cables nuevos o aparatos nuevos), puedes decirle al aparato:
+*"Del puerto 1 al 10 será la VLAN 10 (Recursos Humanos). Del puerto 11 al 20 será la VLAN 20 (Finanzas)"*.
+
+*   **El resultado:** A partir de ese segundo, aunque la computadora de Finanzas y la computadora de Recursos Humanos estén enchufadas **al mismo aparato físico**, no pueden escucharse, no pueden hablarse y están completamente separadas lógicamente.
+
+> **El Ángulo Hacker (VLAN Hopping):**
+> Si un hacker conecta su laptop en el puerto de "Invitados" de la recepción (VLAN 30), e intenta hackear al servidor de Finanzas (VLAN 20), el Switch no dejará pasar sus paquetes. Así que los hackers desarrollaron una técnica llamada *VLAN Hopping* (Saltar la VLAN), que consiste en enviar paquetes con etiquetas falsas para engañar al Switch y hacerle creer que el hacker pertenece a la VLAN de Finanzas.
+
+---
+
+## 2. El Router (El Ascensorista)
+
+Si levantaste paredes insonorizadas entre Recursos Humanos y Finanzas usando VLANs, ¿qué pasa si el contador **legítimamente** necesita enviar un recibo de nómina a la gerente de RH? ¡Las VLANs no se hablan entre sí!
+
+Para que dos VLANs se puedan comunicar, **necesitas obligatoriamente un Router**.
+El Router actúa como el Ascensor o el Oficial de correspondencia. 
+1. El contador (VLAN 20) le envía el recibo al Router.
+2. El Router toma el recibo, cruza la "frontera" y lo deposita en la VLAN 10 (RH).
+
+Y aquí es donde la magia de la seguridad se aplica. Al obligar a todos a pasar por el Router para poder cruzar de un departamento a otro, puedes poner a un **Guardia de Seguridad** en la puerta del Router para revisar cada paquete. Ese guardia se llama ACL.
+
+---
+
+## 3. ACLs (Listas de Control de Acceso)
+
+Una **Access Control List (ACL)** es literalmente una "Lista VIP" (o Lista Negra) pegada en la puerta del Router. Son las reglas de Firewall más básicas y antiguas que existen.
+
+El Router lee la regla de arriba hacia abajo cada vez que le llega un paquete.
+
+**Ejemplo de cómo se lee una ACL en Cisco:**
 ```text
-PC1 -> switch -> PC2
+1. PERMITIR: Que la IP del Contador pase hacia el Servidor de Finanzas.
+2. DENEGAR: Que cualquier otra persona pase hacia el Servidor de Finanzas.
+3. PERMITIR: Que todos los empleados puedan salir a Internet.
 ```
 
-El switch aprende que MAC aparece por cada puerto. Con esa tabla decide donde reenviar tráfico.
+### ¿Por qué son vitales?
+Sin ACLs, el Router simplemente deja pasar todo. Con ACLs, aplicas el principio más puro de la ciberseguridad: **El Principio de Mínimo Privilegio**. 
 
-## MAC Address
+Si un atacante infecta con un *Ransomware* la máquina de un empleado en la VLAN de Marketing, el virus intentará propagarse al Servidor de Finanzas. Llegará al Router, el Router leerá la ACL y dirá: *"Lo siento, la regla 2 dice que Marketing no tiene permiso de hablar con Finanzas. ¡Paquete destruido!"*. Has salvado a la empresa.
 
-Una MAC address identifica una interfaz de red a nivel de enlace.
+---
 
-Ejemplo:
+## 4. Laboratorio Mental: El Diseño Seguro
 
-```text
-00:1A:2B:3C:4D:5E
-```
+Piensa en la red de un banco pequeño. Como Arquitecto de Seguridad, ¿cómo usarías las VLANs?
 
-La MAC sirve dentro de la red local. Para comunicar entre redes se usa IP y routing.
+Un mal diseño pondría todas las máquinas en una sola red plana (Ej. `192.168.1.x`).
+Un **diseño blindado de CCNA** haría lo siguiente:
 
-En seguridad:
+1.  **VLAN 10 (Cajeros):** `10.0.10.x`. Contiene las computadoras de los cajeros en la sucursal.
+2.  **VLAN 20 (Gerencia):** `10.0.20.x`. Contiene las laptops de los banqueros y directores.
+3.  **VLAN 30 (Servidores):** `10.0.30.x`. Aquí está la base de datos de dinero y saldos de los clientes.
+4.  **VLAN 40 (Invitados):** `10.0.40.x`. El Wi-Fi gratuito para los clientes que están sentados esperando su turno.
 
-- Una MAC puede ayudar a identificar dispositivos locales;
-- Puede existir spoofing de MAC;
-- Port security puede limitar MACs por puerto;
-- Logs de switches pueden ayudar en investigaciones internas.
+**Las ACLs del Router dirían:**
+*   **Regla 1:** La VLAN 10 (Cajeros) SÍ puede hablar con la VLAN 30 (Servidores).
+*   **Regla 2:** La VLAN 20 (Gerencia) SÍ puede hablar con la VLAN 30 (Servidores).
+*   **Regla 3:** La VLAN 40 (Invitados) SOLO puede hablar con Internet. Tiene **prohibido** absoluto intentar siquiera mirar hacia la VLAN 30.
 
-## ARP
+Si un hacker que se hace pasar por un cliente se sienta en la sala de espera y se conecta al Wi-Fi gratuito, su intento de escanear los servidores será frenado en seco por el Router gracias a las VLANs y la ACL.
 
-ARP ayuda a descubrir la MAC asociada a una IP dentro de la red local.
+---
 
-Ejemplo:
+## 5. Criterio de Dominio (Autoevaluación)
 
-```text
-Quién tiene 192.168.1.20?
-192.168.1.20 responde con su MAC.
-```
+Revisa si puedes diseñar redes en tu cabeza:
 
-ARP es necesario para comunicación local IPv4, pero también puede ser abusado.
-
-Riesgos:
-
-- ARP spoofing;
-- Man-in-the-middle local;
-- Redireccion de tráfico;
-- Confusion de tablas ARP.
-
-Controles:
-
-- Segmentación;
-- DHCP snooping;
-- Dynamic ARP inspection;
-- Monitoreo;
-- Evitar redes planas grandes.
-
-## VLANs
-
-Una VLAN separa logicamente una red.
-
-Ejemplo:
-
-- VLAN 10: usuarios.
-- VLAN 20: servidores.
-- VLAN 30: invitados.
-- VLAN 99: administracion.
-
-Aunque usen el mismo switch fisico, quedan separadas logicamente.
-
-Sin VLANs, muchos equipos comparten el mismo dominio de broadcast. Eso aumenta ruido, exposición y posibilidades de movimiento lateral.
-
-## Dominio de Broadcast
-
-Un dominio de broadcast es el conjunto de equipos que reciben tráfico broadcast entre si.
-
-ARP usa broadcast para preguntar por una IP local.
-
-Si la red es demasiado grande:
-
-- Hay más ruido;
-- Hay más equipos alcanzables;
-- Se complica el monitoreo;
-- Un equipo comprometido puede descubrir más vecinos.
-
-VLANs ayudan a dividir esos dominios.
-
-## Por Qué VLANs Importan en Seguridad
-
-Ayudan a:
-
-- Reducir movimiento lateral;
-- Separar invitados de sistemas internos;
-- Separar servidores de usuarios;
-- Aplicar reglas por segmento;
-- Limitar impacto de un equipo comprometido;
-- Mejorar visibilidad;
-- Alinear red con funciones del negocio.
-
-Ejemplo:
-
-```text
-Invitados no deben hablar con servidores internos.
-Usuarios no deben administrar switches.
-Servidores no deben aceptar trafico desde cualquier segmento.
-```
-
-## Access Port
-
-Un access port pertenece a una sola VLAN. Normalmente se usa para equipos finales.
-
-Ejemplo:
-
-```text
-Puerto 1 -> VLAN 10 usuarios
-Puerto 2 -> VLAN 30 invitados
-```
-
-Si un equipo se conecta a un puerto access, queda dentro de esa VLAN.
-
-## Trunk
-
-Un trunk transporta varias VLANs entre switches o hacia router/firewall.
-
-Ejemplo:
-
-```text
-switch piso 1 -> trunk -> switch core
-```
-
-Riesgos:
-
-- Permitir VLANs innecesarias;
-- Native VLAN mal configurada;
-- Trunks en puertos donde deberian ser access;
-- Errores que mezclan segmentos.
-
-Buenas prácticas:
-
-- Permitir solo VLANs necesarias;
-- Documentar trunks;
-- Evitar native VLAN sensible;
-- No dejar puertos dinamicos sin control.
-
-## Routing entre VLANs
-
-Si equipos de VLANs distintas necesitan comunicarse, se requiere routing entre VLANs.
-
-Ese punto es ideal para aplicar controles:
-
-- ACLs;
-- Firewall;
-- Logging;
-- Inspeccion;
-- Políticas por rol.
-
-Ejemplo:
-
-```text
-VLAN usuarios -> firewall/router -> VLAN servidores
-```
-
-La regla madura no es "usuarios pueden hablar con servidores". La regla madura es:
-
-```text
-usuarios pueden acceder al servidor web por tcp/443
-usuarios no pueden acceder directo a la base de datos
-```
-
-## ACLs
-
-Una ACL permite o bloquea tráfico según reglas.
-
-Criterios comunes:
-
-- IP origen;
-- IP destino;
-- Protocolo;
-- Puerto;
-- Dirección del tráfico;
-- Interfaz o zona.
-
-Ejemplo conceptual:
-
-```text
-Permitir VLAN usuarios -> servidor web puerto 443
-Bloquear VLAN invitados -> red servidores
-Permitir administracion -> equipos de red por SSH
-```
-
-## Orden de Reglas
-
-En muchas ACLs, el orden importa. La primera regla que coincide puede decidir la acción.
-
-Ejemplo:
-
-```text
-permit any any
-deny invitados servidores
-```
-
-La segunda regla no sirve si la primera permite todo antes.
-
-Por eso las reglas deben ser especificas y revisarse en orden.
-
-## Deny Implícito
-
-Muchos sistemas aplican deny implicito al final:
-
-```text
-si nada coincide, bloquear
-```
-
-Esto ayuda a aplicar mínimo privilegio, pero puede romper comunicación si no documentas bien los flujos necesarios.
-
-## Ejemplo de Segmentación
-
-Red:
-
-- VLAN 10 Usuarios: `192.168.10.0/24`
-- VLAN 20 Servidores: `192.168.20.0/24`
-- VLAN 30 Invitados: `192.168.30.0/24`
-- VLAN 99 Admin: `192.168.99.0/24`
-
-Reglas razonables:
-
-| Origen | Destino | Puerto | Acción | Razon |
-| --- | --- | --- | --- | --- |
-| Usuarios | Web interno | TCP 443 | Permitir | Uso de aplicación |
-| Usuarios | Base de datos | TCP 5432 | Bloquear | DB solo desde backend |
-| Invitados | Internet | TCP 80/443 | Permitir | Navegación básica |
-| Invitados | Redes internas | Any | Bloquear | No confiables |
-| Admin | Switches | TCP 22 | Permitir | Administracion controlada |
-| Cualquiera | Admin | Any | Bloquear | Proteger zona crítica |
-
-## Movimiento Lateral
-
-Movimiento lateral significa que un atacante pasa de un sistema comprometido a otros sistemas internos.
-
-Red plana:
-
-```text
-equipo comprometido -> muchos vecinos alcanzables
-```
-
-Red segmentada:
-
-```text
-equipo comprometido -> solo servicios permitidos por reglas
-```
-
-La segmentación no elimina compromiso inicial, pero reduce alcance.
-
-## Errores Comunes
-
-- Permitir `any any`.
-- Crear VLANs sin aplicar reglas entre ellas.
-- Usar VLAN de administracion desde redes de usuarios.
-- Dejar invitados con acceso interno.
-- No documentar trunks.
-- No monitorear cambios de ACL.
-- Pensar que VLAN cifra tráfico.
-- No revisar reglas antiguas.
-
-## Criterio de Dominio
-
-Dominas este tema cuando puedes:
-
-- Explicar switch vs router;
-- Explicar MAC e IP sin confundirlas;
-- Explicar ARP y sus riesgos;
-- Explicar VLAN y dominio de broadcast;
-- Diferenciar access port y trunk;
-- Explicar routing entre VLANs;
-- Diseñar ACLs básicas con origen, destino, puerto y razon;
-- Explicar por que segmentación reduce movimiento lateral.
+1. Estás configurando una oficina con 50 computadoras conectadas a un solo Switch gigante. El director quiere que los 10 contadores no puedan comunicarse con los 40 diseñadores. ¿Qué tecnología del Switch vas a configurar para lograr esto sin tener que comprar un segundo aparato?
+2. Si tienes dos computadoras en la misma VLAN, ¿necesitas un Router para que hablen entre sí?
+3. En una lista de control de acceso (ACL), ¿Por qué el orden de las reglas importa? (Piensa qué pasa si la regla número 1 dice "Denegar a todos", y la regla número 2 dice "Permitir al Contador").
+4. ¿Qué es el *VLAN Hopping* en términos de ciberseguridad ofensiva?

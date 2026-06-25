@@ -1,295 +1,91 @@
-# DNS, DHCP y NAT
+# DNS, DHCP y NAT: Los Servicios Invisibles
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender tres servicios clave de redes: DNS, DHCP y NAT. Aparecen constantemente en troubleshooting, cloud, SOC, pentesting autorizado, administracion y respuesta a incidentes.
+Desmitificar los tres servicios fundamentales que hacen que Internet sea usable para los seres humanos.
 
-Estos tres temas explican preguntas básicas:
+Si las direcciones IP son el GPS, el cable Ethernet es la carretera, y el Router es la oficina de correos, **DNS, DHCP y NAT** son los empleados invisibles que trabajan de fondo para que no tengas que configurar tu computadora manualmente cada vez que la enciendes. Entender cómo funcionan es vital, porque los atacantes suelen engañar a estos empleados para secuestrar tu tráfico de red.
 
-- DNS: cómo un nombre se convierte en IP?
-- DHCP: cómo un equipo obtiene configuración de red?
-- NAT: cómo muchas IPs internas salen a internet o publican servicios?
+---
 
-Si entiendes estos tres, puedes interpretar mejor logs, conexiones, exposición de servicios, phishing, malware, VPNs, cloud y firewalls.
+## 1. DNS (Domain Name System): El Directorio Telefónico
 
-## DNS
+Las computadoras solo entienden números (Direcciones IP como `142.250.190.46`). Los humanos somos terribles memorizando números, pero somos muy buenos recordando nombres (como `google.com`). 
 
-DNS traduce nombres a direcciones y otros datos.
+**DNS es el gigantesco directorio telefónico de Internet.**
+Su único trabajo es traducir nombres a números.
 
-Ejemplo:
+### ¿Cómo funciona en la vida real?
+1. Escribes `facebook.com` en tu navegador.
+2. Tu computadora no sabe dónde está eso. Así que le grita al servidor DNS: *"Oye, ¿qué IP tiene facebook.com?"*
+3. El servidor DNS busca en su enorme base de datos y responde: *"facebook.com vive en la IP 157.240.22.35"*.
+4. Tu computadora ahora sí puede enviar el mensaje.
 
-```text
-example.com -> 93.184.216.34
-```
+> **El Ángulo Hacker (DNS Spoofing):**
+> Imagina que un atacante logra entrar a tu red Wi-Fi y engaña a tu computadora para que él sea tu "servidor DNS". Cuando tú escribas `banco.com`, el atacante no te dará la IP del banco real; te dará la IP de un servidor falso que él controla, idéntico al del banco, para robar tu contraseña. Esto se conoce como *DNS Spoofing* o *DNS Poisoning*.
 
-Sin DNS tendrias que recordar IPs. Con DNS, las aplicaciones pueden usar nombres estables aunque la infraestructura cambie.
+---
 
-## Por Qué DNS Importa
+## 2. DHCP (Dynamic Host Configuration Protocol): El Recepcionista
 
-DNS aparece antes de muchas conexiones.
+Imagina llegar a trabajar a un edificio enorme. No puedes simplemente elegir la oficina que más te guste y sentarte. Tienes que ir a la Recepción, donde te darán un número de escritorio temporal para usar hoy.
 
-Flujo tipico:
+**DHCP es el recepcionista de la red.**
+Cuando conectas tu celular al Wi-Fi de un aeropuerto, tu celular no tiene una Dirección IP. Sin IP, no puede navegar.
+1. Tu celular grita al aire: *"¡Hola! Acabo de llegar, ¿alguien puede darme una IP?"*
+2. El servidor DHCP de la red local escucha y responde: *"Bienvenido. Te presto la IP `192.168.1.50`. Puedes usarla por 24 horas. También te doy la dirección de la salida (Gateway) y del traductor de nombres (DNS)"*.
 
-```text
-usuario escribe dominio -> equipo consulta DNS -> recibe IP -> intenta conexion
-```
+### ¿Por qué existe?
+Si no existiera DHCP, tendrías que abrir los ajustes de red de tu celular y escribir los números IP a mano cada vez que llegas a un restaurante, aeropuerto o a tu propia casa, asegurándote de no repetir un número que alguien más ya esté usando. DHCP automatiza todo esto.
 
-En seguridad, DNS ayuda a responder:
+> **El Ángulo Hacker (DHCP Starvation):**
+> Un ataque clásico es el *DHCP Starvation* (Inanición). El atacante conecta su laptop y empieza a gritarle al servidor DHCP millones de veces por segundo usando identidades falsas: *"¡Dame una IP! ¡Dame otra! ¡Dame otra!"*. En pocos segundos, el servidor se queda sin direcciones libres. Ningún cliente legítimo nuevo podrá conectarse al Wi-Fi.
 
-- Que dominio intento visitar un equipo;
-- Si un malware busco command and control;
-- Si un dominio parece phishing;
-- Si hay tunneling o exfiltración;
-- Si una configuración de correo está bien;
-- Si un servicio apunta a la IP correcta.
+---
 
-## Tipos de Registros DNS
+## 3. NAT (Network Address Translation): El Traductor Mágico
 
-| Registro | Uso |
-| --- | --- |
-| A | Nombre a IPv4 |
-| AAAA | Nombre a IPv6 |
-| CNAME | Alias |
-| MX | Servidores de correo |
-| TXT | Texto, verificaciones, SPF, DKIM, DMARC |
-| NS | Servidores autoritativos |
-| SOA | Información administrativa de la zona |
-| PTR | Resolucion inversa |
+¿Recuerdas que en el módulo anterior vimos que las IPs públicas (IPv4) se agotaron en el mundo?
+Si se acabaron, ¿cómo es posible que en tu casa haya 4 celulares, 2 laptops, una Smart TV y una consola, todos navegando en Internet al mismo tiempo? 
+La respuesta es la magia del **NAT**.
 
-Ejemplos:
+### La Analogía de la Oficina Corporativa
+Imagina una empresa con 100 empleados, pero la empresa solo tiene **un único número de teléfono oficial** hacia el exterior (ej. `555-1000`).
+*   Internamente, cada empleado tiene una "Extensión Privada" (`Ext 10`, `Ext 11`, `Ext 12`).
+*   Si el empleado de la Extensión 10 quiere pedir una pizza, marca el número. El Conmutador Central (NAT) toma la llamada, la saca por la línea oficial (`555-1000`), y anota en su libreta: *"La llamada que acaba de salir hacia la pizzería es para la Ext 10"*.
+*   Cuando la pizzería llama de vuelta al `555-1000`, el Conmutador revisa su libreta y redirige la llamada exactamente a la Extensión 10.
 
-```text
-www.example.com  A      93.184.216.34
-mail.example.com MX     servidor de correo
-example.com      TXT    verificación o política
-```
+**En las redes:**
+Tu Router casero es el Conmutador. 
+1. Toma el tráfico de tu IP Privada (`192.168.1.15`).
+2. Lo "traduce" disfrazándolo con la única IP Pública que tienes.
+3. Lo envía a internet. Cuando vuelve la respuesta, hace la traducción inversa.
 
-## Flujo DNS Simplificado
+NAT no fue inventado como una herramienta de seguridad, fue inventado para ahorrar IPs. Sin embargo, terminó siendo una barrera de seguridad gigante, porque **NAT oculta tus dispositivos internos de los atacantes de Internet**. Nadie de afuera puede iniciar una conexión directamente a tu IP privada.
 
-1. La aplicación pide resolver un nombre.
-2. El sistema revisa cache local.
-3. Si no sabe, pregunta al resolver configurado.
-4. El resolver consulta jerarquia DNS si no tiene cache.
-5. Se obtiene respuesta.
-6. El equipo intenta conectarse a la IP.
+---
 
-El resolver puede ser del proveedor, corporativo, público o local.
+## 4. Laboratorio Práctico: Descubriendo tus Servicios
 
-## Cache DNS
+Comprueba si los servicios invisibles están funcionando en tu red.
 
-DNS usa cache para evitar consultar todo cada vez.
+### En Windows:
+1. Abre tu terminal (`cmd`).
+2. Escribe el comando: `nslookup google.com`
+   * Este comando fuerza a tu PC a hablar con el **DNS**. Verás que te devuelve las Direcciones IP matemáticas que hay detrás de Google.
+3. Ahora escribe: `ipconfig /all`
+   * Busca la línea que dice **"DHCP habilitado"**. Debería decir "Sí". También te dirá la fecha exacta en la que tu "préstamo" de IP expira (Concesión obtenida y expira).
 
-El TTL define cuanto tiempo puede guardarse una respuesta.
+### En Linux/macOS:
+1. Abre tu terminal.
+2. Escribe: `dig google.com` (o `nslookup google.com`). Verás la respuesta de tu servidor DNS traduciendo el nombre a números.
 
-En seguridad:
+---
 
-- Cache puede explicar por que un equipo siguio usando una IP antigua;
-- Dominios maliciosos pueden cambiar rápido;
-- TTL muy bajo puede aparecer en infraestructura dinamica;
-- Limpiar cache puede ayudar en troubleshooting.
+## 5. Criterio de Dominio (Autoevaluación)
 
-## DNS en Seguridad
+Revisa si dominas la "magia" de la red:
 
-DNS ayuda a detectar:
-
-- Malware contactando dominios raros;
-- Exfiltración por DNS;
-- Phishing;
-- Dominios generados automaticamente;
-- Typosquatting;
-- Mala configuración de registros;
-- Dominios recien creados;
-- Subdominios sospechosos.
-
-Ejemplo:
-
-```text
-host interno consulta x7d9a2.example-malicioso.tld cada 30 segundos
-```
-
-Eso puede indicar beaconing, DGA o comunicación automatizada.
-
-## Comandos de Observación
-
-En un entorno propio puedes observar DNS con:
-
-```bash
-dig example.com
-dig MX example.com
-dig TXT example.com
-nslookup example.com
-```
-
-La meta es interpretar la respuesta:
-
-- Que registro responde;
-- Que IP aparece;
-- Que servidor respondio;
-- Si hay errores;
-- Si hay registros relacionados con correo o verificación.
-
-## DHCP
-
-DHCP asigna configuración de red automaticamente.
-
-Puede entregar:
-
-- IP;
-- Mascara;
-- Gateway;
-- DNS;
-- Tiempo de concesion;
-- Dominio local;
-- Otras opciones.
-
-Sin DHCP, tendrias que configurar cada equipo manualmente.
-
-## Flujo DHCP
-
-Flujo simplificado:
-
-```text
-Discover -> Offer -> Request -> Acknowledge
-```
-
-Significado:
-
-- Discover: el cliente pregunta si hay servidor DHCP.
-- Offer: el servidor ofrece una configuración.
-- Request: el cliente solicita usar esa configuración.
-- Acknowledge: el servidor confirma.
-
-## Lease
-
-Una concesion DHCP dura cierto tiempo. Al expirar, el cliente debe renovar.
-
-En seguridad e investigación, DHCP ayuda a responder:
-
-- Que equipo tenia cierta IP en cierto momento;
-- Que MAC recibio una IP;
-- Cuando se asigno;
-- Cuando expiro;
-- Que hostname reporto.
-
-Sin logs DHCP, una IP interna puede ser difícil de atribuir históricamente.
-
-## DHCP en Seguridad
-
-Riesgos:
-
-- Servidor DHCP falso;
-- Asignacion de gateway malicioso;
-- DNS malicioso;
-- Red sin control de dispositivos;
-- Falta de segmentación;
-- Dificultad para atribuir IPs.
-
-Controles:
-
-- DHCP snooping;
-- Segmentación;
-- Monitoreo;
-- Inventario de dispositivos;
-- 802.1X cuando aplica;
-- Alertas por servidores DHCP no autorizados.
-
-## NAT
-
-NAT traduce direcciones IP.
-
-Uso común:
-
-```text
-192.168.1.10 -> router NAT -> IP pública -> internet
-```
-
-Muchos equipos internos pueden salir usando una o pocas IPs públicas.
-
-## Source NAT
-
-Cambia la IP origen. Es común para salida a internet.
-
-Ejemplo:
-
-```text
-Origen interno: 192.168.1.10:51512
-Despues de NAT: 203.0.113.5:40001
-```
-
-El puerto traducido ayuda a distinguir conexiones simultaneas.
-
-## Destination NAT / Port Forwarding
-
-Cambia destino para publicar un servicio interno.
-
-Ejemplo:
-
-```text
-203.0.113.5:443 -> 192.168.10.20:443
-```
-
-Esto permite que internet llegue a un servicio interno. Es útil, pero aumenta exposición.
-
-## NAT en Investigaciones
-
-NAT importa porque:
-
-- Puede ocultar muchas IPs internas detras de una IP pública;
-- Logs deben conservar puertos y traducciones;
-- Port forwarding expone servicios;
-- Reglas mal hechas pueden publicar sistemas internos;
-- Atribución requiere timestamps precisos.
-
-Para investigar necesitas correlacionar:
-
-- IP interna;
-- Puerto origen interno;
-- IP pública;
-- Puerto traducido;
-- Timestamp;
-- Usuario o dispositivo;
-- Destino externo.
-
-## Ejemplo de Caso
-
-Un proveedor reporta actividad sospechosa desde:
-
-```text
-203.0.113.5:40001 a las 10:15 UTC
-```
-
-Internamente, esa IP pública pertenece a tu NAT.
-
-Para identificar el host real necesitas:
-
-- Log NAT de esa hora;
-- Puerto traducido `40001`;
-- Zona horaria correcta;
-- DHCP para mapear IP interna a dispositivo;
-- Autenticación o EDR para mapear dispositivo a usuario.
-
-Sin esos datos, solo sabes que salio de tu red, no de que equipo exacto.
-
-## Errores Comunes
-
-- Pensar que DNS y HTTP son lo mismo.
-- Ignorar DNS en investigaciones.
-- No guardar logs DHCP.
-- No registrar traducciones NAT.
-- Publicar servicios internos con port forwarding sin controles.
-- Usar DNS público cuando se requiere resolucion interna.
-- Asumir que una IP pública identifica a un solo host.
-- No considerar zona horaria en logs.
-
-## Criterio de Dominio
-
-Dominas este tema cuando puedes:
-
-- Explicar DNS y registros comunes;
-- Interpretar una consulta DNS;
-- Explicar DHCP y el flujo Discover/Offer/Request/Acknowledge;
-- Explicar por que DHCP ayuda a atribuir IPs;
-- Diferenciar Source NAT y Destination NAT;
-- Explicar por que NAT complica investigaciones;
-- Describir los riesgos de un DHCP falso;
-- Entender por que DNS, DHCP y NAT son fuentes clave de evidencia.
+1. Si puedes hacer `ping 8.8.8.8` (el servidor de Google) y te responde con éxito, pero cuando abres el navegador e intentas cargar `google.com` la página da error... ¿Cuál de los tres servicios (DNS, DHCP o NAT) está fallando?
+2. Un atacante se roba todas las direcciones IP disponibles del router de una cafetería. ¿Qué servicio fue el que saturó (Starvation attack)?
+3. Entraste a una empresa y viste que hay 500 computadoras, pero el gerente de TI dice que solo pagan por 1 Dirección IP Pública al proveedor de internet. ¿Qué tecnología hace esto posible?
