@@ -1,187 +1,47 @@
-# Backups
+# Backups: La Máquina del Tiempo
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender backups como control correctivo crítico.
+Aprender la diferencia financiera entre perder 5 minutos de datos y perder 24 horas de datos.
 
-Un backup que no se puede restaurar no es un control confiable. La meta no es solo tener copias, sino demostrar que puedes recuperar sistemas dentro del tiempo y pérdida aceptables.
+En ciberseguridad, puedes comprar todos los Antivirus (Fase 14) y Firewalls (Fase 13) del mundo. Pero el Riesgo jamás es cero. Cuando el ataque de Ransomware inevitablemente suceda y destruya tu Base de Datos, tu única salvación es tu capacidad de retroceder el tiempo: **Los Respaldos (Backups)**.
 
-## Mapa Mental
+---
 
-```text
-datos -> copia -> aislamiento -> retencion -> prueba -> restauracion -> evidencia
-```
+## 1. La Filosofía del Respaldo
 
-## Por Qué Importan
+Hacer una copia de tus archivos en una memoria USB no es un "Backup" corporativo. Un verdadero sistema de continuidad de negocio se rige por la Regla de Oro: **3-2-1**.
 
-Backups ayudan a recuperarse de:
+*   **3 Copias de los datos:** La original y dos respaldos.
+*   **2 Medios diferentes:** Ej. Un disco duro interno y una cinta magnética externa.
+*   **1 Copia Off-site (Fuera de sitio):** Una copia guardada físicamente en otra ciudad o en la Nube (AWS). 
+    *   *¿Por qué?* Si el edificio corporativo se quema hasta los cimientos en un incendio, no importa si tenías 500 discos duros de respaldo adentro del mismo edificio; lo perdiste todo.
 
-- Borrado accidental.
-- Ransomware.
-- Falla de hardware.
-- Corrupcion.
-- Error humano.
-- Incidente de seguridad.
+---
 
-## Qué Respaldar
+## 2. Las Matemáticas del Desastre: RPO y RTO
 
-- Bases de datos;
-- Archivos de usuario;
-- Configuraciones;
-- Secretos según proceso seguro;
-- Infraestructura como código;
-- Logs importantes;
-- Documentacion crítica.
+Cuando el CEO te pregunta: *"¿Podemos sobrevivir al ataque de Ransomware?"*, tú no le respondes con términos técnicos, le respondes con estas dos métricas.
 
-No todo requiere la misma frecuencia. Depende de criticidad y cambio.
+### RPO (Recovery Point Objective): El Límite de Pérdida
+¿Cuántos datos está dispuesta a perder la empresa matemáticamente?
+*   **La Máquina del Tiempo:** Imagina que tu empresa hace un respaldo a las 12:00 de la noche todos los días. Hoy a las 11:59 PM, un hacker encripta todo. Tú usas tu "máquina del tiempo" y restauras el respaldo de ayer a la medianoche.
+*   **La Pérdida:** Acabas de borrar **24 horas completas** del trabajo de todos los empleados y de las transacciones de los clientes. Ese es tu RPO (24 horas). 
+*   Si tu empresa es un banco que procesa millones de transacciones por minuto, un RPO de 24 horas significa la quiebra absoluta. El banco necesita un RPO de *milisegundos* (Replicación en tiempo real).
 
-## Regla 3-2-1
+### RTO (Recovery Time Objective): El Reloj de Arena
+¿Cuánto tiempo tarda la empresa en volver a operar desde que ocurre el desastre?
+*   **La Realidad Operativa:** El ataque ocurrió, los servidores están caídos. Tú tienes un respaldo perfecto intacto. El problema es que el respaldo pesa **50 Terabytes**.
+*   **El Reloj:** Mover 50 Terabytes de datos desde la nube hasta tus servidores locales va a tomar exactamente **48 horas**. Durante esos 2 días, la página web de tu empresa estará "Caída" y no podrán vender nada. Ese es tu RTO (48 horas).
+*   Si eres Amazon.com, estar "caído" 48 horas significa perder cientos de millones de dólares. Amazon necesita un RTO casi instantáneo.
 
-Idea general:
+---
 
-- 3 copias.
-- 2 tipos de medio.
-- 1 copia fuera del sitio o aislada.
+## 3. Criterio de Dominio (Autoevaluación)
 
-Variacion moderna:
+Revisa si puedes salvar a la empresa del apocalipsis:
 
-- Una copia inmutable;
-- Una copia fuera del alcance de credenciales normales;
-- Pruebas regulares de restauracion.
-
-## RPO y RTO
-
-### RPO
-
-Recovery Point Objective.
-
-Cuantos datos puedes perder.
-
-Ejemplo:
-
-```text
-RPO 1 hora = puedo perder maximo 1 hora de datos.
-```
-
-### RTO
-
-Recovery Time Objective.
-
-Cuanto tiempo puedes tardar en recuperar.
-
-Ejemplo:
-
-```text
-RTO 4 horas = el servicio debe volver en 4 horas.
-```
-
-## Retención
-
-Define cuanto tiempo guardar:
-
-- Diarios;
-- Semanales;
-- Mensuales;
-- Anuales si aplica.
-
-La retención debe equilibrar costo, requisitos y riesgo.
-
-## Riesgos
-
-- Backups no probados.
-- Backups conectados y cifrados por ransomware.
-- Sin retención.
-- Sin documentacion.
-- Sin owner.
-- Credenciales de backup expuestas.
-
-## Ransomware
-
-Riesgos especificos:
-
-- Atacante borra backups;
-- Cifra backups conectados;
-- Roba credenciales de backup;
-- Destruye snapshots;
-- Espera a que backups limpios expiren.
-
-Controles:
-
-- Inmutabilidad;
-- Separación de credenciales;
-- MFA;
-- Monitoreo de borrados;
-- Pruebas de restore;
-- Segmentación.
-
-## Controles
-
-- Backups inmutables.
-- Pruebas de restauracion.
-- Separación de credenciales.
-- Monitoreo de fallos.
-- Retención definida.
-- Cifrado.
-- Documentacion.
-
-## Ejemplo de Estrategia
-
-Una estrategia de backup para este caso debe cubrir:
-
-```text
-App web con base de datos de clientes.
-```
-
-Define:
-
-- Que respaldar.
-- Frecuencia.
-- RPO.
-- RTO.
-- Retención.
-- Como probar restauracion.
-
-## Criterios de un Plan de Restore
-
-Un plan de restore debe explicar:
-
-- Sistema involucrado;
-- Datos respaldados;
-- Frecuencia;
-- RPO;
-- RTO;
-- Retención;
-- Responsable;
-- Pasos de restauracion;
-- Evidencia de prueba;
-- Riesgos pendientes.
-
-## Controles Que Deben Entenderse
-
-- El backup debe existir y cubrir datos importantes.
-- El backup debe estar cifrado si contiene información sensible.
-- El backup debe estar aislado o ser inmutable para resistir ransomware.
-- El restore debe probarse; un backup no probado es una suposicion.
-- Debe existir owner responsable.
-- RPO y RTO deben estar definidos según impacto.
-- Fallos de backup deben generar alertas.
-- Credenciales de backup deben protegerse con mucho cuidado.
-
-## Errores Comunes
-
-- Nunca probar restauracion.
-- Guardar backups con las mismas credenciales comprometidas.
-- No documentar RPO/RTO.
-- Respaldar datos pero no configuraciones.
-- No monitorear fallos.
-- No considerar costo de tiempo de recuperación.
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Explicar RPO.
-- Explicar RTO.
-- Explicar regla 3-2-1.
-- Diseñar prueba de restauracion.
-- Justificar una estrategia de backups contra ransomware.
+1. Un Hospital configura su sistema de expedientes médicos para hacer un respaldo a la Nube (AWS) todos los viernes a las 10:00 PM. Un ataque de Ransomware destruye los servidores el viernes a las 9:00 PM. Usando el concepto de **RPO (Recovery Point Objective)**, calcula exactamente cuánto tiempo de datos de pacientes (cirugías, recetas) se perdió y discute el impacto letal que esto tendría en la vida real.
+2. Explica la "Regla 3-2-1" de los respaldos. ¿Por qué el paso final ("1 copia fuera de sitio") es la única defensa real contra desastres naturales como inundaciones o terremotos que destruyan el Centro de Datos principal?
+3. El Director Financiero (CFO) se queja de que el costo de almacenamiento en la nube es muy caro, y exige que el **RTO (Recovery Time Objective)** de la empresa se reduzca a 5 minutos, pero sin gastar más dinero. Explica por qué lograr un RTO de 5 minutos requiere una arquitectura de "Alta Disponibilidad" extremadamente costosa, y por qué no es compatible con presupuestos bajos.
+4. Tu empresa tiene un respaldo completo (Backup) almacenado en un servidor NAS (Disco de Red) conectado a la misma red de la oficina. Un empleado descarga accidentalmente un Ransomware avanzado. Explica por qué este Ransomware probablemente destruirá también tus respaldos (anulando tu capacidad de recuperación) y cómo el concepto de "Segmentación de Red" (Fase 13) podría haberlo evitado.

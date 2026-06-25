@@ -1,193 +1,44 @@
-# Fundamentos de Wi-Fi Security
+# Fundamentos de Wi-Fi: El Megáfono Invisible
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender riesgos y controles básicos de redes Wi-Fi.
+Aprender por qué la comodidad del internet inalámbrico es el sueño hecho realidad de cualquier hacker con $20 dólares.
 
-## Conceptos
+En la Fase 2 (Redes), aprendimos que para hackearte, el atacante tenía que conectarse físicamente a tu Switch con un cable. 
+Con la invención del Wi-Fi (Radiofrecuencia 802.11), la humanidad quitó el cable y empezó a gritar sus datos al aire.
 
-### SSID
+---
 
-Nombre visible de la red Wi-Fi.
+## 1. La Física del Wi-Fi (El Megáfono)
 
-### Access Point
+*   **La Analogía:** 
+    *   **Internet por Cable (Ethernet):** Es como susurrarle al oído a tu módem a través de un tubo de PVC cerrado. Es físicamente imposible que un vecino te escuche.
+    *   **Internet Wi-Fi:** Es como salir al balcón y usar un **Megáfono** para gritarle tu contraseña a tu módem. El problema es que las ondas de radio atraviesan paredes. El vecino de al lado no necesita hackear tu módem, solo necesita abrir la ventana, prender su propia antena (Sniffing) y "escuchar" los gritos invisibles de tu computadora.
 
-Dispositivo que permite conexión inalámbrica.
+### La Evolución de las Contraseñas (WPA)
+Como gritar con un megáfono es peligroso, la industria inventó el cifrado inalámbrico. Tu computadora sigue gritando, pero grita en "código secreto" (Criptografía - Fase 11).
+*   **WEP / WPA1:** Obsoletos. Si el vecino intercepta los gritos, una computadora moderna puede descifrar el código en menos de 5 minutos.
+*   **WPA2:** El estándar actual. Bastante fuerte, pero vulnerable si la contraseña de la casa es muy débil y el atacante intercepta el saludo inicial (El *Handshake*).
+*   **WPA3:** La armadura moderna. Usa un algoritmo tan potente (SAE) que el hacker no puede descifrar la contraseña incluso si graba tus transmisiones durante años.
 
-### WPA2/WPA3
+---
 
-Protocolos de seguridad para Wi-Fi.
+## 2. El Gemelo Malvado (Evil Twin)
 
-### PSK
+Incluso con WPA3, existe un ataque que no requiere matemáticas complejas, solo manipulación humana.
 
-Pre-shared key. Una contraseña compartida para la red.
+*   **La Trampa:** Llegas a una cafetería famosa. Abres tu celular y buscas la red de la cafetería.
+*   **La Configuración:** El hacker está sentado en la esquina tomando un café. Sacó un módem portátil de su mochila y le puso exactamente el mismo nombre: `Starbucks_Gratis`. Y le puso una señal de antena más potente que la del módem real del techo.
+*   **El Ataque (Evil Twin):** Los celulares están programados para conectarse automáticamente a las redes conocidas que tengan "mejor señal". Tu celular ignora el módem del techo y se conecta directamente a la mochila del hacker (El Gemelo Malvado).
+*   **El Resultado:** El hacker te da internet real para que no sospeches, pero se convierte en un "Hombre en el Medio" (Man-In-The-Middle). A partir de ese momento, cada página que abres y cada mensaje que mandas, pasa primero por la computadora del hacker antes de ir al internet público. 
 
-### Enterprise
+---
 
-Usa autenticación individual, normalmente con 802.1X/RADIUS.
+## 3. Criterio de Dominio (Autoevaluación)
 
-## Cómo Pensar una Red Wi-Fi
+Revisa si puedes mantener la cordura en el aire:
 
-Wi-Fi no es solo "internet sin cable". Es una puerta de entrada a la red. Si una red inalámbrica está mal disenada, un visitante, un equipo infectado o un atacante cercano puede intentar llegar a sistemas internos.
-
-Preguntas base:
-
-- Quién se conecta?
-- Cómo se autentica?
-- A qué segmento entra?
-- Qué puede alcanzar?
-- Cómo se detectan APs no autorizados?
-- Qué pasa si se comparte la clave?
-
-## Modos de Seguridad
-
-| Modo | Uso común | Riesgo | Comentario |
-| --- | --- | --- | --- |
-| Open | Invitados muy controlados | Cualquiera entra | Debe estar aislada y con portal/política si aplica |
-| WEP | Obsoleto | Inseguro | No debe usarse |
-| WPA/WPA2 Personal | Hogar/oficina pequeña | Clave compartida | Si alguien sale, hay que rotar clave |
-| WPA2/WPA3 Enterprise | Empresa | Requiere infraestructura | Mejor trazabilidad por usuario |
-| WPA3 | Redes modernas | Compatibilidad | Mejoras frente a WPA2, pero no reemplaza segmentación |
-
-## Riesgos Comunes
-
-- Contraseña Wi-Fi compartida por todos.
-- Red de invitados sin aislamiento.
-- AP no autorizado.
-- Evil twin.
-- WPA/WEP obsoleto.
-- Contraseñas debiles.
-- Equipos internos en la misma red que invitados.
-
-## Amenazas Importantes
-
-### Rogue AP
-
-Un access point conectado sin autorización a la red interna. Puede aparecer por comodidad de un empleado o por actividad maliciosa.
-
-Riesgo:
-
-- Crea una entrada no controlada.
-- Puede no tener cifrado fuerte.
-- Puede saltarse políticas de red.
-
-### Evil Twin
-
-Un atacante crea una red con nombre parecido o igual al SSID legitimo para enganar usuarios.
-
-Riesgo:
-
-- Robo de credenciales.
-- Intercepcion de tráfico.
-- Redireccion a portales falsos.
-
-### Clave Compartida Filtrada
-
-En WPA Personal, muchas personas usan la misma clave. Si se comparte por chat, foto o con ex empleados, se pierde control individual.
-
-### Red Invitados Mal Aislada
-
-Una red guest que puede llegar a impresoras, paneles internos o servidores deja de ser guest. Debe tener salida a internet y muy poco más.
-
-## Controles
-
-- WPA2/WPA3.
-- Contraseñas fuertes.
-- Red de invitados separada.
-- Segmentación por VLAN.
-- 802.1X en empresas.
-- Monitoreo de APs no autorizados.
-- Cambiar credenciales default.
-- Actualizar firmware.
-
-## Segmentación Sugerida
-
-| Red | Usuarios | Acceso permitido | Acceso bloqueado |
-| --- | --- | --- | --- |
-| Corporativa | Empleados | Recursos internos necesarios | Admin, servidores sensibles si no aplica |
-| Invitados | Visitantes | Internet | LAN interna, impresoras internas, paneles |
-| IoT | Camaras, TVs, sensores | Servicios especificos | Usuarios, administracion, bases de datos |
-| Administracion | TI/Admin | Gestion de APs y equipos | Navegación general si no es necesaria |
-
-Separar SSIDs sin separar VLANs o reglas reales no aporta mucho. La separación debe existir en la red y en las políticas.
-
-## Guest Wi-Fi
-
-Debe estar separado de:
-
-- Servidores.
-- Equipos administrativos.
-- Sistemas internos.
-- Paneles de gestion.
-
-## 802.1X y RADIUS
-
-En redes empresariales, 802.1X permite autenticar usuarios o dispositivos de forma individual. En lugar de una sola clave compartida, cada identidad puede tener acceso según su rol.
-
-Ventajas:
-
-- Baja de usuarios sin cambiar la clave de todos.
-- Mejor auditoria.
-- Políticas por grupo.
-- Integración con directorio corporativo.
-
-Riesgos si se configura mal:
-
-- Validación débil de certificados.
-- Usuarios aceptando redes falsas.
-- Políticas demasiado amplias.
-
-## Monitoreo
-
-Eventos útiles:
-
-- Nuevos APs detectados.
-- Muchos intentos fallidos.
-- Conexiones desde dispositivos desconocidos.
-- Cambios de configuración en controladora.
-- Dispositivos conectados a redes incorrectas.
-- Tráfico entre guest e interno.
-
-## Errores Comunes
-
-- Usar la misma clave Wi-Fi por años.
-- Compartir la red corporativa con invitados.
-- Administrar APs desde la misma red de usuarios.
-- No actualizar firmware.
-- Creer que ocultar SSID es seguridad suficiente.
-- No tener inventario de APs autorizados.
-- Permitir que IoT vea toda la red.
-
-## Ejemplo de Diseño Wi-Fi
-
-Una red Wi-Fi de oficina debería separar:
-
-- Red corporativa.
-- Red invitados.
-- Red administracion.
-
-El diseño debe aclarar:
-
-- Quien entra a cada red.
-- Que VLAN usa.
-- Que tráfico permites.
-- Que logs revisas.
-
-## Preguntas de Comprensión
-
-- Qué diferencia hay entre WPA Personal y Enterprise?
-- Por qué una red de invitados debe estar aislada?
-- Qué evidencia indicaria un rogue AP?
-- Qué controles reducen el impacto de una clave compartida filtrada?
-- Qué dispositivos no deberian estar en la red corporativa principal?
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Explicar WPA2/WPA3.
-- Explicar red invitado.
-- Explicar rogue AP.
-- Proponer segmentación Wi-Fi.
-- Diferenciar PSK y 802.1X.
-- Explicar por que IoT requiere aislamiento.
+1. Un hacker estaciona su auto afuera de un edificio de oficinas corporativo e intenta robar las credenciales de red capturando el tráfico Wi-Fi en el aire (Sniffing). Sabiendo que la empresa usa el protocolo antiguo **WEP**, ¿Por qué el hacker tendrá éxito garantizado en un par de minutos, independientemente de lo larga que sea la contraseña?
+2. Usando la analogía del "Megáfono", explica la diferencia de riesgo físico y de superficie de ataque entre conectar una computadora de Finanzas directamente por un Cable Ethernet versus conectarla a la red Wi-Fi de la empresa.
+3. El ataque del "Gemelo Malvado" (Evil Twin) es devastador en aeropuertos y hoteles. Si la víctima ya cayó en la trampa y su celular está conectado a la mochila del hacker, ¿Por qué el uso exclusivo de páginas web con **HTTPS** (Cifrado en Tránsito - Fase 19) es la única defensa técnica que protegerá la contraseña del usuario de ser robada por el hacker?
+4. El nuevo protocolo **WPA3** es el salvador moderno de las redes inalámbricas. ¿Cuál es el cambio arquitectónico principal que hace WPA3 para volver obsoletos los ataques tradicionales de "fuerza bruta" (Dictionary Attacks) contra las contraseñas del Wi-Fi?
