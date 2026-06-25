@@ -184,7 +184,7 @@ export default function Home() {
         ))}
       </div>
 
-      <section style={{ textAlign: 'left', margin: '0 auto 4rem auto' }}>
+      <section style={{ textAlign: 'left', margin: '0 auto 2.5rem auto' }}>
         <h2 className="serif-title" style={{ fontSize: '2rem', borderBottom: 'none', marginBottom: '0.75rem' }}>
           Qué puedes estudiar aquí
         </h2>
@@ -246,10 +246,10 @@ export default function Home() {
           textAlign: 'left',
           borderTop: '1px solid var(--border-color)',
           padding: '1.5rem 0 0 0',
-          margin: '0 auto 1.25rem auto',
-          maxWidth: '860px',
+          margin: '0 auto 1rem auto',
+          maxWidth: '920px',
           display: 'grid',
-          gridTemplateColumns: 'minmax(180px, 0.7fr) minmax(260px, 1.3fr)',
+          gridTemplateColumns: 'minmax(180px, 0.55fr) minmax(280px, 1.45fr)',
           gap: '1.25rem',
           alignItems: 'start'
         }}
