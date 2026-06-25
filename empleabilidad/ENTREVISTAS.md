@@ -1,91 +1,48 @@
-# Entrevistas
+# Hackeando la Entrevista Técnica
 
-Preguntas para practicar. La meta no es memorizar: es poder explicar con claridad.
+## Objetivo del Módulo
 
-## Redes
+Aprender que las entrevistas de ciberseguridad no buscan probar que eres el mejor hacker del mundo. Buscan probar que **eres un adulto responsable al que se le pueden confiar las llaves del reino.**
 
-1. Que pasa cuando escribes `https://example.com` en el navegador?
-2. Qué es DNS?
-3. Diferencia entre TCP y UDP.
-4. Qué es una VLAN?
-5. Qué es NAT?
-6. Para qué sirve una ACL?
-7. Qué diferencia hay entre puerto 80 y 443?
-8. Qué es TLS?
+Llegaste a la entrevista final. Estás frente al CISO (Chief Information Security Officer) o al Líder del Blue Team (Fase 24).
+La mayoría de los candidatos *Juniors* intentan impresionar al director diciendo: *"Puedo hackear una máquina de Windows en 3 minutos con Metasploit"*. 
+Eso asusta al Director, porque demuestra inmadurez. El Director no quiere a alguien que rompe cosas por diversión; quiere a alguien que defiende la empresa corporativa usando Playbooks y Métricas de Riesgo.
 
-## Linux
+---
 
-1. Que significa `rwxr-x---`?
-2. Cómo revisas procesos?
-3. Cómo revisas logs?
-4. Para qué sirve SSH?
-5. Que es `sudo`?
-6. Cómo buscarias una cadena en archivos de log?
+## 1. El Formato STAR en la Entrevista
 
-## Windows
+Cuando el CISO te pregunte: *"Cuéntame sobre una vez que resolviste un problema técnico"*, no debes vomitar datos técnicos. Debes contarle una historia estructurada (El Formato STAR):
 
-1. Qué es Event Viewer?
-2. Qué eventos revisarias ante intentos de login?
-3. Qué es PowerShell?
-4. Qué diferencia hay entre usuario local y usuario de dominio?
+*   **S (Situación):** *"En mi laboratorio virtual, el servidor de bases de datos estaba expuesto a internet"*.
+*   **T (Tarea):** *"Tenía el objetivo de asegurar la base de datos sin romper la aplicación web que la estaba consumiendo"*.
+*   **A (Acción):** *"Implementé una segmentación de red aislando el servidor en una VLAN interna y configuré un Firewall para bloquear el puerto 3306 desde el exterior"*.
+*   **R (Resultado - El Impacto en el Negocio):** *"El resultado fue que reduje la superficie de ataque a cero para ataques externos, garantizando el cumplimiento de la ley de protección de datos (GRC), mientras mantenía la operatividad al 100%"*.
 
-## Active Directory
+El CISO te contratará en ese mismo instante.
 
-1. Qué es un dominio?
-2. Qué es un Domain Controller?
-3. Qué es Kerberos?
-4. Qué son GPOs?
-5. Por qué son sensibles los grupos privilegiados?
+---
 
-## Web / OWASP
+## 2. Las 3 Preguntas de la "Prueba de Fuego"
 
-1. Diferencia entre autenticación y autorización.
-2. Qué es SQL Injection?
-3. Qué es XSS?
-4. Qué es Broken Access Control?
-5. Qué es SSRF?
-6. Cómo mitigarias una inyección SQL?
-7. Por qué los headers de seguridad importan?
+Hay preguntas diseñadas específicamente para ver si tienes mentalidad de Negocio (Gobierno y Riesgo) o si solo tienes mentalidad de Hacker de películas.
 
-## Blue Team
+### La Pregunta de la Vulnerabilidad
+*   **El Entrevistador:** *"Encuentras una vulnerabilidad crítica (CVSS 10) en el servidor de ventas principal a las 2:00 PM. El parche oficial de Microsoft ya está disponible y sabes cómo instalarlo. ¿Qué haces?"*
+*   **Respuesta de Novato (Reprobada):** *"¡Instalo el parche inmediatamente para detener a los hackers!"* (Acabas de tumbar el servidor de ventas corporativas en pleno horario comercial porque no probaste el parche. Te despiden).
+*   **Respuesta de Élite (Aprobada):** *"NO instalo el parche en Producción. Sigo el protocolo del **Blue Team**. Primero, lo reporto e instalo el parche en el entorno de Pruebas (Test). Si no rompe nada, programo una ventana de mantenimiento a las 3:00 AM para instalarlo en Producción, minimizando el Riesgo Financiero de tiempo de inactividad"*.
 
-1. Qué es un SIEM?
-2. Qué es un IOC?
-3. Qué es MITRE ATT&CK?
-4. Cómo investigarias múltiples logins fallidos?
-5. Qué es un falso positivo?
-6. Qué debe tener un reporte de incidente?
+### La Pregunta del DNS
+*   **El Entrevistador:** *"¿Qué pasa exactamente cuando escribes `google.com` en tu navegador y le das Enter?"*
+*   **El Objetivo:** Es la pregunta de Redes (Fase 2) más famosa del mundo. Quieren ver tu profundidad arquitectónica. Tienes que hablar sobre cómo la computadora busca en su caché, luego contacta al servidor DNS, cómo se negocia el protocolo TLS (Handshake - Fase 11) y cómo el HTTP entra en acción (Fase 6). 
 
-## Python / Automatización
+---
 
-1. Cómo leerias un archivo de logs?
-2. Para qué usarias expresiones regulares?
-3. Qué es JSON?
-4. Cómo manejarias errores en un script?
-5. Cómo generarias un reporte simple?
+## 3. Criterio de Dominio (Autoevaluación)
 
-## Preguntas de Conducta
+Revisa si puedes asegurar tu primer empleo:
 
-1. Cuentame de un tema difícil que aprendiste.
-2. Qué haces cuándo no entiendes algo?
-3. Cómo organizas tu estudio?
-4. Cómo documentas un laboratorio?
-5. Cómo manejas errores o frustracion?
-
-## Método STAR
-
-Para preguntas de experiencia usa:
-
-- Situación.
-- Tarea.
-- Acción.
-- Resultado.
-
-Ejemplo:
-
-```text
-Situación: estaba aprendiendo análisis de logs.
-Tarea: necesitaba identificar intentos fallidos de login.
-Acción: analice fallos por usuario e IP.
-Resultado: explique patrones sospechosos y recomendaciones.
-```
+1. Durante la entrevista, el Gerente de IT te presenta el siguiente escenario: "Tenemos un sistema antiguo (Windows XP) que controla los brazos robóticos de la fábrica. No podemos actualizarlo porque el software dejaría de funcionar, pero es extremadamente vulnerable a Ransomware". Utilizando el concepto de "Segmentación de Red y Compartimentos Estancos" (Fase 23), ¿Cuál es tu respuesta técnica madura para gestionar este riesgo?
+2. Explica por qué utilizar el **Formato STAR** (Situación, Tarea, Acción, Resultado) durante las respuestas verbales hace que parezcas un profesional experimentado (Senior) en lugar de un estudiante técnico novato.
+3. El entrevistador te pregunta sobre tus motivaciones y tú respondes: "Amo la adrenalina de hackear páginas web y encontrar contraseñas". ¿Por qué esta respuesta es una "Bandera Roja" gigantesca para el área de **Recursos Humanos** corporativa y cómo deberías reformularla enfocándote en el **Blue Team**?
+4. Repasa todos los módulos de este Roadmap de Aprendizaje (De la Fase 1 a la Fase 24). Si tuvieras que elegir una sola **Analogía** (Ej. El Mesero, El Maletín Blindado, El Sello de Cera) para explicársela al reclutador durante la entrevista, ¿Cuál usarías para demostrar tu profunda capacidad de comunicación técnica, y por qué?

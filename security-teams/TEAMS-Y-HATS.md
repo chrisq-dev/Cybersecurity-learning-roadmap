@@ -1,312 +1,39 @@
-# Teams y Hats en Ciberseguridad
+# Equipos de Seguridad: Los Juegos de Guerra
 
-Este archivo aclara que equipos existen, que hace cada uno, que debes estudiar y que NO debes perseguir.
+## Objetivo del Módulo
 
-## Resumen Rápido
+Destruir el mito de Hollywood de que la ciberseguridad se trata exclusivamente de ponerse una capucha negra y hackear bancos. 
 
-| Nombre | Qué es | Es profesional? | Enfoque |
-| --- | --- | --- | --- |
-| Blue Team | Equipo defensivo | Si | Detección, monitoreo, respuesta |
-| Red Team | Equipo ofensivo autorizado | Si | Simulacion de adversarios |
-| Purple Team | Colaboracion Red + Blue | Si | Mejorar detecciones y controles |
-| White Team | Coordinacion de ejercicios | Si | Reglas, alcance, evaluación |
-| AppSec Team | Seguridad de aplicaciones | Si | Código, SDLC, OWASP, revisiones |
-| Cloud Security Team | Seguridad cloud | Si | IAM, logging, redes, storage |
-| DFIR Team | Forense y respuesta | Si | Evidencia, timeline, incidentes |
-| Threat Intel Team | Inteligencia de amenazas | Si | Actores, TTPs, IOCs, contexto |
-| GRC Team | Gobierno, riesgo y cumplimiento | Si | Políticas, controles, auditoria |
-| White Hat | Persona ética/autorizada | Si | Seguridad legal y responsable |
-| Black Hat | Atacante malicioso | No | Actividad no autorizada |
-| Gray Hat | Zona ambigua | Riesgoso | Puede carecer de permiso claro |
+En la vida real corporativa, la ciberseguridad es una operación militar altamente estructurada. Existen equipos separados con presupuestos separados, y el 90% del dinero (y de los empleos) no está en atacar, está en defender.
 
-## Teams Profesionales
+---
 
-### Blue Team
+## 1. Red Team (Los Asesinos a Sueldo)
 
-Defiende sistemas y responde a actividad sospechosa.
+*   **La Analogía:** Eres el Rey de un castillo. Crees que tus defensas son perfectas. Para estar seguro, contratas legalmente a un grupo de mercenarios expertos y les pagas para que intenten colarse al castillo a las 3:00 AM y "secuestrar" a la princesa. Si lo logran, te entregan un reporte de cómo lo hicieron.
+*   **En Informática:** El Red Team (Equipo Rojo) hace *Offensive Security* (Pentesting, Ingeniería Social). Su trabajo es simular ser un grupo de hackers rusos (APT) para encontrar las vulnerabilidades de la empresa antes de que los criminales reales lo hagan.
+*   **La Realidad Laboral:** Es el trabajo que todos los novatos quieren porque se ve genial en las películas. Sin embargo, representa menos del 10% de los empleos reales en el mercado. Un atacante solo necesita tener suerte una vez; el defensor necesita tener suerte todos los días.
 
-Responsabilidades:
+## 2. Blue Team (La Guardia del Castillo)
 
-- Monitorear logs y alertas.
-- Investigar eventos.
-- Responder incidentes.
-- Crear detecciones.
-- Mejorar controles.
-- Reducir falsos positivos.
+*   **La Analogía:** Son los soldados en las murallas, los operadores del foso con cocodrilos, y los analistas de las cámaras de seguridad.
+*   **En Informática:** El Blue Team (Equipo Azul) hace *Defensive Security*. Construyen Firewalls (Fase 13), administran el Antivirus EDR (Fase 14), y monitorean los logs en el SOC (Security Operations Center) 24/7.
+*   **La Realidad Laboral:** Es la columna vertebral del internet. Aquí es donde están los presupuestos millonarios de los bancos y corporaciones. Si te gusta construir arquitecturas masivas, investigar telemetría forense (Fase 12) y salvar empresas de la quiebra en tiempo real, este es tu equipo.
 
-Ruta sugerida:
+## 3. Purple Team (La Mesa de Negociaciones)
 
-- [blue-team/FUNDAMENTOS-BLUE-TEAM.md](../blue-team/FUNDAMENTOS-BLUE-TEAM.md)
-- [blue-team/LOGS-Y-ALERTAS.md](../blue-team/LOGS-Y-ALERTAS.md)
-- [blue-team/SIEM-MITRE.md](../blue-team/SIEM-MITRE.md)
-- [blue-team/RESPUESTA-INCIDENTES.md](../blue-team/RESPUESTA-INCIDENTES.md)
-- [blue-team/DETECTION-ENGINEERING.md](../blue-team/DETECTION-ENGINEERING.md)
+Históricamente, el Red Team y el Blue Team se odiaban. El Red Team se burlaba de que lograba entrar al castillo fácilmente, y el Blue Team se quejaba de que el Red Team solo rompía cosas sin ayudar a arreglarlas.
 
-Señales de comprensión:
+*   **La Analogía:** Después del juego de guerra, los mercenarios y los guardias del castillo se sientan en una sala de conferencias a tomar café. El mercenario (Red) le dice al guardia (Blue): *"Logré entrar por la ventana trasera del piso 3"*. El guardia responde: *"Interesante, mi cámara de seguridad no vio eso. Ayúdame a calibrarla para que la próxima vez sí te vea"*.
+*   **En Informática:** El Purple Team (Equipo Púrpura) no es un grupo de personas nuevas. Es la **metodología** temporal donde ambos equipos colaboran en tiempo real para mejorar la postura defensiva (GRC - Fase 20).
 
-- Análisis de logs.
-- Comunicación de una alerta.
-- Lógica de detección.
-- Flujo de respuesta a incidente.
+---
 
-### Red Team
+## 4. Criterio de Dominio (Autoevaluación)
 
-Simula técnicas de adversarios para probar defensas, siempre con permiso, alcance y reglas.
+Revisa si entiendes la estructura militar corporativa:
 
-Responsabilidades:
-
-- Reconocimiento autorizado.
-- Enumeración.
-- Pruebas de seguridad en laboratorios o entornos aprobados.
-- Reporte de hallazgos.
-- Recomendaciones de remediación.
-
-Ruta sugerida:
-
-- [red-team/METODOLOGIA-ETICA.md](../red-team/METODOLOGIA-ETICA.md)
-- [red-team/RECONOCIMIENTO-ENUMERACION.md](../red-team/RECONOCIMIENTO-ENUMERACION.md)
-- [red-team/REPORTE-REMEDIACION.md](../red-team/REPORTE-REMEDIACION.md)
-- [web-owasp/FUNDAMENTOS-WEB.md](../web-owasp/FUNDAMENTOS-WEB.md)
-- [web-owasp/OWASP-TOP-10.md](../web-owasp/OWASP-TOP-10.md)
-- [windows-ad/ACTIVE-DIRECTORY.md](../windows-ad/ACTIVE-DIRECTORY.md)
-
-Señales de comprensión:
-
-- Análisis permitido en entornos autorizados.
-- Explicación de impacto y remediación.
-- Comprensión de causa raíz y correccion.
-- Metodología ética y reproducible.
-
-### Purple Team
-
-Une Red Team y Blue Team. El objetivo no es "ganar", sino mejorar detección, respuesta y controles.
-
-Responsabilidades:
-
-- Ejecutar una técnica controlada.
-- Observar si Blue Team la detecta.
-- Mejorar logs, alertas y playbooks.
-- Mapear actividad a MITRE ATT&CK.
-- Validar controles.
-
-Ruta sugerida:
-
-- [blue-team/SIEM-MITRE.md](../blue-team/SIEM-MITRE.md)
-- [blue-team/DETECTION-ENGINEERING.md](../blue-team/DETECTION-ENGINEERING.md)
-- [red-team/METODOLOGIA-ETICA.md](../red-team/METODOLOGIA-ETICA.md)
-- [playbooks/CUENTA-COMPROMETIDA.md](../playbooks/CUENTA-COMPROMETIDA.md)
-- [playbooks/SERVIDOR-EXPUESTO.md](../playbooks/SERVIDOR-EXPUESTO.md)
-
-Señales de comprensión:
-
-- Tabla técnica ofensiva vs detección.
-- Mejora de lógica de detección.
-- Flujo de respuesta ajustado.
-- Identificación de brechas de logging.
-
-### White Team
-
-Coordina ejercicios de seguridad. Define reglas, alcance, tiempos, objetivos y evaluación.
-
-Responsabilidades:
-
-- Definir scope.
-- Autorizar actividades.
-- Evitar dano operativo.
-- Medir resultados.
-- Resolver disputas entre equipos.
-- Revisar comunicación de resultados.
-
-Ruta sugerida:
-
-- [writeups/PLANTILLA-REPORTE.md](../writeups/PLANTILLA-REPORTE.md)
-- [grc/RIESGO-CONTROLES.md](../grc/RIESGO-CONTROLES.md)
-- [grc/FUNDAMENTOS-GRC.md](../grc/FUNDAMENTOS-GRC.md)
-- [red-team/METODOLOGIA-ETICA.md](../red-team/METODOLOGIA-ETICA.md)
-
-Señales de comprensión:
-
-- Reglas de engagement ficticias.
-- Matriz de alcance.
-- Criterios de éxito.
-- Comunicación final del ejercicio.
-
-### AppSec Team
-
-Protege aplicaciones durante diseño, desarrollo, pruebas y despliegue.
-
-Responsabilidades:
-
-- Revisar código.
-- Hacer threat modeling.
-- Revisar autenticación y autorización.
-- Analizar dependencias.
-- Integrar SAST, DAST y secret scanning.
-- Guiar remediaciones.
-
-Ruta sugerida:
-
-- [appsec-devsecops/FUNDAMENTOS-APPSEC.md](../appsec-devsecops/FUNDAMENTOS-APPSEC.md)
-- [appsec-devsecops/DEVSECOPS.md](../appsec-devsecops/DEVSECOPS.md)
-- [web-owasp/OWASP-TOP-10.md](../web-owasp/OWASP-TOP-10.md)
-- [api-security/FUNDAMENTOS-API.md](../api-security/FUNDAMENTOS-API.md)
-- [api-security/RIESGOS-CONTROLES.md](../api-security/RIESGOS-CONTROLES.md)
-
-### Cloud Security Team
-
-Protege entornos AWS, Azure, GCP y servicios cloud.
-
-Responsabilidades:
-
-- IAM.
-- Logging.
-- Storage.
-- Redes cloud.
-- Secret management.
-- Monitoreo.
-- Configuraciones seguras.
-
-Ruta sugerida:
-
-- [cloud-security/FUNDAMENTOS-CLOUD.md](../cloud-security/FUNDAMENTOS-CLOUD.md)
-- [cloud-security/IAM-STORAGE-LOGGING.md](../cloud-security/IAM-STORAGE-LOGGING.md)
-- [cloud-security/IAM-AVANZADO.md](../cloud-security/IAM-AVANZADO.md)
-- [containers-kubernetes/CONTENEDORES.md](../containers-kubernetes/CONTENEDORES.md)
-- [containers-kubernetes/KUBERNETES-SEGURIDAD.md](../containers-kubernetes/KUBERNETES-SEGURIDAD.md)
-
-### DFIR Team
-
-Digital Forensics and Incident Response. Investiga incidentes, preserva evidencia y reconstruye que paso.
-
-Responsabilidades:
-
-- Preservar evidencia.
-- Analizar logs, disco, memoria o artefactos.
-- Reconstruir lineas de tiempo.
-- Contener incidentes.
-- Documentar hallazgos.
-
-Ruta sugerida:
-
-- [forense/FUNDAMENTOS-FORENSE.md](../forense/FUNDAMENTOS-FORENSE.md)
-- [blue-team/RESPUESTA-INCIDENTES.md](../blue-team/RESPUESTA-INCIDENTES.md)
-- [playbooks/CUENTA-COMPROMETIDA.md](../playbooks/CUENTA-COMPROMETIDA.md)
-- [playbooks/MALWARE-ENDPOINT.md](../playbooks/MALWARE-ENDPOINT.md)
-
-### Threat Intelligence Team
-
-Estudia amenazas, actores, tacticas, técnicas, procedimientos e indicadores.
-
-Responsabilidades:
-
-- Analizar IOCs.
-- Entender TTPs.
-- Mapear actividad a MITRE ATT&CK.
-- Producir contexto para detección y defensa.
-- Priorizar amenazas relevantes.
-
-Ruta sugerida:
-
-- [blue-team/SIEM-MITRE.md](../blue-team/SIEM-MITRE.md)
-- [blue-team/THREAT-HUNTING.md](../blue-team/THREAT-HUNTING.md)
-- [malware-básico/FUNDAMENTOS-MALWARE.md](../malware-básico/FUNDAMENTOS-MALWARE.md)
-
-### GRC Team
-
-Gobernanza, riesgo y cumplimiento. Conecta seguridad con negocio, controles y auditoria.
-
-Responsabilidades:
-
-- Políticas.
-- Riesgos.
-- Controles.
-- Evidencia.
-- Auditorias.
-- Cumplimiento.
-- Priorización.
-
-Ruta sugerida:
-
-- [grc/FUNDAMENTOS-GRC.md](../grc/FUNDAMENTOS-GRC.md)
-- [grc/RIESGO-CONTROLES.md](../grc/RIESGO-CONTROLES.md)
-- [vulnerability-management/FUNDAMENTOS.md](../vulnerability-management/FUNDAMENTOS.md)
-- [vulnerability-management/PRIORIZACION-Y-CVSS.md](../vulnerability-management/PRIORIZACION-Y-CVSS.md)
-- [privacy/FUNDAMENTOS-PRIVACIDAD.md](../privacy/FUNDAMENTOS-PRIVACIDAD.md)
-
-## Hats
-
-### White Hat
-
-Persona que trabaja de forma ética, legal y autorizada.
-
-Ejemplos:
-
-- Pentester contratado.
-- Analista SOC.
-- Investigador que reporta vulnerabilidades bajo reglas.
-- AppSec engineer.
-- Consultor de seguridad.
-
-Este es el camino correcto.
-
-### Black Hat
-
-Persona que ataca sin permiso, roba datos, extorsiona, instala malware o explota sistemas ilegalmente.
-
-No es una ruta profesional legitima. No debes practicar contra sistemas reales sin permiso, aunque "solo sea para aprender".
-
-### Gray Hat
-
-Persona que puede encontrar vulnerabilidades sin intencion maliciosa, pero sin autorización clara. Es riesgoso porque puede ser ilegal o danar a terceros.
-
-Regla práctica: si no tienes permiso explícito, no lo hagas.
-
-## Colores Menos Comunes
-
-Estos terminos aparecen a veces, pero no siempre son estandar:
-
-- Green Team: seguridad desde operaciones, sustentabilidad de controles o mejora continua, según contexto.
-- Yellow Team: builders o developers que construyen sistemas.
-- Orange Team: educación, entrenamiento y transferencia de conocimiento entre equipos.
-- Gold Team: liderazgo, estrategia o dirección de seguridad, según algunas organizaciones.
-
-No memorices estos como si fueran universales. En entrevistas, Red, Blue, Purple, White y hats son los más importantes.
-
-## Orden Para Ti
-
-Tu ruta recomendada:
-
-1. Fundamentos.
-2. Blue Team.
-3. Web/AppSec.
-4. Cloud/IAM.
-5. Red Team controlado.
-6. Purple Team.
-7. DFIR o Detection Engineering.
-8. Especializacion laboral.
-
-## Preguntas Que Debes Poder Responder
-
-- Diferencia entre Red Team y Black Hat.
-- Que hace Blue Team.
-- Que problema resuelve Purple Team.
-- Que hace White Team en un ejercicio.
-- Por que Gray Hat es riesgoso.
-- Que evidencia produce un SOC analyst.
-- Que evidencia produce un pentester ético.
-- Como se conectan AppSec, Cloud Security y GRC con los teams principales.
-
-## Resumen Final
-
-No necesitas escoger un color para siempre. Al inicio debes entender todos:
-
-- Blue para defender.
-- Red para entender ataque autorizado.
-- Purple para mejorar detecciones.
-- White para reglas y coordinacion.
-- AppSec para aplicaciones.
-- Cloud para infraestructura moderna.
-- DFIR para incidentes.
-- GRC para riesgo y negocio.
-
-Tu base debe ser ética: White Hat.
+1. Un estudiante de universidad argumenta que quiere dedicar su vida exclusivamente a ser "Hacker Ético" (Red Team) porque cree que las empresas gastan todo su dinero en pagarle a personas para que ataquen sus sistemas. Usa el concepto de "Riesgo Financiero" (Fase 20) para explicarle por qué las corporaciones destinan el 90% de su presupuesto de ciberseguridad al Blue Team en lugar del Red Team.
+2. Usando la analogía de los "Juegos de Guerra", explica cuál es la diferencia entre un Penetration Test tradicional (Red Team) y una operación de colaboración **Purple Team**. ¿Cuál de los dos métodos aporta más valor rápido al equipo de defensa?
+3. Un analista del **Blue Team** está monitoreando alertas en su pantalla a las 3:00 AM y detecta que un empleado intentó iniciar sesión 50 veces desde Rusia. ¿Por qué el analista del Blue Team debe seguir estrictamente un "Playbook" (Plan de Respuesta) en lugar de intentar apagar los servidores por su propia cuenta para detener el ataque?
+4. El equipo directivo decide despedir a todo el Blue Team y quedarse solo con el Red Team para ahorrar dinero, argumentando que "la mejor defensa es un buen ataque". ¿Por qué esta decisión corporativa garantiza matemáticamente que la empresa será destruida por un Ransomware (Fase 16) en menos de un mes?
