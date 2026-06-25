@@ -110,7 +110,7 @@ export default async function Page({ params }) {
         <Link href="/" style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
           ← Volver al inicio
         </Link>
-        <h1 className="serif-title" style={{ marginTop: '1.5rem', marginBottom: '0.5rem', fontSize: '3rem' }}>
+        <h1 className="serif-title guide-title" style={{ marginTop: '1.5rem', marginBottom: '0.5rem' }}>
           {data.title}
         </h1>
         {(data.meta.dificultad || data.meta.tiempo_estimado) && (
@@ -125,7 +125,7 @@ export default async function Page({ params }) {
         )}
       </header>
 
-      <div style={{ display: 'flex', gap: '3rem', alignItems: 'flex-start' }}>
+      <div className="content-layout">
         <div style={{ flex: 1, minWidth: 0 }}>
           <MarkdownRenderer
             content={data.content}

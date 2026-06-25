@@ -4,14 +4,7 @@ export default function Pagination({ prevPage, nextPage }) {
   if (!prevPage && !nextPage) return null;
 
   return (
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
-      gap: '1rem',
-      marginTop: '4rem',
-      paddingTop: '2rem',
-      borderTop: '1px solid var(--border-color)'
-    }}>
+    <div className="pagination-grid">
       {prevPage ? (
         <Link href={`/${prevPage.slug.join('/')}`} className="book-card" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
           <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>

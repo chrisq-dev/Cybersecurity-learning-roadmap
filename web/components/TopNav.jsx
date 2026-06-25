@@ -1,8 +1,17 @@
 'use client';
 
 import Link from 'next/link';
+import { FaMoon, FaSun } from 'react-icons/fa';
 
 export default function TopNav() {
+  function toggleTheme() {
+    const currentTheme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    document.documentElement.dataset.theme = nextTheme;
+    window.localStorage.setItem('theme', nextTheme);
+  }
+
   return (
     <nav className="top-nav">
       <Link href="/" style={{ textDecoration: 'none', color: 'var(--text-main)', display: 'flex', alignItems: 'center' }}>
@@ -12,7 +21,20 @@ export default function TopNav() {
         <span className="serif-title" style={{ fontSize: '1.4rem' }}>Ciberseguridad</span>
       </Link>
 
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+        <button
+          type="button"
+          onClick={toggleTheme}
+          className="theme-toggle"
+          aria-label="Cambiar modo de color"
+          title="Cambiar modo de color"
+        >
+          <FaMoon className="theme-icon theme-icon-moon" size={14} />
+          <FaSun className="theme-icon theme-icon-sun" size={14} />
+          <span className="hide-on-mobile theme-label-light">Oscuro</span>
+          <span className="hide-on-mobile theme-label-dark">Claro</span>
+        </button>
+
         <a
           href="https://github.com/chrisq-dev"
           target="_blank"

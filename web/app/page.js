@@ -115,27 +115,15 @@ export default function Home() {
       </p>
 
       {/* Dynamic Statistics Banner */}
-      <div style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '1.5rem',
-        background: 'var(--bg-card)',
-        border: '1px solid var(--border-color)',
-        padding: '0.6rem 1.5rem',
-        borderRadius: '50px',
-        fontSize: '0.9rem',
-        color: 'var(--text-muted)',
-        marginBottom: '3rem',
-        boxShadow: '0 4px 12px var(--border-glow)'
-      }}>
+      <div className="home-stats">
         <div>
           <strong style={{ color: 'var(--text-main)' }}>{totalPages}</strong> guías ordenadas
         </div>
-        <span style={{ color: 'var(--border-color)' }}>|</span>
+        <span className="stats-divider">|</span>
         <div>
           <strong style={{ color: 'var(--text-main)' }}>{totalCategories}</strong> módulos temáticos
         </div>
-        <span style={{ color: 'var(--border-color)' }}>|</span>
+        <span className="stats-divider">|</span>
         <div>
           <span style={{ color: 'var(--accent-success)', fontWeight: 'bold' }}>100%</span> en español
         </div>

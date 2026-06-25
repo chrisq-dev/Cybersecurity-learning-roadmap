@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
 
 :root {
+  color-scheme: light;
+
   --bg-main: #faf7f2;
   --bg-nav: #ffffff;
   --bg-card: #ffffff;
@@ -26,6 +28,27 @@
   --transition-normal: 0.3s ease;
 }
 
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-main: #11100f;
+  --bg-nav: #171514;
+  --bg-card: #1c1917;
+  --bg-card-hover: #24201d;
+  --bg-code: #28231f;
+
+  --text-main: #f6efe7;
+  --text-muted: #b8aea2;
+  --text-dark: #8f8378;
+
+  --accent-primary: #ff5a66;
+  --accent-secondary: #78a6c8;
+  --accent-success: #45c3aa;
+
+  --border-color: #352f2a;
+  --border-glow: rgba(0, 0, 0, 0.24);
+}
+
 /* ── Reset ──────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -41,6 +64,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.65;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
 /* ── Typography ─────────────────────────────────── */
@@ -238,6 +262,24 @@ blockquote p {
 }
 
 /* ── Home page ──────────────────────────────────── */
+.home-stats {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 12px var(--border-glow);
+}
+
+.stats-divider {
+  color: var(--border-color);
+}
+
 .book-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -288,6 +330,17 @@ blockquote p {
   max-width: 100%;
 }
 
+.content-layout {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.guide-title {
+  font-size: clamp(2.35rem, 6vw, 3rem);
+  overflow-wrap: anywhere;
+}
+
 .markdown-content {
   font-size: 1.05rem;
   line-height: 1.8;
@@ -329,6 +382,15 @@ blockquote p {
   font-weight: 600;
 }
 
+.pagination-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
 /* ── Table of Contents ──────────────────────────── */
 .toc-container {
   display: block;
@@ -342,6 +404,52 @@ blockquote p {
 /* ── Nav helpers ────────────────────────────────── */
 .nav-hover:hover {
   color: var(--text-main) !important;
+}
+
+.theme-toggle {
+  appearance: none;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--bg-card);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.75rem;
+  font: inherit;
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 3px 10px var(--border-glow);
+  transition: color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 6px 18px var(--border-glow);
+  transform: translateY(-1px);
+}
+
+.theme-icon,
+.theme-label-light,
+.theme-label-dark {
+  display: inline-flex;
+  align-items: center;
+}
+
+.theme-icon-sun,
+.theme-label-dark {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-icon-moon,
+:root[data-theme="dark"] .theme-label-light {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-icon-sun,
+:root[data-theme="dark"] .theme-label-dark {
+  display: inline-flex;
 }
 
 .github-profile-link:hover {
@@ -360,6 +468,9 @@ blockquote p {
 ::-webkit-scrollbar-thumb { background: #d0cbc3; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #b0aba3; }
 
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb { background: #4a4038; }
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: #62564c; }
+
 /* ── Responsive ─────────────────────────────────── */
 @media (max-width: 900px) {
   .toc-container { display: none !important; }
@@ -371,4 +482,49 @@ blockquote p {
   .top-nav { padding: 0 1.25rem; }
   .main-content { padding: 2rem 1.25rem; }
   .hide-on-mobile { display: none !important; }
+
+  .home-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.45rem 0.85rem;
+    width: 100%;
+    border-radius: var(--border-radius);
+    padding: 0.85rem 1rem;
+    line-height: 1.4;
+  }
+
+  .stats-divider {
+    display: none;
+  }
+
+  .content-layout {
+    display: block;
+  }
+
+  .guide-title {
+    font-size: clamp(2.15rem, 10vw, 2.7rem);
+    line-height: 1.08;
+  }
+
+  .pagination-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pagination-grid .book-card {
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  .markdown-content table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .markdown-content th,
+  .markdown-content td {
+    padding: 0.75rem 1rem;
+  }
 }
