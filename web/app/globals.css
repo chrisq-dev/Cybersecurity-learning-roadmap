@@ -518,6 +518,11 @@ blockquote p {
   .main-content { padding: 2rem 1.25rem; }
   .hide-on-mobile { display: none !important; }
 
+  .open-source-note {
+    grid-template-columns: 1fr !important;
+    gap: 0.65rem !important;
+  }
+
   .home-stats {
     display: flex;
     flex-wrap: wrap;

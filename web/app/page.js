@@ -95,33 +95,6 @@ const profileRoutes = [
   },
 ];
 
-const learningOutcomes = [
-  {
-    title: 'Pensar en riesgo',
-    text: 'Conectar activos, amenazas, vulnerabilidades, impacto y controles sin memorizar definiciones sueltas.',
-  },
-  {
-    title: 'Entender sistemas reales',
-    text: 'Leer redes, Linux, Windows, web, cloud e identidad como piezas de una misma superficie de ataque.',
-  },
-  {
-    title: 'Investigar con criterio',
-    text: 'Interpretar logs, alertas, evidencia, hipótesis y severidad sin confundir actividad rara con incidente confirmado.',
-  },
-  {
-    title: 'Proteger aplicaciones',
-    text: 'Reconocer fallas comunes como IDOR, XSS, SQL Injection, SSRF y errores de autenticación o autorización.',
-  },
-  {
-    title: 'Comunicar seguridad',
-    text: 'Explicar hallazgos, impacto, remediación y decisiones de forma clara para equipos técnicos y no técnicos.',
-  },
-  {
-    title: 'Prepararte para roles junior',
-    text: 'Ubicar rutas como SOC, AppSec, Cloud, GRC y Vulnerability Management sin intentar dominar todo al mismo tiempo.',
-  },
-];
-
 const studyAreas = [
   {
     title: 'Fundamentos',
@@ -213,32 +186,10 @@ export default function Home() {
 
       <section style={{ textAlign: 'left', margin: '0 auto 4rem auto' }}>
         <h2 className="serif-title" style={{ fontSize: '2rem', borderBottom: 'none', marginBottom: '0.75rem' }}>
-          Qué aprenderás
-        </h2>
-        <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '2rem', maxWidth: '760px' }}>
-          La meta no es memorizar herramientas. La meta es entender cómo fallan los sistemas, cómo se investigan incidentes y cómo se reducen riesgos.
-        </p>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
-          {learningOutcomes.map((item) => (
-            <div key={item.title} className="book-card" style={{ padding: '1.15rem', cursor: 'default' }}>
-              <h3 style={{ margin: '0 0 0.45rem 0', fontSize: '1.05rem', color: 'var(--text-main)' }}>
-                {item.title}
-              </h3>
-              <p style={{ margin: 0, fontSize: '0.92rem', lineHeight: 1.55, color: 'var(--text-muted)' }}>
-                {item.text}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section style={{ textAlign: 'left', margin: '0 auto 4rem auto' }}>
-        <h2 className="serif-title" style={{ fontSize: '2rem', borderBottom: 'none', marginBottom: '0.75rem' }}>
           Qué puedes estudiar aquí
         </h2>
         <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '2rem', maxWidth: '760px' }}>
-          No necesitas dominar todo al mismo tiempo. Usa esta guía como un mapa para ubicar temas, conectar conceptos y elegir una ruta principal.
+          La meta no es memorizar herramientas ni dominar todo al mismo tiempo. Usa esta guía como un mapa para ubicar temas, conectar conceptos y elegir una ruta principal.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
@@ -293,32 +244,35 @@ export default function Home() {
         className="open-source-note"
         style={{
           textAlign: 'left',
-          background: 'var(--bg-card)',
-          border: '1px solid var(--border-color)',
-          borderRadius: 'var(--border-radius)',
-          padding: '1.5rem',
-          margin: '0 auto 1rem auto',
+          borderTop: '1px solid var(--border-color)',
+          padding: '1.5rem 0 0 0',
+          margin: '0 auto 1.25rem auto',
           maxWidth: '860px',
-          boxShadow: '0 4px 12px var(--border-glow)'
+          display: 'grid',
+          gridTemplateColumns: 'minmax(180px, 0.7fr) minmax(260px, 1.3fr)',
+          gap: '1.25rem',
+          alignItems: 'start'
         }}
       >
-        <h2 className="serif-title" style={{ fontSize: '1.65rem', borderBottom: 'none', marginBottom: '0.75rem' }}>
+        <h2 className="serif-title" style={{ fontSize: '1.45rem', borderBottom: 'none', margin: 0 }}>
           Proyecto abierto
         </h2>
-        <p style={{ margin: '0 0 0.85rem 0', fontSize: '0.98rem', lineHeight: 1.65, color: 'var(--text-muted)' }}>
-          Esta guía está en construcción. La idea es seguir agregando recursos, mejorando explicaciones y corrigiendo contenido conforme estudio, pruebo laboratorios y recibo feedback.
-        </p>
-        <p style={{ margin: 0, fontSize: '0.98rem', lineHeight: 1.65, color: 'var(--text-muted)' }}>
-          Si encuentras un error, una explicación confusa o quieres sugerir una mejora, puedes abrir un issue o contribuir desde{' '}
-          <a
-            href="https://github.com/chrisq-dev/Cybersecurity-learning-roadmap"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-          .
-        </p>
+        <div>
+          <p style={{ margin: '0 0 0.65rem 0', fontSize: '0.95rem', lineHeight: 1.6, color: 'var(--text-muted)' }}>
+            Esta guía está en construcción. La idea es seguir agregando recursos, mejorando explicaciones y corrigiendo contenido conforme estudio, pruebo laboratorios y recibo feedback.
+          </p>
+          <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: 1.6, color: 'var(--text-muted)' }}>
+            Si encuentras un error o una explicación confusa, puedes abrir un issue o contribuir desde{' '}
+            <a
+              href="https://github.com/chrisq-dev/Cybersecurity-learning-roadmap"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+            .
+          </p>
+        </div>
       </section>
 
       <section
