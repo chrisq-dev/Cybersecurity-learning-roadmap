@@ -37,7 +37,7 @@ COPY --from=builder --chown=nextjs:nodejs /app /app
 RUN rm -rf /app/web/node_modules /app/web/app /app/web/components /app/web/lib /app/web/.next
 
 # Copy standalone build back
-COPY --from=builder --chown=nextjs:nodejs /app/web/.next/standalone /app/
+COPY --from=builder --chown=nextjs:nodejs /app/web/.next/standalone /app/web/
 COPY --from=builder --chown=nextjs:nodejs /app/web/.next/static /app/web/.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/web/public /app/web/public
 
@@ -52,4 +52,5 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
 
 # Run the standalone server directly via node, saving memory and avoiding npm overhead
 CMD ["node", "server.js"]
+
 
