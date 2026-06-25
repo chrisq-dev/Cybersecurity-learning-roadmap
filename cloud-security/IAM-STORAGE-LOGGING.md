@@ -1,129 +1,77 @@
-# IAM, Storage y Logging en Cloud
+# IAM, Storage y Logs: Las Piezas Clave de la Nube
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender tres áreas críticas de seguridad cloud: identidad, almacenamiento y visibilidad.
+Aprender las tres piezas maestras que conforman cualquier infraestructura en la nube.
+Si le preguntas a un ingeniero de AWS experto qué necesitas proteger para asegurar una empresa millonaria, te responderá tres cosas: **Quién tiene las llaves (IAM)**, **Dónde están los datos (Storage)** y **Quién te está vigilando (Logs)**.
 
-## IAM
+---
 
-IAM significa Identity and Access Management.
+## 1. Storage (S3): La Bodega Gigante
 
-Controla:
+Imagina que tienes una empresa de Hospitales y tienes 5 millones de radiografías en formato `.JPG`. No puedes guardar todo eso en el disco duro de una computadora normal porque se llenaría en dos días.
 
-- Quien puede entrar.
-- Que permisos tiene.
-- Sobre que recursos.
-- Bajo que condiciones.
+Para esto existe el Almacenamiento en la Nube (AWS S3, Azure Blob, GCP Cloud Storage).
 
-Ejemplos de identidades:
+* **La Analogía:** Es una inmensa Bodega industrial en medio del desierto, con pasillos infinitos de cajas.
+* No hay sistema operativo, no hay Linux, no hay Windows. Simplemente subes el archivo y Amazon te da una URL (Ej. `https://s3.amazonaws.com/mi-hospital/radio1.jpg`).
 
-- Usuario.
-- Rol.
-- Cuenta de servicio.
-- Grupo.
-- Aplicación.
+### El Famoso "S3 Bucket Abierto" (El Error #1)
 
-## Políticas
+¿Qué pasa si un programador novato (o perezoso) construye la bodega del hospital, pero se le olvida ponerle candado a la puerta principal?
+La bodega se vuelve **Pública en Internet**.
 
-Una política define permisos.
+Un Hacker no tiene que hackear ninguna contraseña. Simplemente entra a su navegador web, escribe la URL pública de la bodega, y comienza a descargar el millón de radiografías privadas frente a los ojos de Amazon.
 
-Preguntas:
+> **El Impacto Real:** Capital One, Verizon, Accenture y cientos de empresas globales han sufrido robos masivos de datos no porque un "hacker ruso" usara matemáticas avanzadas, sino porque un programador olvidó configurar el Bucket S3 como `Privado`.
 
-- Qué acción permite?
-- Sobre qué recurso?
-- A quién aplica?
-- Tiene condiciones?
+---
 
-Riesgo común:
+## 2. IAM (Identity and Access Management): El Llavero
 
-```text
-Permitir todo sobre todos los recursos.
-```
+Ya aprendimos que no puedes dejar la bodega pública. Tienes que ponerle candado.
+¿Cómo decides quién sí puede abrir el candado? A través de **IAM (Gestión de Identidades y Accesos)**.
 
-Conceptualmente:
+IAM es el corazón, el cerebro y el alma de la seguridad en la Nube.
 
-```text
-Action: *
-Resource: *
-```
+* **La Analogía:** Es el Conserje del edificio que reparte las llaves (Políticas / Policies).
 
-## Mínimo Privilegio en Cloud
+Una "Llave" en IAM no es una llave física, es un archivo de texto en formato **JSON**.
+Si el Conserje te da una llave, el archivo JSON dirá exactamente qué puedes hacer:
+`"Al Usuario Juan, se le permite LEER la Bodega S3, pero se le PROHÍBE BORRAR archivos"`.
 
-Dar solo permisos necesarios.
+**El Vector de Ataque:**
+Si un atacante logra robar el usuario y la contraseña (o la API Key) de Juan, el atacante no adquiere "poderes mágicos" para destruir Amazon. El atacante **solo hereda la llave de Juan**.
+Si la llave de Juan dice "Solo Leer", el atacante no podrá borrar la base de datos, aunque lo intente mil veces.
 
-Mal ejemplo:
+*(La regla de oro del Blue Team: **El Principio del Menor Privilegio**. Jamás le des a Juan una llave de "Administrador" si su trabajo solo requiere leer radiografías).*
 
-- Una app que solo lee archivos tiene permisos de administrador.
+---
 
-Buen ejemplo:
+## 3. Logs (CloudTrail): La Cámara de Seguridad Incorruptible
 
-- Una app solo puede leer el bucket que necesita.
+Si el atacante robó la llave de Juan, y a las 3:00 AM abrió la bodega S3 y robó 500 radiografías, ¿Cómo se entera el equipo de seguridad (Blue Team)?
 
-## Storage
+A través de los Logs de la Nube. En AWS, este servicio se llama **CloudTrail**.
 
-Servicios de almacenamiento de objetos como buckets.
+* **La Analogía:** Es la cámara de seguridad indestructible que graba absolutamente cada orden que se ejecuta en el edificio.
+* Si alguien enciende un servidor, CloudTrail lo anota.
+* Si alguien borra un archivo, CloudTrail lo anota.
 
-Riesgos:
+### La Magia de la Nube (La Ventaja Defensiva)
 
-- Bucket público.
-- Datos sensibles sin cifrado.
-- Logs desactivados.
-- Permisos heredados mal.
-- Llaves expuestas.
+En un servidor físico (On-Premise) con Linux, si un hacker se vuelve Administrador (Root), puede entrar a la carpeta de Logs (`/var/log`) y borrar el archivo de texto para limpiar sus huellas.
 
-Buenas prácticas:
+En AWS, **el hacker NO PUEDE borrar el registro de CloudTrail**.
+CloudTrail está protegido directamente por Amazon a un nivel tan profundo que incluso si el hacker roba la cuenta del CEO de tu empresa, la cámara ya grabó y envió el video a una bóveda blindada antes de que el hacker tenga tiempo de darse cuenta.
 
-- Bloquear acceso público por defecto.
-- Cifrar datos sensibles.
-- Activar logs.
-- Usar políticas especificas.
-- Revisar permisos regularmente.
+---
 
-## Logging
+## 4. Criterio de Dominio (Autoevaluación)
 
-En cloud, logging permite investigar:
+Revisa si ya entiendes la triada de la Nube:
 
-- Quien hizo cambios.
-- Desde donde.
-- Que recurso fue modificado.
-- Que permisos se usaron.
-- Si hubo acceso sospechoso.
-
-Eventos importantes:
-
-- Login.
-- Cambio de permisos.
-- Creación de llaves.
-- Acceso a storage.
-- Cambios de red.
-- Desactivación de logs.
-
-## Riesgos Comunes
-
-- MFA desactivado en cuentas privilegiadas.
-- Access keys antiguas.
-- Roles demasiado amplios.
-- Storage público accidental.
-- Security groups abiertos a internet.
-- Logs no habilitados.
-- Secretos en repositorios.
-
-## Ejemplo de Revisión Cloud
-
-Para una app web en cloud, la revisión debe aclarar:
-
-- Que identidad usa.
-- Que permisos necesita.
-- Que storage usa.
-- Que logs deben activarse.
-- Que alertas deberian existir.
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Explicar IAM.
-- Explicar mínimo privilegio.
-- Explicar riesgo de buckets públicos.
-- Nombrar eventos cloud importantes.
-- Explicar por que logs cloud son críticos.
+1. Estás auditando la cuenta de AWS de una empresa. Descubres un Bucket S3 llamado "respaldos-financieros-2023" que tiene configurada la política pública de acceso de lectura (Public Read). Sin usar ninguna herramienta ofensiva como Kali Linux o Nmap, ¿Cómo podrías demostrarle al cliente que este es un fallo de seguridad crítico en menos de 10 segundos?
+2. Si un empleado necesita descargar un reporte mensual desde la Nube, y tú eres el Administrador IAM, ¿Por qué asignarle al empleado el permiso genérico `AmazonS3FullAccess` (que permite leer, escribir y borrar) es una violación a las buenas prácticas de ciberseguridad?
+3. Un atacante se roba las Credenciales de la cuenta de "Auditoría" y decide apagar 50 servidores de producción. ¿Qué servicio nativo de AWS debe revisar el Blue Team para encontrar la IP exacta del atacante y el minuto exacto en que apagó los servidores?
+4. El jefe te pide guardar los videos de seguridad de la empresa. Los videos pesan 5 Terabytes. ¿Usarías una máquina virtual (EC2) o un servicio de almacenamiento como S3? Justifica en términos de costo y administración de espacio.

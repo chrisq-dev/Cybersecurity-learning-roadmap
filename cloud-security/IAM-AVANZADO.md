@@ -1,254 +1,79 @@
-# IAM Avanzado
+# IAM Avanzado: Escalada de Privilegios y Máscaras
 
-## Objetivo
+## Objetivo del Módulo
 
-Profundizar en identidad y permisos cloud, una de las causas más comunes de incidentes.
+Entender por qué el hacking en la nube es un juego de ajedrez donde el atacante roba una llave de nivel muy bajo y hace malabares con el sistema de políticas para convertirse en Dios (Administrador).
 
-IAM es el plano de control de la nube. Si una identidad tiene permisos excesivos o credenciales expuestas, un atacante puede crear recursos, leer datos, modificar logs o escalar privilegios sin tocar servidores tradicionales.
+En el mundo On-Premise, un atacante usaba ataques de fuerza bruta o de corrupción de memoria para volverse Administrador (`root` o `SYSTEM`). En la nube, las computadoras son tan efímeras que al atacante no le importan. El atacante ataca directamente a las **Políticas JSON** de Amazon o Google. A esto se le llama Escalada de Privilegios en la Nube.
 
-## Mapa Mental
+---
 
-```text
-identidad -> política -> acción -> recurso -> condicion -> log -> revisión
+## 1. La Anatomía de una Política JSON
+
+Las llaves del Conserje en la nube no son de metal. Son un documento de texto escrito en el formato JSON. Tienen 4 partes fundamentales (Effect, Action, Resource, Condition).
+
+**Ejemplo de una Llave Básica:**
+```json
+{
+  "Effect": "Allow",
+  "Action": "s3:GetObject",
+  "Resource": "arn:aws:s3:::bodega-hospital/*"
+}
 ```
+*   **Effect:** ¿Qué vas a hacer, Permitir (Allow) o Bloquear (Deny)?
+*   **Action:** ¿Qué poder mágico te estoy dando? (En este caso, la acción `GetObject` significa que puedes descargar fotos de S3).
+*   **Resource:** ¿Sobre qué edificio específico tienes este poder? (En este caso, solo sobre la `bodega-hospital`).
 
-Cada permiso debería poder explicarse:
+Si un hacker roba las credenciales de este empleado, el hacker solo podrá descargar fotos. Es aburrido y de bajo impacto. El hacker quiere más.
 
-- Quien lo necesita;
-- Para que acción;
-- Sobre que recurso;
-- Bajo que condicion;
-- Por cuanto tiempo;
-- Como se audita.
+---
 
-## Identidades Humanas y No Humanas
+## 2. El Atajo Letal: El Asterisco (*)
 
-Humanas:
+El mayor amigo del hacker en la nube se llama Asterisco (`*`), que en informática significa **"Todo" o "Comodín"**.
 
-- Administradores.
-- Desarrolladores.
-- Analistas.
-
-No humanas:
-
-- Apps.
-- Service accounts.
-- Roles.
-- Pipelines CI/CD.
-- Funciones serverless.
-
-## Problema Común
-
-Permisos amplios por comodidad.
-
-Ejemplo conceptual:
-
-```text
-admin para todo porque asi funciona rápido
-```
-
-Riesgo:
-
-- Si esa identidad se compromete, el impacto es enorme.
-
-## Principios
-
-### Mínimo Privilegio
-
-Dar solo los permisos necesarios.
-
-### Just-in-Time
-
-Elevar permisos solo cuando se necesitan y por tiempo limitado.
-
-### Separación de Funciones
-
-Evitar que una sola identidad pueda hacer todo el flujo crítico sin revisión.
-
-### Deny por Defecto
-
-Permitir explicitamente lo necesario. Bloquear lo demas.
-
-## Políticas
-
-Una política debe responder:
-
-- Quién?
-- Puede hacer qué acción?
-- Sobre qué recurso?
-- Bajo qué condicion?
-
-## Anatomia Conceptual de una Política
+Si el Administrador de Sistemas de tu empresa tiene mucha prisa el viernes en la tarde, y le da pereza escribir exactamente qué bodegas puede tocar el empleado, escribirá esto:
 
 ```json
 {
   "Effect": "Allow",
-  "Action": ["storage:GetObject"],
-  "Resource": ["bucket/reportes/*"],
-  "Condition": {
-    "MFA": true
-  }
+  "Action": "s3:*",
+  "Resource": "*"
 }
 ```
+*   `Action: s3:*` -> Puedes hacer **CUALQUIER COSA** en el mundo del almacenamiento (Leer, Borrar, Modificar, Eliminar bodegas enteras).
+*   `Resource: *` -> Sobre **CUALQUIER BODEGA** del mundo que exista en esta empresa.
 
-Lo importante no es memorizar sintaxis de un proveedor. Lo importante es entender:
+A esto se le llama **Over-permissive Policies** (Políticas con exceso de permisos). Si el hacker roba esta llave, acaba de obtener el poder de borrar las bases de datos de toda la compañía con un solo enter.
 
-- Efecto: permite o niega;
-- Acción: que puede hacer;
-- Recurso: sobre que;
-- Condicion: cuando aplica.
+---
 
-## Condiciones
+## 3. Asumir Roles (Ponerse la Máscara)
 
-Ejemplos de condiciones:
+Pero los hackers reales apuntan aún más alto. Apuntan a la característica más avanzada de IAM: El **AssumeRole** (Asumir un Rol).
 
-- Solo desde cierta red.
-- Solo con MFA.
-- Solo para ciertos recursos.
-- Solo durante cierto flujo.
+*   **La Analogía:** Es el equivalente corporativo a ponerse una máscara de látex de otra persona.
+*   Imagina que la cuenta de un becario (Junior) tiene una política muy aburrida que solo le permite leer manuales.
+*   PERO, el becario tiene una línea mágica en su JSON que dice: `sts:AssumeRole`.
 
-Condiciones útiles:
+Esa línea significa: *"Tú eres un becario débil, pero tienes permiso de caminar al armario, agarrar el uniforme del CEO, ponértelo, y durante 1 hora el sistema pensará que eres el CEO"*.
 
-- MFA presente.
-- IP corporativa.
-- Region permitida.
-- Tags del recurso.
-- Tiempo de sesión.
-- Identidad asumida por servicio especifico.
+### El Ataque de Escalada (Privilege Escalation)
+1. El hacker envía un correo de Phishing al becario y le roba su llave (API Key).
+2. El hacker revisa la llave y nota que el becario no puede borrar servidores, pero sí tiene el poder `AssumeRole`.
+3. El hacker le manda un comando a Amazon: *"Hola, soy el becario. Quiero usar mi poder de Asumir Rol para ponerme el uniforme del Administrador de Bases de Datos"*.
+4. Amazon verifica que el becario sí tiene ese poder en su JSON, y le entrega un uniforme temporal (Temporary Security Credentials).
+5. El hacker, usando el nuevo uniforme, borra todos los servidores de la empresa.
 
-## Access Keys
+Para el Blue Team, cuando revisen las cámaras (CloudTrail), verán que "El Administrador de Bases de Datos" borró los servidores. Tardarán horas en rastrear que en realidad era el becario usando una máscara.
 
-Riesgos:
+---
 
-- Llaves antiguas.
-- Llaves en repositorios.
-- Llaves en laptops.
-- Llaves sin rotación.
+## 4. Criterio de Dominio (Autoevaluación)
 
-Controles:
+Revisa si puedes leer el ajedrez de las políticas:
 
-- Usar roles cuando sea posible.
-- Rotación.
-- Secret scanning.
-- Alertas de uso anomalo.
-- Eliminar llaves no usadas.
-
-## Roles vs Llaves Permanentes
-
-Siempre que sea posible, prefiere roles temporales sobre llaves permanentes.
-
-Ventajas:
-
-- Credenciales con expiracion;
-- Menor riesgo si se filtran;
-- Mejor integración con servicios;
-- Auditoria más clara;
-- Menos secretos en laptops y repositorios.
-
-## Privilege Escalation en IAM
-
-Puede ocurrir cuando una identidad puede otorgarse permisos, asumir roles amplios o modificar políticas.
-
-Preguntas:
-
-- Esta identidad puede cambiar sus propios permisos?
-- Puede crear llaves?
-- Puede asumir roles privilegiados?
-- Puede modificar políticas?
-- Puede desactivar logs?
-
-## Rutas Conceptuales de Escalacion
-
-Sin entrar en abuso operativo, estas son clases de riesgo que debes reconocer:
-
-- Una identidad puede adjuntar políticas admin;
-- Una identidad puede crear o rotar llaves de otra cuenta;
-- Una identidad puede asumir un rol más privilegiado;
-- Una identidad puede modificar funciones o pipelines que corren con permisos altos;
-- Una identidad puede desactivar logs o borrar evidencia;
-- Una identidad puede leer secretos usados por servicios críticos.
-
-## Logging Importante
-
-Monitorea:
-
-- Creación de access keys;
-- Uso de root/admin;
-- Cambios de políticas;
-- Roles asumidos;
-- Cambios de trust policy;
-- Desactivación de logs;
-- Cambios de MFA;
-- Acceso a secretos;
-- Permisos agregados a identidades.
-
-## Revisión Periodica
-
-Preguntas:
-
-- Qué identidades no se usan?
-- Qué llaves están viejas?
-- Qué cuentas no tienen MFA?
-- Qué permisos wildcard existen?
-- Qué roles pueden asumir humanos?
-- Qué identidades pueden modificar IAM?
-- Qué secretos no tienen owner?
-
-## Ejemplo de Análisis de Política
-
-Esta política representa privilegios excesivos:
-
-```text
-Identity: app-prod
-Actions: *
-Resource: *
-Condition: none
-```
-
-El análisis debe explicar:
-
-- Qué riesgo tiene?
-- Qué permisos probablemente necesita una app normal?
-- Cómo reducirias privilegios?
-- Qué logs activarias?
-
-## Criterios de Revisión IAM
-
-Una revisión IAM avanzada debe razonar sobre:
-
-- Identidades humanas y no humanas;
-- Permisos mínimos para cada identidad;
-- Permisos peligrosos;
-- Condiciones como origen, recurso, MFA o tiempo;
-- Logs y alertas;
-- Alternativas menos permisivas que `Action: * Resource: *`.
-
-## Controles Que Deben Entenderse
-
-- MFA en identidades humanas sensibles reduce abuso de credenciales.
-- Evitar uso diario de root reduce impacto operativo.
-- Roles temporales son preferibles a llaves permanentes.
-- Llaves viejas aumentan superficie de compromiso.
-- Permisos wildcard deben estar justificados y limitados.
-- Logs protegidos evitan que un atacante borre evidencia.
-- Secretos fuera del código reducen fugas accidentales.
-- Revisión periodica de accesos reduce privilegios acumulados.
-
-## Errores Comunes
-
-- Dar admin para resolver rápido.
-- No distinguir identidad humana y no humana.
-- Dejar llaves en repositorios.
-- No revisar rutas de escalacion.
-- No proteger logs contra modificacion.
-- No tener owner de cada identidad.
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Diferenciar identidad humana y no humana.
-- Explicar riesgo de access keys.
-- Explicar mínimo privilegio en IAM.
-- Identificar rutas de escalacion de privilegios conceptuales.
-- Diseñar una revisión IAM con logs, condiciones y remediación.
+1. Estás auditando una cuenta de AWS y ves una política con la acción `iam:CreateUser` combinada con el recurso `*`. ¿Por qué esto es una catástrofe? (Pista: Piensa en lo que podría hacer el hacker si tiene el poder de crear nuevos usuarios invisibles).
+2. En términos de permisos, ¿Qué significa el uso del símbolo comodín `*` en un archivo JSON de IAM, y por qué los auditores de seguridad marcan su uso injustificado como un fallo crítico?
+3. ¿Cómo funciona la técnica de "Asumir un Rol" (AssumeRole) como un vector para que un atacante convierta una cuenta de bajo privilegio en una de alto privilegio?
+4. Si tú eres el Arquitecto de Seguridad de la empresa, ¿Por qué aplicar la doctrina de "Principio del Menor Privilegio" (Principle of Least Privilege) desde el día uno evita que un ataque de *AssumeRole* destruya a tu empresa?
