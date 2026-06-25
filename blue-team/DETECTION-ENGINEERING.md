@@ -1,194 +1,52 @@
-# Detection Engineering
+# Detection Engineering: El Ingeniero de Trampas
 
-## Objetivo
+## Objetivo del Módulo
 
-Aprender a diseñar detecciones mantenibles y útiles, no solo alertas ruidosas.
+Entender por qué el SOC moderno no depende de que los guardias estén despiertos, sino de que las trampas estén bien diseñadas.
 
-Detection Engineering convierte conocimiento de amenazas en reglas operables. Una detección buena no solo dispara una alerta; también explica que revisar, por que importa y que hacer después.
+El **Detection Engineering** (Ingeniería de Detección) es una de las carreras mejor pagadas dentro del Blue Team. No son los que miran la pantalla para ver si hay un virus (Ese es el Analista Tier 1). Son los programadores que **escriben las reglas** (las alertas del SIEM) para que la pantalla encienda su alarma roja de forma automática.
 
-## Mapa Mental
+---
 
-```text
-comportamiento -> fuente de datos -> lógica -> prueba -> tuning -> documentacion -> operacion
-```
+## 1. El Problema: Comprar una Caja Mágica
 
-La pregunta central:
+Hace 10 años, los bancos compraban un SIEM millonario, lo enchufaban, lo encendían y decían: *"Listo, estamos seguros, el SIEM atrapará a los hackers"*.
+La realidad es que un SIEM vacío es solo un disco duro muy caro. No atrapa absolutamente a nadie si nadie le enseña qué buscar.
 
-```text
-Qué comportamiento malicioso o riesgoso quiero detectar, y qué evidencia lo demuestra?
-```
+El fabricante del SIEM (ej. Splunk) te incluye 500 reglas de detección "Por Defecto". Pero las reglas por defecto son genéricas y horribles. 
+*   Una regla por defecto dirá: *"Generar alerta si un usuario inicia sesión desde un país distinto a su país habitual"*.
+*   Si tu empresa es una Aerolínea Internacional donde todos los empleados viajan todos los días, esa regla generará 20,000 Falsos Positivos diarios y destruirá la paz mental de tu SOC.
 
-## Qué es Detection Engineering
+---
 
-Es el proceso de crear, probar, desplegar y mantener reglas de detección.
+## 2. El Trabajo del Ingeniero (Escribir la Trampa)
 
-Busca responder:
+El Detection Engineer es como el trampero del bosque. Su trabajo es entender la geografía específica de su propio bosque (su empresa) y poner trampas que atrapen a los osos (hackers), pero que no lastimen a los conejos (empleados legítimos).
 
-- Qué comportamiento queremos detectar?
-- Qué datos lo prueban?
-- Qué falsos positivos esperamos?
-- Qué acción debe tomar el analista?
+### El Ciclo de Vida de una Detección:
+1.  **Investigación (Threat Intel):** El Ingeniero lee en Twitter o en MITRE ATT&CK que los hackers rusos están usando un comando llamado `vssadmin.exe delete shadows` para borrar los respaldos antes de detonar el Ransomware.
+2.  **Escritura (La Lógica):** El Ingeniero abre el SIEM y escribe una regla: *"Si cualquier computadora ejecuta la palabra `vssadmin` seguida de `delete shadows`, detona la Alerta Crítica"*.
+3.  **Tuning (Afinación):** El Ingeniero enciende la alerta en modo "Silencio" por una semana. Descubre que el software oficial de respaldos de la empresa usa ese mismo comando a las 2:00 AM los domingos. El Ingeniero modifica la regla: *"Detona la alerta... EXCEPTO si es domingo a las 2:00 AM y lo hace el usuario Sistema_Backup"*.
+4.  **Despliegue:** La alerta se enciende oficialmente en el SOC.
 
-## Ciclo de Vida
+---
 
-1. Hipótesis.
-2. Fuente de datos.
-3. Lógica de detección.
-4. Prueba.
-5. Tuning.
-6. Documentacion.
-7. Despliegue.
-8. Monitoreo.
-9. Mejora.
+## 3. El Dilema del Detection Engineer (Recall vs Precision)
 
-## Hipótesis de Detección
+El Ingeniero vive en un estrés constante tratando de balancear dos matemáticas:
 
-Una hipótesis clara se escribe asi:
+*   **Recall (No perderse a ningún hacker):** Si haces una regla demasiado general (Ej. *"Alerta si se abre una terminal negra"*), atraparás al 100% de los hackers. El problema es que también atraparás al 100% de los programadores de la empresa (Miles de Falsos Positivos).
+*   **Precision (No molestar al SOC):** Si haces una regla demasiado específica (Ej. *"Alerta si el archivo se llama exactamente `virus_ruso.exe`"*), tendrás cero falsos positivos (Paz mental para el SOC). Pero si el hacker renombra el archivo a `virus_chino.exe`, el hacker pasará por enfrente de la cámara y la regla fallará (Falso Negativo).
 
-```text
-Si [comportamiento] ocurre en [entidad] bajo [condiciones], podria indicar [riesgo].
-```
+El trabajo del Ingeniero de Detección es encontrar el punto medio exacto donde se atrapa el comportamiento del hacker, sin generar "Fatiga de Alertas" en los analistas de Nivel 1.
 
-Ejemplo:
+---
 
-```text
-Si una cuenta tiene muchos logins fallidos y luego uno exitoso desde la misma IP en pocos minutos, podria indicar password spraying o fuerza bruta exitosa.
-```
+## 4. Criterio de Dominio (Autoevaluación)
 
-## Partes de una Detección
+Revisa si podrías diseñar trampas lógicas:
 
-- Nombre.
-- Objetivo.
-- Tactica MITRE.
-- Técnica MITRE.
-- Fuente de logs.
-- Campos requeridos.
-- Lógica.
-- Severidad.
-- Falsos positivos.
-- Respuesta recomendada.
-
-## Campos Requeridos
-
-Antes de escribir lógica, confirma que los logs tienen campos suficientes:
-
-- Usuario;
-- IP origen;
-- Host;
-- Timestamp;
-- Resultado;
-- Proceso;
-- Command line;
-- Parent process;
-- Recurso afectado;
-- Acción.
-
-Si el campo no existe o no es confiable, la detección sera débil.
-
-## Buena Detección
-
-Una buena detección:
-
-- Tiene contexto.
-- Es accionable.
-- Tiene pocos falsos positivos.
-- Explica que revisar.
-- Está documentada.
-- Tiene owner.
-
-## Mala Detección
-
-Ejemplo:
-
-```text
-Alertar cada vez que se ejecuta powershell.exe.
-```
-
-Problema:
-
-- Demasiado ruido.
-- PowerShell también es legitimo.
-
-Mejor:
-
-```text
-PowerShell ejecutado por Office con parametros codificados y conexion externa.
-```
-
-## Medir Calidad
-
-Indicadores:
-
-- Precision: cuantas alertas son útiles;
-- Recall: cuanto comportamiento real cubre;
-- Tiempo de investigación;
-- Falsos positivos;
-- Falsos negativos conocidos;
-- Cobertura MITRE;
-- Claridad del playbook.
-
-## Tuning
-
-Tuning no significa apagar alertas. Significa mejorar contexto.
-
-Ejemplos:
-
-- Excluir cuentas de servicio conocidas;
-- Agregar allowlist temporal con fecha de expiracion;
-- Subir severidad si el activo es crítico;
-- Agrupar eventos repetidos;
-- Agregar condiciones de comportamiento.
-
-## Ejemplo de Diseño
-
-Una detección común busca:
-
-```text
-Múltiples logins fallidos seguidos por login exitoso desde la misma IP.
-```
-
-Debe definir:
-
-- Fuentes.
-- Campos.
-- Ventana temporal.
-- Umbral.
-- Falsos positivos.
-- Severidad.
-- Pasos de investigación.
-
-## Criterios de una Detección
-
-Una detección bien pensada debe describir:
-
-- Nombre;
-- Hipótesis;
-- Riesgo;
-- Fuente de datos;
-- Campos requeridos;
-- Lógica conceptual;
-- MITRE;
-- Severidad;
-- Falsos positivos;
-- Pasos de triage;
-- Acciones de respuesta;
-- Forma segura de probarla.
-
-## Errores Comunes
-
-- Detectar herramientas en vez de comportamientos.
-- No documentar fuentes y campos.
-- No probar con casos benignos.
-- No mantener reglas después de desplegarlas.
-- Crear alertas que no tienen acción.
-- No definir owner.
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Explicar ciclo de detection engineering.
-- Diseñar una detección accionable.
-- Documentar falsos positivos.
-- Relacionar detección con MITRE.
-- Explicar como medir y ajustar la calidad de una detección.
+1. ¿Por qué comprar un Antivirus o un SIEM "Directo de Fábrica" sin contratar a un Detection Engineer para afinar sus reglas es garantizar que el software será inútil en menos de un mes?
+2. Diseñas una regla de detección para atrapar el comando `whoami` (Un comando inofensivo pero muy usado por los hackers apenas logran entrar al servidor). Si enciendes esta regla en una empresa de desarrollo de software, ¿Generarás un problema de "Recall" (Perder al hacker) o un problema de "Precision" (Demasiados Falsos Positivos)?
+3. Durante la fase de Afinación (Tuning), decides agregar una excepción a tu regla para que ignore todas las alertas que vengan de la IP `10.0.0.50`, porque es la IP del Administrador de Red. ¿Por qué agregar "Excepciones de IPs" fijas (Whitelisting ciego) es un sueño hecho realidad para un Hacker Ofensivo (Red Team)?
+4. En el ciclo del Blue Team moderno, ¿Por qué un Ingeniero de Detección debe trabajar de la mano y leer constantemente la matriz de MITRE ATT&CK?

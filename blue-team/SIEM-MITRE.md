@@ -1,231 +1,64 @@
-# SIEM y MITRE ATT&CK
+# SIEM y MITRE ATT&CK: El Cerebro y El Diccionario
 
-## Objetivo
+## Objetivo del Módulo
 
-Entender como se centralizan eventos y como se clasifican técnicas de adversarios.
+Entender qué es la pantalla negra gigantesca que miran todos los Analistas SOC y cómo la industria mundial se puso de acuerdo en un solo lenguaje para describir a los criminales cibernéticos.
 
-Un SIEM no es magia. Es una herramienta para hacer preguntas sobre eventos. MITRE ATT&CK tampoco es una herramienta; es un lenguaje para describir comportamiento adversario. Juntos ayudan a pasar de "vi algo raro" a "tengo una hipótesis investigable".
+---
 
-## Mapa Mental
+## 1. El SIEM: El Cerebro Central (La Pantalla Gigante)
 
-```text
-fuente de log -> normalizacion -> busqueda -> correlacion -> alerta -> investigacion -> respuesta
-```
+En el módulo anterior aprendimos que un banco tiene "cámaras" por todas partes (Firewalls, Antivirus, Servidores Web, Windows).
 
-Si falta una fuente de log, puede faltar visibilidad. Si falta contexto, puede sobrar ruido.
+El problema físico es que no puedes poner a un Analista SOC a mirar 50 monitores diferentes (uno para el Firewall, otro para Windows, otro para Linux). Se volvería loco.
 
-## Qué es un SIEM
+La solución es el **SIEM (Security Information and Event Management)**.
+Plataformas como **Splunk, IBM QRadar o Wazuh** son gigantescas aspiradoras de datos. 
+1. Absorben todos los logs de todas las cámaras del mundo en tiempo real.
+2. Los traducen al mismo idioma (Parsing / Normalización).
+3. Los muestran en un solo monitor, una sola barra de búsqueda para el Analista.
 
-SIEM significa Security Information and Event Management.
+Si buscas la IP `10.0.0.5` en el SIEM, el SIEM te dirá instantáneamente: *"Esa IP fue vista por el Firewall hace 2 horas, fue vista por el Antivirus hace 1 hora, y acaba de iniciar sesión en Windows hace 5 minutos"*.
+El SIEM correlaciona eventos dispersos y arma la película completa del robo.
 
-Un SIEM ayuda a:
+---
 
-- Recolectar logs.
-- Buscar eventos.
-- Correlacionar actividad.
-- Crear alertas.
-- Investigar incidentes.
-- Comunicar resultados.
+## 2. MITRE ATT&CK: La Enciclopedia del Crimen
 
-Ejemplos de fuentes:
+Imagina que dos Analistas SOC están platicando en la cafetería.
+El Analista 1 dice: *"Ayer nos hackearon. El atacante usó un script de PowerShell para leer las contraseñas de la memoria RAM"*.
+El Analista 2 dice: *"Ah sí, a nosotros también nos hicieron Dump de LSASS"*.
 
-- Windows.
-- Linux.
-- Firewalls.
-- EDR.
-- Cloud.
-- Aplicaciones web.
-- VPN.
-- DNS.
+Están hablando del mismo ataque, pero usando palabras diferentes. Si el FBI quiere llevar un conteo mundial de crímenes, no puede tener 100 nombres para la misma técnica.
 
-## Pipeline de Logs
+Aquí entra **MITRE ATT&CK**. Es una organización financiada por el gobierno de EE.UU. que creó una "Tabla Periódica" del hacking. Es un diccionario universal gratuito.
 
-Un evento suele pasar por varias etapas:
+En lugar de decir *"Leyó contraseñas de la RAM"*, el mundo entero (Rusia, China, EE.UU.) acordó llamarle por su código único: **T1003 (OS Credential Dumping)**.
 
-1. Generación en el sistema origen.
-2. Recoleccion por agente, API o syslog.
-3. Normalizacion de campos.
-4. Enriquecimiento con contexto.
-5. Almacenamiento.
-6. Busqueda y correlación.
-7. Alerta o reporte.
+### Tácticas y Técnicas
+El framework divide todos los ataques del mundo en:
+*   **Tácticas (El QUÉ):** ¿Qué quiere lograr el hacker? (Ej. Quiere "Ganar Acceso Inicial", o quiere "Robar Credenciales").
+*   **Técnicas (El CÓMO):** ¿Cómo lo va a lograr? (Ej. Para "Ganar Acceso Inicial", usó la técnica **T1566: Phishing**).
 
-Campos útiles:
+---
 
-- Timestamp;
-- Host;
-- Usuario;
-- IP origen;
-- IP destino;
-- Acción;
-- Resultado;
-- Proceso;
-- Recurso;
-- Severidad;
-- Correlation ID.
+## 3. La Fusión: Cuando el SIEM conoce a MITRE
 
-## Qué Hace una Buena Consulta
+El trabajo moderno de un Defensor ya no es solo "configurar el SIEM". Es mapear el SIEM con la tabla de MITRE.
 
-Una buena busqueda:
+Cuando un hacker (Red Team) ataca, sus pasos dejan huellas. El Analista SOC crea reglas en el SIEM que dicen:
+*"Si la computadora detecta que alguien abrió Microsoft Word e inmediatamente Word ejecutó PowerShell en la sombra... Enciende la Alerta Roja, y ponle la etiqueta **T1059: Command and Scripting Interpreter**"*.
 
-- Tiene una pregunta clara.
-- Filtra por tiempo.
-- Filtra por entidades.
-- Evita ruido innecesario.
-- Permite explicar resultados.
+> **El Beneficio:**
+> Cuando la alerta llega a la pantalla del Analista Junior a las 3:00 AM, el analista no tiene que adivinar qué intentaba hacer el atacante. Ve la etiqueta `T1059`, la busca en la página gratuita de MITRE, y lee el manual exacto de cómo detener el ataque. MITRE hace que los defensores novatos puedan pelear contra hackers profesionales.
 
-Ejemplo de pregunta:
+---
 
-```text
-Qué usuarios tuvieron más de 10 logins fallidos en 15 minutos?
-```
+## 4. Criterio de Dominio (Autoevaluación)
 
-Preguntas malas:
+Revisa si hablas el idioma universal:
 
-```text
-Hay hackers?
-Paso algo raro?
-Alguien entro?
-```
-
-Preguntas mejores:
-
-```text
-Qué usuarios tuvieron login exitoso despues de muchos fallos desde la misma IP?
-Qué endpoints ejecutaron procesos inusuales despues de abrir un adjunto?
-Qué cuentas admin se usaron fuera de horario?
-```
-
-## Correlación
-
-Correlación es unir eventos relacionados.
-
-Ejemplo:
-
-1. Muchos logins fallidos.
-2. Login exitoso.
-3. Cambio de contraseña.
-4. Acceso a datos sensibles.
-
-Separados pueden parecer eventos normales. Juntos pueden indicar compromiso.
-
-## Normalizacion
-
-Cada fuente puede llamar diferente al mismo concepto:
-
-| Concepto | Ejemplos de campo |
-| --- | --- |
-| Usuario | user, username, account, subject_user |
-| IP origen | src_ip, source_ip, client_ip |
-| IP destino | dst_ip, destination_ip |
-| Resultado | action, outcome, status |
-
-Una detección mantenible necesita saber que campos existen y como se llaman.
-
-## MITRE ATT&CK
-
-MITRE ATT&CK es una base de conocimiento de tacticas y técnicas usadas por adversarios.
-
-No es una herramienta. Es un lenguaje común para describir comportamiento.
-
-## Tacticas
-
-Ejemplos:
-
-- Initial Access.
-- Execution.
-- Persistence.
-- Privilege Escalation.
-- Defense Evasion.
-- Credential Access.
-- Discovery.
-- Lateral Movement.
-- Collection.
-- Exfiltration.
-- Impact.
-
-## Técnicas
-
-Una tactica responde "para que". Una técnica responde "como".
-
-Ejemplo:
-
-- Tactica: Credential Access.
-- Técnica: Brute Force.
-
-## Por Qué Sirve
-
-MITRE ayuda a:
-
-- Clasificar alertas.
-- Explicar comportamiento.
-- Diseñar detecciones.
-- Encontrar huecos de visibilidad.
-- Comunicar incidentes.
-
-## Cobertura
-
-No basta con decir "tenemos SIEM". Pregunta:
-
-- Qué técnicas podemos detectar?
-- Qué técnicas no tienen logs?
-- Qué alertas son ruidosas?
-- Qué detecciones tienen owner?
-- Qué casos de uso son prioritarios?
-
-## Ejemplo de Mapeo
-
-Este caso permite mapear comportamiento a MITRE ATT&CK:
-
-```text
-Un usuario tuvo 50 logins fallidos, luego uno exitoso, y despues ejecuto comandos para listar usuarios.
-```
-
-El mapeo debe identificar:
-
-- Posible tactica 1.
-- Posible técnica 1.
-- Posible tactica 2.
-- Posible técnica 2.
-- Logs que necesitarias.
-
-También debe considerar:
-
-- Consulta conceptual;
-- Falsos positivos posibles;
-- Acción recomendada;
-- Severidad justificada.
-
-## Criterios de un Caso de Uso SIEM
-
-Un caso de uso SIEM debe explicar:
-
-- Pregunta de investigación;
-- Fuentes de log;
-- Campos requeridos;
-- Lógica conceptual;
-- Ventana temporal;
-- Umbral;
-- MITRE tactica/técnica;
-- Falsos positivos;
-- Pasos de investigación;
-- Respuesta recomendada.
-
-## Errores Comunes
-
-- Crear alertas sin pregunta clara.
-- No conocer los campos de la fuente.
-- Mapear MITRE sin explicar comportamiento.
-- Alertar por eventos normales sin contexto.
-- No documentar falsos positivos.
-- Pensar que más logs siempre significa mejor detección.
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Explicar que es un SIEM.
-- Explicar correlación.
-- Explicar tactica vs técnica.
-- Usar MITRE para describir una alerta.
-- Diseñar una consulta conceptual con fuentes, campos y respuesta.
+1. Estás configurando un SIEM nuevo. Decides conectar los Logs del Firewall (Cisco) y los Logs de Windows. Cisco escribe la palabra `source_ip` para referirse al origen, mientras que Windows escribe `ClientAddress`. ¿Por qué es obligatorio que el SIEM pase por un proceso de "Normalización" antes de guardar esos logs?
+2. Un reporte de auditoría del Red Team dice: *"Logramos vulnerar el servidor usando la técnica T1110 (Brute Force) de MITRE ATT&CK"*. Si buscas `T1110` en Google, ¿Encontrarás un tutorial de cómo hackear a tu empresa específica, o encontrarás un resumen teórico universal de cómo funciona la Fuerza Bruta?
+3. ¿Por qué el Framework MITRE ATT&CK es más útil para el Blue Team (Defensores) que la propia calculadora de miedo CVSS que vimos en el módulo anterior?
+4. Un directivo te pregunta: *"¿Para qué pagamos $50,000 USD al año por la licencia del SIEM Splunk si ya tenemos un Antivirus y un Firewall instalados que hacen su propio trabajo?"*. Usando la analogía de las cámaras y la visión global, ¿Cómo justificas la compra del SIEM?

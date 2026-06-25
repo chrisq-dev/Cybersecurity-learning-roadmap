@@ -1,351 +1,61 @@
-# Fundamentos Blue Team
+# Fundamentos del Blue Team: El Centro de Mando
 
-## Objetivo
+## Objetivo del Módulo
 
-Aprender a pensar como analista defensivo: observar, investigar, documentar y responder.
+Desmitificar el trabajo del 90% de los profesionales de Ciberseguridad en el mundo. 
 
-Blue Team no es solo mirar alertas. Es convertir señales incompletas en una decisión defendible: falso positivo, actividad esperada, incidente real o riesgo que requiere mejora de controles.
+A todos les gusta la idea de ser el hacker que rompe el banco (Red Team). Pero la realidad de la industria es que romper algo toma 5 horas, mientras que protegerlo toma 365 días al año. El **Blue Team (Equipo Azul)** es el ejército corporativo encargado de la defensa técnica. Son los analistas que detectan, cazan y expulsan a los hackers de la red de la empresa.
 
-El objetivo de esta guía es que entiendas:
+---
 
-- Que es una alerta;
-- Que es evidencia;
-- Como formular hipótesis;
-- Como validar;
-- Como estimar impacto;
-- Como recomendar acciones;
-- Como comunicar conclusiones.
+## 1. La Analogía: El SOC y Las Cámaras de Seguridad
 
-## Modelo Mental
+Imagina un Banco físico gigantesco con 500 sucursales.
 
-```text
-alerta -> evidencia -> contexto -> hipótesis -> validación -> impacto -> acción -> reporte
-```
+*   El **Red Team** es un grupo de mercenarios contratados una vez al año para intentar robar la bóveda. Si lo logran, entregan un reporte y se van a casa.
+*   El **Blue Team** es el equipo de seguridad que trabaja turnos de 24 horas, los 7 días de la semana, mirando las cámaras de seguridad.
 
-Un buen analista separa tres cosas:
+Este cuarto oscuro lleno de monitores donde los guardias miran las cámaras se llama **SOC (Security Operations Center)**.
+Un Analista SOC no está físicamente de pie en la puerta del banco con un arma. Está en un edificio a kilómetros de distancia, mirando miles de eventos por segundo en su pantalla. Su trabajo no es construir el banco, su trabajo es **Monitorear, Detectar y Responder**.
 
-- Hechos: evidencia observada;
-- Hipótesis: explicación posible;
-- Conclusión: decisión apoyada por evidencia.
+---
 
-## Qué Es Blue Team
+## 2. La Jerarquía del SOC (Los Niveles)
 
-Blue Team agrupa actividades defensivas. Incluye monitoreo, detección, respuesta a incidentes, hardening, análisis de logs, threat hunting, gestion de vulnerabilidades, mejora de controles y documentacion.
+Si entras a trabajar al área de Ciberseguridad Defensiva de una empresa como Amazon o un Banco Internacional, lo más probable es que entres en uno de estos niveles:
 
-La mentalidad defensiva no es "bloquear todo". Es entender riesgo, proteger lo importante, detectar desviaciones y responder con criterio.
+### Tier 1 (Analista de Triage / El Guardia Frontal)
+*   *El Trabajo:* Mirar la pantalla principal. Cuando suena una alarma (ej. *"Alguien intentó iniciar sesión 50 veces desde Rusia"*), el Analista Tier 1 abre la alerta.
+*   *La Decisión:* Su único trabajo es decidir si es un Falso Positivo ("Ah, es el Director de Ventas que está de viaje en Rusia y olvidó su contraseña") o si es un Ataque Real ("Es un hacker intentando robar la cuenta"). Si es real, lo "escala" al siguiente nivel.
 
-## Alerta vs Evento
+### Tier 2 (Incident Responder / El Detective)
+*   *El Trabajo:* Recibe la alerta escalada del Tier 1. Su trabajo ya no es mirar la pantalla general, es realizar una investigación profunda.
+*   *La Acción:* Extrae la computadora infectada de la red para que el virus no se propague, analiza qué archivos tocó el hacker y averigua cómo logró entrar.
 
-Un evento es algo que ocurrio.
+### Tier 3 (Threat Hunter / Las Fuerzas Especiales)
+*   *El Trabajo:* Es el nivel más alto. El Tier 3 asume que **el hacker ya está adentro y las alarmas (Tier 1) fallaron**.
+*   *La Acción:* No espera a que suene la pantalla. Sale proactivamente a cazar a la red. Analiza tráfico matemático extraño y escribe nuevas reglas para que los sistemas de alarma del futuro sean mejores.
 
-Ejemplos:
+---
 
-- Login fallido;
-- Proceso iniciado;
-- Archivo creado;
-- Conexión permitida;
-- DNS consultado.
+## 3. ¿De dónde vienen las cámaras? (La Telemetría)
 
-Una alerta es un evento o conjunto de eventos que cumple una regla de detección.
+Un guardia no puede vigilar un pasillo si no hay una cámara instalada.
+En Ciberseguridad, las "cámaras" son los softwares que recolectan información (Telemetría) de las computadoras.
 
-Ejemplo:
+*   **EDR (Endpoint Detection and Response):** Es un software avanzado (mucho más inteligente que un simple Antivirus) que se instala en la laptop de cada empleado. El EDR graba exactamente qué programa se abrió, a qué hora, y a qué IP de internet se conectó.
+*   **Firewalls y Proxies:** Las cámaras que vigilan la puerta de entrada y salida del edificio. Anotan quién entró y quién salió.
+*   **Logs del Servidor:** La bitácora del Mesero (Como vimos en el módulo de Web).
 
-```text
-10 logins fallidos para la misma cuenta en 2 minutos
-```
+Toda esta información gigantesca se envía por tuberías hacia el SOC para que el Analista (Tier 1) pueda verla.
 
-No toda alerta es incidente. No todo incidente genera alerta. Esa es una idea clave.
+---
 
-## Evidencia
+## 4. Criterio de Dominio (Autoevaluación)
 
-Evidencia es información observable que apoya o contradice una hipótesis.
+Revisa si tu mentalidad cambió de atacante a defensor:
 
-Ejemplos:
-
-- Log de autenticación;
-- Proceso ejecutado;
-- Hash de archivo;
-- Conexión de red;
-- Consulta DNS;
-- Correo recibido;
-- Cambio de permiso;
-- Acción en cloud;
-- Alerta EDR.
-
-Una conclusión fuerte necesita evidencia suficiente, no intuicion.
-
-## Contexto
-
-El contexto convierte datos en significado.
-
-Ejemplo:
-
-```text
-Login exitoso a las 03:12 desde otro pais
-```
-
-Puede ser:
-
-- Sospechoso si el usuario no viaja y no usa VPN;
-- Esperado si es un administrador de guardia usando VPN corporativa;
-- Ambiguo si faltan datos.
-
-Contexto útil:
-
-- Criticidad del activo;
-- Rol del usuario;
-- Ubicación esperada;
-- Horario laboral;
-- Cambios recientes;
-- Tickets de mantenimiento;
-- Comportamiento historico;
-- Exposición del sistema.
-
-## Flujo de Investigación
-
-1. Recibir alerta.
-2. Entender que dice.
-3. Identificar activo, usuario, IP, proceso o recurso involucrado.
-4. Reunir evidencia primaria.
-5. Formular hipótesis.
-6. Buscar actividad relacionada.
-7. Determinar impacto.
-8. Recomendar acción.
-9. Documentar conclusión.
-
-La investigación no debe empezar con conclusión. Debe empezar con preguntas.
-
-## Triage Inicial
-
-Antes de investigar profundo, aclara:
-
-- Qué alerta se disparo?
-- Qué fuente la genero?
-- Qué activo está involucrado?
-- Qué usuario aparece?
-- Qué hora tiene el evento?
-- Hay severidad asignada?
-- La alerta tiene regla o detección asociada?
-- El comportamiento tiene contexto legitimo?
-- Hay eventos repetidos?
-- Hay evidencia de éxito o solo intento?
-
-El objetivo del triage es decidir si se investiga más, se cierra como benigno o se escala.
-
-## Fuentes de Evidencia
-
-| Fuente | Que puede responder |
-| --- | --- |
-| Logs de autenticación | Quien inicio sesión, desde donde, cuando |
-| EDR | Procesos, comandos, archivos, conexiones |
-| DNS | Dominios consultados |
-| Proxy/Web gateway | URLs visitadas, descargas |
-| Firewall | Conexiones permitidas o bloqueadas |
-| Cloud logs | Acciones en recursos cloud |
-| Email gateway | Remitente, enlaces, adjuntos |
-| Logs de aplicación | Acciones realizadas dentro del sistema |
-| IAM | Cambios de permisos y roles |
-
-Ninguna fuente cuenta toda la historia. El analista correlaciona.
-
-## Hipótesis
-
-Una hipótesis es una explicación posible.
-
-Ejemplo:
-
-Alerta: múltiples fallos de login.
-
-Hipótesis:
-
-- Usuario olvido contraseña;
-- Servicio usa credencial vieja;
-- Intento de fuerza bruta;
-- Password spraying;
-- Actividad de scanner interno;
-- Ataque desde IP externa.
-
-Después buscas evidencia para confirmar o descartar.
-
-## Falso Positivo y Verdadero Positivo
-
-### Falso positivo
-
-La alerta se disparo, pero no representa actividad maliciosa ni riesgo relevante.
-
-Ejemplo:
-
-Un scanner autorizado genera tráfico que parece reconocimiento.
-
-### Verdadero positivo
-
-La alerta representa actividad real que requiere atención.
-
-Ejemplo:
-
-Login exitoso desde IP desconocida seguido de cambio de MFA y descarga masiva.
-
-La meta no es cerrar rápido. Es cerrar bien.
-
-## Severidad
-
-La severidad no debe depender solo de que una alerta suene peligrosa.
-
-Considera:
-
-- Criticidad del activo;
-- Privilegios del usuario;
-- Confirmacion de actividad maliciosa;
-- Alcance;
-- Persistencia;
-- Movimiento lateral;
-- Exfiltración;
-- Disponibilidad afectada;
-- Sensibilidad de datos;
-- Exposición externa.
-
-Ejemplo:
-
-```text
-Un login fallido aislado a una cuenta sin privilegios puede ser bajo.
-Un login exitoso desde pais inusual a una cuenta admin puede ser alto.
-```
-
-## MITRE ATT&CK
-
-MITRE ATT&CK ayuda a clasificar técnicas de adversarios.
-
-Ejemplos de tacticas:
-
-- Initial Access.
-- Execution.
-- Persistence.
-- Privilege Escalation.
-- Defense Evasion.
-- Credential Access.
-- Discovery.
-- Lateral Movement.
-- Exfiltration.
-
-Usalo para describir comportamiento, no para decorar reportes. Si dices "Credential Access", explica que evidencia muestra intento de obtener credenciales.
-
-## Acciones de Respuesta
-
-Las acciones dependen de evidencia e impacto.
-
-Ejemplos:
-
-- Bloquear IP;
-- Deshabilitar cuenta;
-- Revocar sesiones;
-- Aislar endpoint;
-- Rotar credenciales;
-- Restaurar desde backup;
-- Abrir incidente;
-- Ajustar regla de detección;
-- Pedir confirmacion a usuario;
-- Escalar a equipo responsable.
-
-Una acción defensiva también puede romper operación. Por eso hay que balancear rapidez, evidencia y riesgo.
-
-## Comunicación
-
-Un reporte defensivo debe ser claro.
-
-Debe responder:
-
-- Que paso;
-- Como se detecto;
-- Que evidencia existe;
-- Que impacto tiene;
-- Que se hizo;
-- Que falta;
-- Que se recomienda.
-
-Evita escribir solo tecnicismos. Seguridad debe comunicar riesgo a personas técnicas y no técnicas.
-
-## Ejemplo de Investigación
-
-Escenario:
-
-```text
-Usuario: admin
-Evento: login exitoso
-Origen: IP externa desconocida
-Hora: 03:12
-Sistema: panel administrativo
-```
-
-Preguntas:
-
-- El usuario `admin` existe y debe usarse?
-- La IP externa pertenece a VPN corporativa?
-- Hubo MFA?
-- Hay logins fallidos antes?
-- Hubo cambios después del login?
-- Se descargaron datos?
-- Se crearon usuarios?
-- Hay tickets de mantenimiento?
-- El usuario reconoce la actividad?
-
-Conclusiones posibles:
-
-- Benigno: acceso esperado por guardia documentada;
-- Sospechoso: login inusual sin cambios posteriores;
-- Incidente: login seguido de cambios, descargas o acciones no autorizadas.
-
-## Plantilla de Conclusión
-
-```md
-Con base en [evidencia], se observa [actividad].
-El impacto potencial es [impacto] porque [razon].
-La hipótesis más probable es [hipótesis].
-Se recomienda [acciones] y monitorear [indicadores].
-```
-
-## Errores Comunes
-
-- Cerrar alertas sin documentar por que.
-- Confundir ausencia de evidencia con evidencia de ausencia.
-- Saltar a conclusiones sin validar.
-- No revisar contexto del usuario o activo.
-- No proponer una acción concreta.
-- Reportar tecnicismos sin impacto.
-- Tratar toda alerta como incidente.
-- Ignorar actividad posterior al evento inicial.
-- No preservar evidencia.
-
-## Ejemplo de Análisis
-
-Este caso permite practicar razonamiento defensivo:
-
-```text
-Alerta: múltiples logins fallidos
-Usuario: jlopez
-Origen: 198.51.100.20
-Destino: VPN corporativa
-Hora: 02:44
-Resultado: 14 fallos y 1 exito
-```
-
-Preguntas:
-
-- Qué evidencia adicional pedirias?
-- Qué hipótesis existen?
-- Qué haria qué esto sea benigno?
-- Qué haria qué sea incidente?
-- Qué acciones tomarias primero?
-- Qué controles evitarian repeticion?
-
-## Criterio de Dominio
-
-Dominas este tema cuando puedes:
-
-- Diferenciar evento, alerta e incidente;
-- Separar evidencia, hipótesis y conclusión;
-- Explicar fuentes de evidencia;
-- Hacer triage inicial;
-- Justificar severidad con impacto;
-- Usar MITRE ATT&CK con sentido;
-- Proponer acciones proporcionales;
-- Escribir una conclusión clara y defendible.
+1. Un Red Team es contratado para un "Pentest" de 2 semanas en octubre. Terminan, entregan su reporte y se retiran. Si en diciembre un hacker ruso real ataca la empresa a las 3:00 AM un domingo, ¿A quién llamará el CEO del banco para detener el ataque en ese momento: al Red Team o al Blue Team (SOC)?
+2. Como Analista Tier 1 en el SOC, recibes una alerta de "Ataque de Inyección SQL detectado". Al revisar la alerta, notas que el ataque provino de la IP de la propia herramienta de escaneo de seguridad de tu empresa (`Nessus Scanner`). ¿Deberías escalar esto al Tier 2 y declarar un ciberataque, o deberías cerrarlo como un *Falso Positivo*?
+3. ¿Por qué el trabajo de un Threat Hunter (Tier 3) requiere que tenga profundos conocimientos de cómo piensa un Red Teamer (Hacker Ofensivo)?
+4. Si un empleado conecta una memoria USB infectada en su computadora de la oficina, ¿Qué herramienta específica (que funciona como la cámara de vigilancia de esa computadora) enviará inmediatamente la alerta al SOC: El Firewall perimetral o el agente EDR?

@@ -1,268 +1,60 @@
-# Threat Hunting
+# Threat Hunting: El Patrullaje Nocturno
 
-## Objetivo
+## Objetivo del Módulo
 
-Aprender a buscar actividad sospechosa de forma proactiva, no solo esperar alertas.
+Entender por qué esperar pasivamente a que suene la alarma del Antivirus es una garantía matemática de que serás hackeado, y cómo los mejores equipos defensivos del mundo operan bajo la mentalidad de "El hacker ya está adentro".
 
-Threat hunting es una habilidad clave para pasar de analista reactivo a analista que entiende comportamiento. No reemplaza alertas; ayuda a descubrir brechas de detección y a mejorar reglas existentes.
+El **Threat Hunting** (Caza de Amenazas) es el nivel más alto del Blue Team (Tier 3). Es el puente donde la mentalidad de ataque (Red Team) y la mentalidad de defensa (Blue Team) se fusionan.
 
-## Mapa Mental
+---
 
-```text
-hipótesis -> datos -> busqueda -> contexto -> hallazgo -> detección -> mejora
-```
+## 1. El Concepto: Assumed Breach (Asumir la Brecha)
 
-Un hunt sin hipótesis se convierte en navegar logs sin rumbo.
+Históricamente, la ciberseguridad se trataba de construir muros altos (Firewalls) e instalar guardias en las puertas (Antivirus). Si la alarma de la puerta no sonaba, el CEO dormía tranquilo.
 
-## Qué es Threat Hunting
+La doctrina moderna cambió esto con el concepto de **Assumed Breach**.
+El Threat Hunter llega a su escritorio el lunes por la mañana y asume religiosamente: *"Un hacker ruso ya vulneró nuestra puerta el domingo a las 3:00 AM. El Antivirus falló y el Firewall no lo vio. Está aquí adentro, escondido. Mi trabajo hoy es encontrarlo antes de que robe los datos"*.
 
-Threat hunting es una investigación guiada por hipótesis.
+En lugar de mirar la pantalla del SIEM esperando una alerta en rojo, el Threat Hunter agarra una linterna y sale a patrullar los pasillos oscuros del servidor.
 
-No empieza con:
+---
 
-```text
-La herramienta alerto.
-```
+## 2. ¿Cómo se ve una "Cacería" en la vida real?
 
-Empieza con:
+El Threat Hunter no busca virus con nombres extraños. Busca anomalías matemáticas y comportamientos sutiles.
 
-```text
-Creo que podria existir cierto comportamiento malicioso. Voy a buscar evidencia.
-```
+Imagina que el Threat Hunter de la empresa lanza una búsqueda (Query) en el SIEM:
+*"Muéstrame a todos los usuarios que iniciaron sesión con éxito a través de la Red Privada (VPN) desde las 12:00 AM hasta las 5:00 AM"*.
 
-## Hipótesis
+El SIEM le devuelve 3 nombres: María, Pedro y Juan.
+*   **María:** Es la Jefa de Sistemas. Es normal que trabaje de madrugada reparando servidores. (Inofensivo).
+*   **Pedro:** Es del equipo de Ventas Asiáticas. Es normal que se conecte a esta hora por la diferencia horaria. (Inofensivo).
+*   **Juan:** Es del departamento de Recursos Humanos de la oficina local. Su turno terminó a las 6:00 PM. **Anomalía.**
 
-Una hipótesis debe ser clara y verificable.
+El Threat Hunter empieza a "jalar el hilo" de Juan. 
+Busca en el SIEM: *"¿Qué hizo la computadora de Juan a las 2:15 AM?"*.
+El SIEM responde: *"La computadora de Juan ejecutó `powershell.exe` para codificar un archivo en formato ZIP"*.
 
-Ejemplo débil:
+La alarma del Antivirus nunca sonó porque usar la VPN y abrir PowerShell son funciones normales de Windows. No hay ningún virus. Pero el comportamiento es 100% el de un hacker (Exfiltración de datos). El Threat Hunter acaba de atrapar a un cibercriminal en vivo.
 
-```text
-Buscar hackers.
-```
+---
 
-Ejemplo bueno:
+## 3. El Resultado de la Cacería
 
-```text
-Un atacante que obtuvo credenciales podria intentar múltiples logins fallidos y luego un login exitoso desde una IP inusual.
-```
+Un Threat Hunter nunca regresa con las manos vacías. Al final del día, su cacería termina en uno de dos posibles resultados:
 
-## Hipótesis Buena
+1.  **Encuentra al Hacker:** El peor escenario. Llama de inmediato al equipo de Bomberos (Respuesta a Incidentes) para apagar las computadoras, aislar la red y expulsar al atacante antes de que termine de robar.
+2.  **No encuentra nada (El mejor escenario):** Descubre que Juan realmente estaba trabajando horas extras. Pero la cacería no fue inútil. El Threat Hunter toma lo que aprendió sobre los horarios de Juan, y le dice al *Detection Engineer*: *"Por favor, escribe una regla automática (Una Alerta) para que la próxima vez que un usuario de Recursos Humanos abra PowerShell en la madrugada, la alarma suene sola"*.
 
-Debe tener:
+De esta forma, la trampa manual se vuelve automática, y el ciclo de defensa de la empresa se vuelve más fuerte cada día.
 
-- Comportamiento observable;
-- Fuente de datos posible;
-- Entidad afectada;
-- Criterio de sospecha;
-- Resultado esperado.
+---
 
-Formato:
+## 4. Criterio de Dominio (Autoevaluación)
 
-```text
-Creo que [actor/comportamiento] podria [acción] en [entidad] y puedo buscarlo con [datos].
-```
+Revisa si tienes el instinto de cazador:
 
-## Fuentes de Datos
-
-- Logs de autenticación.
-- Eventos de procesos.
-- DNS.
-- Proxy.
-- Firewall.
-- EDR.
-- VPN.
-- Cloud audit logs.
-- Web server logs.
-
-## Tipos de Hunt
-
-### Basado en Hipótesis
-
-Parte de una idea concreta.
-
-### Basado en Inteligencia
-
-Parte de indicadores o técnicas conocidas.
-
-### Basado en Anomalias
-
-Parte de desviaciones respecto al comportamiento normal.
-
-### Basado en Cobertura
-
-Busca técnicas MITRE que no están cubiertas por alertas actuales.
-
-## Flujo de Hunting
-
-1. Crear hipótesis.
-2. Identificar datos necesarios.
-3. Buscar patrones.
-4. Revisar resultados.
-5. Separar normal de sospechoso.
-6. Documentar hallazgos.
-7. Crear detección si aplica.
-
-## Baseline
-
-Antes de llamar algo sospechoso, entiende que es normal.
-
-Ejemplos:
-
-- Horarios normales de login;
-- Paises o redes comunes;
-- Procesos habituales por rol;
-- Dominios frecuentes;
-- Cuentas de servicio esperadas;
-- Volumen normal de errores.
-
-Sin baseline, todo parece raro o nada parece raro.
-
-## Ejemplos de Hunts
-
-### Hunt 1: Logins Inusuales
-
-Hipótesis:
-
-```text
-Credenciales validas pueden usarse desde ubicaciones o IPs inusuales.
-```
-
-Datos:
-
-- Usuario.
-- IP origen.
-- Pais o ASN si existe.
-- Hora.
-- Resultado.
-
-Preguntas:
-
-- Es una IP nueva para ese usuario?
-- Hay muchos fallos antes del éxito?
-- Ocurre fuera de horario?
-- Hubo actividad posterior sensible?
-
-### Hunt 2: Uso Sospechoso de PowerShell
-
-Hipótesis:
-
-```text
-PowerShell puede usarse para ejecutar comandos sospechosos o automatizar acciones maliciosas.
-```
-
-Datos:
-
-- Proceso.
-- Comando.
-- Usuario.
-- Parent process.
-- Host.
-
-Preguntas:
-
-- Quién ejecuto PowerShell?
-- Desde qué proceso padre?
-- El comando está codificado?
-- Descarga contenido remoto?
-
-### Hunt 3: DNS Raro
-
-Hipótesis:
-
-```text
-Malware puede comunicarse con dominios inusuales o generados automaticamente.
-```
-
-Datos:
-
-- Dominio.
-- Host.
-- Frecuencia.
-- Longitud del dominio.
-- Respuesta DNS.
-
-Preguntas:
-
-- El dominio es nuevo?
-- Tiene muchos subdominios?
-- Se repite en varios hosts?
-- Hay tráfico posterior?
-
-### Hunt 4: Cuentas de Servicio Anomalas
-
-Hipótesis:
-
-```text
-Una cuenta de servicio comprometida puede usarse desde hosts o horarios no esperados.
-```
-
-Datos:
-
-- Cuenta;
-- Host origen;
-- Sistema destino;
-- Hora;
-- Acción;
-- Resultado.
-
-Preguntas:
-
-- La cuenta debería iniciar sesión interactivamente?
-- El host origen es esperado?
-- Hubo cambios de permisos?
-- Se accedieron recursos sensibles?
-
-## Formato de análisis de hunting
-
-```md
-# Threat Hunt
-
-## Hipótesis
-
-## Fuentes de Datos
-
-## Busquedas Realizadas
-
-## Resultados
-
-## Hallazgos
-
-## Falsos Positivos
-
-## Recomendaciones
-
-## Detecciones Propuestas
-```
-
-## Criterios Para Analizar Una Cuenta Comprometida
-
-Un hunt de cuenta comprometida debe razonar sobre:
-
-- Hipótesis: que comportamiento indicaria posible compromiso.
-- Fuentes de datos: autenticación, VPN, endpoint, correo, proxy, EDR o directorio.
-- Campos necesarios: usuario, IP origen, pais, dispositivo, hora, resultado, método de autenticación y recurso accedido.
-- Busquedas conceptuales: accesos imposibles, cambios bruscos de ubicación, fallos repetidos, inicios fuera de horario y acceso a recursos nuevos.
-- Baseline esperado: como se comporta normalmente esa cuenta.
-- Anomalias: que cambio es relevante y por que.
-- Falsos positivos: viajes, VPN corporativa, cambios de turno, automatizaciones o errores de sincronizacion.
-- Recomendación: restablecimiento de credenciales, revocacion de sesiones, MFA, revisión de permisos y monitoreo posterior.
-- Detección propuesta: regla que capture el patron sin generar ruido excesivo.
-
-## Errores Comunes
-
-- Buscar sin hipótesis.
-- No conocer normalidad del ambiente.
-- Confundir anomalia con incidente confirmado.
-- No documentar busquedas que no encontraron nada.
-- No convertir hallazgos repetibles en detecciones.
-- No pedir datos faltantes.
-
-## Criterio de Dominio
-
-Puedes avanzar cuando puedas:
-
-- Escribir una hipótesis verificable.
-- Identificar fuentes de datos.
-- Documentar resultados.
-- Proponer una detección nueva.
-- Explicar la diferencia entre anomalia, hallazgo e incidente.
+1. ¿Por qué el principio táctico de "Assumed Breach" (Asumir la Brecha) es mentalmente superior a la creencia clásica de "Nuestro Antivirus bloqueará todos los ataques"?
+2. Un Threat Hunter lanza una búsqueda en el SIEM buscando procesos de Windows que intenten comunicarse directamente con la IP `169.254.169.254` (La IP mágica de AWS). ¿Qué vulnerabilidad clásica de la fase ofensiva está intentando cazar este Defensor? *(Pista: Revisa el módulo de OWASP Top 10).*
+3. Explica por qué el éxito a largo plazo del Threat Hunting depende de tener un **Detection Engineer** competente en el equipo.
+4. "Para ser un buen Threat Hunter, necesitas ser un buen Red Teamer". Argumenta a favor o en contra de esta afirmación basándote en cómo el cazador elige qué anomalías buscar en los logs.
