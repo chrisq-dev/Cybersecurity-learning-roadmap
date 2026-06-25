@@ -36,7 +36,6 @@ COPY --from=builder --chown=nextjs:nodejs /app/web/.next/static /app/web/.next/s
 COPY --from=builder --chown=nextjs:nodejs /app/web/public /app/web/public
 
 COPY --from=builder --chown=nextjs:nodejs /app/INICIO-AQUI.md /app/
-COPY --from=builder --chown=nextjs:nodejs /app/assets /app/assets
 COPY --from=builder --chown=nextjs:nodejs /app/api-security /app/api-security
 COPY --from=builder --chown=nextjs:nodejs /app/appsec-devsecops /app/appsec-devsecops
 COPY --from=builder --chown=nextjs:nodejs /app/blue-team /app/blue-team
