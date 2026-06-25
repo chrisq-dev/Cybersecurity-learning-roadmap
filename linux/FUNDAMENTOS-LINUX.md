@@ -59,6 +59,9 @@ Cualquier disco duro, USB o red que conectes, simplemente se cuelga como una ram
 
 A diferencia de Windows o Mac, que son de una sola compañía (Microsoft / Apple), Linux es de código abierto (Open Source). Esto significa que cualquiera puede tomar el "Kernel" (el motor matemático de Linux) y construir su propia versión del sistema operativo poniéndole las aplicaciones que quiera. A estas versiones se les llama **Distribuciones** o *Distros*.
 
+> **Referencias Cruzadas:**
+> ¿Por qué Linux es gratuito y su código es público? Para entender la filosofía detrás del desarrollo colaborativo y cómo formó la base de la seguridad moderna, revisa nuestra guía sobre [Ética Hacker y Open Source](../cultura-geek/etica-hacker-y-open-source.md).
+
 Imagina que el Kernel de Linux es el helado de vainilla. Diferentes comunidades le ponen chispas de chocolate o galleta y lo empaquetan con un nombre distinto.
 
 ### Las Distros que verás en Ciberseguridad:

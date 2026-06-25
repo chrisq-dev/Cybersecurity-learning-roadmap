@@ -28,6 +28,9 @@ El término Phishing (Pescar) se refiere a lanzar un anzuelo al océano digital 
 *   **Vishing (Voice Phishing):** Fraude por teléfono (Visto mucho en fraudes bancarios).
 *   **Smishing (SMS Phishing):** El típico mensaje de texto "Su paquete de DHL fue retenido en aduana".
 
+> **Referencias Cruzadas:**
+> ¿Quieres ver cómo luce un ataque de Ingeniería Social (Spear Phishing / Vishing) orquestado a gran escala en la cultura pop? Lee nuestra guía de [Cómo Ver Mr. Robot Estudiando Ciberseguridad](../cultura-geek/como-ver-mr-robot.md).
+
 ---
 
 ## 2. La Fatiga de MFA (MFA Fatigue)

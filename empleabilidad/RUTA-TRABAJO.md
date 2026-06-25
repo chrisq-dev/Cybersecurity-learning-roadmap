@@ -23,6 +23,9 @@ Tienes que tratar tu perfil como si fuera un producto que le estás vendiendo a 
 **El Error del Novato:** El novato envía 10 CVs, y como nadie le llama, piensa que su perfil no sirve. La realidad es matemática: Aún no ha llenado la parte superior del embudo. 
 *Tu objetivo semanal debe ser enviar entre 30 y 50 aplicaciones altamente adaptadas (Tailoring - Fase 26).*
 
+> **Referencias Cruzadas:**
+> Si planeas usar certificaciones técnicas para aumentar la cantidad de empresas que te llaman (la cima del embudo), asegúrate de usarlas estratégicamente. Lee nuestra guía sobre [Cursos y Certificaciones Recomendadas](../recursos/cursos-y-certificaciones.md).
+
 ## 2. La Arquitectura de la Disciplina
 
 ### El Horario de Operaciones
