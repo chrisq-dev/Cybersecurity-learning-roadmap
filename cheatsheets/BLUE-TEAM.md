@@ -1,45 +1,45 @@
 # Cheatsheet Blue Team
 
-Referencia rapida para investigar alertas, separar evidencia de hipotesis y proponer respuesta.
+Referencia rapida para investigar alertas, separar evidencia de hipótesis y proponer respuesta.
 
 ## Preguntas de Alerta
 
-- Que paso?
-- Cuando paso?
-- Donde paso?
-- Que usuario?
-- Que IP?
+- Qué paso?
+- Cuándo paso?
+- Dónde paso?
+- Qué usuario?
+- Qué IP?
 - Hay actividad posterior?
 - Hay impacto?
-- Que accion tomar?
+- Qué acción tomar?
 
-## Triage Rapido
+## Triage Rápido
 
 | Pregunta | Por que importa |
 | --- | --- |
-| Que activo? | criticidad e impacto |
-| Que usuario? | privilegios y contexto |
-| Que IP/origen? | ubicacion y reputacion |
-| Que hora? | timeline |
-| Que fuente? | confiabilidad del dato |
-| Sigue activo? | urgencia de contencion |
+| Qué activo? | criticidad e impacto |
+| Qué usuario? | privilegios y contexto |
+| Qué IP/origen? | ubicación y reputación |
+| Qué hora? | timeline |
+| Qué fuente? | confiabilidad del dato |
+| Sigue activo? | urgencia de contención |
 
-## Evidencia vs Hipotesis
+## Evidencia vs Hipótesis
 
 - Evidencia: dato observado.
-- Hipotesis: explicacion posible.
-- Conclusion: evaluacion basada en evidencia.
+- Hipótesis: explicación posible.
+- Conclusión: evaluación basada en evidencia.
 
 ## Fuentes de Evidencia
 
-- logs de autenticacion;
+- Logs de autenticación;
 - EDR;
 - DNS;
-- proxy/web gateway;
-- firewall;
-- cloud audit logs;
-- email gateway;
-- logs de aplicacion.
+- Proxy/web gateway;
+- Firewall;
+- Cloud audit logs;
+- Email gateway;
+- Logs de aplicación.
 
 ## MITRE Tacticas
 
@@ -60,38 +60,38 @@ Referencia rapida para investigar alertas, separar evidencia de hipotesis y prop
 | --- | --- |
 | login inusual | Initial Access |
 | ejecucion de comandos | Execution |
-| creacion de tarea/servicio | Persistence |
+| creación de tarea/servicio | Persistence |
 | lectura de credenciales | Credential Access |
-| enumeracion de usuarios | Discovery |
+| enumeración de usuarios | Discovery |
 | descarga masiva | Collection/Exfiltration |
 
 ## Respuesta a Incidentes
 
 1. Preparacion.
-2. Identificacion.
-3. Contencion.
+2. Identificación.
+3. Contención.
 4. Erradicacion.
-5. Recuperacion.
+5. Recuperación.
 6. Lecciones aprendidas.
 
-## Contencion Comun
+## Contención Común
 
-- deshabilitar cuenta;
-- revocar sesiones;
-- aislar endpoint;
-- bloquear IP/dominio/hash;
-- hacer privado un recurso expuesto;
-- rotar credenciales;
-- preservar logs.
+- Deshabilitar cuenta;
+- Revocar sesiones;
+- Aislar endpoint;
+- Bloquear IP/dominio/hash;
+- Hacer privado un recurso expuesto;
+- Rotar credenciales;
+- Preservar logs.
 
-## Deteccion
+## Detección
 
 Documentar:
 
 - Objetivo.
 - Fuente.
 - Campos.
-- Logica.
+- Lógica.
 - Falsos positivos.
 - Severidad.
 - Respuesta.
@@ -100,18 +100,18 @@ Documentar:
 
 Considera:
 
-- criticidad del activo;
-- privilegios;
-- datos sensibles;
-- alcance;
-- actividad confirmada;
-- si sigue ocurriendo;
-- controles existentes.
+- Criticidad del activo;
+- Privilegios;
+- Datos sensibles;
+- Alcance;
+- Actividad confirmada;
+- Si sigue ocurriendo;
+- Controles existentes.
 
 ## Errores Comunes
 
-- cerrar alertas sin justificar;
-- confundir hipotesis con evidencia;
-- no revisar actividad posterior;
-- no documentar falsos positivos;
-- no convertir hallazgos repetibles en detecciones.
+- Cerrar alertas sin justificar;
+- Confundir hipótesis con evidencia;
+- No revisar actividad posterior;
+- No documentar falsos positivos;
+- No convertir hallazgos repetibles en detecciones.

@@ -12,15 +12,15 @@ Phishing no es solo "correos mal escritos". Muchos ataques son creibles, oportun
 mensaje -> identidad -> enlace/adjunto -> intencion -> usuarios afectados -> contencion
 ```
 
-## Que es Phishing
+## Qué es Phishing
 
 Phishing busca engañar a una persona para que:
 
 - Entregue credenciales.
 - Abra un adjunto.
-- Visite una pagina falsa.
+- Visite una página falsa.
 - Autorice un pago.
-- Ejecute una accion insegura.
+- Ejecute una acción insegura.
 
 ## Business Email Compromise
 
@@ -54,20 +54,20 @@ Ejemplos:
 - Solicitud de credenciales.
 - Cambio de cuenta o pago.
 
-## Indicadores Tecnicos
+## Indicadores Técnicos
 
 - SPF/DKIM/DMARC fallidos.
 - Reply-To distinto.
-- dominio recien creado.
+- Dominio recien creado.
 - URL con subdominios engañosos.
-- adjunto con macros.
-- archivo comprimido con password.
-- acortadores.
-- login falso.
+- Adjunto con macros.
+- Archivo comprimido con password.
+- Acortadores.
+- Login falso.
 
-## Analisis Seguro
+## Análisis Seguro
 
-No abras enlaces ni adjuntos sospechosos en tu maquina principal.
+No abras enlaces ni adjuntos sospechosos en tu máquina principal.
 
 Revisa:
 
@@ -96,11 +96,11 @@ Revisa:
 - Report button.
 - Concientizacion.
 - Simulaciones controladas.
-- Verificacion fuera de banda para pagos.
+- Verificación fuera de banda para pagos.
 - Bloqueo de macros.
 - Sandboxing de adjuntos.
 
-## Ejemplo de Analisis
+## Ejemplo de Análisis
 
 Este correo ficticio muestra indicadores comunes de phishing:
 
@@ -110,25 +110,25 @@ Subject: Cuenta bloqueada urgente
 Body: Inicia sesion ahora para evitar cierre de cuenta: http://login-security.example
 ```
 
-El analisis debe cubrir:
+El análisis debe cubrir:
 
-- Que indicadores ves?
-- Que riesgo existe?
-- Que controles ayudan?
-- Que recomendarias al usuario?
+- Qué indicadores ves?
+- Qué riesgo existe?
+- Qué controles ayudan?
+- Qué recomendarias al usuario?
 
 ## Criterios Para Analizar Phishing
 
-Un analisis de phishing debe explicar:
+Un análisis de phishing debe explicar:
 
-- resumen;
-- indicadores;
-- analisis de remitente;
-- analisis de URL o adjunto;
-- usuarios afectados si aplica;
-- contencion;
-- recomendacion al usuario;
-- controles preventivos.
+- Resumen;
+- Indicadores;
+- Análisis de remitente;
+- Análisis de URL o adjunto;
+- Usuarios afectados si aplica;
+- Contención;
+- Recomendación al usuario;
+- Controles preventivos.
 
 ## Errores Comunes
 
@@ -146,5 +146,5 @@ Puedes avanzar cuando puedas:
 - Identificar indicadores.
 - Explicar BEC.
 - Proponer controles.
-- Escribir una recomendacion clara.
-- Hacer un reporte de phishing con evidencia y contencion.
+- Escribir una recomendación clara.
+- Hacer un reporte de phishing con evidencia y contención.

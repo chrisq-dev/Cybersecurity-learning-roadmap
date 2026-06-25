@@ -36,7 +36,7 @@ Ejemplos:
 
 - Sin MFA.
 - Software viejo.
-- Bucket publico.
+- Bucket público.
 - Permisos excesivos.
 
 ## Control
@@ -54,13 +54,13 @@ Ejemplos:
 | Riesgo | Preventivo | Detectivo | Correctivo |
 | --- | --- | --- | --- |
 | Cuenta comprometida | MFA | Alerta de login inusual | Reset de contraseña |
-| Malware | EDR | Deteccion de proceso | Aislar equipo |
-| Perdida de datos | Backups | Monitoreo de fallos | Restaurar backup |
+| Malware | EDR | Detección de proceso | Aislar equipo |
+| Pérdida de datos | Backups | Monitoreo de fallos | Restaurar backup |
 
 ## Riesgo Inherente y Residual
 
 - Inherente: riesgo antes de controles.
-- Residual: riesgo despues de controles.
+- Residual: riesgo después de controles.
 
 ## Aceptacion de Riesgo
 

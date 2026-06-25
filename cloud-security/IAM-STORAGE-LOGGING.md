@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Entender tres areas criticas de seguridad cloud: identidad, almacenamiento y visibilidad.
+Entender tres áreas críticas de seguridad cloud: identidad, almacenamiento y visibilidad.
 
 ## IAM
 
@@ -21,20 +21,20 @@ Ejemplos de identidades:
 - Rol.
 - Cuenta de servicio.
 - Grupo.
-- Aplicacion.
+- Aplicación.
 
-## Politicas
+## Políticas
 
-Una politica define permisos.
+Una política define permisos.
 
 Preguntas:
 
-- Que accion permite?
-- Sobre que recurso?
-- A quien aplica?
+- Qué acción permite?
+- Sobre qué recurso?
+- A quién aplica?
 - Tiene condiciones?
 
-Riesgo comun:
+Riesgo común:
 
 ```text
 Permitir todo sobre todos los recursos.
@@ -47,7 +47,7 @@ Action: *
 Resource: *
 ```
 
-## Minimo Privilegio en Cloud
+## Mínimo Privilegio en Cloud
 
 Dar solo permisos necesarios.
 
@@ -65,18 +65,18 @@ Servicios de almacenamiento de objetos como buckets.
 
 Riesgos:
 
-- Bucket publico.
+- Bucket público.
 - Datos sensibles sin cifrado.
 - Logs desactivados.
 - Permisos heredados mal.
 - Llaves expuestas.
 
-Buenas practicas:
+Buenas prácticas:
 
-- Bloquear acceso publico por defecto.
+- Bloquear acceso público por defecto.
 - Cifrar datos sensibles.
 - Activar logs.
-- Usar politicas especificas.
+- Usar políticas especificas.
 - Revisar permisos regularmente.
 
 ## Logging
@@ -93,24 +93,24 @@ Eventos importantes:
 
 - Login.
 - Cambio de permisos.
-- Creacion de llaves.
+- Creación de llaves.
 - Acceso a storage.
 - Cambios de red.
-- Desactivacion de logs.
+- Desactivación de logs.
 
 ## Riesgos Comunes
 
 - MFA desactivado en cuentas privilegiadas.
 - Access keys antiguas.
 - Roles demasiado amplios.
-- Storage publico accidental.
+- Storage público accidental.
 - Security groups abiertos a internet.
 - Logs no habilitados.
 - Secretos en repositorios.
 
-## Ejemplo de Revision Cloud
+## Ejemplo de Revisión Cloud
 
-Para una app web en cloud, la revision debe aclarar:
+Para una app web en cloud, la revisión debe aclarar:
 
 - Que identidad usa.
 - Que permisos necesita.
@@ -123,7 +123,7 @@ Para una app web en cloud, la revision debe aclarar:
 Puedes avanzar cuando puedas:
 
 - Explicar IAM.
-- Explicar minimo privilegio.
-- Explicar riesgo de buckets publicos.
+- Explicar mínimo privilegio.
+- Explicar riesgo de buckets públicos.
 - Nombrar eventos cloud importantes.
-- Explicar por que logs cloud son criticos.
+- Explicar por que logs cloud son críticos.

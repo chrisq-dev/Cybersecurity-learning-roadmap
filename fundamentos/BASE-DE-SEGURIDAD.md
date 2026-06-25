@@ -2,18 +2,18 @@
 
 ## Objetivo
 
-Entender los conceptos que aparecen en casi cualquier area de ciberseguridad y aprender a razonar sobre riesgo.
+Entender los conceptos que aparecen en casi cualquier área de ciberseguridad y aprender a razonar sobre riesgo.
 
-Esta guia no busca que memorices definiciones aisladas. Busca que puedas mirar un sistema real y responder:
+Esta guía no busca que memorices definiciones aisladas. Busca que puedas mirar un sistema real y responder:
 
-- que queremos proteger;
-- de quien o de que lo protegemos;
-- que podria fallar;
-- que impacto tendria;
-- que controles reducen el riesgo;
-- que evidencia demuestra que el control funciona.
+- Que queremos proteger;
+- De quien o de que lo protegemos;
+- Que podria fallar;
+- Que impacto tendria;
+- Que controles reducen el riesgo;
+- Que evidencia demuestra que el control funciona.
 
-La ciberseguridad no es instalar herramientas. Es tomar decisiones para reducir riesgo sin destruir la operacion del sistema.
+La ciberseguridad no es instalar herramientas. Es tomar decisiones para reducir riesgo sin destruir la operación del sistema.
 
 ## Modelo Mental
 
@@ -29,12 +29,12 @@ Si no puedes pedir evidencia, solo tienes una opinion.
 
 ## Seguridad No Es Absoluta
 
-Un error comun es pensar que algo es "seguro" o "inseguro" de forma absoluta. En realidad, seguridad depende de contexto.
+Un error común es pensar que algo es "seguro" o "inseguro" de forma absoluta. En realidad, seguridad depende de contexto.
 
 Ejemplo:
 
 - Un servidor SSH expuesto puede ser aceptable si tiene MFA, llaves, monitoreo y restricciones.
-- El mismo SSH expuesto con contrasena debil y sin logs es un riesgo alto.
+- El mismo SSH expuesto con contraseña débil y sin logs es un riesgo alto.
 
 La pregunta correcta no es solo:
 
@@ -45,71 +45,71 @@ Es vulnerable?
 La pregunta madura es:
 
 ```text
-Que riesgo crea, para que activo, bajo que amenaza, con que impacto y con que controles?
+Qué riesgo crea, para qué activo, bajo qué amenaza, con qué impacto y con qué controles?
 ```
 
 ## CIA Triad
 
-La triada CIA resume tres objetivos basicos: confidencialidad, integridad y disponibilidad.
+La triada CIA resume tres objetivos básicos: confidencialidad, integridad y disponibilidad.
 
 ### Confidencialidad
 
-La informacion solo debe ser accesible para personas o sistemas autorizados.
+La información solo debe ser accesible para personas o sistemas autorizados.
 
 Ejemplos:
 
-- cifrado;
-- control de acceso;
+- Cifrado;
+- Control de acceso;
 - MFA;
-- clasificacion de datos;
-- segmentacion;
-- mascaramiento de informacion.
+- Clasificación de datos;
+- Segmentación;
+- Mascaramiento de información.
 
-Preguntas utiles:
+Preguntas útiles:
 
-- Quien deberia leer esta informacion?
-- Quien no deberia leerla?
-- Donde esta guardada?
-- Como viaja por la red?
-- Que pasa si se filtra?
-- Hay datos personales, financieros, tecnicos o secretos?
+- Quién debería leer está información?
+- Quién no debería leerla?
+- Dónde está guardada?
+- Cómo viaja por la red?
+- Qué pasa si se filtra?
+- Hay datos personales, financieros, técnicos o secretos?
 
 Incidentes de confidencialidad:
 
-- fuga de base de datos;
-- repositorio publico con credenciales;
-- correo sensible enviado al destinatario incorrecto;
-- bucket cloud publico;
-- empleado con acceso a datos que no necesita.
+- Fuga de base de datos;
+- Repositorio público con credenciales;
+- Correo sensible enviado al destinatario incorrecto;
+- Bucket cloud público;
+- Empleado con acceso a datos que no necesita.
 
 ### Integridad
 
-La informacion no debe ser modificada sin autorizacion.
+La información no debe ser modificada sin autorización.
 
 Ejemplos:
 
-- hashes;
-- firmas digitales;
-- control de cambios;
-- permisos;
-- revision de codigo;
-- logs de auditoria.
+- Hashes;
+- Firmas digitales;
+- Control de cambios;
+- Permisos;
+- Revisión de código;
+- Logs de auditoria.
 
-Preguntas utiles:
+Preguntas útiles:
 
-- Como sabemos que el dato no fue alterado?
-- Quien puede modificarlo?
+- Cómo sabemos qué el dato no fue alterado?
+- Quién puede modificarlo?
 - Existe historial de cambios?
 - Se puede detectar una modificacion indebida?
-- Que pasa si el dato es incorrecto?
+- Qué pasa si el dato es incorrecto?
 
 Incidentes de integridad:
 
-- atacante modifica una factura;
-- malware altera archivos;
-- usuario cambia permisos sin autorizacion;
-- actualizacion manipulada;
-- datos de inventario alterados.
+- Atacante modifica una factura;
+- Malware altera archivos;
+- Usuario cambia permisos sin autorización;
+- Actualizacion manipulada;
+- Datos de inventario alterados.
 
 ### Disponibilidad
 
@@ -117,50 +117,50 @@ Los sistemas deben estar funcionando cuando se necesitan.
 
 Ejemplos:
 
-- backups;
-- redundancia;
-- monitoreo;
-- proteccion contra DoS;
-- planes de recuperacion;
-- capacidad suficiente.
+- Backups;
+- Redundancia;
+- Monitoreo;
+- Protección contra DoS;
+- Planes de recuperación;
+- Capacidad suficiente.
 
-Preguntas utiles:
+Preguntas útiles:
 
 - Cuanto tiempo puede estar caido?
-- Que usuarios o procesos dependen de el?
+- Qué usuarios o procesos dependen de el?
 - Existe respaldo?
-- Existe procedimiento de recuperacion?
-- Cual es el impacto por hora de caida?
+- Existe procedimiento de recuperación?
+- Cuál es el impacto por hora de caida?
 
 Incidentes de disponibilidad:
 
-- ransomware;
-- caida de servidor;
-- saturacion por trafico;
-- error de despliegue;
-- dependencia externa fuera de servicio.
+- Ransomware;
+- Caida de servidor;
+- Saturacion por tráfico;
+- Error de despliegue;
+- Dependencia externa fuera de servicio.
 
 ## Activos
 
-Un activo es cualquier cosa que tenga valor para una persona u organizacion.
+Un activo es cualquier cosa que tenga valor para una persona u organización.
 
 Ejemplos:
 
-- datos de clientes;
-- codigo fuente;
-- cuenta de administrador;
-- servidor web;
-- laptop de trabajo;
-- token de API;
-- reputacion;
-- continuidad del negocio;
-- configuracion de infraestructura;
-- secretos de CI/CD;
-- documentacion interna.
+- Datos de clientes;
+- Código fuente;
+- Cuenta de administrador;
+- Servidor web;
+- Laptop de trabajo;
+- Token de API;
+- Reputación;
+- Continuidad del negocio;
+- Configuración de infraestructura;
+- Secretos de CI/CD;
+- Documentacion interna.
 
-En seguridad, no todo activo es tecnico. Una credencial, un contrato, una marca, una relacion con clientes o la confianza publica tambien pueden ser activos.
+En seguridad, no todo activo es técnico. Una credencial, un contrato, una marca, una relacion con clientes o la confianza pública también pueden ser activos.
 
-## Clasificacion de Activos
+## Clasificación de Activos
 
 Clasificar activos ayuda a decidir donde invertir esfuerzo.
 
@@ -168,12 +168,12 @@ Ejemplo simple:
 
 | Nivel | Descripcion | Ejemplo |
 | --- | --- | --- |
-| Publico | Puede compartirse sin dano | Blog, landing publica |
-| Interno | Uso dentro de la organizacion | Procedimientos internos |
+| Público | Puede compartirse sin dano | Blog, landing pública |
+| Interno | Uso dentro de la organización | Procedimientos internos |
 | Confidencial | Acceso limitado | Datos de clientes |
-| Critico | Alto impacto si se pierde o altera | Llaves maestras, produccion, backups |
+| Crítico | Alto impacto si se pierde o altera | Llaves maestras, produccion, backups |
 
-No todos los activos merecen el mismo nivel de control. Proteger todo como si fuera critico suele ser caro e impracticable; proteger lo critico como si fuera publico es peligroso.
+No todos los activos merecen el mismo nivel de control. Proteger todo como si fuera crítico suele ser caro e impracticable; proteger lo crítico como si fuera público es peligroso.
 
 ## Amenaza
 
@@ -181,16 +181,16 @@ Una amenaza es quien o que podria causar dano.
 
 Ejemplos:
 
-- atacante externo;
-- malware;
-- empleado negligente;
-- empleado malicioso;
-- error humano;
-- proveedor comprometido;
-- falla electrica;
-- desastre natural;
-- bot automatizado;
-- credencial filtrada.
+- Atacante externo;
+- Malware;
+- Empleado negligente;
+- Empleado malicioso;
+- Error humano;
+- Proveedor comprometido;
+- Falla electrica;
+- Desastre natural;
+- Bot automatizado;
+- Credencial filtrada.
 
 La amenaza no siempre es una persona. Puede ser un evento, una condicion o un fallo.
 
@@ -200,16 +200,16 @@ Una vulnerabilidad es una debilidad que permite que algo salga mal.
 
 Ejemplos:
 
-- contrasena debil;
-- software sin parche;
-- permiso excesivo;
-- validacion de entrada deficiente;
-- bucket publico;
-- falta de MFA;
-- logs desactivados;
-- red sin segmentacion.
+- Contraseña débil;
+- Software sin parche;
+- Permiso excesivo;
+- Validación de entrada deficiente;
+- Bucket público;
+- Falta de MFA;
+- Logs desactivados;
+- Red sin segmentación.
 
-Una vulnerabilidad sin amenaza o sin impacto puede no ser prioridad. Una vulnerabilidad con amenaza activa e impacto alto debe atenderse rapido.
+Una vulnerabilidad sin amenaza o sin impacto puede no ser prioridad. Una vulnerabilidad con amenaza activa e impacto alto debe atenderse rápido.
 
 ## Impacto
 
@@ -217,17 +217,17 @@ Impacto es la consecuencia si el riesgo se materializa.
 
 Puede ser:
 
-- financiero;
-- legal;
-- operativo;
-- reputacional;
-- tecnico;
-- humano;
-- contractual.
+- Financiero;
+- Legal;
+- Operativo;
+- Reputacional;
+- Técnico;
+- Humano;
+- Contractual.
 
 Ejemplo:
 
-Una vulnerabilidad XSS en una pagina interna de bajo uso no tiene el mismo impacto que una falla de autorizacion que permite leer datos de todos los clientes.
+Una vulnerabilidad XSS en una página interna de bajo uso no tiene el mismo impacto que una falla de autorización que permite leer datos de todos los clientes.
 
 ## Riesgo
 
@@ -237,7 +237,7 @@ Formula mental:
 Riesgo = amenaza + vulnerabilidad + impacto
 ```
 
-Version practica:
+Versión práctica:
 
 ```text
 Riesgo = probabilidad de que ocurra x impacto si ocurre
@@ -264,7 +264,7 @@ Un panel administrativo expuesto a internet sin MFA tiene riesgo inherente alto.
 
 ### Riesgo residual
 
-Es el riesgo que queda despues de aplicar controles.
+Es el riesgo que queda después de aplicar controles.
 
 Ejemplo:
 
@@ -283,124 +283,124 @@ Intentan evitar que el problema ocurra.
 Ejemplos:
 
 - MFA;
-- hardening;
-- segmentacion de red;
-- validacion de entrada;
-- politicas de minimo privilegio;
-- parches;
-- configuraciones seguras.
+- Hardening;
+- Segmentación de red;
+- Validación de entrada;
+- Políticas de mínimo privilegio;
+- Parches;
+- Configuraciones seguras.
 
 ### Detectivos
 
-Ayudan a descubrir que algo ocurrio o esta ocurriendo.
+Ayudan a descubrir que algo ocurrio o está ocurriendo.
 
 Ejemplos:
 
-- logs;
-- alertas SIEM;
+- Logs;
+- Alertas SIEM;
 - EDR;
-- monitoreo de integridad;
-- deteccion de anomalias;
-- reglas Sigma;
-- auditoria de cambios.
+- Monitoreo de integridad;
+- Detección de anomalias;
+- Reglas Sigma;
+- Auditoria de cambios.
 
 ### Correctivos
 
-Ayudan a recuperarse o reducir dano despues del evento.
+Ayudan a recuperarse o reducir dano después del evento.
 
 Ejemplos:
 
-- backups;
-- rotacion de credenciales;
-- restauracion de sistemas;
-- bloqueo de indicadores;
-- parches;
-- contencion de host;
-- revocacion de sesiones.
+- Backups;
+- Rotación de credenciales;
+- Restauracion de sistemas;
+- Bloqueo de indicadores;
+- Parches;
+- Contención de host;
+- Revocacion de sesiones.
 
 ## Defensa en Profundidad
 
 Defensa en profundidad significa no depender de un solo control.
 
-Ejemplo para una cuenta critica:
+Ejemplo para una cuenta crítica:
 
-- contrasena fuerte;
+- Contraseña fuerte;
 - MFA;
-- minimo privilegio;
-- alertas de inicio de sesion;
-- revision periodica de accesos;
-- bloqueo por riesgo;
-- logs retenidos;
-- proceso de recuperacion.
+- Mínimo privilegio;
+- Alertas de inicio de sesión;
+- Revisión periodica de accesos;
+- Bloqueo por riesgo;
+- Logs retenidos;
+- Proceso de recuperación.
 
 Si un control falla, otros reducen impacto.
 
 ## Evidencia
 
-En seguridad, una afirmacion sin evidencia es debil.
+En seguridad, una afirmacion sin evidencia es débil.
 
 Ejemplos de evidencia:
 
-- captura de configuracion;
-- log de acceso;
-- resultado de escaneo autorizado;
-- politica aplicada;
-- alerta generada;
-- ticket de remediacion;
-- hash de archivo;
-- reporte de backup restaurado;
-- prueba de MFA habilitado.
+- Captura de configuración;
+- Log de acceso;
+- Resultado de escaneo autorizado;
+- Política aplicada;
+- Alerta generada;
+- Ticket de remediación;
+- Hash de archivo;
+- Reporte de backup restaurado;
+- Prueba de MFA habilitado.
 
 Decir "tenemos backups" no basta. Mejor pregunta:
 
-- cuando fue el ultimo backup exitoso?
-- donde esta guardado?
-- esta cifrado?
-- quien puede restaurarlo?
-- se ha probado restauracion?
+- Cuándo fue el ultimo backup exitoso?
+- Dónde está guardado?
+- Está cifrado?
+- Quién puede restaurarlo?
+- Se ha probado restauracion?
 
 ## Ejemplo Completo
 
 Escenario:
 
-- Una empresa pequena tiene una aplicacion web con panel administrativo.
-- El panel usa usuario y contrasena.
+- Una empresa pequeña tiene una aplicación web con panel administrativo.
+- El panel usa usuario y contraseña.
 - No tiene MFA.
 - Los administradores acceden desde cualquier IP.
 - Los logs solo se guardan 24 horas.
 
-Analisis:
+Análisis:
 
 | Elemento | Ejemplo |
 | --- | --- |
 | Activo | Panel administrativo |
 | Amenaza | Robo de credenciales por phishing |
 | Vulnerabilidad | Falta de MFA y acceso abierto |
-| Impacto | Modificacion de datos, fraude, fuga de informacion |
+| Impacto | Modificacion de datos, fraude, fuga de información |
 | Riesgo | Acceso no autorizado al panel |
-| Control preventivo | MFA, minimo privilegio, IP allowlist |
+| Control preventivo | MFA, mínimo privilegio, IP allowlist |
 | Control detectivo | Alertas de login raro, logs retenidos |
-| Control correctivo | Rotacion de credenciales, revocacion de sesiones, restauracion |
+| Control correctivo | Rotación de credenciales, revocacion de sesiones, restauracion |
 
 Prioridad:
 
-El MFA seria una prioridad alta porque reduce directamente la probabilidad de abuso de credenciales. La retencion de logs tambien es importante porque sin evidencia no se puede investigar bien.
+El MFA seria una prioridad alta porque reduce directamente la probabilidad de abuso de credenciales. La retención de logs también es importante porque sin evidencia no se puede investigar bien.
 
-## Como Priorizar
+## Cómo Priorizar
 
 No todo puede arreglarse al mismo tiempo. Prioriza con preguntas:
 
-- El activo es critico?
+- El activo es crítico?
 - La vulnerabilidad es explotable?
 - La amenaza es realista?
-- Hay exposicion a internet?
+- Hay exposición a internet?
 - Hay datos sensibles?
 - Hay controles compensatorios?
 - El impacto seria alto?
-- Existe explotacion activa?
-- El arreglo es rapido o complejo?
+- Existe explotación activa?
+- El arreglo es rápido o complejo?
 
-Un hallazgo tecnico se vuelve mas fuerte cuando puedes explicar impacto y prioridad.
+Un hallazgo técnico se vuelve más fuerte cuando puedes explicar impacto y prioridad.
 
 ## Errores Comunes
 
@@ -414,24 +414,24 @@ Un hallazgo tecnico se vuelve mas fuerte cuando puedes explicar impacto y priori
 - Ignorar usuarios, procesos y negocio.
 - Hablar solo de ataques y no de controles.
 
-## Ejemplo de Analisis
+## Ejemplo de Análisis
 
 Tres activos comunes para razonar seguridad pueden ser:
 
-- una laptop;
-- una cuenta de correo;
-- un servidor web imaginario.
+- Una laptop;
+- Una cuenta de correo;
+- Un servidor web imaginario.
 
 Para cada uno se debe distinguir:
 
-- activo;
-- amenaza;
-- vulnerabilidad;
-- impacto;
-- control preventivo;
-- control detectivo;
-- control correctivo;
-- evidencia esperada.
+- Activo;
+- Amenaza;
+- Vulnerabilidad;
+- Impacto;
+- Control preventivo;
+- Control detectivo;
+- Control correctivo;
+- Evidencia esperada.
 
 El objetivo no es llenar una tabla por llenar. El objetivo es entrenar el razonamiento.
 
@@ -439,24 +439,24 @@ El objetivo no es llenar una tabla por llenar. El objetivo es entrenar el razona
 
 Puedes responder sin memorizar?
 
-- Que diferencia hay entre amenaza y vulnerabilidad?
-- Por que un activo puede ser no tecnico?
-- Que control detectivo pondrias para una cuenta comprometida?
-- Que control correctivo pondrias ante ransomware?
-- Por que el impacto ayuda a priorizar?
-- Que significa riesgo residual?
-- Por que MFA no elimina todo el riesgo?
-- Que evidencia pedirias para comprobar que un backup sirve?
+- Qué diferencia hay entre amenaza y vulnerabilidad?
+- Por qué un activo puede ser no técnico?
+- Qué control detectivo pondrias para una cuenta comprometida?
+- Qué control correctivo pondrias ante ransomware?
+- Por qué el impacto ayuda a priorizar?
+- Qué significa riesgo residual?
+- Por qué MFA no elimina todo el riesgo?
+- Qué evidencia pedirias para comprobar qué un backup sirve?
 
 ## Criterio de Dominio
 
 Dominas este tema cuando puedes:
 
-- explicar confidencialidad, integridad y disponibilidad con ejemplos;
-- identificar activos tecnicos y no tecnicos;
-- diferenciar amenaza, vulnerabilidad, impacto y riesgo;
-- proponer controles preventivos, detectivos y correctivos;
-- justificar prioridades con impacto y evidencia;
-- distinguir riesgo inherente y residual;
-- explicar por que seguridad no es absoluta;
-- analizar un escenario simple sin depender de herramientas.
+- Explicar confidencialidad, integridad y disponibilidad con ejemplos;
+- Identificar activos técnicos y no técnicos;
+- Diferenciar amenaza, vulnerabilidad, impacto y riesgo;
+- Proponer controles preventivos, detectivos y correctivos;
+- Justificar prioridades con impacto y evidencia;
+- Distinguir riesgo inherente y residual;
+- Explicar por que seguridad no es absoluta;
+- Analizar un escenario simple sin depender de herramientas.

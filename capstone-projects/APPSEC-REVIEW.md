@@ -2,13 +2,13 @@
 
 ## Objetivo
 
-Evaluar una aplicacion web ficticia desde diseño, API, OWASP y DevSecOps.
+Evaluar una aplicación web ficticia desde diseño, API, OWASP y DevSecOps.
 
 Este proyecto demuestra que puedes razonar como AppSec engineer junior: identificar activos, modelar permisos, encontrar riesgos, proponer controles y comunicar hallazgos.
 
 ## Escenario
 
-Aplicacion de notas:
+Aplicación de notas:
 
 - Usuarios crean notas.
 - Usuarios comparten notas.
@@ -20,28 +20,28 @@ Aplicacion de notas:
 
 Incluido:
 
-- modelo de roles;
-- endpoints;
-- autorizacion por recurso;
-- riesgos OWASP;
+- Modelo de roles;
+- Endpoints;
+- Autorización por recurso;
+- Riesgos OWASP;
 - API security;
-- logging;
-- controles CI/CD;
-- recomendaciones.
+- Logging;
+- Controles CI/CD;
+- Recomendaciones.
 
 Fuera de alcance:
 
-- explotar sistemas reales;
-- pruebas contra terceros;
-- payloads ofensivos fuera de laboratorio;
-- datos reales de usuarios.
+- Explotar sistemas reales;
+- Pruebas contra terceros;
+- Payloads ofensivos fuera de laboratorio;
+- Datos reales de usuarios.
 
 ## Puntos a observar
 
 1. Modelar roles.
 2. Definir endpoints.
 3. Identificar riesgos OWASP.
-4. Revisar autorizacion por objeto.
+4. Revisar autorización por objeto.
 5. Diseñar logs.
 6. Proponer controles CI/CD.
 7. Crear checklist de pruebas.
@@ -56,16 +56,16 @@ frontend -> API -> base de datos
              -> storage/logs
 ```
 
-El analisis debe incluir:
+El análisis debe incluir:
 
-- datos sensibles;
-- flujos de autenticacion;
-- flujos de compartir notas;
-- acciones administrativas.
+- Datos sensibles;
+- Flujos de autenticación;
+- Flujos de compartir notas;
+- Acciones administrativas.
 
 ## Fase 2: Matriz de Permisos
 
-Tabla minima:
+Tabla mínima:
 
 | Recurso | Owner | Usuario autenticado | Soporte | Admin |
 | --- | --- | --- | --- | --- |
@@ -77,7 +77,7 @@ Tabla minima:
 
 ## Fase 3: Riesgos OWASP
 
-Minimo cubre:
+Mínimo cubre:
 
 - Broken Access Control.
 - Injection.
@@ -88,42 +88,42 @@ Minimo cubre:
 
 Para cada riesgo:
 
-- causa;
-- ejemplo en la app;
-- impacto;
-- control;
-- prueba sugerida;
-- evidencia esperada.
+- Causa;
+- Ejemplo en la app;
+- Impacto;
+- Control;
+- Prueba sugerida;
+- Evidencia esperada.
 
 ## Fase 4: API Security
 
 Define:
 
-- endpoints;
-- metodo;
-- autenticacion requerida;
-- autorizacion por recurso;
-- rate limit;
-- logs;
-- errores esperados.
+- Endpoints;
+- Método;
+- Autenticación requerida;
+- Autorización por recurso;
+- Rate limit;
+- Logs;
+- Errores esperados.
 
 Tabla:
 
-| Endpoint | Metodo | Auth requerida | Regla de autorizacion | Riesgo |
+| Endpoint | Método | Auth requerida | Regla de autorización | Riesgo |
 | --- | --- | --- | --- | --- |
 
 ## Fase 5: DevSecOps
 
 Propone controles:
 
-- secret scanning;
-- dependency scanning;
+- Secret scanning;
+- Dependency scanning;
 - SAST;
-- pruebas de autorizacion;
-- revision de IaC si aplica;
-- proteccion de ramas;
-- variables seguras;
-- logs de despliegue.
+- Pruebas de autorización;
+- Revisión de IaC si aplica;
+- Protección de ramas;
+- Variables seguras;
+- Logs de despliegue.
 
 ## Estructura sugerida
 
@@ -151,22 +151,22 @@ Propone controles:
 ## Recomendaciones
 ```
 
-## Criterio de Exito
+## Criterio de Éxito
 
 - Incluye Broken Access Control.
-- Incluye validacion de entrada.
+- Incluye validación de entrada.
 - Incluye logs seguros.
 - Incluye controles de pipeline.
 - Incluye matriz de permisos.
-- Incluye endpoints con reglas de autorizacion.
+- Incluye endpoints con reglas de autorización.
 - Incluye remediaciones verificables.
 - Separa riesgo, impacto y control.
 
-## Rubrica
+## Rúbrica
 
 | Nivel | Evidencia |
 | --- | --- |
-| Basico | Lista riesgos OWASP |
+| Básico | Lista riesgos OWASP |
 | Bueno | Explica impacto y mitigacion |
 | Fuerte | Incluye matriz de permisos, API y logs |
-| Portafolio | Reporte claro, reproducible, con prioridades y remediacion verificable |
+| Portafolio | Reporte claro, reproducible, con prioridades y remediación verificable |

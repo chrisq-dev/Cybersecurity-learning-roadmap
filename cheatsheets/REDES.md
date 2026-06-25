@@ -4,18 +4,18 @@ Referencia rapida para interpretar conectividad, servicios, puertos y evidencia 
 
 ## Puertos Comunes
 
-| Puerto | Servicio | Uso comun | Riesgo si esta expuesto |
+| Puerto | Servicio | Uso común | Riesgo si está expuesto |
 | --- | --- | --- | --- |
 | 22 | SSH | administracion Linux | fuerza bruta, acceso remoto |
 | 25 | SMTP | envio de correo | abuso/spam si mal configurado |
-| 53 | DNS | resolucion de nombres | tunneling, abuso, exposicion |
-| 80 | HTTP | web sin TLS | trafico sin cifrar |
+| 53 | DNS | resolucion de nombres | tunneling, abuso, exposición |
+| 80 | HTTP | web sin TLS | tráfico sin cifrar |
 | 110 | POP3 | correo | credenciales si no usa TLS |
 | 143 | IMAP | correo | credenciales si no usa TLS |
 | 443 | HTTPS | web con TLS | revisar certificados/config |
-| 445 | SMB | archivos Windows | exposicion critica en internet |
-| 3306 | MySQL | base de datos | no deberia exponerse sin control |
-| 5432 | PostgreSQL | base de datos | no deberia exponerse sin control |
+| 445 | SMB | archivos Windows | exposición crítica en internet |
+| 3306 | MySQL | base de datos | no debería exponerse sin control |
+| 5432 | PostgreSQL | base de datos | no debería exponerse sin control |
 | 6379 | Redis | cache | riesgo alto si no tiene auth/red privada |
 | 3389 | RDP | administracion Windows | fuerza bruta, acceso remoto |
 
@@ -32,26 +32,26 @@ ip route
 ss -tuln
 ```
 
-## Como Interpretar
+## Cómo Interpretar
 
 | Comando | Pregunta que responde |
 | --- | --- |
 | `ping` | Hay respuesta ICMP? |
-| `traceroute` | Por donde viaja el trafico? |
-| `dig` | Que IP resuelve un dominio? |
-| `curl -I` | Que headers responde un servidor web? |
-| `ip route` | Cual es el gateway? |
-| `ss -tuln` | Que puertos escuchan localmente? |
+| `traceroute` | Por dónde viaja el tráfico? |
+| `dig` | Qué IP resuelve un dominio? |
+| `curl -I` | Qué headers responde un servidor web? |
+| `ip route` | Cuál es el gateway? |
+| `ss -tuln` | Qué puertos escuchan localmente? |
 
 ## Conceptos
 
-- IP: direccion logica.
+- IP: dirección lógica.
 - Puerto: servicio dentro del host.
 - DNS: nombre a IP.
-- DHCP: asigna configuracion.
+- DHCP: asigna configuración.
 - NAT: traduce direcciones.
-- VLAN: separacion logica.
-- ACL: permite o bloquea trafico.
+- VLAN: separación lógica.
+- ACL: permite o bloquea tráfico.
 
 ## IP Privadas
 
@@ -62,7 +62,7 @@ ss -tuln
 | `192.168.0.0/16` | redes privadas |
 | `127.0.0.0/8` | loopback/local |
 
-## Subnetting Rapido
+## Subnetting Rápido
 
 | CIDR | Hosts Usables |
 | --- | --- |
@@ -73,10 +73,10 @@ ss -tuln
 | /28 | 14 |
 | /30 | 2 |
 
-## Lectura Rapida de Conexion
+## Lectura Rapida de Conexión
 
 ```text
-origen -> destino:puerto/protocolo -> accion -> resultado
+origen -> destino:puerto/protocolo -> acción -> resultado
 ```
 
 Ejemplo:
@@ -85,19 +85,19 @@ Ejemplo:
 192.168.1.25 -> 203.0.113.10:443/TCP -> permitido -> conexion HTTPS
 ```
 
-## Senales de Riesgo
+## Señales de Riesgo
 
 - Puertos administrativos expuestos a internet.
 - Bases de datos accesibles publicamente.
-- Trafico DNS inusual o repetitivo.
+- Tráfico DNS inusual o repetitivo.
 - Muchas conexiones fallidas al mismo puerto.
 - Servicios escuchando en interfaces no esperadas.
-- Falta de segmentacion entre usuarios y servidores.
+- Falta de segmentación entre usuarios y servidores.
 
 ## Errores Comunes
 
 - Memorizar puertos sin entender el servicio.
 - Confundir IP privada con seguridad.
-- Pensar que VLAN cifra trafico.
-- Escanear redes sin autorizacion.
+- Pensar que VLAN cifra tráfico.
+- Escanear redes sin autorización.
 - Ignorar DNS durante investigaciones.

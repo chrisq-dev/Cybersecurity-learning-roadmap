@@ -4,19 +4,19 @@
 
 Entender como se comunican los equipos y por que redes es una base obligatoria para ciberseguridad.
 
-Si no entiendes redes, vas a depender de herramientas sin entender que estan haciendo. Redes te permite interpretar escaneos, logs, firewalls, trafico web, conexiones sospechosas, movimiento lateral, exposicion de servicios, DNS malicioso, conexiones de malware y errores de configuracion.
+Si no entiendes redes, vas a depender de herramientas sin entender que están haciendo. Redes te permite interpretar escaneos, logs, firewalls, tráfico web, conexiones sospechosas, movimiento lateral, exposición de servicios, DNS malicioso, conexiones de malware y errores de configuración.
 
-Esta guia busca que puedas ver una conexion y explicar:
+Esta guía busca que puedas ver una conexión y explicar:
 
-- quien inicia;
-- hacia donde va;
-- por que puerto;
-- con que protocolo;
-- que infraestructura atraviesa;
-- si la comunicacion es esperada;
-- que evidencia permite comprobarlo.
+- Quien inicia;
+- Hacia donde va;
+- Por que puerto;
+- Con que protocolo;
+- Que infraestructura atraviesa;
+- Si la comunicación es esperada;
+- Que evidencia permite comprobarlo.
 
-## Modelo Mental Basico
+## Modelo Mental Básico
 
 ```text
 aplicacion -> puerto -> protocolo -> IP -> red local -> gateway -> internet -> destino
@@ -24,19 +24,19 @@ aplicacion -> puerto -> protocolo -> IP -> red local -> gateway -> internet -> d
 
 Cuando investigas un problema de seguridad, casi siempre necesitas contestar:
 
-- Que equipo inicio la comunicacion?
-- A que IP o dominio se conecto?
-- Que puerto uso?
-- Que protocolo uso?
-- La conexion era esperada?
+- Qué equipo inicio la comunicación?
+- A qué IP o dominio se conecto?
+- Qué puerto uso?
+- Qué protocolo uso?
+- La conexión era esperada?
 - Paso por firewall, proxy, VPN o NAT?
-- Hay logs que lo demuestren?
+- Hay logs qué lo demuestren?
 
 ## Red Local e Internet
 
 Una red local conecta dispositivos dentro de un mismo entorno: casa, oficina, laboratorio, nube privada o segmento virtual.
 
-Internet es una red de redes. Para llegar a un destino externo, tu equipo normalmente envia trafico al gateway, y de ahi el trafico cruza otros routers hasta llegar al destino.
+Internet es una red de redes. Para llegar a un destino externo, tu equipo normalmente envia tráfico al gateway, y de ahi el tráfico cruza otros routers hasta llegar al destino.
 
 Ejemplo:
 
@@ -46,22 +46,22 @@ tu laptop -> router local -> proveedor -> internet -> servidor destino
 
 En seguridad, esta diferencia importa porque:
 
-- el trafico local puede moverse lateralmente;
-- el trafico externo puede indicar acceso a servicios publicos;
-- un firewall puede permitir local pero bloquear internet;
-- una VPN puede cambiar la ruta;
-- NAT puede ocultar IPs internas detras de una IP publica.
+- El tráfico local puede moverse lateralmente;
+- El tráfico externo puede indicar acceso a servicios públicos;
+- Un firewall puede permitir local pero bloquear internet;
+- Una VPN puede cambiar la ruta;
+- NAT puede ocultar IPs internas detras de una IP pública.
 
-## Flujo Mental: Abrir una Pagina Web
+## Flujo Mental: Abrir una Página Web
 
 Cuando visitas `https://example.com`, ocurre algo parecido a esto:
 
 1. El navegador revisa si ya conoce la IP en cache.
 2. Si no la conoce, pregunta a DNS.
-3. El equipo decide si el destino esta en su red local o debe ir al gateway.
-4. Se establece conexion TCP con el servidor.
-5. Se negocia TLS para cifrar la comunicacion.
-6. Se envia una peticion HTTP.
+3. El equipo decide si el destino está en su red local o debe ir al gateway.
+4. Se establece conexión TCP con el servidor.
+5. Se negocia TLS para cifrar la comunicación.
+6. Se envia una petición HTTP.
 7. El servidor responde.
 8. El navegador interpreta la respuesta.
 
@@ -69,13 +69,13 @@ Este flujo permite ubicar fallas:
 
 - Si DNS falla, el nombre no resuelve.
 - Si el gateway falla, no sales de tu red.
-- Si TCP falla, no se establece conexion.
-- Si TLS falla, hay problema de certificado, version, inspeccion o configuracion.
-- Si HTTP falla, el servidor respondio pero la aplicacion tuvo un problema.
+- Si TCP falla, no se establece conexión.
+- Si TLS falla, hay problema de certificado, versión, inspeccion o configuración.
+- Si HTTP falla, el servidor respondio pero la aplicación tuvo un problema.
 
-## Direccion IP
+## Dirección IP
 
-Una IP identifica una interfaz en una red. No identifica necesariamente a una persona ni a un dispositivo completo para siempre. Una laptop puede tener varias IPs, una IP puede cambiar por DHCP y muchas maquinas pueden salir a internet usando una misma IP publica por NAT.
+Una IP identifica una interfaz en una red. No identifica necesariamente a una persona ni a un dispositivo completo para siempre. Una laptop puede tener varias IPs, una IP puede cambiar por DHCP y muchas maquinas pueden salir a internet usando una misma IP pública por NAT.
 
 Ejemplos de IP privadas:
 
@@ -87,17 +87,17 @@ Ejemplo:
 
 ```text
 IP local: 192.168.1.25
-IP publica: la que ve internet despues de NAT
+IP pública: la que ve internet despues de NAT
 ```
 
 En seguridad, no basta con decir "la IP hizo algo". Debes preguntar:
 
-- esa IP era estatica o dinamica?
-- a que host pertenecia en ese momento?
-- hay DHCP logs?
-- hay NAT logs?
-- la IP es interna o publica?
-- existe otra evidencia que confirme el dispositivo?
+- Esa IP era estatica o dinamica?
+- A qué host pertenecia en ese momento?
+- Hay DHCP logs?
+- Hay NAT logs?
+- La IP es interna o pública?
+- Existe otra evidencia qué confirme el dispositivo?
 
 ## Red, Mascara y CIDR
 
@@ -116,16 +116,16 @@ Broadcast: 192.168.1.255
 
 Preguntas que debes poder responder:
 
-- Esta IP esta en mi misma red?
+- Esta IP está en mi misma red?
 - Necesito gateway para llegar a ella?
-- Que rango pertenece a este segmento?
-- Que rango puedo analizar en un laboratorio autorizado?
+- Qué rango pertenece a este segmento?
+- Qué rango puedo analizar en un laboratorio autorizado?
 
 No escanees redes sin permiso. Saber calcular rangos no te autoriza a probar infraestructura ajena.
 
 ## Gateway
 
-El gateway es la salida hacia otras redes. Si tu equipo quiere hablar con una IP que no esta en su red local, envia el trafico al gateway.
+El gateway es la salida hacia otras redes. Si tu equipo quiere hablar con una IP que no está en su red local, envia el tráfico al gateway.
 
 Ejemplo:
 
@@ -137,12 +137,12 @@ Ejemplo:
 
 En seguridad, el gateway importa porque:
 
-- puede aplicar firewall;
-- puede registrar trafico;
-- puede hacer NAT;
-- puede enrutar entre VLANs;
-- puede ser objetivo de ataques;
-- puede ser punto de control y monitoreo.
+- Puede aplicar firewall;
+- Puede registrar tráfico;
+- Puede hacer NAT;
+- Puede enrutar entre VLANs;
+- Puede ser objetivo de ataques;
+- Puede ser punto de control y monitoreo.
 
 ## Puerto
 
@@ -167,7 +167,7 @@ En seguridad, un puerto abierto significa que hay algo escuchando. No siempre es
 
 ## TCP
 
-TCP establece una conexion y busca entrega confiable y ordenada.
+TCP establece una conexión y busca entrega confiable y ordenada.
 
 Se usa cuando importa que los datos lleguen completos:
 
@@ -195,7 +195,7 @@ En seguridad:
 
 ## UDP
 
-UDP no establece una conexion persistente tradicional. Envia datagramas. Es util cuando importa velocidad, simplicidad o tolerancia a perdida.
+UDP no establece una conexión persistente tradicional. Envia datagramas. Es útil cuando importa velocidad, simplicidad o tolerancia a pérdida.
 
 Ejemplos:
 
@@ -207,7 +207,7 @@ Ejemplos:
 
 En seguridad:
 
-- UDP puede ser mas dificil de interpretar porque no siempre responde.
+- UDP puede ser más difícil de interpretar porque no siempre responde.
 - DNS sobre UDP es clave para detectar malware, tunneling o dominios raros.
 - Servicios UDP mal configurados pueden usarse en amplificacion.
 
@@ -223,20 +223,20 @@ example.com -> 93.184.216.34
 
 DNS importa mucho en seguridad porque usuarios y malware suelen usar nombres, no solo IPs.
 
-Preguntas utiles:
+Preguntas útiles:
 
-- Que dominio se resolvio?
-- Que IP respondio?
-- Quien fue el resolver DNS?
+- Qué dominio se resolvio?
+- Qué IP respondio?
+- Quién fue el resolver DNS?
 - El dominio es nuevo, raro o parecido a uno legitimo?
 - Hay muchas consultas repetidas?
 - Hay dominios generados automaticamente?
 
-Ignorar DNS en una investigacion es perder una parte grande de la historia.
+Ignorar DNS en una investigación es perder una parte grande de la historia.
 
 ## NAT
 
-NAT traduce direcciones. Es comun que muchas IPs privadas salgan a internet usando una IP publica.
+NAT traduce direcciones. Es común que muchas IPs privadas salgan a internet usando una IP pública.
 
 Ejemplo:
 
@@ -244,39 +244,39 @@ Ejemplo:
 192.168.1.25:51512 -> router NAT -> 200.10.10.5:40001 -> internet
 ```
 
-En seguridad, NAT complica atribucion porque varios equipos pueden compartir la misma IP publica. Para investigar bien necesitas correlacionar:
+En seguridad, NAT complica atribución porque varios equipos pueden compartir la misma IP pública. Para investigar bien necesitas correlacionar:
 
 - IP interna;
-- puerto origen;
-- IP publica;
-- timestamp;
-- logs de NAT;
-- usuario o dispositivo.
+- Puerto origen;
+- IP pública;
+- Timestamp;
+- Logs de NAT;
+- Usuario o dispositivo.
 
-## VLAN y Segmentacion
+## VLAN y Segmentación
 
 Segmentar significa separar sistemas para reducir alcance de dano.
 
 Ejemplo:
 
-- red de usuarios;
-- red de servidores;
-- red de administracion;
-- red de invitados;
-- red de laboratorio;
-- red de camaras o IoT.
+- Red de usuarios;
+- Red de servidores;
+- Red de administracion;
+- Red de invitados;
+- Red de laboratorio;
+- Red de camaras o IoT.
 
 Una buena pregunta de seguridad es:
 
 ```text
-Si este equipo se compromete, a que otros sistemas puede llegar?
+Si este equipo se compromete, a qué otros sistemas puede llegar?
 ```
 
-Una VLAN separa a nivel logico, pero no cifra automaticamente el trafico ni reemplaza controles de acceso. Para segmentar bien necesitas reglas, rutas, monitoreo y administracion correcta.
+Una VLAN separa a nivel logico, pero no cifra automaticamente el tráfico ni reemplaza controles de acceso. Para segmentar bien necesitas reglas, rutas, monitoreo y administracion correcta.
 
 ## ACL y Firewall
 
-Una ACL o regla de firewall decide si cierto trafico se permite o bloquea.
+Una ACL o regla de firewall decide si cierto tráfico se permite o bloquea.
 
 Ejemplo conceptual:
 
@@ -286,16 +286,16 @@ bloquear invitados -> red administrativa : any
 permitir administradores -> servidores : 22
 ```
 
-Una regla util debe tener contexto:
+Una regla útil debe tener contexto:
 
-- origen;
-- destino;
-- puerto;
-- protocolo;
-- accion;
-- razon;
-- responsable;
-- fecha de revision.
+- Origen;
+- Destino;
+- Puerto;
+- Protocolo;
+- Acción;
+- Razon;
+- Responsable;
+- Fecha de revisión.
 
 Reglas antiguas o demasiado amplias se vuelven deuda de seguridad.
 
@@ -305,13 +305,13 @@ Cuando veas una linea de log de red, intenta extraer:
 
 | Campo | Pregunta |
 | --- | --- |
-| Timestamp | Cuando paso? |
-| Source IP | Quien inicio? |
-| Destination IP | A donde fue? |
-| Destination port | Que servicio intento usar? |
+| Timestamp | Cuándo paso? |
+| Source IP | Quién inicio? |
+| Destination IP | A dónde fue? |
+| Destination port | Qué servicio intento usar? |
 | Protocol | TCP, UDP, ICMP u otro? |
 | Action | Permitido, bloqueado, timeout? |
-| Device | Que firewall, proxy o sensor lo vio? |
+| Device | Qué firewall, proxy o sensor lo vio? |
 
 Ejemplo:
 
@@ -321,26 +321,26 @@ Ejemplo:
 
 Interpretacion:
 
-- un host interno `10.10.5.23` inicio conexion;
-- destino externo `93.184.216.34`;
-- protocolo TCP;
-- puerto 443;
-- accion permitida;
-- falta saber dominio, usuario, proceso y contexto.
+- Un host interno `10.10.5.23` inicio conexión;
+- Destino externo `93.184.216.34`;
+- Protocolo TCP;
+- Puerto 443;
+- Acción permitida;
+- Falta saber dominio, usuario, proceso y contexto.
 
 ## Errores Comunes
 
 - Memorizar puertos sin entender el servicio.
-- Escanear redes sin autorizacion.
-- Confundir IP privada con IP publica.
-- Pensar que una VLAN por si sola cifra el trafico.
+- Escanear redes sin autorización.
+- Confundir IP privada con IP pública.
+- Pensar que una VLAN por si sola cifra el tráfico.
 - Ignorar DNS en investigaciones.
 - No documentar origen, destino, puerto y hora.
 - Asumir que una IP identifica de forma permanente a una persona.
 - Confundir bloqueo de firewall con caida del servicio.
 - No revisar rutas, proxy o VPN.
 
-## Observacion Segura
+## Observación Segura
 
 En tu propio equipo o laboratorio puedes observar:
 
@@ -369,26 +369,26 @@ Un SIEM muestra que `10.20.30.45` se conecto a `203.0.113.10` por `tcp/443` a la
 Preguntas:
 
 - Que dispositivo tenia `10.20.30.45` a esa hora?
-- Que dominio resolvio antes de la conexion?
-- Fue usuario, servicio o proceso automatico?
+- Qué dominio resolvio antes de la conexión?
+- Fue usuario, servicio o proceso automático?
 - El destino es conocido?
 - El horario es normal?
 - Paso por proxy?
 - Hubo transferencia de datos?
 - Hay alertas EDR en el host?
 
-Una conexion no prueba ataque por si sola. El contexto decide.
+Una conexión no prueba ataque por si sola. El contexto decide.
 
 ## Criterio de Dominio
 
 Dominas este tema cuando puedes explicar:
 
 - IP vs puerto;
-- red local vs internet;
+- Red local vs internet;
 - DNS;
 - TCP vs UDP;
-- que hace un gateway;
-- que hace NAT y por que complica investigaciones;
-- por que las VLANs ayudan a segmentar pero no bastan solas;
-- como leer una conexion con origen, destino, puerto, protocolo y accion;
-- como formular preguntas de investigacion a partir de un log de red.
+- Que hace un gateway;
+- Que hace NAT y por que complica investigaciones;
+- Por que las VLANs ayudan a segmentar pero no bastan solas;
+- Como leer una conexión con origen, destino, puerto, protocolo y acción;
+- Como formular preguntas de investigación a partir de un log de red.

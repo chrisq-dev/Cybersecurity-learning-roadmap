@@ -1,14 +1,14 @@
 # Plantilla de Reporte
 
-Usa esta plantilla para laboratorios, writeups permitidos o analisis tecnicos.
+Usa está plantilla para laboratorios, writeups permitidos o análisis técnicos.
 
 ## Reglas
 
 - No incluyas secretos reales.
 - No incluyas datos personales innecesarios.
-- No publiques evidencia de sistemas sin autorizacion.
-- Explica alcance y limites.
-- Separa hechos de hipotesis.
+- No publiques evidencia de sistemas sin autorización.
+- Explica alcance y límites.
+- Separa hechos de hipótesis.
 - Escribe remediaciones verificables.
 
 ## Resumen
@@ -17,23 +17,23 @@ Descripcion breve del ejercicio o hallazgo.
 
 ## Alcance
 
-Sistema, laboratorio, maquina o aplicacion evaluada.
+Sistema, laboratorio, máquina o aplicación evaluada.
 
 ## Objetivo
 
 Que se buscaba aprender o validar.
 
-## Metodologia
+## Metodología
 
 Pasos generales realizados.
 
 Incluye:
 
-- herramientas;
-- comandos relevantes;
-- fuentes de datos;
-- supuestos;
-- limitaciones.
+- Herramientas;
+- Comandos relevantes;
+- Fuentes de datos;
+- Supuestos;
+- Limitaciones.
 
 ## Evidencia
 
@@ -47,28 +47,28 @@ Formato recomendado:
 
 ## Hallazgos
 
-Lista de observaciones tecnicas importantes.
+Lista de observaciones técnicas importantes.
 
 Para cada hallazgo:
 
-- titulo;
-- severidad;
-- evidencia;
-- impacto;
-- recomendacion.
+- Titulo;
+- Severidad;
+- Evidencia;
+- Impacto;
+- Recomendación.
 
 ## Impacto
 
-Explicacion de por que importa el hallazgo.
+Explicación de por que importa el hallazgo.
 
 Divide cuando aplique:
 
-- impacto tecnico;
-- impacto para usuario;
-- impacto para negocio;
-- impacto operacional.
+- Impacto técnico;
+- Impacto para usuario;
+- Impacto para negocio;
+- Impacto operacional.
 
-## Remediacion
+## Remediación
 
 Acciones recomendadas para corregir o reducir el riesgo.
 
@@ -79,21 +79,21 @@ Mal: mejorar seguridad.
 Bien: habilitar MFA para cuentas admin y revisar logs de inicio de sesion de los ultimos 30 dias.
 ```
 
-## Validacion
+## Validación
 
-Como comprobarias que la remediacion funciono.
+Como comprobarias que la remediación funciono.
 
 Ejemplos:
 
-- re-ejecutar prueba;
-- revisar configuracion;
-- revisar version;
-- consultar logs;
-- verificar permiso.
+- Re-ejecutar prueba;
+- Revisar configuración;
+- Revisar versión;
+- Consultar logs;
+- Verificar permiso.
 
 ## Lecciones Aprendidas
 
-Que aprendi y que haria diferente la proxima vez.
+Que aprendi y que haria diferente la próxima vez.
 
 ## Referencias
 
@@ -101,12 +101,12 @@ Documentacion consultada.
 
 ## Criterios Finales
 
-Antes de considerar que un reporte esta claro, revisa si:
+Antes de considerar que un reporte está claro, revisa si:
 
-- el alcance esta claro;
-- la evidencia no expone secretos;
-- hay timeline cuando aplica;
-- los hallazgos explican impacto;
-- las remediaciones son verificables;
-- hay conclusion;
-- otra persona podria seguir el razonamiento.
+- El alcance está claro;
+- La evidencia no expone secretos;
+- Hay timeline cuando aplica;
+- Los hallazgos explican impacto;
+- Las remediaciones son verificables;
+- Hay conclusión;
+- Otra persona podria seguir el razonamiento.

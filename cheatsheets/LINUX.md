@@ -1,8 +1,8 @@
 # Cheatsheet Linux
 
-Referencia rapida para moverse, revisar evidencia y entender estado basico de un sistema Linux.
+Referencia rapida para moverse, revisar evidencia y entender estado básico de un sistema Linux.
 
-## Navegacion
+## Navegación
 
 ```bash
 pwd
@@ -86,12 +86,12 @@ journalctl -u ssh
 
 Revisa:
 
-- usuario que ejecuta el proceso;
-- ruta del binario;
-- proceso padre;
-- consumo anormal;
-- conexiones de red;
-- argumentos raros.
+- Usuario que ejecuta el proceso;
+- Ruta del binario;
+- Proceso padre;
+- Consumo anormal;
+- Conexiones de red;
+- Argumentos raros.
 
 ## Red
 
@@ -107,8 +107,8 @@ dig example.com
 
 | Ruta | Uso |
 | --- | --- |
-| `/var/log/auth.log` | autenticacion Debian/Ubuntu |
-| `/var/log/secure` | autenticacion RHEL/CentOS |
+| `/var/log/auth.log` | autenticación Debian/Ubuntu |
+| `/var/log/secure` | autenticación RHEL/CentOS |
 | `/var/log/syslog` | sistema |
 | `journalctl` | systemd journal |
 
@@ -121,15 +121,15 @@ ls -la /var/log
 tail -f /var/log/auth.log
 ```
 
-## Seguridad Basica
+## Seguridad Básica
 
-- servicios innecesarios apagados;
+- Servicios innecesarios apagados;
 - SSH sin root login directo;
-- permisos restrictivos en archivos sensibles;
-- usuarios con minimo privilegio;
-- logs disponibles;
-- actualizaciones aplicadas;
-- backups definidos.
+- Permisos restrictivos en archivos sensibles;
+- Usuarios con mínimo privilegio;
+- Logs disponibles;
+- Actualizaciones aplicadas;
+- Backups definidos.
 
 ## Errores Comunes
 

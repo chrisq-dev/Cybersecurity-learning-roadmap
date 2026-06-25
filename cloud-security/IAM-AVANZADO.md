@@ -2,24 +2,24 @@
 
 ## Objetivo
 
-Profundizar en identidad y permisos cloud, una de las causas mas comunes de incidentes.
+Profundizar en identidad y permisos cloud, una de las causas más comunes de incidentes.
 
 IAM es el plano de control de la nube. Si una identidad tiene permisos excesivos o credenciales expuestas, un atacante puede crear recursos, leer datos, modificar logs o escalar privilegios sin tocar servidores tradicionales.
 
 ## Mapa Mental
 
 ```text
-identidad -> politica -> accion -> recurso -> condicion -> log -> revision
+identidad -> política -> acción -> recurso -> condicion -> log -> revisión
 ```
 
-Cada permiso deberia poder explicarse:
+Cada permiso debería poder explicarse:
 
-- quien lo necesita;
-- para que accion;
-- sobre que recurso;
-- bajo que condicion;
-- por cuanto tiempo;
-- como se audita.
+- Quien lo necesita;
+- Para que acción;
+- Sobre que recurso;
+- Bajo que condicion;
+- Por cuanto tiempo;
+- Como se audita.
 
 ## Identidades Humanas y No Humanas
 
@@ -37,14 +37,14 @@ No humanas:
 - Pipelines CI/CD.
 - Funciones serverless.
 
-## Problema Comun
+## Problema Común
 
 Permisos amplios por comodidad.
 
 Ejemplo conceptual:
 
 ```text
-admin para todo porque asi funciona rapido
+admin para todo porque asi funciona rápido
 ```
 
 Riesgo:
@@ -53,7 +53,7 @@ Riesgo:
 
 ## Principios
 
-### Minimo Privilegio
+### Mínimo Privilegio
 
 Dar solo los permisos necesarios.
 
@@ -61,24 +61,24 @@ Dar solo los permisos necesarios.
 
 Elevar permisos solo cuando se necesitan y por tiempo limitado.
 
-### Separacion de Funciones
+### Separación de Funciones
 
-Evitar que una sola identidad pueda hacer todo el flujo critico sin revision.
+Evitar que una sola identidad pueda hacer todo el flujo crítico sin revisión.
 
 ### Deny por Defecto
 
 Permitir explicitamente lo necesario. Bloquear lo demas.
 
-## Politicas
+## Políticas
 
-Una politica debe responder:
+Una política debe responder:
 
-- Quien?
-- Puede hacer que accion?
-- Sobre que recurso?
-- Bajo que condicion?
+- Quién?
+- Puede hacer qué acción?
+- Sobre qué recurso?
+- Bajo qué condicion?
 
-## Anatomia Conceptual de una Politica
+## Anatomia Conceptual de una Política
 
 ```json
 {
@@ -93,10 +93,10 @@ Una politica debe responder:
 
 Lo importante no es memorizar sintaxis de un proveedor. Lo importante es entender:
 
-- efecto: permite o niega;
-- accion: que puede hacer;
-- recurso: sobre que;
-- condicion: cuando aplica.
+- Efecto: permite o niega;
+- Acción: que puede hacer;
+- Recurso: sobre que;
+- Condicion: cuando aplica.
 
 ## Condiciones
 
@@ -107,14 +107,14 @@ Ejemplos de condiciones:
 - Solo para ciertos recursos.
 - Solo durante cierto flujo.
 
-Condiciones utiles:
+Condiciones útiles:
 
 - MFA presente.
 - IP corporativa.
-- region permitida.
-- tags del recurso.
-- tiempo de sesion.
-- identidad asumida por servicio especifico.
+- Region permitida.
+- Tags del recurso.
+- Tiempo de sesión.
+- Identidad asumida por servicio especifico.
 
 ## Access Keys
 
@@ -123,12 +123,12 @@ Riesgos:
 - Llaves antiguas.
 - Llaves en repositorios.
 - Llaves en laptops.
-- Llaves sin rotacion.
+- Llaves sin rotación.
 
 Controles:
 
 - Usar roles cuando sea posible.
-- Rotacion.
+- Rotación.
 - Secret scanning.
 - Alertas de uso anomalo.
 - Eliminar llaves no usadas.
@@ -139,64 +139,64 @@ Siempre que sea posible, prefiere roles temporales sobre llaves permanentes.
 
 Ventajas:
 
-- credenciales con expiracion;
-- menor riesgo si se filtran;
-- mejor integracion con servicios;
-- auditoria mas clara;
-- menos secretos en laptops y repositorios.
+- Credenciales con expiracion;
+- Menor riesgo si se filtran;
+- Mejor integración con servicios;
+- Auditoria más clara;
+- Menos secretos en laptops y repositorios.
 
 ## Privilege Escalation en IAM
 
-Puede ocurrir cuando una identidad puede otorgarse permisos, asumir roles amplios o modificar politicas.
+Puede ocurrir cuando una identidad puede otorgarse permisos, asumir roles amplios o modificar políticas.
 
 Preguntas:
 
 - Esta identidad puede cambiar sus propios permisos?
 - Puede crear llaves?
 - Puede asumir roles privilegiados?
-- Puede modificar politicas?
+- Puede modificar políticas?
 - Puede desactivar logs?
 
 ## Rutas Conceptuales de Escalacion
 
 Sin entrar en abuso operativo, estas son clases de riesgo que debes reconocer:
 
-- una identidad puede adjuntar politicas admin;
-- una identidad puede crear o rotar llaves de otra cuenta;
-- una identidad puede asumir un rol mas privilegiado;
-- una identidad puede modificar funciones o pipelines que corren con permisos altos;
-- una identidad puede desactivar logs o borrar evidencia;
-- una identidad puede leer secretos usados por servicios criticos.
+- Una identidad puede adjuntar políticas admin;
+- Una identidad puede crear o rotar llaves de otra cuenta;
+- Una identidad puede asumir un rol más privilegiado;
+- Una identidad puede modificar funciones o pipelines que corren con permisos altos;
+- Una identidad puede desactivar logs o borrar evidencia;
+- Una identidad puede leer secretos usados por servicios críticos.
 
 ## Logging Importante
 
 Monitorea:
 
-- creacion de access keys;
-- uso de root/admin;
-- cambios de politicas;
-- roles asumidos;
-- cambios de trust policy;
-- desactivacion de logs;
-- cambios de MFA;
-- acceso a secretos;
-- permisos agregados a identidades.
+- Creación de access keys;
+- Uso de root/admin;
+- Cambios de políticas;
+- Roles asumidos;
+- Cambios de trust policy;
+- Desactivación de logs;
+- Cambios de MFA;
+- Acceso a secretos;
+- Permisos agregados a identidades.
 
-## Revision Periodica
+## Revisión Periodica
 
 Preguntas:
 
-- Que identidades no se usan?
-- Que llaves estan viejas?
-- Que cuentas no tienen MFA?
-- Que permisos wildcard existen?
-- Que roles pueden asumir humanos?
-- Que identidades pueden modificar IAM?
-- Que secretos no tienen owner?
+- Qué identidades no se usan?
+- Qué llaves están viejas?
+- Qué cuentas no tienen MFA?
+- Qué permisos wildcard existen?
+- Qué roles pueden asumir humanos?
+- Qué identidades pueden modificar IAM?
+- Qué secretos no tienen owner?
 
-## Ejemplo de Analisis de Politica
+## Ejemplo de Análisis de Política
 
-Esta politica representa privilegios excesivos:
+Esta política representa privilegios excesivos:
 
 ```text
 Identity: app-prod
@@ -205,23 +205,23 @@ Resource: *
 Condition: none
 ```
 
-El analisis debe explicar:
+El análisis debe explicar:
 
-- Que riesgo tiene?
-- Que permisos probablemente necesita una app normal?
-- Como reducirias privilegios?
-- Que logs activarias?
+- Qué riesgo tiene?
+- Qué permisos probablemente necesita una app normal?
+- Cómo reducirias privilegios?
+- Qué logs activarias?
 
-## Criterios de Revision IAM
+## Criterios de Revisión IAM
 
-Una revision IAM avanzada debe razonar sobre:
+Una revisión IAM avanzada debe razonar sobre:
 
-- identidades humanas y no humanas;
-- permisos minimos para cada identidad;
-- permisos peligrosos;
-- condiciones como origen, recurso, MFA o tiempo;
-- logs y alertas;
-- alternativas menos permisivas que `Action: * Resource: *`.
+- Identidades humanas y no humanas;
+- Permisos mínimos para cada identidad;
+- Permisos peligrosos;
+- Condiciones como origen, recurso, MFA o tiempo;
+- Logs y alertas;
+- Alternativas menos permisivas que `Action: * Resource: *`.
 
 ## Controles Que Deben Entenderse
 
@@ -231,12 +231,12 @@ Una revision IAM avanzada debe razonar sobre:
 - Llaves viejas aumentan superficie de compromiso.
 - Permisos wildcard deben estar justificados y limitados.
 - Logs protegidos evitan que un atacante borre evidencia.
-- Secretos fuera del codigo reducen fugas accidentales.
-- Revision periodica de accesos reduce privilegios acumulados.
+- Secretos fuera del código reducen fugas accidentales.
+- Revisión periodica de accesos reduce privilegios acumulados.
 
 ## Errores Comunes
 
-- Dar admin para resolver rapido.
+- Dar admin para resolver rápido.
 - No distinguir identidad humana y no humana.
 - Dejar llaves en repositorios.
 - No revisar rutas de escalacion.
@@ -249,6 +249,6 @@ Puedes avanzar cuando puedas:
 
 - Diferenciar identidad humana y no humana.
 - Explicar riesgo de access keys.
-- Explicar minimo privilegio en IAM.
+- Explicar mínimo privilegio en IAM.
 - Identificar rutas de escalacion de privilegios conceptuales.
-- Diseñar una revision IAM con logs, condiciones y remediacion.
+- Diseñar una revisión IAM con logs, condiciones y remediación.

@@ -9,14 +9,14 @@ Un endpoint es una laptop, desktop, servidor o dispositivo donde los usuarios y 
 ## Mapa Mental
 
 ```text
-endpoint -> usuario -> proceso -> archivo -> red -> telemetria -> deteccion -> respuesta
+endpoint -> usuario -> proceso -> archivo -> red -> telemetria -> detección -> respuesta
 ```
 
 La defensa de endpoint combina prevencion, visibilidad y respuesta.
 
 ## Antivirus
 
-Detecta malware conocido usando firmas, heuristica y otros metodos.
+Detecta malware conocido usando firmas, heuristica y otros métodos.
 
 Limitacion:
 
@@ -27,9 +27,9 @@ Limitacion:
 
 | Control | Enfoque | Ejemplo |
 | --- | --- | --- |
-| Antivirus/EPP | prevenir o bloquear amenazas conocidas | deteccion por firma, reputacion |
+| Antivirus/EPP | prevenir o bloquear amenazas conocidas | detección por firma, reputación |
 | EDR | observar, investigar y responder | proceso, parent process, aislamiento |
-| Hardening | reducir superficie de ataque | parches, minimo privilegio |
+| Hardening | reducir superficie de ataque | parches, mínimo privilegio |
 
 ## EDR
 
@@ -45,14 +45,14 @@ Ayuda a:
 
 Funciones comunes:
 
-- busqueda de procesos;
-- timeline de actividad;
-- bloqueo de hash;
-- aislamiento de host;
-- recoleccion de archivo;
-- deteccion de comportamiento;
-- respuesta remota;
-- integracion con SIEM.
+- Busqueda de procesos;
+- Timeline de actividad;
+- Bloqueo de hash;
+- Aislamiento de host;
+- Recoleccion de archivo;
+- Detección de comportamiento;
+- Respuesta remota;
+- Integración con SIEM.
 
 ## Hardening de Endpoint
 
@@ -63,42 +63,42 @@ Controles:
 - Bloqueo de macros.
 - Application control.
 - Deshabilitar servicios innecesarios.
-- Minimo privilegio.
+- Mínimo privilegio.
 - Cifrado de disco.
 - EDR activo.
 
 ## Controles Preventivos
 
-- usuario sin admin local;
-- parches de sistema y apps;
-- bloqueo de macros;
-- navegador actualizado;
-- firewall local;
-- cifrado de disco;
-- control de aplicaciones;
-- restriccion de PowerShell o scripts cuando aplique;
-- MFA para accesos criticos.
+- Usuario sin admin local;
+- Parches de sistema y apps;
+- Bloqueo de macros;
+- Navegador actualizado;
+- Firewall local;
+- Cifrado de disco;
+- Control de aplicaciones;
+- Restriccion de PowerShell o scripts cuando aplique;
+- MFA para accesos críticos.
 
 ## Controles Detectivos
 
-- alertas EDR;
-- logs de procesos;
-- conexiones de red;
-- eventos de autenticacion;
-- cambios de servicios;
-- tareas programadas;
-- ejecuciones desde rutas temporales;
-- desactivacion de seguridad.
+- Alertas EDR;
+- Logs de procesos;
+- Conexiones de red;
+- Eventos de autenticación;
+- Cambios de servicios;
+- Tareas programadas;
+- Ejecuciones desde rutas temporales;
+- Desactivación de seguridad.
 
 ## Controles Correctivos
 
-- aislar host;
-- eliminar archivo malicioso;
-- quitar persistencia;
-- reinstalar si no hay confianza;
-- rotar credenciales;
-- bloquear indicadores;
-- aplicar parche o configuracion.
+- Aislar host;
+- Eliminar archivo malicioso;
+- Quitar persistencia;
+- Reinstalar si no hay confianza;
+- Rotar credenciales;
+- Bloquear indicadores;
+- Aplicar parche o configuración.
 
 ## Application Control
 
@@ -110,9 +110,9 @@ Ejemplos:
 - Bloqueo de scripts.
 - Reglas por ruta o firma.
 
-## Superficie de Ataque Comun
+## Superficie de Ataque Común
 
-| Area | Riesgo |
+| Área | Riesgo |
 | --- | --- |
 | Office/macros | malware por adjuntos |
 | Navegador | exploit, phishing, extensiones |
@@ -141,7 +141,7 @@ Ejemplos:
 - Software no autorizado.
 - Logs insuficientes.
 
-## Referencia de Revision
+## Referencia de Revisión
 
 Checklist de endpoint de ejemplo:
 
@@ -153,14 +153,14 @@ Checklist de endpoint de ejemplo:
 - Logs.
 - Software autorizado.
 
-## Preguntas de Investigacion
+## Preguntas de Investigación
 
-- Que usuario estaba activo?
-- Que proceso inicio la actividad?
-- Cual fue el proceso padre?
-- Que archivo se ejecuto?
-- Cual es el hash?
-- Hubo conexion externa?
+- Qué usuario estaba activo?
+- Qué proceso inicio la actividad?
+- Cuál fue el proceso padre?
+- Qué archivo se ejecuto?
+- Cuál es el hash?
+- Hubo conexión externa?
 - Hay persistencia?
 - El EDR estaba activo?
 
@@ -168,7 +168,7 @@ Checklist de endpoint de ejemplo:
 
 - Pensar que antivirus basta.
 - Aislar tarde un host claramente comprometido.
-- Limpiar antes de preservar datos relevantes para investigacion.
+- Limpiar antes de preservar datos relevantes para investigación.
 - No revisar actividad posterior.
 - Dejar usuarios con admin local por comodidad.
 - No probar que el EDR este reportando.
@@ -179,6 +179,6 @@ Puedes avanzar cuando puedas:
 
 - Explicar antivirus vs EDR.
 - Explicar hardening.
-- Nombrar telemetria util.
+- Nombrar telemetria útil.
 - Proponer controles endpoint.
-- Diferenciar prevencion, deteccion y respuesta en endpoint.
+- Diferenciar prevencion, detección y respuesta en endpoint.

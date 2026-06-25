@@ -4,19 +4,19 @@
 
 Aprender a buscar actividad sospechosa de forma proactiva, no solo esperar alertas.
 
-Threat hunting es una habilidad clave para pasar de analista reactivo a analista que entiende comportamiento. No reemplaza alertas; ayuda a descubrir brechas de deteccion y a mejorar reglas existentes.
+Threat hunting es una habilidad clave para pasar de analista reactivo a analista que entiende comportamiento. No reemplaza alertas; ayuda a descubrir brechas de detección y a mejorar reglas existentes.
 
 ## Mapa Mental
 
 ```text
-hipotesis -> datos -> busqueda -> contexto -> hallazgo -> deteccion -> mejora
+hipótesis -> datos -> busqueda -> contexto -> hallazgo -> detección -> mejora
 ```
 
-Un hunt sin hipotesis se convierte en navegar logs sin rumbo.
+Un hunt sin hipótesis se convierte en navegar logs sin rumbo.
 
-## Que es Threat Hunting
+## Qué es Threat Hunting
 
-Threat hunting es una investigacion guiada por hipotesis.
+Threat hunting es una investigación guiada por hipótesis.
 
 No empieza con:
 
@@ -30,11 +30,11 @@ Empieza con:
 Creo que podria existir cierto comportamiento malicioso. Voy a buscar evidencia.
 ```
 
-## Hipotesis
+## Hipótesis
 
-Una hipotesis debe ser clara y verificable.
+Una hipótesis debe ser clara y verificable.
 
-Ejemplo debil:
+Ejemplo débil:
 
 ```text
 Buscar hackers.
@@ -43,28 +43,28 @@ Buscar hackers.
 Ejemplo bueno:
 
 ```text
-Un atacante que obtuvo credenciales podria intentar multiples logins fallidos y luego un login exitoso desde una IP inusual.
+Un atacante que obtuvo credenciales podria intentar múltiples logins fallidos y luego un login exitoso desde una IP inusual.
 ```
 
-## Hipotesis Buena
+## Hipótesis Buena
 
 Debe tener:
 
-- comportamiento observable;
-- fuente de datos posible;
-- entidad afectada;
-- criterio de sospecha;
-- resultado esperado.
+- Comportamiento observable;
+- Fuente de datos posible;
+- Entidad afectada;
+- Criterio de sospecha;
+- Resultado esperado.
 
 Formato:
 
 ```text
-Creo que [actor/comportamiento] podria [accion] en [entidad] y puedo buscarlo con [datos].
+Creo que [actor/comportamiento] podria [acción] en [entidad] y puedo buscarlo con [datos].
 ```
 
 ## Fuentes de Datos
 
-- Logs de autenticacion.
+- Logs de autenticación.
 - Eventos de procesos.
 - DNS.
 - Proxy.
@@ -76,13 +76,13 @@ Creo que [actor/comportamiento] podria [accion] en [entidad] y puedo buscarlo co
 
 ## Tipos de Hunt
 
-### Basado en Hipotesis
+### Basado en Hipótesis
 
 Parte de una idea concreta.
 
 ### Basado en Inteligencia
 
-Parte de indicadores o tecnicas conocidas.
+Parte de indicadores o técnicas conocidas.
 
 ### Basado en Anomalias
 
@@ -90,17 +90,17 @@ Parte de desviaciones respecto al comportamiento normal.
 
 ### Basado en Cobertura
 
-Busca tecnicas MITRE que no estan cubiertas por alertas actuales.
+Busca técnicas MITRE que no están cubiertas por alertas actuales.
 
 ## Flujo de Hunting
 
-1. Crear hipotesis.
+1. Crear hipótesis.
 2. Identificar datos necesarios.
 3. Buscar patrones.
 4. Revisar resultados.
 5. Separar normal de sospechoso.
 6. Documentar hallazgos.
-7. Crear deteccion si aplica.
+7. Crear detección si aplica.
 
 ## Baseline
 
@@ -108,12 +108,12 @@ Antes de llamar algo sospechoso, entiende que es normal.
 
 Ejemplos:
 
-- horarios normales de login;
-- paises o redes comunes;
-- procesos habituales por rol;
-- dominios frecuentes;
-- cuentas de servicio esperadas;
-- volumen normal de errores.
+- Horarios normales de login;
+- Paises o redes comunes;
+- Procesos habituales por rol;
+- Dominios frecuentes;
+- Cuentas de servicio esperadas;
+- Volumen normal de errores.
 
 Sin baseline, todo parece raro o nada parece raro.
 
@@ -121,7 +121,7 @@ Sin baseline, todo parece raro o nada parece raro.
 
 ### Hunt 1: Logins Inusuales
 
-Hipotesis:
+Hipótesis:
 
 ```text
 Credenciales validas pueden usarse desde ubicaciones o IPs inusuales.
@@ -138,13 +138,13 @@ Datos:
 Preguntas:
 
 - Es una IP nueva para ese usuario?
-- Hay muchos fallos antes del exito?
+- Hay muchos fallos antes del éxito?
 - Ocurre fuera de horario?
 - Hubo actividad posterior sensible?
 
 ### Hunt 2: Uso Sospechoso de PowerShell
 
-Hipotesis:
+Hipótesis:
 
 ```text
 PowerShell puede usarse para ejecutar comandos sospechosos o automatizar acciones maliciosas.
@@ -160,14 +160,14 @@ Datos:
 
 Preguntas:
 
-- Quien ejecuto PowerShell?
-- Desde que proceso padre?
-- El comando esta codificado?
+- Quién ejecuto PowerShell?
+- Desde qué proceso padre?
+- El comando está codificado?
 - Descarga contenido remoto?
 
 ### Hunt 3: DNS Raro
 
-Hipotesis:
+Hipótesis:
 
 ```text
 Malware puede comunicarse con dominios inusuales o generados automaticamente.
@@ -186,11 +186,11 @@ Preguntas:
 - El dominio es nuevo?
 - Tiene muchos subdominios?
 - Se repite en varios hosts?
-- Hay trafico posterior?
+- Hay tráfico posterior?
 
 ### Hunt 4: Cuentas de Servicio Anomalas
 
-Hipotesis:
+Hipótesis:
 
 ```text
 Una cuenta de servicio comprometida puede usarse desde hosts o horarios no esperados.
@@ -198,26 +198,26 @@ Una cuenta de servicio comprometida puede usarse desde hosts o horarios no esper
 
 Datos:
 
-- cuenta;
-- host origen;
-- sistema destino;
-- hora;
-- accion;
-- resultado.
+- Cuenta;
+- Host origen;
+- Sistema destino;
+- Hora;
+- Acción;
+- Resultado.
 
 Preguntas:
 
-- La cuenta deberia iniciar sesion interactivamente?
+- La cuenta debería iniciar sesión interactivamente?
 - El host origen es esperado?
 - Hubo cambios de permisos?
 - Se accedieron recursos sensibles?
 
-## Formato de analisis de hunting
+## Formato de análisis de hunting
 
 ```md
 # Threat Hunt
 
-## Hipotesis
+## Hipótesis
 
 ## Fuentes de Datos
 
@@ -238,19 +238,19 @@ Preguntas:
 
 Un hunt de cuenta comprometida debe razonar sobre:
 
-- Hipotesis: que comportamiento indicaria posible compromiso.
-- Fuentes de datos: autenticacion, VPN, endpoint, correo, proxy, EDR o directorio.
-- Campos necesarios: usuario, IP origen, pais, dispositivo, hora, resultado, metodo de autenticacion y recurso accedido.
-- Busquedas conceptuales: accesos imposibles, cambios bruscos de ubicacion, fallos repetidos, inicios fuera de horario y acceso a recursos nuevos.
+- Hipótesis: que comportamiento indicaria posible compromiso.
+- Fuentes de datos: autenticación, VPN, endpoint, correo, proxy, EDR o directorio.
+- Campos necesarios: usuario, IP origen, pais, dispositivo, hora, resultado, método de autenticación y recurso accedido.
+- Busquedas conceptuales: accesos imposibles, cambios bruscos de ubicación, fallos repetidos, inicios fuera de horario y acceso a recursos nuevos.
 - Baseline esperado: como se comporta normalmente esa cuenta.
 - Anomalias: que cambio es relevante y por que.
 - Falsos positivos: viajes, VPN corporativa, cambios de turno, automatizaciones o errores de sincronizacion.
-- Recomendacion: restablecimiento de credenciales, revocacion de sesiones, MFA, revision de permisos y monitoreo posterior.
-- Deteccion propuesta: regla que capture el patron sin generar ruido excesivo.
+- Recomendación: restablecimiento de credenciales, revocacion de sesiones, MFA, revisión de permisos y monitoreo posterior.
+- Detección propuesta: regla que capture el patron sin generar ruido excesivo.
 
 ## Errores Comunes
 
-- Buscar sin hipotesis.
+- Buscar sin hipótesis.
 - No conocer normalidad del ambiente.
 - Confundir anomalia con incidente confirmado.
 - No documentar busquedas que no encontraron nada.
@@ -261,8 +261,8 @@ Un hunt de cuenta comprometida debe razonar sobre:
 
 Puedes avanzar cuando puedas:
 
-- Escribir una hipotesis verificable.
+- Escribir una hipótesis verificable.
 - Identificar fuentes de datos.
 - Documentar resultados.
-- Proponer una deteccion nueva.
+- Proponer una detección nueva.
 - Explicar la diferencia entre anomalia, hallazgo e incidente.

@@ -121,9 +121,9 @@ Path("resumen.txt").write_text(report)
 
 ## Errores Comunes
 
-- guardar tokens en codigo;
-- no usar timeout en APIs;
-- asumir que todos los campos existen;
-- sobrescribir evidencia;
-- no documentar como ejecutar el script;
-- no manejar archivos inexistentes.
+- Guardar tokens en código;
+- No usar timeout en APIs;
+- Asumir que todos los campos existen;
+- Sobrescribir evidencia;
+- No documentar como ejecutar el script;
+- No manejar archivos inexistentes.

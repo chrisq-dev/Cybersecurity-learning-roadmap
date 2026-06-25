@@ -2,26 +2,26 @@
 
 ## Objetivo
 
-Investigar posible exposicion o extraccion de datos.
+Investigar posible exposición o extraccion de datos.
 
 ## Severidad Inicial
 
 Sube severidad si:
 
-- hay datos personales o sensibles;
-- volumen alto;
-- datos expuestos a internet;
-- tercero no autorizado accedio;
-- hay obligacion contractual o legal;
-- la exposicion sigue activa.
+- Hay datos personales o sensibles;
+- Volumen alto;
+- Datos expuestos a internet;
+- Tercero no autorizado accedio;
+- Hay obligacion contractual o legal;
+- La exposición sigue activa.
 
 ## Señales
 
 - Descarga masiva.
 - Acceso a datos sensibles.
-- Bucket publico.
+- Bucket público.
 - Exportaciones inusuales.
-- Trafico saliente anomalo.
+- Tráfico saliente anomalo.
 - Credenciales expuestas.
 
 ## Evidencia
@@ -36,12 +36,12 @@ Sube severidad si:
 
 ## Primeros 15 Minutos
 
-1. Confirmar que dato esta involucrado.
-2. Contener exposicion activa.
+1. Confirmar que dato está involucrado.
+2. Contener exposición activa.
 3. Preservar logs.
 4. Identificar owner del sistema.
 5. Evitar borrar evidencia.
-6. Escalar segun proceso interno.
+6. Escalar según proceso interno.
 
 ## Pasos
 
@@ -51,54 +51,54 @@ Sube severidad si:
 4. Preservar logs.
 5. Identificar causa.
 6. Evaluar impacto.
-7. Notificar segun proceso interno.
+7. Notificar según proceso interno.
 8. Remediar control.
 9. Documentar lecciones.
 
-## Clasificacion de Datos
+## Clasificación de Datos
 
 | Tipo | Ejemplo | Impacto |
 | --- | --- | --- |
-| Publico | informacion publicada | bajo |
+| Público | información publicada | bajo |
 | Interno | documentacion interna | medio |
 | Confidencial | datos de clientes | alto |
-| Sensible | credenciales, salud, financiero | critico |
+| Sensible | credenciales, salud, financiero | crítico |
 
-## Contencion
+## Contención
 
 - Revocar acceso.
 - Hacer privado storage.
 - Rotar credenciales.
-- Bloquear exfiltracion.
+- Bloquear exfiltración.
 - Deshabilitar cuenta comprometida.
 
-## Analisis de Alcance
+## Análisis de Alcance
 
-El analisis de alcance debe aclarar:
+El análisis de alcance debe aclarar:
 
-- que datos;
-- cuantos registros;
-- durante cuanto tiempo;
-- quien accedio;
-- desde donde;
-- si hubo descarga;
-- si hay copia externa;
-- que logs lo prueban.
+- Que datos;
+- Cuantos registros;
+- Durante cuanto tiempo;
+- Quien accedio;
+- Desde donde;
+- Si hubo descarga;
+- Si hay copia externa;
+- Que logs lo prueban.
 
 ## Preguntas
 
 - Son datos personales?
 - Son datos sensibles?
 - Hay obligacion de notificacion?
-- Que control fallo?
+- Qué control fallo?
 
 ## Cierre
 
 Puedes cerrar cuando:
 
-- exposicion contenida;
-- alcance documentado;
-- owner informado;
-- controles corregidos;
-- notificacion evaluada por responsables;
-- monitoreo posterior definido.
+- Exposición contenida;
+- Alcance documentado;
+- Owner informado;
+- Controles corregidos;
+- Notificacion evaluada por responsables;
+- Monitoreo posterior definido.

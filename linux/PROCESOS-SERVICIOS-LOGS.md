@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Aprender a observar que esta pasando en Linux: procesos activos, servicios, puertos y eventos registrados.
+Aprender a observar que está pasando en Linux: procesos activos, servicios, puertos y eventos registrados.
 
 ## Procesos
 
@@ -26,7 +26,7 @@ Columnas importantes de `ps aux`:
 
 ## Servicios
 
-Un servicio es un proceso de larga duracion administrado por el sistema.
+Un servicio es un proceso de larga duración administrado por el sistema.
 
 Con systemd:
 
@@ -79,16 +79,16 @@ journalctl -u ssh
 journalctl -xe
 ```
 
-## Que Buscar en Logs
+## Qué Buscar en Logs
 
 - Login fallido.
 - Login exitoso fuera de horario.
 - Uso de sudo.
 - Servicio reiniciado.
 - Error repetido.
-- Conexion desde IP desconocida.
+- Conexión desde IP desconocida.
 
-## Observacion Segura
+## Observación Segura
 
 En un entorno propio, estos comandos permiten observar procesos, puertos y logs:
 
@@ -102,11 +102,11 @@ Si no tienes permisos para logs:
 
 - Identifica que permiso falta.
 - Revisa que logs son accesibles para tu usuario.
-- Evita elevar privilegios sin entender que informacion estas consultando.
+- Evita elevar privilegios sin entender que información estas consultando.
 
-## Criterios de Revision
+## Criterios de Revisión
 
-Una revision basica de sistema Linux debe cubrir:
+Una revisión básica de sistema Linux debe cubrir:
 
 ```md
 Procesos observados.
@@ -115,7 +115,7 @@ Logs revisados.
 Eventos interesantes.
 
 
-## Conclusion
+## Conclusión
 
 ```
 
@@ -126,5 +126,5 @@ Puedes avanzar cuando puedas:
 - Ver procesos.
 - Ver servicios.
 - Ver puertos.
-- Leer logs basicos.
-- Explicar un evento de autenticacion.
+- Leer logs básicos.
+- Explicar un evento de autenticación.

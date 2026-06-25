@@ -19,11 +19,11 @@ Mitigacion:
 
 - Validar permisos en servidor para cada objeto.
 - No confiar en que el frontend oculta botones.
-- Tests de autorizacion.
+- Tests de autorización.
 
 ## Mass Assignment
 
-Ocurre cuando la API acepta campos que el usuario no deberia controlar.
+Ocurre cuando la API acepta campos que el usuario no debería controlar.
 
 Ejemplo:
 
@@ -38,7 +38,7 @@ Mitigacion:
 
 - Allowlist de campos permitidos.
 - DTOs.
-- Validacion estricta.
+- Validación estricta.
 
 ## Rate Limiting
 
@@ -53,7 +53,7 @@ Protege contra:
 
 ## Errores Excesivos
 
-Errores demasiado detallados revelan informacion.
+Errores demasiado detallados revelan información.
 
 Mal:
 
@@ -67,7 +67,7 @@ Mejor:
 Invalid request
 ```
 
-con detalle interno solo en logs.
+Con detalle interno solo en logs.
 
 ## Logging
 
@@ -86,23 +86,23 @@ Evitar:
 - Tokens.
 - Datos sensibles innecesarios.
 
-## Criterios de Revision
+## Criterios de Revisión
 
 Una API segura debe evaluarse con estos criterios:
 
-- autenticacion requerida cuando el recurso no es publico;
-- autorizacion por objeto para evitar BOLA/IDOR;
-- validacion de entrada en servidor;
-- allowlist de campos para evitar mass assignment;
-- rate limiting para reducir abuso;
-- errores seguros que no filtren detalles internos;
-- logs utiles sin contrasenas ni tokens;
-- tokens con expiracion razonable;
-- permisos minimos entre servicios y datos.
+- Autenticación requerida cuando el recurso no es público;
+- Autorización por objeto para evitar BOLA/IDOR;
+- Validación de entrada en servidor;
+- Allowlist de campos para evitar mass assignment;
+- Rate limiting para reducir abuso;
+- Errores seguros que no filtren detalles internos;
+- Logs útiles sin contraseñas ni tokens;
+- Tokens con expiracion razonable;
+- Permisos mínimos entre servicios y datos.
 
 ## Ejemplo de Riesgo
 
-Este request muestra un riesgo comun de autorizacion y mass assignment:
+Este request muestra un riesgo común de autorización y mass assignment:
 
 ```http
 PATCH /api/users/123
@@ -115,12 +115,12 @@ Content-Type: application/json
 }
 ```
 
-El analisis debe revisar:
+El análisis debe revisar:
 
-- Que riesgo aparece?
-- Que validarias?
-- Que log guardarias?
-- Que respuesta segura darias?
+- Qué riesgo aparece?
+- Qué validarias?
+- Qué log guardarias?
+- Qué respuesta segura darias?
 
 ## Criterio de Dominio
 

@@ -4,7 +4,7 @@
 
 Entender que datos de endpoint ayudan a investigar actividad sospechosa.
 
-La telemetria de endpoint es la evidencia que permite reconstruir que hizo un usuario, proceso o archivo en una maquina. Sin telemetria, una alerta queda incompleta.
+La telemetria de endpoint es la evidencia que permite reconstruir que hizo un usuario, proceso o archivo en una máquina. Sin telemetria, una alerta queda incompleta.
 
 ## Mapa Mental
 
@@ -12,9 +12,9 @@ La telemetria de endpoint es la evidencia que permite reconstruir que hizo un us
 usuario -> proceso padre -> proceso hijo -> command line -> archivo -> red -> persistencia
 ```
 
-Una investigacion busca unir esas piezas en una linea de tiempo.
+Una investigación busca unir esas piezas en una linea de tiempo.
 
-## Telemetria Util
+## Telemetria Útil
 
 - Procesos.
 - Parent process.
@@ -31,15 +31,15 @@ Una investigacion busca unir esas piezas en una linea de tiempo.
 
 | Campo | Pregunta |
 | --- | --- |
-| Timestamp | Cuando ocurrio? |
-| Hostname | En que equipo? |
-| Usuario | Con que identidad? |
-| Process name | Que se ejecuto? |
-| Parent process | Que lo inicio? |
-| Command line | Con que argumentos? |
-| File hash | Que archivo exacto? |
-| Path | Desde donde se ejecuto? |
-| Destination IP/domain | A donde se conecto? |
+| Timestamp | Cuándo ocurrio? |
+| Hostname | En qué equipo? |
+| Usuario | Con qué identidad? |
+| Process name | Qué se ejecuto? |
+| Parent process | Qué lo inicio? |
+| Command line | Con qué argumentos? |
+| File hash | Qué archivo exacto? |
+| Path | Desde dónde se ejecuto? |
+| Destination IP/domain | A dónde se conecto? |
 | Action | Fue permitido, bloqueado o detectado? |
 
 ## Parent Process
@@ -54,7 +54,7 @@ winword.exe -> powershell.exe
 
 No siempre es malicioso, pero requiere contexto.
 
-Ejemplos que merecen revision:
+Ejemplos que merecen revisión:
 
 | Cadena | Por que importa |
 | --- | --- |
@@ -75,16 +75,16 @@ Preguntas:
 - Modifica seguridad?
 - Crea usuarios?
 
-Senales comunes:
+Señales comunes:
 
-- comandos codificados;
-- descarga desde internet;
-- ejecucion desde `%TEMP%`;
-- desactivacion de antivirus;
-- creacion de usuarios;
-- compresion de archivos;
-- acceso a rutas sensibles;
-- uso de herramientas administrativas fuera de contexto.
+- Comandos codificados;
+- Descarga desde internet;
+- Ejecucion desde `%TEMP%`;
+- Desactivación de antivirus;
+- Creación de usuarios;
+- Compresion de archivos;
+- Acceso a rutas sensibles;
+- Uso de herramientas administrativas fuera de contexto.
 
 ## Persistencia
 
@@ -100,37 +100,37 @@ Formas comunes:
 
 Revisa:
 
-- dominios consultados;
+- Dominios consultados;
 - IP destino;
-- puerto;
-- proceso que inicio conexion;
-- volumen;
-- frecuencia;
-- reputacion o contexto.
+- Puerto;
+- Proceso que inicio conexión;
+- Volumen;
+- Frecuencia;
+- Reputación o contexto.
 
-Una conexion externa no es maliciosa por si sola. Importa el proceso, usuario, destino y momento.
+Una conexión externa no es maliciosa por si sola. Importa el proceso, usuario, destino y momento.
 
 ## Archivos
 
-Campos utiles:
+Campos útiles:
 
-- ruta;
-- hash;
-- firma;
-- fecha de creacion;
-- owner;
-- origen;
-- si fue descargado;
-- si se ejecuto.
+- Ruta;
+- Hash;
+- Firma;
+- Fecha de creación;
+- Owner;
+- Origen;
+- Si fue descargado;
+- Si se ejecuto.
 
-## Registro y Configuracion
+## Registro y Configuración
 
 En Windows, cambios de registro pueden indicar:
 
-- persistencia;
-- desactivacion de controles;
-- configuracion de servicios;
-- ejecucion al inicio.
+- Persistencia;
+- Desactivación de controles;
+- Configuración de servicios;
+- Ejecucion al inicio.
 
 ## Caso de Referencia
 
@@ -142,10 +142,10 @@ Usuario abre adjunto. Luego winword.exe inicia powershell.exe y se conecta a int
 
 Puntos a observar:
 
-- Que evidencia necesitas?
-- Que procesos revisas?
-- Que conexiones?
-- Que accion de contencion consideras?
+- Qué evidencia necesitas?
+- Qué procesos revisas?
+- Qué conexiones?
+- Qué acción de contención consideras?
 
 ## Linea de Tiempo Conceptual
 
@@ -153,7 +153,7 @@ Puntos a observar:
 | --- | --- | --- | --- |
 | 10:00 | usuario abre adjunto | proceso Office | inicio del flujo |
 | 10:01 | PowerShell ejecutado | parent process | comportamiento sospechoso |
-| 10:02 | conexion externa | destino/red | posible descarga o C2 |
+| 10:02 | conexión externa | destino/red | posible descarga o C2 |
 | 10:04 | archivo creado | ruta/hash | posible payload |
 
 ## Errores Comunes
@@ -172,5 +172,5 @@ Puedes avanzar cuando puedas:
 - Explicar telemetria endpoint.
 - Usar parent process como contexto.
 - Identificar persistencia conceptual.
-- Formular preguntas de investigacion.
-- Construir una linea de tiempo basica de endpoint.
+- Formular preguntas de investigación.
+- Construir una linea de tiempo básica de endpoint.

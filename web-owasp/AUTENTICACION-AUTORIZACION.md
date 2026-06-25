@@ -1,29 +1,29 @@
-# Autenticacion y Autorizacion
+# Autenticación y Autorización
 
 ## Objetivo
 
-Entender una de las diferencias mas importantes en seguridad web: comprobar quien eres vs comprobar que puedes hacer.
+Entender una de las diferencias más importantes en seguridad web: comprobar quien eres vs comprobar que puedes hacer.
 
-Muchos incidentes no ocurren porque el login falle, sino porque la aplicacion no valida correctamente que acciones puede realizar un usuario autenticado. Autenticacion y autorizacion deben revisarse por separado.
+Muchos incidentes no ocurren porque el login falle, sino porque la aplicación no valida correctamente que acciones puede realizar un usuario autenticado. Autenticación y autorización deben revisarse por separado.
 
 ## Mapa Mental
 
 ```text
-identidad -> sesion/token -> rol -> permiso -> recurso -> accion -> auditoria
+identidad -> sesion/token -> rol -> permiso -> recurso -> acción -> auditoria
 ```
 
 Pregunta central:
 
 ```text
-Esta identidad puede hacer esta accion sobre este recurso especifico?
+Esta identidad puede hacer está acción sobre este recurso especifico?
 ```
 
-## Autenticacion
+## Autenticación
 
-Autenticacion aclara:
+Autenticación aclara:
 
 ```text
-Quien eres?
+Quién eres?
 ```
 
 Ejemplos:
@@ -37,20 +37,20 @@ Ejemplos:
 Controles:
 
 - MFA;
-- rate limiting;
-- bloqueo progresivo;
-- deteccion de password spraying;
-- recuperacion segura;
-- password hashing fuerte;
-- proteccion contra credential stuffing;
-- logs de login.
+- Rate limiting;
+- Bloqueo progresivo;
+- Detección de password spraying;
+- Recuperación segura;
+- Password hashing fuerte;
+- Protección contra credential stuffing;
+- Logs de login.
 
-## Autorizacion
+## Autorización
 
-Autorizacion aclara:
+Autorización aclara:
 
 ```text
-Que puedes hacer?
+Qué puedes hacer?
 ```
 
 Ejemplos:
@@ -72,7 +72,7 @@ El modelo exacto importa menos que validarlo siempre en servidor.
 
 Escenario:
 
-- Inicias sesion correctamente.
+- Inicias sesión correctamente.
 - Tu usuario es `cliente`.
 - Intentas entrar a `/admin`.
 
@@ -83,33 +83,33 @@ Resultados posibles:
 
 ## 401 vs 403
 
-- 401: no hay identidad valida o falta autenticacion.
+- 401: no hay identidad valida o falta autenticación.
 - 403: hay identidad, pero no permiso.
 
 Usarlos bien ayuda a depurar y a monitorear.
 
 ## Sesiones
 
-Despues del login, una aplicacion suele crear una sesion.
+Después del login, una aplicación suele crear una sesión.
 
 Flujo:
 
 1. Usuario envia credenciales.
 2. Servidor valida.
-3. Servidor crea sesion.
-4. Servidor envia cookie de sesion.
+3. Servidor crea sesión.
+4. Servidor envia cookie de sesión.
 5. Navegador reenvia cookie en requests futuras.
 
-Controles de sesion:
+Controles de sesión:
 
-- cookie `HttpOnly`;
-- cookie `Secure`;
-- cookie `SameSite`;
-- expiracion;
-- rotacion despues de login;
-- invalidacion en logout;
-- revocacion ante riesgo;
-- proteccion contra fijacion de sesion.
+- Cookie `HttpOnly`;
+- Cookie `Secure`;
+- Cookie `SameSite`;
+- Expiracion;
+- Rotación después de login;
+- Invalidacion en logout;
+- Revocacion ante riesgo;
+- Protección contra fijacion de sesión.
 
 ## Tokens
 
@@ -128,15 +128,15 @@ Riesgos:
 - Token con demasiados permisos.
 - Token guardado en lugar inseguro.
 
-Buenas practicas:
+Buenas prácticas:
 
-- expiracion corta cuando aplique;
-- scopes;
-- audience correcta;
-- rotacion;
-- revocacion;
-- no guardar tokens en logs;
-- proteger refresh tokens.
+- Expiracion corta cuando aplique;
+- Scopes;
+- Audience correcta;
+- Rotación;
+- Revocacion;
+- No guardar tokens en logs;
+- Proteger refresh tokens.
 
 ## Fallas Comunes
 
@@ -144,9 +144,9 @@ Buenas practicas:
 
 Mitigacion:
 
-- Politicas razonables.
+- Políticas razonables.
 - MFA.
-- Deteccion de fuerza bruta.
+- Detección de fuerza bruta.
 
 ### Falta de MFA
 
@@ -163,7 +163,7 @@ Ejemplo:
 /users/1002/invoices
 ```
 
-Si cambias `1001` por `1002` y ves datos ajenos, hay un problema de autorizacion.
+Si cambias `1001` por `1002` y ves datos ajenos, hay un problema de autorización.
 
 ### Sesiones Inseguras
 
@@ -171,10 +171,10 @@ Mitigacion:
 
 - Cookies `HttpOnly`, `Secure`, `SameSite`.
 - Expiracion.
-- Rotacion de sesion despues de login.
+- Rotación de sesión después de login.
 - Logout real.
 
-### Falta de Autorizacion por Objeto
+### Falta de Autorización por Objeto
 
 La app valida el rol general, pero no el recurso especifico.
 
@@ -182,12 +182,12 @@ Ejemplo:
 
 ```text
 Usuario A puede ver factura 1001.
-Usuario A no deberia ver factura 1002.
+Usuario A no debería ver factura 1002.
 ```
 
 ### Mass Assignment
 
-La API acepta campos que el usuario no deberia controlar.
+La API acepta campos que el usuario no debería controlar.
 
 Ejemplo conceptual:
 
@@ -202,7 +202,7 @@ Si el backend acepta `role` desde el cliente, hay riesgo.
 
 ## Ejemplo de Matriz de Acceso
 
-Esta aplicacion imaginaria permite razonar sobre roles y recursos:
+Esta aplicación imaginaria permite razonar sobre roles y recursos:
 
 Roles:
 
@@ -227,45 +227,45 @@ Una tabla de ejemplo puede verse asi:
 | Panel admin | | | |
 | Logs | | | |
 
-En una revision informativa conviene considerar:
+En una revisión informativa conviene considerar:
 
-- que endpoints existirian;
-- que respuesta daria cada caso no permitido;
-- que eventos registrarias;
-- que acciones requieren MFA o reautenticacion.
+- Que endpoints existirian;
+- Que respuesta daria cada caso no permitido;
+- Que eventos registrarias;
+- Que acciones requieren MFA o reautenticacion.
 
-## Criterios de Revision de Acceso
+## Criterios de Revisión de Acceso
 
 Una matriz de acceso ayuda a razonar sobre:
 
-- roles;
-- recursos;
-- acciones;
-- reglas permitidas;
-- reglas denegadas;
-- respuestas esperadas;
-- eventos de auditoria;
-- casos donde se requiere MFA o reautenticacion.
+- Roles;
+- Recursos;
+- Acciones;
+- Reglas permitidas;
+- Reglas denegadas;
+- Respuestas esperadas;
+- Eventos de auditoria;
+- Casos donde se requiere MFA o reautenticacion.
 
 ## Controles Que Deben Entenderse
 
 - MFA en cuentas sensibles reduce abuso de credenciales.
-- Rate limit en login reduce fuerza bruta y automatizacion.
+- Rate limit en login reduce fuerza bruta y automatización.
 - Password hashing fuerte reduce impacto si se filtran hashes.
-- Cookies seguras reducen robo o envio indebido de sesion.
-- Rotar sesion despues de login reduce fijacion de sesion.
-- Autorizacion por recurso evita Broken Access Control.
+- Cookies seguras reducen robo o envio indebido de sesión.
+- Rotar sesión después de login reduce fijacion de sesión.
+- Autorización por recurso evita Broken Access Control.
 - El backend debe validar permisos; el frontend no es confiable.
-- Errores 401/403 correctos ayudan a separar autenticacion y autorizacion.
-- Logs de acciones sensibles permiten investigacion posterior.
+- Errores 401/403 correctos ayudan a separar autenticación y autorización.
+- Logs de acciones sensibles permiten investigación posterior.
 
 ## Criterio de Dominio
 
 Puedes avanzar cuando puedas:
 
-- Explicar autenticacion.
-- Explicar autorizacion.
+- Explicar autenticación.
+- Explicar autorización.
 - Explicar sesiones.
-- Entender cookies de sesion.
+- Entender cookies de sesión.
 - Dar un ejemplo de Broken Access Control.
-- Construir una matriz de permisos y pruebas de autorizacion.
+- Construir una matriz de permisos y pruebas de autorización.

@@ -16,8 +16,8 @@ Una startup tiene:
 - 3 buckets de storage.
 - 2 aplicaciones web.
 - 1 base de datos administrada.
-- logs parciales.
-- access keys antiguas.
+- Logs parciales.
+- Access keys antiguas.
 
 ## Alcance
 
@@ -25,126 +25,126 @@ Incluido:
 
 - IAM;
 - MFA;
-- access keys;
-- storage publico;
-- security groups/firewall;
-- logging;
-- secretos;
-- backups;
-- recomendaciones.
+- Access keys;
+- Storage público;
+- Security groups/firewall;
+- Logging;
+- Secretos;
+- Backups;
+- Recomendaciones.
 
 Fuera de alcance:
 
-- crear infraestructura real;
-- probar cuentas reales;
-- explotar servicios;
-- usar datos sensibles.
+- Crear infraestructura real;
+- Probar cuentas reales;
+- Explotar servicios;
+- Usar datos sensibles.
 
 ## Fase 1: Inventario
 
 Tabla:
 
-| Recurso | Tipo | Owner | Criticidad | Exposicion | Datos |
+| Recurso | Tipo | Owner | Criticidad | Exposición | Datos |
 | --- | --- | --- | --- | --- | --- |
 
 Incluye al menos:
 
-- aplicacion web;
-- base de datos;
-- bucket publico;
-- bucket privado;
-- identidad admin;
-- service account de CI/CD;
-- secret manager;
-- logs.
+- Aplicación web;
+- Base de datos;
+- Bucket público;
+- Bucket privado;
+- Identidad admin;
+- Service account de CI/CD;
+- Secret manager;
+- Logs.
 
 ## Fase 2: IAM
 
 Revisa:
 
-- usuarios sin MFA;
-- permisos admin;
-- service accounts;
-- access keys antiguas;
-- roles sin owner;
-- permisos wildcard.
+- Usuarios sin MFA;
+- Permisos admin;
+- Service accounts;
+- Access keys antiguas;
+- Roles sin owner;
+- Permisos wildcard.
 
 Preguntas:
 
-- Quien puede modificar IAM?
-- Quien puede leer secretos?
-- Quien puede borrar logs?
-- Que identidades no se usan?
-- Que permisos deberian ser temporales?
+- Quién puede modificar IAM?
+- Quién puede leer secretos?
+- Quién puede borrar logs?
+- Qué identidades no se usan?
+- Qué permisos deberian ser temporales?
 
 ## Fase 3: Storage
 
 Revisa:
 
-- acceso publico;
-- cifrado;
-- versionado;
-- logs de acceso;
-- politicas;
-- datos sensibles.
+- Acceso público;
+- Cifrado;
+- Versionado;
+- Logs de acceso;
+- Políticas;
+- Datos sensibles.
 
 Tabla:
 
-| Bucket | Datos | Publico | Cifrado | Versionado | Riesgo |
+| Bucket | Datos | Público | Cifrado | Versionado | Riesgo |
 | --- | --- | --- | --- | --- | --- |
 
 ## Fase 4: Red
 
 Revisa:
 
-- puertos administrativos expuestos;
-- reglas `0.0.0.0/0`;
-- segmentacion;
-- acceso a base de datos;
-- egress.
+- Puertos administrativos expuestos;
+- Reglas `0.0.0.0/0`;
+- Segmentación;
+- Acceso a base de datos;
+- Egress.
 
 Preguntas:
 
-- Que recursos son accesibles desde internet?
-- Que recursos solo deberian ser internos?
-- Que acceso administrativo existe?
-- Que reglas no tienen justificacion?
+- Qué recursos son accesibles desde internet?
+- Qué recursos solo deberian ser internos?
+- Qué acceso administrativo existe?
+- Qué reglas no tienen justificacion?
 
-## Fase 5: Logging y Deteccion
+## Fase 5: Logging y Detección
 
 Define alertas para:
 
-- login root/admin;
+- Login root/admin;
 - MFA deshabilitado;
-- bucket publico;
-- creacion de access key;
-- cambio de politicas IAM;
-- security group abierto;
-- logs desactivados.
+- Bucket público;
+- Creación de access key;
+- Cambio de políticas IAM;
+- Security group abierto;
+- Logs desactivados.
 
 Tabla:
 
-| Alerta | Fuente | Severidad | Accion |
+| Alerta | Fuente | Severidad | Acción |
 | --- | --- | --- | --- |
 
-## Fase 6: Priorizacion
+## Fase 6: Priorización
 
 Usa esta matriz:
 
-| Hallazgo | Impacto | Exposicion | Probabilidad | Prioridad | Remediacion |
+| Hallazgo | Impacto | Exposición | Probabilidad | Prioridad | Remediación |
 | --- | --- | --- | --- | --- | --- |
 
-No priorices solo por severidad tecnica. Considera datos, exposicion, facilidad de abuso y controles existentes.
+No priorices solo por severidad técnica. Considera datos, exposición, facilidad de abuso y controles existentes.
 
 ## Fase 7: Plan 30-60-90
 
 Ejemplo:
 
-| Periodo | Accion | Riesgo que reduce | Evidencia |
+| Periodo | Acción | Riesgo que reduce | Evidencia |
 | --- | --- | --- | --- |
-| 30 dias | MFA en admins | cuenta comprometida | reporte MFA |
-| 60 dias | storage privado y versionado | fuga/borrado | configuracion validada |
-| 90 dias | detecciones IAM | abuso de permisos | alertas probadas |
+| 30 días | MFA en admins | cuenta comprometida | reporte MFA |
+| 60 días | storage privado y versionado | fuga/borrado | configuración validada |
+| 90 días | detecciones IAM | abuso de permisos | alertas probadas |
 
 ## Estructura sugerida
 
@@ -174,20 +174,20 @@ Ejemplo:
 ## Plan 30-60-90
 ```
 
-## Criterio de Exito
+## Criterio de Éxito
 
-- Priorizacion con contexto.
+- Priorización con contexto.
 - Controles IAM concretos.
 - Logging y alertas definidos.
 - Riesgos de storage cubiertos.
 - Red expuesta revisada.
 - Remediaciones verificables.
 
-## Rubrica
+## Rúbrica
 
 | Nivel | Evidencia |
 | --- | --- |
-| Basico | Lista hallazgos |
+| Básico | Lista hallazgos |
 | Bueno | Explica impacto |
 | Fuerte | Prioriza con contexto |
 | Portafolio | Propone plan verificable 30-60-90 |

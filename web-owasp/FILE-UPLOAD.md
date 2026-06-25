@@ -4,23 +4,23 @@
 
 Entender riesgos de carga de archivos y como reducirlos.
 
-Subir archivos parece una funcion simple, pero combina datos no confiables, almacenamiento, permisos, procesamiento y descarga posterior. Cada paso debe tener controles.
+Subir archivos parece una función simple, pero combina datos no confiables, almacenamiento, permisos, procesamiento y descarga posterior. Cada paso debe tener controles.
 
 ## Mapa Mental
 
 ```text
-archivo -> validacion -> renombrado -> almacenamiento -> procesamiento -> descarga -> monitoreo
+archivo -> validación -> renombrado -> almacenamiento -> procesamiento -> descarga -> monitoreo
 ```
 
 La pregunta clave:
 
 ```text
-Que podria pasar si el archivo no es lo que dice ser?
+Qué podria pasar si el archivo no es lo qué dice ser?
 ```
 
-## Que es
+## Qué es
 
-Una vulnerabilidad de file upload ocurre cuando una aplicacion acepta archivos sin controles adecuados.
+Una vulnerabilidad de file upload ocurre cuando una aplicación acepta archivos sin controles adecuados.
 
 ## Riesgos
 
@@ -29,7 +29,7 @@ Una vulnerabilidad de file upload ocurre cuando una aplicacion acepta archivos s
 - Subir malware.
 - Almacenar contenido peligroso.
 - Exponer datos.
-- Denegacion de servicio por archivos enormes.
+- Denegación de servicio por archivos enormes.
 
 ## Superficie de Riesgo
 
@@ -39,7 +39,7 @@ Una vulnerabilidad de file upload ocurre cuando una aplicacion acepta archivos s
 - Contenido real.
 - Tamaño.
 - Metadatos.
-- Ubicacion de almacenamiento.
+- Ubicación de almacenamiento.
 - Permisos.
 - Procesamiento posterior.
 - Descarga por otros usuarios.
@@ -56,19 +56,19 @@ Una vulnerabilidad de file upload ocurre cuando una aplicacion acepta archivos s
 - Restringir permisos.
 - No confiar solo en `Content-Type`.
 
-## Validacion Correcta
+## Validación Correcta
 
 Combina controles:
 
-- allowlist de extensiones;
-- validacion de magic bytes cuando aplique;
-- limite de tamaño;
-- limite de dimensiones en imagenes;
-- renombrado con ID generado por servidor;
-- almacenamiento fuera del webroot;
-- antivirus/sandbox si el riesgo lo justifica;
-- permisos minimos;
-- procesamiento seguro.
+- Allowlist de extensiones;
+- Validación de magic bytes cuando aplique;
+- Límite de tamaño;
+- Límite de dimensiones en imágenes;
+- Renombrado con ID generado por servidor;
+- Almacenamiento fuera del webroot;
+- Antivirus/sandbox si el riesgo lo justifica;
+- Permisos mínimos;
+- Procesamiento seguro.
 
 ## Almacenamiento
 
@@ -81,10 +81,10 @@ usuario sube -> app valida -> storage privado -> descarga controlada por backend
 Evita:
 
 ```text
-usuario sube -> archivo queda ejecutable en ruta publica
+usuario sube -> archivo queda ejecutable en ruta pública
 ```
 
-## Error Comun
+## Error Común
 
 Validar solo extension:
 
@@ -96,76 +96,76 @@ El nombre no prueba que el contenido sea imagen.
 
 Otros errores:
 
-- confiar en `Content-Type`;
-- conservar nombre original;
-- permitir doble extension;
-- servir desde mismo dominio con cookies;
-- no limitar tamaño;
-- procesar archivos con librerias vulnerables;
-- no controlar quien descarga.
+- Confiar en `Content-Type`;
+- Conservar nombre original;
+- Permitir doble extension;
+- Servir desde mismo dominio con cookies;
+- No limitar tamaño;
+- Procesar archivos con librerías vulnerables;
+- No controlar quien descarga.
 
-## Preguntas de Analisis
+## Preguntas de Análisis
 
-- Donde se guarda el archivo?
+- Dónde se guarda el archivo?
 - Puede ejecutarse?
-- Quien puede descargarlo?
-- Hay limite de tamaño?
+- Quién puede descargarlo?
+- Hay límite de tamaño?
 - Se valida contenido?
 - Se renombra?
 - Hay logs?
 
 ## Logs Importantes
 
-- usuario que sube;
-- nombre original;
-- nombre interno;
-- tamaño;
-- tipo detectado;
-- resultado de validacion;
-- razon de rechazo;
+- Usuario que sube;
+- Nombre original;
+- Nombre interno;
+- Tamaño;
+- Tipo detectado;
+- Resultado de validación;
+- Razon de rechazo;
 - IP;
-- hash;
-- descargas sensibles.
+- Hash;
+- Descargas sensibles.
 
 ## Ejemplo de Upload Seguro
 
-Una funcion segura de upload para imagenes de perfil debe considerar:
+Una función segura de upload para imágenes de perfil debe considerar:
 
 - Extensiones permitidas.
-- Tamaño maximo.
-- Validacion de contenido.
+- Tamaño máximo.
+- Validación de contenido.
 - Nombre generado por servidor.
-- Ubicacion de almacenamiento.
+- Ubicación de almacenamiento.
 - Permisos.
 
-En una revision informativa conviene considerar:
+En una revisión informativa conviene considerar:
 
-- flujo de rechazo;
-- logs;
-- quien puede ver la imagen;
-- que pasa si se detecta malware;
-- como borrarias archivos antiguos.
+- Flujo de rechazo;
+- Logs;
+- Quien puede ver la imagen;
+- Que pasa si se detecta malware;
+- Como borrarias archivos antiguos.
 
-## Criterios de Revision
+## Criterios de Revisión
 
 Un flujo de upload seguro debe explicar:
 
-- caso de uso real;
-- tipos permitidos;
-- validaciones;
-- almacenamiento;
-- permisos;
-- logs;
-- manejo de errores;
-- riesgos residuales.
+- Caso de uso real;
+- Tipos permitidos;
+- Validaciones;
+- Almacenamiento;
+- Permisos;
+- Logs;
+- Manejo de errores;
+- Riesgos residuales.
 
 ## Controles Que Deben Entenderse
 
 - Allowlist de tipos reduce archivos inesperados.
-- Tamaño maximo reduce abuso de almacenamiento y DoS.
+- Tamaño máximo reduce abuso de almacenamiento y DoS.
 - Nombre generado por servidor evita abuso de rutas o nombres peligrosos.
 - Storage no ejecutable reduce riesgo de ejecucion remota.
-- Permisos minimos reducen impacto si algo falla.
+- Permisos mínimos reducen impacto si algo falla.
 - Descarga autorizada evita fuga de archivos privados.
 - Escaneo puede agregar defensa si el contexto lo justifica.
 - Logs suficientes permiten investigar abuso sin exponer datos sensibles.

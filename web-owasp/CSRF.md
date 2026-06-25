@@ -4,69 +4,69 @@
 
 Entender CSRF y por que afecta acciones autenticadas.
 
-CSRF es una falla de confianza en el navegador. La aplicacion cree que una request es intencional solo porque trae cookies validas, pero el navegador puede enviar cookies automaticamente aunque la accion haya sido provocada desde otro sitio.
+CSRF es una falla de confianza en el navegador. La aplicación cree que una request es intencional solo porque trae cookies validas, pero el navegador puede enviar cookies automaticamente aunque la acción haya sido provocada desde otro sitio.
 
 ## Mapa Mental
 
 ```text
-usuario autenticado -> sitio externo provoca request -> navegador envia cookie -> app acepta accion
+usuario autenticado -> sitio externo provoca request -> navegador envia cookie -> app acepta acción
 ```
 
 La defensa consiste en exigir una prueba adicional de intencion.
 
-## Que es
+## Qué es
 
-CSRF ocurre cuando un sitio malicioso logra que el navegador de un usuario autenticado envie una request a otra aplicacion donde ya tiene sesion.
+CSRF ocurre cuando un sitio malicioso logra que el navegador de un usuario autenticado envie una request a otra aplicación donde ya tiene sesión.
 
 La clave:
 
 - El navegador envia cookies automaticamente.
-- La aplicacion confia solo en la cookie.
-- Falta una proteccion adicional.
+- La aplicación confia solo en la cookie.
+- Falta una protección adicional.
 
 ## Ejemplo Conceptual
 
-Usuario esta autenticado en `bank.local`.
+Usuario está autenticado en `bank.local`.
 
-Otra pagina intenta provocar:
+Otra página intenta provocar:
 
 ```text
 POST /transfer
 ```
 
-Si la app no valida token CSRF u otros controles, podria aceptar la accion.
+Si la app no valida token CSRF u otros controles, podria aceptar la acción.
 
 ## Requisitos Conceptuales
 
 CSRF normalmente requiere:
 
-- usuario autenticado;
-- cookie o credencial enviada automaticamente;
-- accion que cambia estado;
-- ausencia de token o control equivalente;
-- endpoint que acepta la request.
+- Usuario autenticado;
+- Cookie o credencial enviada automaticamente;
+- Acción que cambia estado;
+- Ausencia de token o control equivalente;
+- Endpoint que acepta la request.
 
 ## Impacto
 
-Depende de la accion:
+Depende de la acción:
 
 - Cambiar email.
 - Cambiar contraseña.
 - Crear usuarios.
 - Transferir fondos.
-- Modificar configuracion.
+- Modificar configuración.
 
-Acciones mas sensibles:
+Acciones más sensibles:
 
-- cambiar email;
-- cambiar password;
-- agregar MFA;
-- desactivar MFA;
-- crear API keys;
-- agregar usuarios;
-- modificar permisos;
-- hacer pagos;
-- cambiar configuracion de seguridad.
+- Cambiar email;
+- Cambiar password;
+- Agregar MFA;
+- Desactivar MFA;
+- Crear API keys;
+- Agregar usuarios;
+- Modificar permisos;
+- Hacer pagos;
+- Cambiar configuración de seguridad.
 
 ## Mitigacion
 
@@ -74,17 +74,17 @@ Acciones mas sensibles:
 - SameSite en cookies.
 - Reautenticacion para acciones sensibles.
 - Validar origen cuando aplique.
-- Usar metodos adecuados.
+- Usar métodos adecuados.
 
 ## Token CSRF
 
 Un token CSRF debe:
 
-- ser impredecible;
-- estar asociado a la sesion;
-- validarse en servidor;
-- no depender solo de JavaScript;
-- no reutilizarse de forma insegura en flujos sensibles.
+- Ser impredecible;
+- Estar asociado a la sesión;
+- Validarse en servidor;
+- No depender solo de JavaScript;
+- No reutilizarse de forma insegura en flujos sensibles.
 
 La idea es que otro sitio no pueda fabricar una request valida porque no conoce el token.
 
@@ -98,9 +98,9 @@ Valores:
 - `Lax`.
 - `None` con `Secure`.
 
-`SameSite=Lax` ayuda en muchos casos, pero no reemplaza tokens para acciones sensibles en aplicaciones criticas.
+`SameSite=Lax` ayuda en muchos casos, pero no reemplaza tokens para acciones sensibles en aplicaciones críticas.
 
-## Cuando Es Menos Probable
+## Cuándo Es Menos Probable
 
 CSRF es menos probable si:
 
@@ -108,14 +108,14 @@ CSRF es menos probable si:
 - Cookies tienen SameSite adecuado.
 - Acciones sensibles requieren token CSRF.
 
-## Validacion de Origin y Referer
+## Validación de Origin y Referer
 
 Puede ser control adicional:
 
-- verificar que `Origin` sea esperado;
-- usar `Referer` con cuidado;
-- no depender solo de headers si el caso es critico;
-- registrar fallos.
+- Verificar que `Origin` sea esperado;
+- Usar `Referer` con cuidado;
+- No depender solo de headers si el caso es crítico;
+- Registrar fallos.
 
 ## Errores Comunes
 
@@ -125,9 +125,9 @@ Puede ser control adicional:
 - No proteger cambio de email o MFA.
 - Tokens predecibles o no validados.
 
-## Ejemplo de Analisis CSRF
+## Ejemplo de Análisis CSRF
 
-Esta accion ficticia muestra un cambio de estado sensible:
+Esta acción ficticia muestra un cambio de estado sensible:
 
 ```text
 POST /change-email
@@ -135,30 +135,30 @@ Cookie: session=...
 Body: email=nuevo@example.com
 ```
 
-El analisis debe cubrir:
+El análisis debe cubrir:
 
-- Que control falta?
-- Que impacto tiene?
-- Como lo mitigarias?
+- Qué control falta?
+- Qué impacto tiene?
+- Cómo lo mitigarias?
 
-En una revision informativa conviene considerar:
+En una revisión informativa conviene considerar:
 
-- que cookie flags usarias;
-- si pedirias reautenticacion;
-- que logs registrarias;
-- que codigo de respuesta daria si falta token.
+- Que cookie flags usarias;
+- Si pedirias reautenticacion;
+- Que logs registrarias;
+- Que código de respuesta daria si falta token.
 
-## Criterios de Revision
+## Criterios de Revisión
 
-Para entender si una accion es sensible, revisa:
+Para entender si una acción es sensible, revisa:
 
-- si cambia estado;
-- si usa cookies automaticamente;
-- si requiere token CSRF;
-- que politica `SameSite` aplica;
-- si requiere reautenticacion;
-- que evento de log ayuda a investigar abuso;
-- que respuesta debe devolverse si falta el token.
+- Si cambia estado;
+- Si usa cookies automaticamente;
+- Si requiere token CSRF;
+- Que política `SameSite` aplica;
+- Si requiere reautenticacion;
+- Que evento de log ayuda a investigar abuso;
+- Que respuesta debe devolverse si falta el token.
 
 ## Criterio de Dominio
 

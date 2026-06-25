@@ -1,4 +1,4 @@
-# Windows Basico para Ciberseguridad
+# Windows Básico para Ciberseguridad
 
 ## Objetivo
 
@@ -8,7 +8,7 @@ Entender Windows como sistema operativo empresarial. Muchos incidentes ocurren e
 
 ### Usuarios Locales
 
-Son cuentas que existen en una maquina especifica.
+Son cuentas que existen en una máquina especifica.
 
 Ejemplos:
 
@@ -55,7 +55,7 @@ Riesgo:
 
 ### Registro de Windows
 
-Base de datos de configuracion del sistema.
+Base de datos de configuración del sistema.
 
 Riesgo:
 
@@ -63,14 +63,14 @@ Riesgo:
 - Configuraciones inseguras.
 - Cambios no autorizados.
 
-## Herramientas Basicas
+## Herramientas Básicas
 
 - Task Manager: procesos y consumo.
 - Services: servicios.
 - Event Viewer: logs.
-- Windows Defender: proteccion.
+- Windows Defender: protección.
 - Windows Firewall: reglas de red.
-- PowerShell: automatizacion y administracion.
+- PowerShell: automatización y administracion.
 
 ## Eventos Importantes
 
@@ -78,13 +78,13 @@ En seguridad debes revisar:
 
 - Logon exitoso.
 - Logon fallido.
-- Creacion de usuarios.
+- Creación de usuarios.
 - Cambios de grupo.
 - Ejecucion de procesos.
 - Cambios de servicios.
 - Alertas de Defender.
 
-## Observacion Segura
+## Observación Segura
 
 Si tienes Windows:
 
@@ -106,4 +106,4 @@ Puedes avanzar cuando puedas:
 - Diferenciar usuario local y administrador local.
 - Explicar que es un servicio.
 - Explicar por que Event Viewer es importante.
-- Nombrar eventos utiles para seguridad.
+- Nombrar eventos útiles para seguridad.

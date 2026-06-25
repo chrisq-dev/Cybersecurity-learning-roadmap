@@ -1,10 +1,10 @@
-# Hardening Basico de Linux
+# Hardening Básico de Linux
 
 ## Objetivo
 
-Reducir superficie de ataque en un sistema Linux con controles basicos y verificables.
+Reducir superficie de ataque en un sistema Linux con controles básicos y verificables.
 
-## Que es Hardening
+## Qué es Hardening
 
 Hardening es configurar un sistema para reducir riesgo.
 
@@ -12,8 +12,8 @@ No es un solo comando. Es un conjunto de decisiones:
 
 - Menos servicios expuestos.
 - Menos privilegios.
-- Mas visibilidad.
-- Configuraciones mas seguras.
+- Más visibilidad.
+- Configuraciones más seguras.
 - Actualizaciones.
 
 ## Control 1: Actualizaciones
@@ -22,17 +22,17 @@ Riesgo:
 
 - Software antiguo puede tener vulnerabilidades conocidas.
 
-Practica:
+Práctica:
 
 ```bash
 sudo apt update
 sudo apt list --upgradable
 ```
 
-Validacion:
+Validación:
 
 - Lista de paquetes actualizada.
-- Parches aplicados segun politica.
+- Parches aplicados según política.
 
 ## Control 2: Usuarios y Sudo
 
@@ -40,14 +40,14 @@ Riesgo:
 
 - Usuarios innecesarios o sudo excesivo aumentan impacto.
 
-Revision:
+Revisión:
 
 ```bash
 cat /etc/passwd
 getent group sudo
 ```
 
-Buenas practicas:
+Buenas prácticas:
 
 - Usuarios individuales.
 - No compartir cuentas.
@@ -58,9 +58,9 @@ Buenas practicas:
 
 Riesgo:
 
-- SSH expuesto con contraseña debil puede facilitar acceso no autorizado.
+- SSH expuesto con contraseña débil puede facilitar acceso no autorizado.
 
-Archivo comun:
+Archivo común:
 
 ```text
 /etc/ssh/sshd_config
@@ -73,7 +73,7 @@ Controles:
 - Restringir usuarios.
 - Mantener logs.
 
-Validacion:
+Validación:
 
 ```bash
 ss -tuln | grep :22
@@ -86,14 +86,14 @@ Riesgo:
 
 - Servicios innecesarios expuestos.
 
-Comandos segun distro:
+Comandos según distro:
 
 ```bash
 sudo ufw status
 sudo firewall-cmd --list-all
 ```
 
-Buenas practicas:
+Buenas prácticas:
 
 - Permitir solo puertos necesarios.
 - Documentar excepciones.
@@ -104,7 +104,7 @@ Riesgo:
 
 - Servicios innecesarios aumentan superficie.
 
-Revision:
+Revisión:
 
 ```bash
 systemctl list-units --type=service
@@ -115,7 +115,7 @@ Preguntas:
 
 - Este servicio es necesario?
 - Escucha en red?
-- Bajo que usuario corre?
+- Bajo qué usuario corre?
 
 ## Control 6: Logs
 
@@ -123,7 +123,7 @@ Riesgo:
 
 - Sin logs no puedes investigar.
 
-Revision:
+Revisión:
 
 ```bash
 journalctl -n 50
@@ -138,18 +138,18 @@ Eventos importantes:
 - Servicios reiniciados.
 - Errores repetidos.
 
-## Criterios de Revision
+## Criterios de Revisión
 
-Una revision de hardening debe considerar:
+Una revisión de hardening debe considerar:
 
-- sistema actualizado;
-- usuarios revisados;
-- sudo revisado;
+- Sistema actualizado;
+- Usuarios revisados;
+- Sudo revisado;
 - SSH revisado;
-- firewall revisado;
-- servicios revisados;
-- logs disponibles;
-- cambios documentados.
+- Firewall revisado;
+- Servicios revisados;
+- Logs disponibles;
+- Cambios documentados.
 
 ## Ejemplo de resultado
 

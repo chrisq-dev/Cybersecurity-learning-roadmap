@@ -2,9 +2,9 @@
 
 ## Objetivo
 
-Entender como se centralizan eventos y como se clasifican tecnicas de adversarios.
+Entender como se centralizan eventos y como se clasifican técnicas de adversarios.
 
-Un SIEM no es magia. Es una herramienta para hacer preguntas sobre eventos. MITRE ATT&CK tampoco es una herramienta; es un lenguaje para describir comportamiento adversario. Juntos ayudan a pasar de "vi algo raro" a "tengo una hipotesis investigable".
+Un SIEM no es magia. Es una herramienta para hacer preguntas sobre eventos. MITRE ATT&CK tampoco es una herramienta; es un lenguaje para describir comportamiento adversario. Juntos ayudan a pasar de "vi algo raro" a "tengo una hipótesis investigable".
 
 ## Mapa Mental
 
@@ -14,7 +14,7 @@ fuente de log -> normalizacion -> busqueda -> correlacion -> alerta -> investiga
 
 Si falta una fuente de log, puede faltar visibilidad. Si falta contexto, puede sobrar ruido.
 
-## Que es un SIEM
+## Qué es un SIEM
 
 SIEM significa Security Information and Event Management.
 
@@ -42,29 +42,29 @@ Ejemplos de fuentes:
 
 Un evento suele pasar por varias etapas:
 
-1. Generacion en el sistema origen.
+1. Generación en el sistema origen.
 2. Recoleccion por agente, API o syslog.
 3. Normalizacion de campos.
 4. Enriquecimiento con contexto.
 5. Almacenamiento.
-6. Busqueda y correlacion.
+6. Busqueda y correlación.
 7. Alerta o reporte.
 
-Campos utiles:
+Campos útiles:
 
-- timestamp;
-- host;
-- usuario;
+- Timestamp;
+- Host;
+- Usuario;
 - IP origen;
 - IP destino;
-- accion;
-- resultado;
-- proceso;
-- recurso;
-- severidad;
-- correlation ID.
+- Acción;
+- Resultado;
+- Proceso;
+- Recurso;
+- Severidad;
+- Correlation ID.
 
-## Que Hace una Buena Consulta
+## Qué Hace una Buena Consulta
 
 Una buena busqueda:
 
@@ -77,7 +77,7 @@ Una buena busqueda:
 Ejemplo de pregunta:
 
 ```text
-Que usuarios tuvieron mas de 10 logins fallidos en 15 minutos?
+Qué usuarios tuvieron más de 10 logins fallidos en 15 minutos?
 ```
 
 Preguntas malas:
@@ -91,14 +91,14 @@ Alguien entro?
 Preguntas mejores:
 
 ```text
-Que usuarios tuvieron login exitoso despues de muchos fallos desde la misma IP?
-Que endpoints ejecutaron procesos inusuales despues de abrir un adjunto?
-Que cuentas admin se usaron fuera de horario?
+Qué usuarios tuvieron login exitoso despues de muchos fallos desde la misma IP?
+Qué endpoints ejecutaron procesos inusuales despues de abrir un adjunto?
+Qué cuentas admin se usaron fuera de horario?
 ```
 
-## Correlacion
+## Correlación
 
-Correlacion es unir eventos relacionados.
+Correlación es unir eventos relacionados.
 
 Ejemplo:
 
@@ -120,13 +120,13 @@ Cada fuente puede llamar diferente al mismo concepto:
 | IP destino | dst_ip, destination_ip |
 | Resultado | action, outcome, status |
 
-Una deteccion mantenible necesita saber que campos existen y como se llaman.
+Una detección mantenible necesita saber que campos existen y como se llaman.
 
 ## MITRE ATT&CK
 
-MITRE ATT&CK es una base de conocimiento de tacticas y tecnicas usadas por adversarios.
+MITRE ATT&CK es una base de conocimiento de tacticas y técnicas usadas por adversarios.
 
-No es una herramienta. Es un lenguaje comun para describir comportamiento.
+No es una herramienta. Es un lenguaje común para describir comportamiento.
 
 ## Tacticas
 
@@ -144,16 +144,16 @@ Ejemplos:
 - Exfiltration.
 - Impact.
 
-## Tecnicas
+## Técnicas
 
-Una tactica responde "para que". Una tecnica responde "como".
+Una tactica responde "para que". Una técnica responde "como".
 
 Ejemplo:
 
 - Tactica: Credential Access.
-- Tecnica: Brute Force.
+- Técnica: Brute Force.
 
-## Por Que Sirve
+## Por Qué Sirve
 
 MITRE ayuda a:
 
@@ -167,11 +167,11 @@ MITRE ayuda a:
 
 No basta con decir "tenemos SIEM". Pregunta:
 
-- Que tecnicas podemos detectar?
-- Que tecnicas no tienen logs?
-- Que alertas son ruidosas?
-- Que detecciones tienen owner?
-- Que casos de uso son prioritarios?
+- Qué técnicas podemos detectar?
+- Qué técnicas no tienen logs?
+- Qué alertas son ruidosas?
+- Qué detecciones tienen owner?
+- Qué casos de uso son prioritarios?
 
 ## Ejemplo de Mapeo
 
@@ -184,32 +184,32 @@ Un usuario tuvo 50 logins fallidos, luego uno exitoso, y despues ejecuto comando
 El mapeo debe identificar:
 
 - Posible tactica 1.
-- Posible tecnica 1.
+- Posible técnica 1.
 - Posible tactica 2.
-- Posible tecnica 2.
+- Posible técnica 2.
 - Logs que necesitarias.
 
-Tambien debe considerar:
+También debe considerar:
 
-- consulta conceptual;
-- falsos positivos posibles;
-- accion recomendada;
-- severidad justificada.
+- Consulta conceptual;
+- Falsos positivos posibles;
+- Acción recomendada;
+- Severidad justificada.
 
 ## Criterios de un Caso de Uso SIEM
 
 Un caso de uso SIEM debe explicar:
 
-- pregunta de investigacion;
-- fuentes de log;
-- campos requeridos;
-- logica conceptual;
-- ventana temporal;
-- umbral;
-- MITRE tactica/tecnica;
-- falsos positivos;
-- pasos de investigacion;
-- respuesta recomendada.
+- Pregunta de investigación;
+- Fuentes de log;
+- Campos requeridos;
+- Lógica conceptual;
+- Ventana temporal;
+- Umbral;
+- MITRE tactica/técnica;
+- Falsos positivos;
+- Pasos de investigación;
+- Respuesta recomendada.
 
 ## Errores Comunes
 
@@ -218,14 +218,14 @@ Un caso de uso SIEM debe explicar:
 - Mapear MITRE sin explicar comportamiento.
 - Alertar por eventos normales sin contexto.
 - No documentar falsos positivos.
-- Pensar que mas logs siempre significa mejor deteccion.
+- Pensar que más logs siempre significa mejor detección.
 
 ## Criterio de Dominio
 
 Puedes avanzar cuando puedas:
 
 - Explicar que es un SIEM.
-- Explicar correlacion.
-- Explicar tactica vs tecnica.
+- Explicar correlación.
+- Explicar tactica vs técnica.
 - Usar MITRE para describir una alerta.
 - Diseñar una consulta conceptual con fuentes, campos y respuesta.

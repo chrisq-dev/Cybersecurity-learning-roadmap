@@ -1,12 +1,12 @@
-# Rubrica de Dominio
+# Rúbrica de Dominio
 
-Esta rubrica sirve para decidir si realmente dominas un tema o si solo lo reconoces cuando lo lees. Usala antes de marcar avances en el checklist.
+Esta rúbrica sirve para decidir si realmente dominas un tema o si solo lo reconoces cuando lo lees. Usala antes de marcar avances en el checklist.
 
 ## Principio
 
-No marques un tema como dominado por haberlo leido. Un tema esta dominado cuando puedes explicarlo, practicarlo, analizarlo, defenderlo y documentarlo con evidencia.
+No marques un tema como dominado por haberlo leido. Un tema está dominado cuando puedes explicarlo, practicarlo, analizarlo, defenderlo y documentarlo con evidencia.
 
-La evidencia vale mas que la sensacion de avance.
+La evidencia vale más que la sensacion de avance.
 
 ## Niveles
 
@@ -16,9 +16,9 @@ Puedes reconocer el termino, pero no explicarlo con claridad.
 
 Ejemplo: sabes que existe "Kerberos", pero no puedes explicar para que sirve.
 
-Accion:
+Acción:
 
-- Leer introduccion.
+- Leer introducción.
 - Crear definicion simple.
 - Anotar 3 terminos relacionados.
 
@@ -28,16 +28,16 @@ Puedes explicarlo con tus palabras, sin depender de copiar una definicion.
 
 Debes poder responder:
 
-- Que es?
-- Para que sirve?
-- Donde aparece en sistemas reales?
-- Que problema resuelve?
+- Qué es?
+- Para qué sirve?
+- Dónde aparece en sistemas reales?
+- Qué problema resuelve?
 
 Ejemplo: explicas que DNS traduce nombres a direcciones IP y que se consulta antes de conectarte a muchos servicios.
 
 ### Nivel 2: Lo Puedo Practicar
 
-Puedes usar comandos, herramientas o configuraciones basicas relacionadas con el tema.
+Puedes usar comandos, herramientas o configuraciones básicas relacionadas con el tema.
 
 Debes tener evidencia:
 
@@ -50,7 +50,7 @@ Ejemplo: usas `dig`, identificas registros A, MX y TXT, y explicas la diferencia
 
 ### Nivel 3: Lo Puedo Analizar
 
-Puedes interpretar informacion y detectar problemas comunes.
+Puedes interpretar información y detectar problemas comunes.
 
 Debes poder:
 
@@ -63,7 +63,7 @@ Ejemplo: revisas intentos fallidos de login y diferencias error normal, fuerza b
 
 ### Nivel 4: Lo Puedo Defender o Corregir
 
-Puedes proponer mitigaciones, controles y buenas practicas.
+Puedes proponer mitigaciones, controles y buenas prácticas.
 
 Debes poder explicar:
 
@@ -71,13 +71,13 @@ Debes poder explicar:
 - Impacto.
 - Control preventivo.
 - Control detectivo.
-- Validacion de que el arreglo funciona.
+- Validación de que el arreglo funciona.
 
 Ejemplo: ante SSH expuesto, propones llaves, desactivar root login, MFA si aplica, allowlist, logs y alertas.
 
 ### Nivel 5: Lo Puedo Ensenar o Documentar Profesionalmente
 
-Puedes convertir el tema en una nota, reporte, lab o explicacion que otra persona pueda seguir.
+Puedes convertir el tema en una nota, reporte, lab o explicación que otra persona pueda seguir.
 
 Puede demostrarlo con:
 
@@ -85,7 +85,7 @@ Puede demostrarlo con:
 - Pasos reproducibles.
 - Evidencia.
 - Errores comunes.
-- Remediacion.
+- Remediación.
 - Preguntas de repaso.
 
 Este es el nivel ideal para temas importantes del portafolio.
@@ -102,15 +102,15 @@ Una forma de evaluar dominio es revisar estos niveles:
 - Nivel 4: lo puedo defender o corregir.
 - Nivel 5: lo puedo documentar profesionalmente.
 
-Senales que lo demuestran:
+Señales que lo demuestran:
 
 Dudas pendientes:
 
-Proxima practica:
+Próxima práctica:
 
-## Como Usarla Con El Roadmap
+## Cómo Usarla Con El Roadmap
 
-- Para fundamentos, apunta minimo a Nivel 3.
+- Para fundamentos, apunta mínimo a Nivel 3.
 - Para temas laborales importantes, apunta a Nivel 4.
 - Para proyectos de portafolio, apunta a Nivel 5.
 - Para temas secundarios, Nivel 2 puede ser suficiente al inicio.
@@ -122,37 +122,37 @@ No necesitas llevar todo a Nivel 5. La estrategia correcta es profundidad en tem
 - HTTP y sesiones.
 - SQL Injection.
 - XSS.
-- Logs de autenticacion.
+- Logs de autenticación.
 - Linux permisos y servicios.
 - Active Directory conceptual.
 - IAM cloud.
 - Respuesta a incidentes.
-- Comunicacion tecnica clara.
+- Comunicación técnica clara.
 - Un proyecto completo de portafolio.
 
 ## Matriz de Evidencia
 
 | Tipo de evidencia | Sirve para probar |
 | --- | --- |
-| Nota explicativa | Comprension conceptual |
-| Comando con salida | Practica tecnica |
-| Tabla de analisis | Capacidad de comparar y priorizar |
-| Timeline | Investigacion |
+| Nota explicativa | Comprensión conceptual |
+| Comando con salida | Práctica técnica |
+| Tabla de análisis | Capacidad de comparar y priorizar |
+| Timeline | Investigación |
 | Checklist aplicado | Defensa o hardening |
-| Reporte | Comunicacion profesional |
-| Script simple | Automatizacion |
-| Deteccion conceptual | Blue Team |
+| Reporte | Comunicación profesional |
+| Script simple | Automatización |
+| Detección conceptual | Blue Team |
 | Matriz de permisos | AppSec/API |
 | Diagrama | Arquitectura y claridad |
 
-## Rubrica de Reporte
+## Rúbrica de Reporte
 
-| Criterio | Basico | Bueno | Fuerte |
+| Criterio | Básico | Bueno | Fuerte |
 | --- | --- | --- | --- |
-| Alcance | Menciona el tema | Define sistema/lab | Define limites y supuestos |
-| Evidencia | Pega salidas | Explica salidas | Relaciona evidencia con conclusion |
-| Analisis | Opina | Identifica causa | Separa hechos, hipotesis e impacto |
-| Remediacion | General | Accion concreta | Accion verificable y priorizada |
+| Alcance | Menciona el tema | Define sistema/lab | Define límites y supuestos |
+| Evidencia | Pega salidas | Explica salidas | Relaciona evidencia con conclusión |
+| Análisis | Opina | Identifica causa | Separa hechos, hipótesis e impacto |
+| Remediación | General | Acción concreta | Acción verificable y priorizada |
 | Claridad | Incompleto | Comprensible | Reproducible por otra persona |
 
 ## Gates por Ruta
@@ -161,46 +161,46 @@ No necesitas llevar todo a Nivel 5. La estrategia correcta es profundidad en tem
 
 Antes de avanzar a temas complejos:
 
-- explicar CIA, riesgo y controles;
-- resolver subnetting basico;
-- interpretar permisos Linux;
-- explicar DNS, HTTP y TLS;
-- crear un mini reporte de logs.
+- Explicar CIA, riesgo y controles;
+- Resolver subnetting básico;
+- Interpretar permisos Linux;
+- Explicar DNS, HTTP y TLS;
+- Crear un mini reporte de logs.
 
 ### Web/AppSec
 
 Antes de decir que sabes AppSec:
 
-- explicar authn vs authz;
-- crear matriz de permisos;
-- explicar SQLi, XSS, CSRF y SSRF;
-- proponer mitigaciones;
-- comunicar una revision OWASP con causa, impacto y mitigacion.
+- Explicar authn vs authz;
+- Crear matriz de permisos;
+- Explicar SQLi, XSS, CSRF y SSRF;
+- Proponer mitigaciones;
+- Comunicar una revisión OWASP con causa, impacto y mitigacion.
 
 ### Blue Team
 
 Antes de decir que sabes Blue Team:
 
-- reconstruir una linea de tiempo;
-- separar evidencia de hipotesis;
-- mapear un caso a MITRE;
-- proponer contencion;
-- escribir una deteccion conceptual.
+- Reconstruir una linea de tiempo;
+- Separar evidencia de hipótesis;
+- Mapear un caso a MITRE;
+- Proponer contención;
+- Escribir una detección conceptual.
 
 ### Cloud
 
 Antes de decir que sabes cloud security:
 
-- explicar responsabilidad compartida;
-- revisar IAM conceptual;
-- detectar storage publico como riesgo;
-- proponer logs y alertas;
-- justificar minimo privilegio.
+- Explicar responsabilidad compartida;
+- Revisar IAM conceptual;
+- Detectar storage público como riesgo;
+- Proponer logs y alertas;
+- Justificar mínimo privilegio.
 
 ## Regla de Repeticion
 
 Un tema importante debe practicarse al menos tres veces:
 
-1. una vez guiado;
-2. una vez con variacion;
-3. una vez documentado como si fuera para otra persona.
+1. Una vez guiado;
+2. Una vez con variacion;
+3. Una vez documentado como si fuera para otra persona.

@@ -37,7 +37,7 @@ Set-Cookie: session=xyz; HttpOnly; Secure; SameSite=Lax
 
 ## 401 vs 403
 
-- `401`: falta autenticacion o la sesion/token no es valido.
+- `401`: falta autenticación o la sesión/token no es valido.
 - `403`: hay identidad, pero no permiso.
 
 ## Headers
@@ -51,12 +51,12 @@ Set-Cookie: session=xyz; HttpOnly; Secure; SameSite=Lax
 
 ## Headers de Seguridad
 
-| Header | Proposito |
+| Header | Propósito |
 | --- | --- |
 | `Content-Security-Policy` | reducir impacto de XSS |
 | `Strict-Transport-Security` | forzar HTTPS |
 | `X-Content-Type-Options` | evitar MIME sniffing |
-| `Referrer-Policy` | controlar informacion enviada como referrer |
+| `Referrer-Policy` | controlar información enviada como referrer |
 | `Permissions-Policy` | limitar APIs del navegador |
 
 ## Cookies Seguras
@@ -67,12 +67,12 @@ Set-Cookie: session=xyz; HttpOnly; Secure; SameSite=Lax
 
 ## Authn vs Authz
 
-- Autenticacion: quien eres.
-- Autorizacion: que puedes hacer.
+- Autenticación: quien eres.
+- Autorización: que puedes hacer.
 
 Broken Access Control suele aparecer cuando el backend no valida permisos por recurso.
 
-## OWASP Rapido
+## OWASP Rápido
 
 - Broken Access Control.
 - Cryptographic Failures.
@@ -91,27 +91,27 @@ Broken Access Control suele aparecer cuando el backend no valida permisos por re
 | --- | --- |
 | Login | fuerza bruta, credential stuffing, sesiones inseguras |
 | Perfil | IDOR/BOLA, datos sensibles |
-| Admin | falta de autorizacion, acciones criticas |
+| Admin | falta de autorización, acciones críticas |
 | Upload | archivo ejecutable, malware, DoS |
 | API | tokens excesivos, rate limit ausente, mass assignment |
 
-## Senales de Alerta
+## Señales de Alerta
 
 - IDs modificables en URL.
 - Errores internos visibles.
 - Cookies sin flags.
-- Uploads sin validacion.
+- Uploads sin validación.
 - Redirecciones abiertas.
 - CORS demasiado permisivo.
 - Logs sin eventos de seguridad.
 
 ## Controles Base
 
-- validacion en servidor;
-- autorizacion por recurso;
-- consultas parametrizadas;
-- escape por contexto;
-- tokens CSRF cuando aplica;
-- cookies seguras;
-- logging de acciones sensibles;
-- rate limiting.
+- Validación en servidor;
+- Autorización por recurso;
+- Consultas parametrizadas;
+- Escape por contexto;
+- Tokens CSRF cuando aplica;
+- Cookies seguras;
+- Logging de acciones sensibles;
+- Rate limiting.

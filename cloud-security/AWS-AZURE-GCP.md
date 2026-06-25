@@ -32,7 +32,7 @@ Conceptos importantes:
 
 Riesgos comunes:
 
-- S3 publico.
+- S3 público.
 - IAM policies demasiado amplias.
 - Access keys antiguas.
 - Security Groups abiertos a `0.0.0.0/0`.
@@ -55,7 +55,7 @@ Conceptos importantes:
 Riesgos comunes:
 
 - Roles demasiado amplios.
-- Storage publico.
+- Storage público.
 - Falta de MFA.
 - Logs no enviados a Log Analytics.
 - Secrets fuera de Key Vault.
@@ -76,12 +76,12 @@ Conceptos importantes:
 Riesgos comunes:
 
 - Service accounts con permisos excesivos.
-- Buckets publicos.
+- Buckets públicos.
 - Llaves de service account expuestas.
 - Audit logs incompletos.
 - Firewall rules abiertas.
 
-## Comparacion Rapida
+## Comparación Rapida
 
 | Concepto | AWS | Azure | GCP |
 | --- | --- | --- | --- |
@@ -92,28 +92,28 @@ Riesgos comunes:
 | Auditoria | CloudTrail | Activity Log | Cloud Audit Logs |
 | Secretos | Secrets Manager | Key Vault | Secret Manager |
 
-## Criterios Basicos Cloud
+## Criterios Básicos Cloud
 
-Una postura cloud basica debe considerar:
+Una postura cloud básica debe considerar:
 
 - MFA en cuentas privilegiadas;
-- permisos revisados;
-- storage no publico salvo necesidad justificada;
-- logs de auditoria activos;
-- llaves antiguas rotadas o eliminadas;
-- security groups y firewalls revisados;
-- secretos fuera del codigo y dentro de servicios diseñados para secretos;
-- backups definidos segun criticidad.
+- Permisos revisados;
+- Storage no público salvo necesidad justificada;
+- Logs de auditoria activos;
+- Llaves antiguas rotadas o eliminadas;
+- Security groups y firewalls revisados;
+- Secretos fuera del código y dentro de servicios diseñados para secretos;
+- Backups definidos según criticidad.
 
-## Comparacion Conceptual
+## Comparación Conceptual
 
 Para comparar proveedores conviene ubicar:
 
-- Como se llama el servicio de identidad?
-- Como se llama storage de objetos?
-- Como se auditan acciones?
-- Como se guardan secretos?
-- Que control evita exposicion publica?
+- Cómo se llama el servicio de identidad?
+- Cómo se llama storage de objetos?
+- Cómo se auditan acciones?
+- Cómo se guardan secretos?
+- Qué control evita exposición pública?
 
 ## Criterio de Dominio
 
@@ -121,5 +121,5 @@ Puedes avanzar cuando puedas:
 
 - Explicar responsabilidad compartida.
 - Comparar IAM entre proveedores.
-- Identificar riesgos de storage publico.
+- Identificar riesgos de storage público.
 - Nombrar logs de auditoria por proveedor.

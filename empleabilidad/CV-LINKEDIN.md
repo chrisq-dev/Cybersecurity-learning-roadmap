@@ -10,39 +10,39 @@ Opciones:
 - Aspiring SOC Analyst | Cybersecurity Labs | Linux | Networking | Python
 - Cybersecurity Learner | Blue Team Fundamentals | OWASP | Python | Linux
 
-Si ya tienes experiencia en backend, automatizacion o sistemas, no la escondas. Conectala con seguridad:
+Si ya tienes experiencia en backend, automatización o sistemas, no la escondas. Conéctala con seguridad:
 
 - Backend Developer | Security-Aware Engineering | Automation | AppSec Fundamentals
 - Backend Developer transitioning into Cybersecurity | OWASP | Linux | Blue Team
 - Software Engineer | Cybersecurity Learning Roadmap | AppSec | Automation
 
-La mejor version no exagera. Debe decir que sabes construir software y que estas desarrollando criterio de seguridad.
+La mejor versión no exagera. Debe decir que sabes construir software y que estás desarrollando criterio de seguridad.
 
-## Seccion "Acerca de"
+## Sección "Acerca de"
 
 Ejemplo:
 
 ```text
-Estoy construyendo una base practica en ciberseguridad con enfoque en redes, Linux, seguridad web, Blue Team y automatizacion. Documento mi progreso mediante laboratorios, notas tecnicas, scripts y reportes en GitHub.
+Estoy construyendo una base práctica en ciberseguridad con enfoque en redes, Linux, seguridad web, Blue Team y automatización. Documento mi progreso mediante laboratorios, notas técnicas, scripts y reportes en GitHub.
 
-Actualmente estudio fundamentos de redes, analisis de logs, OWASP Top 10, Linux, Python y respuesta a incidentes. Busco oportunidades junior donde pueda aportar disciplina, aprendizaje constante y capacidad para documentar hallazgos con claridad.
+Actualmente estudio fundamentos de redes, análisis de logs, OWASP Top 10, Linux, Python y respuesta a incidentes. Busco oportunidades junior donde pueda aportar disciplina, aprendizaje constante y capacidad para documentar hallazgos con claridad.
 ```
 
-Version si vienes de backend:
+Versión si vienes de backend:
 
 ```text
 Soy desarrollador backend con experiencia construyendo sistemas reales, integraciones y automatizaciones. Estoy profundizando en ciberseguridad con enfoque en AppSec, Blue Team, redes, Linux y seguridad cloud.
 
-Documento mi aprendizaje en GitHub mediante notas tecnicas, laboratorios permitidos, scripts y reportes. Mi objetivo es combinar desarrollo de software con criterio de seguridad: entender como fallan los sistemas, como se abusan y como se protegen.
+Documento mi aprendizaje en GitHub mediante notas técnicas, laboratorios permitidos, scripts y reportes. Mi objetivo es combinar desarrollo de software con criterio de seguridad: entender cómo fallan los sistemas, cómo se abusan y cómo se protegen.
 ```
 
 ## CV: Secciones Recomendadas
 
 - Perfil profesional.
-- Habilidades tecnicas.
+- Habilidades técnicas.
 - Proyectos.
 - Laboratorios.
-- Educacion.
+- Educación.
 - Certificaciones o cursos.
 - GitHub.
 - LinkedIn.
@@ -52,29 +52,29 @@ Documento mi aprendizaje en GitHub mediante notas tecnicas, laboratorios permiti
 Ejemplo para CV:
 
 ```text
-Desarrollador backend con interes profesional en ciberseguridad, AppSec y automatizacion. Experiencia construyendo APIs, integraciones y sistemas de negocio. Actualmente desarrollo una ruta publica de aprendizaje en ciberseguridad con fundamentos de redes, Linux, OWASP, Blue Team, cloud security y analisis tecnico.
+Desarrollador backend con interés profesional en ciberseguridad, AppSec y automatización. Experiencia construyendo APIs, integraciones y sistemas de negocio. Actualmente desarrollo una ruta pública de aprendizaje en ciberseguridad con fundamentos de redes, Linux, OWASP, Blue Team, cloud security y análisis técnico.
 ```
 
-Ejemplo mas junior:
+Ejemplo más junior:
 
 ```text
-Estudiante de ciberseguridad con base en redes, Linux, fundamentos web, analisis de logs y Python. Documento laboratorios, notas tecnicas y scripts en GitHub. Interesado en roles junior de SOC, AppSec, soporte con enfoque security o analisis de vulnerabilidades.
+Estudiante de ciberseguridad con base en redes, Linux, fundamentos web, análisis de logs y Python. Documento laboratorios, notas técnicas y scripts en GitHub. Interesado en roles junior de SOC, AppSec, soporte con enfoque security o análisis de vulnerabilidades.
 ```
 
-## Habilidades Tecnicas Iniciales
+## Habilidades Técnicas Iniciales
 
 Incluye solo lo que puedas defender en entrevista:
 
-- Networking: TCP/IP, DNS, HTTP, TLS, subnetting basico.
+- Networking: TCP/IP, DNS, HTTP, TLS, subnetting básico.
 - Linux: terminal, permisos, procesos, logs, SSH.
-- Windows: eventos, usuarios, servicios, PowerShell basico.
-- Security: CIA triad, riesgo, OWASP Top 10, logs, SIEM basico.
-- Programming: Python basico, Bash, Git.
+- Windows: eventos, usuarios, servicios, PowerShell básico.
+- Security: CIA triad, riesgo, OWASP Top 10, logs, SIEM básico.
+- Programming: Python básico, Bash, Git.
 - Tools: Wireshark, curl, Burp Suite Community, GitHub.
 
-## Como Ordenar Habilidades
+## Cómo Ordenar Habilidades
 
-No pongas una nube enorme de herramientas. Agrupa por area:
+No pongas una nube enorme de herramientas. Agrupa por área:
 
 ```text
 Backend: Node.js, FastAPI, REST APIs, SQL, Docker
@@ -85,99 +85,99 @@ AppSec: OWASP Top 10, secure coding basics, Burp Suite Community
 Automation: Python, Bash, log parsing, Markdown reports
 ```
 
-Esto se ve mas profesional porque comunica contexto, no solo nombres.
+Esto se ve más profesional porque comunica contexto, no solo nombres.
 
-## Como Describir Proyectos
+## Cómo Describir Proyectos
 
 Formato:
 
 ```text
-Analizador de logs de autenticacion
-- Analice multiples intentos fallidos de login en datos de ejemplo.
-- Resumi IPs, usuarios afectados y recomendaciones.
-- Practique parsing de logs, deteccion basica y comunicacion de hallazgos.
+Analizador de logs de autenticación
+- Analicé múltiples intentos fallidos de login en datos de ejemplo.
+- Resumí IPs, usuarios afectados y recomendaciones.
+- Practiqué parsing de logs, detección básica y comunicación de hallazgos.
 ```
 
 Formato recomendado:
 
 ```text
 Nombre del proyecto
-- Problema: que intenta resolver o aprender.
-- Accion: que construiste, analizaste o documentaste.
-- Resultado: que evidencia produjo.
-- Skills: tecnologias y conceptos aplicados.
+- Problema: qué intenta resolver o aprender.
+- Acción: que construiste, analizaste o documentaste.
+- Resultado: qué evidencia produjo.
+- Skills: tecnologías y conceptos aplicados.
 ```
 
 Ejemplo para este repo:
 
 ```text
 Cybersecurity Learning Roadmap
-- Construyo una guia publica en espanol para estudiar ciberseguridad desde fundamentos hasta areas como Blue Team, AppSec, Cloud, GRC y arquitectura.
-- Documento notas tecnicas, labs permitidos, scripts, criterios de comprension y rutas por rol.
-- Uso el repositorio como evidencia de aprendizaje estructurado, comunicacion tecnica y criterio etico.
+- Construyo una guía pública en español para estudiar ciberseguridad desde fundamentos hasta áreas como Blue Team, AppSec, Cloud, GRC y arquitectura.
+- Documento notas técnicas, labs permitidos, scripts, criterios de comprensión y rutas por rol.
+- Uso el repositorio como evidencia de aprendizaje estructurado, comunicación técnica y criterio ético.
 ```
 
-## Como Hablar de Labs
+## Cómo Hablar de Labs
 
 Bien:
 
 ```text
-Analice logs simulados de autenticacion para identificar multiples intentos fallidos por IP y usuario. Documente evidencia, posible impacto y recomendaciones.
+Analicé logs simulados de autenticación para identificar múltiples intentos fallidos por IP y usuario. Documenté evidencia, posible impacto y recomendaciones.
 ```
 
-Debil:
+Débil:
 
 ```text
 Hice un lab de hacking.
 ```
 
-La diferencia es que el primer texto explica metodo, evidencia e impacto.
+La diferencia es que el primer texto explica método, evidencia e impacto.
 
 ## Errores a Evitar
 
-- Decir que eres experto si estas empezando.
+- Decir que eres experto si estás empezando.
 - Listar herramientas que no sabes explicar.
 - Subir writeups prohibidos.
 - Subir capturas con datos sensibles.
 - Tener GitHub sin README.
-- Tener proyectos sin explicacion.
+- Tener proyectos sin explicación.
 
-Tambien evita:
+También evita:
 
-- Poner "Red Team" como identidad principal si tu evidencia aun es basica.
-- Listar herramientas ofensivas sin contexto etico.
+- Poner "Red Team" como identidad principal si tu evidencia aún es básica.
+- Listar herramientas ofensivas sin contexto ético.
 - Publicar capturas con IPs, tokens, correos o datos reales.
-- Copiar writeups completos de plataformas que lo prohiben.
-- Decir "manejo SIEM" si solo leiste la definicion.
+- Copiar writeups completos de plataformas que lo prohíben.
+- Decir "manejo SIEM" si solo leíste la definición.
 
 ## Frase Honesta Para Entrevistas
 
 ```text
-Todavia estoy construyendo experiencia profesional, pero he estado practicando de forma estructurada. Tengo laboratorios documentados, scripts pequenos y reportes donde explico metodologia, evidencia, impacto y remediacion.
+Todavía estoy construyendo experiencia profesional, pero he estado practicando de forma estructurada. Tengo laboratorios documentados, scripts pequeños y reportes donde explico metodología, evidencia, impacto y remediación.
 ```
 
-## Checklist de Perfil Publico
+## Checklist de Perfil Público
 
-- El titular comunica direccion profesional.
+- El titular comunica dirección profesional.
 - El About explica tu enfoque sin exagerar.
-- GitHub esta visible.
+- GitHub está visible.
 - Los proyectos tienen README.
 - No hay secretos ni datos sensibles.
 - El repo principal tiene ruta clara.
-- Las tecnologias listadas se pueden defender.
-- Hay evidencia de escritura tecnica.
+- Las tecnologías listadas se pueden defender.
+- Hay evidencia de escritura técnica.
 - Hay consistencia entre CV, LinkedIn y GitHub.
 
-## Como Responder "Por Que Ciberseguridad?"
+## Cómo Responder "Por Qué Ciberseguridad?"
 
 Respuesta fuerte:
 
 ```text
-Porque me interesa entender como fallan los sistemas reales y como reducir riesgo. Mi experiencia construyendo backend me ayuda a entender APIs, datos, integraciones y despliegues; ahora estoy profundizando en seguridad para disenar, revisar y defender sistemas con mejor criterio.
+Porque me interesa entender cómo fallan los sistemas reales y cómo reducir riesgo. Mi experiencia construyendo backend me ayuda a entender APIs, datos, integraciones y despliegues; ahora estoy profundizando en seguridad para diseñar, revisar y defender sistemas con mejor criterio.
 ```
 
-Respuesta debil:
+Respuesta débil:
 
 ```text
-Porque esta de moda o paga bien.
+Porque está de moda o paga bien.
 ```

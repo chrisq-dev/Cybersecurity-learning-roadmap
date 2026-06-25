@@ -4,7 +4,7 @@
 
 Entender Active Directory como sistema central de identidad en muchas empresas.
 
-Active Directory es una de las tecnologias mas importantes para seguridad corporativa. Si AD cae, muchas veces cae la empresa: usuarios, equipos, permisos, acceso a servidores, politicas y autenticacion dependen de el.
+Active Directory es una de las tecnologías más importantes para seguridad corporativa. Si AD cae, muchas veces cae la empresa: usuarios, equipos, permisos, acceso a servidores, políticas y autenticación dependen de el.
 
 ## Mapa Mental
 
@@ -14,23 +14,23 @@ dominio -> domain controllers -> usuarios/equipos -> grupos -> permisos -> GPO -
 
 Cuando analices AD, piensa:
 
-- Quien tiene privilegios?
-- Que equipos son criticos?
-- Que politicas se aplican?
-- Que cuentas estan viejas o mal protegidas?
-- Que eventos muestran cambios sensibles?
+- Quién tiene privilegios?
+- Qué equipos son críticos?
+- Qué políticas se aplican?
+- Qué cuentas están viejas o mal protegidas?
+- Qué eventos muestran cambios sensibles?
 
-## Que es Active Directory
+## Qué es Active Directory
 
-Active Directory es una tecnologia de Microsoft para administrar identidades, equipos, grupos, politicas y acceso en una organizacion.
+Active Directory es una tecnologia de Microsoft para administrar identidades, equipos, grupos, políticas y acceso en una organización.
 
-En vez de tener usuarios separados en cada maquina, una empresa puede centralizar identidades en un dominio.
+En vez de tener usuarios separados en cada máquina, una empresa puede centralizar identidades en un dominio.
 
 ## Conceptos Principales
 
 ### Dominio
 
-Agrupacion logica de usuarios, equipos y recursos.
+Agrupacion lógica de usuarios, equipos y recursos.
 
 Ejemplo:
 
@@ -40,7 +40,7 @@ empresa.local
 
 ### Domain Controller
 
-Servidor que administra el dominio y participa en autenticacion.
+Servidor que administra el dominio y participa en autenticación.
 
 Si un Domain Controller cae o es comprometido, el impacto puede ser alto.
 
@@ -60,22 +60,22 @@ Se usa para asignar permisos.
 
 ### OU
 
-Organizational Unit. Contenedor para organizar objetos y aplicar politicas.
+Organizational Unit. Contenedor para organizar objetos y aplicar políticas.
 
 ### GPO
 
-Group Policy Object. Politicas que se aplican a usuarios o equipos.
+Group Policy Object. Políticas que se aplican a usuarios o equipos.
 
 Ejemplos:
 
-- Politica de contraseñas.
-- Configuracion de firewall.
+- Política de contraseñas.
+- Configuración de firewall.
 - Scripts de inicio.
 - Restricciones de seguridad.
 
 ## Kerberos
 
-Kerberos es un protocolo de autenticacion usado en Active Directory.
+Kerberos es un protocolo de autenticación usado en Active Directory.
 
 Idea simplificada:
 
@@ -87,11 +87,11 @@ Importa porque:
 
 - Reduce envio repetido de contraseñas.
 - Los tickets son objetivo en ataques.
-- Muchos eventos de seguridad dependen de autenticacion Kerberos.
+- Muchos eventos de seguridad dependen de autenticación Kerberos.
 
 ## NTLM
 
-NTLM es otro mecanismo de autenticacion historico en entornos Windows.
+NTLM es otro mecanismo de autenticación historico en entornos Windows.
 
 En seguridad importa porque:
 
@@ -104,7 +104,7 @@ En seguridad importa porque:
 
 LDAP permite consultar el directorio.
 
-Ejemplo de informacion:
+Ejemplo de información:
 
 - Usuarios.
 - Grupos.
@@ -139,9 +139,9 @@ Riesgos:
 
 Controles:
 
-- Minimo privilegio.
-- Rotacion.
-- gMSA cuando aplique.
+- Mínimo privilegio.
+- Rotación.
+- GMSA cuando aplique.
 - Monitoreo de uso anomalo.
 - Documentacion de propietario.
 
@@ -160,7 +160,7 @@ Controles:
 Ejemplos conceptuales:
 
 - Logins exitosos y fallidos.
-- Creacion de usuarios.
+- Creación de usuarios.
 - Cambios de grupos privilegiados.
 - Cambios de GPO.
 - Bloqueos de cuenta.
@@ -169,9 +169,9 @@ Ejemplos conceptuales:
 
 No memorices IDs al inicio. Primero entiende que comportamiento quieres detectar.
 
-## Buenas Practicas
+## Buenas Prácticas
 
-- Minimo privilegio.
+- Mínimo privilegio.
 - MFA donde aplique.
 - Separar cuentas admin y normales.
 - Revisar grupos privilegiados.
@@ -187,11 +187,11 @@ No memorices IDs al inicio. Primero entiende que comportamiento quieres detectar
 - Dejar usuarios antiguos activos.
 - No revisar membresias de grupos.
 - No monitorear cambios de GPO.
-- No proteger Domain Controllers como activos criticos.
+- No proteger Domain Controllers como activos críticos.
 
 ## Ejemplo de Dominio
 
-Un dominio basico puede representarse con:
+Un dominio básico puede representarse con:
 
 - 1 Domain Controller.
 - 3 usuarios.
@@ -200,7 +200,7 @@ Un dominio basico puede representarse con:
 - 1 OU.
 - 1 GPO.
 
-El analisis debe explicar:
+El análisis debe explicar:
 
 - Quien autentica.
 - Donde viven los usuarios.
@@ -216,18 +216,18 @@ Dominio empresa.local
 2 Domain Controllers
 240 usuarios
 25 usuarios con permisos administrativos
-18 cuentas deshabilitadas pero aun en grupos
+18 cuentas deshabilitadas pero aún en grupos
 4 cuentas de servicio con password sin rotar
 GPO antigua aplica scripts de inicio
 ```
 
-Una auditoria basica de AD debe explicar:
+Una auditoria básica de AD debe explicar:
 
-- riesgos principales;
-- preguntas para el administrador;
-- evidencia necesaria;
-- controles inmediatos;
-- detecciones recomendadas.
+- Riesgos principales;
+- Preguntas para el administrador;
+- Evidencia necesaria;
+- Controles inmediatos;
+- Detecciones recomendadas.
 
 ## Criterio de Dominio
 
@@ -236,6 +236,6 @@ Puedes avanzar cuando puedas:
 - Explicar dominio.
 - Explicar Domain Controller.
 - Explicar GPO.
-- Explicar Kerberos a nivel basico.
+- Explicar Kerberos a nivel básico.
 - Identificar riesgos de grupos privilegiados.
 - Proponer controles para cuentas admin y cuentas de servicio.

@@ -8,8 +8,8 @@ Entender HTTP, el protocolo base de la web. Antes de estudiar vulnerabilidades w
 
 En la web normalmente hay:
 
-- Cliente: navegador, app movil, script o herramienta como `curl`.
-- Servidor: aplicacion que responde peticiones.
+- Cliente: navegador, app móvil, script o herramienta como `curl`.
+- Servidor: aplicación que responde peticiones.
 
 El cliente envia una request. El servidor devuelve una response.
 
@@ -17,9 +17,9 @@ El cliente envia una request. El servidor devuelve una response.
 
 Una request tiene:
 
-- Metodo.
+- Método.
 - Ruta.
-- Version.
+- Versión.
 - Headers.
 - Body opcional.
 
@@ -36,7 +36,7 @@ Accept: text/html
 
 Una response tiene:
 
-- Codigo de estado.
+- Código de estado.
 - Headers.
 - Body.
 
@@ -50,20 +50,20 @@ Set-Cookie: session=abc123; HttpOnly; Secure
 <html>...</html>
 ```
 
-## Metodos HTTP
+## Métodos HTTP
 
-| Metodo | Uso comun |
+| Método | Uso común |
 | --- | --- |
-| GET | Obtener informacion |
-| POST | Enviar o crear informacion |
+| GET | Obtener información |
+| POST | Enviar o crear información |
 | PUT | Reemplazar recurso |
 | PATCH | Actualizar parcialmente |
 | DELETE | Eliminar |
-| OPTIONS | Ver metodos permitidos |
+| OPTIONS | Ver métodos permitidos |
 
 ## Codigos de Estado
 
-| Codigo | Significado |
+| Código | Significado |
 | --- | --- |
 | 200 | OK |
 | 201 | Created |
@@ -88,7 +88,7 @@ Set-Cookie: session=abc123; HttpOnly; Secure
 
 Una cookie es un dato que el servidor pide al navegador guardar y reenviar.
 
-Uso comun:
+Uso común:
 
 - Sesiones.
 - Preferencias.
@@ -110,9 +110,9 @@ TLS ayuda a proteger:
 - Integridad.
 - Autenticidad del servidor.
 
-Sin HTTPS, alguien en la red podria ver o modificar trafico.
+Sin HTTPS, alguien en la red podria ver o modificar tráfico.
 
-## Observacion Segura
+## Observación Segura
 
 En un entorno propio o contra un sitio de ejemplo puedes observar HTTP con:
 
@@ -123,11 +123,11 @@ curl -v https://example.com
 
 La lectura importante es:
 
-- codigo de estado;
-- headers;
-- si hay redireccion;
-- tipo de contenido;
-- diferencia entre `-I` y `-v`.
+- Código de estado;
+- Headers;
+- Si hay redireccion;
+- Tipo de contenido;
+- Diferencia entre `-I` y `-v`.
 
 ## Criterio de Dominio
 

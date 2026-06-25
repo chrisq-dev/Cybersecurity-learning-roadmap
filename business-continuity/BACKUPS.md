@@ -2,9 +2,9 @@
 
 ## Objetivo
 
-Entender backups como control correctivo critico.
+Entender backups como control correctivo crítico.
 
-Un backup que no se puede restaurar no es un control confiable. La meta no es solo tener copias, sino demostrar que puedes recuperar sistemas dentro del tiempo y perdida aceptables.
+Un backup que no se puede restaurar no es un control confiable. La meta no es solo tener copias, sino demostrar que puedes recuperar sistemas dentro del tiempo y pérdida aceptables.
 
 ## Mapa Mental
 
@@ -12,7 +12,7 @@ Un backup que no se puede restaurar no es un control confiable. La meta no es so
 datos -> copia -> aislamiento -> retencion -> prueba -> restauracion -> evidencia
 ```
 
-## Por Que Importan
+## Por Qué Importan
 
 Backups ayudan a recuperarse de:
 
@@ -23,15 +23,15 @@ Backups ayudan a recuperarse de:
 - Error humano.
 - Incidente de seguridad.
 
-## Que Respaldar
+## Qué Respaldar
 
-- bases de datos;
-- archivos de usuario;
-- configuraciones;
-- secretos segun proceso seguro;
-- infraestructura como codigo;
-- logs importantes;
-- documentacion critica.
+- Bases de datos;
+- Archivos de usuario;
+- Configuraciones;
+- Secretos según proceso seguro;
+- Infraestructura como código;
+- Logs importantes;
+- Documentacion crítica.
 
 No todo requiere la misma frecuencia. Depende de criticidad y cambio.
 
@@ -45,9 +45,9 @@ Idea general:
 
 Variacion moderna:
 
-- una copia inmutable;
-- una copia fuera del alcance de credenciales normales;
-- pruebas regulares de restauracion.
+- Una copia inmutable;
+- Una copia fuera del alcance de credenciales normales;
+- Pruebas regulares de restauracion.
 
 ## RPO y RTO
 
@@ -75,22 +75,22 @@ Ejemplo:
 RTO 4 horas = el servicio debe volver en 4 horas.
 ```
 
-## Retencion
+## Retención
 
 Define cuanto tiempo guardar:
 
-- diarios;
-- semanales;
-- mensuales;
-- anuales si aplica.
+- Diarios;
+- Semanales;
+- Mensuales;
+- Anuales si aplica.
 
-La retencion debe equilibrar costo, requisitos y riesgo.
+La retención debe equilibrar costo, requisitos y riesgo.
 
 ## Riesgos
 
 - Backups no probados.
 - Backups conectados y cifrados por ransomware.
-- Sin retencion.
+- Sin retención.
 - Sin documentacion.
 - Sin owner.
 - Credenciales de backup expuestas.
@@ -99,28 +99,28 @@ La retencion debe equilibrar costo, requisitos y riesgo.
 
 Riesgos especificos:
 
-- atacante borra backups;
-- cifra backups conectados;
-- roba credenciales de backup;
-- destruye snapshots;
-- espera a que backups limpios expiren.
+- Atacante borra backups;
+- Cifra backups conectados;
+- Roba credenciales de backup;
+- Destruye snapshots;
+- Espera a que backups limpios expiren.
 
 Controles:
 
-- inmutabilidad;
-- separacion de credenciales;
+- Inmutabilidad;
+- Separación de credenciales;
 - MFA;
-- monitoreo de borrados;
-- pruebas de restore;
-- segmentacion.
+- Monitoreo de borrados;
+- Pruebas de restore;
+- Segmentación.
 
 ## Controles
 
 - Backups inmutables.
 - Pruebas de restauracion.
-- Separacion de credenciales.
+- Separación de credenciales.
 - Monitoreo de fallos.
-- Retencion definida.
+- Retención definida.
 - Cifrado.
 - Documentacion.
 
@@ -138,32 +138,32 @@ Define:
 - Frecuencia.
 - RPO.
 - RTO.
-- Retencion.
+- Retención.
 - Como probar restauracion.
 
 ## Criterios de un Plan de Restore
 
 Un plan de restore debe explicar:
 
-- sistema involucrado;
-- datos respaldados;
-- frecuencia;
+- Sistema involucrado;
+- Datos respaldados;
+- Frecuencia;
 - RPO;
 - RTO;
-- retencion;
-- responsable;
-- pasos de restauracion;
-- evidencia de prueba;
-- riesgos pendientes.
+- Retención;
+- Responsable;
+- Pasos de restauracion;
+- Evidencia de prueba;
+- Riesgos pendientes.
 
 ## Controles Que Deben Entenderse
 
 - El backup debe existir y cubrir datos importantes.
-- El backup debe estar cifrado si contiene informacion sensible.
+- El backup debe estar cifrado si contiene información sensible.
 - El backup debe estar aislado o ser inmutable para resistir ransomware.
 - El restore debe probarse; un backup no probado es una suposicion.
 - Debe existir owner responsable.
-- RPO y RTO deben estar definidos segun impacto.
+- RPO y RTO deben estar definidos según impacto.
 - Fallos de backup deben generar alertas.
 - Credenciales de backup deben protegerse con mucho cuidado.
 
@@ -174,7 +174,7 @@ Un plan de restore debe explicar:
 - No documentar RPO/RTO.
 - Respaldar datos pero no configuraciones.
 - No monitorear fallos.
-- No considerar costo de tiempo de recuperacion.
+- No considerar costo de tiempo de recuperación.
 
 ## Criterio de Dominio
 

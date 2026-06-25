@@ -15,19 +15,19 @@ dato -> proposito -> base de uso -> acceso -> retencion -> eliminacion -> eviden
 La pregunta central:
 
 ```text
-Necesitamos este dato, quien lo usa, por cuanto tiempo y como lo protegemos?
+Necesitamos este dato, quién lo usa, por cuanto tiempo y cómo lo protegemos?
 ```
 
 ## Dato Personal
 
-Informacion que identifica o puede identificar a una persona.
+Información que identifica o puede identificar a una persona.
 
 Ejemplos:
 
 - Nombre.
 - Correo.
 - Telefono.
-- Direccion.
+- Dirección.
 - Identificador de usuario.
 - IP en ciertos contextos.
 
@@ -35,17 +35,17 @@ Ejemplos:
 
 Directos:
 
-- nombre;
-- correo;
-- telefono;
-- documento oficial.
+- Nombre;
+- Correo;
+- Telefono;
+- Documento oficial.
 
 Indirectos:
 
 - IP;
-- device ID;
-- ubicacion;
-- combinaciones de atributos.
+- Device ID;
+- Ubicación;
+- Combinaciones de atributos.
 
 Un dato aislado puede parecer no sensible, pero combinado con otros puede identificar a una persona.
 
@@ -69,15 +69,15 @@ Recolectar solo lo necesario.
 
 ### Limitacion de Uso
 
-Usar datos solo para el proposito definido.
+Usar datos solo para el propósito definido.
 
-### Retencion
+### Retención
 
-No guardar datos mas tiempo del necesario.
+No guardar datos más tiempo del necesario.
 
 ### Seguridad
 
-Proteger datos con controles tecnicos y organizacionales.
+Proteger datos con controles técnicos y organizacionales.
 
 ### Transparencia
 
@@ -89,51 +89,51 @@ Explicar como se usan los datos.
 2. Uso.
 3. Almacenamiento.
 4. Comparticion.
-5. Retencion.
-6. Eliminacion.
+5. Retención.
+6. Eliminación.
 
 En cada fase pregunta:
 
-- que datos;
-- quien accede;
-- donde se guardan;
-- como se protegen;
-- cuando se eliminan.
+- Que datos;
+- Quien accede;
+- Donde se guardan;
+- Como se protegen;
+- Cuando se eliminan.
 
 ## Controles de Seguridad
 
-- Clasificacion de datos.
+- Clasificación de datos.
 - Cifrado.
 - Control de acceso.
 - Logging.
 - DLP.
 - Backups seguros.
-- Eliminacion segura.
-- Revision de terceros.
+- Eliminación segura.
+- Revisión de terceros.
 
 ## Privacidad en Logs
 
 Los logs ayudan a seguridad, pero pueden exponer datos.
 
-Buenas practicas:
+Buenas prácticas:
 
-- no registrar contrasenas ni tokens;
-- evitar datos personales innecesarios;
-- truncar o anonimizar cuando aplique;
-- restringir acceso;
-- definir retencion;
-- proteger exportaciones.
+- No registrar contraseñas ni tokens;
+- Evitar datos personales innecesarios;
+- Truncar o anonimizar cuando aplique;
+- Restringir acceso;
+- Definir retención;
+- Proteger exportaciones.
 
 ## Riesgos Comunes
 
 - Logs con datos sensibles.
-- Buckets publicos.
+- Buckets públicos.
 - Exportaciones CSV sin control.
 - Permisos excesivos.
-- Retencion indefinida.
+- Retención indefinida.
 - Datos de produccion en ambientes de prueba.
 
-## Ejemplo de Clasificacion
+## Ejemplo de Clasificación
 
 Esta tabla muestra como clasificar datos y elegir controles:
 
@@ -141,31 +141,31 @@ Esta tabla muestra como clasificar datos y elegir controles:
 | --- | --- | --- | --- |
 | correo | Si | No | Cifrado en transito |
 | contraseña | No | Si | Hashing fuerte |
-| direccion IP | Depende | No | Anonimizacion de logs |
+| dirección IP | Depende | No | Anonimizacion de logs |
 | historial medico | Si | Si | Cifrado y RBAC estricto |
 | ID interno de usuario | No | No | Monitoreo |
 
 ## Criterios Para Mapear Datos
 
-Un mapa de datos ayuda a entender que informacion existe, para que se usa, donde vive y quien puede acceder.
+Un mapa de datos ayuda a entender que información existe, para que se usa, donde vive y quien puede acceder.
 
-| Dato | Proposito | Donde vive | Quien accede | Retencion | Control |
+| Dato | Propósito | Donde vive | Quien accede | Retención | Control |
 | --- | --- | --- | --- | --- | --- |
 
 Conviene considerar datos como:
 
-- correo;
-- password hash;
+- Correo;
+- Password hash;
 - IP;
-- logs de login;
-- archivo subido;
-- token de API.
+- Logs de login;
+- Archivo subido;
+- Token de API.
 
 ## Errores Comunes
 
 - Guardar datos "por si acaso".
 - Usar datos reales en desarrollo.
-- No tener retencion.
+- No tener retención.
 - Dar acceso amplio a exportaciones.
 - Registrar secretos en logs.
 - No revisar terceros.
@@ -179,4 +179,4 @@ Puedes avanzar cuando puedas:
 - Identificar datos sensibles.
 - Proponer controles.
 - Explicar por que logs pueden exponer datos.
-- Crear un mapa simple de datos con retencion y acceso.
+- Crear un mapa simple de datos con retención y acceso.

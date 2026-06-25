@@ -2,21 +2,21 @@
 
 ## Objetivo
 
-Entender como integrar seguridad en pipelines, despliegues y operacion.
+Entender como integrar seguridad en pipelines, despliegues y operación.
 
-## Que es DevSecOps
+## Qué es DevSecOps
 
 DevSecOps busca que seguridad sea parte del flujo de desarrollo y despliegue.
 
 No significa llenar todo de herramientas; significa crear controles repetibles.
 
-El objetivo es detectar riesgos temprano y reducir errores repetidos. Si seguridad solo revisa al final, los cambios son mas caros y el equipo puede ver seguridad como bloqueo. DevSecOps integra controles donde el equipo ya trabaja: repositorio, pipeline, revision de codigo, despliegue y monitoreo.
+El objetivo es detectar riesgos temprano y reducir errores repetidos. Si seguridad solo revisa al final, los cambios son más caros y el equipo puede ver seguridad como bloqueo. DevSecOps integra controles donde el equipo ya trabaja: repositorio, pipeline, revisión de código, despliegue y monitoreo.
 
 ## Pipeline CI/CD
 
 Un pipeline puede:
 
-1. Descargar codigo.
+1. Descargar código.
 2. Instalar dependencias.
 3. Ejecutar tests.
 4. Construir artefactos.
@@ -29,7 +29,7 @@ Cada fase puede introducir riesgo. Una dependencia comprometida entra al instala
 
 ### Secret Scanning
 
-Detecta secretos en codigo:
+Detecta secretos en código:
 
 - API keys.
 - Tokens.
@@ -42,11 +42,11 @@ Busca dependencias vulnerables.
 
 ### SAST
 
-Busca patrones inseguros en codigo.
+Busca patrones inseguros en código.
 
 ### Container Scanning
 
-Busca vulnerabilidades en imagenes.
+Busca vulnerabilidades en imágenes.
 
 ### IaC Scanning
 
@@ -58,14 +58,14 @@ Revisa Terraform, CloudFormation u otros archivos de infraestructura.
 - Secrets expuestos en logs.
 - Dependencias comprometidas.
 - Runners inseguros.
-- Deploy sin revision.
+- Deploy sin revisión.
 - Artefactos sin firma.
 
-Supply chain security se refiere a la confianza en todo lo que participa en construir y entregar software: dependencias, acciones de CI, runners, imagenes base, artefactos, llaves, registros y personas con permisos. Un ataque no siempre explota la app; a veces compromete el camino que la construye.
+Supply chain security se refiere a la confianza en todo lo que participa en construir y entregar software: dependencias, acciones de CI, runners, imágenes base, artefactos, llaves, registros y personas con permisos. Un ataque no siempre explota la app; a veces compromete el camino que la construye.
 
-## Buenas Practicas
+## Buenas Prácticas
 
-- Minimo privilegio para tokens.
+- Mínimo privilegio para tokens.
 - Proteger ramas principales.
 - Revisiones de pull request.
 - Rotar secretos.
@@ -81,7 +81,7 @@ Un pipeline seguro para una app puede verse asi:
 Commit -> Tests -> SAST -> Dependency Scan -> Build -> Deploy
 ```
 
-Los puntos importantes de revision son:
+Los puntos importantes de revisión son:
 
 - Donde revisar secretos.
 - Donde revisar dependencias.
@@ -104,4 +104,4 @@ Puedes avanzar cuando puedas:
 - Explicar CI/CD.
 - Nombrar controles DevSecOps.
 - Explicar riesgo de secretos.
-- Explicar supply chain security a nivel basico.
+- Explicar supply chain security a nivel básico.

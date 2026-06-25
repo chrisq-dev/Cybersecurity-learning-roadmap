@@ -1,18 +1,18 @@
-# Metodologia y Etica
+# Metodología y Ética
 
 ## Objetivo
 
-Entender como estudiar tecnicas ofensivas de forma responsable. Red Team o pentesting no significa atacar cualquier sistema; significa probar seguridad bajo reglas claras, autorizacion y alcance definido.
+Entender como estudiar técnicas ofensivas de forma responsable. Red Team o pentesting no significa atacar cualquier sistema; significa probar seguridad bajo reglas claras, autorización y alcance definido.
 
-Esta seccion existe para fijar el marco. Aprender ofensiva sin etica, alcance y reporte no te hace profesional; te vuelve un riesgo. El objetivo es entrenar pensamiento adversarial para mejorar defensas.
+Esta sección existe para fijar el marco. Aprender ofensiva sin ética, alcance y reporte no te hace profesional; te vuelve un riesgo. El objetivo es entrenar pensamiento adversarial para mejorar defensas.
 
 ## Mapa Mental
 
 ```text
-autorizacion -> alcance -> reglas -> prueba controlada -> evidencia -> impacto -> remediacion
+autorización -> alcance -> reglas -> prueba controlada -> evidencia -> impacto -> remediación
 ```
 
-Si falta autorizacion o alcance, no hay practica profesional.
+Si falta autorización o alcance, no hay práctica profesional.
 
 ## Regla Principal
 
@@ -20,16 +20,16 @@ Solo se prueba en:
 
 - Sistemas propios.
 - Laboratorios locales.
-- Plataformas diseñadas para practica.
-- Entornos donde tienes autorizacion explicita.
+- Plataformas diseñadas para práctica.
+- Entornos donde tienes autorización explícita.
 
 No se prueba en:
 
 - Empresas sin permiso.
 - IPs aleatorias.
-- Redes publicas.
+- Redes públicas.
 - Cuentas de terceros.
-- Sistemas de universidad, trabajo o clientes sin autorizacion formal.
+- Sistemas de universidad, trabajo o clientes sin autorización formal.
 
 ## Alcance
 
@@ -37,50 +37,50 @@ El alcance define que se puede probar.
 
 Debe responder:
 
-- Que sistemas estan permitidos?
-- Que tecnicas estan permitidas?
-- Que horarios aplican?
-- Que datos no se deben tocar?
-- A quien reportar problemas?
-- Que esta fuera de alcance?
+- Qué sistemas están permitidos?
+- Qué técnicas están permitidas?
+- Qué horarios aplican?
+- Qué datos no se deben tocar?
+- A quién reportar problemas?
+- Qué está fuera de alcance?
 
 Ejemplo de fuera de alcance:
 
-- Denegacion de servicio.
+- Denegación de servicio.
 - Persistencia.
-- Exfiltracion de datos reales.
+- Exfiltración de datos reales.
 - Ataques a empleados.
 - Sistemas de terceros.
 - Cambios destructivos.
 
-## Metodologia General
+## Metodología General
 
 1. Definir alcance.
-2. Recolectar informacion permitida.
+2. Recolectar información permitida.
 3. Enumerar servicios.
 4. Identificar posibles debilidades.
 5. Validar en laboratorio o con permiso.
 6. Documentar evidencia.
 7. Explicar impacto.
-8. Recomendar remediacion.
+8. Recomendar remediación.
 
 ## Fases de Trabajo
 
 ### Preparacion
 
 - Entender objetivo.
-- Confirmar autorizacion.
+- Confirmar autorización.
 - Definir alcance.
 - Preparar ambiente de notas.
 - Definir formato de reporte.
 
 ### Reconocimiento Permitido
 
-- Revisar informacion dentro del alcance.
+- Revisar información dentro del alcance.
 - Identificar superficies autorizadas.
 - Documentar supuestos.
 
-### Enumeracion
+### Enumeración
 
 - Identificar servicios.
 - Leer banners.
@@ -88,20 +88,20 @@ Ejemplo de fuera de alcance:
 - Entender rutas y endpoints.
 - No explotar sin necesidad.
 
-### Validacion Controlada
+### Validación Controlada
 
 - Probar solo lo necesario para demostrar riesgo.
 - Evitar impacto innecesario.
 - Usar datos de prueba.
-- Capturar solo la informacion necesaria para demostrar riesgo.
+- Capturar solo la información necesaria para demostrar riesgo.
 
 ### Reporte
 
 - Explicar hallazgo.
 - Mostrar evidencia segura.
 - Describir impacto.
-- Dar pasos de reproduccion.
-- Proponer remediacion.
+- Dar pasos de reproducción.
+- Proponer remediación.
 
 ## Pensamiento Correcto
 
@@ -123,21 +123,21 @@ Buena evidencia:
 
 Mala evidencia:
 
-- Publica credenciales.
+- Pública credenciales.
 - Extrae datos innecesarios.
-- Muestra informacion privada.
-- No explica impacto ni remediacion.
+- Muestra información privada.
+- No explica impacto ni remediación.
 
 ## Severidad Responsable
 
-No todo hallazgo es critico.
+No todo hallazgo es crítico.
 
 Considera:
 
 - Puede explotarse dentro del alcance?
-- Requiere autenticacion?
-- Que privilegios obtiene?
-- Que datos expone?
+- Requiere autenticación?
+- Qué privilegios obtiene?
+- Qué datos expone?
 - Afecta disponibilidad?
 - Hay controles compensatorios?
 
@@ -150,14 +150,14 @@ Un alcance ficticio puede verse asi:
 
 ## Permitido
 
-- Maquina local vulnerable.
+- Máquina local vulnerable.
 - Red privada de laboratorio.
-- Herramientas de enumeracion basica.
+- Herramientas de enumeracion básica.
 
 ## No Permitido
 
 - Sistemas reales.
-- IPs publicas.
+- IPs públicas.
 - Exfiltrar datos.
 - Persistencia.
 
@@ -171,34 +171,34 @@ Aprender enumeracion y reporte.
 Escenario:
 
 ```text
-En una app local de laboratorio encuentras un panel admin accesible sin autenticacion.
+En una app local de laboratorio encuentras un panel admin accesible sin autenticación.
 ```
 
-Un reporte etico debe explicar:
+Un reporte ético debe explicar:
 
-- alcance;
-- hallazgo;
-- evidencia sin datos sensibles;
-- impacto;
-- riesgo;
-- remediacion;
-- lo que no se hizo para evitar daño.
+- Alcance;
+- Hallazgo;
+- Evidencia sin datos sensibles;
+- Impacto;
+- Riesgo;
+- Remediación;
+- Lo que no se hizo para evitar daño.
 
 ## Errores Comunes
 
 - Escanear IPs aleatorias.
 - Probar sistemas de universidad o trabajo sin permiso.
 - Publicar evidencia con secretos.
-- Explotar mas de lo necesario.
-- No reportar remediacion.
+- Explotar más de lo necesario.
+- No reportar remediación.
 - Confundir laboratorio con mundo real.
 
 ## Criterio de Dominio
 
 Puedes avanzar cuando puedas:
 
-- Explicar que es autorizacion.
+- Explicar que es autorización.
 - Explicar que es alcance.
 - Separar prueba responsable de actividad indebida.
-- Escribir un reporte con remediacion.
-- Explicar por que una prueba esta dentro o fuera de alcance.
+- Escribir un reporte con remediación.
+- Explicar por que una prueba está dentro o fuera de alcance.

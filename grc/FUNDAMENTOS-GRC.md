@@ -2,29 +2,29 @@
 
 ## Objetivo
 
-Entender que la ciberseguridad tambien es proceso, gobierno, riesgo y evidencia.
+Entender que la ciberseguridad también es proceso, gobierno, riesgo y evidencia.
 
 GRC no es burocracia por si misma. Bien aplicado ayuda a decidir que proteger, quien responde, que riesgos aceptar y como demostrar que los controles existen.
 
 ## Mapa Mental
 
 ```text
-politica -> control -> evidencia -> riesgo -> decision -> mejora
+política -> control -> evidencia -> riesgo -> decision -> mejora
 ```
 
-Si no hay evidencia, el control es dificil de defender.
+Si no hay evidencia, el control es difícil de defender.
 
-## Que es GRC
+## Qué es GRC
 
 GRC significa:
 
-- Governance: direccion, politicas y responsabilidades.
+- Governance: dirección, políticas y responsabilidades.
 - Risk: identificar y tratar riesgos.
 - Compliance: cumplir requisitos internos, legales o regulatorios.
 
-## Politica, Estandar, Procedimiento y Control
+## Política, Estandar, Procedimiento y Control
 
-- Politica: regla general aprobada.
+- Política: regla general aprobada.
 - Estandar: requisito especifico.
 - Procedimiento: pasos para cumplir.
 - Control: medida que reduce riesgo.
@@ -34,8 +34,8 @@ Ejemplo:
 
 | Elemento | Ejemplo |
 | --- | --- |
-| Politica | Todos los admins usan MFA |
-| Estandar | MFA resistente a phishing para cuentas criticas |
+| Política | Todos los admins usan MFA |
+| Estandar | MFA resistente a phishing para cuentas críticas |
 | Procedimiento | Como enrolar MFA |
 | Control | MFA obligatorio |
 | Evidencia | Reporte de cuentas con MFA |
@@ -47,15 +47,15 @@ Define:
 - Quien decide.
 - Quien aprueba.
 - Quien opera.
-- Que politicas existen.
+- Que políticas existen.
 - Que se mide.
 
 Ejemplos:
 
-- Politica de contraseñas.
-- Politica de acceso.
-- Politica de backups.
-- Politica de respuesta a incidentes.
+- Política de contraseñas.
+- Política de acceso.
+- Política de backups.
+- Política de respuesta a incidentes.
 
 ## Roles
 
@@ -81,7 +81,7 @@ Ejemplo:
 Activo: base de datos de clientes
 Amenaza: acceso no autorizado
 Vulnerabilidad: permisos excesivos
-Impacto: exposicion de datos
+Impacto: exposición de datos
 Control: minimo privilegio y monitoreo
 ```
 
@@ -91,10 +91,10 @@ Opciones:
 
 - Mitigar: aplicar controles.
 - Transferir: seguro o proveedor.
-- Aceptar: documentar decision.
+- Aceptar: documentar decisión.
 - Evitar: dejar de hacer la actividad.
 
-Aceptar riesgo no significa ignorarlo. Debe tener owner, razon, fecha y revision.
+Aceptar riesgo no significa ignorarlo. Debe tener owner, razon, fecha y revisión.
 
 ## Cumplimiento
 
@@ -106,38 +106,38 @@ Puede venir de:
 - Regulaciones.
 - Contratos.
 - Estándares.
-- Politicas internas.
+- Políticas internas.
 
 ## Evidencia Buena
 
 Debe ser:
 
-- fechada;
-- trazable;
-- entendible;
-- suficiente;
-- relacionada con el control;
-- protegida si contiene datos sensibles.
+- Fechada;
+- Trazable;
+- Entendible;
+- Suficiente;
+- Relacionada con el control;
+- Protegida si contiene datos sensibles.
 
 ## Evidencia
 
-Sin evidencia, el control es dificil de demostrar.
+Sin evidencia, el control es difícil de demostrar.
 
 Ejemplos:
 
-- Capturas de configuracion.
+- Capturas de configuración.
 - Logs.
 - Reportes.
 - Tickets.
 - Aprobaciones.
 - Resultados de pruebas.
 
-## Ejemplo de Politica
+## Ejemplo de Política
 
-Una politica simple puede verse asi:
+Una política simple puede verse asi:
 
 ```md
-# Politica de MFA
+# Política de MFA
 
 ## Objetivo
 
@@ -149,7 +149,7 @@ Una politica simple puede verse asi:
 
 ## Evidencia Requerida
 
-## Revision
+## Revisión
 ```
 
 ## Criterios Para un Registro de Riesgos
@@ -161,17 +161,17 @@ Un registro de riesgos ayuda a conectar activos, impacto, probabilidad, tratamie
 
 Ejemplos de riesgos que ayudan a entender el formato:
 
-- cuenta admin sin MFA;
-- backups no probados;
-- bucket publico;
-- logs insuficientes;
-- dependencia vulnerable.
+- Cuenta admin sin MFA;
+- Backups no probados;
+- Bucket público;
+- Logs insuficientes;
+- Dependencia vulnerable.
 
 ## Errores Comunes
 
-- Crear politicas que nadie puede cumplir.
+- Crear políticas que nadie puede cumplir.
 - No asignar owner.
-- Aceptar riesgos sin fecha de revision.
+- Aceptar riesgos sin fecha de revisión.
 - Confundir evidencia con opinion.
 - Medir controles que no reducen riesgo.
 
@@ -180,7 +180,7 @@ Ejemplos de riesgos que ayudan a entender el formato:
 Puedes avanzar cuando puedas:
 
 - Explicar GRC.
-- Explicar politica vs control.
+- Explicar política vs control.
 - Explicar evidencia.
 - Relacionar riesgo con impacto.
 - Crear un registro simple de riesgos con owners y tratamiento.

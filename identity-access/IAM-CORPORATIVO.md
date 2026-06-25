@@ -6,18 +6,18 @@ Entender como una empresa administra identidades y accesos durante el ciclo de v
 
 ## Ciclo Joiner, Mover, Leaver
 
-IAM corporativo busca que cada identidad tenga el acceso correcto durante el tiempo correcto. El problema no es solo crear usuarios; tambien es ajustar permisos cuando cambian de puesto y retirar accesos cuando salen. Muchas brechas ocurren por cuentas olvidadas, permisos acumulados o accesos que nadie revisa.
+IAM corporativo busca que cada identidad tenga el acceso correcto durante el tiempo correcto. El problema no es solo crear usuarios; también es ajustar permisos cuando cambian de puesto y retirar accesos cuando salen. Muchas brechas ocurren por cuentas olvidadas, permisos acumulados o accesos que nadie revisa.
 
 ### Joiner
 
-Persona entra a la organizacion.
+Persona entra a la organización.
 
 Controles:
 
 - Crear cuenta.
 - Asignar rol.
 - MFA.
-- Accesos minimos.
+- Accesos mínimos.
 - Registro de aprobacion.
 
 ### Mover
@@ -45,7 +45,7 @@ Controles:
 
 ## SSO
 
-Single Sign-On permite autenticacion centralizada.
+Single Sign-On permite autenticación centralizada.
 
 Beneficios:
 
@@ -54,7 +54,7 @@ Beneficios:
 - Mejor logging.
 - MFA centralizado.
 
-SSO mejora seguridad cuando esta bien configurado, pero tambien concentra riesgo. Si el proveedor de identidad se compromete, muchos sistemas quedan expuestos. Por eso SSO debe combinarse con MFA, politicas condicionales, monitoreo y recuperacion segura.
+SSO mejora seguridad cuando está bien configurado, pero también concentra riesgo. Si el proveedor de identidad se compromete, muchos sistemas quedan expuestos. Por eso SSO debe combinarse con MFA, políticas condicionales, monitoreo y recuperación segura.
 
 ## MFA
 
@@ -66,7 +66,7 @@ Prioridad:
 - Acceso remoto.
 - Correo.
 - Cloud.
-- Sistemas criticos.
+- Sistemas críticos.
 
 ## RBAC
 
@@ -79,15 +79,15 @@ Permisos por rol:
 - Finanzas.
 - Soporte.
 
-RBAC evita asignar permisos usuario por usuario sin estructura. El riesgo aparece cuando los roles crecen sin control o se usan como excepciones permanentes. Un buen rol representa una funcion real del negocio y tiene permisos minimos para esa funcion.
+RBAC evita asignar permisos usuario por usuario sin estructura. El riesgo aparece cuando los roles crecen sin control o se usan como excepciones permanentes. Un buen rol representa una función real del negocio y tiene permisos mínimos para esa función.
 
 ## Access Reviews
 
-Revision periodica de accesos.
+Revisión periodica de accesos.
 
 Preguntas:
 
-- Esta persona aun necesita acceso?
+- Esta persona aún necesita acceso?
 - El rol sigue siendo correcto?
 - Hay permisos excesivos?
 - La cuenta tiene owner?
@@ -111,9 +111,9 @@ La matriz debe contemplar momentos del ciclo de vida como:
 - Cuentas antiguas activas.
 - Permisos heredados de puestos anteriores.
 - Grupos demasiado amplios.
-- Acceso a sistemas criticos sin MFA.
+- Acceso a sistemas críticos sin MFA.
 - Cuentas compartidas.
-- Falta de revision periodica.
+- Falta de revisión periodica.
 
 ## Criterio de Dominio
 
@@ -122,4 +122,4 @@ Puedes avanzar cuando puedas:
 - Explicar joiner/mover/leaver.
 - Explicar MFA y SSO.
 - Explicar RBAC.
-- Diseñar access review basico.
+- Diseñar access review básico.

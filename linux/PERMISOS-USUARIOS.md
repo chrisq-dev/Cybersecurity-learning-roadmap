@@ -44,7 +44,7 @@ Interpretacion:
 - `r-x`: grupo puede leer y ejecutar.
 - `---`: otros no tienen permisos.
 
-## chmod
+## Chmod
 
 Cambia permisos.
 
@@ -76,7 +76,7 @@ Ejemplos:
 - 6 = 4+2 = rw-.
 - 5 = 4+1 = r-x.
 
-## chown
+## Chown
 
 Cambia owner o grupo.
 
@@ -85,25 +85,25 @@ chown usuario archivo.txt
 chown usuario:grupo archivo.txt
 ```
 
-## sudo
+## Sudo
 
-Permite ejecutar comandos con privilegios elevados si el usuario esta autorizado.
+Permite ejecutar comandos con privilegios elevados si el usuario está autorizado.
 
 Riesgo:
 
-- Dar sudo sin control permite cambios criticos en el sistema.
+- Dar sudo sin control permite cambios críticos en el sistema.
 
 ## Archivos Sensibles
 
 Ejemplos:
 
-- `/etc/passwd`: informacion de usuarios.
+- `/etc/passwd`: información de usuarios.
 - `/etc/shadow`: hashes de contraseñas, requiere privilegios.
 - `/etc/sudoers`: permisos sudo.
 - Llaves SSH privadas.
 - Archivos `.env`.
 
-## Observacion Segura
+## Observación Segura
 
 ```bash
 mkdir permisos-lab
@@ -117,9 +117,9 @@ ls -l
 
 Explica:
 
-- Quien puede leer `publico.txt`.
-- Quien puede leer `secreto.txt`.
-- Quien puede ejecutar `script.sh`.
+- Quién puede leer `publico.txt`.
+- Quién puede leer `secreto.txt`.
+- Quién puede ejecutar `script.sh`.
 
 ## Criterio de Dominio
 

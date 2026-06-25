@@ -4,15 +4,15 @@
 
 Entender SQL Injection como una falla de construccion de consultas, su impacto y como prevenirla.
 
-Esta leccion se enfoca en causa, riesgo, deteccion y mitigacion. Las pruebas deben hacerse solo en laboratorios propios o plataformas autorizadas.
+Esta lección se enfoca en causa, riesgo, detección y mitigacion. Las pruebas deben hacerse solo en laboratorios propios o plataformas autorizadas.
 
-## Que es
+## Qué es
 
-SQL Injection ocurre cuando una aplicacion mezcla datos del usuario con una consulta SQL de forma insegura.
+SQL Injection ocurre cuando una aplicación mezcla datos del usuario con una consulta SQL de forma insegura.
 
 El problema no es SQL en si. El problema es tratar entrada no confiable como si fuera parte confiable de la consulta.
 
-## Por Que Ocurre
+## Por Qué Ocurre
 
 Ejemplo inseguro conceptual:
 
@@ -26,11 +26,11 @@ Si `email` viene del usuario, la consulta puede alterarse.
 
 Puede permitir:
 
-- Saltar autenticacion.
+- Saltar autenticación.
 - Leer datos no autorizados.
 - Modificar datos.
 - Eliminar datos.
-- Obtener informacion sensible.
+- Obtener información sensible.
 - En algunos casos, afectar el servidor.
 
 ## Mitigacion
@@ -39,8 +39,8 @@ Controles principales:
 
 - Consultas parametrizadas.
 - ORM usado correctamente.
-- Validacion de entrada.
-- Minimo privilegio en la cuenta de base de datos.
+- Validación de entrada.
+- Mínimo privilegio en la cuenta de base de datos.
 - Manejo seguro de errores.
 - Logging de eventos sospechosos.
 
@@ -50,7 +50,7 @@ Ejemplo conceptual seguro:
 SELECT * FROM users WHERE email = ?
 ```
 
-La idea es que el valor del usuario se trate como dato, no como codigo SQL.
+La idea es que el valor del usuario se trate como dato, no como código SQL.
 
 ## Modelo Mental
 
@@ -60,7 +60,7 @@ input no confiable -> consulta dinamica -> base de datos -> respuesta
 
 El problema aparece cuando el input cambia la estructura de la consulta. La defensa busca separar estructura y datos.
 
-## Donde Suele Aparecer
+## Dónde Suele Aparecer
 
 - Login.
 - Buscadores.
@@ -75,19 +75,19 @@ El problema aparece cuando el input cambia la estructura de la consulta. La defe
 
 ### Error-based
 
-La aplicacion revela errores de base de datos. El riesgo adicional es que el error puede filtrar tablas, columnas o tecnologia.
+La aplicación revela errores de base de datos. El riesgo adicional es que el error puede filtrar tablas, columnas o tecnologia.
 
 ### Boolean-based
 
-La respuesta cambia segun una condicion verdadera o falsa.
+La respuesta cambia según una condicion verdadera o falsa.
 
 ### Time-based
 
-La respuesta tarda mas o menos segun una condicion. Suele aparecer cuando no hay errores visibles.
+La respuesta tarda más o menos según una condicion. Suele aparecer cuando no hay errores visibles.
 
 ### Second-order
 
-El dato malicioso se guarda primero y se usa despues en otra consulta insegura.
+El dato malicioso se guarda primero y se usa después en otra consulta insegura.
 
 ## Señales de Alerta
 
@@ -98,7 +98,7 @@ En logs web:
 - Muchas pruebas contra el mismo endpoint.
 - Respuestas 500 al enviar parametros inusuales.
 
-En codigo:
+En código:
 
 - Concatenacion de strings para SQL.
 - Interpolacion directa de parametros.
@@ -106,9 +106,9 @@ En codigo:
 - ORM usado con consultas raw sin parametros.
 - Cuenta de DB con permisos excesivos.
 
-## Preguntas de Analisis
+## Preguntas de Análisis
 
-- Que parametros llegan al servidor?
+- Qué parametros llegan al servidor?
 - Se usan consultas parametrizadas?
 - Los errores revelan detalles?
 - La cuenta de DB tiene privilegios excesivos?
@@ -128,51 +128,51 @@ No todo puede parametrizarse igual. Para campos como `ORDER BY`, usa allowlist:
 permitidos = ["name", "created_at", "status"]
 ```
 
-### Minimo Privilegio
+### Mínimo Privilegio
 
-La cuenta de la aplicacion no deberia poder hacer mas de lo necesario.
+La cuenta de la aplicación no debería poder hacer más de lo necesario.
 
 Ejemplo:
 
-- una app de lectura no necesita `DROP TABLE`;
-- un usuario de reportes no necesita modificar usuarios;
-- una API publica no deberia conectarse como admin.
+- Una app de lectura no necesita `DROP TABLE`;
+- Un usuario de reportes no necesita modificar usuarios;
+- Una API pública no debería conectarse como admin.
 
 ### Errores Seguros
 
-El usuario recibe un mensaje generico. El detalle tecnico va a logs protegidos.
+El usuario recibe un mensaje generico. El detalle técnico va a logs protegidos.
 
-## Observacion Segura
+## Observación Segura
 
 La SQL Injection debe estudiarse solo en laboratorios autorizados o aplicaciones locales vulnerables creadas para aprendizaje.
 
 Una forma segura de analizar un caso es separar:
 
-- causa: donde se concatena o interpreta input como SQL;
-- flujo: que endpoint recibe el dato;
-- impacto: que datos podrian leerse o modificarse;
-- mitigacion: parametros, allowlists y minimo privilegio;
-- deteccion: errores, patrones raros y eventos repetidos;
-- limitacion: que no se puede afirmar sin evidencia.
+- Causa: donde se concatena o interpreta input como SQL;
+- Flujo: que endpoint recibe el dato;
+- Impacto: que datos podrian leerse o modificarse;
+- Mitigacion: parametros, allowlists y mínimo privilegio;
+- Detección: errores, patrones raros y eventos repetidos;
+- Limitacion: que no se puede afirmar sin evidencia.
 
-## Criterios de Revision
+## Criterios de Revisión
 
-Una revision defensiva busca comprobar si:
+Una revisión defensiva busca comprobar si:
 
-- no hay concatenacion directa de SQL;
-- las consultas raw usan parametros;
-- los campos dinamicos usan allowlist;
-- los errores no revelan estructura interna;
-- la cuenta de base de datos tiene minimo privilegio;
-- eventos sospechosos quedan en logs utiles;
-- flujos sensibles como login, busqueda, filtros y reportes tienen controles.
+- No hay concatenacion directa de SQL;
+- Las consultas raw usan parametros;
+- Los campos dinamicos usan allowlist;
+- Los errores no revelan estructura interna;
+- La cuenta de base de datos tiene mínimo privilegio;
+- Eventos sospechosos quedan en logs útiles;
+- Flujos sensibles como login, busqueda, filtros y reportes tienen controles.
 
 ## Errores Comunes
 
 - Pensar que un ORM elimina todo riesgo automaticamente.
-- Usar validacion de entrada como unica defensa.
+- Usar validación de entrada como unica defensa.
 - Dejar errores SQL visibles.
-- Conectar la aplicacion con usuario administrador.
+- Conectar la aplicación con usuario administrador.
 - Reportar SQLi sin explicar impacto sobre datos.
 
 ## Criterio de Dominio
@@ -183,4 +183,4 @@ Puedes avanzar cuando puedas:
 - Explicar consultas parametrizadas.
 - Describir impacto sin exagerar.
 - Proponer mitigacion concreta.
-- Identificar señales de SQLi en codigo y logs.
+- Identificar señales de SQLi en código y logs.

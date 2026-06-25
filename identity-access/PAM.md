@@ -4,7 +4,7 @@
 
 Entender como proteger cuentas privilegiadas.
 
-## Que es PAM
+## Qué es PAM
 
 PAM gestiona accesos privilegiados.
 
@@ -14,16 +14,16 @@ Ejemplos:
 - Root.
 - Administradores cloud.
 - Cuentas de base de datos.
-- Cuentas de servicio criticas.
+- Cuentas de servicio críticas.
 
-La idea central es que el acceso privilegiado no debe ser permanente, compartido ni invisible. Una cuenta normal puede causar daño limitado; una cuenta privilegiada puede cambiar configuraciones, leer datos sensibles, crear persistencia o borrar rastros. Por eso PAM combina prevencion, aprobacion, monitoreo y revision.
+La idea central es que el acceso privilegiado no debe ser permanente, compartido ni invisible. Una cuenta normal puede causar daño limitado; una cuenta privilegiada puede cambiar configuraciones, leer datos sensibles, crear persistencia o borrar rastros. Por eso PAM combina prevencion, aprobacion, monitoreo y revisión.
 
 ## Riesgo
 
 Una cuenta privilegiada comprometida puede causar impacto alto:
 
 - Acceso a datos.
-- Cambios de configuracion.
+- Cambios de configuración.
 - Desactivar logs.
 - Crear usuarios.
 - Persistencia.
@@ -33,9 +33,9 @@ Una cuenta privilegiada comprometida puede causar impacto alto:
 - Cuentas admin separadas.
 - MFA obligatorio.
 - Just-in-time access.
-- Session recording en ambientes criticos.
+- Session recording en ambientes críticos.
 - Password vault.
-- Rotacion de secretos.
+- Rotación de secretos.
 - Access reviews.
 - Alertas por uso privilegiado.
 
@@ -49,7 +49,7 @@ Ejemplo:
 Admin recibe permisos durante 1 hora para una tarea especifica.
 ```
 
-JIT reduce la ventana de abuso. Si una credencial se compromete, el atacante no deberia encontrar privilegios administrativos activos todo el tiempo. Tambien ayuda a distinguir actividad normal de actividad sospechosa, porque cada elevacion debe tener razon, duracion y contexto.
+JIT reduce la ventana de abuso. Si una credencial se compromete, el atacante no debería encontrar privilegios administrativos activos todo el tiempo. También ayuda a distinguir actividad normal de actividad sospechosa, porque cada elevación debe tener razon, duración y contexto.
 
 ## Cuentas de Servicio
 
@@ -63,14 +63,14 @@ Riesgos:
 Controles:
 
 - Owner.
-- Rotacion.
-- Permisos minimos.
+- Rotación.
+- Permisos mínimos.
 - Monitoreo.
 - Documentacion.
 
-Las cuentas de servicio son dificiles porque no pertenecen a una persona. Si nadie sabe que aplicacion las usa, nadie se atreve a rotarlas. Por eso necesitan owner tecnico, permisos especificos, inventario y monitoreo. Una cuenta de servicio con privilegios altos y contraseña antigua puede ser mas peligrosa que una cuenta humana.
+Las cuentas de servicio son dificiles porque no pertenecen a una persona. Si nadie sabe que aplicación las usa, nadie se atreve a rotarlas. Por eso necesitan owner técnico, permisos especificos, inventario y monitoreo. Una cuenta de servicio con privilegios altos y contraseña antigua puede ser más peligrosa que una cuenta humana.
 
-## Ejemplo de Revision PAM
+## Ejemplo de Revisión PAM
 
 Esta cuenta muestra problemas clasicos de privilegio permanente:
 
@@ -81,18 +81,18 @@ Rotacion: nunca
 Owner: desconocido
 ```
 
-La revision debe separar:
+La revisión debe separar:
 
 - Riesgos.
 - Controles.
-- Plan de remediacion.
+- Plan de remediación.
 - Evidencia requerida.
 
 ## Señales de Riesgo
 
 - Cuentas admin usadas para trabajo diario.
 - Passwords compartidos por varias personas.
-- Cuentas sin MFA en sistemas criticos.
+- Cuentas sin MFA en sistemas críticos.
 - Service accounts con permisos de administrador.
 - Secretos que nunca rotan.
 - Accesos privilegiados sin alerta ni registro.

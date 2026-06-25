@@ -1,8 +1,8 @@
-# Reporte y Remediacion
+# Reporte y Remediación
 
 ## Objetivo
 
-Aprender a convertir hallazgos tecnicos en informacion util para corregir riesgos.
+Aprender a convertir hallazgos técnicos en información útil para corregir riesgos.
 
 ## Un Hallazgo Debe Tener
 
@@ -12,19 +12,19 @@ Aprender a convertir hallazgos tecnicos en informacion util para corregir riesgo
 - Descripcion.
 - Evidencia.
 - Impacto.
-- Pasos de reproduccion controlados.
-- Remediacion.
+- Pasos de reproducción controlados.
+- Remediación.
 - Referencias.
 
 ## Severidad
 
-La severidad no depende solo de la tecnica. Depende de:
+La severidad no depende solo de la técnica. Depende de:
 
 - Impacto.
 - Probabilidad.
-- Exposicion.
+- Exposición.
 - Sensibilidad de datos.
-- Facilidad de explotacion.
+- Facilidad de explotación.
 - Controles existentes.
 
 ## Ejemplo de Hallazgo
@@ -46,9 +46,9 @@ curl -I https://app-lab.local
 
 ## Impacto
 
-Puede aumentar exposicion ante ciertos ataques del lado del cliente si existen otras fallas.
+Puede aumentar exposición ante ciertos ataques del lado del cliente si existen otras fallas.
 
-## Remediacion
+## Remediación
 
 Configurar headers como Content-Security-Policy, X-Content-Type-Options y Strict-Transport-Security cuando aplique.
 ```
@@ -64,12 +64,12 @@ La app es insegura.
 Buen reporte:
 
 ```text
-El endpoint /admin permite acceso a usuarios sin rol administrativo. Esto permite que un usuario autenticado no privilegiado vea funciones administrativas. Se recomienda validar autorizacion en servidor para cada request.
+El endpoint /admin permite acceso a usuarios sin rol administrativo. Esto permite que un usuario autenticado no privilegiado vea funciones administrativas. Se recomienda validar autorización en servidor para cada request.
 ```
 
-## Remediacion
+## Remediación
 
-Una buena remediacion debe ser:
+Una buena remediación debe ser:
 
 - Especifica.
 - Realista.
@@ -81,7 +81,7 @@ Una buena remediacion debe ser:
 Un hallazgo ficticio puede verse asi:
 
 ```text
-Una pagina de laboratorio muestra version exacta del servidor en headers.
+Una página de laboratorio muestra versión exacta del servidor en headers.
 ```
 
 Un reporte claro debe separar:
@@ -90,7 +90,7 @@ Un reporte claro debe separar:
 - Riesgo.
 - Evidencia.
 - Impacto.
-- Remediacion.
+- Remediación.
 - Como validar que se corrigio.
 
 ## Criterio de Dominio
@@ -98,6 +98,6 @@ Un reporte claro debe separar:
 Puedes avanzar cuando puedas:
 
 - Escribir impacto sin exagerar.
-- Proponer remediacion clara.
+- Proponer remediación clara.
 - Separar evidencia de opinion.
 - Explicar severidad.

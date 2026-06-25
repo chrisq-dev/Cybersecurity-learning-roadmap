@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Entender como una organizacion se prepara para seguir operando o recuperarse despues de un incidente.
+Entender como una organización se prepara para seguir operando o recuperarse después de un incidente.
 
 ## BCP
 
@@ -11,10 +11,10 @@ Business Continuity Plan.
 Pregunta:
 
 ```text
-Como seguimos operando durante una interrupcion?
+Cómo seguimos operando durante una interrupcion?
 ```
 
-BCP piensa en la operacion del negocio. No se limita a tecnologia: tambien considera personas, procesos, proveedores, comunicacion, ubicaciones alternas, aprobaciones y decisiones ejecutivas. Un buen BCP evita que la organizacion dependa de una sola persona, una sola herramienta o una sola ubicacion para operar.
+BCP piensa en la operación del negocio. No se limita a tecnologia: también considera personas, procesos, proveedores, comunicación, ubicaciones alternas, aprobaciones y decisiones ejecutivas. Un buen BCP evita que la organización dependa de una sola persona, una sola herramienta o una sola ubicación para operar.
 
 ## DRP
 
@@ -23,36 +23,36 @@ Disaster Recovery Plan.
 Pregunta:
 
 ```text
-Como recuperamos sistemas despues de una interrupcion grave?
+Cómo recuperamos sistemas despues de una interrupcion grave?
 ```
 
-DRP se enfoca mas en restaurar servicios tecnologicos. Incluye orden de recuperacion, backups, restauracion de infraestructura, validacion de integridad y criterios para volver a produccion. En seguridad importa porque un incidente como ransomware no solo tumba sistemas: tambien puede contaminar respaldos, afectar credenciales y obligar a reconstruir entornos con cuidado.
+DRP se enfoca más en restaurar servicios tecnologicos. Incluye orden de recuperación, backups, restauracion de infraestructura, validación de integridad y criterios para volver a produccion. En seguridad importa porque un incidente como ransomware no solo tumba sistemas: también puede contaminar respaldos, afectar credenciales y obligar a reconstruir entornos con cuidado.
 
 ## RTO y RPO
 
-RTO significa cuanto tiempo maximo puede estar caido un servicio antes de causar impacto inaceptable. RPO significa cuanta perdida de datos se puede tolerar. Un sistema de pagos puede tener RTO y RPO bajos; un portal interno de baja criticidad puede tolerar mas tiempo. Estos valores deben salir del negocio, no solo del equipo tecnico.
+RTO significa cuanto tiempo máximo puede estar caido un servicio antes de causar impacto inaceptable. RPO significa cuanta pérdida de datos se puede tolerar. Un sistema de pagos puede tener RTO y RPO bajos; un portal interno de baja criticidad puede tolerar más tiempo. Estos valores deben salir del negocio, no solo del equipo técnico.
 
-Un error comun es prometer recuperaciones rapidas sin probarlas. Si nadie ha restaurado el backup, el RTO es una suposicion.
+Un error común es prometer recuperaciones rapidas sin probarlas. Si nadie ha restaurado el backup, el RTO es una suposicion.
 
 ## Escenarios
 
 - Ransomware.
 - Caida de cloud.
-- Perdida de base de datos.
+- Pérdida de base de datos.
 - Falla de red.
 - Error humano.
 - Proveedor caido.
 
 ## Componentes de un Plan
 
-- Sistemas criticos.
+- Sistemas críticos.
 - Owners.
 - Contactos.
 - RTO/RPO.
 - Procedimientos.
 - Dependencias.
 - Backups.
-- Comunicacion.
+- Comunicación.
 - Pruebas.
 
 ## Tabletop Exercise
@@ -67,11 +67,11 @@ La base de datos productiva no esta disponible y hay sospecha de ransomware.
 
 Preguntas:
 
-- Quien decide?
-- A quien se notifica?
-- Que sistema se recupera primero?
-- Que evidencia se conserva?
-- Que comunicacion se envia?
+- Quién decide?
+- A quién se notifica?
+- Qué sistema se recupera primero?
+- Qué evidencia se conserva?
+- Qué comunicación se envia?
 
 ## Ejemplo de Tabletop
 
@@ -84,16 +84,16 @@ Un tabletop de ejemplo:
 - Riesgos.
 - Mejoras.
 
-El valor del tabletop no es "ganar" el escenario. Sirve para descubrir dependencias ocultas: telefonos que nadie tiene, owners que no estan definidos, accesos que dependen del sistema caido, backups que no se han probado o decisiones que nadie sabe quien puede aprobar.
+El valor del tabletop no es "ganar" el escenario. Sirve para descubrir dependencias ocultas: telefonos que nadie tiene, owners que no están definidos, accesos que dependen del sistema caido, backups que no se han probado o decisiones que nadie sabe quien puede aprobar.
 
 ## Errores Comunes
 
-- Confundir backup con recuperacion completa.
+- Confundir backup con recuperación completa.
 - No priorizar sistemas por impacto real.
 - No probar restauraciones.
 - Depender de credenciales guardadas en el sistema afectado.
-- No definir comunicacion interna y externa.
-- Olvidar proveedores criticos.
+- No definir comunicación interna y externa.
+- Olvidar proveedores críticos.
 
 ## Criterio de Dominio
 
@@ -102,4 +102,4 @@ Puedes avanzar cuando puedas:
 - Diferenciar BCP y DRP.
 - Explicar RTO/RPO en contexto.
 - Diseñar tabletop simple.
-- Identificar dependencias criticas.
+- Identificar dependencias críticas.

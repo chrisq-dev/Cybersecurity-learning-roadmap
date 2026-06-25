@@ -4,24 +4,24 @@
 
 Entender como funcionan APIs y que riesgos de seguridad aparecen con frecuencia.
 
-Las APIs son la superficie real de muchas aplicaciones modernas. Aunque el frontend se vea bien, la API debe validar identidad, permisos, datos, limites y errores por si misma.
+Las APIs son la superficie real de muchas aplicaciones modernas. Aunque el frontend se vea bien, la API debe validar identidad, permisos, datos, límites y errores por si misma.
 
 ## Mapa Mental
 
 ```text
-cliente -> endpoint -> autenticacion -> autorizacion -> validacion -> logica -> datos -> respuesta
+cliente -> endpoint -> autenticación -> autorización -> validación -> lógica -> datos -> respuesta
 ```
 
 Cada endpoint debe responder:
 
-- Quien llama?
-- Que quiere hacer?
-- Sobre que recurso?
+- Quién llama?
+- Qué quiere hacer?
+- Sobre qué recurso?
 - Tiene permiso?
 - Los datos son validos?
-- Que debe quedar registrado?
+- Qué debe quedar registrado?
 
-## Que es una API
+## Qué es una API
 
 Una API permite que sistemas se comuniquen.
 
@@ -42,7 +42,7 @@ Respuesta:
 
 ## REST
 
-REST usa recursos y metodos HTTP.
+REST usa recursos y métodos HTTP.
 
 Ejemplos:
 
@@ -52,19 +52,19 @@ Ejemplos:
 - `PATCH /users/123` actualizar.
 - `DELETE /users/123` eliminar.
 
-## Endpoint, Recurso y Accion
+## Endpoint, Recurso y Acción
 
 Un endpoint inseguro casi siempre falla en una de estas partes:
 
 | Parte | Pregunta |
 | --- | --- |
-| Endpoint | Que ruta se expone? |
-| Recurso | Que objeto se afecta? |
-| Accion | Leer, crear, modificar o borrar? |
-| Identidad | Quien llama? |
+| Endpoint | Qué ruta se expone? |
+| Recurso | Qué objeto se afecta? |
+| Acción | Leer, crear, modificar o borrar? |
+| Identidad | Quién llama? |
 | Permiso | Puede hacerlo? |
 
-## Autenticacion
+## Autenticación
 
 La API debe saber quien llama.
 
@@ -74,21 +74,21 @@ Opciones:
 - Bearer tokens.
 - API keys.
 - OAuth/OIDC.
-- mTLS en casos avanzados.
+- MTLS en casos avanzados.
 
-## Autorizacion
+## Autorización
 
-La API debe validar que la identidad puede hacer la accion.
+La API debe validar que la identidad puede hacer la acción.
 
 Ejemplo:
 
-Un usuario con ID 123 no deberia poder leer:
+Un usuario con ID 123 no debería poder leer:
 
 ```text
 /api/users/456
 ```
 
-si no tiene permiso.
+Si no tiene permiso.
 
 ### BOLA/IDOR
 
@@ -114,16 +114,16 @@ Riesgos:
 - Token con demasiados permisos.
 - Token guardado en frontend de forma insegura.
 
-Buenas practicas:
+Buenas prácticas:
 
 - Expiracion.
 - Scopes.
-- Rotacion.
+- Rotación.
 - Revocacion.
 - No registrar tokens en logs.
 - Usar HTTPS.
 
-## Validacion
+## Validación
 
 Validar:
 
@@ -135,26 +135,26 @@ Validar:
 
 ## Rate Limiting y Abuso
 
-Una API tambien debe resistir abuso:
+Una API también debe resistir abuso:
 
-- fuerza bruta;
-- scraping;
-- enumeracion de IDs;
-- spam de creacion;
-- consumo excesivo de recursos.
+- Fuerza bruta;
+- Scraping;
+- Enumeración de IDs;
+- Spam de creación;
+- Consumo excesivo de recursos.
 
 Controles:
 
-- rate limits por IP, usuario o token;
-- bloqueo progresivo;
-- captcha solo donde tenga sentido;
-- paginacion;
-- limites de tamano;
-- monitoreo de patrones.
+- Rate limits por IP, usuario o token;
+- Bloqueo progresivo;
+- Captcha solo donde tenga sentido;
+- Paginacion;
+- Límites de tamano;
+- Monitoreo de patrones.
 
 ## Errores y Mensajes
 
-No reveles mas de lo necesario.
+No reveles más de lo necesario.
 
 Mal:
 
@@ -168,7 +168,7 @@ Mejor:
 {"error":"Invalid credentials"}
 ```
 
-## Ejemplo de Diseno de API
+## Ejemplo de Diseño de API
 
 Una API simple de notas podria exponer:
 
@@ -188,7 +188,7 @@ Antes de implementarla conviene definir:
 - Que logs guardar.
 - Que errores devolver.
 
-Agrega tambien:
+Agrega también:
 
 - Que campos acepta cada endpoint.
 - Que rate limit aplicarias.
@@ -207,15 +207,15 @@ Una matriz de permisos ayuda a entender que puede hacer cada tipo de usuario sob
 | PATCH /notes/{id} |  |  |  |  |
 | DELETE /notes/{id} |  |  |  |  |
 
-El punto importante es validar mentalmente que un usuario no pueda leer, modificar o borrar recursos de otro usuario. La matriz debe revelar diferencias entre autenticacion, rol y propiedad del recurso.
+El punto importante es validar mentalmente que un usuario no pueda leer, modificar o borrar recursos de otro usuario. La matriz debe revelar diferencias entre autenticación, rol y propiedad del recurso.
 
 ## Criterio de Dominio
 
 Puedes avanzar cuando puedas:
 
 - Explicar REST.
-- Explicar autenticacion en APIs.
-- Explicar autorizacion por recurso.
+- Explicar autenticación en APIs.
+- Explicar autorización por recurso.
 - Identificar riesgos de tokens.
 - Identificar BOLA/IDOR.
 - Disenar una matriz de permisos por endpoint.

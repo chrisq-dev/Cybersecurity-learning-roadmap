@@ -2,42 +2,42 @@
 
 ## Objetivo
 
-Disenar un plan de seguridad realista para una pequena empresa con recursos limitados.
+Disenar un plan de seguridad realista para una pequeña empresa con recursos limitados.
 
-Este proyecto demuestra criterio practico: priorizar controles que reducen riesgo real sin proponer soluciones imposibles para el contexto.
+Este proyecto demuestra criterio práctico: priorizar controles que reducen riesgo real sin proponer soluciones imposibles para el contexto.
 
 ## Escenario
 
 Empresa de 25 personas:
 
-- correos corporativos;
-- laptops de empleados;
+- Correos corporativos;
+- Laptops de empleados;
 - Wi-Fi de oficina;
-- sistema POS o SaaS critico;
-- sitio web;
-- backups incompletos;
-- no hay equipo de seguridad dedicado.
+- Sistema POS o SaaS crítico;
+- Sitio web;
+- Backups incompletos;
+- No hay equipo de seguridad dedicado.
 
 ## Alcance
 
 Incluido:
 
-- inventario;
-- identidades;
-- endpoints;
-- red;
-- backups;
-- correo;
-- politicas minimas;
-- respuesta a incidentes;
-- roadmap de 90 dias.
+- Inventario;
+- Identidades;
+- Endpoints;
+- Red;
+- Backups;
+- Correo;
+- Políticas mínimas;
+- Respuesta a incidentes;
+- Roadmap de 90 días.
 
 Fuera de alcance:
 
-- pentest ofensivo;
-- compra de herramientas empresariales costosas;
-- cambios sin autorizacion;
-- datos reales.
+- Pentest ofensivo;
+- Compra de herramientas empresariales costosas;
+- Cambios sin autorización;
+- Datos reales.
 
 ## Fase 1: Inventario y Riesgo
 
@@ -48,49 +48,49 @@ Tabla:
 
 Incluye:
 
-- correo;
-- laptops;
+- Correo;
+- Laptops;
 - Wi-Fi;
-- sistema critico;
-- sitio web;
-- backups;
-- proveedor SaaS;
-- cuentas admin.
+- Sistema crítico;
+- Sitio web;
+- Backups;
+- Proveedor SaaS;
+- Cuentas admin.
 
-## Fase 2: Controles Minimos
+## Fase 2: Controles Mínimos
 
 Prioriza:
 
-- MFA en correo y sistemas criticos;
-- backups probados;
-- bloqueo de dispositivos;
-- actualizaciones;
-- password manager;
-- antivirus/EDR razonable;
-- separacion Wi-Fi invitados;
-- cuentas admin separadas;
-- politicas basicas;
-- plan de respuesta.
+- MFA en correo y sistemas críticos;
+- Backups probados;
+- Bloqueo de dispositivos;
+- Actualizaciones;
+- Password manager;
+- Antivirus/EDR razonable;
+- Separación Wi-Fi invitados;
+- Cuentas admin separadas;
+- Políticas básicas;
+- Plan de respuesta.
 
 ## Fase 3: Amenazas Principales
 
 Cubre:
 
-- phishing;
-- ransomware;
-- perdida de laptop;
-- cuenta comprometida;
-- fuga de datos;
-- caida de sistema critico;
-- proveedor SaaS comprometido.
+- Phishing;
+- Ransomware;
+- Pérdida de laptop;
+- Cuenta comprometida;
+- Fuga de datos;
+- Caida de sistema crítico;
+- Proveedor SaaS comprometido.
 
 Para cada amenaza:
 
-- impacto;
-- controles preventivos;
-- controles detectivos;
-- controles correctivos;
-- evidencia de implementacion.
+- Impacto;
+- Controles preventivos;
+- Controles detectivos;
+- Controles correctivos;
+- Evidencia de implementacion.
 
 ## Fase 4: Arquitectura Simple
 
@@ -104,39 +104,39 @@ internet -> router/firewall -> red empleados
 
 Explica:
 
-- que separarias;
-- que monitorearias;
-- que no intentarias sobrecomplicar;
-- que dependeria de proveedores.
+- Que separarias;
+- Que monitorearias;
+- Que no intentarias sobrecomplicar;
+- Que dependeria de proveedores.
 
-## Fase 5: Playbooks Minimos
+## Fase 5: Playbooks Mínimos
 
 Incluye al menos:
 
-- phishing reportado;
-- laptop perdida;
-- cuenta comprometida;
-- ransomware sospechado;
-- caida de sistema critico.
+- Phishing reportado;
+- Laptop pérdida;
+- Cuenta comprometida;
+- Ransomware sospechado;
+- Caida de sistema crítico.
 
 Cada playbook debe tener:
 
-- senales;
-- primeras acciones;
-- a quien avisar;
-- evidencia;
-- recuperacion;
-- prevencion futura.
+- Señales;
+- Primeras acciones;
+- A quien avisar;
+- Evidencia;
+- Recuperación;
+- Prevencion futura.
 
 ## Fase 6: Plan 30-60-90
 
 Ejemplo:
 
-| Periodo | Accion | Riesgo que reduce | Evidencia |
+| Periodo | Acción | Riesgo que reduce | Evidencia |
 | --- | --- | --- | --- |
-| 30 dias | MFA en correo | cuenta comprometida | reporte MFA |
-| 60 dias | backups probados | ransomware | prueba de restore |
-| 90 dias | playbook phishing | respuesta lenta | simulacro |
+| 30 días | MFA en correo | cuenta comprometida | reporte MFA |
+| 60 días | backups probados | ransomware | prueba de restore |
+| 90 días | playbook phishing | respuesta lenta | simulacro |
 
 ## Estructura sugerida
 
@@ -155,26 +155,26 @@ Ejemplo:
 
 ## Arquitectura
 
-## Playbooks Minimos
+## Playbooks Mínimos
 
 ## Plan 30-60-90
 
 ## Metricas
 ```
 
-## Criterio de Exito
+## Criterio de Éxito
 
-- Controles razonables para empresa pequena.
+- Controles razonables para empresa pequeña.
 - No depende de herramientas caras.
 - Incluye riesgo, impacto y prioridad.
 - Incluye plan medible.
-- Incluye respuesta a incidentes basica.
+- Incluye respuesta a incidentes básica.
 
-## Rubrica
+## Rúbrica
 
 | Nivel | Evidencia |
 | --- | --- |
-| Basico | Lista controles |
+| Básico | Lista controles |
 | Bueno | Relaciona controles con riesgos |
 | Fuerte | Prioriza por impacto y costo |
 | Portafolio | Plan realista, medible y defendible |

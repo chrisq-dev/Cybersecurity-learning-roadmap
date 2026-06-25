@@ -4,7 +4,7 @@
 
 Entender como actuar cuando hay una alerta o incidente. La meta es reducir impacto, preservar evidencia y recuperar operaciones.
 
-Respuesta a incidentes no es improvisar bajo presion. Es seguir un proceso que permita decidir rapido, proteger evidencia, contener dano y aprender para que no se repita.
+Respuesta a incidentes no es improvisar bajo presion. Es seguir un proceso que permita decidir rápido, proteger evidencia, contener dano y aprender para que no se repita.
 
 ## Mapa Mental
 
@@ -12,13 +12,13 @@ Respuesta a incidentes no es improvisar bajo presion. Es seguir un proceso que p
 alerta -> triage -> severidad -> contencion -> erradicacion -> recuperacion -> lecciones
 ```
 
-La regla practica:
+La regla práctica:
 
 ```text
 primero entiende suficiente, luego contiene sin destruir evidencia innecesariamente
 ```
 
-## Que es un Incidente
+## Qué es un Incidente
 
 Un incidente es un evento que afecta o puede afectar confidencialidad, integridad o disponibilidad.
 
@@ -26,7 +26,7 @@ Ejemplos:
 
 - Cuenta comprometida.
 - Malware.
-- Exfiltracion.
+- Exfiltración.
 - Servidor expuesto.
 - Acceso no autorizado.
 - Ransomware.
@@ -52,23 +52,23 @@ Antes del incidente:
 - Herramientas.
 - Accesos.
 
-Tambien:
+También:
 
-- matriz de severidad;
-- canales de comunicacion;
-- roles y responsabilidades;
-- plantillas;
-- criterios de escalacion;
-- simulacros.
+- Matriz de severidad;
+- Canales de comunicación;
+- Roles y responsabilidades;
+- Plantillas;
+- Criterios de escalacion;
+- Simulacros.
 
-### 2. Identificacion
+### 2. Identificación
 
 Determinar si algo es incidente.
 
 Preguntas:
 
-- Que paso?
-- Cual es la evidencia?
+- Qué paso?
+- Cuál es la evidencia?
 - Hay impacto?
 - Sigue ocurriendo?
 
@@ -76,16 +76,16 @@ Preguntas:
 
 Preguntas iniciales:
 
-- Que activo esta involucrado?
-- Que usuario?
-- Que hora?
-- Que fuente genero la alerta?
+- Qué activo está involucrado?
+- Qué usuario?
+- Qué hora?
+- Qué fuente genero la alerta?
 - Hay actividad relacionada?
 - Hay datos sensibles?
 - El ataque sigue activo?
-- Que accion inmediata reduce impacto?
+- Qué acción inmediata reduce impacto?
 
-### 3. Contencion
+### 3. Contención
 
 Limitar daño.
 
@@ -96,10 +96,10 @@ Ejemplos:
 - Aislar endpoint.
 - Revocar token.
 
-Contencion puede ser:
+Contención puede ser:
 
-- corta: detener dano inmediato;
-- larga: mantener operacion segura mientras se remedia.
+- Corta: detener dano inmediato;
+- Larga: mantener operación segura mientras se remedia.
 
 Ejemplo:
 
@@ -121,12 +121,12 @@ Ejemplos:
 
 Erradicacion busca aclarar:
 
-- Como entro?
-- Que permitio que ocurriera?
-- Que debe eliminarse o corregirse?
-- Que credenciales deben rotarse?
+- Cómo entro?
+- Qué permitio qué ocurriera?
+- Qué debe eliminarse o corregirse?
+- Qué credenciales deben rotarse?
 
-### 5. Recuperacion
+### 5. Recuperación
 
 Volver a operar.
 
@@ -144,23 +144,23 @@ Mejorar para el futuro.
 
 Preguntas:
 
-- Que fallo?
-- Que funciono?
-- Que control falta?
-- Que deteccion se debe crear?
+- Qué fallo?
+- Qué funciono?
+- Qué control falta?
+- Qué detección se debe crear?
 
 ## Severidad
 
 Considera:
 
-- criticidad del activo;
-- tipo de dato;
-- cantidad de usuarios afectados;
-- privilegios involucrados;
-- alcance;
-- continuidad del ataque;
-- impacto legal o reputacional;
-- capacidad de contencion.
+- Criticidad del activo;
+- Tipo de dato;
+- Cantidad de usuarios afectados;
+- Privilegios involucrados;
+- Alcance;
+- Continuidad del ataque;
+- Impacto legal o reputacional;
+- Capacidad de contención.
 
 ## Plantilla de Incidente
 
@@ -188,7 +188,7 @@ Considera:
 ## Recomendaciones
 ```
 
-## Ejemplo de Analisis
+## Ejemplo de Análisis
 
 Caso simulado:
 
@@ -196,7 +196,7 @@ Caso simulado:
 Una cuenta de usuario tuvo 30 logins fallidos desde una IP externa, luego un login exitoso y descarga de muchos archivos.
 ```
 
-El analisis debe cubrir:
+El análisis debe cubrir:
 
 - Severidad.
 - Evidencia.
@@ -204,28 +204,28 @@ El analisis debe cubrir:
 - Preguntas pendientes.
 - Recomendaciones.
 
-Tambien conviene incluir:
+También conviene incluir:
 
-- linea de tiempo;
-- owner de cada accion;
-- estado de contencion;
-- evidencia que no debes perder;
-- detecciones posteriores.
+- Linea de tiempo;
+- Owner de cada acción;
+- Estado de contención;
+- Evidencia que no debes perder;
+- Detecciones posteriores.
 
 ## Criterios Para Analizar una Cuenta Comprometida
 
 Un caso de cuenta comprometida debe explicar:
 
-- resumen ejecutivo;
-- severidad;
-- timeline;
-- evidencia;
-- contencion inmediata;
-- erradicacion;
-- recuperacion;
-8. Comunicacion.
+- Resumen ejecutivo;
+- Severidad;
+- Timeline;
+- Evidencia;
+- Contención inmediata;
+- Erradicacion;
+- Recuperación;
+8. Comunicación.
 9. Lecciones aprendidas.
-10. Mejoras de deteccion.
+10. Mejoras de detección.
 
 ## Errores Comunes
 
@@ -233,7 +233,7 @@ Un caso de cuenta comprometida debe explicar:
 - Contener tarde por buscar certeza absoluta.
 - No registrar hora de acciones.
 - No asignar owners.
-- Confundir erradicacion con recuperacion.
+- Confundir erradicacion con recuperación.
 - No hacer lecciones aprendidas.
 
 ## Criterio de Dominio
@@ -241,7 +241,7 @@ Un caso de cuenta comprometida debe explicar:
 Puedes avanzar cuando puedas:
 
 - Explicar fases de respuesta.
-- Proponer contencion.
-- Separar contencion de erradicacion.
+- Proponer contención.
+- Separar contención de erradicacion.
 - Escribir una linea de tiempo.
 - Justificar severidad y acciones con evidencia.

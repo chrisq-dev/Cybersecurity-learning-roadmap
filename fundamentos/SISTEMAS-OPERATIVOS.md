@@ -4,7 +4,7 @@
 
 Entender que hace un sistema operativo y por que es una pieza central en ciberseguridad.
 
-## Que es un Sistema Operativo
+## Qué es un Sistema Operativo
 
 Un sistema operativo administra recursos de hardware y permite que los programas funcionen.
 
@@ -12,7 +12,7 @@ Ejemplos:
 
 - Linux.
 - Windows.
-- macOS.
+- MacOS.
 - Android.
 
 ## Funciones Principales
@@ -53,18 +53,18 @@ El sistema operativo controla identidades locales y permisos.
 
 En seguridad importa porque:
 
-- Cada accion deberia atribuirse a una identidad.
+- Cada acción debería atribuirse a una identidad.
 - Usuarios compartidos dificultan auditoria.
 - Privilegios excesivos aumentan impacto.
 
 ### Gestion de Red
 
-El sistema operativo permite comunicacion por red.
+El sistema operativo permite comunicación por red.
 
 En seguridad importa porque:
 
 - Servicios escuchando en puertos abren superficie de ataque.
-- Firewall local puede reducir exposicion.
+- Firewall local puede reducir exposición.
 - Conexiones salientes sospechosas pueden indicar compromiso.
 
 ## Kernel
@@ -86,20 +86,20 @@ Ejemplos:
 - Login exitoso.
 - Login fallido.
 - Servicio iniciado.
-- Error de aplicacion.
-- Conexion bloqueada.
+- Error de aplicación.
+- Conexión bloqueada.
 
 En seguridad, los logs ayudan a responder:
 
-- Que paso?
-- Cuando paso?
-- Que usuario estuvo involucrado?
-- Desde donde ocurrio?
+- Qué paso?
+- Cuándo paso?
+- Qué usuario estuvo involucrado?
+- Desde dónde ocurrio?
 - Fue normal o sospechoso?
 
 ## Hardening
 
-Hardening significa reducir superficie de ataque configurando el sistema de forma mas segura.
+Hardening significa reducir superficie de ataque configurando el sistema de forma más segura.
 
 Ejemplos:
 
@@ -111,17 +111,17 @@ Ejemplos:
 - Revisar permisos.
 - Activar logging.
 
-## Observacion
+## Observación
 
 Para entender un sistema operativo conviene saber donde observar:
 
-- procesos;
-- servicios;
-- usuarios;
-- red;
-- logs.
+- Procesos;
+- Servicios;
+- Usuarios;
+- Red;
+- Logs.
 
-La idea no es llenar un archivo, sino reconocer que cada sistema operativo ofrece mecanismos para ver que esta ocurriendo y que evidencia deja.
+La idea no es llenar un archivo, sino reconocer que cada sistema operativo ofrece mecanismos para ver que está ocurriendo y que evidencia deja.
 
 ## Tabla Comparativa
 

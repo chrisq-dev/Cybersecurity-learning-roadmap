@@ -2,9 +2,9 @@
 
 ## Objetivo
 
-Entender conceptos basicos de Kubernetes y controles de seguridad importantes.
+Entender conceptos básicos de Kubernetes y controles de seguridad importantes.
 
-Kubernetes concentra aplicaciones, redes, secretos, permisos y despliegues. Un error de configuracion puede dar acceso a muchas cargas de trabajo al mismo tiempo. La meta inicial es entender que revisar y por que importa.
+Kubernetes concentra aplicaciones, redes, secretos, permisos y despliegues. Un error de configuración puede dar acceso a muchas cargas de trabajo al mismo tiempo. La meta inicial es entender que revisar y por que importa.
 
 ## Mapa Mental
 
@@ -14,15 +14,15 @@ cluster -> namespace -> workload -> pod -> container -> identity -> network -> s
 
 Preguntas clave:
 
-- Que corre en el cluster?
-- Con que permisos?
-- En que namespace?
+- Qué corre en el cluster?
+- Con qué permisos?
+- En qué namespace?
 - Puede hablar con todo?
 - Usa secretos?
-- Corre como root?
+- Corre cómo root?
 - Hay auditoria?
 
-## Que es Kubernetes
+## Qué es Kubernetes
 
 Kubernetes orquesta contenedores.
 
@@ -32,27 +32,27 @@ Ayuda a:
 - Escalar.
 - Reiniciar contenedores.
 - Conectar servicios.
-- Gestionar configuracion.
+- Gestionar configuración.
 
 ## Conceptos
 
 - Cluster: conjunto de nodos.
-- Node: maquina que ejecuta cargas.
-- Pod: unidad minima que ejecuta contenedores.
+- Node: máquina que ejecuta cargas.
+- Pod: unidad mínima que ejecuta contenedores.
 - Service: expone pods.
-- Namespace: separacion logica.
-- ConfigMap: configuracion no sensible.
-- Secret: datos sensibles, requiere proteccion adicional.
+- Namespace: separación lógica.
+- ConfigMap: configuración no sensible.
+- Secret: datos sensibles, requiere protección adicional.
 - RBAC: permisos.
 
 ## Plano de Control y Plano de Datos
 
 Conceptualmente:
 
-- plano de control: API server, scheduler, controller manager, etcd;
-- plano de datos: nodos, pods, contenedores y red.
+- Plano de control: API server, scheduler, controller manager, etcd;
+- Plano de datos: nodos, pods, contenedores y red.
 
-El API server es critico porque desde ahi se administra el cluster.
+El API server es crítico porque desde ahi se administra el cluster.
 
 ## Riesgos Comunes
 
@@ -61,9 +61,9 @@ El API server es critico porque desde ahi se administra el cluster.
 - Secrets mal protegidos.
 - RBAC demasiado amplio.
 - API server expuesto.
-- Imagenes vulnerables.
+- Imágenes vulnerables.
 - Falta de Network Policies.
-- Falta de limites de recursos.
+- Falta de límites de recursos.
 
 ## Security Context
 
@@ -72,8 +72,8 @@ Controles importantes:
 - `runAsNonRoot`;
 - `readOnlyRootFilesystem`;
 - `allowPrivilegeEscalation: false`;
-- capabilities minimas;
-- seccomp/apparmor cuando aplique.
+- Capabilities mínimas;
+- Seccomp/apparmor cuando aplique.
 
 La idea es reducir lo que un contenedor puede hacer si se compromete.
 
@@ -83,55 +83,55 @@ Controla quien puede hacer que en el cluster.
 
 Preguntas:
 
-- Que identidad tiene acceso?
-- A que namespace?
-- Que verbos puede usar?
-- Sobre que recursos?
+- Qué identidad tiene acceso?
+- A qué namespace?
+- Qué verbos puede usar?
+- Sobre qué recursos?
 
 Verbos comunes:
 
-- get;
-- list;
-- watch;
-- create;
-- update;
-- patch;
-- delete;
-- exec.
+- Get;
+- List;
+- Watch;
+- Create;
+- Update;
+- Patch;
+- Delete;
+- Exec.
 
 `exec` puede ser sensible porque permite entrar a contenedores.
 
 ## Network Policies
 
-Controlan comunicacion entre pods.
+Controlan comunicación entre pods.
 
-Sin politicas, muchos clusters permiten comunicacion amplia por defecto.
+Sin políticas, muchos clusters permiten comunicación amplia por defecto.
 
 Preguntas:
 
-- Que pods necesitan hablar entre si?
-- Que pods necesitan salida a internet?
-- Que namespaces deben estar aislados?
-- Que trafico debe bloquearse por defecto?
+- Qué pods necesitan hablar entre si?
+- Qué pods necesitan salida a internet?
+- Qué namespaces deben estar aislados?
+- Qué tráfico debe bloquearse por defecto?
 
 ## Secrets
 
 Kubernetes Secrets no deben tratarse como magia.
 
-Buenas practicas:
+Buenas prácticas:
 
 - Cifrado en reposo.
 - Acceso limitado.
 - No imprimir en logs.
-- Rotacion.
-- Integracion con secret manager si aplica.
+- Rotación.
+- Integración con secret manager si aplica.
 
 Evita:
 
-- imprimir secrets en logs;
-- montarlos en pods que no los necesitan;
-- guardarlos en YAML dentro del repo;
-- dar permisos amplios para leer todos los secrets.
+- Imprimir secrets en logs;
+- Montarlos en pods que no los necesitan;
+- Guardarlos en YAML dentro del repo;
+- Dar permisos amplios para leer todos los secrets.
 
 ## Admission Control
 
@@ -140,61 +140,61 @@ Permite bloquear configuraciones inseguras antes de que entren al cluster.
 Ejemplos:
 
 - Bloquear privileged containers.
-- Exigir imagenes firmadas.
+- Exigir imágenes firmadas.
 - Exigir `runAsNonRoot`.
 
 Herramientas o enfoques:
 
-- politicas nativas;
-- admission controllers;
-- policy-as-code;
-- escaneo de manifests;
-- revisiones en CI/CD.
+- Políticas nativas;
+- Admission controllers;
+- Policy-as-code;
+- Escaneo de manifests;
+- Revisiones en CI/CD.
 
-## Imagenes
+## Imágenes
 
 Riesgos:
 
-- imagenes con vulnerabilidades;
-- tags mutables como `latest`;
-- imagenes de origen desconocido;
-- secretos dentro de capas;
-- paquetes innecesarios.
+- Imágenes con vulnerabilidades;
+- Tags mutables como `latest`;
+- Imágenes de origen desconocido;
+- Secretos dentro de capas;
+- Paquetes innecesarios.
 
 Controles:
 
-- escaneo de imagenes;
-- imagenes minimas;
-- firmas;
-- registry confiable;
-- pinning de version/digest.
+- Escaneo de imágenes;
+- Imágenes mínimas;
+- Firmas;
+- Registry confiable;
+- Pinning de versión/digest.
 
 ## Observabilidad
 
 Necesitas:
 
-- audit logs del API server;
-- logs de pods;
-- eventos de Kubernetes;
-- metricas;
-- alertas sobre cambios sensibles;
-- inventario de workloads.
+- Audit logs del API server;
+- Logs de pods;
+- Eventos de Kubernetes;
+- Metricas;
+- Alertas sobre cambios sensibles;
+- Inventario de workloads.
 
-## Criterios de Revision
+## Criterios de Revisión
 
-Una revision de Kubernetes debe considerar:
+Una revisión de Kubernetes debe considerar:
 
-- RBAC minimo;
-- pods no privilegiados;
-- contenedores no root;
-- secrets protegidos;
+- RBAC mínimo;
+- Pods no privilegiados;
+- Contenedores no root;
+- Secrets protegidos;
 - Network Policies;
-- imagenes escaneadas;
+- Imágenes escaneadas;
 - API server restringido;
-- logs y auditoria activos;
-- limites de CPU y memoria.
+- Logs y auditoria activos;
+- Límites de CPU y memoria.
 
-## Ejemplo de Analisis de Manifest
+## Ejemplo de Análisis de Manifest
 
 Este fragmento representa un permiso de alto riesgo:
 
@@ -203,36 +203,36 @@ securityContext:
   privileged: true
 ```
 
-El analisis debe explicar:
+El análisis debe explicar:
 
-- Que riesgo existe?
-- Por que podria usarse?
-- Que alternativa segura buscarias?
-- Como lo bloquearias?
+- Qué riesgo existe?
+- Por qué podria usarse?
+- Qué alternativa segura buscarias?
+- Cómo lo bloquearias?
 
 ## Criterios Para Leer un Manifest
 
 Al leer un manifest, observa:
 
-- que hace el pod;
-- si usa configuraciones privilegiadas;
-- que usuario ejecuta el contenedor;
-- que permisos RBAC necesita realmente;
-- que comunicacion de red deberia permitir;
-- como maneja secrets;
-- que limites de recursos tiene;
-- que evidencia quedaria en logs o auditoria.
+- Que hace el pod;
+- Si usa configuraciones privilegiadas;
+- Que usuario ejecuta el contenedor;
+- Que permisos RBAC necesita realmente;
+- Que comunicación de red debería permitir;
+- Como maneja secrets;
+- Que límites de recursos tiene;
+- Que evidencia quedaria en logs o auditoria.
 7. Define que logs revisarias.
 
 ## Errores Comunes
 
 - Ejecutar contenedores como root por defecto.
-- Dar `cluster-admin` a identidades de aplicacion.
+- Dar `cluster-admin` a identidades de aplicación.
 - No usar namespaces con criterio.
-- No limitar comunicacion entre pods.
+- No limitar comunicación entre pods.
 - Guardar secrets en manifests del repo.
 - No activar audit logs.
-- Usar imagenes sin escaneo.
+- Usar imágenes sin escaneo.
 
 ## Criterio de Dominio
 

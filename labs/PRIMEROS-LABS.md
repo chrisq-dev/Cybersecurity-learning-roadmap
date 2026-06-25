@@ -4,14 +4,14 @@ Estos labs son seguros y pensados para empezar sin tocar sistemas ajenos.
 
 ## Lab 1: Comandos de Red
 
-Objetivo: entender conectividad, DNS y HTTP basico.
+Objetivo: entender conectividad, DNS y HTTP básico.
 
 Tareas:
 
 - Ejecutar `ping` contra un dominio conocido.
 - Ejecutar `traceroute` o `tracepath`.
 - Consultar DNS con `nslookup` o `dig`.
-- Hacer una peticion con `curl -I`.
+- Hacer una petición con `curl -I`.
 - Documentar que significa cada resultado.
 
 Resultado esperado:
@@ -33,16 +33,16 @@ Resultado esperado:
 
 - Poder explicar permisos como `rwxr-x---`.
 
-## Lab 3: Logs de Autenticacion
+## Lab 3: Logs de Autenticación
 
 Objetivo: aprender a leer eventos de login.
 
 Tareas:
 
 - Revisar logs disponibles del sistema.
-- Identificar eventos de autenticacion.
+- Identificar eventos de autenticación.
 - Separar eventos normales de sospechosos.
-- Escribir una conclusion corta.
+- Escribir una conclusión corta.
 
 Resultado esperado:
 
@@ -50,13 +50,13 @@ Resultado esperado:
 
 ## Lab 4: HTTP con curl
 
-Objetivo: entender una peticion web.
+Objetivo: entender una petición web.
 
 Tareas:
 
 - Ejecutar `curl -I https://example.com`.
 - Revisar headers.
-- Identificar servidor, codigo HTTP y tipo de contenido si aparecen.
+- Identificar servidor, código HTTP y tipo de contenido si aparecen.
 - Explicar diferencia entre GET, POST, headers y body.
 
 Resultado esperado:

@@ -2,33 +2,33 @@
 
 ## Objetivo
 
-Entender como se divide la comunicacion de red en capas y por que ese modelo ayuda a diagnosticar problemas, explicar trafico y analizar incidentes de seguridad.
+Entender como se divide la comunicación de red en capas y por que ese modelo ayuda a diagnosticar problemas, explicar tráfico y analizar incidentes de seguridad.
 
-El modelo OSI no se estudia para recitar siete nombres en una entrevista. Se estudia porque ordena el pensamiento. Cuando algo no funciona o parece sospechoso, las capas te ayudan a preguntar donde esta el problema: cable, Wi-Fi, MAC, IP, puerto, TLS, DNS, HTTP, aplicacion o usuario.
+El modelo OSI no se estudia para recitar siete nombres en una entrevista. Se estudia porque ordena el pensamiento. Cuando algo no funciona o parece sospechoso, las capas te ayudan a preguntar donde está el problema: cable, Wi-Fi, MAC, IP, puerto, TLS, DNS, HTTP, aplicación o usuario.
 
 ## Idea Principal
 
-Una comunicacion de red no es una sola accion. Es una cadena de responsabilidades.
+Una comunicación de red no es una sola acción. Es una cadena de responsabilidades.
 
 ```text
 aplicacion -> datos -> transporte -> IP -> enlace -> medio fisico
 ```
 
-Si una parte falla, la comunicacion completa puede fallar. Si una parte esta mal protegida, puede crear riesgo.
+Si una parte falla, la comunicación completa puede fallar. Si una parte está mal protegida, puede crear riesgo.
 
-## Por Que Existen Capas
+## Por Qué Existen Capas
 
 Las capas separan responsabilidades.
 
-Ejemplo: cuando visitas una pagina web, no todo ocurre en un solo bloque. Hay partes encargadas de:
+Ejemplo: cuando visitas una página web, no todo ocurre en un solo bloque. Hay partes encargadas de:
 
-- transmitir bits por cable o Wi-Fi;
-- identificar equipos dentro de la red local;
-- enrutar paquetes entre redes;
-- conectar procesos por puertos;
-- cifrar datos;
-- interpretar HTTP;
-- ejecutar logica de aplicacion.
+- Transmitir bits por cable o Wi-Fi;
+- Identificar equipos dentro de la red local;
+- Enrutar paquetes entre redes;
+- Conectar procesos por puertos;
+- Cifrar datos;
+- Interpretar HTTP;
+- Ejecutar lógica de aplicación.
 
 Separar por capas ayuda a preguntar:
 
@@ -40,13 +40,13 @@ Separar por capas ayuda a preguntar:
 - Es de TLS?
 - Es de DNS?
 - Es de HTTP?
-- Es de aplicacion?
+- Es de aplicación?
 
-En seguridad, esa separacion evita conclusiones apresuradas. Un error `403` no es un problema de firewall. Un timeout TCP no es lo mismo que un error HTTP. Un DNS que resuelve a una IP rara no significa que el puerto este abierto.
+En seguridad, esa separación evita conclusiones apresuradas. Un error `403` no es un problema de firewall. Un timeout TCP no es lo mismo que un error HTTP. Un DNS que resuelve a una IP rara no significa que el puerto este abierto.
 
 ## Modelo OSI
 
-El modelo OSI tiene siete capas. En redes reales muchas tecnologias mezclan responsabilidades, pero el modelo sigue siendo util para razonar.
+El modelo OSI tiene siete capas. En redes reales muchas tecnologías mezclan responsabilidades, pero el modelo sigue siendo útil para razonar.
 
 ### Capa 1: Fisica
 
@@ -54,25 +54,25 @@ Transmite bits por cable, fibra, radio o señales electricas.
 
 Ejemplos:
 
-- cable Ethernet;
-- fibra;
+- Cable Ethernet;
+- Fibra;
 - Wi-Fi;
-- puertos fisicos;
-- señal.
+- Puertos fisicos;
+- Señal.
 
 Problemas comunes:
 
-- cable desconectado;
-- señal Wi-Fi debil;
-- puerto fisico dañado;
-- interferencia;
-- velocidad o duplex mal negociado.
+- Cable desconectado;
+- Señal Wi-Fi débil;
+- Puerto fisico dañado;
+- Interferencia;
+- Velocidad o duplex mal negociado.
 
 En seguridad:
 
-- acceso fisico puede permitir conectar dispositivos no autorizados;
+- Acceso fisico puede permitir conectar dispositivos no autorizados;
 - Wi-Fi expone medio compartido por radio;
-- puertos fisicos sin control pueden habilitar acceso interno.
+- Puertos fisicos sin control pueden habilitar acceso interno.
 
 ### Capa 2: Enlace de Datos
 
@@ -81,58 +81,58 @@ Comunica equipos dentro de la misma red local.
 Conceptos:
 
 - MAC address;
-- switch;
+- Switch;
 - VLAN;
 - ARP;
-- tramas Ethernet.
+- Tramas Ethernet.
 
 Problemas comunes:
 
 - VLAN incorrecta;
-- loops de switching;
-- problemas de ARP;
+- Loops de switching;
+- Problemas de ARP;
 - MAC flapping;
-- puertos mal configurados.
+- Puertos mal configurados.
 
 En seguridad:
 
-- ARP spoofing puede manipular trafico local;
-- VLANs mal configuradas pueden romper segmentacion;
-- puertos sin control pueden permitir dispositivos no autorizados;
-- ataques locales suelen vivir en esta capa.
+- ARP spoofing puede manipular tráfico local;
+- VLANs mal configuradas pueden romper segmentación;
+- Puertos sin control pueden permitir dispositivos no autorizados;
+- Ataques locales suelen vivir en esta capa.
 
 ### Capa 3: Red
 
-Permite comunicacion entre redes.
+Permite comunicación entre redes.
 
 Conceptos:
 
 - IP;
-- router;
-- gateway;
+- Router;
+- Gateway;
 - ICMP;
-- rutas;
-- subredes.
+- Rutas;
+- Subredes.
 
 Problemas comunes:
 
 - IP incorrecta;
-- mascara incorrecta;
-- gateway incorrecto;
-- ruta faltante;
-- conflicto de IP;
-- bloqueo ICMP.
+- Mascara incorrecta;
+- Gateway incorrecto;
+- Ruta faltante;
+- Conflicto de IP;
+- Bloqueo ICMP.
 
 En seguridad:
 
-- reglas de firewall suelen depender de IP origen/destino;
-- logs de red usan IPs;
-- segmentacion depende de subredes;
-- NAT puede complicar atribucion.
+- Reglas de firewall suelen depender de IP origen/destino;
+- Logs de red usan IPs;
+- Segmentación depende de subredes;
+- NAT puede complicar atribución.
 
 ### Capa 4: Transporte
 
-Maneja comunicacion entre procesos usando puertos.
+Maneja comunicación entre procesos usando puertos.
 
 Protocolos:
 
@@ -141,35 +141,35 @@ Protocolos:
 
 Problemas comunes:
 
-- puerto cerrado;
-- servicio caido;
-- firewall bloqueando;
-- timeout;
-- reset;
+- Puerto cerrado;
+- Servicio caido;
+- Firewall bloqueando;
+- Timeout;
+- Reset;
 - UDP sin respuesta.
 
 En seguridad:
 
-- escaneos de puertos observan esta capa;
-- servicios expuestos viven en puertos;
-- firewalls permiten o bloquean segun protocolo y puerto;
-- conexiones salientes pueden indicar actividad maliciosa.
+- Escaneos de puertos observan esta capa;
+- Servicios expuestos viven en puertos;
+- Firewalls permiten o bloquean según protocolo y puerto;
+- Conexiones salientes pueden indicar actividad maliciosa.
 
-### Capa 5: Sesion
+### Capa 5: Sesión
 
-Gestiona sesiones de comunicacion. En la practica moderna muchas funciones de sesion se mezclan con TLS, HTTP, aplicaciones o librerias.
+Gestiona sesiones de comunicación. En la práctica moderna muchas funciones de sesión se mezclan con TLS, HTTP, aplicaciones o librerías.
 
 Ejemplos:
 
-- mantener una sesion activa;
-- reconectar;
-- controlar estado de comunicacion.
+- Mantener una sesión activa;
+- Reconectar;
+- Controlar estado de comunicación.
 
 En seguridad:
 
-- sesiones mal gestionadas pueden permitir secuestro o reutilizacion;
-- timeouts incorrectos aumentan riesgo;
-- sesiones sin invalidacion pueden quedar activas despues de logout.
+- Sesiones mal gestionadas pueden permitir secuestro o reutilizacion;
+- Timeouts incorrectos aumentan riesgo;
+- Sesiones sin invalidacion pueden quedar activas después de logout.
 
 ### Capa 6: Presentacion
 
@@ -181,17 +181,17 @@ Ejemplos:
 - JSON;
 - XML;
 - Base64;
-- compresion;
-- encoding.
+- Compresion;
+- Encoding.
 
 En seguridad:
 
 - TLS protege datos en transito;
-- encoding puede ocultar payloads;
-- parseo incorrecto puede crear vulnerabilidades;
-- formatos complejos pueden ampliar superficie de ataque.
+- Encoding puede ocultar payloads;
+- Parseo incorrecto puede crear vulnerabilidades;
+- Formatos complejos pueden ampliar superficie de ataque.
 
-### Capa 7: Aplicacion
+### Capa 7: Aplicación
 
 Protocolos usados directamente por aplicaciones.
 
@@ -206,18 +206,18 @@ Ejemplos:
 
 En seguridad:
 
-- aqui aparecen muchas vulnerabilidades web;
-- autenticacion y autorizacion suelen vivir aqui;
-- logs de aplicacion dan contexto;
-- errores HTTP ayudan a diagnosticar comportamiento.
+- Aqui aparecen muchas vulnerabilidades web;
+- Autenticación y autorización suelen vivir aqui;
+- Logs de aplicación dan contexto;
+- Errores HTTP ayudan a diagnosticar comportamiento.
 
 ## Modelo TCP/IP
 
-El modelo TCP/IP es mas usado en redes reales y agrupa algunas capas OSI.
+El modelo TCP/IP es más usado en redes reales y agrupa algunas capas OSI.
 
 | TCP/IP | OSI Aproximado | Ejemplos |
 | --- | --- | --- |
-| Aplicacion | 5-7 | HTTP, DNS, SSH, SMTP |
+| Aplicación | 5-7 | HTTP, DNS, SSH, SMTP |
 | Transporte | 4 | TCP, UDP |
 | Internet | 3 | IP, ICMP |
 | Acceso a red | 1-2 | Ethernet, Wi-Fi |
@@ -236,13 +236,13 @@ Flujo:
 
 1. El navegador interpreta la URL.
 2. DNS resuelve el nombre a una IP.
-3. Tu equipo revisa si el destino esta en su red local.
-4. Si no esta local, envia trafico al gateway.
-5. Se establece conexion TCP al puerto 443.
+3. Tu equipo revisa si el destino está en su red local.
+4. Si no está local, envia tráfico al gateway.
+5. Se establece conexión TCP al puerto 443.
 6. Se negocia TLS.
-7. El navegador envia una peticion HTTP.
+7. El navegador envia una petición HTTP.
 8. El servidor responde.
-9. El navegador procesa HTML, CSS, JavaScript e imagenes.
+9. El navegador procesa HTML, CSS, JavaScript e imágenes.
 
 Vista por capas:
 
@@ -252,10 +252,10 @@ Vista por capas:
 | ARP resuelve MAC local | 2 |
 | IP enruta hacia destino | 3 |
 | TCP conecta al puerto 443 | 4 |
-| TLS cifra comunicacion | 6 |
+| TLS cifra comunicación | 6 |
 | HTTP pide recurso | 7 |
 
-## Diagnostico por Capas
+## Diagnóstico por Capas
 
 Si una web no carga, puedes pensar asi:
 
@@ -271,20 +271,20 @@ Ejemplos:
 ```text
 ping 8.8.8.8 funciona, pero dig falla -> probable problema DNS.
 dig funciona, pero curl timeout -> posible bloqueo de puerto, ruta o servicio caido.
-curl responde 403 -> red funciona; el problema es autorizacion o politica de aplicacion.
+curl responde 403 -> red funciona; el problema es autorización o política de aplicacion.
 curl responde certificado invalido -> problema TLS o inspeccion.
 ```
 
 ## Capas y Controles de Seguridad
 
-| Capa | Control comun |
+| Capa | Control común |
 | --- | --- |
 | Fisica | control de acceso a puertos, salas y cableado |
 | Enlace | VLANs, port security, DHCP snooping |
-| Red | routing, ACLs, firewalls, segmentacion |
+| Red | routing, ACLs, firewalls, segmentación |
 | Transporte | filtrado por puerto, stateful firewall |
-| Presentacion | TLS, certificados, configuracion criptografica |
-| Aplicacion | autenticacion, autorizacion, validacion, WAF, logging |
+| Presentacion | TLS, certificados, configuración criptografica |
+| Aplicación | autenticación, autorización, validación, WAF, logging |
 
 La defensa madura combina controles en varias capas.
 
@@ -294,7 +294,7 @@ La defensa madura combina controles en varias capas.
 | --- | --- |
 | `ip addr` | interfaces e IPs |
 | `ip route` | rutas y gateway |
-| `ping` | conectividad ICMP basica |
+| `ping` | conectividad ICMP básica |
 | `traceroute` | saltos hacia destino |
 | `dig` | resolucion DNS |
 | `curl -I` | respuesta HTTP y headers |
@@ -308,7 +308,7 @@ No uses herramientas sobre redes ajenas sin permiso. Para aprender, trabaja en t
 - Memorizar capas sin saber usarlas.
 - Decir "fallo la red" cuando el problema es HTTP.
 - Confundir DNS con conectividad.
-- Confundir firewall con autenticacion.
+- Confundir firewall con autenticación.
 - No revisar gateway o ruta.
 - Ignorar TLS al diagnosticar HTTPS.
 - Pensar que una capa segura protege todas las demas.
@@ -317,10 +317,10 @@ No uses herramientas sobre redes ajenas sin permiso. Para aprender, trabaja en t
 
 Dominas este tema cuando puedes:
 
-- explicar las capas OSI con ejemplos;
-- mapear OSI a TCP/IP;
-- describir que ocurre al abrir una pagina web;
-- diagnosticar un fallo por capas;
-- diferenciar problemas de DNS, TCP, TLS y HTTP;
-- ubicar controles de seguridad en distintas capas;
-- leer una evidencia de red y decir que capa ayuda a explicar.
+- Explicar las capas OSI con ejemplos;
+- Mapear OSI a TCP/IP;
+- Describir que ocurre al abrir una página web;
+- Diagnosticar un fallo por capas;
+- Diferenciar problemas de DNS, TCP, TLS y HTTP;
+- Ubicar controles de seguridad en distintas capas;
+- Leer una evidencia de red y decir que capa ayuda a explicar.

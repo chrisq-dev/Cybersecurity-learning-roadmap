@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Entender conceptos criptograficos practicos sin perderse en matematica avanzada.
+Entender conceptos criptograficos prácticos sin perderse en matematica avanzada.
 
 ## Encoding
 
@@ -18,7 +18,7 @@ Importante:
 Encoding no es seguridad.
 ```
 
-Si algo esta en Base64, normalmente se puede decodificar facilmente.
+Si algo está en Base64, normalmente se puede decodificar facilmente.
 
 ## Hashing
 
@@ -28,7 +28,7 @@ Propiedades deseadas:
 
 - Misma entrada produce mismo hash.
 - Pequeño cambio cambia el hash.
-- No deberia poder revertirse facilmente.
+- No debería poder revertirse facilmente.
 
 Usos:
 
@@ -50,8 +50,8 @@ Tampoco basta con SHA256 simple para contraseñas.
 
 Se usan algoritmos diseñados para password hashing:
 
-- bcrypt.
-- scrypt.
+- Bcrypt.
+- Scrypt.
 - Argon2.
 - PBKDF2.
 
@@ -69,16 +69,16 @@ Ejemplo:
 
 Reto:
 
-- Como compartir la llave de forma segura?
+- Cómo compartir la llave de forma segura?
 
 ## Cifrado Asimetrico
 
 Usa par de llaves:
 
-- Publica.
+- Pública.
 - Privada.
 
-Lo cifrado para una llave publica se descifra con la privada correspondiente.
+Lo cifrado para una llave pública se descifra con la privada correspondiente.
 
 Usos:
 
@@ -102,20 +102,20 @@ Ayuda con:
 
 - Confidencialidad.
 - Integridad.
-- Autenticacion del servidor.
+- Autenticación del servidor.
 
-Cuando visitas `https://`, el navegador valida un certificado y negocia una comunicacion segura.
+Cuando visitas `https://`, el navegador valida un certificado y negocia una comunicación segura.
 
 ## Certificados
 
-Un certificado vincula una identidad con una llave publica.
+Un certificado vincula una identidad con una llave pública.
 
 Incluye:
 
 - Dominio.
 - Emisor.
 - Fechas de validez.
-- Llave publica.
+- Llave pública.
 - Firma de autoridad certificadora.
 
 ## Errores Comunes
@@ -127,9 +127,9 @@ Incluye:
 - Ignorar errores de certificado.
 - Guardar secretos en GitHub.
 
-## Observacion de Hashing
+## Observación de Hashing
 
-Un hash criptografico cambia completamente cuando cambia el contenido de entrada, aunque sea por un caracter. Esta propiedad ayuda a verificar integridad, detectar modificaciones y comparar artefactos sin guardar el contenido original.
+Un hash criptografico cambia completamente cuando cambia el contenido de entrada, aunque sea por un carácter. Esta propiedad ayuda a verificar integridad, detectar modificaciones y comparar artefactos sin guardar el contenido original.
 
 Comando:
 

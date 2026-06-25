@@ -1,107 +1,107 @@
 # Proyectos de Portafolio
 
-Un portafolio de ciberseguridad no debe ser una carpeta llena de archivos sin explicacion. Debe demostrar que entiendes problemas, riesgos, evidencia, controles y comunicacion tecnica.
+Un portafolio de ciberseguridad no debe ser una carpeta llena de archivos sin explicación. Debe demostrar que entiendes problemas, riesgos, evidencia, controles y comunicación técnica.
 
-Los proyectos de esta seccion son ideas de estudio y demostracion. No son tareas obligatorias ni tienen que vivir en carpetas especificas. Lo importante es que puedas explicar el razonamiento detras de cada proyecto.
+Los proyectos de esta sección son ideas de estudio y demostracion. No son tareas obligatorias ni tienen que vivir en carpetas especificas. Lo importante es que puedas explicar el razonamiento detras de cada proyecto.
 
-## Que Debe Demostrar un Proyecto
+## Qué Debe Demostrar un Proyecto
 
 Un proyecto fuerte demuestra:
 
-- comprension del problema;
-- uso de datos ficticios o autorizados;
-- analisis claro;
-- identificacion de riesgos;
-- mitigaciones razonables;
-- limitaciones;
-- comunicacion simple.
+- Comprensión del problema;
+- Uso de datos ficticios o autorizados;
+- Análisis claro;
+- Identificación de riesgos;
+- Mitigaciones razonables;
+- Limitaciones;
+- Comunicación simple.
 
-Si un proyecto no se puede explicar en una entrevista, todavia no esta maduro aunque tenga codigo.
+Si un proyecto no se puede explicar en una entrevista, todavía no está maduro aunque tenga código.
 
-## Proyecto 1: Analisis de Logs de Autenticacion
+## Proyecto 1: Análisis de Logs de Autenticación
 
-Area: Blue Team / Python.
+Área: Blue Team / Python.
 
-### Que Enseña
+### Qué Enseña
 
-Este proyecto enseña a interpretar eventos de autenticacion y distinguir entre actividad normal, error operativo, fuerza bruta o password spraying.
+Este proyecto enseña a interpretar eventos de autenticación y distinguir entre actividad normal, error operativo, fuerza bruta o password spraying.
 
 ### Conceptos Clave
 
-- logins fallidos;
-- logins exitosos;
+- Logins fallidos;
+- Logins exitosos;
 - IP origen;
-- usuario objetivo;
-- horario;
-- privilegios;
-- falsos positivos;
-- severidad.
+- Usuario objetivo;
+- Horario;
+- Privilegios;
+- Falsos positivos;
+- Severidad.
 
-### Como Explicarlo
+### Cómo Explicarlo
 
-Una explicacion madura no dice solo "conte fallos". Dice:
+Una explicación madura no dice solo "conte fallos". Dice:
 
 ```text
-Observe multiples fallos contra una cuenta, revise si hubo exito posterior, compare origen y horario, considere falsos positivos y propuse acciones proporcionales.
+Observe múltiples fallos contra una cuenta, revise si hubo exito posterior, compare origen y horario, considere falsos positivos y propuse acciones proporcionales.
 ```
 
 ### Falsos Positivos
 
 Posibles causas benignas:
 
-- usuario con contrasena antigua;
-- servicio mal configurado;
-- dispositivo intentando reconectar;
-- cambio reciente de credenciales;
-- pruebas internas autorizadas.
+- Usuario con contraseña antigua;
+- Servicio mal configurado;
+- Dispositivo intentando reconectar;
+- Cambio reciente de credenciales;
+- Pruebas internas autorizadas.
 
 ### Habilidades Demostradas
 
-- lectura de logs;
-- analisis de patrones;
-- pensamiento defensivo;
-- comunicacion de hallazgos;
-- automatizacion si decides usar codigo.
+- Lectura de logs;
+- Análisis de patrones;
+- Pensamiento defensivo;
+- Comunicación de hallazgos;
+- Automatización si decides usar código.
 
 ## Proyecto 2: Hardening Linux
 
-Area: Linux / Blue Team.
+Área: Linux / Blue Team.
 
-### Que Enseña
+### Qué Enseña
 
-Hardening enseña a reducir superficie de ataque. El valor no esta en listar controles, sino en explicar por que cada control existe.
+Hardening enseña a reducir superficie de ataque. El valor no está en listar controles, sino en explicar por que cada control existe.
 
 ### Controles Relevantes
 
-- actualizaciones;
-- usuarios y sudo;
+- Actualizaciones;
+- Usuarios y sudo;
 - SSH seguro;
-- firewall local;
-- permisos;
-- logs;
-- servicios innecesarios.
+- Firewall local;
+- Permisos;
+- Logs;
+- Servicios innecesarios.
 
-### Como Explicarlo
+### Cómo Explicarlo
 
-Una buena explicacion conecta control con riesgo:
+Una buena explicación conecta control con riesgo:
 
 ```text
-Restringir SSH reduce exposicion administrativa. Revisar sudo reduce impacto si una cuenta normal se compromete. Logs permiten investigar eventos posteriores.
+Restringir SSH reduce exposición administrativa. Revisar sudo reduce impacto si una cuenta normal se compromete. Logs permiten investigar eventos posteriores.
 ```
 
 ### Habilidades Demostradas
 
-- administracion basica;
-- criterio de permisos;
-- reduccion de superficie;
-- lectura de logs;
-- documentacion tecnica.
+- Administracion básica;
+- Criterio de permisos;
+- Reducción de superficie;
+- Lectura de logs;
+- Documentacion técnica.
 
 ## Proyecto 3: OWASP Top 10 con Casos
 
-Area: Seguridad web.
+Área: Seguridad web.
 
-### Que Enseña
+### Qué Enseña
 
 Este proyecto demuestra que entiendes vulnerabilidades web por causa, impacto y mitigacion, no solo por nombre.
 
@@ -113,45 +113,45 @@ Este proyecto demuestra que entiendes vulnerabilidades web por causa, impacto y 
 - SSRF.
 - Security Misconfiguration.
 
-### Como Explicarlo
+### Cómo Explicarlo
 
 Para cada caso, debes poder decir:
 
-- que confianza se rompio;
-- que dato o accion no se valido;
-- que impacto tendria;
-- que control lo reduce;
-- como se detectaria.
+- Que confianza se rompio;
+- Que dato o acción no se valido;
+- Que impacto tendria;
+- Que control lo reduce;
+- Como se detectaria.
 
 ### Habilidades Demostradas
 
 - HTTP;
-- autorizacion;
-- validacion de entrada;
-- lectura de requests;
-- remediacion;
-- comunicacion de riesgo.
+- Autorización;
+- Validación de entrada;
+- Lectura de requests;
+- Remediación;
+- Comunicación de riesgo.
 
 ## Proyecto 4: Red Segmentada
 
-Area: Redes / Cisco.
+Área: Redes / Cisco.
 
-### Que Enseña
+### Qué Enseña
 
-Este proyecto demuestra que entiendes segmentacion, VLANs, ACLs y control de movimiento lateral.
+Este proyecto demuestra que entiendes segmentación, VLANs, ACLs y control de movimiento lateral.
 
 ### Conceptos Clave
 
 - VLANs;
-- subredes;
-- routing entre VLANs;
+- Subredes;
+- Routing entre VLANs;
 - ACLs;
-- zonas de red;
-- administracion separada.
+- Zonas de red;
+- Administracion separada.
 
-### Como Explicarlo
+### Cómo Explicarlo
 
-Una explicacion madura:
+Una explicación madura:
 
 ```text
 Separe usuarios, servidores, invitados y administracion para que un compromiso en un segmento no permita acceso plano a toda la red.
@@ -159,100 +159,100 @@ Separe usuarios, servidores, invitados y administracion para que un compromiso e
 
 ### Habilidades Demostradas
 
-- diseño de red;
-- seguridad por zonas;
-- reglas de acceso;
-- minimo privilegio en red;
-- documentacion de flujos.
+- Diseño de red;
+- Seguridad por zonas;
+- Reglas de acceso;
+- Mínimo privilegio en red;
+- Documentacion de flujos.
 
-## Proyecto 5: Investigacion de Alerta Simulada
+## Proyecto 5: Investigación de Alerta Simulada
 
-Area: SOC / Blue Team.
+Área: SOC / Blue Team.
 
-### Que Enseña
+### Qué Enseña
 
-Este proyecto demuestra capacidad de triage: reunir evidencia, formular hipotesis, evaluar impacto y concluir con claridad.
+Este proyecto demuestra capacidad de triage: reunir evidencia, formular hipótesis, evaluar impacto y concluir con claridad.
 
-### Como Pensarlo
+### Cómo Pensarlo
 
-Una alerta no es una conclusion. Es una señal.
+Una alerta no es una conclusión. Es una señal.
 
 Debes poder diferenciar:
 
-- hecho observado;
-- hipotesis;
-- falso positivo;
-- incidente confirmado;
-- accion recomendada.
+- Hecho observado;
+- Hipótesis;
+- Falso positivo;
+- Incidente confirmado;
+- Acción recomendada.
 
 ### Habilidades Demostradas
 
-- analisis defensivo;
-- manejo de incertidumbre;
+- Análisis defensivo;
+- Manejo de incertidumbre;
 - MITRE ATT&CK;
-- severidad;
-- comunicacion ejecutiva y tecnica.
+- Severidad;
+- Comunicación ejecutiva y técnica.
 
 ## Proyecto 6: Inventario de Activos
 
-Area: Seguridad Operativa.
+Área: Seguridad Operativa.
 
-### Que Enseña
+### Qué Enseña
 
-No puedes proteger bien lo que no sabes que existe. Inventario de activos conecta seguridad con operacion.
+No puedes proteger bien lo que no sabes que existe. Inventario de activos conecta seguridad con operación.
 
 ### Conceptos Clave
 
-- owner;
-- criticidad;
-- exposicion;
-- sistema operativo;
-- fecha de actualizacion;
-- datos que maneja;
-- dependencia de negocio.
+- Owner;
+- Criticidad;
+- Exposición;
+- Sistema operativo;
+- Fecha de actualizacion;
+- Datos que maneja;
+- Dependencia de negocio.
 
-### Como Explicarlo
+### Cómo Explicarlo
 
-El valor esta en priorizar:
+El valor está en priorizar:
 
 ```text
-Un servidor expuesto, sin owner y con datos sensibles merece mas atencion que un activo interno de baja criticidad.
+Un servidor expuesto, sin owner y con datos sensibles merece más atencion que un activo interno de baja criticidad.
 ```
 
 ## Proyecto 7: Cloud Security Review
 
-Area: Cloud Security.
+Área: Cloud Security.
 
-### Que Enseña
+### Qué Enseña
 
 Cloud security demuestra criterio sobre identidad, storage, logging, redes y secretos.
 
-### Areas Clave
+### Áreas Clave
 
 - IAM;
 - MFA;
-- storage;
-- logs;
-- security groups;
-- secretos;
-- backups.
+- Storage;
+- Logs;
+- Security groups;
+- Secretos;
+- Backups.
 
-### Como Explicarlo
+### Cómo Explicarlo
 
-Una explicacion fuerte conecta configuracion con riesgo:
+Una explicación fuerte conecta configuración con riesgo:
 
 ```text
-Un bucket publico no siempre es malo, pero si contiene datos sensibles y no hay logs, el riesgo de fuga y falta de evidencia aumenta mucho.
+Un bucket público no siempre es malo, pero si contiene datos sensibles y no hay logs, el riesgo de fuga y falta de evidencia aumenta mucho.
 ```
 
-## Como Presentar un Proyecto
+## Cómo Presentar un Proyecto
 
 Cuando hables de un proyecto, la estructura clara es:
 
 1. Problema.
 2. Contexto.
 3. Riesgo.
-4. Analisis.
+4. Análisis.
 5. Controles.
 6. Limitaciones.
 7. Aprendizaje.
@@ -263,10 +263,10 @@ No necesitas prometer que resolviste todo. Necesitas demostrar que piensas con c
 
 Para empezar, conviene dominar primero:
 
-1. Analisis de logs.
+1. Análisis de logs.
 2. Hardening Linux.
 3. OWASP Top 10 con casos.
-4. Investigacion de alerta simulada.
+4. Investigación de alerta simulada.
 5. Red segmentada.
 
 Ese orden construye base: sistemas, evidencia, web, defensa y arquitectura.

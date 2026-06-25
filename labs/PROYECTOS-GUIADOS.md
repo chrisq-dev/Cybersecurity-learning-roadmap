@@ -1,31 +1,31 @@
 # Proyectos Guiados
 
-Los proyectos guiados sirven para conectar teoria con situaciones realistas. En esta web no se tratan como tareas obligatorias ni como actividades cerradas. Son escenarios de estudio para entender como se aplican los conceptos y que tipo de razonamiento se espera en ciberseguridad.
+Los proyectos guiados sirven para conectar teoría con situaciones realistas. En esta web no se tratan como tareas obligatorias ni como actividades cerradas. Son escenarios de estudio para entender como se aplican los conceptos y que tipo de razonamiento se espera en ciberseguridad.
 
 Un buen proyecto no se mide solo por tener archivos. Se mide por la claridad con la que puedes explicar:
 
-- que problema existe;
-- que datos o evidencia se observarian;
-- que riesgo representa;
-- que controles reducen ese riesgo;
-- que limitaciones tiene el analisis;
-- que decision tomarias con la informacion disponible.
+- Que problema existe;
+- Que datos o evidencia se observarian;
+- Que riesgo representa;
+- Que controles reducen ese riesgo;
+- Que limitaciones tiene el análisis;
+- Que decisión tomarias con la información disponible.
 
-## Como Leer Estos Proyectos
+## Cómo Leer Estos Proyectos
 
-Cada proyecto debe entenderse como un caso. Puedes reproducirlo en un entorno propio si quieres practicar, pero el valor principal esta en comprender el flujo.
+Cada proyecto debe entenderse como un caso. Puedes reproducirlo en un entorno propio si quieres practicar, pero el valor principal está en comprender el flujo.
 
 La estructura mental recomendada es:
 
 ```text
-escenario -> evidencia -> analisis -> riesgo -> controles -> conclusion
+escenario -> evidencia -> análisis -> riesgo -> controles -> conclusión
 ```
 
-## Proyecto 1: Analisis de Logs de Autenticacion
+## Proyecto 1: Análisis de Logs de Autenticación
 
-### Que Busca Enseñar
+### Qué Busca Enseñar
 
-Este proyecto enseña como un analista defensivo interpreta intentos de autenticacion, detecta patrones y evita conclusiones apresuradas.
+Este proyecto enseña como un analista defensivo interpreta intentos de autenticación, detecta patrones y evita conclusiones apresuradas.
 
 ### Escenario
 
@@ -37,14 +37,14 @@ Un sistema registra eventos de login:
 2026-06-23T10:05:00 user=maria src_ip=10.0.0.5 result=success
 ```
 
-### Como Pensarlo
+### Cómo Pensarlo
 
 Preguntas importantes:
 
 - Cuantos fallos hubo?
 - Se concentran en un usuario?
 - Se concentran en una IP?
-- Hubo un login exitoso despues de muchos fallos?
+- Hubo un login exitoso después de muchos fallos?
 - El usuario tenia privilegios altos?
 - La IP origen es esperada?
 - El horario es normal?
@@ -55,19 +55,19 @@ No todo patron de fallos es ataque.
 
 Posibles explicaciones benignas:
 
-- usuario olvido su contrasena;
-- aplicacion usa credencial antigua;
-- dispositivo intenta reconectar;
-- integracion mal configurada;
-- cambio reciente de politica de contrasenas.
+- Usuario olvido su contraseña;
+- Aplicación usa credencial antigua;
+- Dispositivo intenta reconectar;
+- Integración mal configurada;
+- Cambio reciente de política de contraseñas.
 
 Posibles señales de riesgo:
 
-- muchos usuarios atacados desde la misma IP;
-- pocos intentos por usuario en muchos usuarios, posible password spraying;
-- login exitoso despues de fallos;
-- origen externo desconocido;
-- cuenta privilegiada involucrada.
+- Muchos usuarios atacados desde la misma IP;
+- Pocos intentos por usuario en muchos usuarios, posible password spraying;
+- Login exitoso después de fallos;
+- Origen externo desconocido;
+- Cuenta privilegiada involucrada.
 
 ### Lo Que Debe Quedar Claro
 
@@ -75,22 +75,22 @@ El objetivo no es solo contar eventos. El objetivo es explicar si el comportamie
 
 ## Proyecto 2: Hardening Linux
 
-### Que Busca Enseñar
+### Qué Busca Enseñar
 
 Hardening significa reducir superficie de ataque. No es aplicar comandos al azar. Es entender que controles reducen que riesgos.
 
-### Areas de Revision
+### Áreas de Revisión
 
-- actualizaciones;
-- usuarios y grupos;
-- sudo;
+- Actualizaciones;
+- Usuarios y grupos;
+- Sudo;
 - SSH;
-- firewall;
-- logs;
-- permisos;
-- servicios innecesarios.
+- Firewall;
+- Logs;
+- Permisos;
+- Servicios innecesarios.
 
-### Como Pensarlo
+### Cómo Pensarlo
 
 Ejemplo:
 
@@ -100,12 +100,12 @@ Servicio SSH expuesto + password login + sin MFA + usuario con sudo = riesgo alt
 
 Controles posibles:
 
-- llaves SSH;
-- restriccion por IP;
-- usuarios nominales;
-- sudo limitado;
-- logs de autenticacion;
-- alertas por fuerza bruta.
+- Llaves SSH;
+- Restriccion por IP;
+- Usuarios nominales;
+- Sudo limitado;
+- Logs de autenticación;
+- Alertas por fuerza bruta.
 
 ### Lo Que Debe Quedar Claro
 
@@ -113,9 +113,9 @@ Cada control debe poder conectarse con un riesgo. Si no puedes explicar que ries
 
 ## Proyecto 3: OWASP Top 10 con Casos
 
-### Que Busca Enseñar
+### Qué Busca Enseñar
 
-OWASP Top 10 ayuda a entender categorias comunes de fallas web. El objetivo no es memorizar nombres, sino comprender causa, impacto y mitigacion.
+OWASP Top 10 ayuda a entender categorías comunes de fallas web. El objetivo no es memorizar nombres, sino comprender causa, impacto y mitigacion.
 
 ### Vulnerabilidades Iniciales
 
@@ -125,164 +125,164 @@ OWASP Top 10 ayuda a entender categorias comunes de fallas web. El objetivo no e
 - SSRF.
 - Security Misconfiguration.
 
-### Como Pensarlo
+### Cómo Pensarlo
 
 Para cada vulnerabilidad pregunta:
 
-- donde entra el dato o accion;
-- que confianza asume la aplicacion;
-- que validacion falta;
-- que impacto tendria;
-- que control lo previene;
-- que log ayudaria a detectarlo.
+- Donde entra el dato o acción;
+- Que confianza asume la aplicación;
+- Que validación falta;
+- Que impacto tendria;
+- Que control lo previene;
+- Que log ayudaria a detectarlo.
 
 ### Lo Que Debe Quedar Claro
 
-Una vulnerabilidad web se entiende bien cuando puedes explicar la causa raiz y la remediacion, no solo el payload.
+Una vulnerabilidad web se entiende bien cuando puedes explicar la causa raíz y la remediación, no solo el payload.
 
-## Proyecto 4: Investigacion de Incidente Simulado
+## Proyecto 4: Investigación de Incidente Simulado
 
-### Que Busca Enseñar
+### Qué Busca Enseñar
 
-Este proyecto enseña como razonar como SOC: separar evidencia, hipotesis y conclusion.
+Este proyecto enseña como razonar como SOC: separar evidencia, hipótesis y conclusión.
 
 ### Caso
 
 Una cuenta muestra varios logins fallidos y luego un login exitoso desde una IP externa desconocida.
 
-### Como Pensarlo
+### Cómo Pensarlo
 
 Preguntas:
 
-- el usuario reconoce la actividad?
-- hubo MFA?
-- hubo cambios despues del login?
-- hay descargas, cambios de permisos o creacion de tokens?
-- la IP pertenece a VPN o proveedor conocido?
-- hay actividad similar en otros usuarios?
+- El usuario reconoce la actividad?
+- Hubo MFA?
+- Hubo cambios después del login?
+- Hay descargas, cambios de permisos o creación de tokens?
+- La IP pertenece a VPN o proveedor conocido?
+- Hay actividad similar en otros usuarios?
 
 ### Conclusiones Posibles
 
-- benigno: actividad esperada y confirmada;
-- sospechoso: falta contexto, requiere monitoreo;
-- incidente: acceso no autorizado confirmado o altamente probable.
+- Benigno: actividad esperada y confirmada;
+- Sospechoso: falta contexto, requiere monitoreo;
+- Incidente: acceso no autorizado confirmado o altamente probable.
 
 ### Lo Que Debe Quedar Claro
 
-Un analista no debe saltar directo a "hackeo". Debe construir una conclusion con evidencia.
+Un analista no debe saltar directo a "hackeo". Debe construir una conclusión con evidencia.
 
-## Proyecto 5: Revision de Cloud Security
+## Proyecto 5: Revisión de Cloud Security
 
-### Que Busca Enseñar
+### Qué Busca Enseñar
 
-Cloud security se basa en identidad, configuracion, visibilidad y responsabilidad compartida.
+Cloud security se basa en identidad, configuración, visibilidad y responsabilidad compartida.
 
-### Areas Clave
+### Áreas Clave
 
 - IAM;
 - MFA;
-- storage;
-- logs;
-- security groups;
-- secretos;
-- backups;
-- cuentas privilegiadas.
+- Storage;
+- Logs;
+- Security groups;
+- Secretos;
+- Backups;
+- Cuentas privilegiadas.
 
-### Como Pensarlo
+### Cómo Pensarlo
 
 Ejemplo de riesgo:
 
 ```text
-Bucket publico + datos sensibles + sin logs = riesgo de fuga dificil de investigar.
+Bucket público + datos sensibles + sin logs = riesgo de fuga difícil de investigar.
 ```
 
 Controles:
 
-- acceso privado;
-- cifrado;
-- logging;
-- politicas por rol;
-- alertas;
-- revision de permisos.
+- Acceso privado;
+- Cifrado;
+- Logging;
+- Políticas por rol;
+- Alertas;
+- Revisión de permisos.
 
 ### Lo Que Debe Quedar Claro
 
-En cloud, muchas brechas ocurren por configuracion e identidad, no por vulnerabilidades complejas.
+En cloud, muchas brechas ocurren por configuración e identidad, no por vulnerabilidades complejas.
 
 ## Proyecto 6: Email Security y Phishing
 
-### Que Busca Enseñar
+### Qué Busca Enseñar
 
-El correo sigue siendo una via comun de acceso inicial. Entender phishing implica mirar identidad, dominio, enlaces, adjuntos, headers y comportamiento del usuario.
+El correo sigue siendo una via común de acceso inicial. Entender phishing implica mirar identidad, dominio, enlaces, adjuntos, headers y comportamiento del usuario.
 
-### Areas Clave
+### Áreas Clave
 
 - SPF;
 - DKIM;
 - DMARC;
 - MFA;
-- reporte de phishing;
-- concientizacion;
-- analisis de headers;
-- enlaces y adjuntos.
+- Reporte de phishing;
+- Concientizacion;
+- Análisis de headers;
+- Enlaces y adjuntos.
 
-### Como Pensarlo
+### Cómo Pensarlo
 
 Preguntas:
 
-- el dominio del remitente es legitimo?
+- El dominio del remitente es legitimo?
 - SPF/DKIM/DMARC alinean?
-- el enlace apunta a un dominio esperado?
-- hay urgencia, presion o suplantacion?
-- el usuario interactuo?
-- hubo login posterior?
+- El enlace apunta a un dominio esperado?
+- Hay urgencia, presion o suplantacion?
+- El usuario interactuo?
+- Hubo login posterior?
 
 ### Lo Que Debe Quedar Claro
 
-Phishing no se analiza solo por apariencia. Se analiza combinando señales tecnicas y contexto humano.
+Phishing no se analiza solo por apariencia. Se analiza combinando señales técnicas y contexto humano.
 
 ## Proyecto 7: Ransomware Tabletop
 
-### Que Busca Enseñar
+### Qué Busca Enseñar
 
-Un tabletop no prueba herramientas. Prueba decisiones, comunicacion y preparacion.
+Un tabletop no prueba herramientas. Prueba decisiones, comunicación y preparacion.
 
 ### Escenario
 
-Una organizacion detecta archivos cifrados en varios equipos y sospecha ransomware.
+Una organización detecta archivos cifrados en varios equipos y sospecha ransomware.
 
-### Como Pensarlo
+### Cómo Pensarlo
 
 Preguntas:
 
-- que sistemas estan afectados?
-- hay backups?
-- los backups estan aislados?
-- hay propagacion activa?
-- quien decide apagar, aislar o restaurar?
-- cual es el RTO/RPO?
-- que se comunica a usuarios y directivos?
+- Qué sistemas están afectados?
+- Hay backups?
+- Los backups están aislados?
+- Hay propagacion activa?
+- Quién decide apagar, aislar o restaurar?
+- Cuál es el RTO/RPO?
+- Qué se comunica a usuarios y directivos?
 
 ### Lo Que Debe Quedar Claro
 
 Responder ransomware requiere coordinacion. No basta con "tener backup"; hay que saber restaurar, contener y comunicar.
 
-## Proyecto 8: Revision de Accesos
+## Proyecto 8: Revisión de Accesos
 
-### Que Busca Enseñar
+### Qué Busca Enseñar
 
-La revision de accesos busca comprobar si usuarios, roles y permisos siguen teniendo sentido.
+La revisión de accesos busca comprobar si usuarios, roles y permisos siguen teniendo sentido.
 
-### Como Pensarlo
+### Cómo Pensarlo
 
 Preguntas:
 
-- el usuario sigue en la organizacion?
-- el rol corresponde a su funcion?
-- hay privilegios excesivos?
-- hay cuentas compartidas?
-- hay cuentas sin owner?
-- hay accesos antiguos no revocados?
+- El usuario sigue en la organización?
+- El rol corresponde a su función?
+- Hay privilegios excesivos?
+- Hay cuentas compartidas?
+- Hay cuentas sin owner?
+- Hay accesos antiguos no revocados?
 
 ### Lo Que Debe Quedar Claro
 
@@ -290,23 +290,23 @@ El acceso excesivo no siempre parece incidente, pero aumenta impacto cuando una 
 
 ## Capstone Projects
 
-Los capstones combinan varios temas en un escenario mas grande:
+Los capstones combinan varios temas en un escenario más grande:
 
-- investigacion SOC;
-- pequeña empresa segura;
+- Investigación SOC;
+- Pequeña empresa segura;
 - AppSec review;
 - Cloud Security review.
 
-La idea de un capstone es integrar teoria: redes, identidad, logs, riesgo, controles, comunicacion y remediacion.
+La idea de un capstone es integrar teoría: redes, identidad, logs, riesgo, controles, comunicación y remediación.
 
 ## Criterio de Dominio
 
-Estos proyectos cumplen su funcion cuando puedes explicar:
+Estos proyectos cumplen su función cuando puedes explicar:
 
-- que problema estudia cada escenario;
-- que evidencia seria relevante;
-- que falsos positivos podrian existir;
-- que riesgo se intenta reducir;
-- que controles aplican;
-- que conclusion seria defendible;
-- que limitaciones tiene el analisis.
+- Que problema estudia cada escenario;
+- Que evidencia seria relevante;
+- Que falsos positivos podrian existir;
+- Que riesgo se intenta reducir;
+- Que controles aplican;
+- Que conclusión seria defendible;
+- Que limitaciones tiene el análisis.

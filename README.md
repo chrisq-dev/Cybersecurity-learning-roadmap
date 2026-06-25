@@ -1,6 +1,6 @@
 # Cybersecurity Learning Roadmap
 
-Guias de ciberseguridad en español: estructuradas, practicas y gratuitas.
+Guías de ciberseguridad en español: estructuradas, prácticas y gratuitas.
 
 **→ [cbsdev.lat](https://cbsdev.lat)**
 
@@ -8,24 +8,24 @@ Guias de ciberseguridad en español: estructuradas, practicas y gratuitas.
 
 ---
 
-Hola, soy Christian Quiñones. Diseñé esta web para que cualquier persona pueda aprender ciberseguridad en español sin perderse entre recursos dispersos. Cada modulo tiene guias ordenadas, navegacion entre temas y rutas de lectura por perfil.
+Hola, soy Christian Quiñones. Diseñé esta web para que cualquier persona pueda aprender ciberseguridad en español sin perderse entre recursos dispersos. Cada módulo tiene guías ordenadas, navegación entre temas y rutas de lectura por perfil.
 
-## Que Cubre
+## Qué Cubre
 
-103 guias organizadas en 34 modulos:
+103 guías organizadas en 34 módulos:
 
-- **Base tecnica** — computacion, sistemas operativos, identidad, riesgo.
+- **Base técnica** — computación, sistemas operativos, identidad, riesgo.
 - **Redes** — modelo OSI/TCP-IP, DNS, DHCP, NAT, VLANs, Cisco.
 - **Linux y Windows** — fundamentos, Active Directory, permisos.
-- **Programacion** — Python y automatizacion para seguridad.
+- **Programación** — Python y automatización para seguridad.
 - **Seguridad web** — HTTP, OWASP Top 10, SQL Injection, XSS, CSRF, SSRF.
 - **Blue Team** — logs, SIEM, MITRE ATT&CK, Sigma, YARA, respuesta a incidentes.
 - **Cloud Security** — IAM, storage, logging, Kubernetes, contenedores.
 - **AppSec / DevSecOps** — API Security, GRC, privacidad, continuidad.
 - **Redes avanzadas** — Wireless, Network Security, Endpoint, Database Security.
-- **Practica** — Playbooks, labs guiados, capstones, writeups, empleabilidad.
+- **Práctica** — Playbooks, labs guiados, capstones, writeups, empleabilidad.
 
-## Por Donde Empezar
+## Por Dónde Empezar
 
 Entra a la web y sigue la ruta recomendada:
 
@@ -41,26 +41,26 @@ Ruta general:
 fundamentos -> redes -> Linux -> web -> Blue Team -> cloud/AppSec -> labs -> portafolio
 ```
 
-## Etica
+## Ética
 
 Todo el contenido es educativo.
 
-Cualquier prueba, escaneo, explotacion o analisis debe realizarse solo en:
+Cualquier prueba, escaneo, explotación o análisis debe realizarse solo en:
 
-- sistemas propios;
-- laboratorios locales;
-- plataformas de practica autorizadas;
-- entornos donde exista permiso explicito.
+- Sistemas propios;
+- Laboratorios locales;
+- Plataformas de práctica autorizadas;
+- Entornos donde exista permiso explícito.
 
-No uses este material contra terceros, redes publicas, empresas, usuarios o sistemas sin autorizacion.
+No uses este material contra terceros, redes públicas, empresas, usuarios o sistemas sin autorización.
 
 ## Contribuir
 
-Las contribuciones son bienvenidas si respetan el enfoque educativo, defensivo y etico del proyecto.
+Las contribuciones son bienvenidas si respetan el enfoque educativo, defensivo y ético del proyecto.
 
 Antes de proponer cambios, revisa [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Apoya la Guia
+## Apoya la Guía
 
-Si esta coleccion te resulta util, considera dejar una estrella en GitHub. Ayuda a que mas personas encuentren el proyecto y a seguir mejorandolo poco a poco.
+Si esta colección te resulta útil, considera dejar una estrella en GitHub. Ayuda a que más personas encuentren el proyecto y a seguir mejorándolo poco a poco.
 

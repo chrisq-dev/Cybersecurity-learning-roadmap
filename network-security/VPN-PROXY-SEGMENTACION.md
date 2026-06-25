@@ -1,10 +1,10 @@
-# VPN, Proxy y Segmentacion
+# VPN, Proxy y Segmentación
 
 ## Objetivo
 
-Entender controles de acceso remoto, salida a internet y separacion de redes.
+Entender controles de acceso remoto, salida a internet y separación de redes.
 
-Estos controles definen como entran usuarios remotos, como salen sistemas a internet y como se limita el movimiento dentro de la red. Son temas esenciales para reducir impacto cuando una cuenta, laptop, servidor o aplicacion se compromete.
+Estos controles definen como entran usuarios remotos, como salen sistemas a internet y como se limita el movimiento dentro de la red. Son temas esenciales para reducir impacto cuando una cuenta, laptop, servidor o aplicación se compromete.
 
 ## Modelo Mental
 
@@ -12,15 +12,15 @@ Estos controles definen como entran usuarios remotos, como salen sistemas a inte
 identidad -> dispositivo -> acceso -> segmento -> permiso -> log
 ```
 
-Una arquitectura madura no pregunta solo "esta conectado a la VPN?". Pregunta:
+Una arquitectura madura no pregunta solo "está conectado a la VPN?". Pregunta:
 
-- quien es el usuario;
-- desde que dispositivo entra;
-- que postura tiene el dispositivo;
-- a que segmento necesita llegar;
-- que puertos requiere;
-- que se registra;
-- que se bloquea por defecto.
+- Quien es el usuario;
+- Desde que dispositivo entra;
+- Que postura tiene el dispositivo;
+- A que segmento necesita llegar;
+- Que puertos requiere;
+- Que se registra;
+- Que se bloquea por defecto.
 
 ## VPN
 
@@ -29,7 +29,7 @@ Una VPN crea un canal cifrado hacia una red o servicio.
 Usos:
 
 - Acceso remoto.
-- Conexion site-to-site.
+- Conexión site-to-site.
 - Administracion segura.
 
 Riesgos:
@@ -43,13 +43,13 @@ Controles:
 
 - MFA.
 - Acceso por rol.
-- Segmentacion.
+- Segmentación.
 - Logs.
 - Device compliance.
 
-Una VPN no debe significar "ya estas dentro de todo". El acceso remoto debe seguir minimo privilegio: entrar solo a los sistemas necesarios, con identidad fuerte y registro.
+Una VPN no debe significar "ya estas dentro de todo". El acceso remoto debe seguir mínimo privilegio: entrar solo a los sistemas necesarios, con identidad fuerte y registro.
 
-Modelo debil:
+Modelo débil:
 
 ```text
 Usuario remoto -> VPN -> Toda la red interna
@@ -69,10 +69,10 @@ Un usuario se conecta desde su dispositivo hacia recursos internos.
 
 Riesgos:
 
-- credenciales robadas;
-- dispositivo infectado;
-- falta de MFA;
-- acceso excesivo.
+- Credenciales robadas;
+- Dispositivo infectado;
+- Falta de MFA;
+- Acceso excesivo.
 
 ### Site-to-site
 
@@ -80,25 +80,25 @@ Conecta redes completas entre oficinas, cloud o proveedores.
 
 Riesgos:
 
-- confianza excesiva entre redes;
-- rutas demasiado amplias;
-- proveedor comprometido;
-- falta de monitoreo este-oeste.
+- Confianza excesiva entre redes;
+- Rutas demasiado amplias;
+- Proveedor comprometido;
+- Falta de monitoreo este-oeste.
 
-En ambos casos, la VPN cifra el canal, pero no reemplaza segmentacion ni autorizacion.
+En ambos casos, la VPN cifra el canal, pero no reemplaza segmentación ni autorización.
 
 ## Proxy
 
-Un proxy intermedia trafico, normalmente web.
+Un proxy intermedia tráfico, normalmente web.
 
 Puede ayudar a:
 
 - Filtrar URLs.
-- Registrar navegacion.
-- Bloquear categorias.
-- Inspeccionar trafico segun politica.
+- Registrar navegación.
+- Bloquear categorías.
+- Inspeccionar tráfico según política.
 
-Un proxy ayuda a controlar salida a internet. Es util para reducir acceso a sitios maliciosos, detectar descargas sospechosas y tener visibilidad de navegacion corporativa segun politica.
+Un proxy ayuda a controlar salida a internet. Es útil para reducir acceso a sitios maliciosos, detectar descargas sospechosas y tener visibilidad de navegación corporativa según política.
 
 Riesgos:
 
@@ -121,14 +121,14 @@ usuario -> proxy -> internet
 
 Usos:
 
-- filtrar URLs;
-- registrar navegacion;
-- aplicar politicas;
-- bloquear descargas peligrosas.
+- Filtrar URLs;
+- Registrar navegación;
+- Aplicar políticas;
+- Bloquear descargas peligrosas.
 
 ### Proxy reverso
 
-Intermedia entrada desde usuarios externos hacia una aplicacion interna.
+Intermedia entrada desde usuarios externos hacia una aplicación interna.
 
 Ejemplo:
 
@@ -139,21 +139,21 @@ internet -> reverse proxy -> aplicacion
 Usos:
 
 - TLS termination;
-- balanceo;
+- Balanceo;
 - WAF;
-- autenticacion centralizada;
-- ocultar infraestructura interna.
+- Autenticación centralizada;
+- Ocultar infraestructura interna.
 
 No confundas ambos. Uno controla salida; el otro controla entrada hacia servicios.
 
 ## Egress Filtering
 
-Controlar trafico saliente.
+Controlar tráfico saliente.
 
 Importa porque:
 
 - Malware necesita comunicarse.
-- Exfiltracion usa salida.
+- Exfiltración usa salida.
 - SSRF puede abusar salida del servidor.
 
 Ejemplo:
@@ -163,9 +163,9 @@ Servidor web puede salir a internet por 443 solo a servicios necesarios.
 Servidor web no puede conectarse libremente a cualquier IP interna.
 ```
 
-Egress filtering es importante porque muchas organizaciones solo piensan en bloquear entrada. Un atacante que ya logro ejecutar codigo necesita salida para descargar herramientas, comunicarse o sacar datos.
+Egress filtering es importante porque muchas organizaciones solo piensan en bloquear entrada. Un atacante que ya logro ejecutar código necesita salida para descargar herramientas, comunicarse o sacar datos.
 
-Ejemplo de politica:
+Ejemplo de política:
 
 ```text
 Servidor de aplicacion puede salir a proveedor de pagos por 443.
@@ -175,11 +175,11 @@ Base de datos no inicia conexiones a internet.
 
 Egress filtering reduce:
 
-- command and control;
-- descarga de herramientas;
-- exfiltracion;
-- abuso de SSRF;
-- conexiones inesperadas desde servidores.
+- Command and control;
+- Descarga de herramientas;
+- Exfiltración;
+- Abuso de SSRF;
+- Conexiones inesperadas desde servidores.
 
 ## DMZ
 
@@ -187,15 +187,15 @@ Zona para sistemas expuestos, separada de red interna.
 
 Ejemplo:
 
-- Web publico en DMZ.
+- Web público en DMZ.
 - Base de datos en red interna.
 - Admin desde red separada.
 
 Una DMZ reduce impacto porque un sistema expuesto no queda en la misma zona que datos internos. No significa que el sistema de DMZ sea confiable; significa que se asume mayor riesgo y se limita lo que puede alcanzar.
 
-## Segmentacion
+## Segmentación
 
-Separar por funcion y riesgo:
+Separar por función y riesgo:
 
 - Usuarios.
 - Servidores.
@@ -204,17 +204,17 @@ Separar por funcion y riesgo:
 - Produccion.
 - Desarrollo.
 
-La segmentacion responde una pregunta clave:
+La segmentación responde una pregunta clave:
 
 ```text
-Si este activo cae, que mas puede alcanzar?
+Si este activo cae, qué más puede alcanzar?
 ```
 
-No basta con crear VLANs. La segmentacion existe de verdad cuando hay reglas, logs y revisiones.
+No basta con crear VLANs. La segmentación existe de verdad cuando hay reglas, logs y revisiones.
 
 ## Microsegmentacion
 
-Segmentacion clasica separa redes grandes. Microsegmentacion busca controlar comunicacion entre cargas o servicios especificos.
+Segmentación clasica separa redes grandes. Microsegmentacion busca controlar comunicación entre cargas o servicios especificos.
 
 Ejemplo:
 
@@ -224,9 +224,9 @@ backend solo habla con database
 database no inicia conexiones a internet
 ```
 
-En cloud o Kubernetes esto puede implementarse con security groups, network policies, service mesh o politicas equivalentes.
+En cloud o Kubernetes esto puede implementarse con security groups, network policies, service mesh o políticas equivalentes.
 
-La microsegmentacion es especialmente util cuando muchos servicios viven en la misma nube, cluster o red virtual. En vez de confiar en que "todo backend puede hablar con todo", define relaciones concretas.
+La microsegmentacion es especialmente útil cuando muchos servicios viven en la misma nube, cluster o red virtual. En vez de confiar en que "todo backend puede hablar con todo", define relaciones concretas.
 
 ## Zonas Sugeridas
 
@@ -234,10 +234,10 @@ La microsegmentacion es especialmente util cuando muchos servicios viven en la m
 | --- | --- | --- |
 | Usuarios | Laptops, estaciones | EDR, proxy, acceso limitado |
 | Servidores | Apps internas | Firewall interno, hardening, logs |
-| DMZ | Servicios publicos | WAF, monitoreo, acceso restringido a interno |
+| DMZ | Servicios públicos | WAF, monitoreo, acceso restringido a interno |
 | Datos | Bases, storage sensible | Acceso solo desde apps autorizadas |
 | Administracion | Jump boxes, consolas | MFA, PAM, logging fuerte |
-| Invitados/IoT | Visitantes, dispositivos no confiables | Internet solamente o acceso minimo |
+| Invitados/IoT | Visitantes, dispositivos no confiables | Internet solamente o acceso mínimo |
 
 ## Errores Comunes
 
@@ -249,32 +249,32 @@ La microsegmentacion es especialmente util cuando muchos servicios viven en la m
 - Segmentos definidos en diagrama pero no aplicados en reglas.
 - Reglas temporales que nunca expiran.
 
-## Ejemplo de Diseno de Acceso
+## Ejemplo de Diseño de Acceso
 
-Ejemplo de diseno de acceso remoto para administradores:
+Ejemplo de diseño de acceso remoto para administradores:
 
-- Quien entra?
+- Quién entra?
 - MFA?
-- A que segmento?
-- Que puertos?
-- Que logs?
-- Que pasa si el dispositivo no cumple?
+- A qué segmento?
+- Qué puertos?
+- Qué logs?
+- Qué pasa si el dispositivo no cumple?
 
-Diseno razonable:
+Diseño razonable:
 
 | Pregunta | Respuesta esperada |
 | --- | --- |
-| Quien entra? | Administradores nominales |
+| Quién entra? | Administradores nominales |
 | MFA? | Obligatorio |
 | Dispositivo | Corporativo y saludable |
 | Segmento | Administracion |
 | Acceso | Jump box, no red completa |
-| Logs | VPN, jump box, comandos criticos |
+| Logs | VPN, jump box, comandos críticos |
 | Incumplimiento | Bloquear o acceso limitado |
 
 ## Patrones de Arquitectura
 
-### Patron debil
+### Patron débil
 
 ```text
 VPN -> red completa -> servidores y usuarios
@@ -294,7 +294,7 @@ Ventaja:
 
 La identidad, el dispositivo y el rol limitan alcance.
 
-### Patron para aplicaciones publicas
+### Patron para aplicaciones públicas
 
 ```text
 internet -> WAF/reverse proxy -> app -> database
@@ -306,43 +306,43 @@ La base de datos no debe exponerse directamente a internet ni a usuarios.
 
 Para VPN:
 
-- usuario;
+- Usuario;
 - IP origen;
-- hora de conexion;
+- Hora de conexión;
 - MFA exitoso o fallido;
-- dispositivo;
+- Dispositivo;
 - IP asignada;
-- bytes transferidos;
-- desconexion.
+- Bytes transferidos;
+- Desconexion.
 
 Para proxy:
 
-- usuario o IP;
+- Usuario o IP;
 - URL o dominio;
-- categoria;
-- accion;
-- bytes;
-- user-agent;
-- reputacion.
+- Categoría;
+- Acción;
+- Bytes;
+- User-agent;
+- Reputación.
 
-Para segmentacion:
+Para segmentación:
 
-- regla aplicada;
-- origen;
-- destino;
-- puerto;
-- accion;
-- zona.
+- Regla aplicada;
+- Origen;
+- Destino;
+- Puerto;
+- Acción;
+- Zona.
 
 Sin logs, estos controles son dificiles de auditar.
 
-## Preguntas de Comprension
+## Preguntas de Comprensión
 
-- Que debe poder hacer un usuario al conectarse por VPN?
-- Que no deberia poder hacer?
-- Que trafico saliente necesita una app y cual seria sospechoso?
-- Que diferencia hay entre segmentacion y microsegmentacion?
-- Como separarias usuarios, servidores, invitados y administracion?
+- Qué debe poder hacer un usuario al conectarse por VPN?
+- Qué no debería poder hacer?
+- Qué tráfico saliente necesita una app y cuál seria sospechoso?
+- Qué diferencia hay entre segmentación y microsegmentacion?
+- Cómo separarias usuarios, servidores, invitados y administracion?
 
 ## Criterio de Dominio
 
@@ -352,6 +352,6 @@ Puedes avanzar cuando puedas:
 - Explicar proxy.
 - Explicar DMZ.
 - Explicar egress filtering.
-- Diseñar segmentacion basica.
+- Diseñar segmentación básica.
 - Explicar por que VPN no debe dar acceso plano.
 - Proponer zonas de red con reglas razonables.

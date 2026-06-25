@@ -2,66 +2,66 @@
 
 ## Objetivo
 
-Simular una investigacion SOC usando logs ficticios, MITRE ATT&CK, detecciones y reporte.
+Simular una investigación SOC usando logs ficticios, MITRE ATT&CK, detecciones y reporte.
 
-Este proyecto demuestra que puedes trabajar una alerta de principio a fin: triage, evidencia, timeline, hipotesis, severidad, contencion, deteccion y reporte.
+Este proyecto demuestra que puedes trabajar una alerta de principio a fin: triage, evidencia, timeline, hipótesis, severidad, contención, detección y reporte.
 
 ## Escenario
 
-Un usuario presenta multiples logins fallidos, un login exitoso y actividad posterior sospechosa.
+Un usuario presenta múltiples logins fallidos, un login exitoso y actividad posterior sospechosa.
 
 ## Datos de Referencia
 
 El caso puede apoyarse en datos ficticios como:
 
-- logs de autenticacion;
-- resumen de eventos por usuario;
-- resumen de eventos por IP;
-- timeline;
-- reporte de analisis.
+- Logs de autenticación;
+- Resumen de eventos por usuario;
+- Resumen de eventos por IP;
+- Timeline;
+- Reporte de análisis.
 
-No importa la ruta exacta de los archivos. Importa que los datos sean ficticios o autorizados y que permitan razonar sin exponer informacion sensible.
+No importa la ruta exacta de los archivos. Importa que los datos sean ficticios o autorizados y que permitan razonar sin exponer información sensible.
 
 ## Alcance
 
 Incluido:
 
-- analisis de logs ficticios;
-- timeline;
+- Análisis de logs ficticios;
+- Timeline;
 - MITRE ATT&CK;
-- severidad;
-- contencion;
-- deteccion propuesta;
-- reporte ejecutivo.
+- Severidad;
+- Contención;
+- Detección propuesta;
+- Reporte ejecutivo.
 
 Fuera de alcance:
 
-- atribucion de actores;
-- acciones contra sistemas reales;
-- escaneo externo;
-- uso de datos reales.
+- Atribución de actores;
+- Acciones contra sistemas reales;
+- Escaneo externo;
+- Uso de datos reales.
 
 ## Puntos a observar
 
-1. Entender que informacion aportan los logs.
+1. Entender que información aportan los logs.
 2. Separar eventos relevantes de ruido.
 3. Reconstruir una linea de tiempo.
-4. Formular hipotesis.
+4. Formular hipótesis.
 5. Mapear con MITRE ATT&CK.
-6. Proponer contencion.
-7. Proponer deteccion.
+6. Proponer contención.
+7. Proponer detección.
 8. Escribir reporte final.
 
 ## Fase 1: Triage
 
 El triage debe aclarar:
 
-- Que alerta inicia el caso?
-- Que usuario esta involucrado?
-- Que IP origen aparece?
+- Qué alerta inicia el caso?
+- Qué usuario está involucrado?
+- Qué IP origen aparece?
 - Hay login exitoso?
 - Hay actividad posterior?
-- Que severidad inicial asignas?
+- Qué severidad inicial asignas?
 
 ## Fase 2: Timeline
 
@@ -70,9 +70,9 @@ Formato:
 | Hora | Fuente | Evento | Evidencia | Interpretacion |
 | --- | --- | --- | --- | --- |
 
-La interpretacion no debe mezclarse con el evento. Primero hechos, despues hipotesis.
+La interpretacion no debe mezclarse con el evento. Primero hechos, después hipótesis.
 
-## Fase 3: Hipotesis
+## Fase 3: Hipótesis
 
 Escribe al menos dos:
 
@@ -81,38 +81,38 @@ H1: La cuenta fue comprometida mediante fuerza bruta.
 H2: El usuario escribio mal su password y luego inicio sesion legitimamente.
 ```
 
-Despues indica que evidencia apoya o contradice cada una.
+Después indica que evidencia apoya o contradice cada una.
 
 ## Fase 4: MITRE
 
 Mapea comportamiento, no solo nombres:
 
-| Evidencia | Tactica | Tecnica | Justificacion |
+| Evidencia | Tactica | Técnica | Justificacion |
 | --- | --- | --- | --- |
 
 ## Fase 5: Respuesta
 
 Propone:
 
-- contencion inmediata;
-- erradicacion;
-- recuperacion;
-- monitoreo posterior;
-- comunicacion necesaria.
+- Contención inmediata;
+- Erradicacion;
+- Recuperación;
+- Monitoreo posterior;
+- Comunicación necesaria.
 
-## Fase 6: Deteccion
+## Fase 6: Detección
 
 Documenta una regla conceptual:
 
-- nombre;
-- fuente;
-- campos;
-- condicion;
-- ventana;
-- umbral;
-- falsos positivos;
-- severidad;
-- pasos de triage.
+- Nombre;
+- Fuente;
+- Campos;
+- Condicion;
+- Ventana;
+- Umbral;
+- Falsos positivos;
+- Severidad;
+- Pasos de triage.
 
 ## Estructura sugerida
 
@@ -127,7 +127,7 @@ Documenta una regla conceptual:
 
 ## Timeline
 
-## Analisis
+## Análisis
 
 ## MITRE ATT&CK
 
@@ -135,27 +135,27 @@ Documenta una regla conceptual:
 
 ## Recomendaciones
 
-## Deteccion Propuesta
+## Detección Propuesta
 
 ## Lecciones Aprendidas
 ```
 
-## Criterio de Exito
+## Criterio de Éxito
 
-- El reporte diferencia evidencia de hipotesis.
+- El reporte diferencia evidencia de hipótesis.
 - Hay timeline.
-- Hay recomendacion accionable.
-- Hay deteccion propuesta.
+- Hay recomendación accionable.
+- Hay detección propuesta.
 - Hay severidad justificada.
 - Hay MITRE con justificacion.
 - Hay falsos positivos.
 - Hay lecciones aprendidas.
 
-## Rubrica
+## Rúbrica
 
 | Nivel | Evidencia |
 | --- | --- |
-| Basico | Describe eventos |
-| Bueno | Timeline e hipotesis claras |
-| Fuerte | Propone contencion y deteccion |
+| Básico | Describe eventos |
+| Bueno | Timeline e hipótesis claras |
+| Fuerte | Propone contención y detección |
 | Portafolio | Reporte ejecutivo completo, claro y accionable |

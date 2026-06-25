@@ -2,21 +2,21 @@
 
 Estos laboratorios son para practicar sin tocar sistemas de terceros.
 
-## Como Leer Estos Labs
+## Cómo Leer Estos Labs
 
-Cada lab muestra una forma de convertir comandos y observaciones en explicaciones utiles. No basta con ejecutar comandos; lo importante es entender que demuestra cada salida.
+Cada lab muestra una forma de convertir comandos y observaciones en explicaciones útiles. No basta con ejecutar comandos; lo importante es entender que demuestra cada salida.
 
 Una buena nota de estudio puede contener:
 
-- objetivo;
-- comandos o pasos;
-- salida relevante;
-- explicacion con tus palabras;
-- errores encontrados;
-- conclusion;
-- dudas pendientes.
+- Objetivo;
+- Comandos o pasos;
+- Salida relevante;
+- Explicación con tus palabras;
+- Errores encontrados;
+- Conclusión;
+- Dudas pendientes.
 
-Si quieres guardar notas personales, usa un nombre claro para encontrarlas despues:
+Si quieres guardar notas personales, usa un nombre claro para encontrarlas después:
 
 ```text
 tema-fecha-notas
@@ -27,20 +27,20 @@ tema-fecha-notas
 - No escanees redes ajenas.
 - No pruebes sistemas de terceros.
 - Usa dominios de ejemplo, tu equipo local o laboratorios autorizados.
-- Si un comando falla, documenta el error; tambien es aprendizaje.
+- Si un comando falla, documenta el error; también es aprendizaje.
 
-## Lab 1: Flujo Web Basico
+## Lab 1: Flujo Web Básico
 
 ### Objetivo
 
-Entender que ocurre al visitar una pagina web.
+Entender que ocurre al visitar una página web.
 
 ### Herramientas
 
 - Terminal.
 - `curl`.
 - `dig` o `nslookup`.
-- navegador con DevTools.
+- Navegador con DevTools.
 
 ### Pasos
 
@@ -56,7 +56,7 @@ dig example.com
 curl -I https://example.com
 ```
 
-3. Ver detalle de conexion:
+3. Ver detalle de conexión:
 
 ```bash
 curl -v https://example.com
@@ -66,12 +66,12 @@ curl -v https://example.com
 
 ### Preguntas
 
-- Que IP resolvio el dominio?
-- Que codigo HTTP recibiste?
-- Que headers aparecen?
+- Qué IP resolvio el dominio?
+- Qué código HTTP recibiste?
+- Qué headers aparecen?
 - Se usa HTTPS?
-- Que parte corresponde a DNS, TCP/TLS y HTTP?
-- Que headers ayudan a entender el servidor?
+- Qué parte corresponde a DNS, TCP/TLS y HTTP?
+- Qué headers ayudan a entender el servidor?
 - Que diferencia hay entre `curl -I` y `curl -v`?
 
 ### Ejemplo de resultado
@@ -80,14 +80,14 @@ Un ejemplo de reporte puede incluir:
 
 - Comandos.
 - Resultados.
-- Explicacion.
+- Explicación.
 - Dudas.
 - Diagrama simple del flujo.
 
-### Criterio de Exito
+### Criterio de Éxito
 
 - Explicas DNS, TCP/TLS y HTTP por separado.
-- Identificas codigo de respuesta y headers.
+- Identificas código de respuesta y headers.
 - Puedes explicar que evidencia obtuvo cada comando.
 
 ## Lab 2: Subnetting Manual
@@ -131,7 +131,7 @@ Hosts:
 
 Explica como calculaste cada resultado.
 
-### Criterio de Exito
+### Criterio de Éxito
 
 - Identificas red, broadcast y rango usable.
 - Explicas por que una IP pertenece o no pertenece a una subred.
@@ -157,10 +157,10 @@ ls -l
 
 ### Preguntas
 
-- Quien puede leer cada archivo?
-- Quien puede escribir?
-- Quien puede ejecutar?
-- Que archivo es mas sensible?
+- Quién puede leer cada archivo?
+- Quién puede escribir?
+- Quién puede ejecutar?
+- Qué archivo es más sensible?
 
 ### Ejemplo de resultado
 
@@ -169,9 +169,9 @@ Tabla:
 | Archivo | Permisos | Owner puede | Grupo puede | Otros pueden |
 | --- | --- | --- | --- | --- |
 
-### Observacion Adicional
+### Observación Adicional
 
-Estos comandos muestran un archivo con permisos mas restrictivos:
+Estos comandos muestran un archivo con permisos más restrictivos:
 
 ```bash
 echo "secreto" > secreto.txt
@@ -179,13 +179,13 @@ chmod 600 secreto.txt
 ls -l secreto.txt
 ```
 
-Explica por que un archivo sensible no deberia ser legible por todos.
+Explica por que un archivo sensible no debería ser legible por todos.
 
-### Criterio de Exito
+### Criterio de Éxito
 
 - Interpretas `rwx`.
 - Explicas owner, group y others.
-- Justificas permisos para archivo publico, privado y ejecutable.
+- Justificas permisos para archivo público, privado y ejecutable.
 
 ## Lab 4: Hash e Integridad
 
@@ -205,12 +205,12 @@ sha256sum archivo.txt
 ### Preguntas
 
 - Cambia el hash?
-- Por que?
-- Para que sirve esto en seguridad?
+- Por qué?
+- Para qué sirve esto en seguridad?
 
 ### Ejemplo de resultado
 
-Explicacion de hashing vs cifrado.
+Explicación de hashing vs cifrado.
 
 ### Extension
 
@@ -222,17 +222,17 @@ echo "transferencia=101" > b.txt
 sha256sum a.txt b.txt
 ```
 
-### Criterio de Exito
+### Criterio de Éxito
 
 - Explicas que hash no cifra.
 - Explicas por que un cambio pequeño altera el resultado.
 - Das un ejemplo de integridad en seguridad.
 
-## Lab 5: Analisis de Logs Ficticios
+## Lab 5: Análisis de Logs Ficticios
 
 ### Objetivo
 
-Practicar investigacion sin necesitar logs reales.
+Practicar investigación sin necesitar logs reales.
 
 ### Datos
 
@@ -245,23 +245,23 @@ Practicar investigacion sin necesitar logs reales.
 
 ### Preguntas
 
-- Que evidencia existe?
-- Que hipotesis tienes?
-- Que buscarias despues?
-- Que accion recomendarias?
+- Qué evidencia existe?
+- Qué hipótesis tienes?
+- Qué buscarias después?
+- Qué acción recomendarias?
 
 ### Ejemplo de resultado
 
-Mini reporte de investigacion.
+Mini reporte de investigación.
 
-### Criterio de Exito
+### Criterio de Éxito
 
-- Separas evidencia de hipotesis.
+- Separas evidencia de hipótesis.
 - Creas una linea de tiempo.
-- Propones al menos una accion defensiva.
-- Indicas que informacion falta.
+- Propones al menos una acción defensiva.
+- Indicas que información falta.
 
-## Lab 6: Inventario Basico de Activos
+## Lab 6: Inventario Básico de Activos
 
 ### Objetivo
 
@@ -271,23 +271,23 @@ Entender que no puedes proteger lo que no conoces.
 
 Una tabla informativa con activos ficticios puede verse asi:
 
-| Activo | Owner | Criticidad | Exposicion | Datos | Control principal |
+| Activo | Owner | Criticidad | Exposición | Datos | Control principal |
 | --- | --- | --- | --- | --- | --- |
 | laptop-personal | yo | media | privada | notas, llaves | cifrado, backups |
 | app-web-demo | dev | alta | internet | usuarios | MFA, logs |
-| db-demo | data | critica | interna | datos sensibles | acceso restringido |
+| db-demo | data | crítica | interna | datos sensibles | acceso restringido |
 
 ### Preguntas
 
-- Cual activo atenderias primero?
-- Que activo tiene mas impacto?
-- Que activo necesita mejores logs?
-- Que control preventivo aplicarias?
-- Que control detectivo aplicarias?
+- Cuál activo atenderias primero?
+- Qué activo tiene más impacto?
+- Qué activo necesita mejores logs?
+- Qué control preventivo aplicarias?
+- Qué control detectivo aplicarias?
 
 ### Ejemplo de resultado
 
-Una tabla con priorizacion y una conclusion breve sobre que activo atender primero.
+Una tabla con priorización y una conclusión breve sobre que activo atender primero.
 
 ## Lab 7: Mini Hardening Checklist
 
@@ -321,11 +321,11 @@ Tabla:
 | Riesgo | Impacto | Control | Tipo | Como verificar |
 | --- | --- | --- | --- | --- |
 
-## Rubrica Rapida
+## Rúbrica Rapida
 
 | Nivel | Evidencia |
 | --- | --- |
-| Basico | Ejecutaste comandos y pegaste salidas |
+| Básico | Ejecutaste comandos y pegaste salidas |
 | Bueno | Explicaste resultados con tus palabras |
 | Fuerte | Relacionaste resultados con riesgo y control |
-| Portafolio | Reporte claro, reproducible y con conclusion |
+| Portafolio | Reporte claro, reproducible y con conclusión |

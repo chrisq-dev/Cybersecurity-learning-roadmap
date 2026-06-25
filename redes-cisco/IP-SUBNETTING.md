@@ -2,13 +2,13 @@
 
 ## Objetivo
 
-Entender direcciones IP, mascaras, CIDR y subredes. Esto es esencial para redes, Cisco, firewalls, cloud, seguridad defensiva y analisis de logs.
+Entender direcciones IP, mascaras, CIDR y subredes. Esto es esencial para redes, Cisco, firewalls, cloud, seguridad defensiva y análisis de logs.
 
-Subnetting no se estudia solo para hacer ejercicios. Se estudia para saber que sistemas pertenecen a un segmento, que trafico deberia permitirse, que rangos pueden analizarse en un laboratorio autorizado y como diseñar redes con menor impacto ante incidentes.
+Subnetting no se estudia solo para hacer ejercicios. Se estudia para saber que sistemas pertenecen a un segmento, que tráfico debería permitirse, que rangos pueden analizarse en un laboratorio autorizado y como diseñar redes con menor impacto ante incidentes.
 
-## Que es una Direccion IP
+## Qué es una Dirección IP
 
-Una direccion IP identifica una interfaz en una red.
+Una dirección IP identifica una interfaz en una red.
 
 Ejemplo:
 
@@ -26,7 +26,7 @@ Cada octeto va de 0 a 255 porque representa 8 bits.
 
 Importante: una IP no identifica permanentemente a una persona. Puede cambiar por DHCP, puede estar detras de NAT, puede compartirse entre sistemas o puede pertenecer a una interfaz temporal.
 
-## IP Privada vs IP Publica
+## IP Privada vs IP Pública
 
 Rangos privados comunes:
 
@@ -36,20 +36,20 @@ Rangos privados comunes:
 | `172.16.0.0/12` | redes privadas |
 | `192.168.0.0/16` | redes domesticas y pequeñas |
 
-Una IP privada no se enruta directamente en internet. Normalmente sale por NAT usando una IP publica.
+Una IP privada no se enruta directamente en internet. Normalmente sale por NAT usando una IP pública.
 
 En seguridad:
 
-- logs internos suelen mostrar IP privada;
-- logs externos suelen mostrar IP publica;
-- para atribucion necesitas correlacionar DHCP, NAT, usuario y timestamp.
+- Logs internos suelen mostrar IP privada;
+- Logs externos suelen mostrar IP pública;
+- Para atribución necesitas correlacionar DHCP, NAT, usuario y timestamp.
 
 ## Red y Host
 
 Una IP tiene dos partes:
 
-- parte de red;
-- parte de host.
+- Parte de red;
+- Parte de host.
 
 La mascara indica que parte pertenece a la red.
 
@@ -83,12 +83,12 @@ Ejemplos comunes:
 
 Se restan 2 direcciones en redes tradicionales:
 
-- direccion de red;
-- broadcast.
+- Dirección de red;
+- Broadcast.
 
 En algunos entornos cloud hay reglas especiales y direcciones reservadas adicionales.
 
-## Como Pensar Bloques
+## Cómo Pensar Bloques
 
 El tamaño del bloque depende de cuantos bits quedan para hosts.
 
@@ -116,11 +116,11 @@ Rango usable: 192.168.1.1 - 192.168.1.254
 Broadcast: 192.168.1.255
 ```
 
-Uso comun:
+Uso común:
 
-- red pequeña de usuarios;
-- laboratorio local;
-- segmento simple.
+- Red pequeña de usuarios;
+- Laboratorio local;
+- Segmento simple.
 
 Riesgo:
 
@@ -171,7 +171,7 @@ Host:    192.168.10.25/24
 Gateway: 192.168.20.1
 ```
 
-Ese gateway esta fuera de la red del host, por lo que la configuracion no tiene sentido para comunicacion normal.
+Ese gateway está fuera de la red del host, por lo que la configuración no tiene sentido para comunicación normal.
 
 ## Subredes Traslapadas
 
@@ -188,7 +188,7 @@ Red B: 10.0.0.128/25
 
 ## 0.0.0.0/0
 
-`0.0.0.0/0` significa cualquier direccion IPv4.
+`0.0.0.0/0` significa cualquier dirección IPv4.
 
 En firewalls y cloud puede significar:
 
@@ -196,20 +196,20 @@ En firewalls y cloud puede significar:
 permitir desde todo internet
 ```
 
-No siempre es incorrecto. Un sitio web publico puede aceptar `0.0.0.0/0` hacia `443`. Pero exponer SSH, RDP, bases de datos o paneles administrativos a `0.0.0.0/0` suele ser riesgoso.
+No siempre es incorrecto. Un sitio web público puede aceptar `0.0.0.0/0` hacia `443`. Pero exponer SSH, RDP, bases de datos o paneles administrativos a `0.0.0.0/0` suele ser riesgoso.
 
-## Por Que Importa en Seguridad
+## Por Qué Importa en Seguridad
 
 Subnetting ayuda a:
 
-- segmentar redes;
-- separar usuarios, servidores y administracion;
-- crear reglas de firewall;
-- definir rangos de analisis autorizados;
-- entender logs de origen/destino;
-- diseñar redes cloud;
-- limitar movimiento lateral;
-- documentar alcance de pruebas.
+- Segmentar redes;
+- Separar usuarios, servidores y administracion;
+- Crear reglas de firewall;
+- Definir rangos de análisis autorizados;
+- Entender logs de origen/destino;
+- Diseñar redes cloud;
+- Limitar movimiento lateral;
+- Documentar alcance de pruebas.
 
 Ejemplo:
 
@@ -220,7 +220,7 @@ Administracion: 10.10.99.0/24
 Invitados:      10.10.30.0/24
 ```
 
-Con esa separacion puedes aplicar reglas distintas por funcion.
+Con esa separación puedes aplicar reglas distintas por función.
 
 ## Ejemplo de Regla
 
@@ -230,7 +230,7 @@ Bloquear 10.10.30.0/24 -> 10.10.20.0/24 any
 Permitir 10.10.99.0/24 -> switches tcp/22
 ```
 
-La red no solo organiza direcciones. Tambien define limites de confianza.
+La red no solo organiza direcciones. También define límites de confianza.
 
 ## Errores Comunes
 
@@ -240,8 +240,8 @@ La red no solo organiza direcciones. Tambien define limites de confianza.
 - Reglas de firewall demasiado amplias.
 - Usar `0.0.0.0/0` sin entender que significa.
 - Escanear rangos no autorizados.
-- Confundir IP publica con IP privada.
-- No registrar que rango pertenece a que funcion.
+- Confundir IP pública con IP privada.
+- No registrar que rango pertenece a que función.
 
 ## Ejemplos de Lectura
 
@@ -279,11 +279,11 @@ Hosts tradicionales: 14
 
 Dominas este tema cuando puedes:
 
-- explicar IP, mascara y CIDR;
-- diferenciar IP privada y publica;
-- calcular hosts de /24, /25, /26, /27 y /28;
-- identificar red, rango usable y broadcast;
-- validar si un gateway pertenece a la red;
-- explicar por que subredes traslapadas causan problemas;
-- interpretar `0.0.0.0/0`;
-- explicar por que segmentar reduce riesgo.
+- Explicar IP, mascara y CIDR;
+- Diferenciar IP privada y pública;
+- Calcular hosts de /24, /25, /26, /27 y /28;
+- Identificar red, rango usable y broadcast;
+- Validar si un gateway pertenece a la red;
+- Explicar por que subredes traslapadas causan problemas;
+- Interpretar `0.0.0.0/0`;
+- Explicar por que segmentar reduce riesgo.

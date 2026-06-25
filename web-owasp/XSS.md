@@ -4,11 +4,11 @@
 
 Entender XSS, por que ocurre y como prevenirlo.
 
-XSS es una falla de confianza entre datos no confiables y el navegador. La clave no es memorizar payloads; es entender en que contexto se renderiza un dato y como evitar que se interprete como codigo.
+XSS es una falla de confianza entre datos no confiables y el navegador. La clave no es memorizar payloads; es entender en que contexto se renderiza un dato y como evitar que se interprete como código.
 
-## Que es
+## Qué es
 
-XSS ocurre cuando una aplicacion permite que contenido no confiable se ejecute como JavaScript en el navegador de otros usuarios.
+XSS ocurre cuando una aplicación permite que contenido no confiable se ejecute como JavaScript en el navegador de otros usuarios.
 
 ## Modelo Mental
 
@@ -16,7 +16,7 @@ XSS ocurre cuando una aplicacion permite que contenido no confiable se ejecute c
 input no confiable -> almacenamiento/procesamiento -> render en navegador -> ejecucion
 ```
 
-Si el dato llega al DOM como codigo ejecutable, hay riesgo.
+Si el dato llega al DOM como código ejecutable, hay riesgo.
 
 ## Tipos
 
@@ -34,7 +34,7 @@ Si `q` se refleja sin escape, puede ser peligroso.
 
 ### Stored XSS
 
-El payload queda guardado en la aplicacion.
+El payload queda guardado en la aplicación.
 
 Ejemplos:
 
@@ -51,27 +51,27 @@ Ejemplos de fuentes en DOM:
 - `location.hash`;
 - `location.search`;
 - `document.referrer`;
-- mensajes entre ventanas;
-- respuestas de APIs renderizadas con `innerHTML`.
+- Mensajes entre ventanas;
+- Respuestas de APIs renderizadas con `innerHTML`.
 
 ## Impacto
 
 Puede permitir:
 
-- Robo de informacion visible en la pagina.
+- Robo de información visible en la página.
 - Acciones en nombre del usuario.
 - Manipulacion de contenido.
 - Redireccion a phishing.
-- Robo de tokens si estan mal protegidos.
+- Robo de tokens si están mal protegidos.
 
 ## Mitigacion
 
-- Escapar salida segun contexto.
+- Escapar salida según contexto.
 - Sanitizar HTML cuando se permita HTML.
 - Usar frameworks correctamente.
 - Content Security Policy.
 - Cookies `HttpOnly` y `Secure`.
-- Validacion de entrada como control adicional, no unico.
+- Validación de entrada como control adicional, no unico.
 
 ## Escape por Contexto
 
@@ -81,9 +81,9 @@ No existe un solo escape universal. Depende de donde se imprime el dato.
 | --- | --- | --- |
 | HTML body | Interpretar etiquetas | HTML escaping |
 | Atributo HTML | Romper atributo | Attribute escaping |
-| JavaScript | Ejecutar codigo | Evitar inline JS, serializar seguro |
+| JavaScript | Ejecutar código | Evitar inline JS, serializar seguro |
 | URL | Redireccion o esquema peligroso | Validar esquema y destino |
-| CSS | Inyeccion de estilos | Evitar CSS dinamico no confiable |
+| CSS | Inyección de estilos | Evitar CSS dinamico no confiable |
 
 ## Contextos
 
@@ -103,11 +103,11 @@ CSP reduce impacto si algo falla, pero no reemplaza escape ni sanitizacion.
 
 Buenas ideas:
 
-- evitar `unsafe-inline`;
-- restringir origenes de scripts;
-- usar nonces o hashes cuando aplique;
-- reportar violaciones;
-- probar que no rompa la app.
+- Evitar `unsafe-inline`;
+- Restringir origenes de scripts;
+- Usar nonces o hashes cuando aplique;
+- Reportar violaciones;
+- Probar que no rompa la app.
 
 ## Cookies y Sesiones
 
@@ -124,42 +124,42 @@ Buenas ideas:
 - HTML permitido sin controles.
 - JavaScript que usa `innerHTML` con datos no confiables.
 
-En codigo frontend, revisa:
+En código frontend, revisa:
 
 - `innerHTML`;
 - `dangerouslySetInnerHTML`;
-- templates manuales;
-- render de Markdown/HTML;
-- valores de URL insertados en DOM;
-- librerias de sanitizacion mal configuradas.
+- Templates manuales;
+- Render de Markdown/HTML;
+- Valores de URL insertados en DOM;
+- Librerías de sanitizacion mal configuradas.
 
-## Observacion Segura
+## Observación Segura
 
 XSS debe estudiarse en laboratorios autorizados o aplicaciones propias. La idea es entender el flujo, no lanzar payloads contra sistemas ajenos.
 
 Para analizar un caso de XSS, separa:
 
-- entrada: donde llega el dato no confiable;
-- almacenamiento: si se guarda o solo se refleja;
-- salida: donde se renderiza;
-- contexto: HTML, atributo, JavaScript, URL o CSS;
-- impacto: que podria hacer un atacante;
-- control: escape, sanitizacion, CSP y cookies seguras;
-- deteccion: logs y señales sin guardar payloads peligrosos completos si no hace falta.
+- Entrada: donde llega el dato no confiable;
+- Almacenamiento: si se guarda o solo se refleja;
+- Salida: donde se renderiza;
+- Contexto: HTML, atributo, JavaScript, URL o CSS;
+- Impacto: que podria hacer un atacante;
+- Control: escape, sanitizacion, CSP y cookies seguras;
+- Detección: logs y señales sin guardar payloads peligrosos completos si no hace falta.
 
-## Criterios de Revision
+## Criterios de Revisión
 
-Una revision defensiva busca comprobar si:
+Una revisión defensiva busca comprobar si:
 
-- los datos no confiables se escapan segun contexto;
-- el HTML permitido pasa por sanitizador confiable;
-- no se usa `innerHTML` con datos no confiables;
-- cookies sensibles usan `HttpOnly`;
-- cookies sensibles usan `Secure`;
-- cookies sensibles usan `SameSite`;
-- CSP esta definida como capa adicional;
-- inputs se validan, aunque no sean la defensa principal;
-- logs registran intentos sospechosos sin crear nuevos riesgos.
+- Los datos no confiables se escapan según contexto;
+- El HTML permitido pasa por sanitizador confiable;
+- No se usa `innerHTML` con datos no confiables;
+- Cookies sensibles usan `HttpOnly`;
+- Cookies sensibles usan `Secure`;
+- Cookies sensibles usan `SameSite`;
+- CSP está definida como capa adicional;
+- Inputs se validan, aunque no sean la defensa principal;
+- Logs registran intentos sospechosos sin crear nuevos riesgos.
 
 ## Errores Comunes
 
@@ -175,6 +175,6 @@ Puedes avanzar cuando puedas:
 
 - Diferenciar reflected, stored y DOM XSS.
 - Explicar escape por contexto.
-- Explicar CSP a nivel basico.
+- Explicar CSP a nivel básico.
 - Explicar por que `HttpOnly` ayuda.
 - Revisar un flujo y proponer controles especificos por contexto.

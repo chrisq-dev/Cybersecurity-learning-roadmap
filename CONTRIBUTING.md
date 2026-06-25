@@ -1,13 +1,13 @@
 # Contribuir
 
-Este repositorio es una web publica de recursos de ciberseguridad en espanol. La meta es mantener guias claras, practicas y eticas para estudiantes que quieren aprender con orden.
+Este repositorio es una web pública de recursos de ciberseguridad en español. La meta es mantener guías claras, prácticas y éticas para estudiantes que quieren aprender con orden.
 
-## Que Tipo de Contribuciones Sirven
+## Qué Tipo de Contribuciones Sirven
 
-- Correcciones de errores tecnicos.
+- Correcciones de errores técnicos.
 - Mejoras de claridad.
 - Nuevos labs seguros y autorizados.
-- Preguntas de evaluacion.
+- Preguntas de evaluación.
 - Cheatsheets.
 - Plantillas de reportes.
 - Recursos gratuitos y legales.
@@ -15,19 +15,19 @@ Este repositorio es una web publica de recursos de ciberseguridad en espanol. La
 
 ## Reglas
 
-- Mantener el contenido educativo y etico.
-- No agregar tecnicas para dano real o abuso.
-- No subir credenciales, tokens, datos personales o informacion privada.
-- No subir spoilers prohibidos por plataformas de practica.
+- Mantener el contenido educativo y ético.
+- No agregar técnicas para dano real o abuso.
+- No subir credenciales, tokens, datos personales o información privada.
+- No subir spoilers prohibidos por plataformas de práctica.
 - No usar datos de sistemas reales sin permiso.
 - Explicar riesgos y mitigaciones cuando se hable de vulnerabilidades.
 
 ## Estilo
 
-- Escribir en espanol.
+- Escribir en español.
 - Usar explicaciones claras.
 - Preferir ejemplos simples.
-- Incluir ejemplos, practica segura, puntos a observar o preguntas cuando sea posible.
+- Incluir ejemplos, práctica segura, puntos a observar o preguntas cuando sea posible.
 - Mantener rutas y enlaces relativos.
 
 ## Formato Sugerido Para Nuevos Temas

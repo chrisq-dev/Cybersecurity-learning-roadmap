@@ -9,30 +9,30 @@ El correo es una de las principales puertas de entrada a incidentes. Entender SP
 ## Mapa Mental
 
 ```text
-dominio -> DNS -> servidor emisor -> autenticacion -> filtro -> buzon -> usuario
+dominio -> DNS -> servidor emisor -> autenticación -> filtro -> buzón -> usuario
 ```
 
 La pregunta clave:
 
 ```text
-Este correo esta autorizado por el dominio que dice enviarlo?
+Este correo está autorizado por el dominio qué dice enviarlo?
 ```
 
 ## SMTP
 
 SMTP es el protocolo usado para enviar correo.
 
-El correo moderno tambien involucra:
+El correo moderno también involucra:
 
 - DNS.
 - Servidores de envio.
 - Servidores de recepcion.
 - Filtros antispam.
-- Autenticacion de dominio.
+- Autenticación de dominio.
 
-## Headers Basicos
+## Headers Básicos
 
-En una investigacion revisa:
+En una investigación revisa:
 
 - From;
 - Reply-To;
@@ -46,7 +46,7 @@ En una investigacion revisa:
 
 ## Problema Principal
 
-El correo fue diseñado en una epoca con menos controles de identidad. Por eso existen mecanismos para verificar si un correo realmente esta autorizado por un dominio.
+El correo fue diseñado en una época con menos controles de identidad. Por eso existen mecanismos para verificar si un correo realmente está autorizado por un dominio.
 
 ## SPF
 
@@ -76,13 +76,13 @@ DKIM ayuda a integridad y autenticidad del dominio firmante.
 
 DMARC indica que hacer si SPF o DKIM fallan y genera reportes.
 
-Politicas:
+Políticas:
 
 - `none`: monitorear.
 - `quarantine`: enviar a spam/cuarentena.
 - `reject`: rechazar.
 
-DMARC tambien depende de alineacion: que el dominio autenticado coincida con el dominio visible o relacionado.
+DMARC también depende de alineacion: que el dominio autenticado coincida con el dominio visible o relacionado.
 
 ## Riesgos Comunes
 
@@ -97,17 +97,17 @@ DMARC tambien depende de alineacion: que el dominio autenticado coincida con el 
 ## Controles Complementarios
 
 - MFA.
-- filtros antiphishing.
-- sandbox de adjuntos.
-- rewriting o inspeccion de URLs.
-- report button.
-- entrenamiento.
-- verificacion fuera de banda para pagos.
-- bloqueo de macros.
+- Filtros antiphishing.
+- Sandbox de adjuntos.
+- Rewriting o inspeccion de URLs.
+- Report button.
+- Entrenamiento.
+- Verificación fuera de banda para pagos.
+- Bloqueo de macros.
 
-## Observacion Segura
+## Observación Segura
 
-Un dominio publico permite observar registros TXT:
+Un dominio público permite observar registros TXT:
 
 ```bash
 dig TXT example.com
@@ -116,21 +116,21 @@ dig TXT example.com
 Observa:
 
 - Si aparece SPF.
-- Si entiendes la politica.
+- Si entiendes la política.
 - Que dudas tienes.
 
 ## Criterios Para Revisar un Dominio
 
-Una revision basica de dominio debe considerar:
+Una revisión básica de dominio debe considerar:
 
-- dominio revisado;
-- registro SPF;
-- registro DMARC;
-- interpretacion;
-- riesgos;
-- recomendaciones.
+- Dominio revisado;
+- Registro SPF;
+- Registro DMARC;
+- Interpretacion;
+- Riesgos;
+- Recomendaciones.
 
-No hagas pruebas intrusivas. Solo consulta DNS publico.
+No hagas pruebas intrusivas. Solo consulta DNS público.
 
 ## Errores Comunes
 
@@ -149,4 +149,4 @@ Puedes avanzar cuando puedas:
 - Explicar DKIM.
 - Explicar DMARC.
 - Entender por que phishing usa correo.
-- Leer headers basicos y Authentication-Results.
+- Leer headers básicos y Authentication-Results.

@@ -4,7 +4,7 @@
 
 Entender Windows y Active Directory lo suficiente para investigar eventos, comprender identidad empresarial y prepararte para roles SOC o seguridad corporativa.
 
-## Windows Basico
+## Windows Básico
 
 Temas:
 
@@ -21,7 +21,7 @@ Windows es importante en ciberseguridad porque muchas empresas lo usan para esta
 
 ## PowerShell Inicial
 
-Comandos utiles:
+Comandos útiles:
 
 ```powershell
 Get-Process
@@ -40,34 +40,34 @@ Conceptos:
 - Domain Controller: servidor que autentica y administra el dominio.
 - Usuario: identidad.
 - Grupo: conjunto de usuarios.
-- GPO: politica aplicada a usuarios o equipos.
-- Kerberos: protocolo de autenticacion.
+- GPO: política aplicada a usuarios o equipos.
+- Kerberos: protocolo de autenticación.
 - LDAP: protocolo usado para consultar directorios.
 
-Active Directory centraliza identidad. Si AD falla o se compromete, el impacto puede alcanzar usuarios, servidores, permisos, politicas y autenticacion. Por eso los Domain Controllers deben tratarse como activos criticos, no como servidores normales.
+Active Directory centraliza identidad. Si AD falla o se compromete, el impacto puede alcanzar usuarios, servidores, permisos, políticas y autenticación. Por eso los Domain Controllers deben tratarse como activos críticos, no como servidores normales.
 
 ## Identidad en Windows
 
-Una cuenta local existe solo en un equipo. Una cuenta de dominio existe en AD y puede acceder a recursos segun permisos. Los grupos simplifican administracion, pero tambien pueden concentrar demasiado privilegio. Un cambio pequeño en membresias puede dar acceso amplio si el grupo tiene permisos sensibles.
+Una cuenta local existe solo en un equipo. Una cuenta de dominio existe en AD y puede acceder a recursos según permisos. Los grupos simplifican administracion, pero también pueden concentrar demasiado privilegio. Un cambio pequeño en membresias puede dar acceso amplio si el grupo tiene permisos sensibles.
 
 ## Eventos Importantes
 
 - Logon exitoso.
 - Logon fallido.
-- Creacion de usuario.
+- Creación de usuario.
 - Cambio de grupo.
 - Cambio de contraseña.
 - Ejecucion de procesos sospechosos.
 
 Los eventos no prueban un incidente por si solos. Un logon fallido puede ser error de contraseña, password spraying o un servicio mal configurado. La lectura correcta combina usuario, hora, equipo, IP, resultado y actividad posterior.
 
-## Observacion Segura
+## Observación Segura
 
 Si tienes Windows:
 
 - Abre Event Viewer.
 - Busca eventos de seguridad.
-- Ejecuta comandos basicos de PowerShell.
+- Ejecuta comandos básicos de PowerShell.
 - Observa que eventos aparecen y que significan dentro del sistema.
 
 Si no tienes Windows:

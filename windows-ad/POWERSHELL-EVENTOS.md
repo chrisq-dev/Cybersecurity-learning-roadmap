@@ -2,9 +2,9 @@
 
 ## Objetivo
 
-Usar PowerShell para inspeccionar Windows y entender eventos utiles para investigacion.
+Usar PowerShell para inspeccionar Windows y entender eventos útiles para investigación.
 
-## Que es PowerShell
+## Qué es PowerShell
 
 PowerShell es una shell y lenguaje de scripting orientado a administracion.
 
@@ -17,9 +17,9 @@ En seguridad sirve para:
 - Automatizar tareas.
 - Investigar actividad.
 
-Tambien puede ser abusado por atacantes, por eso se monitorea.
+También puede ser abusado por atacantes, por eso se monitorea.
 
-## Comandos Basicos
+## Comandos Básicos
 
 ```powershell
 Get-Process
@@ -40,9 +40,9 @@ Get-Process powershell
 
 Preguntas:
 
-- Que proceso se ejecuto?
-- Bajo que usuario?
-- Desde que ruta?
+- Qué proceso se ejecuto?
+- Bajo qué usuario?
+- Desde qué ruta?
 - Es esperado?
 
 ## Servicios
@@ -54,7 +54,7 @@ Get-Service | Where-Object {$_.Status -eq "Running"}
 
 Preguntas:
 
-- Que servicios estan corriendo?
+- Qué servicios están corriendo?
 - Hay servicios desconocidos?
 - Alguno corre con privilegios altos?
 
@@ -87,18 +87,18 @@ Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4625} -MaxEvents 10
 | 4732 | Usuario agregado a grupo local |
 | 4740 | Cuenta bloqueada |
 
-## Investigacion: Logins Fallidos
+## Investigación: Logins Fallidos
 
 Preguntas:
 
-- Que usuario fallo?
-- Desde que IP o equipo?
+- Qué usuario fallo?
+- Desde qué IP o equipo?
 - Cuantas veces?
-- En que horario?
-- Despues hubo login exitoso?
+- En qué horario?
+- Después hubo login exitoso?
 - Es un usuario real o cuenta de servicio?
 
-## Observacion Segura
+## Observación Segura
 
 Si tienes Windows:
 
@@ -112,10 +112,10 @@ Get-LocalGroup
 Al revisar estos comandos, enfocate en entender:
 
 - Que consulta hace cada comando.
-- Que informacion devuelve.
-- Que significa un inicio de sesion exitoso frente a uno fallido.
+- Que información devuelve.
+- Que significa un inicio de sesión exitoso frente a uno fallido.
 - Que usuarios y grupos existen localmente.
-- Que riesgo existiria si el resultado mostrara actividad fuera de horario, usuarios inesperados o muchos fallos de autenticacion.
+- Que riesgo existiria si el resultado mostrara actividad fuera de horario, usuarios inesperados o muchos fallos de autenticación.
 
 ## Criterio de Dominio
 
@@ -125,4 +125,4 @@ Puedes avanzar cuando puedas:
 - Usar `Get-Service`.
 - Consultar eventos.
 - Explicar 4624, 4625 y 4688.
-- Formular hipotesis con eventos.
+- Formular hipótesis con eventos.

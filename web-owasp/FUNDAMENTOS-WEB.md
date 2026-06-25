@@ -4,18 +4,18 @@
 
 Entender como funciona la web antes de estudiar vulnerabilidades.
 
-La seguridad web no empieza con XSS o SQL Injection. Empieza entendiendo como viajan las peticiones, como se mantiene una sesion, como se toman decisiones de autorizacion y donde se rompe la confianza entre cliente, servidor, base de datos y terceros.
+La seguridad web no empieza con XSS o SQL Injection. Empieza entendiendo como viajan las peticiones, como se mantiene una sesión, como se toman decisiones de autorización y donde se rompe la confianza entre cliente, servidor, base de datos y terceros.
 
-Esta guia busca que puedas leer una peticion HTTP real y explicar:
+Esta guía busca que puedas leer una petición HTTP real y explicar:
 
-- que quiere hacer el cliente;
-- que datos envia;
-- que identidad presenta;
-- que valida el servidor;
-- que recurso se consulta o modifica;
-- que controles deberian aplicarse;
-- que respuesta se devuelve;
-- que evidencia queda.
+- Que quiere hacer el cliente;
+- Que datos envia;
+- Que identidad presenta;
+- Que valida el servidor;
+- Que recurso se consulta o modifica;
+- Que controles deberian aplicarse;
+- Que respuesta se devuelve;
+- Que evidencia queda.
 
 ## Modelo Mental
 
@@ -25,48 +25,48 @@ navegador -> HTTP -> servidor -> aplicacion -> base de datos -> respuesta
 
 Preguntas clave:
 
-- Que envia el cliente?
-- Que valida el servidor?
-- Que datos se consultan o modifican?
-- Que identidad tiene el usuario?
-- Que permisos se aplican?
-- Que queda registrado en logs?
+- Qué envia el cliente?
+- Qué valida el servidor?
+- Qué datos se consultan o modifican?
+- Qué identidad tiene el usuario?
+- Qué permisos se aplican?
+- Qué queda registrado en logs?
 
 ## Cliente y Servidor
 
-El cliente normalmente es un navegador, app movil, script o herramienta como `curl`. El servidor recibe peticiones y devuelve respuestas.
+El cliente normalmente es un navegador, app móvil, script o herramienta como `curl`. El servidor recibe peticiones y devuelve respuestas.
 
 El cliente no es confiable. Todo lo que viene del cliente puede ser modificado:
 
 - URL;
-- parametros;
-- headers;
-- cookies;
-- body;
-- archivos subidos;
-- metodos HTTP;
-- valores ocultos en formularios.
+- Parametros;
+- Headers;
+- Cookies;
+- Body;
+- Archivos subidos;
+- Métodos HTTP;
+- Valores ocultos en formularios.
 
-Una aplicacion segura valida en servidor. La validacion del frontend mejora experiencia, pero no protege por si sola.
+Una aplicación segura valida en servidor. La validación del frontend mejora experiencia, pero no protege por si sola.
 
 ## HTTP
 
 HTTP es el protocolo que usan cliente y servidor para intercambiar mensajes.
 
-Una peticion HTTP tiene:
+Una petición HTTP tiene:
 
-- metodo;
-- ruta;
-- headers;
-- body opcional.
+- Método;
+- Ruta;
+- Headers;
+- Body opcional.
 
 Una respuesta HTTP tiene:
 
-- codigo de estado;
-- headers;
-- body.
+- Código de estado;
+- Headers;
+- Body.
 
-Ejemplo de peticion:
+Ejemplo de petición:
 
 ```http
 POST /login HTTP/1.1
@@ -87,17 +87,17 @@ Set-Cookie: session=xyz789; HttpOnly; Secure; SameSite=Lax
 {"ok":true}
 ```
 
-## Metodos HTTP
+## Métodos HTTP
 
-| Metodo | Uso comun | Riesgo si se maneja mal |
+| Método | Uso común | Riesgo si se maneja mal |
 | --- | --- | --- |
-| GET | Consultar informacion | Exponer datos en URL o cache |
-| POST | Crear o enviar datos | Falta de validacion |
+| GET | Consultar información | Exponer datos en URL o cache |
+| POST | Crear o enviar datos | Falta de validación |
 | PUT/PATCH | Actualizar datos | Modificar recursos ajenos |
-| DELETE | Eliminar datos | Borrado sin autorizacion |
+| DELETE | Eliminar datos | Borrado sin autorización |
 | OPTIONS | Consultar capacidades | CORS mal configurado |
 
-No asumas que un metodo es seguro por su nombre. El servidor debe controlar cada accion.
+No asumas que un método es seguro por su nombre. El servidor debe controlar cada acción.
 
 ## Codigos de Estado
 
@@ -106,7 +106,7 @@ Codigos comunes:
 - `200 OK`: solicitud exitosa.
 - `201 Created`: recurso creado.
 - `301/302`: redireccion.
-- `400 Bad Request`: peticion invalida.
+- `400 Bad Request`: petición invalida.
 - `401 Unauthorized`: no autenticado.
 - `403 Forbidden`: autenticado pero sin permiso.
 - `404 Not Found`: recurso no encontrado.
@@ -131,38 +131,38 @@ Headers importantes:
 - `Cookie`: cookies enviadas por el navegador.
 - `Set-Cookie`: cookies que el servidor entrega.
 - `Location`: destino de redireccion.
-- `Origin`: origen de una peticion CORS.
-- `Referer`: pagina previa.
+- `Origin`: origen de una petición CORS.
+- `Referer`: página previa.
 - `X-Forwarded-For`: IP original cuando hay proxy.
 
-En seguridad, los headers ayudan a entender autenticacion, sesiones, proxies, CORS, cache, redirecciones y configuraciones debiles.
+En seguridad, los headers ayudan a entender autenticación, sesiones, proxies, CORS, cache, redirecciones y configuraciones debiles.
 
 ## TLS y HTTPS
 
-HTTPS usa TLS para cifrar la comunicacion entre cliente y servidor.
+HTTPS usa TLS para cifrar la comunicación entre cliente y servidor.
 
 Protege contra:
 
-- lectura del trafico por terceros;
-- modificacion en transito;
-- suplantacion si el certificado es valido.
+- Lectura del tráfico por terceros;
+- Modificacion en transito;
+- Suplantacion si el certificado es valido.
 
 HTTPS no arregla:
 
 - SQL Injection;
 - XSS;
-- autorizacion rota;
-- contrasenas debiles;
-- bugs de negocio;
-- datos expuestos por la aplicacion.
+- Autorización rota;
+- Contraseñas debiles;
+- Bugs de negocio;
+- Datos expuestos por la aplicación.
 
-TLS protege el canal, no garantiza que la aplicacion sea segura.
+TLS protege el canal, no garantiza que la aplicación sea segura.
 
 ## Cookies y Sesiones
 
-HTTP no mantiene estado por si solo. Cada peticion es independiente. Las sesiones permiten recordar que un usuario ya inicio sesion.
+HTTP no mantiene estado por si solo. Cada petición es independiente. Las sesiones permiten recordar que un usuario ya inicio sesión.
 
-Una cookie de sesion puede verse asi:
+Una cookie de sesión puede verse asi:
 
 ```http
 Set-Cookie: session=abc123; HttpOnly; Secure; SameSite=Lax
@@ -173,41 +173,41 @@ Controles importantes:
 - `HttpOnly`: reduce robo por JavaScript.
 - `Secure`: solo enviar por HTTPS.
 - `SameSite`: reduce ciertos ataques CSRF.
-- expiracion razonable;
-- rotacion despues de login;
-- invalidacion al cerrar sesion;
-- proteccion contra fijacion de sesion.
+- Expiracion razonable;
+- Rotación después de login;
+- Invalidacion al cerrar sesión;
+- Protección contra fijacion de sesión.
 
-## Autenticacion
+## Autenticación
 
-Autenticacion aclara:
+Autenticación aclara:
 
 ```text
-Quien eres?
+Quién eres?
 ```
 
 Ejemplos:
 
-- usuario y contrasena;
+- Usuario y contraseña;
 - MFA;
-- token;
-- certificado cliente;
+- Token;
+- Certificado cliente;
 - SSO.
 
 Riesgos:
 
-- contrasenas debiles;
-- falta de MFA;
-- recuperacion de contrasena insegura;
-- tokens largos sin expiracion;
-- mensajes de error que enumeran usuarios.
+- Contraseñas debiles;
+- Falta de MFA;
+- Recuperación de contraseña insegura;
+- Tokens largos sin expiracion;
+- Mensajes de error que enumeran usuarios.
 
-## Autorizacion
+## Autorización
 
-Autorizacion aclara:
+Autorización aclara:
 
 ```text
-Que puedes hacer?
+Qué puedes hacer?
 ```
 
 Ejemplo:
@@ -217,34 +217,34 @@ Ejemplo:
 /api/users/1002/invoices
 ```
 
-Si un usuario cambia `1001` por `1002` y ve datos ajenos, el problema es de autorizacion. El usuario puede estar autenticado correctamente y aun asi no tener permiso.
+Si un usuario cambia `1001` por `1002` y ve datos ajenos, el problema es de autorización. El usuario puede estar autenticado correctamente y aún asi no tener permiso.
 
-Autorizacion debe revisarse por:
+Autorización debe revisarse por:
 
-- usuario;
-- rol;
-- recurso;
-- accion;
-- contexto;
-- propiedad del dato.
+- Usuario;
+- Rol;
+- Recurso;
+- Acción;
+- Contexto;
+- Propiedad del dato.
 
 ## Inputs
 
-Un input es cualquier dato que entra a la aplicacion.
+Un input es cualquier dato que entra a la aplicación.
 
 Ejemplos:
 
-- parametros URL;
-- formularios;
+- Parametros URL;
+- Formularios;
 - JSON;
-- headers;
-- cookies;
-- archivos;
-- datos desde APIs externas.
+- Headers;
+- Cookies;
+- Archivos;
+- Datos desde APIs externas.
 
 Riesgo:
 
-Si la aplicacion confia en input sin validar, puede aparecer injection, XSS, SSRF, path traversal, file upload inseguro u otros errores.
+Si la aplicación confia en input sin validar, puede aparecer injection, XSS, SSRF, path traversal, file upload inseguro u otros errores.
 
 ## Base de Datos
 
@@ -258,14 +258,14 @@ cliente -> servidor -> consulta -> base de datos -> respuesta
 
 Riesgos:
 
-- consultas construidas con strings;
-- permisos excesivos de la cuenta de base de datos;
-- datos sensibles sin cifrar;
-- errores que revelan tablas;
-- falta de auditoria;
-- backups expuestos.
+- Consultas construidas con strings;
+- Permisos excesivos de la cuenta de base de datos;
+- Datos sensibles sin cifrar;
+- Errores que revelan tablas;
+- Falta de auditoria;
+- Backups expuestos.
 
-La seguridad web tambien depende de la seguridad de datos.
+La seguridad web también depende de la seguridad de datos.
 
 ## APIs
 
@@ -274,62 +274,62 @@ Las APIs exponen acciones y datos para frontend, apps moviles, integraciones o t
 Riesgos comunes:
 
 - BOLA/IDOR;
-- falta de rate limiting;
-- tokens expuestos;
-- mass assignment;
-- errores detallados;
+- Falta de rate limiting;
+- Tokens expuestos;
+- Mass assignment;
+- Errores detallados;
 - CORS permisivo;
-- endpoints internos expuestos.
+- Endpoints internos expuestos.
 
-Una API segura valida autenticacion, autorizacion, input, rate limits y logging.
+Una API segura valida autenticación, autorización, input, rate limits y logging.
 
 ## Superficie de Ataque Web
 
 Revisa:
 
-- formularios;
-- parametros en URL;
+- Formularios;
+- Parametros en URL;
 - APIs;
-- uploads;
-- login;
-- recuperacion de contrasena;
-- paneles admin;
-- redirecciones;
+- Uploads;
+- Login;
+- Recuperación de contraseña;
+- Paneles admin;
+- Redirecciones;
 - CORS;
-- cookies;
-- dependencias frontend/backend;
-- webhooks;
-- integraciones externas.
+- Cookies;
+- Dependencias frontend/backend;
+- Webhooks;
+- Integraciones externas.
 
 ## OWASP Top 10
 
-OWASP Top 10 resume categorias de riesgos frecuentes en aplicaciones web. No es una lista de payloads; es un mapa de fallas comunes.
+OWASP Top 10 resume categorías de riesgos frecuentes en aplicaciones web. No es una lista de payloads; es un mapa de fallas comunes.
 
 Relacion conceptual:
 
 | Concepto base | Vulnerabilidad relacionada |
 | --- | --- |
-| Autorizacion | Broken Access Control |
+| Autorización | Broken Access Control |
 | Sesiones | Identification and Authentication Failures |
 | Inputs | Injection, XSS |
 | Uploads | Unrestricted File Upload, RCE |
 | Dependencias | Vulnerable and Outdated Components |
 | Logs | Security Logging and Monitoring Failures |
-| Configuracion | Security Misconfiguration |
+| Configuración | Security Misconfiguration |
 
 Cuando estudies una vulnerabilidad, usa este formato:
 
-- que es;
-- por que ocurre;
-- donde aparece;
-- que impacto tiene;
-- como se mitiga;
-- como se detecta;
-- como se explica en un reporte.
+- Que es;
+- Por que ocurre;
+- Donde aparece;
+- Que impacto tiene;
+- Como se mitiga;
+- Como se detecta;
+- Como se explica en un reporte.
 
-## Ejemplo de Analisis
+## Ejemplo de Análisis
 
-Peticion:
+Petición:
 
 ```http
 GET /api/users/1002/invoices HTTP/1.1
@@ -339,51 +339,51 @@ Cookie: session=user-1001
 
 Pregunta:
 
-El usuario de la sesion `1001` puede leer facturas de `1002`?
+El usuario de la sesión `1001` puede leer facturas de `1002`?
 
 Controles esperados:
 
-- validar sesion;
-- identificar usuario;
-- validar permiso sobre recurso `1002`;
-- registrar acceso;
-- devolver `403` si no tiene permiso.
+- Validar sesión;
+- Identificar usuario;
+- Validar permiso sobre recurso `1002`;
+- Registrar acceso;
+- Devolver `403` si no tiene permiso.
 
-Si solo se valida que la sesion exista, hay riesgo de autorizacion rota.
+Si solo se valida que la sesión exista, hay riesgo de autorización rota.
 
 ## Logs Web
 
 Un log web puede responder:
 
-- que IP hizo la peticion;
-- que metodo uso;
-- que ruta pidio;
-- que codigo recibio;
-- cuantos bytes se enviaron;
-- que user-agent uso;
-- a que hora ocurrio.
+- Que IP hizo la petición;
+- Que método uso;
+- Que ruta pidio;
+- Que código recibio;
+- Cuantos bytes se enviaron;
+- Que user-agent uso;
+- A que hora ocurrio.
 
 Pero un log web no siempre dice:
 
-- que usuario autenticado era;
-- que proceso interno fallo;
-- que consulta SQL se ejecuto;
-- si hubo exfiltracion completa.
+- Que usuario autenticado era;
+- Que proceso interno fallo;
+- Que consulta SQL se ejecuto;
+- Si hubo exfiltración completa.
 
-Por eso se combinan logs web, aplicacion, base de datos, proxy, WAF y autenticacion.
+Por eso se combinan logs web, aplicación, base de datos, proxy, WAF y autenticación.
 
 ## Errores Comunes
 
 - Probar payloads sin entender el flujo.
-- Confundir autenticacion con autorizacion.
-- Confiar en validacion del frontend.
+- Confundir autenticación con autorización.
+- Confiar en validación del frontend.
 - Ignorar codigos 301/302.
 - No revisar requests reales con DevTools o proxy.
-- Pensar que HTTPS arregla vulnerabilidades de aplicacion.
+- Pensar que HTTPS arregla vulnerabilidades de aplicación.
 - No documentar impacto.
 - No entender que usuario, rol y recurso son diferentes.
 
-## Observacion Segura
+## Observación Segura
 
 En una web propia o sitio de ejemplo puedes observar:
 
@@ -395,12 +395,12 @@ curl -s -D headers.txt https://example.com -o body.html
 
 La meta es identificar:
 
-- codigo HTTP;
-- headers;
-- tipo de contenido;
-- redirecciones;
-- cookies si existen;
-- diferencia entre peticion y respuesta.
+- Código HTTP;
+- Headers;
+- Tipo de contenido;
+- Redirecciones;
+- Cookies si existen;
+- Diferencia entre petición y respuesta.
 
 No pruebes vulnerabilidades en sitios ajenos. Para practicar vulnerabilidades usa laboratorios autorizados.
 
@@ -408,12 +408,12 @@ No pruebes vulnerabilidades en sitios ajenos. Para practicar vulnerabilidades us
 
 Dominas este tema cuando puedes:
 
-- explicar cliente, servidor y HTTP;
-- leer una peticion y respuesta;
-- interpretar metodos, rutas, headers y codigos;
-- explicar cookies y sesiones;
-- diferenciar autenticacion y autorizacion;
-- explicar por que el cliente no es confiable;
-- conectar conceptos base con OWASP Top 10;
-- describir riesgos de APIs y bases de datos;
-- leer un flujo web y proponer controles.
+- Explicar cliente, servidor y HTTP;
+- Leer una petición y respuesta;
+- Interpretar métodos, rutas, headers y codigos;
+- Explicar cookies y sesiones;
+- Diferenciar autenticación y autorización;
+- Explicar por que el cliente no es confiable;
+- Conectar conceptos base con OWASP Top 10;
+- Describir riesgos de APIs y bases de datos;
+- Leer un flujo web y proponer controles.

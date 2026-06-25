@@ -16,21 +16,21 @@ La mayoria de incidentes cloud empiezan con una de estas causas:
 
 - Credenciales filtradas.
 - Permisos excesivos.
-- Storage publico.
+- Storage público.
 - Logs desactivados.
 - Recursos expuestos a internet.
-- Secretos guardados en codigo o pipelines.
+- Secretos guardados en código o pipelines.
 
 ## Responsabilidad Compartida
 
-El proveedor cloud protege parte de la infraestructura. El cliente sigue siendo responsable de configuracion, identidades, datos y permisos segun el servicio usado.
+El proveedor cloud protege parte de la infraestructura. El cliente sigue siendo responsable de configuración, identidades, datos y permisos según el servicio usado.
 
 Preguntas:
 
-- Quien protege el datacenter?
-- Quien configura IAM?
-- Quien decide si un bucket es publico?
-- Quien revisa logs?
+- Quién protege el datacenter?
+- Quién configura IAM?
+- Quién decide si un bucket es público?
+- Quién revisa logs?
 
 Ejemplo:
 
@@ -43,15 +43,15 @@ Ejemplo:
 | Parches en una VM | Cliente |
 | IAM | Cliente |
 | Datos | Cliente |
-| Configuracion de storage | Cliente |
+| Configuración de storage | Cliente |
 | Logs y alertas | Cliente |
 
 ## Temas Clave
 
 - IAM.
 - MFA.
-- Roles y politicas.
-- Storage publico.
+- Roles y políticas.
+- Storage público.
 - Security groups.
 - Redes cloud.
 - Logs.
@@ -65,10 +65,10 @@ IAM controla quien puede hacer que.
 
 Conceptos:
 
-- Usuario: identidad humana o tecnica.
-- Grupo: coleccion de usuarios.
+- Usuario: identidad humana o técnica.
+- Grupo: colección de usuarios.
 - Rol: identidad asumible por servicios o usuarios.
-- Politica: reglas que permiten o niegan acciones.
+- Política: reglas que permiten o niegan acciones.
 - Recurso: objeto cloud afectado.
 
 Regla central:
@@ -91,20 +91,20 @@ Storage mal configurado es una fuente clasica de fuga de datos.
 
 Controles:
 
-- Bloquear acceso publico por defecto.
+- Bloquear acceso público por defecto.
 - Cifrado en reposo.
 - Versionado.
 - Logs de acceso.
-- Politicas restrictivas.
-- Clasificacion de datos.
-- Eliminacion segura.
+- Políticas restrictivas.
+- Clasificación de datos.
+- Eliminación segura.
 
 ## Redes Cloud
 
 Elementos comunes:
 
 - VPC/VNet.
-- Subnets publicas y privadas.
+- Subnets públicas y privadas.
 - Security groups.
 - Network ACLs.
 - Load balancers.
@@ -114,38 +114,38 @@ Elementos comunes:
 Pregunta defensiva:
 
 ```text
-Que recursos son alcanzables desde internet y por que?
+Qué recursos son alcanzables desde internet y por qué?
 ```
 
 ## Riesgos Comunes
 
 - Permisos excesivos.
-- Buckets publicos.
+- Buckets públicos.
 - Llaves expuestas.
 - Logs desactivados.
 - Falta de MFA.
 - Security groups abiertos a internet.
 
-## Logging y Deteccion
+## Logging y Detección
 
-Sin logs, no hay investigacion.
+Sin logs, no hay investigación.
 
 Eventos importantes:
 
 - Login exitoso y fallido.
-- Cambios de politicas IAM.
-- Creacion de llaves.
-- Cambios de storage publico.
+- Cambios de políticas IAM.
+- Creación de llaves.
+- Cambios de storage público.
 - Cambios de firewall/security groups.
 - Acceso a secretos.
-- Eliminacion de logs.
+- Eliminación de logs.
 
 Alertas iniciales:
 
 - Usuario root usado.
 - MFA deshabilitado.
-- Politica admin agregada.
-- Bucket publico.
+- Política admin agregada.
+- Bucket público.
 - Puerto 22 o 3389 abierto a internet.
 - Llave creada para usuario privilegiado.
 
@@ -158,46 +158,46 @@ Alertas iniciales:
 - Abrir `0.0.0.0/0` sin justificar.
 - No separar ambientes dev, staging y prod.
 
-## Criterios de Revision
+## Criterios de Revisión
 
-Sin crear infraestructura real, una revision cloud inicial debe cubrir:
+Sin crear infraestructura real, una revisión cloud inicial debe cubrir:
 
 - 5 errores comunes de IAM.
 - 5 controles para proteger storage.
 - 5 logs importantes en cloud.
-- 5 preguntas que harias en una revision cloud.
+- 5 preguntas que harias en una revisión cloud.
 
-La parte importante es entender por que cada punto reduce riesgo: IAM limita abuso de identidad, storage protege datos, los logs dan visibilidad y las preguntas de revision revelan supuestos inseguros.
+La parte importante es entender por que cada punto reduce riesgo: IAM limita abuso de identidad, storage protege datos, los logs dan visibilidad y las preguntas de revisión revelan supuestos inseguros.
 
-## Ejemplo de Revision Cloud en Papel
+## Ejemplo de Revisión Cloud en Papel
 
 Imagina esta cuenta:
 
 ```text
 Usuario root sin MFA.
 Tres usuarios con permisos AdministratorAccess.
-Bucket con datos de clientes publico.
+Bucket con datos de clientes público.
 Security group permite 0.0.0.0/0 hacia SSH.
 Logs desactivados.
 Llaves de acceso viejas sin rotacion.
 ```
 
-Una revision basica puede incluir:
+Una revisión básica puede incluir:
 
 1. Hallazgos ordenados por riesgo.
 2. Impacto de cada hallazgo.
 3. Evidencia que pedirias.
-4. Remediacion inmediata.
+4. Remediación inmediata.
 5. Control preventivo para que no se repita.
 
 ## Checklist Inicial
 
 - MFA obligatorio.
 - Sin uso diario de root.
-- Politicas de minimo privilegio.
+- Políticas de mínimo privilegio.
 - Storage privado por defecto.
 - Logs activados y protegidos.
-- Secretos fuera del codigo.
+- Secretos fuera del código.
 - Puertos administrativos restringidos.
 - Backups y versionado donde aplique.
 
@@ -207,7 +207,7 @@ Puedes avanzar cuando puedas explicar:
 
 - Responsabilidad compartida.
 - IAM.
-- Riesgos de storage publico.
+- Riesgos de storage público.
 - Importancia de logging.
-- Por que secretos no van en codigo.
+- Por que secretos no van en código.
 - Como priorizar hallazgos cloud por impacto.

@@ -12,7 +12,7 @@ Un analista que sabe transformar datos trabaja mejor: convierte logs sueltos en 
 log/json/csv/api -> parseo -> normalizacion -> conteo -> hallazgo -> reporte
 ```
 
-La clave es no perder contexto: usuario, host, IP, hora, accion y resultado.
+La clave es no perder contexto: usuario, host, IP, hora, acción y resultado.
 
 ## Logs de Texto
 
@@ -80,7 +80,7 @@ print(users)
 
 ## JSON
 
-JSON es comun en APIs y logs modernos.
+JSON es común en APIs y logs modernos.
 
 Ejemplo:
 
@@ -102,16 +102,16 @@ data = json.loads(Path("evento.json").read_text())
 print(data["user"])
 ```
 
-Buenas practicas:
+Buenas prácticas:
 
-- usa `.get()` si un campo puede faltar;
-- valida tipos;
-- captura errores de JSON invalido;
-- no asumas que todas las APIs responden igual.
+- Usa `.get()` si un campo puede faltar;
+- Valida tipos;
+- Captura errores de JSON invalido;
+- No asumas que todas las APIs responden igual.
 
 ## CSV
 
-CSV es comun en inventarios y reportes.
+CSV es común en inventarios y reportes.
 
 Ejemplo:
 
@@ -134,13 +134,13 @@ with Path("assets.csv").open() as f:
         print(row["hostname"], row["owner"])
 ```
 
-Preguntas utiles:
+Preguntas útiles:
 
-- que filas no tienen owner;
-- que activos son criticos;
-- que activos estan expuestos;
-- que campos faltan;
-- que datos no deberian estar en CSV sin proteccion.
+- Que filas no tienen owner;
+- Que activos son críticos;
+- Que activos están expuestos;
+- Que campos faltan;
+- Que datos no deberian estar en CSV sin protección.
 
 ## APIs
 
@@ -156,7 +156,7 @@ print(response.status_code)
 print(response.json())
 ```
 
-Nota: evita poner tokens directamente en codigo.
+Nota: evita poner tokens directamente en código.
 
 ## Tokens y Variables de Entorno
 
@@ -177,12 +177,12 @@ Nunca pegues tokens en el repositorio.
 
 Revisa:
 
-- status code;
-- timeout;
-- errores;
-- paginacion;
-- limites de rate;
-- campos faltantes.
+- Status code;
+- Timeout;
+- Errores;
+- Paginacion;
+- Límites de rate;
+- Campos faltantes.
 
 Ejemplo:
 
@@ -210,7 +210,7 @@ Se encontraron 3 eventos fallidos.
 Path("resumen.txt").write_text(reporte)
 ```
 
-## Ejemplo de Automatizacion
+## Ejemplo de Automatización
 
 Un script de ejemplo puede:
 
@@ -241,29 +241,29 @@ vpn01,infra,critical,internet
 
 Salida esperada:
 
-- total de activos;
-- activos sin owner;
-- activos criticos;
-- activos expuestos a internet;
-- recomendaciones.
+- Total de activos;
+- Activos sin owner;
+- Activos críticos;
+- Activos expuestos a internet;
+- Recomendaciones.
 
 ## Ejemplo de resultado
 
 Un resumen de inventario debe incluir:
 
-1. resumen;
-2. tabla de hallazgos;
-3. riesgos;
-4. recomendaciones;
-5. limitaciones del script.
+1. Resumen;
+2. Tabla de hallazgos;
+3. Riesgos;
+4. Recomendaciones;
+5. Limitaciones del script.
 
 ## Errores Comunes
 
 - Asumir que todos los campos existen.
 - No manejar CSV mal formado.
 - No usar timeout en APIs.
-- Guardar tokens en codigo.
-- No documentar version o fuente de datos.
+- Guardar tokens en código.
+- No documentar versión o fuente de datos.
 
 ## Criterio de Dominio
 

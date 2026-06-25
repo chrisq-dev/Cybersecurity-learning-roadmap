@@ -2,38 +2,38 @@
 
 ## Objetivo
 
-Aprender a diseñar detecciones mantenibles y utiles, no solo alertas ruidosas.
+Aprender a diseñar detecciones mantenibles y útiles, no solo alertas ruidosas.
 
-Detection Engineering convierte conocimiento de amenazas en reglas operables. Una deteccion buena no solo dispara una alerta; tambien explica que revisar, por que importa y que hacer despues.
+Detection Engineering convierte conocimiento de amenazas en reglas operables. Una detección buena no solo dispara una alerta; también explica que revisar, por que importa y que hacer después.
 
 ## Mapa Mental
 
 ```text
-comportamiento -> fuente de datos -> logica -> prueba -> tuning -> documentacion -> operacion
+comportamiento -> fuente de datos -> lógica -> prueba -> tuning -> documentacion -> operacion
 ```
 
 La pregunta central:
 
 ```text
-Que comportamiento malicioso o riesgoso quiero detectar, y que evidencia lo demuestra?
+Qué comportamiento malicioso o riesgoso quiero detectar, y qué evidencia lo demuestra?
 ```
 
-## Que es Detection Engineering
+## Qué es Detection Engineering
 
-Es el proceso de crear, probar, desplegar y mantener reglas de deteccion.
+Es el proceso de crear, probar, desplegar y mantener reglas de detección.
 
 Busca responder:
 
-- Que comportamiento queremos detectar?
-- Que datos lo prueban?
-- Que falsos positivos esperamos?
-- Que accion debe tomar el analista?
+- Qué comportamiento queremos detectar?
+- Qué datos lo prueban?
+- Qué falsos positivos esperamos?
+- Qué acción debe tomar el analista?
 
 ## Ciclo de Vida
 
-1. Hipotesis.
+1. Hipótesis.
 2. Fuente de datos.
-3. Logica de deteccion.
+3. Lógica de detección.
 4. Prueba.
 5. Tuning.
 6. Documentacion.
@@ -41,9 +41,9 @@ Busca responder:
 8. Monitoreo.
 9. Mejora.
 
-## Hipotesis de Deteccion
+## Hipótesis de Detección
 
-Una hipotesis clara se escribe asi:
+Una hipótesis clara se escribe asi:
 
 ```text
 Si [comportamiento] ocurre en [entidad] bajo [condiciones], podria indicar [riesgo].
@@ -55,48 +55,48 @@ Ejemplo:
 Si una cuenta tiene muchos logins fallidos y luego uno exitoso desde la misma IP en pocos minutos, podria indicar password spraying o fuerza bruta exitosa.
 ```
 
-## Partes de una Deteccion
+## Partes de una Detección
 
 - Nombre.
 - Objetivo.
 - Tactica MITRE.
-- Tecnica MITRE.
+- Técnica MITRE.
 - Fuente de logs.
 - Campos requeridos.
-- Logica.
+- Lógica.
 - Severidad.
 - Falsos positivos.
 - Respuesta recomendada.
 
 ## Campos Requeridos
 
-Antes de escribir logica, confirma que los logs tienen campos suficientes:
+Antes de escribir lógica, confirma que los logs tienen campos suficientes:
 
-- usuario;
+- Usuario;
 - IP origen;
-- host;
-- timestamp;
-- resultado;
-- proceso;
-- command line;
-- parent process;
-- recurso afectado;
-- accion.
+- Host;
+- Timestamp;
+- Resultado;
+- Proceso;
+- Command line;
+- Parent process;
+- Recurso afectado;
+- Acción.
 
-Si el campo no existe o no es confiable, la deteccion sera debil.
+Si el campo no existe o no es confiable, la detección sera débil.
 
-## Buena Deteccion
+## Buena Detección
 
-Una buena deteccion:
+Una buena detección:
 
 - Tiene contexto.
 - Es accionable.
 - Tiene pocos falsos positivos.
 - Explica que revisar.
-- Esta documentada.
+- Está documentada.
 - Tiene owner.
 
-## Mala Deteccion
+## Mala Detección
 
 Ejemplo:
 
@@ -107,7 +107,7 @@ Alertar cada vez que se ejecuta powershell.exe.
 Problema:
 
 - Demasiado ruido.
-- PowerShell tambien es legitimo.
+- PowerShell también es legitimo.
 
 Mejor:
 
@@ -119,13 +119,13 @@ PowerShell ejecutado por Office con parametros codificados y conexion externa.
 
 Indicadores:
 
-- precision: cuantas alertas son utiles;
-- recall: cuanto comportamiento real cubre;
-- tiempo de investigacion;
-- falsos positivos;
-- falsos negativos conocidos;
-- cobertura MITRE;
-- claridad del playbook.
+- Precision: cuantas alertas son útiles;
+- Recall: cuanto comportamiento real cubre;
+- Tiempo de investigación;
+- Falsos positivos;
+- Falsos negativos conocidos;
+- Cobertura MITRE;
+- Claridad del playbook.
 
 ## Tuning
 
@@ -133,18 +133,18 @@ Tuning no significa apagar alertas. Significa mejorar contexto.
 
 Ejemplos:
 
-- excluir cuentas de servicio conocidas;
-- agregar allowlist temporal con fecha de expiracion;
-- subir severidad si el activo es critico;
-- agrupar eventos repetidos;
-- agregar condiciones de comportamiento.
+- Excluir cuentas de servicio conocidas;
+- Agregar allowlist temporal con fecha de expiracion;
+- Subir severidad si el activo es crítico;
+- Agrupar eventos repetidos;
+- Agregar condiciones de comportamiento.
 
-## Ejemplo de Diseno
+## Ejemplo de Diseño
 
-Una deteccion comun busca:
+Una detección común busca:
 
 ```text
-Multiples logins fallidos seguidos por login exitoso desde la misma IP.
+Múltiples logins fallidos seguidos por login exitoso desde la misma IP.
 ```
 
 Debe definir:
@@ -155,32 +155,32 @@ Debe definir:
 - Umbral.
 - Falsos positivos.
 - Severidad.
-- Pasos de investigacion.
+- Pasos de investigación.
 
-## Criterios de una Deteccion
+## Criterios de una Detección
 
-Una deteccion bien pensada debe describir:
+Una detección bien pensada debe describir:
 
-- nombre;
-- hipotesis;
-- riesgo;
-- fuente de datos;
-- campos requeridos;
-- logica conceptual;
+- Nombre;
+- Hipótesis;
+- Riesgo;
+- Fuente de datos;
+- Campos requeridos;
+- Lógica conceptual;
 - MITRE;
-- severidad;
-- falsos positivos;
-- pasos de triage;
-- acciones de respuesta;
-- forma segura de probarla.
+- Severidad;
+- Falsos positivos;
+- Pasos de triage;
+- Acciones de respuesta;
+- Forma segura de probarla.
 
 ## Errores Comunes
 
 - Detectar herramientas en vez de comportamientos.
 - No documentar fuentes y campos.
 - No probar con casos benignos.
-- No mantener reglas despues de desplegarlas.
-- Crear alertas que no tienen accion.
+- No mantener reglas después de desplegarlas.
+- Crear alertas que no tienen acción.
 - No definir owner.
 
 ## Criterio de Dominio
@@ -188,7 +188,7 @@ Una deteccion bien pensada debe describir:
 Puedes avanzar cuando puedas:
 
 - Explicar ciclo de detection engineering.
-- Diseñar una deteccion accionable.
+- Diseñar una detección accionable.
 - Documentar falsos positivos.
-- Relacionar deteccion con MITRE.
-- Explicar como medir y ajustar la calidad de una deteccion.
+- Relacionar detección con MITRE.
+- Explicar como medir y ajustar la calidad de una detección.

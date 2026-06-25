@@ -1,12 +1,12 @@
-# Reconocimiento y Enumeracion
+# Reconocimiento y Enumeración
 
 ## Objetivo
 
-Entender como se recolecta informacion en un entorno autorizado. Esta fase busca conocer el sistema antes de hacer cualquier validacion de seguridad.
+Entender como se recolecta información en un entorno autorizado. Esta fase busca conocer el sistema antes de hacer cualquier validación de seguridad.
 
 ## Reconocimiento
 
-Reconocimiento es recolectar informacion general.
+Reconocimiento es recolectar información general.
 
 En laboratorios puede incluir:
 
@@ -17,25 +17,25 @@ En laboratorios puede incluir:
 
 En entornos reales solo debe hacerse con permiso.
 
-## Enumeracion
+## Enumeración
 
-Enumeracion es obtener informacion mas detallada de servicios, usuarios, rutas, versiones o configuraciones.
+Enumeración es obtener información más detallada de servicios, usuarios, rutas, versiones o configuraciones.
 
 Ejemplos en un lab:
 
-- Que puertos estan abiertos.
+- Que puertos están abiertos.
 - Que servicios responden.
-- Que version aparente tiene un servicio.
+- Que versión aparente tiene un servicio.
 - Que rutas web existen.
 - Que banners aparecen.
 
 ## Preguntas Clave
 
-- Que sistema estoy evaluando?
-- Que servicios expone?
-- Que versiones se observan?
-- Que superficie de ataque existe?
-- Que informacion es confiable y cual es suposicion?
+- Qué sistema estoy evaluando?
+- Qué servicios expone?
+- Qué versiones se observan?
+- Qué superficie de ataque existe?
+- Qué información es confiable y cuál es suposicion?
 
 ## Herramientas Conceptuales
 
@@ -45,12 +45,12 @@ Herramientas comunmente usadas en laboratorios:
 - `curl` para HTTP.
 - `dig` para DNS.
 - `ss` para revisar servicios locales.
-- Wireshark para trafico.
+- Wireshark para tráfico.
 - Escaneres de puertos solo en entornos autorizados.
 
 ## Banners
 
-Un banner es informacion que un servicio puede mostrar.
+Un banner es información que un servicio puede mostrar.
 
 Ejemplo:
 
@@ -60,25 +60,25 @@ Server: nginx
 
 Riesgo:
 
-- Puede revelar tecnologia o version.
+- Puede revelar tecnologia o versión.
 
 Mitigacion:
 
 - Reducir banners innecesarios.
 - Mantener servicios actualizados.
 
-## Enumeracion Web Basica
+## Enumeración Web Básica
 
-En una aplicacion web autorizada:
+En una aplicación web autorizada:
 
 - Revisar paginas visibles.
 - Revisar headers.
 - Revisar cookies.
-- Revisar metodos HTTP.
+- Revisar métodos HTTP.
 - Revisar robots.txt si existe.
 - Revisar errores.
 
-## Observacion Segura
+## Observación Segura
 
 Usa solo `example.com` o una app local propia para practicar HTTP:
 
@@ -89,7 +89,7 @@ curl -v https://example.com
 
 Observa:
 
-- Codigo HTTP.
+- Código HTTP.
 - Headers.
 - Servidor si aparece.
 - Redirecciones.
@@ -99,7 +99,7 @@ Observa:
 
 Puedes avanzar cuando puedas:
 
-- Diferenciar reconocimiento y enumeracion.
+- Diferenciar reconocimiento y enumeración.
 - Explicar superficie de ataque.
 - Documentar hallazgos sin exagerar.
-- Proponer mitigaciones para informacion expuesta.
+- Proponer mitigaciones para información expuesta.

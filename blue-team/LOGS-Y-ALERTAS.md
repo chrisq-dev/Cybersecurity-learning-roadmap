@@ -2,18 +2,18 @@
 
 ## Objetivo
 
-Aprender a leer eventos y convertirlos en conclusiones utiles. Blue Team empieza con visibilidad.
+Aprender a leer eventos y convertirlos en conclusiones útiles. Blue Team empieza con visibilidad.
 
-## Que es un Log
+## Qué es un Log
 
 Un log es un registro de un evento.
 
 Ejemplos:
 
-- Usuario inicio sesion.
+- Usuario inicio sesión.
 - Usuario fallo contraseña.
 - Servicio se reinicio.
-- Firewall bloqueo conexion.
+- Firewall bloqueo conexión.
 - Servidor web respondio 500.
 - Archivo fue ejecutado.
 
@@ -28,13 +28,13 @@ Un log puede incluir:
 - IP destino.
 - Puerto.
 - Proceso.
-- Accion.
+- Acción.
 - Resultado.
 - Mensaje.
 
-## Que es una Alerta
+## Qué es una Alerta
 
-Una alerta es un evento o correlacion que requiere revision.
+Una alerta es un evento o correlación que requiere revisión.
 
 Ejemplo:
 
@@ -56,13 +56,13 @@ Suposicion:
 Es un atacante.
 ```
 
-Conclusion razonable:
+Conclusión razonable:
 
 ```text
 La actividad es consistente con intento de fuerza bruta, pero falta validar si la IP pertenece a un servicio interno o a un usuario legitimo.
 ```
 
-## Flujo de Analisis
+## Flujo de Análisis
 
 1. Entender la alerta.
 2. Identificar entidades: usuario, host, IP, proceso.
@@ -70,17 +70,17 @@ La actividad es consistente con intento de fuerza bruta, pero falta validar si l
 4. Buscar eventos relacionados.
 5. Comparar contra comportamiento normal.
 6. Determinar severidad.
-7. Recomendar accion.
+7. Recomendar acción.
 
 ## Preguntas Iniciales
 
-- Que paso?
-- Cuando paso?
-- Donde paso?
-- Quien estuvo involucrado?
-- Desde donde?
+- Qué paso?
+- Cuándo paso?
+- Dónde paso?
+- Quién estuvo involucrado?
+- Desde dónde?
 - Cuantas veces?
-- Antes o despues hubo algo relacionado?
+- Antes o después hubo algo relacionado?
 - Hay impacto?
 
 ## Ejemplo de Lectura de Logs
@@ -94,12 +94,12 @@ Este evento ficticio permite observar intentos fallidos seguidos por un acceso e
 2026-06-23T10:16:02 host=web01 user=admin src_ip=203.0.113.50 action=login result=success
 ```
 
-El analisis debe separar:
+El análisis debe separar:
 
-- Que evidencia hay?
-- Que hipotesis tienes?
-- Que buscarias despues?
-- Que accion recomendarias?
+- Qué evidencia hay?
+- Qué hipótesis tienes?
+- Qué buscarias después?
+- Qué acción recomendarias?
 
 ## Criterio de Dominio
 
@@ -107,5 +107,5 @@ Puedes avanzar cuando puedas:
 
 - Identificar campos importantes.
 - Diferenciar evidencia y suposicion.
-- Formular hipotesis.
-- Escribir una conclusion breve.
+- Formular hipótesis.
+- Escribir una conclusión breve.

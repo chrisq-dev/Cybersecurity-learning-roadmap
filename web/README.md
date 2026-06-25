@@ -1,13 +1,13 @@
 # Web del Roadmap de Ciberseguridad
 
-Aplicacion Next.js para leer las guias del repositorio como una plataforma web en espanol.
+Aplicación Next.js para leer las guías del repositorio como una plataforma web en español.
 
-La app lee los archivos Markdown del directorio padre, genera rutas estaticas y permite navegar los modulos como una plataforma local de estudio.
+La app lee los archivos Markdown del directorio padre, genera rutas estaticas y permite navegar los módulos como una plataforma local de estudio.
 
 ## Requisitos
 
 - Node.js.
-- npm.
+- Npm.
 - El repositorio completo, no solo la carpeta `web`.
 
 ## Desarrollo
@@ -37,12 +37,12 @@ npm run start
 npm run lint
 ```
 
-## Como Funciona
+## Cómo Funciona
 
 - `lib/markdown.js` lee los Markdown del repositorio.
-- El indice publico esta curado: la web muestra guias de estudio, no documentos internos del repo.
-- `app/page.js` genera la portada con categorias y buscador.
-- `app/[...slug]/page.js` renderiza cada leccion.
+- El indice público está curado: la web muestra guías de estudio, no documentos internos del repo.
+- `app/page.js` genera la portada con categorías y buscador.
+- `app/[...slug]/page.js` renderiza cada lección.
 - `app/api/health/route.js` expone healthcheck para Docker/Easypanel.
 - `components/MarkdownRenderer.jsx` convierte Markdown a HTML.
 - `components/TableOfContents.jsx` genera la tabla de contenido.
@@ -50,31 +50,31 @@ npm run lint
 
 ## Convenciones de Contenido
 
-Para que una leccion funcione bien en la web:
+Para que una lección funcione bien en la web:
 
-- usa un solo `# Titulo` principal;
-- separa secciones con `##`;
-- usa `###` para subsecciones;
-- agrega bloques de codigo cuando haya comandos;
-- incluye practica y criterio de dominio;
-- usa ejemplos, mapas mentales y puntos a observar;
-- evita depender de imagenes externas cuando no sean necesarias.
+- Usa un solo `# Titulo` principal;
+- Separa secciones con `##`;
+- Usa `###` para subsecciones;
+- Agrega bloques de código cuando haya comandos;
+- Incluye práctica y criterio de dominio;
+- Usa ejemplos, mapas mentales y puntos a observar;
+- Evita depender de imágenes externas cuando no sean necesarias.
 
 ## Contenido Visible
 
-La web debe mostrar recursos para alumnos en orden de estudio. La navegacion principal debe estar centrada en guias, labs, playbooks, cheatsheets y recursos profesionales utiles.
+La web debe mostrar recursos para alumnos en orden de estudio. La navegación principal debe estar centrada en guías, labs, playbooks, cheatsheets y recursos profesionales útiles.
 
-## Navegacion Actual
+## Navegación Actual
 
 La web incluye:
 
-- busqueda por titulo y categoria;
-- busqueda por contenido;
-- filtros por nivel;
-- rutas sugeridas por perfil;
-- navegacion por rutas;
-- tabla de contenido;
-- enlaces anterior/siguiente entre guias.
+- Busqueda por titulo y categoría;
+- Busqueda por contenido;
+- Filtros por nivel;
+- Rutas sugeridas por perfil;
+- Navegación por rutas;
+- Tabla de contenido;
+- Enlaces anterior/siguiente entre guías.
 
 ## Nota
 
@@ -82,11 +82,11 @@ La app asume que se ejecuta desde `web/` y que los contenidos Markdown viven en 
 
 ## Deploy con Docker en Easypanel
 
-El `Dockerfile` esta en la raiz del repositorio porque la web necesita leer los Markdown del directorio padre.
+El `Dockerfile` está en la raíz del repositorio porque la web necesita leer los Markdown del directorio padre.
 
-Configuracion sugerida:
+Configuración sugerida:
 
-- Build context: raiz del repositorio.
+- Build context: raíz del repositorio.
 - Dockerfile: `Dockerfile`.
 - Puerto interno: `3000`.
 - Health path: `/api/health`.
@@ -99,7 +99,7 @@ docker build -t cibersecurity-web .
 docker run --rm -p 3000:3000 cibersecurity-web
 ```
 
-Prueba con Docker Compose desde la raiz:
+Prueba con Docker Compose desde la raíz:
 
 ```bash
 docker compose up --build
@@ -107,8 +107,8 @@ docker compose up --build
 
 ## Nota Sobre Build
 
-`next build` puede mostrar un warning de Turbopack/NFT porque la app lee Markdown e imagenes desde el directorio padre del proyecto `web/`. Es una decision intencional para mantener el contenido como archivos Markdown normales en la raiz del repositorio. El build sigue generando las paginas correctamente.
+`next build` puede mostrar un warning de Turbopack/NFT porque la app lee Markdown e imágenes desde el directorio padre del proyecto `web/`. Es una decisión intencional para mantener el contenido como archivos Markdown normales en la raíz del repositorio. El build sigue generando las paginas correctamente.
 
 ## Criterio de Calidad
 
-La web debe sentirse como una guia informativa, no como una lista de tareas. El contenido puede mostrar ejemplos, criterios, mapas mentales y practicas sugeridas, pero debe evitar lenguaje de entregas obligatorias.
+La web debe sentirse como una guía informativa, no como una lista de tareas. El contenido puede mostrar ejemplos, criterios, mapas mentales y prácticas sugeridas, pero debe evitar lenguaje de entregas obligatorias.

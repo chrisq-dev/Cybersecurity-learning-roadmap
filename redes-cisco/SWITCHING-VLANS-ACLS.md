@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Entender como se separa y controla trafico dentro de redes. Esto es clave para Cisco, firewalls, segmentacion, redes corporativas y seguridad defensiva.
+Entender como se separa y controla tráfico dentro de redes. Esto es clave para Cisco, firewalls, segmentación, redes corporativas y seguridad defensiva.
 
 Este tema conecta capa 2, capa 3 y controles de acceso. Si lo entiendes, puedes explicar por que no todos los equipos deben estar en la misma red, como limitar movimiento lateral y donde aplicar reglas para reducir riesgo.
 
@@ -18,7 +18,7 @@ Modelo simple:
 PC1 -> switch -> PC2
 ```
 
-El switch aprende que MAC aparece por cada puerto. Con esa tabla decide donde reenviar trafico.
+El switch aprende que MAC aparece por cada puerto. Con esa tabla decide donde reenviar tráfico.
 
 ## MAC Address
 
@@ -34,10 +34,10 @@ La MAC sirve dentro de la red local. Para comunicar entre redes se usa IP y rout
 
 En seguridad:
 
-- una MAC puede ayudar a identificar dispositivos locales;
-- puede existir spoofing de MAC;
-- port security puede limitar MACs por puerto;
-- logs de switches pueden ayudar en investigaciones internas.
+- Una MAC puede ayudar a identificar dispositivos locales;
+- Puede existir spoofing de MAC;
+- Port security puede limitar MACs por puerto;
+- Logs de switches pueden ayudar en investigaciones internas.
 
 ## ARP
 
@@ -46,26 +46,26 @@ ARP ayuda a descubrir la MAC asociada a una IP dentro de la red local.
 Ejemplo:
 
 ```text
-Quien tiene 192.168.1.20?
+Quién tiene 192.168.1.20?
 192.168.1.20 responde con su MAC.
 ```
 
-ARP es necesario para comunicacion local IPv4, pero tambien puede ser abusado.
+ARP es necesario para comunicación local IPv4, pero también puede ser abusado.
 
 Riesgos:
 
 - ARP spoofing;
-- man-in-the-middle local;
-- redireccion de trafico;
-- confusion de tablas ARP.
+- Man-in-the-middle local;
+- Redireccion de tráfico;
+- Confusion de tablas ARP.
 
 Controles:
 
-- segmentacion;
+- Segmentación;
 - DHCP snooping;
-- dynamic ARP inspection;
-- monitoreo;
-- evitar redes planas grandes.
+- Dynamic ARP inspection;
+- Monitoreo;
+- Evitar redes planas grandes.
 
 ## VLANs
 
@@ -80,34 +80,34 @@ Ejemplo:
 
 Aunque usen el mismo switch fisico, quedan separadas logicamente.
 
-Sin VLANs, muchos equipos comparten el mismo dominio de broadcast. Eso aumenta ruido, exposicion y posibilidades de movimiento lateral.
+Sin VLANs, muchos equipos comparten el mismo dominio de broadcast. Eso aumenta ruido, exposición y posibilidades de movimiento lateral.
 
 ## Dominio de Broadcast
 
-Un dominio de broadcast es el conjunto de equipos que reciben trafico broadcast entre si.
+Un dominio de broadcast es el conjunto de equipos que reciben tráfico broadcast entre si.
 
 ARP usa broadcast para preguntar por una IP local.
 
 Si la red es demasiado grande:
 
-- hay mas ruido;
-- hay mas equipos alcanzables;
-- se complica el monitoreo;
-- un equipo comprometido puede descubrir mas vecinos.
+- Hay más ruido;
+- Hay más equipos alcanzables;
+- Se complica el monitoreo;
+- Un equipo comprometido puede descubrir más vecinos.
 
 VLANs ayudan a dividir esos dominios.
 
-## Por Que VLANs Importan en Seguridad
+## Por Qué VLANs Importan en Seguridad
 
 Ayudan a:
 
-- reducir movimiento lateral;
-- separar invitados de sistemas internos;
-- separar servidores de usuarios;
-- aplicar reglas por segmento;
-- limitar impacto de un equipo comprometido;
-- mejorar visibilidad;
-- alinear red con funciones del negocio.
+- Reducir movimiento lateral;
+- Separar invitados de sistemas internos;
+- Separar servidores de usuarios;
+- Aplicar reglas por segmento;
+- Limitar impacto de un equipo comprometido;
+- Mejorar visibilidad;
+- Alinear red con funciones del negocio.
 
 Ejemplo:
 
@@ -142,17 +142,17 @@ switch piso 1 -> trunk -> switch core
 
 Riesgos:
 
-- permitir VLANs innecesarias;
-- native VLAN mal configurada;
-- trunks en puertos donde deberian ser access;
-- errores que mezclan segmentos.
+- Permitir VLANs innecesarias;
+- Native VLAN mal configurada;
+- Trunks en puertos donde deberian ser access;
+- Errores que mezclan segmentos.
 
-Buenas practicas:
+Buenas prácticas:
 
-- permitir solo VLANs necesarias;
-- documentar trunks;
-- evitar native VLAN sensible;
-- no dejar puertos dinamicos sin control.
+- Permitir solo VLANs necesarias;
+- Documentar trunks;
+- Evitar native VLAN sensible;
+- No dejar puertos dinamicos sin control.
 
 ## Routing entre VLANs
 
@@ -161,10 +161,10 @@ Si equipos de VLANs distintas necesitan comunicarse, se requiere routing entre V
 Ese punto es ideal para aplicar controles:
 
 - ACLs;
-- firewall;
-- logging;
-- inspeccion;
-- politicas por rol.
+- Firewall;
+- Logging;
+- Inspeccion;
+- Políticas por rol.
 
 Ejemplo:
 
@@ -181,16 +181,16 @@ usuarios no pueden acceder directo a la base de datos
 
 ## ACLs
 
-Una ACL permite o bloquea trafico segun reglas.
+Una ACL permite o bloquea tráfico según reglas.
 
 Criterios comunes:
 
 - IP origen;
 - IP destino;
-- protocolo;
-- puerto;
-- direccion del trafico;
-- interfaz o zona.
+- Protocolo;
+- Puerto;
+- Dirección del tráfico;
+- Interfaz o zona.
 
 Ejemplo conceptual:
 
@@ -202,7 +202,7 @@ Permitir administracion -> equipos de red por SSH
 
 ## Orden de Reglas
 
-En muchas ACLs, el orden importa. La primera regla que coincide puede decidir la accion.
+En muchas ACLs, el orden importa. La primera regla que coincide puede decidir la acción.
 
 Ejemplo:
 
@@ -223,9 +223,9 @@ Muchos sistemas aplican deny implicito al final:
 si nada coincide, bloquear
 ```
 
-Esto ayuda a aplicar minimo privilegio, pero puede romper comunicacion si no documentas bien los flujos necesarios.
+Esto ayuda a aplicar mínimo privilegio, pero puede romper comunicación si no documentas bien los flujos necesarios.
 
-## Ejemplo de Segmentacion
+## Ejemplo de Segmentación
 
 Red:
 
@@ -236,14 +236,14 @@ Red:
 
 Reglas razonables:
 
-| Origen | Destino | Puerto | Accion | Razon |
+| Origen | Destino | Puerto | Acción | Razon |
 | --- | --- | --- | --- | --- |
-| Usuarios | Web interno | TCP 443 | Permitir | Uso de aplicacion |
+| Usuarios | Web interno | TCP 443 | Permitir | Uso de aplicación |
 | Usuarios | Base de datos | TCP 5432 | Bloquear | DB solo desde backend |
-| Invitados | Internet | TCP 80/443 | Permitir | Navegacion basica |
+| Invitados | Internet | TCP 80/443 | Permitir | Navegación básica |
 | Invitados | Redes internas | Any | Bloquear | No confiables |
 | Admin | Switches | TCP 22 | Permitir | Administracion controlada |
-| Cualquiera | Admin | Any | Bloquear | Proteger zona critica |
+| Cualquiera | Admin | Any | Bloquear | Proteger zona crítica |
 
 ## Movimiento Lateral
 
@@ -261,7 +261,7 @@ Red segmentada:
 equipo comprometido -> solo servicios permitidos por reglas
 ```
 
-La segmentacion no elimina compromiso inicial, pero reduce alcance.
+La segmentación no elimina compromiso inicial, pero reduce alcance.
 
 ## Errores Comunes
 
@@ -271,18 +271,18 @@ La segmentacion no elimina compromiso inicial, pero reduce alcance.
 - Dejar invitados con acceso interno.
 - No documentar trunks.
 - No monitorear cambios de ACL.
-- Pensar que VLAN cifra trafico.
+- Pensar que VLAN cifra tráfico.
 - No revisar reglas antiguas.
 
 ## Criterio de Dominio
 
 Dominas este tema cuando puedes:
 
-- explicar switch vs router;
-- explicar MAC e IP sin confundirlas;
-- explicar ARP y sus riesgos;
-- explicar VLAN y dominio de broadcast;
-- diferenciar access port y trunk;
-- explicar routing entre VLANs;
-- diseñar ACLs basicas con origen, destino, puerto y razon;
-- explicar por que segmentacion reduce movimiento lateral.
+- Explicar switch vs router;
+- Explicar MAC e IP sin confundirlas;
+- Explicar ARP y sus riesgos;
+- Explicar VLAN y dominio de broadcast;
+- Diferenciar access port y trunk;
+- Explicar routing entre VLANs;
+- Diseñar ACLs básicas con origen, destino, puerto y razon;
+- Explicar por que segmentación reduce movimiento lateral.

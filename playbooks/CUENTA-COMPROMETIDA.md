@@ -8,25 +8,25 @@ Investigar y contener posible compromiso de credenciales.
 
 Sube severidad si:
 
-- la cuenta es admin;
-- hay login exitoso desde IP inusual;
-- hubo acceso a datos sensibles;
-- se crearon tokens o reglas de correo;
-- se deshabilito MFA;
-- hay actividad en varios sistemas.
+- La cuenta es admin;
+- Hay login exitoso desde IP inusual;
+- Hubo acceso a datos sensibles;
+- Se crearon tokens o reglas de correo;
+- Se deshabilito MFA;
+- Hay actividad en varios sistemas.
 
 ## Señales
 
-- Multiples logins fallidos.
+- Múltiples logins fallidos.
 - Login exitoso desde IP inusual.
 - MFA fatigue.
 - Cambios de reglas de correo.
 - Acceso a datos fuera de patron.
-- Creacion de tokens.
+- Creación de tokens.
 
 ## Evidencia
 
-- Logs de autenticacion.
+- Logs de autenticación.
 - IP origen.
 - User-Agent.
 - Geolocalizacion si existe.
@@ -37,8 +37,8 @@ Sube severidad si:
 ## Primeros 15 Minutos
 
 1. Confirmar usuario e identidad afectada.
-2. Revisar si hay sesion activa sospechosa.
-3. Preservar logs de autenticacion.
+2. Revisar si hay sesión activa sospechosa.
+3. Preservar logs de autenticación.
 4. Validar privilegios de la cuenta.
 5. Si hay indicios fuertes, revocar sesiones.
 6. Notificar al owner o responsable.
@@ -55,12 +55,12 @@ Sube severidad si:
 8. Revisar reglas de correo y tokens.
 9. Documentar impacto.
 
-## Timeline Minimo
+## Timeline Mínimo
 
 | Hora | Evento | Fuente | Evidencia | Interpretacion |
 | --- | --- | --- | --- | --- |
 
-## Contencion
+## Contención
 
 - Revocar sesiones.
 - Reset de contraseña.
@@ -73,9 +73,9 @@ Sube severidad si:
 - Eliminar reglas de correo maliciosas.
 - Rotar credenciales relacionadas.
 - Revisar dispositivos confiables.
-- Corregir MFA debil o ausente.
+- Corregir MFA débil o ausente.
 
-## Recuperacion
+## Recuperación
 
 - Rehabilitar cuenta si fue deshabilitada.
 - Confirmar acceso legitimo con usuario.
@@ -93,9 +93,9 @@ Sube severidad si:
 
 Puedes cerrar cuando:
 
-- no hay sesiones sospechosas activas;
-- credenciales fueron rotadas;
-- MFA esta validado;
-- actividad posterior fue revisada;
-- impacto fue documentado;
-- deteccion o control fue mejorado si aplica.
+- No hay sesiones sospechosas activas;
+- Credenciales fueron rotadas;
+- MFA está validado;
+- Actividad posterior fue revisada;
+- Impacto fue documentado;
+- Detección o control fue mejorado si aplica.

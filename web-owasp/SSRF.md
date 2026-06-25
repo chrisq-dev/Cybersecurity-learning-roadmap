@@ -4,7 +4,7 @@
 
 Entender SSRF, una falla donde el servidor hace requests hacia destinos controlados por el usuario.
 
-SSRF es peligrosa porque cambia el punto de vista del ataque: no es el navegador del usuario quien hace la peticion, sino el servidor. Ese servidor puede tener acceso a redes, servicios y metadatos que no estan expuestos al publico.
+SSRF es peligrosa porque cambia el punto de vista del ataque: no es el navegador del usuario quien hace la petición, sino el servidor. Ese servidor puede tener acceso a redes, servicios y metadatos que no están expuestos al público.
 
 ## Mapa Mental
 
@@ -15,12 +15,12 @@ usuario controla destino -> servidor hace request -> servicio interno responde -
 La pregunta clave:
 
 ```text
-Que puede alcanzar el servidor que el usuario externo no deberia alcanzar?
+Qué puede alcanzar el servidor qué el usuario externo no debería alcanzar?
 ```
 
-## Que es
+## Qué es
 
-SSRF ocurre cuando una aplicacion permite que el usuario influya en una URL o destino que el servidor va a consultar.
+SSRF ocurre cuando una aplicación permite que el usuario influya en una URL o destino que el servidor va a consultar.
 
 Ejemplo conceptual:
 
@@ -30,7 +30,7 @@ Ejemplo conceptual:
 
 Si el servidor consulta cualquier URL sin control, puede ser abusado.
 
-## Donde Suele Aparecer
+## Dónde Suele Aparecer
 
 - Previews de enlaces.
 - Importar imagen desde URL.
@@ -41,7 +41,7 @@ Si el servidor consulta cualquier URL sin control, puede ser abusado.
 - Proxies internos.
 - Funciones de fetch o crawler.
 
-## Por Que Es Peligroso
+## Por Qué Es Peligroso
 
 El servidor puede tener acceso a:
 
@@ -53,7 +53,7 @@ El servidor puede tener acceso a:
 
 ## Metadata Cloud
 
-En cloud, algunas plataformas exponen metadata a instancias o workloads para obtener informacion de configuracion o credenciales temporales.
+En cloud, algunas plataformas exponen metadata a instancias o workloads para obtener información de configuración o credenciales temporales.
 
 Riesgo conceptual:
 
@@ -63,11 +63,11 @@ SSRF -> metadata -> credenciales temporales -> acceso cloud
 
 Controles:
 
-- bloquear acceso a metadata desde la aplicacion;
-- usar versiones de metadata con protecciones adicionales cuando existan;
-- restringir permisos del rol asociado;
-- monitorear uso anomalo de credenciales;
-- aplicar controles de egress.
+- Bloquear acceso a metadata desde la aplicación;
+- Usar versiones de metadata con protecciones adicionales cuando existan;
+- Restringir permisos del rol asociado;
+- Monitorear uso anomalo de credenciales;
+- Aplicar controles de egress.
 
 ## Impacto
 
@@ -75,17 +75,17 @@ Puede permitir:
 
 - Escanear redes internas desde el servidor.
 - Leer servicios internos.
-- Acceder a metadata cloud si no esta protegida.
+- Acceder a metadata cloud si no está protegida.
 - Saltar controles perimetrales.
 
 El impacto depende de:
 
-- permisos del servidor;
-- red donde vive;
-- acceso a metadata;
-- servicios internos disponibles;
-- si la respuesta se devuelve al usuario;
-- si existen controles de salida.
+- Permisos del servidor;
+- Red donde vive;
+- Acceso a metadata;
+- Servicios internos disponibles;
+- Si la respuesta se devuelve al usuario;
+- Si existen controles de salida.
 
 ## Mitigacion
 
@@ -94,19 +94,19 @@ El impacto depende de:
 - Validar esquema: `http`, `https`.
 - Resolver DNS de forma segura.
 - Controles de red egress.
-- Timeouts y limites.
+- Timeouts y límites.
 - No devolver respuestas internas completas.
 
 ## Allowlist Correcta
 
 Una allowlist aclara:
 
-- que dominios estan permitidos;
-- que esquemas se permiten;
-- que puertos se permiten;
-- si se permiten redirecciones;
-- como se valida DNS;
-- quien puede modificar la lista.
+- Que dominios están permitidos;
+- Que esquemas se permiten;
+- Que puertos se permiten;
+- Si se permiten redirecciones;
+- Como se valida DNS;
+- Quien puede modificar la lista.
 
 Evita aceptar destinos arbitrarios cuando el caso de negocio solo requiere unos cuantos proveedores.
 
@@ -114,14 +114,14 @@ Evita aceptar destinos arbitrarios cuando el caso de negocio solo requiere unos 
 
 Aunque la app falle, la red debe limitar salidas:
 
-- bloquear rangos privados si no son necesarios;
-- bloquear metadata;
-- restringir puertos;
-- usar proxy de salida controlado;
-- registrar destinos;
-- alertar por destinos internos no esperados.
+- Bloquear rangos privados si no son necesarios;
+- Bloquear metadata;
+- Restringir puertos;
+- Usar proxy de salida controlado;
+- Registrar destinos;
+- Alertar por destinos internos no esperados.
 
-## Senales de Alerta
+## Señales de Alerta
 
 - Requests del servidor hacia IPs privadas.
 - Errores al intentar conectar a `localhost`.
@@ -138,7 +138,7 @@ Aunque la app falle, la red debe limitar salidas:
 - No considerar DNS rebinding.
 - Permitir cualquier URL.
 
-## Ejemplo de Analisis SSRF
+## Ejemplo de Análisis SSRF
 
 Escenario ficticio:
 
@@ -146,32 +146,32 @@ Escenario ficticio:
 Una app permite generar previews de URLs.
 ```
 
-El analisis debe cubrir:
+El análisis debe cubrir:
 
-- Que riesgos existen?
-- Que destinos bloquearias?
-- Que allowlist permitirias?
-- Que logs guardarias?
+- Qué riesgos existen?
+- Qué destinos bloquearias?
+- Qué allowlist permitirias?
+- Qué logs guardarias?
 
-En una revision informativa conviene considerar:
+En una revisión informativa conviene considerar:
 
-- que red interna no debe ser accesible;
-- que puertos bloquearias;
-- como manejarias redirecciones;
-- que mensaje de error mostrarias al usuario.
+- Que red interna no debe ser accesible;
+- Que puertos bloquearias;
+- Como manejarias redirecciones;
+- Que mensaje de error mostrarias al usuario.
 
-## Criterios de Revision
+## Criterios de Revisión
 
 Un flujo con riesgo de SSRF debe analizar:
 
-- flujo de negocio que necesita consultar URLs;
-- destinos permitidos;
-- destinos prohibidos;
-- validacion de esquema, host y puerto;
-- politica de red egress;
-- manejo de redirecciones;
-- logs y alertas;
-- impacto si el control falla.
+- Flujo de negocio que necesita consultar URLs;
+- Destinos permitidos;
+- Destinos prohibidos;
+- Validación de esquema, host y puerto;
+- Política de red egress;
+- Manejo de redirecciones;
+- Logs y alertas;
+- Impacto si el control falla.
 
 ## Criterio de Dominio
 

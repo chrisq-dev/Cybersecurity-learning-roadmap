@@ -4,29 +4,29 @@
 
 Entender como preservar y analizar evidencia sin destruirla.
 
-Forense digital busca reconstruir hechos. En seguridad operativa, no siempre haces forense formal legal, pero si necesitas disciplina: preservar evidencia, documentar acciones y separar hechos de hipotesis.
+Forense digital busca reconstruir hechos. En seguridad operativa, no siempre haces forense formal legal, pero si necesitas disciplina: preservar evidencia, documentar acciones y separar hechos de hipótesis.
 
 ## Mapa Mental
 
 ```text
-evidencia -> preservacion -> copia -> hash -> analisis -> timeline -> conclusion
+evidencia -> preservación -> copia -> hash -> análisis -> timeline -> conclusión
 ```
 
 La pregunta central:
 
 ```text
-Que evidencia prueba lo que creemos que paso?
+Qué evidencia prueba lo qué creemos qué paso?
 ```
 
-## Que es Forense Digital
+## Qué es Forense Digital
 
 Forense digital busca responder:
 
-- Que paso?
-- Cuando paso?
-- Como paso?
-- Que sistemas fueron afectados?
-- Que evidencia lo prueba?
+- Qué paso?
+- Cuándo paso?
+- Cómo paso?
+- Qué sistemas fueron afectados?
+- Qué evidencia lo prueba?
 
 ## Evidencia
 
@@ -38,31 +38,31 @@ Ejemplos:
 - Imagen de disco.
 - Eventos de Windows.
 - Historial de comandos.
-- Trafico de red.
+- Tráfico de red.
 
 ## Tipos de Evidencia
 
 ### Volatil
 
-Puede perderse rapido:
+Puede perderse rápido:
 
-- memoria;
-- procesos;
-- conexiones activas;
-- sesiones;
-- comandos recientes;
-- archivos temporales.
+- Memoria;
+- Procesos;
+- Conexiones activas;
+- Sesiones;
+- Comandos recientes;
+- Archivos temporales.
 
 ### No Volatil
 
-Permanece mas tiempo:
+Permanece más tiempo:
 
-- disco;
-- logs;
-- registros;
-- archivos;
-- backups;
-- snapshots.
+- Disco;
+- Logs;
+- Registros;
+- Archivos;
+- Backups;
+- Snapshots.
 
 El orden de recoleccion importa porque algunas evidencias desaparecen al reiniciar o apagar.
 
@@ -76,7 +76,7 @@ Importa porque:
 - Permite auditoria.
 - Evita dudas sobre manipulacion.
 
-Una entrada minima:
+Una entrada mínima:
 
 | Campo | Descripcion |
 | --- | --- |
@@ -84,14 +84,14 @@ Una entrada minima:
 | Hash | Integridad |
 | Fecha/hora | Cuando |
 | Persona | Quien |
-| Accion | Que hizo |
-| Ubicacion | Donde se guarda |
+| Acción | Que hizo |
+| Ubicación | Donde se guarda |
 
-## Principio Basico
+## Principio Básico
 
 No modificar evidencia original si puedes evitarlo.
 
-Buenas practicas:
+Buenas prácticas:
 
 - Trabajar con copias.
 - Calcular hashes.
@@ -105,8 +105,8 @@ Un hash ayuda a demostrar que un archivo no cambio.
 Ejemplos:
 
 - SHA256 para archivos;
-- hash antes y despues de copiar;
-- registro en notas de caso.
+- Hash antes y después de copiar;
+- Registro en notas de caso.
 
 ## Timeline
 
@@ -123,23 +123,23 @@ Ejemplo:
 
 Un buen timeline incluye:
 
-- zona horaria;
-- fuente de log;
-- usuario;
-- sistema;
-- evento;
-- interpretacion separada del hecho.
+- Zona horaria;
+- Fuente de log;
+- Usuario;
+- Sistema;
+- Evento;
+- Interpretacion separada del hecho.
 
 ## Preguntas Forenses
 
-- Cual fue el primer evento conocido?
-- Que usuario estuvo involucrado?
-- Que archivos cambiaron?
-- Que procesos se ejecutaron?
-- Que conexiones ocurrieron?
+- Cuál fue el primer evento conocido?
+- Qué usuario estuvo involucrado?
+- Qué archivos cambiaron?
+- Qué procesos se ejecutaron?
+- Qué conexiones ocurrieron?
 - Hay persistencia?
 
-## Hechos vs Hipotesis
+## Hechos vs Hipótesis
 
 Hecho:
 
@@ -147,39 +147,39 @@ Hecho:
 El usuario admin inicio sesion a las 03:12 desde 198.51.100.10.
 ```
 
-Hipotesis:
+Hipótesis:
 
 ```text
 La cuenta admin pudo estar comprometida.
 ```
 
-Conclusion:
+Conclusión:
 
 ```text
-Con base en login inusual, descarga masiva y ausencia de viaje registrado, la hipotesis de compromiso es probable.
+Con base en login inusual, descarga masiva y ausencia de viaje registrado, la hipótesis de compromiso es probable.
 ```
 
-## Ejemplo de Analisis
+## Ejemplo de Análisis
 
-Con logs ficticios, un analisis forense basico debe reconstruir:
+Con logs ficticios, un análisis forense básico debe reconstruir:
 
 - Timeline.
 - Evidencia clave.
-- Hipotesis.
+- Hipótesis.
 - Preguntas pendientes.
-- Conclusion.
+- Conclusión.
 
 ## Criterios Para un Timeline Forense
 
 Un timeline forense debe ayudar a reconstruir hechos sin mezclar conclusiones prematuras. Debe considerar:
 
-- eventos ordenados por tiempo;
-- fuente de cada evento;
-- zona horaria;
-- separacion entre hechos e hipotesis;
-- conclusion sustentada;
-- evidencia faltante;
-- integridad de archivos cuando aplique.
+- Eventos ordenados por tiempo;
+- Fuente de cada evento;
+- Zona horaria;
+- Separación entre hechos e hipótesis;
+- Conclusión sustentada;
+- Evidencia faltante;
+- Integridad de archivos cuando aplique.
 
 ## Errores Comunes
 
@@ -197,5 +197,5 @@ Puedes avanzar cuando puedas:
 - Explicar evidencia.
 - Explicar cadena de custodia.
 - Reconstruir una linea de tiempo.
-- Separar hechos de hipotesis.
+- Separar hechos de hipótesis.
 - Documentar integridad con hashes y notas claras.

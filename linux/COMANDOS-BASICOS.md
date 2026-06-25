@@ -1,8 +1,8 @@
 ---
-title: "Comandos Básicos de Linux"
-description: "Aprende a sobrevivir en la terminal: navegación, archivos y redes."
-tiempo_estimado: "30 min"
-dificultad: "Principiante"
+Title: "Comandos Básicos de Linux"
+Description: "Aprende a sobrevivir en la terminal: navegación, archivos y redes."
+Tiempo_estimado: "30 min"
+Dificultad: "Principiante"
 ---
 
 > [!IMPORTANT]
@@ -63,9 +63,9 @@ curl -I https://google.com   # Hace un ping web para ver si hay conexión
 
 ---
 
-## Observacion Practica
+## Observación Práctica
 
-Para entender comandos de Linux conviene observarlos en un entorno propio, como una maquina virtual, WSL o un laboratorio local. Estos comandos muestran ubicacion, usuario, archivos, procesos y conectividad:
+Para entender comandos de Linux conviene observarlos en un entorno propio, como una máquina virtual, WSL o un laboratorio local. Estos comandos muestran ubicación, usuario, archivos, procesos y conectividad:
 
 - `pwd` muestra la ruta actual.
 - `cd /tmp` cambia a un directorio temporal.
@@ -77,12 +77,12 @@ Para entender comandos de Linux conviene observarlos en un entorno propio, como 
 
 ## Criterio de Dominio
 
-Puedes considerar dominado este bloque cuando puedas hacer lo siguiente sin mirar la guia:
+Puedes considerar dominado este bloque cuando puedas hacer lo siguiente sin mirar la guía:
 
 - Volver a tu directorio principal.
 - Buscar la palabra `password` dentro de un archivo de texto.
 - Leer las ultimas 10 lineas de un log.
-- Ver tu direccion IP actual.
+- Ver tu dirección IP actual.
 
 > [!NOTE]
-> El objetivo no es memorizar comandos aislados. El objetivo es saber que informacion te da cada comando y cuando usarla.
+> El objetivo no es memorizar comandos aislados. El objetivo es saber que información te da cada comando y cuando usarla.

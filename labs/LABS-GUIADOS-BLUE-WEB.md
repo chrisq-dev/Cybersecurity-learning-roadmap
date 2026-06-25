@@ -1,22 +1,22 @@
 # Labs Guiados Blue Team y Web
 
-Estos labs conectan investigacion defensiva con fundamentos web. Estan pensados como ejemplos guiados para entender evidencia, impacto y controles.
+Estos labs conectan investigación defensiva con fundamentos web. Están pensados como ejemplos guiados para entender evidencia, impacto y controles.
 
-## Como Leer Estos Labs
+## Cómo Leer Estos Labs
 
 Una buena lectura del caso observa:
 
-- objetivo;
-- alcance;
-- datos usados;
-- pasos o flujo;
-- evidencia;
-- analisis;
-- conclusion;
-- recomendacion;
-- dudas pendientes.
+- Objetivo;
+- Alcance;
+- Datos usados;
+- Pasos o flujo;
+- Evidencia;
+- Análisis;
+- Conclusión;
+- Recomendación;
+- Dudas pendientes.
 
-## Lab 1: Investigacion de Fuerza Bruta
+## Lab 1: Investigación de Fuerza Bruta
 
 ### Objetivo
 
@@ -38,13 +38,13 @@ Analizar un posible ataque de fuerza bruta.
 1. Identifica usuario.
 2. Identifica IP.
 3. Cuenta fallos.
-4. Revisa si hubo exito.
-5. Escribe hipotesis.
+4. Revisa si hubo éxito.
+5. Escribe hipótesis.
 6. Recomienda acciones.
 
 ### Resultado Esperado
 
-Conclusion ejemplo:
+Conclusión ejemplo:
 
 ```text
 Actividad consistente con fuerza bruta o password spraying contra la cuenta maria. Se recomienda validar geolocalizacion/IP, revisar actividad posterior al login exitoso, resetear credenciales si aplica y habilitar MFA.
@@ -57,18 +57,18 @@ Agrega una linea de tiempo:
 | Hora | Evento | Evidencia | Interpretacion |
 | --- | --- | --- | --- |
 
-El analisis debe aclarar:
+El análisis debe aclarar:
 
 - Es incidente confirmado o sospecha?
-- Que evidencia falta?
-- Que accion tomarias primero?
-- Que deteccion crearias?
+- Qué evidencia falta?
+- Qué acción tomarias primero?
+- Qué detección crearias?
 
-### Criterio de Exito
+### Criterio de Éxito
 
 - Diferencias fuerza bruta, password spraying y error de usuario.
 - Justificas severidad.
-- Propones contencion y mejora de deteccion.
+- Propones contención y mejora de detección.
 
 ## Lab 2: Headers HTTP
 
@@ -84,11 +84,11 @@ curl -I https://example.com
 
 ### Preguntas
 
-- Que codigo HTTP aparece?
+- Qué código HTTP aparece?
 - Hay `Content-Type`?
 - Hay `Server`?
 - Hay cookies?
-- Que headers de seguridad conoces?
+- Qué headers de seguridad conoces?
 
 ### Headers de Seguridad a Investigar
 
@@ -109,21 +109,21 @@ Tabla:
 
 Clasifica headers:
 
-| Header | Categoria | Riesgo si falta |
+| Header | Categoría | Riesgo si falta |
 | --- | --- | --- |
 
-Categorias sugeridas:
+Categorías sugeridas:
 
-- transporte;
-- contenido;
-- privacidad;
-- permisos del navegador;
-- cache.
+- Transporte;
+- Contenido;
+- Privacidad;
+- Permisos del navegador;
+- Cache.
 
-### Criterio de Exito
+### Criterio de Éxito
 
 - Explicas al menos 5 headers.
-- No confundes header ausente con vulnerabilidad critica automaticamente.
+- No confundes header ausente con vulnerabilidad crítica automaticamente.
 - Propones mejora concreta.
 
 ## Lab 3: Control de Acceso Conceptual
@@ -151,10 +151,10 @@ role=user
 
 ### Preguntas
 
-- Deberia acceder a `/profile/1001`?
-- Deberia acceder a `/profile/1002`?
-- Deberia acceder a `/admin`?
-- Donde debe validarse el permiso?
+- Debería acceder a `/profile/1001`?
+- Debería acceder a `/profile/1002`?
+- Debería acceder a `/admin`?
+- Dónde debe validarse el permiso?
 
 ### Ejemplo de resultado
 
@@ -174,11 +174,11 @@ Una matriz de ejemplo puede verse asi:
 | `/profile/1002` |  |  |  |
 | `/admin` |  |  |  |
 
-Agrega una columna con el codigo esperado: `200`, `401` o `403`.
+Agrega una columna con el código esperado: `200`, `401` o `403`.
 
-### Criterio de Exito
+### Criterio de Éxito
 
-- Explicas autorizacion por recurso.
+- Explicas autorización por recurso.
 - Identificas Broken Access Control.
 - Defines pruebas manuales para validar permisos.
 
@@ -186,15 +186,15 @@ Agrega una columna con el codigo esperado: `200`, `401` o `403`.
 
 ### Objetivo
 
-Crear una deteccion simple.
+Crear una detección simple.
 
 ### Caso
 
-Detectar multiples logins fallidos.
+Detectar múltiples logins fallidos.
 
 ### Elementos
 
-- Fuente: logs de autenticacion.
+- Fuente: logs de autenticación.
 - Condicion: `result=failed`.
 - Agrupacion: usuario o IP.
 - Ventana: 5 minutos.
@@ -211,19 +211,19 @@ Escribe una regla conceptual con:
 - Falsos positivos.
 - Severidad.
 
-### Observacion Adicional
+### Observación Adicional
 
-Tambien puede considerar:
+También puede considerar:
 
 - MITRE tactica;
-- MITRE tecnica;
-- campos requeridos;
-- pasos de investigacion;
-- respuesta recomendada.
+- MITRE técnica;
+- Campos requeridos;
+- Pasos de investigación;
+- Respuesta recomendada.
 
-### Criterio de Exito
+### Criterio de Éxito
 
-- La deteccion es accionable.
+- La detección es accionable.
 - Tiene falsos positivos.
 - Tiene pasos de triage.
 - Explica que evidencia debe revisar el analista.
@@ -247,12 +247,12 @@ SELECT * FROM users WHERE email = '<input>'
 1. Explica el riesgo.
 2. Identifica donde entra el dato.
 3. Reescribe la consulta de forma conceptual parametrizada.
-4. Define permisos minimos para la cuenta DB.
+4. Define permisos mínimos para la cuenta DB.
 5. Define logs de errores y actividad sospechosa.
 
 ### Ejemplo de resultado
 
-Un analisis corto con causa, impacto, mitigacion y forma de validar el control.
+Un análisis corto con causa, impacto, mitigacion y forma de validar el control.
 
 ## Lab 6: XSS por Contexto
 
@@ -265,7 +265,7 @@ Practicar escape por contexto.
 La app muestra el nombre del usuario en:
 
 - HTML body;
-- atributo HTML;
+- Atributo HTML;
 - JavaScript inline;
 - URL.
 
@@ -273,7 +273,7 @@ La app muestra el nombre del usuario en:
 
 1. Explica por que cada contexto cambia la defensa.
 2. Propone control para cada contexto.
-3. Define una politica CSP inicial.
+3. Define una política CSP inicial.
 4. Explica el rol de `HttpOnly`.
 
 ### Ejemplo de resultado
@@ -304,21 +304,21 @@ Unir logs, timeline, MITRE, severidad y respuesta.
 
 Reporte con:
 
-- resumen ejecutivo;
-- timeline;
-- evidencia;
-- hipotesis;
+- Resumen ejecutivo;
+- Timeline;
+- Evidencia;
+- Hipótesis;
 - MITRE;
-- severidad;
-- contencion;
-- deteccion propuesta;
-- lecciones aprendidas.
+- Severidad;
+- Contención;
+- Detección propuesta;
+- Lecciones aprendidas.
 
-## Rubrica Rapida
+## Rúbrica Rapida
 
 | Nivel | Evidencia |
 | --- | --- |
-| Basico | Respondes preguntas |
+| Básico | Respondes preguntas |
 | Bueno | Creas tablas y timeline |
 | Fuerte | Propones controles y detecciones |
 | Portafolio | Reporte completo y reproducible |

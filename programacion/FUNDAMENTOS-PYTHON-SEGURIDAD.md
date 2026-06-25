@@ -4,22 +4,22 @@
 
 Usar Python para automatizar tareas simples de seguridad.
 
-Python no te hace buen analista por si solo. Te vuelve mas eficiente si lo usas para repetir menos trabajo manual, procesar evidencia, validar datos y comunicar resultados reproducibles.
+Python no te hace buen analista por si solo. Te vuelve más eficiente si lo usas para repetir menos trabajo manual, procesar evidencia, validar datos y comunicar resultados reproducibles.
 
 ## Mapa Mental
 
 ```text
-entrada -> validacion -> procesamiento -> resumen -> conclusion -> limites
+entrada -> validación -> procesamiento -> resumen -> conclusión -> límites
 ```
 
-Antes de escribir codigo pregunta:
+Antes de escribir código pregunta:
 
-- que dato entra;
-- que formato tiene;
-- que errores pueden ocurrir;
-- que resultado necesito;
-- como voy a documentarlo;
-- que no debo exponer.
+- Que dato entra;
+- Que formato tiene;
+- Que errores pueden ocurrir;
+- Que resultado necesito;
+- Como voy a documentarlo;
+- Que no debo exponer.
 
 ## Casos de Uso
 
@@ -30,9 +30,9 @@ Antes de escribir codigo pregunta:
 - Consultar APIs.
 - Comunicar resultados.
 
-## Buenas Practicas
+## Buenas Prácticas
 
-- No pongas secretos en el codigo.
+- No pongas secretos en el código.
 - Maneja errores esperados.
 - No modifiques evidencia original.
 - Escribe salidas claras.
@@ -52,7 +52,7 @@ Antes de escribir codigo pregunta:
 - Manejo de archivos.
 - Manejo de errores.
 
-## Estructura de Script Util
+## Estructura de Script Útil
 
 ```text
 1. Leer argumentos.
@@ -60,7 +60,7 @@ Antes de escribir codigo pregunta:
 3. Procesar datos.
 4. Generar resumen.
 5. Escribir salida clara.
-6. Devolver codigo de salida claro.
+6. Devolver código de salida claro.
 ```
 
 ## Ejemplo: Leer un Archivo
@@ -133,27 +133,27 @@ Path("resumen.txt").write_text(report)
 
 Errores esperados:
 
-- archivo no existe;
-- permisos insuficientes;
-- formato incorrecto;
-- campo faltante;
+- Archivo no existe;
+- Permisos insuficientes;
+- Formato incorrecto;
+- Campo faltante;
 - API no responde;
 - JSON invalido.
 
-No ignores errores. Conviertelos en mensajes utiles.
+No ignores errores. Conviertelos en mensajes útiles.
 
 ## Seguridad al Programar
 
 Evita:
 
-- imprimir tokens;
-- subir archivos sensibles;
-- ejecutar comandos con input no validado;
-- sobrescribir evidencia;
-- mezclar datos reales con pruebas;
-- guardar passwords en scripts.
+- Imprimir tokens;
+- Subir archivos sensibles;
+- Ejecutar comandos con input no validado;
+- Sobrescribir evidencia;
+- Mezclar datos reales con pruebas;
+- Guardar passwords en scripts.
 
-## Ejemplo de Automatizacion
+## Ejemplo de Automatización
 
 Un script de ejemplo puede:
 
@@ -162,7 +162,7 @@ Un script de ejemplo puede:
 - Buscar una palabra.
 - Generar un resumen.
 
-Para hacerlo mas robusto conviene considerar:
+Para hacerlo más robusto conviene considerar:
 
 - Aceptar el nombre del archivo como argumento.
 - Manejar errores si el archivo no existe.
@@ -177,33 +177,33 @@ Un parser de log puede leer eventos como estos:
 2026-06-23 user=admin src_ip=203.0.113.10 result=success
 ```
 
-El resultado esperado deberia resumir:
+El resultado esperado debería resumir:
 
-- total de lineas;
-- total de `failed`;
-- total de `success`;
-- usuarios vistos;
+- Total de lineas;
+- Total de `failed`;
+- Total de `success`;
+- Usuarios vistos;
 - IPs vistas;
-- resumen legible.
+- Resumen legible.
 
 ## Ejemplo de resultado
 
 Un resumen de parser de logs debe explicar:
 
-1. objetivo;
-2. comando usado;
-3. salida;
-4. errores encontrados;
-5. explicacion del codigo;
-6. mejora futura.
+1. Objetivo;
+2. Comando usado;
+3. Salida;
+4. Errores encontrados;
+5. Explicación del código;
+6. Mejora futura.
 
 ## Errores Comunes
 
-- Escribir scripts que solo funcionan en tu maquina.
+- Escribir scripts que solo funcionan en tu máquina.
 - No manejar archivos inexistentes.
 - No documentar uso.
 - No validar formato.
-- Mezclar credenciales con codigo.
+- Mezclar credenciales con código.
 - No explicar resultados.
 
 ## Criterio de Dominio

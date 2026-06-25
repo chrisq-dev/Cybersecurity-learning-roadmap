@@ -11,8 +11,8 @@ Significa tener varias capas de defensa.
 Ejemplo:
 
 - MFA.
-- Minimo privilegio.
-- Segmentacion.
+- Mínimo privilegio.
+- Segmentación.
 - EDR.
 - Logs.
 - Backups.
@@ -20,13 +20,13 @@ Ejemplo:
 
 Si una capa falla, otra puede reducir impacto.
 
-El punto no es acumular herramientas. El punto es que cada capa tenga una funcion clara:
+El punto no es acumular herramientas. El punto es que cada capa tenga una función clara:
 
 - Reducir probabilidad de ataque.
 - Limitar impacto.
 - Detectar actividad anormal.
-- Responder rapido.
-- Recuperar operacion.
+- Responder rápido.
+- Recuperar operación.
 
 Una arquitectura madura combina controles preventivos, detectivos y correctivos. Si solo previene, queda ciega. Si solo detecta, llega tarde. Si solo recupera, acepta demasiado dano.
 
@@ -55,16 +55,16 @@ Antes de elegir controles, entiende que estas protegiendo.
 
 | Pregunta | Ejemplo |
 | --- | --- |
-| Que activo importa? | Base de datos de clientes |
-| Que amenaza aplica? | Robo de credenciales, SQL Injection, exfiltracion |
-| Que vulnerabilidad podria existir? | App sin consultas parametrizadas |
-| Que impacto tendria? | Fuga de PII, multas, perdida de confianza |
-| Que control reduce el riesgo? | Parametrizacion, WAF, permisos minimos, logs |
-| Como se verifica? | Pruebas, revision de permisos, alertas |
+| Qué activo importa? | Base de datos de clientes |
+| Qué amenaza aplica? | Robo de credenciales, SQL Injection, exfiltración |
+| Qué vulnerabilidad podria existir? | App sin consultas parametrizadas |
+| Qué impacto tendria? | Fuga de PII, multas, pérdida de confianza |
+| Qué control reduce el riesgo? | Parametrizacion, WAF, permisos mínimos, logs |
+| Cómo se verifica? | Pruebas, revisión de permisos, alertas |
 
 Este razonamiento evita comprar o implementar controles sin relacion con un riesgo real.
 
-## Segmentacion
+## Segmentación
 
 Separar sistemas para limitar movimiento lateral.
 
@@ -77,7 +77,7 @@ Ejemplos:
 - Produccion.
 - Desarrollo.
 
-## Principio de Minimo Privilegio
+## Principio de Mínimo Privilegio
 
 Aplica a:
 
@@ -93,10 +93,10 @@ Aplica a:
 La pregunta clave es:
 
 ```text
-Que acceso necesita para cumplir su funcion y nada mas?
+Qué acceso necesita para cumplir su función y nada más?
 ```
 
-Minimo privilegio no es solo permisos de usuario. Tambien es limitar origen, destino, accion, duracion y contexto.
+Mínimo privilegio no es solo permisos de usuario. También es limitar origen, destino, acción, duración y contexto.
 
 ## Controles
 
@@ -106,7 +106,7 @@ Evitan:
 
 - MFA.
 - Firewall.
-- Validacion de entrada.
+- Validación de entrada.
 
 ### Detectivos
 
@@ -121,15 +121,15 @@ Detectan:
 Corrigen o recuperan:
 
 - Backups.
-- Rotacion de credenciales.
+- Rotación de credenciales.
 - Reimagen de equipos.
 
 ### Disuasivos
 
-Reducen probabilidad por advertencia o politica:
+Reducen probabilidad por advertencia o política:
 
 - Banners legales.
-- Politicas aceptadas.
+- Políticas aceptadas.
 - Concientizacion.
 
 ### Compensatorios
@@ -137,12 +137,12 @@ Reducen probabilidad por advertencia o politica:
 Reducen riesgo cuando no puedes corregir directamente:
 
 - WAF frente a una app legacy.
-- Segmentacion si un sistema no puede parchearse aun.
-- Monitoreo extra en sistemas criticos.
+- Segmentación si un sistema no puede parchearse aún.
+- Monitoreo extra en sistemas críticos.
 
 ## Patrones de Arquitectura Segura
 
-### Aplicacion Web Clasica
+### Aplicación Web Clasica
 
 ```text
 Internet -> CDN/WAF -> Load Balancer -> App -> Database privada
@@ -154,12 +154,12 @@ Internet -> CDN/WAF -> Load Balancer -> App -> Database privada
 Controles esperados:
 
 - TLS.
-- WAF o proteccion HTTP.
-- App sin secretos en codigo.
-- DB no publica.
+- WAF o protección HTTP.
+- App sin secretos en código.
+- DB no pública.
 - Logs centralizados.
 - Backups probados.
-- Separacion de admin.
+- Separación de admin.
 
 ### Administracion Segura
 
@@ -183,20 +183,20 @@ App autorizada -> API/servicio -> DB cifrada -> Backup cifrado
 
 Controles esperados:
 
-- Autorizacion por objeto.
+- Autorización por objeto.
 - Auditoria de accesos.
 - Cifrado en transito.
 - Cifrado en reposo.
-- Retencion definida.
+- Retención definida.
 - Minimizacion de datos.
 
 ## Trade-offs
 
 Seguridad real tiene compromisos:
 
-- Mas controles pueden aumentar friccion.
+- Más controles pueden aumentar friccion.
 - Menos friccion puede aumentar riesgo.
-- Bloqueos automaticos pueden afectar disponibilidad.
+- Bloqueos automáticos pueden afectar disponibilidad.
 - Logs excesivos pueden generar ruido o guardar datos sensibles.
 - Cifrado ayuda, pero no corrige permisos malos.
 
@@ -230,22 +230,22 @@ Define:
 - Controles detectivos.
 - Controles correctivos.
 
-## Preguntas de Comprension
+## Preguntas de Comprensión
 
-- Cual es el activo mas critico del sistema?
-- Que atacante o escenario te preocupa mas?
-- Que pasaria si una cuenta de usuario se compromete?
-- Que pasaria si el backend se compromete?
-- Donde se detectaria una extraccion masiva de datos?
-- Como se recuperaria el servicio si hay ransomware?
+- Cuál es el activo más crítico del sistema?
+- Qué atacante o escenario te preocupa más?
+- Qué pasaria si una cuenta de usuario se compromete?
+- Qué pasaria si el backend se compromete?
+- Dónde se detectaria una extraccion masiva de datos?
+- Cómo se recuperaria el servicio si hay ransomware?
 
 ## Criterio de Dominio
 
 Puedes avanzar cuando puedas:
 
 - Explicar defensa en profundidad.
-- Explicar segmentacion.
+- Explicar segmentación.
 - Identificar superficie de ataque.
 - Elegir controles por riesgo.
 - Dibujar una arquitectura simple con controles razonados.
-- Explicar trade-offs entre seguridad, operacion y costo.
+- Explicar trade-offs entre seguridad, operación y costo.

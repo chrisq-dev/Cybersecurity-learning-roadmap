@@ -1,19 +1,19 @@
-# Computacion Basica
+# Computación Básica
 
 ## Objetivo
 
 Entender como funciona una computadora por dentro y por que esos conceptos importan en ciberseguridad.
 
-Antes de hablar de malware, redes, vulnerabilidades, logs o hardening, necesitas entender que un sistema es una combinacion de hardware, sistema operativo, procesos, memoria, archivos, usuarios, permisos y comunicacion de red. Casi cualquier incidente de seguridad termina tocando alguno de esos elementos.
+Antes de hablar de malware, redes, vulnerabilidades, logs o hardening, necesitas entender que un sistema es una combinación de hardware, sistema operativo, procesos, memoria, archivos, usuarios, permisos y comunicación de red. Casi cualquier incidente de seguridad termina tocando alguno de esos elementos.
 
-Esta guia busca que puedas mirar una computadora y pensar con criterio:
+Esta guía busca que puedas mirar una computadora y pensar con criterio:
 
-- que se esta ejecutando;
-- con que permisos;
-- que archivos lee o modifica;
-- que datos mantiene en memoria;
-- con que servicios se comunica;
-- que evidencia queda despues de una accion.
+- Que se está ejecutando;
+- Con que permisos;
+- Que archivos lee o modifica;
+- Que datos mantiene en memoria;
+- Con que servicios se comunica;
+- Que evidencia queda después de una acción.
 
 ## Modelo Mental
 
@@ -29,7 +29,7 @@ Ejemplo simple:
 2. El sistema operativo crea un proceso.
 3. El proceso usa CPU para ejecutar instrucciones.
 4. Usa RAM para guardar datos temporales.
-5. Lee archivos de configuracion y cache.
+5. Lee archivos de configuración y cache.
 6. Usa la red para conectarse a un servidor.
 7. El sistema registra algunos eventos en logs.
 
@@ -45,39 +45,39 @@ Importa porque el software siempre termina usando hardware. Un proceso consume C
 
 ### Software
 
-Software son instrucciones: sistema operativo, programas, servicios, librerias, scripts, drivers y configuraciones.
+Software son instrucciones: sistema operativo, programas, servicios, librerías, scripts, drivers y configuraciones.
 
-Un error comun es pensar que solo el codigo importa. En realidad, una mala configuracion puede ser tan peligrosa como una vulnerabilidad en codigo.
+Un error común es pensar que solo el código importa. En realidad, una mala configuración puede ser tan peligrosa como una vulnerabilidad en código.
 
 Ejemplos:
 
 - Un servicio seguro mal configurado puede exponer datos.
-- Un usuario con permisos excesivos puede convertir una falla pequena en compromiso total.
+- Un usuario con permisos excesivos puede convertir una falla pequeña en compromiso total.
 - Un programa sin parches puede tener vulnerabilidades conocidas.
-- Un archivo con secretos puede filtrar credenciales aunque la aplicacion funcione bien.
+- Un archivo con secretos puede filtrar credenciales aunque la aplicación funcione bien.
 
 ## CPU
 
-La CPU ejecuta instrucciones. Cada programa que corre en una computadora necesita que la CPU procese operaciones: comparar datos, mover informacion, cifrar, descifrar, leer entrada, llamar funciones o responder peticiones.
+La CPU ejecuta instrucciones. Cada programa que corre en una computadora necesita que la CPU procese operaciones: comparar datos, mover información, cifrar, descifrar, leer entrada, llamar funciones o responder peticiones.
 
 En seguridad importa porque:
 
-- Un malware tambien es un programa con instrucciones.
+- Un malware también es un programa con instrucciones.
 - Un proceso malicioso puede consumir CPU de forma anormal.
-- Algunas vulnerabilidades ocurren por errores al manejar instrucciones, memoria o limites.
+- Algunas vulnerabilidades ocurren por errores al manejar instrucciones, memoria o límites.
 - Operaciones de cifrado, hashing y compresion dependen de CPU.
 
-### Como pensar la CPU en un incidente
+### Cómo pensar la CPU en un incidente
 
-Si un equipo esta lento, no asumas de inmediato que es malware. Pregunta:
+Si un equipo está lento, no asumas de inmediato que es malware. Pregunta:
 
-- Que procesos consumen CPU?
+- Qué procesos consumen CPU?
 - Ese consumo es normal para ese programa?
 - El proceso pertenece a una ruta esperada?
-- Esta firmado o instalado por una fuente confiable?
+- Está firmado o instalado por una fuente confiable?
 - Se inicio solo, por un usuario o por un servicio?
 
-La CPU por si sola no prueba compromiso, pero puede ser una senal.
+La CPU por si sola no prueba compromiso, pero puede ser una señal.
 
 ## RAM
 
@@ -86,7 +86,7 @@ La RAM es memoria temporal. Guarda datos que los programas necesitan mientras se
 En seguridad importa porque:
 
 - Credenciales, tokens, llaves o sesiones pueden existir temporalmente en memoria.
-- Un volcado de memoria puede revelar informacion sensible.
+- Un volcado de memoria puede revelar información sensible.
 - Muchos ataques intentan leer, modificar o corromper memoria.
 - Procesos inyectados o manipulados pueden esconder actividad.
 
@@ -101,10 +101,10 @@ RAM   = datos usados ahora
 
 Ejemplo:
 
-- Tu navegador esta instalado en disco.
+- Tu navegador está instalado en disco.
 - Cuando lo abres, parte del navegador vive en RAM como proceso.
 - Las cookies pueden estar guardadas en disco.
-- Una sesion autenticada puede tener datos temporales en RAM.
+- Una sesión autenticada puede tener datos temporales en RAM.
 
 ## Disco
 
@@ -122,12 +122,12 @@ En seguridad importa porque:
 
 Cuando veas un archivo importante, pregunta:
 
-- Quien lo puede leer?
-- Quien lo puede modificar?
-- Quien lo puede ejecutar?
+- Quién lo puede leer?
+- Quién lo puede modificar?
+- Quién lo puede ejecutar?
 - Contiene credenciales, tokens o datos personales?
-- Es necesario que exista en esa ubicacion?
-- Se registra quien lo cambia?
+- Es necesario qué exista en esa ubicación?
+- Se registra quién lo cambia?
 - Hay respaldo?
 
 ## Red
@@ -139,7 +139,7 @@ En seguridad importa porque:
 - Muchos ataques entran por servicios expuestos.
 - Muchos incidentes generan conexiones salientes.
 - DNS, HTTP, TLS, SSH, SMB y RDP aparecen constantemente en investigaciones.
-- Firewalls y segmentacion controlan que puede hablar con que.
+- Firewalls y segmentación controlan que puede hablar con que.
 - Los logs de red ayudan a reconstruir eventos.
 
 Una computadora aislada tiene superficie de ataque local. Una computadora conectada a una red tiene superficie local y remota.
@@ -152,19 +152,19 @@ Ejemplos:
 
 - Linux.
 - Windows.
-- macOS.
+- MacOS.
 - Android.
-- iOS.
+- IOS.
 
 En ciberseguridad, el sistema operativo importa porque define:
 
-- como se autentican usuarios;
-- como se aplican permisos;
-- como se registran eventos;
-- como se instalan servicios;
-- como se protegen archivos;
-- como se configura red;
-- como se ejecutan programas.
+- Como se autentican usuarios;
+- Como se aplican permisos;
+- Como se registran eventos;
+- Como se instalan servicios;
+- Como se protegen archivos;
+- Como se configura red;
+- Como se ejecutan programas.
 
 Si no entiendes el sistema operativo, las herramientas de seguridad se vuelven botones sin contexto.
 
@@ -182,20 +182,20 @@ Ejemplos:
 - `powershell.exe`
 - `sshd`
 
-Un programa guardado no necesariamente esta activo. Solo existe como archivo o paquete instalado.
+Un programa guardado no necesariamente está activo. Solo existe como archivo o paquete instalado.
 
 ### Proceso
 
 Un proceso es un programa en ejecucion. Tiene:
 
 - PID;
-- usuario propietario;
-- memoria;
-- archivos abiertos;
-- variables de entorno;
-- conexiones de red;
-- proceso padre;
-- permisos efectivos.
+- Usuario propietario;
+- Memoria;
+- Archivos abiertos;
+- Variables de entorno;
+- Conexiones de red;
+- Proceso padre;
+- Permisos efectivos.
 
 Ejemplo en Linux:
 
@@ -211,16 +211,16 @@ Get-Process
 
 En seguridad, un proceso responde preguntas importantes:
 
-- Quien lo ejecuto?
-- Desde que ruta?
-- Con que argumentos?
-- Que proceso padre lo inicio?
-- Que conexiones tiene?
-- Que archivos toca?
+- Quién lo ejecuto?
+- Desde qué ruta?
+- Con qué argumentos?
+- Qué proceso padre lo inicio?
+- Qué conexiones tiene?
+- Qué archivos toca?
 
 ### Servicio
 
-Un servicio es un proceso pensado para ejecutarse en segundo plano y ofrecer una funcion.
+Un servicio es un proceso pensado para ejecutarse en segundo plano y ofrecer una función.
 
 Ejemplos:
 
@@ -250,17 +250,17 @@ Ejemplo sospechoso:
 word.exe -> powershell.exe -> descarga archivo externo
 ```
 
-No siempre significa ataque, pero merece investigacion porque un documento de oficina iniciando una shell puede indicar macro maliciosa, abuso de scripting o phishing.
+No siempre significa ataque, pero merece investigación porque un documento de oficina iniciando una shell puede indicar macro maliciosa, abuso de scripting o phishing.
 
 ## Archivos y Directorios
 
-Un sistema operativo organiza informacion en archivos y directorios.
+Un sistema operativo organiza información en archivos y directorios.
 
 Tipos comunes:
 
-- Archivos de configuracion.
+- Archivos de configuración.
 - Ejecutables.
-- Librerias.
+- Librerías.
 - Logs.
 - Documentos.
 - Temporales.
@@ -269,12 +269,12 @@ Tipos comunes:
 
 En seguridad debes preguntarte:
 
-- Este archivo deberia existir?
-- Esta en una ruta normal?
-- Quien lo creo?
-- Cuando fue modificado?
+- Este archivo debería existir?
+- Está en una ruta normal?
+- Quién lo creo?
+- Cuándo fue modificado?
 - Tiene permisos excesivos?
-- Lo esta usando algun proceso?
+- Lo está usando algun proceso?
 - Contiene datos sensibles?
 
 ## Usuarios y Privilegios
@@ -285,24 +285,24 @@ Tipos comunes:
 
 - Usuario normal: permisos limitados.
 - Administrador/root: control amplio del sistema.
-- Usuario de servicio: usado por una aplicacion o servicio.
+- Usuario de servicio: usado por una aplicación o servicio.
 - Usuario invitado: acceso temporal o restringido.
 
 Principio importante:
 
 ```text
-Minimo privilegio: dar solo los permisos necesarios, no mas.
+Minimo privilegio: dar solo los permisos necesarios, no más.
 ```
 
-Si una aplicacion solo necesita leer un directorio, no debe tener permisos de administrador. Si un usuario solo necesita consultar informacion, no debe poder borrar bases de datos.
+Si una aplicación solo necesita leer un directorio, no debe tener permisos de administrador. Si un usuario solo necesita consultar información, no debe poder borrar bases de datos.
 
-## Por Que Root o Administrador Es Peligroso
+## Por Qué Root o Administrador Es Peligroso
 
-Ejecutar todo como administrador parece comodo, pero rompe la separacion de privilegios.
+Ejecutar todo como administrador parece comodo, pero rompe la separación de privilegios.
 
 Escenario:
 
-- Una aplicacion web corre como root.
+- Una aplicación web corre como root.
 - Tiene una vulnerabilidad de carga de archivos.
 - Un atacante logra ejecutar comandos.
 
@@ -313,8 +313,8 @@ Impacto:
 
 Mitigaciones:
 
-- Usuarios de servicio con permisos minimos.
-- Directorios separados por funcion.
+- Usuarios de servicio con permisos mínimos.
+- Directorios separados por función.
 - Permisos de escritura limitados.
 - Contenedores o aislamiento.
 - Monitoreo de ejecucion y cambios.
@@ -325,67 +325,67 @@ Un log es un registro de eventos.
 
 Ejemplos de eventos:
 
-- inicio de sesion;
-- error de aplicacion;
-- conexion rechazada;
-- servicio iniciado;
-- archivo modificado;
-- proceso bloqueado;
-- peticion HTTP;
-- alerta de seguridad.
+- Inicio de sesión;
+- Error de aplicación;
+- Conexión rechazada;
+- Servicio iniciado;
+- Archivo modificado;
+- Proceso bloqueado;
+- Petición HTTP;
+- Alerta de seguridad.
 
 Los logs importan porque permiten responder:
 
-- que paso;
-- cuando paso;
-- quien estuvo involucrado;
-- desde donde;
-- si fue permitido o bloqueado;
-- que impacto pudo tener.
+- Que paso;
+- Cuando paso;
+- Quien estuvo involucrado;
+- Desde donde;
+- Si fue permitido o bloqueado;
+- Que impacto pudo tener.
 
-Un sistema sin logs es dificil de defender porque no deja evidencia suficiente.
+Un sistema sin logs es difícil de defender porque no deja evidencia suficiente.
 
-## Configuracion
+## Configuración
 
 Muchas fallas de seguridad no son bugs complejos. Son configuraciones incorrectas.
 
 Ejemplos:
 
-- puerto administrativo expuesto a internet;
-- carpeta publica con datos sensibles;
-- contrasena por defecto;
-- permisos demasiado abiertos;
-- logs desactivados;
-- backups sin cifrar;
-- tokens guardados en texto plano.
+- Puerto administrativo expuesto a internet;
+- Carpeta pública con datos sensibles;
+- Contraseña por defecto;
+- Permisos demasiado abiertos;
+- Logs desactivados;
+- Backups sin cifrar;
+- Tokens guardados en texto plano.
 
-Aprender seguridad tambien es aprender a leer configuraciones y preguntar si tienen sentido.
+Aprender seguridad también es aprender a leer configuraciones y preguntar si tienen sentido.
 
-## Ejemplo Completo de Analisis
+## Ejemplo Completo de Análisis
 
 Escenario:
 
-- Un servidor Linux ejecuta una aplicacion web.
-- La aplicacion escucha en el puerto 8080.
+- Un servidor Linux ejecuta una aplicación web.
+- La aplicación escucha en el puerto 8080.
 - Corre con el usuario `app`.
 - Guarda logs en `/var/log/app.log`.
-- Lee configuracion desde `/etc/app/config.yml`.
+- Lee configuración desde `/etc/app/config.yml`.
 - Se conecta a una base de datos.
 
 Preguntas de seguridad:
 
 - El puerto 8080 debe estar expuesto a internet o solo al proxy?
-- El usuario `app` puede leer archivos que no necesita?
-- El archivo de configuracion contiene secretos?
+- El usuario `app` puede leer archivos qué no necesita?
+- El archivo de configuración contiene secretos?
 - Los logs registran errores y accesos?
 - La base de datos acepta conexiones solo desde la app?
-- Que pasa si la app se compromete?
+- Qué pasa si la app se compromete?
 
-Este tipo de pensamiento vale mas que memorizar comandos.
+Este tipo de pensamiento vale más que memorizar comandos.
 
 ## Mini Lab Informativo
 
-En un entorno propio, Linux o WSL, puedes observar conceptos basicos con:
+En un entorno propio, Linux o WSL, puedes observar conceptos básicos con:
 
 ```bash
 whoami
@@ -413,11 +413,11 @@ No ejecutes comandos en sistemas que no administras. El objetivo es reconocer us
 
 Dominas este tema cuando puedes explicar:
 
-- que hacen CPU, RAM, disco y red;
-- que papel cumple el sistema operativo;
-- diferencia entre programa, proceso y servicio;
-- por que importa el usuario que ejecuta un proceso;
-- como los permisos reducen o aumentan impacto;
-- por que los logs son evidencia;
-- como una mala configuracion puede volverse riesgo;
-- como relacionar archivo, proceso, usuario, red y log en un caso simple.
+- Que hacen CPU, RAM, disco y red;
+- Que papel cumple el sistema operativo;
+- Diferencia entre programa, proceso y servicio;
+- Por que importa el usuario que ejecuta un proceso;
+- Como los permisos reducen o aumentan impacto;
+- Por que los logs son evidencia;
+- Como una mala configuración puede volverse riesgo;
+- Como relacionar archivo, proceso, usuario, red y log en un caso simple.

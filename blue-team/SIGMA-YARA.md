@@ -2,11 +2,11 @@
 
 ## Objetivo
 
-Entender dos formatos comunes de deteccion: Sigma para eventos/logs y YARA para archivos o patrones.
+Entender dos formatos comunes de detección: Sigma para eventos/logs y YARA para archivos o patrones.
 
 ## Sigma
 
-Sigma es un formato generico para escribir reglas de deteccion sobre logs.
+Sigma es un formato generico para escribir reglas de detección sobre logs.
 
 Idea:
 
@@ -33,18 +33,18 @@ level: medium
 - `title`: nombre.
 - `description`: que detecta.
 - `logsource`: fuente.
-- `detection`: logica.
+- `detection`: lógica.
 - `condition`: condicion.
 - `level`: severidad.
 - `falsepositives`: falsos positivos esperados.
 
 ## Buenas Preguntas para Sigma
 
-- Que comportamiento quiero detectar?
-- Que logs necesito?
-- Que campos lo prueban?
-- Que falsos positivos espero?
-- Que tan grave es?
+- Qué comportamiento quiero detectar?
+- Qué logs necesito?
+- Qué campos lo prueban?
+- Qué falsos positivos espero?
+- Qué tan grave es?
 
 ## YARA
 
@@ -101,7 +101,7 @@ Una regla conceptual podria buscar:
 - La palabra `powershell`.
 - La palabra `encodedcommand`.
 
-Explica por que podria ser sospechoso y por que tambien podria ser legitimo.
+Explica por que podria ser sospechoso y por que también podria ser legitimo.
 
 ## Criterio de Dominio
 
@@ -109,5 +109,5 @@ Puedes avanzar cuando puedas:
 
 - Explicar Sigma.
 - Explicar YARA.
-- Decir que datos necesita una deteccion.
+- Decir que datos necesita una detección.
 - Mencionar falsos positivos.

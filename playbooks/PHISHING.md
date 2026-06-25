@@ -8,12 +8,12 @@ Investigar y contener un correo sospechoso.
 
 Sube severidad si:
 
-- varios usuarios recibieron el correo;
-- alguien hizo clic;
-- hubo captura de credenciales;
-- hay adjunto malicioso;
-- involucra pagos o BEC;
-- suplanta a directivo o proveedor critico.
+- Varios usuarios recibieron el correo;
+- Alguien hizo clic;
+- Hubo captura de credenciales;
+- Hay adjunto malicioso;
+- Involucra pagos o BEC;
+- Suplanta a directivo o proveedor crítico.
 
 ## Señales
 
@@ -39,7 +39,7 @@ Sube severidad si:
 
 1. Confirmar muestra del correo.
 2. Identificar remitente, asunto y hora.
-3. Evitar abrir links o adjuntos en maquina principal.
+3. Evitar abrir links o adjuntos en máquina principal.
 4. Buscar si otros usuarios lo recibieron.
 5. Bloquear URL/dominio si el riesgo es claro.
 6. Preservar headers.
@@ -47,26 +47,26 @@ Sube severidad si:
 ## Pasos
 
 1. Confirmar si el correo fue reportado por usuario o herramienta.
-2. Revisar headers y autenticacion SPF/DKIM/DMARC.
-3. Revisar URL sin abrirla directamente en maquina principal.
+2. Revisar headers y autenticación SPF/DKIM/DMARC.
+3. Revisar URL sin abrirla directamente en máquina principal.
 4. Verificar si otros usuarios recibieron el correo.
 5. Bloquear remitente, dominio o URL si aplica.
 6. Buscar clics o descargas.
 7. Resetear credenciales si hubo captura.
-8. Comunicar recomendacion a usuarios.
+8. Comunicar recomendación a usuarios.
 
-## Analisis
+## Análisis
 
 Revisa:
 
 - SPF/DKIM/DMARC.
-- dominio real de enlaces.
-- diferencias entre From y Reply-To.
-- adjuntos y tipo de archivo.
-- urgencia o solicitud financiera.
-- usuarios que hicieron clic.
+- Dominio real de enlaces.
+- Diferencias entre From y Reply-To.
+- Adjuntos y tipo de archivo.
+- Urgencia o solicitud financiera.
+- Usuarios que hicieron clic.
 
-## Contencion
+## Contención
 
 - Bloquear URL.
 - Retirar correo de buzones si la plataforma lo permite.
@@ -74,7 +74,7 @@ Revisa:
 - Revocar sesiones.
 - Forzar MFA si aplica.
 
-## Recuperacion
+## Recuperación
 
 - Confirmar usuarios afectados.
 - Resetear credenciales si hubo interaccion.
@@ -96,9 +96,9 @@ Incluye:
 
 Puedes cerrar cuando:
 
-- correo retirado o bloqueado;
-- usuarios afectados identificados;
-- clics/credenciales revisados;
-- sesiones sospechosas revocadas;
-- indicadores bloqueados;
-- aprendizaje comunicado.
+- Correo retirado o bloqueado;
+- Usuarios afectados identificados;
+- Clics/credenciales revisados;
+- Sesiones sospechosas revocadas;
+- Indicadores bloqueados;
+- Aprendizaje comunicado.
