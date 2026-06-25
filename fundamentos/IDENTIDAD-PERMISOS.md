@@ -30,7 +30,7 @@ Es el proceso de registrar (guardar logs) todas las acciones que hiciste para po
 *   **En el Aeropuerto:** El sistema guarda un registro de la hora exacta a la que pasaste por seguridad y el asiento exacto en el que te sentaste.
 *   **En la Computadora:** El servidor web guarda un archivo diciendo: *"El usuario Juan Pérez borró el archivo ventas.pdf a las 14:03"*.
 
-> [!WARNING]
+> **Advertencia:**
 > **Error de Novatos:** Muchas veces la gente dice "Hubo un error de Autenticación" cuando en realidad el usuario sí pudo iniciar sesión, pero le salió un mensaje de "Acceso Denegado" al intentar abrir un archivo. Ese fue un error de **Autorización**. ¡No los confundas!
 
 ---

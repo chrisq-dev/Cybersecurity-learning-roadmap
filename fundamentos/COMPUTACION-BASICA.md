@@ -54,7 +54,7 @@ Estos tres términos se usan como sinónimos, pero en ciberseguridad, confundirl
 *   **Proceso (La Vida Activa):** Es el programa **cuando le das doble clic**. El Sistema Operativo lee el archivo del disco duro, lo copia a la RAM, y la CPU empieza a ejecutar sus instrucciones. Un proceso está vivo. Tiene un identificador único numérico llamado **PID (Process ID)**.
 *   **Servicio o Demonio (El Trabajador Invisible):** Es un proceso especial que arranca de forma silenciosa ("en background") cuando enciendes la computadora, sin que tú le des clic. Ejemplo: el servicio que busca actualizaciones de Windows, o el reloj del sistema.
 
-> [!IMPORTANT]
+> **Importante:**
 > **La regla de oro del Cazador de Amenazas (Threat Hunter):**
 > En ciberseguridad defensiva, no cazamos "programas". **Cazamos Procesos Anómalos**. Un analista de seguridad no mira el disco duro buscando nombres raros; mira la memoria RAM buscando qué procesos están vivos, quién los encendió, y con quién se están comunicando por la red.
 
@@ -75,7 +75,7 @@ Si usas una cuenta de Administrador, y sin querer abres un archivo adjunto tramp
 
 Si haces exactamente lo mismo pero usas una cuenta **Estándar**, el malware intentará instalarse, pero el Sistema Operativo lo frenará en seco y le dirá: *"Este usuario no tiene privilegios para modificar el sistema"*. El daño quedará contenido únicamente a los archivos de ese usuario, salvando la computadora.
 
-> [!TIP]
+> **Consejo:**
 > **Concepto de Seguridad (NIST): Principio de Mínimo Privilegio (PoLP)**
 > A ningún usuario, empleado o programa se le debe dar más poder del estrictamente necesario para hacer su trabajo. 
 

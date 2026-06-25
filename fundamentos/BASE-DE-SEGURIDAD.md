@@ -30,7 +30,7 @@ Los sistemas y datos deben estar funcionando y ser accesibles cuando se necesita
 *   **Ataque Común:** **DDoS** (Saturar una página web con millones de peticiones basura hasta que se caiga) y Ransomware (cifrar archivos para que no puedas abrirlos).
 *   **Cómo se defiende:** Redundancia (tener servidores de respaldo) y copias de seguridad (Backups).
 
-> [!TIP]
+> **Consejo:**
 > **El opuesto: La Tríada DAD**
 > Si fallas en proteger la CIA, ocurre un incidente DAD: **D**ivulgación (pierdes confidencialidad), **A**lteración (pierdes integridad), y **D**estrucción (pierdes disponibilidad).
 
@@ -56,7 +56,7 @@ Sin embargo, el servidor está desconectado de internet, apagado en una caja fue
 *   ¿Hay una Amenaza? **NO**. Ningún hacker ruso va a viajar a la Antártida a abrir la caja fuerte.
 *   ¿Hay Riesgo? **NO**. 
 
-> [!WARNING]
+> **Advertencia:**
 > Un error de principiante es entrar en pánico cuando los escáneres marcan 100 "Vulnerabilidades Altas". Si esas vulnerabilidades están en sistemas internos sin exposición a amenazas reales, tu **Riesgo** es bajo y deberías priorizar otras cosas. Prioriza el contexto, no el color rojo de la herramienta.
 
 ---
