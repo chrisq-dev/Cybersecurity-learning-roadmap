@@ -8,22 +8,18 @@ Guías de ciberseguridad en español: estructuradas, prácticas y gratuitas.
 
 ---
 
-Hola, soy Christian Quiñones. Diseñé esta web para que cualquier persona pueda aprender ciberseguridad en español sin perderse entre recursos dispersos. Cada módulo tiene guías ordenadas, navegación entre temas y rutas de lectura por perfil.
+Hola, soy Christian Quiñones. Diseñé esta Academia de Élite para que aprendas Ciberseguridad con mentalidad corporativa, de riesgo y negocio. Cero tutoriales genéricos; 100% de enfoque en cómo opera la industria real.
 
 ## Qué Cubre
 
-103 guías organizadas en 34 módulos:
+Una hoja de ruta implacable de 34 módulos técnicos y gerenciales, organizados bajo una filosofía de "Defensa en Profundidad":
 
-- **Base técnica** — computación, sistemas operativos, identidad, riesgo.
-- **Redes** — modelo OSI/TCP-IP, DNS, DHCP, NAT, VLANs, Cisco.
-- **Linux y Windows** — fundamentos, Active Directory, permisos.
-- **Programación** — Python y automatización para seguridad.
-- **Seguridad web** — HTTP, OWASP Top 10, SQL Injection, XSS, CSRF, SSRF.
-- **Blue Team** — logs, SIEM, MITRE ATT&CK, Sigma, YARA, respuesta a incidentes.
-- **Cloud Security** — IAM, storage, logging, Kubernetes, contenedores.
-- **AppSec / DevSecOps** — API Security, GRC, privacidad, continuidad.
-- **Redes avanzadas** — Wireless, Network Security, Endpoint, Database Security.
-- **Práctica** — Playbooks, labs guiados, capstones, writeups, empleabilidad.
+- **Cimiento Técnico:** Modelo OSI, Protocolos, Criptografía y Hardening en Linux/Windows.
+- **Seguridad Cloud y Arquitectura:** Infraestructura inmutable, AWS/Azure, Contenedores (Kubernetes), Zero Trust.
+- **Defensa Activa (Blue Team):** Ingeniería de Detección, SIEM, YARA, y Caza de Amenazas.
+- **Respuesta a Incidentes (Playbooks):** Protocolos militares (Ciclo PICERL) para Ransomware, Fuga de Datos y Phishing.
+- **Negocio y Cumplimiento (GRC):** La Ciberseguridad traducida al idioma del CEO. Riesgos, multas y marcos legales.
+- **Empleabilidad de Élite:** Construcción de un "Home Lab" portafolio, superación de RRHH y tácticas corporativas para conseguir empleo.
 
 ## Por Dónde Empezar
 
@@ -38,7 +34,7 @@ Entra a la web y sigue la ruta recomendada:
 Ruta general:
 
 ```text
-fundamentos -> redes -> Linux -> web -> Blue Team -> cloud/AppSec -> labs -> portafolio
+fundamentos -> redes -> Linux -> web -> Arquitectura Cloud -> Blue Team -> Playbooks (IR) -> Empleabilidad
 ```
 
 ## Ética
