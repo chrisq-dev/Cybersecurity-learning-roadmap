@@ -65,6 +65,7 @@ Objetivo: entender logs, alertas, detección, respuesta e investigación.
 
 - Blue Team.
 - SIEM y MITRE.
+- OSINT y Threat Intelligence.
 - Detection Engineering.
 - Endpoint Security.
 - Network Security.
@@ -78,7 +79,9 @@ Objetivo: entender como se protegen aplicaciones, APIs, cloud, datos e identidad
 
 - AppSec y DevSecOps.
 - API Security.
+- Seguridad Móvil (Mobile Pentesting).
 - Cloud Security.
+- Seguridad en IA (AI Security).
 - Identity Access.
 - Database Security.
 - Containers Kubernetes.
@@ -92,6 +95,7 @@ Objetivo: conectar conocimiento con la construcción de un "Home Lab" y el perfi
 - GRC.
 - Forense.
 - Malware Básico.
+- IoT y Hardware Hacking.
 - Red Team autorizado.
 - Empleabilidad y Portafolio de Élite.
 
