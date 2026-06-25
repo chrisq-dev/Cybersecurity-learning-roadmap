@@ -18,7 +18,7 @@ export default function TopNav() {
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.7rem' }}>
           <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
         </svg>
-        <span className="serif-title" style={{ fontSize: '1.4rem' }}>Ciberseguridad</span>
+        <span className="serif-title" style={{ fontSize: '1.4rem' }}>cbsdev.lat</span>
       </Link>
 
       <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>

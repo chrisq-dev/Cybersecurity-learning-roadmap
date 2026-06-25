@@ -30,6 +30,7 @@ const INTERNAL_ROOT_FILES = [
 ];
 
 const PUBLIC_FOLDERS = [
+  'glosario',
   'fundamentos',
   'redes-cisco',
   'linux',
@@ -68,6 +69,7 @@ const PUBLIC_FOLDERS = [
 
 const PAGE_ORDER = {
   '': ['INICIO-AQUI'],
+  glosario: ['GLOSARIO'],
   fundamentos: ['COMPUTACION-BASICA', 'SISTEMAS-OPERATIVOS', 'IDENTIDAD-PERMISOS', 'BASE-DE-SEGURIDAD'],
   'redes-cisco': ['FUNDAMENTOS-REDES', 'MODELO-OSI-TCPIP', 'IP-SUBNETTING', 'DNS-DHCP-NAT', 'SWITCHING-VLANS-ACLS'],
   linux: ['FUNDAMENTOS-LINUX', 'COMANDOS-BASICOS', 'PERMISOS-USUARIOS', 'PROCESOS-SERVICIOS-LOGS', 'HARDENING-BASICO'],
@@ -162,6 +164,7 @@ export function formatFolderName(folderName) {
     .replace('Vpn', 'VPN')
     .replace('Api', 'API')
     .replace('Social Engineering', 'Ingeniería Social')
+    .replace('Glosario', 'Glosario')
     .replace('Cripto', 'Criptografía')
     .replace('Malware Basico', 'Malware Básico')
     .replace('Programacion', 'Programación');
@@ -333,6 +336,7 @@ export function getContentStructure() {
 
   const STUDY_ORDER = [
     'Inicio',
+    'Glosario',
     'Fundamentos',
     'Redes Cisco',
     'Linux',

@@ -26,6 +26,7 @@ const profileRoutes = [
     description: 'Base técnica para entender seguridad, redes, Linux, web y riesgo.',
     links: [
       ['Inicio Aquí', '/INICIO-AQUI'],
+      ['Glosario de Ciberseguridad', '/glosario/GLOSARIO'],
       ['Computación Básica', '/fundamentos/COMPUTACION-BASICA'],
       ['Base de Seguridad', '/fundamentos/BASE-DE-SEGURIDAD'],
       ['Fundamentos de Redes', '/redes-cisco/FUNDAMENTOS-REDES'],
@@ -83,6 +84,33 @@ const profileRoutes = [
   },
 ];
 
+const learningOutcomes = [
+  {
+    title: 'Pensar en riesgo',
+    text: 'Conectar activos, amenazas, vulnerabilidades, impacto y controles sin memorizar definiciones sueltas.',
+  },
+  {
+    title: 'Entender sistemas reales',
+    text: 'Leer redes, Linux, Windows, web, cloud e identidad como piezas de una misma superficie de ataque.',
+  },
+  {
+    title: 'Investigar con criterio',
+    text: 'Interpretar logs, alertas, evidencia, hipótesis y severidad sin confundir actividad rara con incidente confirmado.',
+  },
+  {
+    title: 'Proteger aplicaciones',
+    text: 'Reconocer fallas comunes como IDOR, XSS, SQL Injection, SSRF y errores de autenticación o autorización.',
+  },
+  {
+    title: 'Comunicar seguridad',
+    text: 'Explicar hallazgos, impacto, remediación y decisiones de forma clara para equipos técnicos y no técnicos.',
+  },
+  {
+    title: 'Prepararte para roles junior',
+    text: 'Ubicar rutas como SOC, AppSec, Cloud, GRC y Vulnerability Management sin intentar dominar todo al mismo tiempo.',
+  },
+];
+
 export default function Home() {
   const structure = getContentStructure();
   const totalCategories = structure.length;
@@ -111,7 +139,7 @@ export default function Home() {
       </h1>
       
       <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto 1.5rem auto' }}>
-        Ruta estructurada para aprender fundamentos, redes, Linux, seguridad web, defensa, cloud, laboratorios y empleabilidad.
+        Una ruta organizada para estudiar ciberseguridad sin perderte entre tantos temas: fundamentos, redes, Linux, web, Blue Team, cloud, laboratorios y empleabilidad.
       </p>
 
       {/* Dynamic Statistics Banner */}
@@ -144,6 +172,28 @@ export default function Home() {
           </div>
         ))}
       </div>
+
+      <section style={{ textAlign: 'left', margin: '0 auto 4rem auto' }}>
+        <h2 className="serif-title" style={{ fontSize: '2rem', borderBottom: 'none', marginBottom: '0.75rem' }}>
+          Qué aprenderás
+        </h2>
+        <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '2rem', maxWidth: '760px' }}>
+          La meta no es memorizar herramientas. La meta es entender cómo fallan los sistemas, cómo se investigan incidentes y cómo se reducen riesgos.
+        </p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
+          {learningOutcomes.map((item) => (
+            <div key={item.title} className="book-card" style={{ padding: '1.15rem', cursor: 'default' }}>
+              <h3 style={{ margin: '0 0 0.45rem 0', fontSize: '1.05rem', color: 'var(--text-main)' }}>
+                {item.title}
+              </h3>
+              <p style={{ margin: 0, fontSize: '0.92rem', lineHeight: 1.55, color: 'var(--text-muted)' }}>
+                {item.text}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <section style={{ textAlign: 'left', margin: '0 auto 4rem auto' }}>
         <h2 className="serif-title" style={{ fontSize: '2rem', borderBottom: 'none', marginBottom: '0.75rem' }}>
