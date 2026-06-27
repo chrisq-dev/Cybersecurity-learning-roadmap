@@ -6,17 +6,15 @@ title: "Cultura Tech y Ciberseguridad"
 
 No todo lo que te acerca a la ciberseguridad tiene que ser un mapa, una certificación o un laboratorio.
 
-A veces una serie, una película, un libro, un juego o una historia real te deja una idea dando vueltas en la cabeza. Esa curiosidad también importa. La diferencia está en saber usarla bien: como inspiración y contexto, no como reemplazo de estudiar fundamentos.
+A veces una serie, una película, un libro, un juego o una historia real te deja una idea dando vueltas en la cabeza. esa curiosidad también importa. La diferencia está en saber usarla bien: como inspiración y contexto, no como reemplazo de estudiar fundamentos.
 
-Esta sección es para descansar un poco del modo "temario" y ver la parte más humana, geek y cultural de la tecnología.
+Esta sección es para descansar un poco del modo "temario" y ver la parte más humana, geek y cultural de la tecnología. aqui no hay comandos que memorizar, solo historias que te hacen preguntar cosas.
 
 ## Series y Películas
 
 ### Mr. Robot
 
-Mr. Robot trata sobre Elliot Alderson, un ingeniero de ciberseguridad que trabaja de día protegiendo empresas y de noche se mueve en un mundo mucho más oscuro de activismo, intrusiones, secretos y conflictos personales.
-
-Vale la pena verla porque no presenta la ciberseguridad como magia. Muchas escenas muestran cosas que sí se conectan con el mundo real: ingeniería social, Linux, phishing, malware, privacidad, acceso físico y abuso de confianza.
+Mr. Robot trata sobre Elliot Alderson, un ingeniero de ciberseguridad que trabaja de día protegiendo empresas y de noche se mueve en un mundo mucho más oscuro de activismo, intrusiones, secretos y conflictos personales. Vale la pena verla porque no presenta la ciberseguridad como magia. Muchas escenas muestran cosas que sí se conectan con el mundo real: ingeniería social, Linux, phishing, malware, privacidad, acceso físico y abuso de confianza.
 
 Pero lo más fuerte de la serie no son los comandos. Es la forma en que mezcla tecnología con soledad, poder, salud mental, vigilancia y decisiones éticas. Te hace pensar en qué pasa cuando alguien entiende sistemas mejor que la mayoría, pero también carga enojo, dolor y contradicciones.
 
@@ -28,7 +26,7 @@ Silicon Valley es una comedia sobre programadores intentando construir una start
 
 No es una serie de ciberseguridad, pero sí ayuda a entender el mundo donde muchas decisiones tecnológicas se toman rápido, bajo presión y con mucho ego de por medio. Muestra founders, inversionistas, deuda técnica, malas decisiones de producto, competencia, crecimiento acelerado y caos organizacional.
 
-Sirve para entender algo muy real: muchas fallas de seguridad no nacen porque alguien "no sabe programar", sino porque el negocio empuja a lanzar rápido, crecer rápido y arreglar después.
+Sirve para entender algo muy real: muchas fallas de seguridad no nacen porque alguien "no sabe programar", sino porque el negocio empuja a lanzar rápido, crecer rápido y arreglar después. Y eso, si trabajas en tecnología, te va a sonar familiar.
 
 Si te interesa trabajar en tecnología, esta serie te ayuda a reírte del ambiente startup, pero también a reconocer problemas reales de ingeniería y liderazgo.
 
@@ -98,7 +96,7 @@ Ghost in the Wires cuenta la historia de Kevin Mitnick.
 
 Es un libro muy útil para entender ingeniería social. La lectura principal no es "qué herramienta usó", sino cómo una persona puede obtener información manipulando confianza, rutina, autoridad o descuidos.
 
-Te deja claro que muchas puertas se abren antes por conversación que por código.
+Te deja claro que muchas puertas se abren antes por conversación que por código. Y eso es algo que los que empiezan suelen subestimar.
 
 ### The Cuckoo's Egg
 
@@ -284,9 +282,7 @@ No siempre es ciberseguridad directa, pero ayuda con fundamentos: cifrado, memor
 
 ## CTF: El Deporte de la Ciberseguridad
 
-CTF significa Capture The Flag.
-
-Es una forma legal y controlada de practicar seguridad. En vez de atacar sistemas reales, entras a retos diseñados para aprender. La "bandera" suele ser un texto escondido que encuentras resolviendo un problema.
+CTF significa Capture The Flag. En vez de atacar sistemas reales, entras a retos diseñados para aprender. La "bandera" suele ser un texto escondido que encuentras resolviendo un problema.
 
 Hay CTFs de web, criptografía, forense, reversing, Linux, redes, programación y muchas otras áreas.
 
@@ -400,4 +396,4 @@ Usa esta sección como una biblioteca cultural:
 - Si quieres descansar jugando algo con lógica, prueba Hacknet o TIS-100.
 - Si quieres practicar de forma legal, entra a TryHackMe o Hack The Box.
 
-La cultura geek puede encender la curiosidad. Los fundamentos, la ética y la práctica segura son los que la convierten en habilidad real.
+La cultura geek puede encender la curiosidad. Pero los fundamentos, la ética y la práctica segura son los que la convierten en habilidad real.

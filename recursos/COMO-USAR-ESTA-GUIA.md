@@ -3,6 +3,10 @@ title: "Cómo Usar Esta Guía"
 ---
 # Cómo Usar Esta Guía
 
+Esta guía esta diseñada como un recurso de referencia y estudio para quienes buscan aprender ciberseguridad de manera estructurada. Organiza el conocimiento en áreas tematicas que se complementan entre si, permitiendo un avance progresivo sin necesidad de seguir un orden rigido.
+
+Cada sección incluye fundamentos teoricos, ejemplos prácticos, analogias explicativas y preguntas de autoevaluación para verificar la comprensión de los conceptos.
+
 Esta guía no está pensada para que la termines rápido.
 
 Está pensada para que tengas un lugar ordenado al cual volver cuando te sientas perdido entre tantos temas: redes, Linux, web, Blue Team, cloud, certificaciones, laboratorios, cultura hacker y empleabilidad.
@@ -63,7 +67,7 @@ Una nota útil no es la más larga. Es la que puedes volver a leer una semana de
 
 ## Cómo Practicar Sin Meterte en Problemas
 
-Practica solo en:
+Práctica solo en:
 
 - Máquinas virtuales propias.
 - Laboratorios locales.

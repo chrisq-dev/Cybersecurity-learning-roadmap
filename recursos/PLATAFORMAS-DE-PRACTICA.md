@@ -4,15 +4,13 @@ title: "Plataformas de Práctica"
 
 # Plataformas de Práctica
 
-Leer ayuda, pero en ciberseguridad necesitas practicar.
+Leer ayuda, pero en ciberseguridad necesitas practicar. puedes leer mil libros que si no abriste una terminal y tocaste cosas, no aprendiste nada.
 
-La práctica debe hacerse en entornos legales y controlados. Estas plataformas existen precisamente para eso: aprender sin tocar sistemas ajenos, sin poner en riesgo a terceros y sin meterte en problemas.
+Y esta bien. La práctica debe hacerse en entornos legales y controlados. Estas plataformas existen precisamente para eso: aprender sin tocar sistemas ajenos, sin poner en riesgo a terceros y sin meterte en problemas.
 
-## Cómo Elegir Plataforma
+## Como Elegir Plataforma
 
-No todas sirven para lo mismo.
-
-Antes de elegir, pregúntate:
+No todas sirven para lo mismo. elegir mal te puede frustrar y hacer pensar que esto no es para ti. Antes de elegir, pregúntate:
 
 - ¿Quiero aprender desde cero?
 - ¿Quiero practicar Blue Team?
@@ -26,7 +24,7 @@ Elegir bien evita frustración.
 
 ## TryHackMe
 
-TryHackMe es una de las mejores plataformas para empezar.
+TryHackMe es una de las mejores plataformas para empezar. Si nunca hiciste nada de ciberseguridad, empieza aqui. No hay verguenza en usar las rueditas antes de andar en bici.
 
 Tiene rutas guiadas, salas introductorias y explicaciones paso a paso. Es útil si todavía estás aprendiendo Linux, redes, web, Blue Team, herramientas básicas o metodología.
 
@@ -46,7 +44,7 @@ Cuida no depender siempre de pistas. La meta es usar la guía para construir bas
 
 ## Hack The Box
 
-Hack The Box es más retador.
+Hack The Box es más retador. Y es normal. No es para principiantes.
 
 Muchas máquinas no explican cada paso. Te obligan a enumerar, probar, equivocarte, leer, documentar y volver a intentar. Eso puede frustrar, pero también forma criterio.
 
@@ -64,7 +62,7 @@ No pasa nada si al principio no resuelves mucho. Parte del aprendizaje es aguant
 
 ## PortSwigger Web Security Academy
 
-PortSwigger Web Security Academy es excelente para seguridad web.
+PortSwigger Web Security Academy es excelente para seguridad web. Si te interesa ver como se rompen las aplicaciones web, este es tu lugar.
 
 Tiene explicaciones y laboratorios sobre vulnerabilidades reales de aplicaciones: access control, XSS, SQL Injection, SSRF, CSRF, autenticación, lógica de negocio y más.
 
@@ -81,7 +79,7 @@ Es de las mejores formas de aprender web de manera legal y ordenada.
 
 ## OverTheWire
 
-OverTheWire es una plataforma clásica para aprender desde terminal.
+OverTheWire es una plataforma clásica para aprender desde terminal. Si le tienes miedo a la terminal, empieza aqui. No hay forma más directa de agarrarle la mano.
 
 Bandit, uno de sus retos más conocidos, ayuda a practicar Linux, archivos, permisos, comandos, conexiones SSH y pensamiento básico de CTF.
 
@@ -186,7 +184,9 @@ Esto es útil para entender cómo se despliegan apps, bases de datos, APIs y ser
 
 ## Recomendación Por Ruta
 
-Si estás empezando:
+Si no sabes por donde arrancar, aqui va un resumen rápido para que no te pierdas:
+
+Si estas empezando:
 
 - TryHackMe.
 - OverTheWire.
@@ -212,6 +212,6 @@ Si quieres pentesting ético:
 
 ## Regla de Seguridad
 
-Practica donde está permitido.
+Práctica donde está permitido.
 
 Una plataforma de práctica existe para que aprendas sin afectar a nadie. No lleves técnicas fuera de esos entornos sin permiso explícito.

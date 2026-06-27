@@ -4,19 +4,19 @@ title: "Cursos y Certificaciones Recomendadas"
 
 # Cursos y Certificaciones Recomendadas
 
-Esta guía no intenta venderte certificaciones ni hacerte creer que un papel reemplaza habilidad real.
+Y no tienes que hacerlas todas. esta guía no intenta venderte certificaciones ni hacerte creer que un papel reemplaza habilidad real.
 
-Una certificación puede ayudar, pero no hace magia. Sirve para ordenar estudio, demostrar cierto nivel de base, pasar filtros de recursos humanos o enfocar una ruta. Lo importante es entender **cuándo conviene tomarla**, **para qué perfil sirve** y **qué no debes esperar de ella**.
+Una certificación puede ayudar, pero no hace magia. Sirve para ordenar estudio, demostrar cierto nivel de base, pasar filtros de recursos humanos o enfocar una ruta. Lo importante es entender **cuando conviene tomarla**, **para que perfil sirve** y **que no debes esperar de ella**.
 
-Antes de pagar cualquier examen, revisa siempre la página oficial, el temario actualizado, el precio, la vigencia, el idioma, los requisitos y si realmente se alinea con tu objetivo.
+Antes de pagar cualquier examen, revisa siempre la pagina oficial, el temario actualizado, el precio, la vigencia, el idioma, los requisitos y si realmente se alinea con tu objetivo. O sea, no compres un curso solo porque esta en oferta.
 
 ## Regla General: El Algoritmo ATS
 
-No estudies certificaciones como si fueran trofeos para tu ego.
+No estudies certificaciones como si fueran trofeos para tu ego. muchas certificaciones no las haces por lo que aprendes, si no por lo que parecen.
 
 En el mundo corporativo, las certificaciones iniciales (como Security+) rara vez impresionarán a un Director de Seguridad (CISO). El verdadero propósito táctico de estas certificaciones es **"Hackear" el filtro de Recursos Humanos (ATS - Applicant Tracking System)**.
 
-Cuando aplicas a un empleo, tu currículum es escaneado por un robot que busca palabras clave. Si la vacante pide "Security+" y tú no lo tienes, el robot desecha tu CV antes de que un humano lo lea. 
+Cuando aplicas a un empleo, tu currículum es escaneado por un robot que busca palabras clave. Si la vacante pide "Security+" y tú no lo tienes, el robot desecha tu CV antes de que un humano lo lea.
 **Las certificaciones son tu llave maestra para superar el algoritmo y llegar a la entrevista técnica.**
 
 Úsalas así:
@@ -34,6 +34,8 @@ No las uses así:
 - Para sustituir laboratorios, reportes y experiencia.
 
 ## Si Estás Empezando
+
+Si estas en cero, no te asustes. Todos empezaron ahí. aqui van opciones para agarrar el ritmo sin morir en el intento.
 
 ### Cisco Introduction to Cybersecurity
 
@@ -73,6 +75,8 @@ Fuente oficial: [ISC2 Certified in Cybersecurity](https://www.isc2.org/certifica
 
 ## Base Técnica
 
+pasa si no tienes base técnica? Te vas a sentir perdido todo el tiempo. Mejor construir los cimientos antes de querer construir la casa.
+
 ### CompTIA A+
 
 **Para quién sirve:** personas que no tienen base sólida de hardware, sistemas operativos, soporte y troubleshooting.
@@ -111,6 +115,8 @@ Fuente oficial: [Cisco CCNA](https://www.cisco.com/site/us/en/learn/training-cer
 
 ## Seguridad General
 
+Esta es probablemente la certificación más conocida. No es la mejor ni la peor. Es simplemente la que más aparece en los filtros de RRHH.
+
 ### CompTIA Security+
 
 **Para quién sirve:** personas que quieren una base amplia y reconocible de ciberseguridad.
@@ -124,6 +130,8 @@ Fuente oficial: [Cisco CCNA](https://www.cisco.com/site/us/en/learn/training-cer
 Fuente oficial: [CompTIA Security+](https://www.comptia.org/en-us/certifications/security/)
 
 ## Blue Team y SOC
+
+Si te tira más el lado defensivo, por aqui empiezas. el Blue Team tiene tanta demanda como el Red Team, pero hablan menos de el.
 
 ### TryHackMe Pre Security y SOC Level 1
 
@@ -163,6 +171,8 @@ Fuente oficial: [Microsoft Certified: Security Operations Analyst Associate](htt
 
 ## AppSec y Seguridad Web
 
+Si te gusta romper cosas en la web, este es tu camino. Después entendí que era solo entender como funciona la base de datos.
+
 ### PortSwigger Web Security Academy
 
 **Para quién sirve:** estudiantes de seguridad web, AppSec, bug bounty o pentesting web en laboratorios legales.
@@ -189,6 +199,8 @@ Fuente oficial: [OWASP WebGoat](https://owasp.org/www-project-webgoat/)
 
 ## Cloud
 
+Hoy en día casi todo esta en la nube. Ignorar cloud es como ser mecánico y no saber que son los autos eléctricos.
+
 ### AWS Certified Cloud Practitioner
 
 **Para quién sirve:** personas que quieren entender AWS Cloud, servicios y terminología de alto nivel.
@@ -214,6 +226,8 @@ Fuente oficial: [AWS Certified Cloud Practitioner](https://aws.amazon.com/certif
 Fuente oficial: [Microsoft SC-900](https://learn.microsoft.com/en-us/credentials/certifications/security-compliance-and-identity-fundamentals/)
 
 ## Red Team Ético
+
+aqui es donde muchos quieren llegar. Pero ojo: saltarse la base para llegar a pentesting es como querer correr una maratón sin haber caminado nunca.
 
 ### eJPT
 
@@ -277,7 +291,7 @@ Fuente oficial: [ISC2 CISSP](https://www.isc2.org/certifications/cissp)
 
 ## Ruta Recomendada
 
-Si estás empezando y no sabes qué elegir:
+Si estas empezando y no elegir, te dejó una ruta que funciona. No es la única, pero es la que a mi me hubiera gustado tener el primer día:
 
 1. Cisco Introduction to Cybersecurity.
 2. Google Cybersecurity Certificate o ISC2 CC.
@@ -300,5 +314,3 @@ Antes de pagar cientos de dólares por una certificación, haz un análisis corp
 - ¿El Retorno de Inversión (ROI) justifica el gasto en mi etapa actual?
 
 Si no puedes responder esas preguntas, detente. Construir un proyecto práctico en tu computadora es casi siempre mejor inversión que comprar un examen por ansiedad.
-
-

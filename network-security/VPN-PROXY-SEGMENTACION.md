@@ -1,64 +1,331 @@
 ---
 title: "VPN, Proxy y Segmentación: El Submarino y el Túnel"
 ---
+
 # VPN, Proxy y Segmentación: El Submarino y el Túnel
 
 ## Objetivo de esta Guía
 
-Aprender cómo la ingeniería civil se aplica al diseño de redes. No puedes construir un castillo gigantesco con una sola pared perimetral, porque si el enemigo rompe esa pared, conquistará toda la ciudad en minutos. Tienes que usar túneles secretos y compartimentos herméticos.
+Aprender como la ingeniería de redes se aplica a la seguridad. No puedes construir un castillo con una sola pared porque si el enemigo la rompe, conquista todo. Necesitas túneles (VPN), intermediarios (proxies), y compartimentos estancos (segmentación).
 
----
+Esta guía cubre VPNs para acceso remoto seguro, proxies forward y reverse como intermediarios, y segmentación de red para limitar movimiento lateral. También explora como los atacantes evaden o abusan de estas tecnologías y como configurarlas sin crear vulnerabilidades.
 
-## 1. La VPN: El Túnel Subacuático Blindado
+## La VPN: El Túnel Subacuático Blindado
 
-En la pandemia del 2020, millones de empleados tuvieron que trabajar desde casa. El problema es que conectarse directamente a la Base de Datos de la empresa a través del internet público de su casa es como intentar pasar un cofre del tesoro nadando por un río infestado de pirañas (Hackers, ISPs, Gobiernos).
+En la pandemia de 2020, millones de empleados trabajaron desde casa. Conectarse directamente a la base de datos de la empresa desde el WiFi de casa es como pasar un cofre del tesoro nadando por un río de pirañas (atacantes, ISP curiosos, gobiernos).
 
-Aquí entra la **VPN (Virtual Private Network)**.
+La VPN (Virtual Private Network) crea un túnel cifrado desde la computadora del empleado hasta la red corporativa. Todo el tráfico viaja dentro del túnel. Las pirañas ven el túnel pero no pueden ver ni morder lo que va dentro.
 
-* **La Analogía:** No nadas por el río. Construyes un **Tubo de Acero Subacuático** desde tu casa directamente hasta el servidor de la empresa.
-* Todo el tráfico (Tus contraseñas, documentos, correos) viaja por adentro del tubo. Las pirañas pueden ver el tubo de acero cruzando el río, pero no pueden morder lo que va adentro, ni pueden ver de qué color es el cofre.
+### Como Funciona una VPN
 
-**El Riesgo de Seguridad:**
-El tubo de acero es de dos vías. Si la computadora del empleado en su casa tiene un virus, y el empleado se conecta a la VPN de la empresa, el virus usará ese mismo tubo de acero para meterse a la red corporativa, saltándose por completo a los guardias de la puerta principal (El Firewall).
-Por eso, las VPNs modernas obligan a la computadora a pasar por un escáner de Antivirus antes de dejarla entrar al tubo.
+1. El empleado activa el cliente VPN en su computadora.
+2. El cliente establece una conexion cifrada (usualmente TLS o IPsec) con el servidor VPN de la empresa.
+3. Todo el tráfico de red del empleado se encapsula dentro de paquetes cifrados.
+4. El servidor VPN descifra y reenvia a la red interna.
+5. Para el resto de internet, el empleado parece estar en la oficina.
 
----
+### Tipos de VPN
 
-## 2. El Proxy Forward y Reverse: La Secretaria
+**VPN de Acceso Remoto (Client-to-Site):**
+Un empleado desde su casa se conecta a la red corporativa. Arquitectura: cliente VPN en endpoint, servidor VPN en el perímetro de la red.
 
-Un Proxy es un intermediario. Un servidor que habla con internet en tu lugar.
+**VPN Site-to-Site:**
+Dos oficinas se conectan a través de internet. Cada oficina tiene un router VPN que encripta todo el tráfico entre ambas.
 
-### Forward Proxy (La Secretaria del Empleado)
-* **La Analogía:** Eres un oficinista. En lugar de gritarle a la tienda de la esquina para pedir un café, le das el dinero a la secretaria. Ella va a la calle, compra el café y te lo trae.
-* **La Ventaja (Privacidad):** La tienda nunca supo quién eras tú, solo vio a la secretaria. Además, si le pides a la secretaria que compre drogas, ella te dirá *"No, las políticas de la empresa no me permiten comprar eso"* y bloqueará la conexión. (Filtro de Contenido / Bloqueo de Facebook).
+**VPN SSL (OpenVPN, AnyConnect):**
+Usa el puerto 443 (HTTPS) que suele estar abierto en firewalls. No requiere puertos especiales. Ideal para redes restrictivas.
 
-### Reverse Proxy (El Guardaespaldas del Servidor)
-* **La Analogía:** Eres el CEO de la empresa. En lugar de atender directamente a mil clientes enojados, pones a un Guardaespaldas gigante en la puerta de tu oficina. Los clientes le dan la carta al guardaespaldas, él la revisa buscando cuchillos (Virus), y si está limpia, te la pasa.
-* **La Ventaja (Protección del Servidor):** El servidor principal de Amazon nunca "toca" directamente internet. El tráfico sucio choca contra el Reverse Proxy (Ej. Nginx), y el Reverse Proxy es quien recibe los golpes de los hackers (Protección contra ataques de Denegación de Servicio - DDoS).
+**VPN IPsec (IKEv2, L2TP/IPsec):**
+Estándar antiguo pero ampliamente soportado. Más complejo de configurar. Bloqueado por algunos firewalls y redes restrictivas.
 
----
+**Split Tunnel vs. Full Tunnel:**
 
-## 3. Segmentación de Red: El Submarino
+Split Tunnel: Solo el tráfico hacia la red corporativa pasa por la VPN. El tráfico a internet (YouTube, Google, redes sociales) va directo desde la casa del empleado.
 
-Este es el concepto más importante que usan los Arquitectos de Seguridad modernos para detener el movimiento lateral de los hackers.
+Ventajas: Menos carga en el servidor VPN, menor latencia para tráfico de internet.
+Desventajas: El tráfico a internet no pasa por los filtros de seguridad corporativos. Si el empleado descarga malware desde internet, el malware no es filtrado por la empresa.
 
-* **El Error Histórico:** Una red "Plana". Como un globo gigante. Si el hacker le hace phishing a la recepcionista, el hacker entra al globo y tiene acceso libre e inmediato a los servidores financieros, las bases de datos y el CEO.
-* **La Arquitectura Correcta (Segmentación):** La analogía es **Un Submarino Nuclear**. 
-El submarino no está hueco por dentro; está dividido en 20 compartimentos separados por compuertas de titanio (VLANs y Firewalls Internos).
+Full Tunnel: Todo el tráfico pasa por la VPN. El empleado navega por internet como si estuviera en la oficina, pasando por los filtros corporativos.
 
-Si un torpedo impacta la cocina del submarino, suena la alarma, se cierran las puertas herméticas y la cocina se inunda. La empresa perdió la cocina, pero el submarino no se hunde.
+Ventajas: Todo el tráfico es inspeccionado por los controles de seguridad de la empresa.
+Desventajas: Mayor carga en el servidor VPN, mayor latencia.
 
-**¿Cómo funciona técnicamente?**
-La computadora de la recepcionista se pone en una "VLAN" aislada (Segmento de Red A). El servidor de Finanzas se pone en otro segmento (Segmento de Red B). Entre el Segmento A y el Segmento B, se coloca un Firewall Interno que dice: *"Prohibido que la recepcionista hable con Finanzas"*.
-Si el hacker infecta a la recepcionista, se quedará atrapado en el compartimento de la recepción para siempre.
+### El Riesgo de Seguridad de las VPNs
 
----
+El túnel es de dos vías. Si la computadora del empleado tiene malware, y el empleado se conecta a la VPN, el malware usa el túnel para entrar a la red corporativa, saltándose el firewall perimetral.
 
-## 4. Criterio de Dominio (Autoevaluación)
+**Mitigaciones:**
+- Posture assessment: La VPN verifica que el endpoint tenga antivirus, parches, y firewall activo antes de permitir la conexion.
+- ZTNA (Zero Trust Network Access): En lugar de VPN que da acceso a toda la red, ZTNA da acceso solo a la aplicación específica que el empleado necesita.
+- 2FA obligatorio: Autenticación de dos factores para toda conexion VPN.
+- Segmentación de acceso VPN: Los usuarios VPN se colocan en una VLAN separada con acceso restringido.
 
-Revisa si podrías diseñar la arquitectura de un banco:
+## El Proxy Forward: La Secretaria del Empleado
 
-1. Un empleado de ventas trabaja desde su laptop en una cafetería pública usando el Wi-Fi gratuito para subir los reportes financieros a la red corporativa. Si un Hacker está sentado en la misma cafetería haciendo un ataque *Man-in-the-Middle* (MitM), ¿Por qué la activación de la VPN de la empresa en la laptop del vendedor anula completamente la capacidad del hacker para robar los reportes?
-2. La arquitectura de red de tu empresa es "plana" (no hay segmentación). Un atacante envía un Phishing al Departamento de Recursos Humanos, infecta una PC y desde ahí logra acceder directamente al Servidor de Producción de la Tienda en Línea para borrarlo. Usando la analogía del Submarino, diseña la solución de arquitectura (Segmentación y Firewalls Internos) para asegurar que este ataque sea imposible en el futuro.
-3. Estás implementando un servidor web público. ¿Por qué exponer directamente el servidor *Apache* de tu aplicación al internet es una mala práctica de seguridad, y por qué deberías colocar un "Reverse Proxy" (como *Nginx* o *Cloudflare*) en frente de él?
-4. Un "Forward Proxy" corporativo se utiliza mucho para el Filtrado de Contenido y Control de Empleados. Explica cómo la Analogía de la Secretaria ayuda a entender por qué el empleado nunca interactúa de forma directa con la dirección IP de `youtube.com`.
+Proxy forward es un intermediario entre el empleado e internet.
+
+Analogía: Eres un oficinista. En lugar de ir a la tienda, le das dinero a la secretaria. Ella compra y te trae. La tienda solo ve a la secretaria, no a ti.
+
+**Ventajas:**
+- Privacidad: El sitio web destino ve la IP del proxy, no la del empleado.
+- Control de contenido: El proxy bloquea sitios prohibidos (redes sociales, streaming, malware conocido).
+- Caché: Contenido popular se almacena en el proxy, ahorrando ancho de banda.
+- Filtrado de malware: El proxy inspecciona descargas antes de entregarlas al empleado.
+- Registro de actividad: La empresa tiene un registro de que sitios visito cada empleado.
+
+**Limitaciones:**
+- Punto único de fallo: Si el proxy cae, los empleados pierden acceso a internet.
+- Saturable: Si no esta dimensionado correctamente, se convierte en cuello de botella.
+- Tráfico cifrado: La inspeccion de HTTPS requiere configurar el proxy como "man in the middle" con certificados.
+- Evasion: Los empleados pueden usar VPNs personales o Tor para evadir el proxy.
+
+### Implementación de Proxy Forward
+
+- Squid: Proxy clásico open source.
+- Blue Coat / Symantec: Proxy comercial con filtrado avanzado.
+- Zscaler: Proxy cloud (no requiere hardware en la empresa).
+- Palo Alto NGFW: Tiene funcionalidad de proxy integrada.
+
+## El Reverse Proxy: El Guardaespaldas del Servidor
+
+Se coloca delante de los servidores web. Los clientes de internet se conectan al proxy, que reenvia las solicitudes al servidor interno.
+
+Analogía: Eres el CEO. Pones un guardaespaldas en la puerta. Los clientes le dan la carta, el la revisa buscando cuchillos, y si esta limpia, te la pasa.
+
+**Ventajas:**
+- Ocultamiento: El servidor real nunca toca internet. Solo el proxy es visible.
+- Terminacion TLS: El proxy maneja el cifrado, liberando al servidor backend.
+- Balanceo de carga: Distribuye tráfico entre múltiples servidores backend.
+- Protección DDoS: El proxy puede absorber ataques antes de que lleguen al servidor.
+- Caché: Contenido estático se almacena en el proxy, reduciendo carga del servidor.
+- WAF (Web Application Firewall): El proxy puede inspeccionar solicitudes HTTP y bloquear ataques web.
+
+**Implementaciones comunes:**
+- Nginx: El más popular. Alto rendimiento, configuración simple.
+- Apache con mod_proxy: Similar a Nginx, más pesado.
+- HAProxy: Especializado en balanceo de carga y alta disponibilidad.
+- Cloudflare: CDN que actúa como reverse proxy, con protección DDoS y WAF.
+- AWS CloudFront / Azure Front Door: Soluciones cloud de reverse proxy.
+
+## Segmentación de Red: El Submarino
+
+El concepto más importante para detener el movimiento lateral de atacantes.
+
+**El error histórico:** Una red "plana" donde todos los dispositivos pueden comunicarse con todos. Si un atacante compromete a la recepcionista, tiene acceso inmediato a los servidores financieros, base de datos, y CEO.
+
+**La arquitectura correcta:** Un submarino nuclear. No esta hueco; dividido en compartimentos separados por compuertas de titanio. Si un torpedo impacta la cocina, se cierran las puertas y la cocina se inunda. El submarino no se hunde.
+
+### Como Implementar Segmentación
+
+**VLANs (Virtual LANs):**
+Segmentan la red a nivel de capa 2 (switch). Dispositivos en diferentes VLANs no pueden comunicarse directamente. Requieren un router o firewall para hacerlo.
+
+Segmentación tipica:
+- VLAN 10: Servidores web (DMZ)
+- VLAN 20: Servidores de aplicaciones
+- VLAN 30: Base de datos
+- VLAN 40: Empleados
+- VLAN 50: Administración
+- VLAN 60: Invitados (WiFi)
+- VLAN 70: IoT (cámaras, sensores, impresoras)
+
+**Firewalls Internos:**
+Controlan el tráfico entre segmentos. Definen políticas específicas: "Los servidores web pueden iniciar conexiones a los servidores de aplicaciones solo en el puerto 8080. Los servidores de aplicaciones pueden conectarse a la base de datos solo en el puerto 3306."
+
+**ACLs en Switches y Routers:**
+Reglas que permiten o deniegan tráfico basado en IPs y puertos. Más simples que firewalls internos pero menos flexibles.
+
+**Microsegmentacion:**
+La forma más granular. Cada servidor (o incluso cada aplicación) tiene su propio segmento. Común en entornos virtualizados (VMware NSX, cilium en Kubernetes).
+
+### Ejemplo de Políticas de Segmentación
+
+- Empleados -> Internet: Permitido via proxy.
+- Empleados -> Servidores web: Permitido solo puerto 443.
+- Empleados -> Base de datos: Denegado.
+- Servidores web -> Servidores aplicación: Permitido solo puerto 8080.
+- Servidores aplicación -> Base de datos: Permitido solo puerto 3306.
+- Administración -> Todos los segmentos: Permitido solo desde estaciones de trabajo autorizadas.
+- Invitados -> Red interna: Denegado. Solo internet.
+
+### Zero Trust: Más allá de la Segmentación
+
+Zero Trust es la evolución. Ningún dispositivo es confiable por defecto, incluso si esta en la red corporativa. Cada solicitud de acceso se verifica independientemente.
+
+Principios:
+- Nunca confiar, siempre verificar.
+- Acceso con minimos privilegios.
+- Asumir que la red esta comprometida.
+- Microsegmentacion por aplicación, no por red.
+- Autenticación y autorización continua (no solo al inicio de la sesión).
+
+## Casos Reales
+
+### VPN sin 2FA (2020)
+
+Una empresa financiera sufrio ransomware que comenzó con credenciales de VPN robadas por phishing. La VPN no tenía 2FA. La red era plana. El atacante se movio lateralmente a los backups y los encripto.
+
+### Reverse Proxy que Absorbio DDoS (2021)
+
+Un ecommerce detrás de Cloudflare sufrio un ataque DDoS masivo. Cloudflare absorvio el ataque en sus servidores perimetrales. El servidor web nunca sintio el impacto.
+
+### Segmentación que Contuvo Ransomware (2022)
+
+Una empresa con segmentación VLAN sufrio un phishing. El ransomware infectó una PC de marketing pero no pudo propagarse a los servidores de archivos porque la segmentación lo impidio. Perdieron una PC, no toda la red.
+
+### Proxy Evadido (2023)
+
+Empleados usaban VPNs personales para evadir el proxy corporativo. Una de esas VPNs era maliciosa y robo credenciales. La empresa implementó bloqueo de VPNs no autorizadas.
+
+## Modos de Falla
+
+VPN sin 2FA ni control de endpoint. Red plana (sin segmentación). Proxy como cuello de botella sin redundancia. Confianza excesiva en la red interna. Segmentación mal diseñada (por departamento en lugar de por funcion). No monitorear tráfico entre segmentos.
+
+## La Perspectiva del Atacante
+
+Un atacante enfrentando una red segmentada busca:
+- Segmentos mal configurados con ACLs demasiado permisivas.
+- Atacar servidores de autenticación (AD) desde dentro.
+- Usar protocolos permitidos (DNS, HTTP, ICMP) para tunelizar entre segmentos.
+- Sistemas "puente" que acceden a múltiples segmentos (backups, consolas de administración).
+
+Las VPNs sin 2FA y los proxies mal configurados son puertas de entrada preferidas.
+
+## Autoevaluación
+
+1. Un empleado en una cafetería con WiFi público activa la VPN corporativa. Un atacante en la misma red intenta MitM. Por que la VPN lo protege?
+2. Tu red es plana. Un atacante infecta una PC de RH y accede al servidor de producción. Diseña la segmentación para prevenir esto.
+3. Por que exponer Apache directamente a internet es mala práctica? Que beneficios da un reverse proxy?
+4. El proxy forward oculta la IP del empleado. Explica como. Que implicaciones de privacidad tiene?
+5. Split tunnel vs Full tunnel: cual es más seguro para la empresa y por que?
+6. Segmentar por departamento (ventas, RH, IT) o por funcion (web, app, BD, usuarios)? Cual es mejor para seguridad?
+7. Un admin configura VPN site-to-site sin cifrado "por rendimiento." Que riesgos introduce?
+8. Implementas Zero Trust. Un empleado de ventas necesita acceder a una app de nómina. En Zero Trust, solo obtiene acceso a esa app, no a toda la red. Explica como es diferente de VPN tradicional y por que es más seguro.
+
+## Protocolos de VPN Comparados
+
+### IPSec
+
+**Modos:** Transporte (solo payload) y Túnel (paquete completo).
+**Componentes:**
+- IKE (Internet Key Exchange): Negocia claves y establece el túnel.
+- ESP (Encapsulating Security Payload): Cifra y autentica los datos.
+- AH (Authentication Header): Solo autentica, no cifra.
+
+**Puertos:** UDP 500 (IKE), UDP 4500 (NAT-Traversal), IP Protocolo 50 (ESP), IP Protocolo 51 (AH).
+
+**Fortalezas:** Muy seguro, estándar ampliamente soportado.
+**Debilidades:** Configuración compleja, problemas con NAT, overhead alto.
+**Mejor para:** Site-to-site, conexiones gobierno/empresariales.
+
+### OpenVPN
+
+**Basado en:** OpenSSL.
+**Puertos:** UDP 1194 (predeterminado), puede usar cualquier puerto.
+**Cifrado:** AES, ChaCha20, certificados TLS.
+**Autenticación:** Certificados, usuario/contraseña, 2FA.
+
+**Fortalezas:** Open source, flexible, puede evadir firewalls (funciona sobre cualquier puerto), maduro.
+**Debilidades:** No es nativo en Windows/Mac, requiere software cliente.
+**Mejor para:** Remote access, entornos que necesitan máxima flexibilidad.
+
+### WireGuard
+
+**Protocolo moderno:** Diseñado en 2016 por Jason Donenfeld.
+**Puerto:** UDP 51820 (predeterminado).
+**Cifrado:** Curve25519, ChaCha20, Poly1305, BLAKE2s.
+**Autenticación:** Claves públicas/privadas (pre-shared opcional).
+
+**Fortalezas:** Extremadamente rápido, codigo simple (4000 líneas vs 400,000+ de OpenVPN/OpenSSL), menor latencia, configuración simple.
+**Debilidades:** Las IPs son estaticas (asociadas a claves), no tiene autenticación de usuario nativa sin herramientas adicionales.
+**Mejor para:** Site-to-site, mobile, IoT, cualquier escenario que priorice rendimiento.
+
+### SSL/TLS VPN
+
+**Funcionamiento:** El cliente se conecta via HTTPS (puerto 443) a un portal web.
+**Tipos:**
+- Clientless: Solo acceso a aplicaciones web via proxy.
+- Full Tunnel: El navegador descarga un cliente ligero que crea un túnel completo.
+
+**Fortalezas:** No requiere software cliente (para clientless), funciona detrás de cualquier firewall (puerto 443), fácil de usar.
+**Debilidades:** Menor rendimiento que IPSec/WireGuard, dependencia del navegador.
+**Mejor para:** Acceso remoto rápido, empleados no técnicos, entornos con firewalls restrictivos.
+
+## Segmentación de Red Avanzada
+
+### Microsegmentacion
+
+División de la red en segmentos muy pequeños, a veces a nivel de carga de trabajo individual.
+
+**Implementación con Virtual Networks:**
+- VMware NSX: Etiquetas de seguridad, firewalls distribuidos.
+- Cisco ACI: Contratos entre grupos de endpoints.
+- Kubernetes Network Policies: Reglas de tráfico entre pods.
+
+**Políticas de microsegmentacion típicas:**
+1. El servidor web solo puede hablar con el balanceador de carga y la base de datos.
+2. La base de datos solo acepta conexiones del servidor web en puerto 3306.
+3. Ningún servidor de producción inicia conexiones a internet.
+4. Las estaciones de trabajo de desarrollo no pueden acceder a producción.
+
+### Listas de Control de Acceso (ACLs)
+
+Reglas de filtrado en switches y routers que complementan los firewalls.
+
+**Principios de ACLs:**
+- Denegar todo por defecto, permitir lo necesario.
+- Orden de las reglas: más específicas primero, más generales al final.
+- Documentar cada regla con justificacion y responsable.
+
+**Ejemplo práctico de ACL en router de borde:**
+
+```
+access-list 101 deny ip 10.0.0.0 0.255.255.255 any (RFC 1918 - no salen a internet)
+access-list 101 deny ip 172.16.0.0 0.15.255.255 any (RFC 1918)
+access-list 101 deny ip 192.168.0.0 0.0.255.255 any (RFC 1918)
+access-list 101 deny ip any 224.0.0.0 0.15.255.255 (Multicast)
+access-list 101 permit ip any any (trafico legitimo)
+```
+
+### VLANs vs. VXLANs
+
+**VLANs (802.1Q):**
+- Separacion a nivel 2.
+- Máximo 4094 VLANs.
+- Limitado a un solo centro de datos.
+- Fácil de configurar con switches gestionados.
+
+**VXLANs:**
+- Encapsulación de tramas ethernet sobre UDP (tecnología overlay).
+- Hasta 16 millones de VXLANs.
+- Funciona entre centros de datos (overlay sobre WAN).
+- Usado en virtualización (VMware NSX, Open vSwitch).
+
+## Monitoreo de VPNs
+
+### Que Monitorear
+
+**Rendimiento:**
+- Latencia del túnel VPN.
+- Throughput actual vs. capacidad.
+- Paquetes perdidos/retransmitidos.
+- Reintentos de conexion.
+
+**Accesos:**
+- Usuarios conectados actualmente.
+- Duracion de las sesiones.
+- Horarios de conexion.
+- Ubicación geográfica de origen.
+- Dispositivos utilizados.
+
+**Seguridad:**
+- Fallos de autenticación.
+- Conexiones desde IPs sospechosas.
+- Intentos de conexion simultaneos desde múltiples ubicaciones.
+
+## Preguntas Adicionales
+
+9. Una empresa con 500 empleados remotos usa OpenVPN. La latencia es alta y los usuarios se quejan. El presupuesto es limitado. Que cambios prioritarios haces para mejorar el rendimiento sin reemplazar toda la infraestructura de VPN?
+10. Tu empresa migra a la nube (AWS + Azure) y mantiene un datacenter on-premise. Que tecnología de VPN y segmentación usas para conectar estos tres entornos de forma segura y escalable?
+11. Implementas microsegmentacion en tu red. El equipo de desarrollo se queja porque no pueden acceder a los servidores de base de datos de producción para depurar. Como resuelves este conflicto entre seguridad y operaciones?
+12. Un atacante compromete una VPN corporativa usando credenciales robadas. Que políticas de segmentación y monitoreo de VPN podrían haberlo prevenido o detectado más rápido?

@@ -5,14 +5,17 @@ title: "Python para Seguridad: La Navaja Suiza"
 
 ## Objetivo de esta Guía
 
-Entender por qué nadie en Ciberseguridad pierde el tiempo escribiendo programas de 1,000 líneas en C++ o Java cuando están en medio de una respuesta a incidentes.
+aqui vamos a entender por qué nadie en Ciberseguridad pierde el tiempo escribiendo programas de 1,000 líneas en C++ o Java cuando están en medio de una respuesta a incidentes.
 
 Cuando un servidor está bajo ataque, cada segundo cuenta. Necesitas una herramienta que te permita escribir un script en 3 minutos, correrlo y apagar el incendio. Python es famoso por ser un lenguaje de "pegamento": te permite conectar el Sistema Operativo, Internet y bases de datos usando un par de comandos simples gracias a sus **Librerías**.
+
+**Por qué esto importa:** En ciberseguridad no importa que el codigo sea bonito. Importa que FUNCIONE y rápido. Python es el martillo más versatil que puedes tener en tu caja de herramientas.
 
 ---
 
 ## 1. La Analogía: El Taller y las Librerías
 
+cuando empece, no entendia para que servian las librerías hasta que alguien me lo explico con esta analogía:
 Imagina que Python es un Taller de Herramientas vacío. Tienes la mesa de trabajo (Variables) y el motor eléctrico (Bucles), pero no tienes destornilladores ni martillos.
 
 Para no tener que inventar el martillo desde cero, Python te permite **Importar Librerías**. Una librería es una caja de herramientas pre-fabricada que alguien más inteligente que tú ya programó, y que tú puedes descargar gratis.
@@ -22,6 +25,8 @@ Si quieres conectarte a Internet y descargar páginas web, importas la librería
 
 > **Importante:**
 > En ciberseguridad, NUNCA escribas desde cero algo que ya existe en una librería. Un buen hacker no inventa algoritmos de criptografía nuevos; simplemente importa la librería `hashlib` y la usa.
+
+Es como querer construir una casa y negarte a usar un martillo porque quieres inventar tu propia herramienta para clavar clavos. No tiene sentido.
 
 ---
 
@@ -50,7 +55,7 @@ Un atacante usa la misma librería para pedirle a tu máquina que se conecte a s
 
 ## 3. La Librería `requests` (Robando la Web)
 
-Esta es la librería más famosa del mundo para conectarse a Internet.
+pasa si quieres que tu script hable con internet sin abrir un navegador? Usas `requests`. Esta es la librería más famosa del mundo para conectarse a Internet.
 En lugar de abrir Google Chrome, escribir una URL y darle "Enter", le dices a Python que haga exactamente lo mismo por debajo del capó.
 
 ```python
@@ -64,10 +69,12 @@ print(respuesta.status_code)
 ```
 
 ### ¿Por qué lo usan los atacantes?
-Si un atacante quiere hacer un ataque de "Fuerza Bruta" para adivinar tu contraseña, no va a sentarse frente al teclado a escribir contraseñas 5,000 veces en la pantalla de *Login*. Va a escribir un script con un bucle `for`, y usará `requests.post` para inyectar 5,000 contraseñas por segundo directamente en las tuberías ocultas del sitio web.
+, si un atacante quiere hacer un ataque de "Fuerza Bruta" para adivinar tu contraseña, no va a sentarse frente al teclado a escribir contraseñas 5,000 veces en la pantalla de *Login*. Va a escribir un script con un bucle `for`, y usará `requests.post` para inyectar 5,000 contraseñas por segundo directamente en las tuberías ocultas del sitio web.
 
 ### ¿Por qué lo usan los defensores?
 Si tienes un archivo de texto con 500 correos electrónicos sospechosos, no vas a copiar y pegar uno por uno en una página web de seguridad para ver si son virus. Escribes un script que usa `requests` para enviarle los 500 correos a la base de datos de Microsoft, y te devuelve la respuesta en milisegundos.
+
+**Por qué esto importa:** La misma herramienta que usa el atacante para romper, la usas tu para defender. La diferencia es quien aprieta el botón.
 
 ---
 
@@ -83,7 +90,7 @@ lista_urls_sospechosas = ["http://malware.com", "http://google.com", "http://phi
 
 for sitio in lista_urls_sospechosas:
  respuesta = requests.get(sitio)
- 
+
  # El código HTTP 200 significa "Página Viva y Funcionando"
  if respuesta.status_code == 200:
  print("¡ALERTA! El sitio " + sitio + " sigue vivo y activo en internet.")

@@ -2,11 +2,11 @@
 title: "Roadmap Inicial de 90 Días"
 ---
 
-# Roadmap Inicial de 90 Días
+# Roadmap Inicial de 90 Dias
 
-Este roadmap no promete convertirte en experto en 90 días.
+Este roadmap no promete convertirte en experto en 90 dias. Si alguien te vende eso, corre.
 
-La ciberseguridad toma tiempo. Lo que sí puede hacer un plan de 90 días es darte estructura para construir base, crear hábito y dejar de saltar entre temas sin dirección.
+La ciberseguridad toma tiempo. Lo que si puede hacer un plan de 90 dias es darte estructura para construir base, crear habito y dejar de saltar entre temas sin dirección.
 
 La meta es terminar con:
 
@@ -17,17 +17,17 @@ La meta es terminar con:
 - Primeros proyectos o writeups.
 - Mejor criterio para seguir estudiando.
 
-## Cómo Usarlo
+## Como Usarlo
 
-No necesitas seguirlo perfecto.
+No necesitas seguirlo perfecto. nadie lo sigue al pie de la letra.
 
 Puedes adaptarlo a tu tiempo, escuela, trabajo o energía. Si una semana se complica, no abandones. Retoma.
 
 La regla es avanzar con consistencia, no con ansiedad.
 
-## Días 1 a 15: Base Técnica
+## Dias 1 a 15: Base Técnica
 
-Objetivo: entender cómo funcionan computadoras, sistemas operativos y permisos.
+Objetivo: entender como funcionan computadoras, sistemas operativos y permisos. Suena básico, pero muchos estudiantes saltan esta base y después no logran conectar conceptos más avanzados.
 
 Estudia:
 
@@ -37,7 +37,7 @@ Estudia:
 - Usuarios y permisos.
 - Terminal básica.
 
-Practica:
+Práctica:
 
 - Instala una máquina virtual Linux.
 - Usa comandos básicos.
@@ -50,9 +50,9 @@ Resultado esperado:
 
 Puedes explicar qué es un proceso, qué son permisos y por qué no todo debe ejecutarse como administrador.
 
-## Días 16 a 30: Redes y Linux
+## Dias 16 a 30: Redes y Linux
 
-Objetivo: entender comunicación entre sistemas.
+Objetivo: entender comunicación entre sistemas. Esto es clave porque absolutamente todo en ciberseguridad pasa por una red. Todo.
 
 Estudia:
 
@@ -63,7 +63,7 @@ Estudia:
 - Modelo OSI/TCP-IP.
 - Comandos de red en Linux.
 
-Practica:
+Práctica:
 
 - Usa `ping`, `ip`, `ss`, `curl`, `dig` o `nslookup`.
 - Revisa qué puertos escucha tu máquina.
@@ -74,9 +74,9 @@ Resultado esperado:
 
 Puedes explicar qué pasa, a alto nivel, cuando entras a una página web.
 
-## Días 31 a 45: Web y Seguridad Básica
+## Dias 31 a 45: Web y Seguridad Básica
 
-Objetivo: entender aplicaciones web y fallas comunes.
+Objetivo: entender aplicaciones web y fallas comunes. Por que esto importa: el 90% de los ataques involucran una aplicación web. Literalmente.
 
 Estudia:
 
@@ -90,7 +90,7 @@ Estudia:
 - SQL Injection.
 - Broken Access Control.
 
-Practica:
+Práctica:
 
 - Usa PortSwigger Web Security Academy.
 - Lee una petición HTTP.
@@ -101,9 +101,9 @@ Resultado esperado:
 
 Puedes explicar por qué una app puede fallar aunque "funcione bien" para el usuario.
 
-## Días 46 a 60: Blue Team y Logs
+## Dias 46 a 60: Blue Team y Logs
 
-Objetivo: empezar a pensar como defensor.
+Objetivo: empezar a pensar como defensor. Después aprendes a leerlos y cada línea cuenta una historia.
 
 Estudia:
 
@@ -114,7 +114,7 @@ Estudia:
 - Respuesta a incidentes.
 - Evidencia vs hipótesis.
 
-Practica:
+Práctica:
 
 - Revisa logs de Linux.
 - Haz un reto básico de CyberDefenders o TryHackMe SOC.
@@ -124,9 +124,9 @@ Resultado esperado:
 
 Puedes explicar una alerta sencilla sin inventar conclusiones.
 
-## Días 61 a 75: Ruta Principal
+## Dias 61 a 75: Ruta Principal
 
-Objetivo: elegir una dirección inicial.
+Objetivo: elegir una dirección inicial. aqui muchos se traban porque quieren elegir la opción "correcta". no hay opción incorrecta, solo distintas.
 
 Elige una:
 
@@ -141,7 +141,7 @@ Elige una:
 
 No tienes que casarte con esa ruta para siempre. Solo necesitas una dirección para dejar de estudiar todo al mismo tiempo.
 
-Practica según tu ruta:
+Práctica según tu ruta:
 
 - SOC: logs, SIEM, CyberDefenders.
 - OSINT: perfiles falsos, Google Dorks, Maltego.
@@ -156,9 +156,9 @@ Resultado esperado:
 
 Puedes explicar por qué elegiste esa ruta y qué necesitas estudiar después.
 
-## Días 76 a 90: Portafolio Inicial
+## Dias 76 a 90: Portafolio Inicial
 
-Objetivo: convertir estudio en evidencia pública o presentable.
+Objetivo: convertir estudio en evidencia pública o presentable. diferencia a alguien que estudio de alguien que realmente sabe? El portafolio. No importa si es chico, importa que exista.
 
 Puedes crear:
 
@@ -191,9 +191,9 @@ Evita:
 - Estudiar solo viendo videos.
 - Creer que no avanzas porque todavía no sabes temas avanzados.
 
-## Después de los 90 Días
+## Después de los 90 Dias
 
-Después de este roadmap, no "terminaste" ciberseguridad.
+Después de este roadmap, no "terminaste" ciberseguridad. nadie "termina" esto. Es un camino largo y esta bien.
 
 Pero deberías tener una base más clara para elegir:
 
