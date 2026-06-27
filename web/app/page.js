@@ -25,14 +25,15 @@ const techIcons = [
 
 const profileRoutes = [
   {
-    title: 'Fundamentos',
-    description: 'Base técnica para entender seguridad, redes, Linux, web y riesgo.',
+    title: 'Comenzar',
+    description: 'Punto de partida y primeras bases, siguiendo el orden recomendado de estudio.',
     links: [
       ['Inicio Aquí', '/inicio-aqui'],
       ['Glosario de Ciberseguridad', '/glosario/glosario'],
       ['Computación Básica', '/fundamentos/computacion-basica'],
+      ['Sistemas Operativos', '/fundamentos/sistemas-operativos'],
+      ['Identidad y Permisos', '/fundamentos/identidad-permisos'],
       ['Base de Seguridad', '/fundamentos/base-de-seguridad'],
-      ['Fundamentos de Redes', '/redes-cisco/fundamentos-redes'],
     ],
   },
   {
@@ -104,14 +105,24 @@ const profileRoutes = [
     ],
   },
   {
-    title: 'Recursos y cultura',
-    description: 'Cómo estudiar, roadmap inicial, práctica, glosario, certificaciones y cultura hacker.',
+    title: 'Recursos',
+    description: 'Cómo usar el mapa, elegir una dirección, practicar y consultar certificaciones.',
     links: [
       ['Cómo Usar Esta Guía', '/recursos/como-usar-esta-guia'],
       ['Roadmap 90 Días', '/recursos/roadmap-90-dias'],
       ['Plataformas de Práctica', '/recursos/plataformas-de-practica'],
       ['Glosario Cultura Hacker', '/recursos/glosario-cultura-hacker'],
       ['Cursos y Certificaciones', '/recursos/cursos-y-certificaciones'],
+    ],
+  },
+  {
+    title: 'Cultura Geek',
+    description: 'Historias, series, libros y referencias que conectan la tecnología con su lado humano.',
+    links: [
+      ['Inspiración: Mr. Robot', '/cultura-geek/inspiracion-mr-robot'],
+      ['Cómo Ver Mr. Robot', '/cultura-geek/como-ver-mr-robot'],
+      ['Cultura Tech y Ciberseguridad', '/cultura-geek/cultura-tech-y-ciberseguridad'],
+      ['Ética Hacker y Open Source', '/cultura-geek/etica-hacker-y-open-source'],
     ],
   },
 ];
@@ -152,12 +163,15 @@ export default function Home() {
   const totalCategories = structure.length;
   const totalPages = structure.reduce((acc, cat) => acc + cat.pages.length, 0);
 
-  const courseJsonLd = {
+  const collectionJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Course",
-    name: "Ciberseguridad — Guías gratis en español",
-    description: "Ruta estructurada para aprender ciberseguridad en español: fundamentos, redes, Linux, seguridad web, Blue Team, cloud y empleabilidad.",
-    provider: {
+    "@type": "CollectionPage",
+    name: "Mapa abierto de ciberseguridad en español",
+    description: "Colección abierta de explicaciones y recursos de ciberseguridad organizados por área de conocimiento.",
+    url: "https://cbsdev.lat",
+    inLanguage: "es",
+    numberOfItems: totalPages,
+    author: {
       "@type": "Person",
       name: "Christian Quiñones",
       url: "https://cbsdev.lat"
@@ -168,28 +182,37 @@ export default function Home() {
     <div style={{ textAlign: 'center', paddingTop: '3rem' }}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
       />
       <h1 className="serif-title" style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', lineHeight: 1.1, marginBottom: '1rem' }}>
-        Guías <em>gratis</em> de <br/> ciberseguridad en español
+        Un mapa abierto de <br/> <em>ciberseguridad</em> en español
       </h1>
       
       <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', maxWidth: '650px', margin: '0 auto 1.5rem auto' }}>
-        Una ruta organizada para estudiar ciberseguridad sin perderte entre tantos temas: fundamentos, redes, Linux, web, OSINT, Blue Team, cloud, seguridad móvil, IA, hardware hacking y empleabilidad.
+        Una colección organizada de explicaciones y recursos para consultar fundamentos, conectar conceptos y explorar distintas áreas de la ciberseguridad.
       </p>
+
+      <div className="home-actions">
+        <Link href="/inicio-aqui" className="home-action home-action-primary">
+          Inicio Aquí
+        </Link>
+        <Link href="/guias" className="home-action home-action-secondary">
+          Explorar las {totalPages} guías
+        </Link>
+      </div>
 
       {/* Dynamic Statistics Banner */}
       <div className="home-stats">
         <div>
-          <strong style={{ color: 'var(--text-main)' }}>{totalPages}</strong> guías ordenadas
+          <strong style={{ color: 'var(--text-main)' }}>{totalPages}</strong> temas documentados
         </div>
         <span className="stats-divider">|</span>
         <div>
-          <strong style={{ color: 'var(--text-main)' }}>{totalCategories}</strong> áreas de conocimiento
+          <strong style={{ color: 'var(--text-main)' }}>{totalCategories}</strong> áreas conectadas
         </div>
         <span className="stats-divider">|</span>
         <div>
-          <span style={{ color: 'var(--accent-success)', fontWeight: 'bold' }}>100%</span> en español
+          Proyecto abierto en español
         </div>
       </div>
 
@@ -233,10 +256,10 @@ export default function Home() {
 
       <section style={{ textAlign: 'left', margin: '0 auto 4rem auto' }}>
         <h2 className="serif-title" style={{ fontSize: '2rem', borderBottom: 'none', marginBottom: '0.75rem' }}>
-          Rutas por perfil
+          Explorar por enfoque
         </h2>
         <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '2rem' }}>
-          Usa estas rutas como mapas de lectura según el enfoque que quieras explorar.
+          Después de revisar Inicio Aquí y los fundamentos, elige un punto de entrada según el área que te interese.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>

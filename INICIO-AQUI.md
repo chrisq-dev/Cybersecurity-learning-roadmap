@@ -4,6 +4,12 @@ title: "Inicio Aquí"
 
 # Inicio Aquí
 
+Hola, soy Christian Quiñones. Creé esta web para ordenar lo que voy aprendiendo sobre ciberseguridad y compartirlo con otras personas que, como yo, pueden sentirse perdidas entre tantos temas, herramientas y recursos.
+
+No pretende ser una fuente definitiva ni reemplazar la documentación oficial. Es una guía abierta que seguiré corrigiendo y ampliando conforme estudio, practico de forma responsable y recibo aportes de la comunidad.
+
+Mi objetivo es facilitar el acceso al conocimiento, explicar los fundamentos con claridad y ayudar a que más personas encuentren un punto de partida.
+
 Esta web es una guía de ciberseguridad organizada para ofrecer una ruta de aprendizaje clara y estructurada. Cada sección aborda un area específica del conocimiento de seguridad informática, con explicaciones detalladas, casos prácticos y preguntas de verificación.
 
 El propósito es conectar los conceptos fundamentales con aplicaciones prácticas, proporcionando contexto y profundidad sin asumir conocimientos previos.
