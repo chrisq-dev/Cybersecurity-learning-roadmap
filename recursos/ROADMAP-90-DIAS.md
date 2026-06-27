@@ -2,7 +2,7 @@
 title: "Roadmap Inicial de 90 Días"
 ---
 
-# Roadmap Inicial de 90 Dias
+# Roadmap Inicial de 90 Días
 
 Este roadmap no promete convertirte en experto en 90 dias. Si alguien te vende eso, corre.
 

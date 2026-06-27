@@ -103,10 +103,10 @@ export default function CategoryList({ structure }) {
       {/* Main Routes Grid */}
       <div style={{ textAlign: 'left', marginTop: '4rem' }}>
         <h2 className="serif-title" style={{ fontSize: '2rem', borderBottom: 'none', marginBottom: '1rem' }}>
-          Guías por módulo ↗
+          Todas las guías
         </h2>
         <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '2rem' }}>
-          Avanza por módulos en orden. Cada guía conecta fundamentos, práctica segura y criterios de comprensión.
+          Recorre las áreas en orden o utiliza la búsqueda para encontrar un concepto, una herramienta o un tema específico.
         </p>
 
         {filteredStructure.length > 0 ? (

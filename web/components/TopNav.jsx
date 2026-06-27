@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import { FaBookOpen, FaMoon, FaSun } from 'react-icons/fa';
 
 export default function TopNav() {
   function toggleTheme() {
@@ -22,6 +22,30 @@ export default function TopNav() {
       </Link>
 
       <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+        <Link
+          href="/guias"
+          title="Ver todas las guías"
+          aria-label="Ver todas las guías"
+          className="nav-hover"
+          style={{
+            color: 'var(--text-main)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.45rem',
+            textDecoration: 'none',
+            fontSize: '0.9rem',
+            border: '1px solid var(--border-color)',
+            borderRadius: '999px',
+            padding: '0.45rem 0.75rem',
+            background: 'var(--bg-card)',
+            boxShadow: '0 3px 10px var(--border-glow)',
+            transition: 'color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast)'
+          }}
+        >
+          <FaBookOpen size={14} />
+          <span className="hide-on-mobile">Guías</span>
+        </Link>
+
         <button
           type="button"
           onClick={toggleTheme}

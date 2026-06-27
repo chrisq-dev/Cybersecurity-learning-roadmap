@@ -2,7 +2,7 @@
 title: "Inicio Aquí"
 ---
 
-# Inicio Aqui
+# Inicio Aquí
 
 Esta web es una guía de ciberseguridad organizada para ofrecer una ruta de aprendizaje clara y estructurada. Cada sección aborda un area específica del conocimiento de seguridad informática, con explicaciones detalladas, casos prácticos y preguntas de verificación.
 

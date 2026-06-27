@@ -12,6 +12,7 @@ const IGNORE_FOLDERS = [
   '.next',
   '.gemini',
   'public',
+  'assets',
   'notes',
   'resources',
   'roadmap',
@@ -27,50 +28,6 @@ const INTERNAL_ROOT_FILES = [
   'LICENSE',
   'README.md',
   'SECURITY.md',
-];
-
-const PUBLIC_FOLDERS = [
-  'glosario',
-  'fundamentos',
-  'redes-cisco',
-  'linux',
-  'windows-ad',
-  'programacion',
-  'web-owasp',
-  'blue-team',
-  'security-teams',
-  'cloud-security',
-  'iot-ot-security',
-  'ai-security',
-  'osint-cti',
-  'mobile-security',
-  'api-security',
-  'appsec-devsecops',
-  'vulnerability-management',
-  'network-security',
-  'endpoint-security',
-  'database-security',
-  'wireless-security',
-  'identity-access',
-  'containers-kubernetes',
-  'security-architecture',
-  'grc',
-  'privacy',
-  'email-security',
-  'social-engineering',
-  'business-continuity',
-  'cripto',
-  'forense',
-  'malware-basico',
-  'red-team',
-  'labs',
-  'playbooks',
-  'capstone-projects',
-  'cheatsheets',
-  'empleabilidad',
-  'recursos',
-  'cultura-geek',
-  'writeups',
 ];
 
 const PAGE_ORDER = {
@@ -342,19 +299,14 @@ export function getContentStructure() {
   items.forEach((item) => {
     if (
       item.isDirectory() &&
-      PUBLIC_FOLDERS.includes(item.name) &&
       !IGNORE_FOLDERS.includes(item.name) &&
       !item.name.startsWith('.')
     ) {
       const folderPath = path.join(ROOT_DIR, item.name);
       const pages = [];
       const files = getMarkdownFilesRecursive(folderPath, [item.name]);
-      const allowedFiles = PAGE_ORDER[item.name] || null;
 
       files.forEach((file) => {
-        const baseName = file.fileName.replace('.md', '');
-        if (allowedFiles && !allowedFiles.includes(baseName)) return;
-
         const fileContent = fs.readFileSync(file.filePath, 'utf8');
         const { data } = matter(fileContent);
 
