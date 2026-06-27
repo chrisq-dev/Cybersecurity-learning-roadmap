@@ -5,6 +5,7 @@ import TableOfContents from '../../components/TableOfContents';
 import Link from 'next/link';
 
 const BASE_URL = "https://cbsdev.lat";
+const SOCIAL_IMAGE = "/og-mapa-ciberseguridad.png";
 
 export async function generateStaticParams() {
   const structure = getContentStructure();
@@ -44,19 +45,19 @@ export async function generateMetadata({ params }) {
     description,
     alternates: { canonical: pageUrl },
     openGraph: {
-      title: `${data.title} | Ciberseguridad`,
+      title: `${data.title} | cbsdev.lat`,
       description,
       url: pageUrl,
-      siteName: "Ciberseguridad",
-      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: data.title }],
+      siteName: "cbsdev.lat",
+      images: [{ url: SOCIAL_IMAGE, width: 1200, height: 630, alt: data.title }],
       locale: "es_MX",
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${data.title} | Ciberseguridad`,
+      title: `${data.title} | cbsdev.lat`,
       description,
-      images: ["/og-image.png"],
+      images: [SOCIAL_IMAGE],
     },
   };
 }
@@ -86,7 +87,7 @@ export default async function Page({ params }) {
     "@type": "TechArticle",
     headline: data.title,
     description: data.meta?.description || `Guía de ${data.title} — ciberseguridad en español.`,
-    image: `https://cbsdev.lat/og-image.png`,
+    image: `${BASE_URL}${SOCIAL_IMAGE}`,
     author: {
       "@type": "Person",
       name: "Christian Quiñones",

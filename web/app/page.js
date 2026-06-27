@@ -23,7 +23,7 @@ const techIcons = [
   { Icon: FaMicrochip, color: '#E42117', title: 'Hardware Hacking / IoT' },
 ];
 
-const profileRoutes = [
+const exploreAreas = [
   {
     title: 'Comenzar',
     description: 'Punto de partida y primeras bases, siguiendo el orden recomendado de estudio.',
@@ -37,7 +37,17 @@ const profileRoutes = [
     ],
   },
   {
-    title: 'Blue Team',
+    title: 'Redes y sistemas',
+    description: 'Redes, Linux, Windows, Active Directory y controles de infraestructura.',
+    links: [
+      ['Fundamentos de Redes', '/redes-cisco/fundamentos-redes'],
+      ['Fundamentos de Linux', '/linux/fundamentos-linux'],
+      ['Windows y Active Directory', '/windows-ad/fundamentos-windows-ad'],
+      ['Firewalls, IDS e IPS', '/network-security/firewalls-ids-ips'],
+    ],
+  },
+  {
+    title: 'Defensa y respuesta',
     description: 'Investigación, detección, SIEM, MITRE, hunting y respuesta.',
     links: [
       ['Fundamentos Blue Team', '/blue-team/fundamentos-blue-team'],
@@ -47,114 +57,59 @@ const profileRoutes = [
     ],
   },
   {
-    title: 'AppSec',
-    description: 'Seguridad web, APIs, OWASP, autenticación, autorización y revisiones.',
+    title: 'Seguridad de aplicaciones',
+    description: 'Web, APIs, OWASP, AppSec, autenticación y seguridad móvil.',
     links: [
       ['Fundamentos Web', '/web-owasp/fundamentos-web'],
       ['OWASP Top 10', '/web-owasp/owasp-top-10'],
-      ['OWASP Mobile Top 10', '/mobile-security/owasp-mobile-top-10'],
       ['Fundamentos de AppSec', '/appsec-devsecops/fundamentos-appsec'],
+      ['OWASP Mobile Top 10', '/mobile-security/owasp-mobile-top-10'],
     ],
   },
   {
-    title: 'Cloud',
-    description: 'Responsabilidad compartida, IAM, logging, storage y Kubernetes.',
+    title: 'Cloud e infraestructura',
+    description: 'Responsabilidad compartida, IAM, logging, Kubernetes y arquitectura.',
     links: [
       ['Fundamentos Cloud', '/cloud-security/fundamentos-cloud'],
-      ['IAM Avanzado', '/cloud-security/iam-avanzado'],
       ['IAM, Storage y Logging', '/cloud-security/iam-storage-logging'],
       ['Kubernetes Seguridad', '/containers-kubernetes/kubernetes-seguridad'],
+      ['Arquitectura de Seguridad', '/security-architecture/fundamentos-arquitectura'],
     ],
   },
   {
-    title: 'AI Security',
-    description: 'Ataques semánticos, OWASP Top 10 para LLMs, Prompt Injection y defensa con IA.',
+    title: 'IA, IoT y hardware',
+    description: 'Seguridad en IA, dispositivos conectados, sistemas industriales y hardware.',
     links: [
       ['Fundamentos de IA', '/ai-security/fundamentos-ia'],
       ['OWASP Top 10 para LLMs', '/ai-security/owasp-top-10-llm'],
-      ['IA en Defensa', '/ai-security/ia-en-defensa'],
-    ],
-  },
-  {
-    title: 'GRC',
-    description: 'Gobierno, riesgo, controles, evidencia, privacidad y continuidad.',
-    links: [
-      ['Fundamentos GRC', '/grc/fundamentos-grc'],
-      ['Riesgo y Controles', '/grc/riesgo-controles'],
-      ['Fundamentos de Privacidad', '/privacy/fundamentos-privacidad'],
-      ['Backups', '/business-continuity/backups'],
-    ],
-  },
-  {
-    title: 'IoT y Hardware',
-    description: 'Hardware hacking, radiofrecuencia (SDR), clonación RFID y ciberseguridad industrial (SCADA/OT).',
-    links: [
       ['Fundamentos IoT', '/iot-ot-security/fundamentos-iot'],
       ['SCADA y OT', '/iot-ot-security/scada-y-ot'],
       ['Hardware Hacking', '/iot-ot-security/hardware-hacking'],
     ],
   },
   {
-    title: 'Empleabilidad',
-    description: 'Portafolio, entrevistas, mapa de habilidades y preparación laboral.',
+    title: 'Riesgo y carrera',
+    description: 'Gobierno, privacidad, continuidad y preparación para el entorno profesional.',
     links: [
+      ['Fundamentos GRC', '/grc/fundamentos-grc'],
+      ['Riesgo y Controles', '/grc/riesgo-controles'],
+      ['Fundamentos de Privacidad', '/privacy/fundamentos-privacidad'],
       ['Empleo Ready', '/empleabilidad/empleo-ready'],
       ['Rutas por Rol', '/empleabilidad/rutas-por-rol'],
-      ['Proyectos de Portafolio', '/empleabilidad/proyectos-portafolio'],
       ['CV y LinkedIn', '/empleabilidad/cv-linkedin'],
     ],
   },
   {
-    title: 'Recursos',
-    description: 'Cómo usar el mapa, elegir una dirección, practicar y consultar certificaciones.',
+    title: 'Recursos y cultura',
+    description: 'Orientación para estudiar, practicar y conectar la ciberseguridad con su cultura.',
     links: [
       ['Cómo Usar Esta Guía', '/recursos/como-usar-esta-guia'],
       ['Roadmap 90 Días', '/recursos/roadmap-90-dias'],
       ['Plataformas de Práctica', '/recursos/plataformas-de-practica'],
-      ['Glosario Cultura Hacker', '/recursos/glosario-cultura-hacker'],
       ['Cursos y Certificaciones', '/recursos/cursos-y-certificaciones'],
-    ],
-  },
-  {
-    title: 'Cultura Geek',
-    description: 'Historias, series, libros y referencias que conectan la tecnología con su lado humano.',
-    links: [
       ['Inspiración: Mr. Robot', '/cultura-geek/inspiracion-mr-robot'],
-      ['Cómo Ver Mr. Robot', '/cultura-geek/como-ver-mr-robot'],
       ['Cultura Tech y Ciberseguridad', '/cultura-geek/cultura-tech-y-ciberseguridad'],
-      ['Ética Hacker y Open Source', '/cultura-geek/etica-hacker-y-open-source'],
     ],
-  },
-];
-
-const studyAreas = [
-  {
-    title: 'Fundamentos',
-    text: 'Computación, sistemas operativos, redes, Linux, Windows, permisos y conceptos base de seguridad.',
-  },
-  {
-    title: 'Seguridad web, AppSec y Móvil',
-    text: 'HTTP, OWASP Top 10, APIs, Mobile Pentesting, autenticación y revisiones de seguridad.',
-  },
-  {
-    title: 'Defensa, OSINT y respuesta',
-    text: 'Logs, SIEM, CTI, Threat Intelligence, hunting, playbooks e investigación de incidentes.',
-  },
-  {
-    title: 'Cloud y arquitectura',
-    text: 'IAM, storage, logging, Kubernetes, Zero Trust, sistemas industriales (OT) y hardware hacking.',
-  },
-  {
-    title: 'Seguridad en Inteligencia Artificial',
-    text: 'Ataques semánticos, Prompt Injection, Data Poisoning y el uso de IA como copiloto defensivo.',
-  },
-  {
-    title: 'Riesgo y empleabilidad',
-    text: 'GRC, privacidad, continuidad, rutas por rol, portafolio, entrevistas, CV y LinkedIn.',
-  },
-  {
-    title: 'Cultura y recursos',
-    text: 'Glosario hacker, plataformas de práctica, certificaciones, Mr. Robot, open source y referencias geek.',
   },
 ];
 
@@ -192,15 +147,6 @@ export default function Home() {
         Una colección organizada de explicaciones y recursos para consultar fundamentos, conectar conceptos y explorar distintas áreas de la ciberseguridad.
       </p>
 
-      <div className="home-actions">
-        <Link href="/inicio-aqui" className="home-action home-action-primary">
-          Inicio Aquí
-        </Link>
-        <Link href="/guias" className="home-action home-action-secondary">
-          Explorar las {totalPages} guías
-        </Link>
-      </div>
-
       {/* Dynamic Statistics Banner */}
       <div className="home-stats">
         <div>
@@ -232,38 +178,17 @@ export default function Home() {
         ))}
       </div>
 
-      <section style={{ textAlign: 'left', margin: '0 auto 2.5rem auto' }}>
-        <h2 className="serif-title" style={{ fontSize: '2rem', borderBottom: 'none', marginBottom: '0.75rem' }}>
-          El mapa de conocimiento
-        </h2>
-        <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '2rem', maxWidth: '760px' }}>
-          La meta no es memorizar herramientas ni dominar todo al mismo tiempo. Usa esta guía como un mapa para ubicar temas, conectar conceptos y elegir una ruta principal.
-        </p>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
-          {studyAreas.map((area) => (
-            <div key={area.title} className="book-card" style={{ padding: '1.15rem', cursor: 'default' }}>
-              <h3 style={{ margin: '0 0 0.45rem 0', fontSize: '1.05rem', color: 'var(--text-main)' }}>
-                {area.title}
-              </h3>
-              <p style={{ margin: 0, fontSize: '0.92rem', lineHeight: 1.55, color: 'var(--text-muted)' }}>
-                {area.text}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section style={{ textAlign: 'left', margin: '0 auto 4rem auto' }}>
         <h2 className="serif-title" style={{ fontSize: '2rem', borderBottom: 'none', marginBottom: '0.75rem' }}>
-          Explorar por enfoque
+          Explorar el mapa
         </h2>
-        <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '2rem' }}>
-          Después de revisar Inicio Aquí y los fundamentos, elige un punto de entrada según el área que te interese.
+        <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '2rem', maxWidth: '820px' }}>
+          Empieza por Inicio Aquí y continúa con los fundamentos. Después puedes elegir un área o consultar el{' '}
+          <Link href="/guias">índice completo con las {totalPages} guías en orden</Link>.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
-          {profileRoutes.map((route) => (
+          {exploreAreas.map((route) => (
             <div key={route.title} className="book-card route-card" style={{ padding: '1.25rem' }}>
               <Link
                 href={route.links[0][1]}

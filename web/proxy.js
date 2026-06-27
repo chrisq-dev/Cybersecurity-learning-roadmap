@@ -14,5 +14,5 @@ export function proxy(request) {
 }
 
 export const config = {
-  matcher: ['/((?!api|_next|favicon.ico|icon.svg|robots.txt|sitemap.xml|og-image.png).*)'],
+  matcher: ['/((?!api|_next|favicon.ico|icon.svg|robots.txt|sitemap.xml|og-mapa-ciberseguridad.png).*)'],
 };
