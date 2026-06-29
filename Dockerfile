@@ -68,6 +68,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/red-team /app/red-team
 COPY --from=builder --chown=nextjs:nodejs /app/redes-cisco /app/redes-cisco
 COPY --from=builder --chown=nextjs:nodejs /app/security-architecture /app/security-architecture
 COPY --from=builder --chown=nextjs:nodejs /app/security-teams /app/security-teams
+COPY --from=builder --chown=nextjs:nodejs /app/seguridad-personal /app/seguridad-personal
 COPY --from=builder --chown=nextjs:nodejs /app/social-engineering /app/social-engineering
 COPY --from=builder --chown=nextjs:nodejs /app/vulnerability-management /app/vulnerability-management
 COPY --from=builder --chown=nextjs:nodejs /app/web-owasp /app/web-owasp
