@@ -189,7 +189,7 @@ Antes de considerar que entendiste un área, deberías poder:
 
 **Criptografía:** [FUNDAMENTOS-Criptografía.md](cripto/FUNDAMENTOS-CRIPTOGRAFIA.md), [HASHING-Y-PASSWORDS.md](cripto/HASHING-Y-PASSWORDS.md), [PKI-Y-TLS.md](cripto/PKI-Y-TLS.md)
 
-**Web y Aplicaciones:** [FUNDAMENTOS-WEB.md](web-owasp/FUNDAMENTOS-WEB.md), [FUNDAMENTOS-APPSEC.md](appsec-devsecops/FUNDAMENTOS-APPSEC.md), [DEVSECOPS.md](appsec-devsecops/DEVSECOPS.md), [FUNDAMENTOS-API.md](api-security/FUNDAMENTOS-API.md), [RIESGOS-CONTROLES.md](api-security/RIESGOS-CONTROLES.md)
+**Web y Aplicaciones:** [FUNDAMENTOS-WEB.md](web-owasp/FUNDAMENTOS-WEB.md), [HTTP.md](web-owasp/HTTP.md), [AUTENTICACION-AUTORIZACION.md](web-owasp/AUTENTICACION-AUTORIZACION.md), [OWASP-TOP-10.md](web-owasp/OWASP-TOP-10.md), [SQL-INJECTION.md](web-owasp/SQL-INJECTION.md), [XSS.md](web-owasp/XSS.md), [CSRF.md](web-owasp/CSRF.md), [SSRF.md](web-owasp/SSRF.md), [FILE-UPLOAD.md](web-owasp/FILE-UPLOAD.md), [FUNDAMENTOS-APPSEC.md](appsec-devsecops/FUNDAMENTOS-APPSEC.md), [DEVSECOPS.md](appsec-devsecops/DEVSECOPS.md), [FUNDAMENTOS-API.md](api-security/FUNDAMENTOS-API.md), [RIESGOS-CONTROLES.md](api-security/RIESGOS-CONTROLES.md)
 
 **Blue Team:** [FUNDAMENTOS-BLUE-TEAM.md](blue-team/FUNDAMENTOS-BLUE-TEAM.md), [LOGS-Y-ALERTAS.md](blue-team/LOGS-Y-ALERTAS.md), [SIEM-MITRE.md](blue-team/SIEM-MITRE.md), [DETECTION-ENGINEERING.md](blue-team/DETECTION-ENGINEERING.md), [SIGMA-YARA.md](blue-team/SIGMA-YARA.md), [THREAT-HUNTING.md](blue-team/THREAT-HUNTING.md), [RESPUESTA-INCIDENTES.md](blue-team/RESPUESTA-INCIDENTES.md)
 
@@ -215,7 +215,7 @@ Antes de considerar que entendiste un área, deberías poder:
 
 **Vulnerabilidades y Arquitectura:** [FUNDAMENTOS.md](vulnerability-management/FUNDAMENTOS.md), [PRIORIZACION-Y-CVSS.md](vulnerability-management/PRIORIZACION-Y-CVSS.md), [FUNDAMENTOS-ARQUITECTURA.md](security-architecture/FUNDAMENTOS-ARQUITECTURA.md), [ZERO-TRUST.md](security-architecture/ZERO-TRUST.md)
 
-**Cultura y Comunidad:** [CULTURA-TECH-Y-CIBERSEGURIDAD.md](cultura-geek/CULTURA-TECH-Y-CIBERSEGURIDAD.md), [Ética-HACKER-Y-OPEN-SOURCE.md](cultura-geek/ETICA-HACKER-Y-OPEN-SOURCE.md), [TEAMS-Y-HATS.md](security-teams/TEAMS-Y-HATS.md)
+**Cultura y Comunidad:** [CULTURA-TECH-Y-CIBERSEGURIDAD.md](cultura-geek/CULTURA-TECH-Y-CIBERSEGURIDAD.md), [Ética-HACKER-Y-OPEN-SOURCE.md](cultura-geek/ETICA-HACKER-Y-OPEN-SOURCE.md), [INSPIRACION-MR-ROBOT.md](cultura-geek/INSPIRACION-MR-ROBOT.md), [COMO-VER-MR-ROBOT.md](cultura-geek/COMO-VER-MR-ROBOT.md), [TEAMS-Y-HATS.md](security-teams/TEAMS-Y-HATS.md)
 
 **Programación:** [FUNDAMENTOS-PYTHON-SEGURIDAD.md](programacion/FUNDAMENTOS-PYTHON-SEGURIDAD.md), [PYTHON-Básico.md](programacion/PYTHON-BASICO.md), [LOGS-JSON-CSV-APIS.md](programacion/LOGS-JSON-CSV-APIS.md)
 
@@ -265,7 +265,7 @@ Se conecta con web security (HTTPS), API security (autenticación), network secu
 
 Cubre la seguridad de aplicaciones web, APIs, el ciclo de desarrollo seguro y DevSecOps. La web es el vector de ataque más común.
 
-Los archivos son FUNDAMENTOS-WEB.md (HTTP, sesiones, cookies), FUNDAMENTOS-APPSEC.md (OWASP Top 10, SDLC seguro), DEVSECOPS.md (seguridad en CI/CD), FUNDAMENTOS-API.md y RIESGOS-CONTROLES.md.
+Los archivos son FUNDAMENTOS-WEB.md (HTTP, sesiones, cookies), HTTP.md (métodos, códigos, cabeceras), AUTENTICACION-AUTORIZACION.md (sesiones, tokens, OAuth, SAML), OWASP-TOP-10.md (riesgos web actualizados), SQL-INJECTION.md (ataques a bases de datos), XSS.md (cross-site scripting), CSRF.md (falsificación de peticiones), SSRF.md (server-side request forgery), FILE-UPLOAD.md (subida de archivos insegura), FUNDAMENTOS-APPSEC.md (OWASP Top 10, SDLC seguro), DEVSECOPS.md (seguridad en CI/CD), FUNDAMENTOS-API.md y RIESGOS-CONTROLES.md.
 
 Es fundamental para AppSec, DevSecOps, pentesters web y desarrolladores. Se conecta con OWASP, cloud security, API security y mobile security.
 
@@ -321,7 +321,7 @@ Destino para perfiles de forénsica y malware analysis. Se conecta con blue team
 
 Cubren el contexto humano: la cultura hacker, las comunidades profesionales y el desarrollo de carrera.
 
-Cultura incluye CULTURA-TECH-Y-CIBERSEGURIDAD.md, Ética-HACKER-Y-OPEN-SOURCE.md y TEAMS-Y-HATS.md. Empleabilidad incluye RUTA-TRABAJO.md, CV-LINKEDIN.md, ENTREVISTAS.md, MAPA-DE-SKILLS.md, RUTAS-POR-ROL.md, PROYECTOS-PORTAFOLIO.md, CHECKLIST-APLICAR.md y EMPLEO-READY.md.
+Cultura incluye CULTURA-TECH-Y-CIBERSEGURIDAD.md (historia, cultura hacker), Ética-HACKER-Y-OPEN-SOURCE.md (marco ético, open source), INSPIRACION-MR-ROBOT.md (conexiones con la serie), COMO-VER-MR-ROBOT.md (guía de visión crítica) y TEAMS-Y-HATS.md (roles y equipos de seguridad). Empleabilidad incluye RUTA-TRABAJO.md, CV-LINKEDIN.md, ENTREVISTAS.md, MAPA-DE-SKILLS.md, RUTAS-POR-ROL.md, PROYECTOS-PORTAFOLIO.md, CHECKLIST-APLICAR.md y EMPLEO-READY.md.
 
 ## Casos de Estudio Relevantes
 
