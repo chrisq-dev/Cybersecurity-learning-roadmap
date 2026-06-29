@@ -184,8 +184,7 @@ export default function Home() {
         </h2>
         <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '2rem', maxWidth: '820px' }}>
           Empieza por Inicio Aquí y continúa con los fundamentos. Después puedes seguir una{' '}
-          <Link href="/rutas">ruta temática</Link> o consultar el{' '}
-          <Link href="/guias">índice completo con las {totalPages} guías</Link>.
+          <Link href="/rutas">ruta temática</Link>.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
