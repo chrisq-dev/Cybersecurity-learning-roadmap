@@ -1,5 +1,8 @@
 ---
 title: "Switching, VLANs y ACLs: Construyendo paredes y puertas en la red"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Switching, VLANs y ACLs: Construyendo paredes y puertas en la red
@@ -10,13 +13,13 @@ Una red plana es una red insegura. Si todos los dispositivos pueden comunicarse 
 
 Esta guía trata sobre como construir segmentación. Como usar switches para conectar dispositivos, VLANs para separarlos en grupos lógicos, y ACLs para controlar que tráfico puede cruzar entre esos grupos.
 
-Cuando termines, vas a entender por que la frase "el atacante ya esta dentro" no es pesimismo, es realismo. Y como diseñar la red para que, incluso si alguien entra, no pueda llegar a los servidores críticos.
+Cuando termines, vas a entender por qué la frase "el atacante ya esta dentro" no es pesimismo, es realismo. Y como diseñar la red para que, incluso si alguien entra, no pueda llegar a los servidores críticos.
 
 ## Switching: el corazón de la red local
 
 ### Como funciona un switch
 
-Un switch es un dispositivo de capa 2 que conecta dispositivos dentro de la misma red. Su funcion principal es aprender direcciones MAC y reenviar tramas solo al puerto correcto.
+Un switch es un dispositivo de capa 2 que conecta dispositivos dentro de la misma red. Su función principal es aprender direcciones MAC y reenviar tramas solo al puerto correcto.
 
 Cuando un switch se enciende, su tabla MAC esta vacía. A medida que los dispositivos envían tráfico, el switch aprende:
 
@@ -60,7 +63,7 @@ Compromiso entre los dos. Lee los primeros 64 bytes (tamaño mínimo de una tram
 
 **Half-duplex:** el dispositivo puede transmitir o recibir, pero no ambos simultáneamente. Usa CSMA/CD para evitar colisiones.
 
-**Full-duplex:** el dispositivo puede transmitir y recibir simultáneamente. No hay colisiones. Requiere una conexion punto a punto (sin hubs).
+**Full-duplex:** el dispositivo puede transmitir y recibir simultáneamente. No hay colisiones. Requiere una conexión punto a punto (sin hubs).
 
 La autonegociacion permite que dos dispositivos acuerden la velocidad y el duplex. Si falla, el resultado es un duplex mismatch: un lado en full y el otro en half, causando errores de rendimiento.
 
@@ -122,7 +125,7 @@ Una VLAN (Virtual LAN) divide un switch físico en múltiples redes lógicas. Di
 
 Las VLANs se identifican por un número del 1 al 4094. Los números 1, 1002-1005 son reservados. Las VLANs 2-1001 son de uso general.
 
-### Por que usar VLANs
+### Por qué usar VLANs
 
 **Seguridad:**
 Separas departamentos, servidores, invitados. El tráfico de una VLAN no es visible en otra.
@@ -131,7 +134,7 @@ Separas departamentos, servidores, invitados. El tráfico de una VLAN no es visi
 Cada VLAN es un dominio de broadcast separado. Los broadcasts de una VLAN no afectan a las otras.
 
 **Organización:**
-Agrupas dispositivos por funcion sin importar su ubicación física. Un contable en el piso 5 y otro en el piso 3 pueden estar en la misma VLAN.
+Agrupas dispositivos por función sin importar su ubicación física. Un contable en el piso 5 y otro en el piso 3 pueden estar en la misma VLAN.
 
 **Flexibilidad:**
 Un dispositivo puede estar en cualquier puerto del switch y pertenecer a la VLAN correcta.
@@ -234,7 +237,7 @@ interface GigabitEthernet0/1
 Opciones de violation:
 - protect: descarta tráfico de MACs no autorizadas, no registra nada.
 - restrict: descarta tráfico, registra el evento (SNMP trap, syslog).
-- shutdown: deshabilita el puerto (errdisable). Es la accion por defecto.
+- shutdown: deshabilita el puerto (errdisable). Es la acción por defecto.
 
 Sticky learning: el switch aprende las MACs de los primeros dispositivos y las guarda en la configuración en ejecución como direcciones MAC autorizadas.
 
@@ -286,7 +289,7 @@ Esto protege contra IP spoofing. Un atacante no puede enviar paquetes con IPs fa
 
 ### Que es una ACL
 
-Una ACL es una lista secuencial de reglas aplicada a un router o switch. Cada regla específica un criterio y una accion (permitir o denegar).
+Una ACL es una lista secuencial de reglas aplicada a un router o switch. Cada regla específica un criterio y una acción (permitir o denegar).
 
 Las ACLs se evaluan en orden. La primera regla que coincida determina el resultado. Si ninguna coincide, hay una denegación implicita al final.
 
@@ -445,7 +448,7 @@ La ACL se configuró hace años. Nuevos servidores, nuevas redes, y la ACL bloqu
 **Logging deshabilitado:**
 No tráfico se esta denegando. No puedes diagnosticar problemas ni detectar ataques.
 
-## Segmentación de red: diseno práctico
+## Segmentación de red: diseño práctico
 
 Una red bien segmentada tiene múltiples capas de protección:
 
@@ -503,22 +506,22 @@ El estudiante no pudo interceptar el tráfico de sus companeros. DAI bloqueo el 
 
 2. Un atacante conecta su laptop a un puerto del switch en modo dynamic desirable. El switch tiene DTP habilitado. Que ocurre y que información puede obtener el atacante? Como se mitiga específicamente?
 
-3. Explica el ataque de doble etiquetado (double tagging) para VLAN hopping. Por que la VLAN nativa es relevante para este ataque y como se mitiga?
+3. Explica el ataque de doble etiquetado (double tagging) para VLAN hopping. Por qué la VLAN nativa es relevante para este ataque y como se mitiga?
 
 4. Configuras una ACL con las siguientes reglas en orden:
    - Regla 1: Denegar todo el tráfico TCP
    - Regla 2: Permitir tráfico TCP desde 10.0.0.10 al puerto 443
    - Regla 3: Denegar todo
 
-   Que tráfico será permitido y por que? Que tráfico adicional esperarias que pasará si la regla 1 no existiera?
+   Que tráfico será permitido y por qué? Que tráfico adicional esperarias que pasará si la regla 1 no existiera?
 
-5. Que funcion cumple STP en una red con switches redundantes? Si un atacante conecta un switch con prioridad 0 a la red, que ocurre y como se protege el administrador contra esto?
+5. Que función cumple STP en una red con switches redundantes? Si un atacante conecta un switch con prioridad 0 a la red, que ocurre y como se protege el administrador contra esto?
 
 6. Cual es la diferencia entre un puerto de acceso y un puerto troncal en un switch? Explica el proceso de etiquetado 802.1Q en cada caso.
 
-7. Un switch tiene su tabla MAC llena por un ataque de MAC flooding. Como cambia el comportamiento del switch? Por que esto permite al atacante ver tráfico que no le esta dirigido? Que mitigación usarías?
+7. Un switch tiene su tabla MAC llena por un ataque de MAC flooding. Como cambia el comportamiento del switch? Por qué esto permite al atacante ver tráfico que no le esta dirigido? Que mitigación usarías?
 
-8. Que es la denegación implicita en una ACL? Explica por que el orden de las reglas es crítico y que error común cometen los administradores al configurar ACLs por primera vez.
+8. Que es la denegación implicita en una ACL? Explica por qué el orden de las reglas es crítico y que error común cometen los administradores al configurar ACLs por primera vez.
 
 9. Explica la diferencia entre DHCP Snooping y Dynamic ARP Inspection. Como se complementan para proteger la red contra ataques de capa 2?
 

@@ -1,12 +1,15 @@
 ---
 title: "Detection Engineering: El Ingeniero de Trampas"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Detection Engineering: El Ingeniero de Trampas
 
 ## Objetivo de esta Guía
 
-Entender por que el SOC moderno no depende de guardias despiertos, sino de trampas bien diseñadas. El Detection Engineering es una de las carreras mejor pagadas del Blue Team. No son los que miran pantallas. Son los programadores que escriben las reglas para que el SIEM encienda la alarma automáticamente.
+Entender por qué el SOC moderno no depende de guardias despiertos, sino de trampas bien diseñadas. El Detection Engineering es una de las carreras mejor pagadas del Blue Team. No son los que miran pantallas. Son los programadores que escriben las reglas para que el SIEM encienda la alarma automáticamente.
 
 Esta guía cubre el ciclo de vida completo de una detección: investigación de amenazas, escritura de reglas, pruebas, ajuste fino, despliegue, y mantenimiento. También explora el dilema fundamental: el balance entre capturar atacantes y no ahogar al SOC en falsos positivos.
 
@@ -16,7 +19,7 @@ Hace una década, los bancos compraban un SIEM costoso y decían: "Listo, estamo
 
 Los fabricantes incluyen reglas por defecto. Son genéricas y horribles para entornos específicos. Una regla tipica: "Alertar si un usuario inicia sesión desde un país distinto al habitual." Si tu empresa es una aerolínea internacional, esta regla genera 20,000 falsos positivos diarios.
 
-La industria aprendió esta leccion por las malas. Hoy, el Detection Engineering es una disciplina reconocida con profesionales escasos y bien remunerados. No basta con instalar seguridad; hay que programar la inteligencia que la hace funcionar.
+La industria aprendió esta lección por las malas. Hoy, el Detection Engineering es una disciplina reconocida con profesionales escasos y bien remunerados. No basta con instalar seguridad; hay que programar la inteligencia que la hace funcionar.
 
 ## El Trabajo del Ingeniero: Escribir la Trampa
 
@@ -30,7 +33,7 @@ El ingeniero lee fuentes de inteligencia: reportes de grupos de amenazas, blogs 
 
 Ejemplo: Lee que el grupo de ransomware LockBit esta usando una nueva técnica para deshabilitar respaldos: ejecuta `vssadmin.exe delete shadows /all /quiet` para borrar las copias de sombra de Windows.
 
-**Fase 2: Diseno de la Regla**
+**Fase 2: Diseño de la Regla**
 
 El ingeniero diseña la lógica de detección. Decide que eventos monitorear, que combinación de condiciones usar, y que umbrales aplicar.
 
@@ -49,7 +52,7 @@ index=windows EventCode=4688 Process_Name=*vssadmin.exe CommandLine=*delete*shad
 **Fase 4: Prueba Inicial (Baseline)**
 
 Ejecuta la regla contra datos historicos (semanas o meses de logs). Esto revela:
-- Cuántas alertas generaria la regla si estuviera activa.
+- Cuántas alertas generaría la regla si estuviera activa.
 - Si hay falsos positivos obvios.
 - Si la regla tiene errores de sintaxis o lógica.
 
@@ -114,7 +117,7 @@ Enfocado en secuencias de eventos, ideal para detectar patrones de ataque que in
 **Sigma:**
 No es un lenguaje de SIEM, sino un formato estándar. Escribes la regla en YAML y una herramienta la traduce automáticamente a SPL, KQL, EQL, etc.
 
-## El Dilema Fundamental: Recall vs. Precision
+## El Dilema Fundamental: Recall vs. Precisión
 
 El ingeniero vive en un estrés constante balanceando dos métricas opuestas:
 
@@ -123,17 +126,17 @@ El ingeniero vive en un estrés constante balanceando dos métricas opuestas:
 - Pero también genera muchos falsos positivos.
 - Ejemplo: "Alertar si alguien ejecuta PowerShell" detecta atacantes Y administradores legítimos.
 
-**Precision (Especificidad):** Capacidad de no molestar al SOC con falsas alarmas.
-- Una regla con alta precision genera pocos falsos positivos.
+**Precisión (Especificidad):** Capacidad de no molestar al SOC con falsas alarmas.
+- Una regla con alta precisión genera pocos falsos positivos.
 - Pero puede perder ataques reales.
-- Ejemplo: "Alertar si el archivo se llama exactamente 'malware.exe'" tiene precision perfecta, pero el atacante renombra el archivo y la regla falla.
+- Ejemplo: "Alertar si el archivo se llama exactamente 'malware.exe'" tiene precisión perfecta, pero el atacante renombra el archivo y la regla falla.
 
 El punto optimo depende del contexto:
 - Un banco con 50 analistas tolera más falsos positivos que una startup con 1 analista.
 - Un sistema crítico (base de datos de clientes) merece reglas más sensibles.
 - Un sistema interno de pruebas puede tener reglas más específicas.
 
-### Estrategias para Mejorar Precision sin Perder Recall
+### Estrategias para Mejorar Precisión sin Perder Recall
 
 **Contextualizar:** Combina condiciones. "PowerShell solo" es ruidoso. "PowerShell + descarga de internet + en horario no laboral" es preciso.
 
@@ -159,7 +162,7 @@ Un equipo implementó una regla que monitoreaba si los EDRs enviaban telemetría
 
 ## Modos de Falla
 
-Reglas sin contexto de negocio: detectan transferencias de 100MB sin saber que diseno sube videos. No probar con datos historicos: errores de sintaxis o falsos positivos masivos. Excluir por conveniencia: ignorar departamentos enteros crea puntos ciegos. Reglas estaticas en entornos dinamicos: lo que funcionaba hace 6 meses puede estar obsoleto. Ignorar la evasion: los atacantes estudian las reglas y las evaden.
+Reglas sin contexto de negocio: detectan transferencias de 100MB sin saber que diseño sube videos. No probar con datos historicos: errores de sintaxis o falsos positivos masivos. Excluir por conveniencia: ignorar departamentos enteros crea puntos ciegos. Reglas estaticas en entornos dinamicos: lo que funcionaba hace 6 meses puede estar obsoleto. Ignorar la evasion: los atacantes estudian las reglas y las evaden.
 
 ### El Problema de las Excepciones Acumuladas
 
@@ -167,20 +170,20 @@ Cada vez que una regla genera un falso positivo, la tentacion es agregar una exc
 
 ## La Perspectiva del Atacante
 
-Un atacante que enfrenta Detection Engineering solido sabe que no puede confiar en técnicas conocidas. Prueba sus herramientas contra EDRs, modifica firmas, usa herramientas nativas (LOLBins), distribuye actividades en el tiempo, y estudia las políticas de exclusion si puede acceder a documentación interna.
+Un atacante que enfrenta Detection Engineering sólido sabe que no puede confiar en técnicas conocidas. Prueba sus herramientas contra EDRs, modifica firmas, usa herramientas nativas (LOLBins), distribuye actividades en el tiempo, y estudia las políticas de exclusion si puede acceder a documentación interna.
 
 El atacante más peligroso sabe exactamente que reglas existen y diseña su ataque para evadirlas todas.
 
 ## Autoevaluación
 
-1. Compras un SIEM sin contratar Detection Engineer. Por que las reglas por defecto serán inutiles?
-2. Regla para detectar whoami. En empresa de desarrollo, genera problema de recall o precision?
-3. Agregas exclusion para IP 10.0.0.50. Por que las exclusiones fijas son peligrosas?
+1. Compras un SIEM sin contratar Detection Engineer. Por qué las reglas por defecto serán inútiles?
+2. Regla para detectar whoami. En empresa de desarrollo, genera problema de recall o precisión?
+3. Agregas exclusion para IP 10.0.0.50. Por qué las exclusiones fijas son peligrosas?
 4. Regla busca "ransomware.exe". Que problemas tiene? Como la mejoras?
 5. Un empleado de IT usa PowerShell. Un atacante también. Como distingues entre ambos?
 6. Nueva regla genera 100 alertas en la primera hora. Opciones: desactivar, ajustar, ignorar. Cual es correcta?
 7. Red Team evade todas tus reglas. Como conviertes su reporte en mejoras?
-8. Por que el Detection Engineer necesita entender redes, SO, y programación? No basta con saber el lenguaje del SIEM?
+8. Por qué el Detection Engineer necesita entender redes, SO, y programación? No basta con saber el lenguaje del SIEM?
 
 ## Análisis Avanzado de Reglas de Detección
 
@@ -191,7 +194,7 @@ Los atacantes usan herramientas nativas del sistema (LOLBins) para evitar ser de
 **PowerShell:**
 - Normal: Los administradores usan PowerShell para tareas de gestión.
 - Anómalo: PowerShell ejecuta scripts desde URLs, usa argumentos ofuscados (-EncodedCommand), o ejecuta en ventana oculta (-WindowStyle Hidden).
-- Regla: Alertar cuando PowerShell descargué contenido de internet Y ejecute codigo en memoria.
+- Regla: Alertar cuando PowerShell descargué contenido de internet Y ejecute código en memoria.
 
 **WMI (Windows Management Instrumentation):**
 - Normal: Herramientas de inventario y gestión usan WMI.
@@ -214,7 +217,7 @@ Los atacantes usan herramientas nativas del sistema (LOLBins) para evitar ser de
 
 **Ofuscación:** Codificar payloads en Base64, usar XOR, o comprimir con herramientas como Invoke-Obfuscation para evadir firmas basadas en strings.
 
-**Process Hollowing:** Inyectar codigo malicioso en un proceso legítimo (como explorer.exe o svchost.exe) para que las reglas que monitorean procesos no detecten el ejecutable malicioso.
+**Process Hollowing:** Inyectar código malicioso en un proceso legítimo (como explorer.exe o svchost.exe) para que las reglas que monitorean procesos no detecten el ejecutable malicioso.
 
 **DLL Side-Loading:** Colocar una DLL maliciosa en el directorio de búsqueda de una aplicación legítima para que esta cargue la DLL sin saberlo.
 
@@ -254,7 +257,7 @@ Búsqueda proactiva de patrones que las reglas no cubren. Ejemplo: Buscar conexi
 Las mejores reglas técnicas fallan si no consideran el factor humano:
 - Los analistas se cansan y cometen errores.
 - Los administradores legítimos hacen cosas que parecen ataques.
-- Los desarrolladores despliegan codigo que genera tráfico anómalo.
+- Los desarrolladores despliegan código que genera tráfico anómalo.
 - Los cambios de configuración no se comunican al equipo de seguridad.
 
 Un Detection Engineer efectivo construye relaciones con IT, desarrollo, y operaciones para entender que es normal y que no. La tecnología es solo una parte de la ecuación.
@@ -264,12 +267,12 @@ Un Detection Engineer efectivo construye relaciones con IT, desarrollo, y operac
 9. Un nuevo empleado de IT ejecuta scripts de PowerShell que generan alertas. Es un atacante o un empleado aprendiendo? Como lo determinas sin crear falsos positivos ni perder un ataque real?
 10. Implementas una regla que detecta el uso de certutil.exe para descargar archivos (técnica usada por atacantes). El equipo de IT usa certutil para descargar parches de Microsoft. Como resuelves este conflicto?
 11. El equipo de Red Team prueba tus reglas durante un ejercicio y las evade todas. Como conviertes este resultado en una mejora concreta de tus reglas?
-12. Una regla bien afinada tiene 0 falsos positivos pero solo detecta el 10% de los ataques. Otra regla detecta el 90% pero genera 1000 falsos positivos al día. Cual prefieres y por que?
+12. Una regla bien afinada tiene 0 falsos positivos pero solo detecta el 10% de los ataques. Otra regla detecta el 90% pero genera 1000 falsos positivos al día. Cual prefieres y por qué?
 
 ## Preguntas Adicionales
 
 13. Un nuevo empleado de IT ejecuta scripts de PowerShell que generan alertas. Es un atacante o un empleado aprendiendo? Como lo determinas sin crear falsos positivos ni perder un ataque real?
 14. Implementas una regla que detecta el uso de certutil.exe para descargar archivos. El equipo de IT usa certutil para descargar parches. Como resuelves este conflicto?
 15. El equipo de Red Team prueba tus reglas durante un ejercicio y las evade todas. Como conviertes este resultado en una mejora concreta?
-16. Una regla bien afinada tiene 0 falsos positivos pero solo detecta el 10% de los ataques. Otra detecta el 90% pero genera 1000 falsos positivos al día. Cual prefieres y por que?
+16. Una regla bien afinada tiene 0 falsos positivos pero solo detecta el 10% de los ataques. Otra detecta el 90% pero genera 1000 falsos positivos al día. Cual prefieres y por qué?
 17. Que métricas usarías para medir la efectividad de tu programa de Detection Engineering? Como las presentarias a la dirección para justificar el presupuesto?

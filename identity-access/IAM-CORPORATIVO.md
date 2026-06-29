@@ -1,5 +1,8 @@
 ---
 title: "IAM Corporativo: La Tarjeta de Hotel"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # IAM Corporativo: La Tarjeta de Hotel
@@ -18,7 +21,7 @@ Imagina un hotel de lujo.
 
 Llegas a la recepción del hotel a las 3:00 PM. El recepcionista te pide tu Pasaporte. El mira la foto de tu pasaporte y mira tu cara. Si coinciden, el confirma que tu eres, efectivamente, Juan Perez.
 
-En informática, esto es escribir tu Usuario y Contrasena, y poner el codigo de 6 dígitos que te llega al celular (Autenticación Multi-Factor - MFA). El sistema dice: "Ok, si eres el empleado Juan Perez".
+En informática, esto es escribir tu Usuario y Contraseña, y poner el código de 6 dígitos que te llega al celular (Autenticación Multi-Factor - MFA). El sistema dice: "Ok, si eres el empleado Juan Perez".
 
 El límite: Autenticarse NO te da permiso de hacer nada. Solo demuestra que eres tu.
 
@@ -36,26 +39,26 @@ En informática, esto se llama RBAC (Role-Based Access Control). El sistema sabe
 
 La autenticación se clasifica en tres factores:
 
-1. **Algo que sabes (Conocimiento):** Una contrasena, un PIN.
+1. **Algo que sabes (Conocimiento):** Una contraseña, un PIN.
 2. **Algo que tienes (Posesion):** Un teléfono, un token físico, una tarjeta inteligente.
 3. **Algo que eres (Inherencia):** Huella dactilar, reconocimiento facial, iris.
 
 ### Autenticación de Un Solo Factor (SFA)
 
-Solo usas un factor, tipicamente una contrasena. Es el menos seguro.
+Solo usas un factor, típicamente una contraseña. Es el menos seguro.
 
 ### Autenticación de Dos Factores (2FA)
 
 Usas dos factores diferentes. Ejemplo:
-- Contrasena (algo que sabes) + Codigo SMS (algo que tienes).
+- Contraseña (algo que sabes) + Código SMS (algo que tienes).
 
 ### Autenticación Multi-Factor (MFA)
 
 Usas dos o más factores. Es el estándar mínimo para cuentas administrativas.
 
-### Autenticación Sin Contrasena (Passwordless)
+### Autenticación Sin Contraseña (Passwordless)
 
-Tecnologías como Windows Hello, FIDO2/WebAuthn que eliminan la contrasena por completo usando:
+Tecnologías como Windows Hello, FIDO2/WebAuthn que eliminan la contraseña por completo usando:
 
 - Biometrica (huella, rostro).
 - Token físico (YubiKey).
@@ -107,7 +110,7 @@ Ejemplo de política ABAC:
 
 **Desventajas:**
 - Complejo de implementar.
-- Difícil de depurar (por que me denego acceso?).
+- Difícil de depurar (por qué me denego acceso?).
 
 ## Active Directory y Entra ID
 
@@ -126,7 +129,7 @@ Si despiden a un empleado, el equipo de IT lo borra del AD, y automáticamente p
 
 ### Entra ID (antes Azure Active Directory)
 
-Es la versión cloud de Active Directory. Se integra con Office 365, Azure y aplicaciones SaaS.
+Es la versión cloud de Active Directory. Se integra con Microsoft 365, Azure y aplicaciones SaaS.
 
 Diferencias con AD on-premise:
 
@@ -140,7 +143,7 @@ Diferencias con AD on-premise:
 
 ### Sincronizacion AD - Entra ID
 
-Muchas empresas usan ambos (hibrido). Azure AD Connect sincroniza usuarios entre AD on-premise y Entra ID.
+Muchas empresas usan ambos (hibrido). Microsoft Entra Connect Sync sincroniza usuarios entre AD on-premise y Entra ID.
 
 Esto permite:
 - Un solo inicio de sesión para apps locales y cloud.
@@ -153,11 +156,11 @@ En una empresa con 5,000 empleados y 50 sistemas diferentes (Correo, Base de Dat
 
 ### La Pulsera del Parque de Diversiones
 
-Single Sign-On (SSO) (ej. Okta, PingIdentity, Azure AD SSO) se conecta al directorio central.
+Single Sign-On (SSO) (ej. Okta, PingIdentity, Microsoft Entra ID SSO) se conecta al directorio central.
 
 Cuando vas a un parque de diversiones, en lugar de hacer fila para sacar la cartera y pagar 5 dólares en la Montaña Rusa, y luego volver a hacer fila para pagar 3 dólares en los Carritos Chocones, pagas una sola vez en la entrada del parque y te ponen una Pulsera Verde de papel en la muñeca.
 
-En informática, el empleado llega el lunes en la mañana. Escribe su contrasena una sola vez en la intranet de la empresa. El sistema SSO le da un Token criptográfico invisible (la pulsera). Durante el resto del día, el empleado puede abrir el Correo, el CRM y la Base de Datos mágicamente sin tener que volver a escribir contraseñas.
+En informática, el empleado llega el lunes en la mañana. Escribe su contraseña una sola vez en la intranet de la empresa. El sistema SSO le da un Token criptográfico invisible (la pulsera). Durante el resto del día, el empleado puede abrir el Correo, el CRM y la Base de Datos mágicamente sin tener que volver a escribir contraseñas.
 
 ### Protocolos de SSO
 
@@ -167,8 +170,8 @@ Usa XML para intercambiar datos de autenticación entre el proveedor de identida
 
 Flujo SAML:
 1. Usuario intenta acceder a una aplicación (ej. Salesforce).
-2. Salesforce redirige al IdP (ej. Okta, Azure AD).
-3. Usuario se autentica en el IdP (contrasena + MFA).
+2. Salesforce redirige al IdP (ej. Okta, Microsoft Entra ID).
+3. Usuario se autentica en el IdP (contraseña + MFA).
 4. IdP genera una afirmación SAML (XML firmado).
 5. Afirmación se envía a Salesforce.
 6. Salesforce verifica la firma y concede acceso.
@@ -222,7 +225,7 @@ Cuando un nuevo empleado llega, el sistema de IAM debe:
 1. Crear cuenta en AD/Entra ID.
 2. Asignar grupos (departamento, cargo).
 3. Crear cuentas en aplicaciones (correo, CRM, VPN).
-4. Asignar licencias (Office 365, Slack, etc.).
+4. Asignar licencias (Microsoft 365, Slack, etc.).
 5. Enviar credenciales temporales al empleado.
 
 ### Deprovisioning (Eliminación de Cuentas)
@@ -235,7 +238,7 @@ Cuando un empleado se va, el sistema de IAM debe:
 4. Transferir propiedades (correo, documentos).
 5. Auditar que no queden accesos residuales.
 
-Esto debe hacerse en minutos, no en dias.
+Esto debe hacerse en minutos, no en días.
 
 ## Identity Governance and Administration (IGA)
 
@@ -273,7 +276,7 @@ El ataque SolarWinds uso técnicas de suplantación de identidad para moverse la
 2. Usaron esa cuenta para firmar digitalmente el malware (parecia legítimo).
 3. El malware se distribuyo como una actualización legítima.
 
-La leccion: las identidades privilegiadas (como cuentas de firma de codigo) deben protegerse con extrema rigurosidad.
+La lección: las identidades privilegiadas (como cuentas de firma de código) deben protegerse con extrema rigurosidad.
 
 ### El Empleado que Mantenía Acceso Post-Salida (2019)
 
@@ -289,7 +292,7 @@ El exempleado accedio a la base de datos de clientes y vendio la información a 
 
 ### Falla 1: Contraseñas Débiles o Reutilizadas
 
-El 80% de las brechas involucran contraseñas débiles o robadas. Sin políticas de contraseñas fuertes y MFA, las credenciales son el eslabón más débil.
+Las credenciales débiles o robadas aparecen de forma recurrente en brechas. MFA, controles de abuso y autenticación resistente al phishing reducen este riesgo.
 
 ### Falla 2: Falta de MFA en Cuentas Administrativas
 
@@ -317,7 +320,7 @@ Como atacante, las identidades son mi vector de entrada favorito.
 
 ### Phishing de Credenciales
 
-Creo una pagina de login falsa que imita a Azure AD, Okta o Gmail. Cuando la victima ingresa sus credenciales, las capturo y las uso inmediatamente.
+Creo una página de login falsa que imita a Microsoft Entra ID, Okta o Gmail. Cuando la víctima ingresa sus credenciales, las capturo y las uso inmediatamente.
 
 ### Ataque de Fuerza Bruta contra AD
 
@@ -331,7 +334,7 @@ Si comprometo una computadora con un administrador logueado, puedo extraer:
 - Tickets Kerberos del caché.
 - Tokens de sesión.
 
-Con estos, puedo autenticarme como ese usuario sin conocer la contrasena.
+Con estos, puedo autenticarme como ese usuario sin conocer la contraseña.
 
 ### Abuso de Confianza de Federacion
 
@@ -345,14 +348,14 @@ Es común confundir estos tres protocolos. Aclaremos la diferencia.
 
 - **Propósito:** Intercambio de datos de autenticación y autorización.
 - **Formato:** XML.
-- **Uso típico:** SSO empresarial (Okta -> Salesforce, Azure AD -> AWS).
+- **Uso típico:** SSO empresarial (Okta -> Salesforce, Microsoft Entra ID -> AWS).
 - **Flujo:** El usuario se autentica en el IdP, que genera una afirmación SAML firmada. El SP (Service Provider) verifica la firma.
 - **Ventajas:** Maduro, ampliamente soportado en aplicaciones empresariales.
 - **Desventajas:** XML es verboso, no diseñado para aplicaciones móviles.
 
 ### OAuth 2.0
 
-- **Propósito:** Autorización delegada. Permite a una aplicación acceder a recursos en nombre de un usuario sin compartir la contrasena.
+- **Propósito:** Autorización delegada. Permite a una aplicación acceder a recursos en nombre de un usuario sin compartir la contraseña.
 - **Formato:** JSON.
 - **Uso típico:** "Inicia sesión con Google" (permiso limitado).
 - **Flujo:** El usuario autoriza a la aplicación a acceder a sus datos. La aplicación recibe un access token.
@@ -387,9 +390,9 @@ El IdP líder del mercado. Ofrece SSO, MFA, y gestión del ciclo de vida de iden
 - Ventajas: Amplia integración con aplicaciones, fácil de configurar.
 - Desventajas: Costo elevado, complejidad en empresas grandes.
 
-### Microsoft Entra ID (Azure AD)
+### Microsoft Entra ID
 
-El IdP de Microsoft, integrado con Office 365, Azure y aplicaciones empresariales.
+El IdP de Microsoft, integrado con Microsoft 365, Azure y aplicaciones empresariales.
 
 - Ventajas: Integración nativa con Microsoft ecosystem, incluido en licencias empresariales.
 - Desventajas: Complejidad en configuración de federacion.
@@ -447,7 +450,7 @@ Las empresas pasan por etapas en su madurez de IAM:
 ### Nivel 5: Optimizado
 
 - IAM adaptativo (el riesgo determina el nivel de autenticación).
-- Autenticación sin contrasena (passwordless).
+- Autenticación sin contraseña (passwordless).
 - Identidad descentralizada (SSI - Self-Sovereign Identity).
 - Automatización completa del ciclo de vida.
 
@@ -464,8 +467,8 @@ SCIM es un protocolo para automatizar el intercambio de identidades entre sistem
 ### Flujo SCIM
 
 1. Usuario creado en AD.
-2. Azure AD Connect detecta el cambio.
-3. Azure AD envía una solicitud SCIM POST a Salesforce (por ejemplo) con los datos del nuevo usuario.
+2. Microsoft Entra Connect Sync detecta el cambio.
+3. Microsoft Entra ID envía una solicitud SCIM POST a Salesforce (por ejemplo) con los datos del nuevo usuario.
 4. Salesforce crea el usuario y responde 201 Created.
 5. Todo automático, sin intervención manual.
 
@@ -478,11 +481,11 @@ SCIM es un protocolo para automatizar el intercambio de identidades entre sistem
 
 Responde estas preguntas para verificar si comprendes los conceptos:
 
-1. El sistema de inicio de sesión de un banco te pide tu nombre de usuario, tu contrasena, y adicionalmente te pide que escanees tu huella dactilar en el celular. A que fase técnica del IAM corresponde esto: a la Autenticación o a la Autorización?
+1. El sistema de inicio de sesión de un banco te pide tu nombre de usuario, tu contraseña, y adicionalmente te pide que escanees tu huella dactilar en el celular. A que fase técnica del IAM corresponde esto: a la Autenticación o a la Autorización?
 
-2. Usando la analogía de la Tarjeta Magnética del Hotel, explica por que un empleado del departamento de Marketing (que se valido correctamente en la VPN de la empresa) recibe un mensaje de "Acceso Denegado" al intentar leer un documento en la carpeta de Finanzas.
+2. Usando la analogía de la Tarjeta Magnética del Hotel, explica por qué un empleado del departamento de Marketing (que se válido correctamente en la VPN de la empresa) recibe un mensaje de "Acceso Denegado" al intentar leer un documento en la carpeta de Finanzas.
 
-3. Un empleado es despedido el viernes a las 5:00 PM con carácter inmediato. Gracias a que la empresa utiliza una arquitectura centralizada con Active Directory, Por que el equipo de IT no tiene que entrar a los 50 programas diferentes que usaba el empleado para borrar su cuenta uno por uno?
+3. Un empleado es despedido el viernes a las 5:00 PM con carácter inmediato. Gracias a que la empresa utiliza una arquitectura centralizada con Active Directory, Por qué el equipo de IT no tiene que entrar a los 50 programas diferentes que usaba el empleado para borrar su cuenta uno por uno?
 
 4. El SSO (Single Sign-On) mejora drásticamente la comodidad del usuario (evita la fatiga de contraseñas). Sin embargo, Cual es el riesgo catastrófico para la empresa si un hacker logra robar el Token o Pulsera de la sesión SSO de un Gerente General?
 
@@ -490,6 +493,6 @@ Responde estas preguntas para verificar si comprendes los conceptos:
 
 6. Que es el ataque Pass-the-Hash y como se relaciona con la captura de credenciales de administradores en Active Directory?
 
-7. Por que la sincronizacion entre AD on-premise y Entra ID (Azure AD Connect) puede ser un vector de ataque? Que pasaría si un atacante compromete el servidor de sincronizacion?
+7. Por qué la sincronizacion entre AD on-premise y Entra ID (Microsoft Entra Connect Sync) puede ser un vector de ataque? Que pasaría si un atacante compromete el servidor de sincronizacion?
 
 8. Un empleado cambia de departamento (de Marketing a Finanzas) pero mantiene los permisos de ambos departamentos. Que problema de seguridad representa esto y como lo solucionaria un sistema IGA (Identity Governance)?

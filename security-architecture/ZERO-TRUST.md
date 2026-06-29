@@ -1,5 +1,8 @@
 ---
 title: "Zero Trust: El Laboratorio Secreto"
+level: "avanzado"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Zero Trust: El Laboratorio Secreto
@@ -42,7 +45,7 @@ Zero Trust nace de una realidad ineludible: el perímetro de la red ya no existe
 
 Movilidad: Los empleados trabajan desde cualquier lugar. Laptops, tablets, teléfonos. El concepto de "red corporativa" se ha diluido. Los empleados se conectan desde cafes, aeropuertos, hoteles, sus casas.
 
-Nube: Las aplicaciones ya no están en el datacenter de la empresa. Están en SaaS (Office 365, Salesforce, Slack), en IaaS (AWS, Azure), en PaaS. La red corporativa es solo una de las muchas redes que los empleados usan para acceder a recursos corporativos.
+Nube: Las aplicaciones ya no están en el datacenter de la empresa. Están en SaaS (Microsoft 365, Salesforce, Slack), en IaaS (AWS, Azure), en PaaS. La red corporativa es solo una de las muchas redes que los empleados usan para acceder a recursos corporativos.
 
 Dispositivos Personales (BYOD): Los empleados usan sus propios dispositivos. La empresa no controla ni puede asegurar esos dispositivos. Un empleado puede tener su laptop personal con malware conectandose al correo corporativo.
 
@@ -72,7 +75,7 @@ El Concepto: No importa si estas conectado al Wi-Fi de tu casa o al cable de red
 
 La Ejecución: Cada vez que intentes abrir un archivo o acceder a una Base de Datos, el sistema verifica:
 
-Identidad: Quien eres? Usando autenticación fuerte (MFA, FIDO2, biometría). No solo contrasena.
+Identidad: Quien eres? Usando autenticación fuerte (MFA, FIDO2, biometría). No solo contraseña.
 
 Dispositivo: Que dispositivo usas? Esta gestionado por la empresa? Tiene el antivirus actualizado? Tiene las últimas actualizaciones de seguridad? Esta encriptado?
 
@@ -201,7 +204,7 @@ Zero Trust no es un producto que se compra e instala. Es un viaje de madurez.
 - Red plana sin segmentación
 - VPN para acceso remoto
 - Confianza implicita en la red interna
-- Autenticación basada solo en contrasena
+- Autenticación basada solo en contraseña
 
 ### Nivel 2: Inicial
 
@@ -223,7 +226,7 @@ Zero Trust no es un producto que se compra e instala. Es un viaje de madurez.
 
 - Verificación explicita en cada acceso
 - Menor privilegio en todos los niveles
-- Assume breach como principio de diseno
+- Assume breach como principio de diseño
 - Cifrado de extremo a extremo en todas las comunicaciones
 - Automatización completa de políticas de acceso
 - Threat hunting basado en analítica avanzada
@@ -278,12 +281,12 @@ Data Security:
 - Cifrado: AWS KMS, Azure Key Vault, HashiCorp Vault
 
 Monitoring:
-- SIEM: Splunk, Azure Sentinel, Elastic Security
+- SIEM: Splunk, Microsoft Sentinel, Elastic Security
 - UEBA: Microsoft Sentinel, Exabeam, Securonix
 
-### Caso Real: Migración de una Empresa Financiera
+### Escenario Ilustrativo: Migración de una Empresa Financiera
 
-Un banco mediano en Europa decidio migrar a Zero Trust. Tenían:
+Imagina un banco mediano que decide migrar a Zero Trust. Su entorno incluye:
 - 3,000 empleados
 - 500 servidores
 - Aplicaciones en datacenter y en AWS
@@ -341,7 +344,7 @@ Para el atacante, Zero Trust es el peor escenario. Hace que cada paso del ataque
 
 Sin Movimiento Lateral: En una red Zero Trust con microsegmentacion, el atacante que compromete un sistema no puede moverse a otros sistemas. Cada sistema es una isla.
 
-Sin Credenciales Reutilizables: Con JIT, las credenciales de administrador expiran rápidamente. El atacante no puede usar credenciales robadas dias después.
+Sin Credenciales Reutilizables: Con JIT, las credenciales de administrador expiran rápidamente. El atacante no puede usar credenciales robadas días después.
 
 Sin Acceso Persistente: Cada acceso es verificado. El atacante no puede establecer una sesión permanente.
 
@@ -351,7 +354,7 @@ Detección Temprana: El monitoreo constante detecta comportamientos anómalos. I
 
 Los atacantes están desarrollando contramedidas:
 
-Compromiso del Identity Provider: Si el atacante compromete Azure AD u Okta, puede autenticarse como cualquier usuario.
+Compromiso del Identity Provider: Si el atacante compromete Microsoft Entra ID u Okta, puede autenticarse como cualquier usuario.
 
 Robo de Tokens: En lugar de robar credenciales, el atacante roba tokens de acceso ya emitidos y los usa antes de que expiren.
 
@@ -367,7 +370,7 @@ Zero Trust no es infalible, pero eleva significativamente el costo del ataque. E
 
 Zero Trust esta evolucionando. Tendencias futuras:
 
-Zero Trust para IoT: Dispositivos IoT que no pueden ejecutar agentes de seguridad. Nuevos modelos de verificación para dispositivos sin capacidad de computacion.
+Zero Trust para IoT: Dispositivos IoT que no pueden ejecutar agentes de seguridad. Nuevos modelos de verificación para dispositivos sin capacidad de computación.
 
 Zero Trust para Datos: No solo controlar quien accede a los datos, sino controlar QUE pueden hacer con ellos (no copiar, no imprimir, no compartir).
 
@@ -387,13 +390,13 @@ Revisa si puedes eliminar la confianza de la ecuación:
 
 2. Explica la analogía del "Laboratorio Secreto de Biorriesgos" y como esto evita el Movimiento Lateral de un Hacker que logró comprometer la computadora del recepcionista (que ya esta físicamente dentro de la oficina).
 
-3. Uno de los pilares de Zero Trust es "Verificar Explícitamente". Si un usuario proporciona la contrasena correcta y el Token MFA correcto, por que un sistema Zero Trust maduro podría rechazar su conexion si detecta que el Antivirus de la computadora de ese usuario lleva 3 meses sin actualizarse?
+3. Uno de los pilares de Zero Trust es "Verificar Explícitamente". Si un usuario proporciona la contraseña correcta y el Token MFA correcto, por qué un sistema Zero Trust maduro podría rechazar su conexión si detecta que el Antivirus de la computadora de ese usuario lleva 3 meses sin actualizarse?
 
-4. El pilar de "Assume Breach" dicta que debes operar como si los atacantes ya estuvieran dentro de la red corporativa. Basado en esta filosofía, por que es obligatorio que la comunicación entre dos servidores internos (ej. el Servidor Web y la Base de Datos) este encriptada con TLS, aunque ambos servidores estén físicamente en el mismo cuarto seguro?
+4. El pilar de "Assume Breach" dicta que debes operar como si los atacantes ya estuvieran dentro de la red corporativa. Basado en esta filosofía, por qué es obligatorio que la comunicación entre dos servidores internos (ej. el Servidor Web y la Base de Datos) este encriptada con TLS, aunque ambos servidores estén físicamente en el mismo cuarto seguro?
 
-5. Explica la diferencia entre el modelo de seguridad tradicional (Castillo Medieval) y Zero Trust (Laboratorio Secreto). Cual es más adecuado para el entorno laboral actual y por que?
+5. Explica la diferencia entre el modelo de seguridad tradicional (Castillo Medieval) y Zero Trust (Laboratorio Secreto). Cual es más adecuado para el entorno laboral actual y por qué?
 
-6. Tu empresa usa VPN para que empleados remotos accedan a la red corporativa. Una vez conectados via VPN, los empleados tienen acceso a la mayoría de los recursos de la red. Explica por que esto es contrario al modelo Zero Trust.
+6. Tu empresa usa VPN para que empleados remotos accedan a la red corporativa. Una vez conectados via VPN, los empleados tienen acceso a la mayoría de los recursos de la red. Explica por qué esto es contrario al modelo Zero Trust.
 
 7. Que es JIT (Just-In-Time Access) y como reduce el riesgo de credenciales de administrador robadas?
 

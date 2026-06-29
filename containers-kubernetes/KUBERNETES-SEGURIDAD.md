@@ -1,18 +1,21 @@
 ---
 title: "Seguridad en Kubernetes (K8s): El Director de Orquesta"
+level: "avanzado"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Seguridad en Kubernetes (K8s): El Director de Orquesta
 
 ## Objetivo de esta Guía
 
-Entender que hace Kubernetes, por que es el rey absoluto de la Nube, y como hackearlo significa ganar el juego instantáneamente.
+Entender que hace Kubernetes, por qué es el rey absoluto de la Nube, y como hackearlo significa ganar el juego instantáneamente.
 
 Si tienes 3 contenedores de Docker (las cajas de cristal de la guía anterior), puedes encenderlos a mano escribiendo comandos en la terminal de Linux. Pero las empresas como Netflix o Spotify no tienen 3 contenedores. Tienen 50,000 contenedores encendiéndose y apagándose cada segundo alrededor del mundo. Un humano no puede administrar eso. Necesitas un robot automatizado: Kubernetes.
 
 ## La Analogía
 
-Tienes a 50,000 músicos de todos los instrumentos listos para tocar. Necesitan un Director de Orquesta. El Director no toca el violín (no ejecuta el codigo), el solo vigila a los músicos (los Contenedores de Docker). Si el violinista se muere de un infarto (se cae el servidor), el Director inmediatamente llama a otro violinista de repuesto y lo sienta en la silla sin que la sinfonía se detenga un solo segundo. A esto se le llama Orquestación de Contenedores.
+Tienes a 50,000 músicos de todos los instrumentos listos para tocar. Necesitan un Director de Orquesta. El Director no toca el violín (no ejecuta el código), el solo vigila a los músicos (los Contenedores de Docker). Si el violinista se muere de un infarto (se cae el servidor), el Director inmediatamente llama a otro violinista de repuesto y lo sienta en la silla sin que la sinfonía se detenga un solo segundo. A esto se le llama Orquestación de Contenedores.
 
 ## Componentes de Kubernetes
 
@@ -107,7 +110,7 @@ roleRef:
 
 ### Capa 3: Network Policies
 
-Por que esto importa: sin Network Policies, es como tener un edificio donde todas las puertas están abiertas todo el tiempo.
+Por qué esto importa: sin Network Policies, es como tener un edificio donde todas las puertas están abiertas todo el tiempo.
 
 Por defecto en Kubernetes, todos los pods pueden comunicarse entre si. No hay restricciones de red. Esto es inseguro.
 
@@ -184,7 +187,7 @@ Kubernetes tiene un objeto llamado Secret para almacenar datos sensibles (contra
 
 1. Usar encriptación en reposo para Secrets (encryption at rest).
 2. Usar un proveedor externo como HashiCorp Vault, AWS Secrets Manager o Azure Key Vault.
-3. No incluir Secrets en imagenes de contenedor.
+3. No incluir Secrets en imágenes de contenedor.
 4. Rotar Secrets periodicamente.
 
 Ejemplo de Secret:
@@ -235,7 +238,7 @@ Los Admission Controllers son plugins que interceptan las solicitudes al API Ser
 **Admission Controllers importantes para seguridad:**
 
 1. **PodSecurity:** Aplica Pod Security Standards.
-2. **AlwaysPullImages:** Fuerza a que las imagenes se descarguen siempre (evita imagenes locales maliciosas).
+2. **AlwaysPullImages:** Fuerza a que las imágenes se descarguen siempre (evita imágenes locales maliciosas).
 3. **NodeRestriction:** Limita los permisos de kubelet.
 4. **DenyServiceExternalIPs:** Bloquea el uso de IPs externas en servicios.
 
@@ -243,7 +246,7 @@ Los Admission Controllers son plugins que interceptan las solicitudes al API Ser
 
 ### Escaneo de Imagenes
 
-Usar herramientas como Trivy, Snyk o Aqua Security para escanear imagenes de contenedor en busca de vulnerabilidades conocidas.
+Usar herramientas como Trivy, Snyk o Aqua Security para escanear imágenes de contenedor en busca de vulnerabilidades conocidas.
 
 ```bash
 trivy image nginx:1.25.3
@@ -409,13 +412,13 @@ El ataque consume recursos de CPU/GPU del clúster sin que el dueño se de cuent
 
 Responde estas preguntas para verificar si comprendes los conceptos:
 
-1. Basado en la analogía del Director de Orquesta, explica la diferencia de responsabilidades y nivel de riesgo entre un Worker Node (un músico) y el Control Plane (El Director). Por que los atacantes modernos apuntan casi exclusivamente al Control Plane?
+1. Basado en la analogía del Director de Orquesta, explica la diferencia de responsabilidades y nivel de riesgo entre un Worker Node (un músico) y el Control Plane (El Director). Por qué los atacantes modernos apuntan casi exclusivamente al Control Plane?
 
 2. Un equipo de desarrollo despliega Kubernetes pero decide no configurar ninguna Network Policy. Un atacante logra vulnerar un contenedor público que hospeda un simple Blog de WordPress. Explica como la falta de Network Policies le permite al atacante moverse lateralmente para atacar la Base de Datos Financiera de la empresa alojada en el mismo clúster.
 
 3. El API Server de Kubernetes es el cerebro que recibe y ejecuta todas las órdenes de orquestación. Si el equipo de IT deja el API Server expuesto al internet público sin requerir Tokens de Autenticación, describe un escenario de Cryptojacking y su impacto financiero letal.
 
-4. Explica la funcion del sistema RBAC en Kubernetes. Si no existiera RBAC, Por que un simple empleado del equipo de Soporte Técnico tendría el mismo poder destructivo que el Administrador Principal (Root) de la Nube?
+4. Explica la función del sistema RBAC en Kubernetes. Si no existiera RBAC, Por qué un simple empleado del equipo de Soporte Técnico tendría el mismo poder destructivo que el Administrador Principal (Root) de la Nube?
 
 5. Cual es la diferencia entre un Role y un ClusterRole en Kubernetes RBAC? Cuando usarías cada uno?
 

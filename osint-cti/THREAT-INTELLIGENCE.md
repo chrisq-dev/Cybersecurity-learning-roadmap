@@ -1,5 +1,8 @@
 ---
 title: "Threat Intelligence: Conociendo al Enemigo"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Threat Intelligence: Conociendo al Enemigo
@@ -68,7 +71,7 @@ Ejemplo: "IP C2 del grupo LockBit: 185.130.5.xxx. Hash de muestra: a3f5b8... Dom
 
 ### Técnica
 
-Forenses y malware analysts. Detalles de exploits, vulnerabilidades, codigo.
+Forenses y malware analysts. Detalles de exploits, vulnerabilidades, código.
 
 Ejemplo: "El ransomware LockBit 3.0 usa la API de Windows CryptEncrypt con AES-256 en modo CBC."
 
@@ -111,13 +114,13 @@ Cada técnica tiene ID (T1566 para Phishing), descripción, ejemplos, detección
 4. Explotación.
 5. Instalacion.
 6. C2.
-7. Accion sobre objetivos.
+7. Acción sobre objetivos.
 
-**Por que esto importa:** Si sabes en que paso esta el atacante, hacer.
+**Por qué esto importa:** Si sabes en que paso esta el atacante, hacer.
 
 ### Diamond Model
 
-4 vertices: Adversario, Capacidad, Infraestructura, Victima. Relaciones entre ellos. Conectar los puntos te da la imagen completa.
+4 vertices: Adversario, Capacidad, Infraestructura, Víctima. Relaciones entre ellos. Conectar los puntos te da la imagen completa.
 
 ## Indicadores de Compromiso (IOC)
 
@@ -126,7 +129,7 @@ Cada técnica tiene ID (T1566 para Phishing), descripción, ejemplos, detección
 - Hash (MD5, SHA-1, SHA-256): Archivos maliciosos.
 - IP: Servidores C2, fuentes de ataque.
 - Dominio: C2, phishing.
-- URL: Pagina de phishing.
+- URL: Página de phishing.
 - Cadena: Nombre de proceso, ruta, registro.
 - Comportamiento: Patrón de red, secuencia de eventos.
 
@@ -146,13 +149,13 @@ Ejemplo: El grupo usa spear phishing con adjunto malicioso en PDF (técnica T156
 
 ## Inteligencia Accionable
 
-La inteligencia que no genera accion no sirve.
+La inteligencia que no genera acción no sirve.
 
-IOC accionable: "Bloquear IP 185.130.5.xxx en firewall." (Accion inmediata.)
+IOC accionable: "Bloquear IP 185.130.5.xxx en firewall." (Acción inmediata.)
 
-TTP accionable: "Implementar AMSI para detectar PowerShell malicioso." (Accion de configuración.)
+TTP accionable: "Implementar AMSI para detectar PowerShell malicioso." (Acción de configuración.)
 
-Inteligencia estrategica accionable: "Asignar presupuesto para segmentación de red." (Accion de inversión.)
+Inteligencia estrategica accionable: "Asignar presupuesto para segmentación de red." (Acción de inversión.)
 
 ## Compartir Inteligencia
 
@@ -176,9 +179,9 @@ IOCs desactualizados: Usar IOCs de hace 6 meses. El atacante ya cambio todo.
 
 No integrar con herramientas: La inteligencia en un PDF no sirve. Debe estar en SIEM, firewall, EDR.
 
-Falta de contexto: "IP X es mala" sin explicar por que, para que, de que grupo. La gente no confía en lo que no entiende.
+Falta de contexto: "IP X es mala" sin explicar por qué, para que, de que grupo. La gente no confía en lo que no entiende.
 
-Inteligencia sin accion: Reportes que nadie lee.
+Inteligencia sin acción: Reportes que nadie lee.
 
 No compartir: Cada organización ve solo su ángulo. Compartir beneficia a todos. El ataque que le paso a otro, te puede pasar a ti.
 
@@ -186,7 +189,7 @@ No compartir: Cada organización ve solo su ángulo. Compartir beneficia a todos
 
 ### El Atacante También Hace Inteligencia
 
-El atacante investiga a la victima: tecnologías, empleados, horarios, procesos. OSINT del objetivo. Mientras tu lo investigas a el, el te investiga a ti.
+El atacante investiga a la víctima: tecnologías, empleados, horarios, procesos. OSINT del objetivo. Mientras tu lo investigas a el, el te investiga a ti.
 
 ### Evasion de Inteligencia
 
@@ -194,7 +197,7 @@ El atacante:
 - Cambia IOCs constantemente (DGA, fast-flux).
 - Usa infraestructura efimera.
 - Mezcla tráfico malicioso con legítimo.
-- Estudia las defensas de la victima antes de atacar.
+- Estudia las defensas de la víctima antes de atacar.
 
 ### Contrainteligencia
 
@@ -227,7 +230,7 @@ No toda inteligencia es confiable.
 - Reputación de la fuente.
 - Antigüedad del IOC.
 - Número de falsos positivos historicos.
-- Corroboracion con otras fuentes.
+- Corroboración con otras fuentes.
 - Contexto del IOC.
 
 ### Fuentes de Baja Confianza
@@ -315,7 +318,7 @@ CVE-2024-xxx con CVSS 9.8 y explotación activa. Identificar sistemas vulnerable
 
 ## El Rol del Analysta de Inteligencia
 
-Habilidades: investigación, pensamiento crítico, comunicación. Capacidad de resumir información técnica para audiencias no técnicas. No solo recolectar datos: convertirlos en accion.
+Habilidades: investigación, pensamiento crítico, comunicación. Capacidad de resumir información técnica para audiencias no técnicas. No solo recolectar datos: convertirlos en acción.
 
 ## Triangulo de Inteligencia
 
@@ -331,7 +334,7 @@ Las empresas pequeñas no tienen equipo de inteligencia. Soluciones: feeds gratu
 
 ## Indicadores de Ataque (IOA) vs IOC
 
-IOA: Comportamiento, no firma. Ejemplo: "Un proceso PowerShell hace conexion de red" vs "Hash X es malicioso". Los IOA detectan ataques nuevos que no tienen IOC conocido.
+IOA: Comportamiento, no firma. Ejemplo: "Un proceso PowerShell hace conexión de red" vs "Hash X es malicioso". Los IOA detectan ataques nuevos que no tienen IOC conocido.
 
 ## Inteligencia de Vulnerabilidades
 
@@ -379,22 +382,22 @@ Reportes ejecutivos: riesgo general, tendencias, impacto en negocio. Lenguaje no
 
 ## Autoevaluación
 
-1. Diferencia entre IOC y TTP. Por que los TTPs son más valiosos a largo plazo?
+1. Diferencia entre IOC y TTP. Por qué los TTPs son más valiosos a largo plazo?
 
 2. El SOC recibe 10,000 IOCs de un feed. Que haces para priorizar?
 
 3. Un informe de inteligencia dice: "Grupo X ataca sector financiero con phishing." Que acciones tomas como CISO?
 
-4. Que es MISP? Por que compartir inteligencia beneficia a todos?
+4. Que es MISP? Por qué compartir inteligencia beneficia a todos?
 
 5. La kill chain tiene 7 pasos. En que paso(s) actúa TEHas?
 
 6. Que es un falso positivo en inteligencia de amenazas? Como lo manejas?
 
-7. Un IOC tiene 3 meses de antigüedad. Lo usas? Por que?
+7. Un IOC tiene 3 meses de antigüedad. Lo usas? Por qué?
 
 8. Explica el Diamond Model con un ejemplo real.
 
-9. Por que la inteligencia estrategica no sirve al analista de SOC en tiempo real?
+9. Por qué la inteligencia estrategica no sirve al analista de SOC en tiempo real?
 
 10. Tu organización detecto un ataque. Que IOCs compartirias y cuáles no?

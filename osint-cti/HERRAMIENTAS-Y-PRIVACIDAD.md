@@ -1,5 +1,8 @@
 ---
 title: "Herramientas y Privacidad: El Arsenal Digital"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Herramientas y Privacidad: El Arsenal Digital
@@ -40,7 +43,7 @@ Social-analyzer: Analiza perfiles de redes sociales, estima edad, genero, ubicac
 
 Have I Been Pwned: Verifica si un email esta en breaches conocidos. Una herramienta fundamental para conocer el nivel de exposición de credenciales.
 
-Dehashed: Busca credenciales filtradas en la web y dark web. Datos estructurados: email, contrasena, hash, IP. Se puede consultar el propio correo para verificar filtraciones.
+Dehashed: Busca credenciales filtradas en la web y dark web. Datos estructurados: email, contraseña, hash, IP. Se puede consultar el propio correo para verificar filtraciones.
 
 Hunter.io: Encuentra patrones de email corporativo. Permite descubrir que los emails de una empresa suelen seguir el mismo formato.
 
@@ -72,13 +75,13 @@ FOCA: Análisis de metadatos en documentos. Versión Windows, más completa. Si 
 
 ### Búsqueda de Imagenes
 
-Google Images: Búsqueda inversa de imagenes. TinEye: Búsqueda inversa de imagenes, indexa la web. Yandex Images: Búsqueda inversa, mejor para caras. ExifTool: Extrae metadatos EXIF de imagenes (GPS, cámara, fecha, software). Cada foto que subis puede tener tu ubicación exacta.
+Google Images: Búsqueda inversa de imágenes. TinEye: Búsqueda inversa de imágenes, indexa la web. Yandex Images: Búsqueda inversa, mejor para caras. ExifTool: Extrae metadatos EXIF de imágenes (GPS, cámara, fecha, software). Cada foto que subis puede tener tu ubicación exacta.
 
 ### Búsqueda en la Web Profunda (Deep Web)
 
 Tor Browser: Acceso a sitios .onion. DuckDuckGo: Buscador anónimo. Ahmia: Buscador de sitios .onion. OnionScan: Escanea sitios onion por vulnerabilidades.
 
-**Por que esto importa:** La web que ves en Google es solo la punta del iceberg. Los foros donde los atacantes discuten exploits no están indexados.
+**Por qué esto importa:** La web que ves en Google es solo la punta del iceberg. Los foros donde los atacantes discuten exploits no están indexados.
 
 ## OPSEC (Operational Security)
 
@@ -109,7 +112,7 @@ Máquina virtual para OSINT. Sistema operativo aislado (Tails, Qubes, o VM con D
 
 #### Limpieza de Metadatos
 
-Antes de publicar cualquier hallazgo, limpiar metadatos. Las imagenes contienen GPS, fecha, cámara. Los PDFs contienen autor, software, fecha de creación.
+Antes de publicar cualquier hallazgo, limpiar metadatos. Las imágenes contienen GPS, fecha, cámara. Los PDFs contienen autor, software, fecha de creación.
 
 Herramientas: ExifTool (borrar metadatos), MAT (Metadata Anonymization Toolkit).
 
@@ -145,7 +148,7 @@ Minimizar huella digital: no usar nombre real en foros, no publicar ubicación, 
 
 ### Privacidad del Investigador
 
-Además de lo personal, mantener separacion completa entre identidad real y identidad de investigación.
+Además de lo personal, mantener separación completa entre identidad real y identidad de investigación.
 
 ## OSINT Pasivo vs Activo
 
@@ -177,7 +180,7 @@ Plataformas que integran todas las fuentes en un dashboard. SOCMINT (Social Medi
 
 ### OSINT con IA
 
-Análisis automático de sentimiento, clasificación de imagenes, identificación de personas.
+Análisis automático de sentimiento, clasificación de imágenes, identificación de personas.
 
 ### Nuevas Fuentes
 
@@ -294,7 +297,7 @@ Verificar metadatos de archivos generados. Cerrar sesiones. Limpiar historial.
 
 ### Due Diligence
 
-Evaluar una empresa antes de inversión o adquisicion. Buscar filtraciones, litigios, reputación.
+Evaluar una empresa antes de inversión o adquisición. Buscar filtraciones, litigios, reputación.
 
 ### Investigación de Fraude
 
@@ -374,7 +377,7 @@ Cada investigación en su workspace. No mezclar datos de diferentes casos. Destr
 
 1. Un investigador usa su PC personal para buscar en Shodan. Que riesgos corre?
 
-2. Que es OPSEC y por que es crítico en OSINT?
+2. Que es OPSEC y por qué es crítico en OSINT?
 
 3. Diferencias entre OSINT pasivo y activo. Cuando usarías cada uno?
 
@@ -388,6 +391,6 @@ Cada investigación en su workspace. No mezclar datos de diferentes casos. Destr
 
 8. Un atacante descubre que alguien investigo su dominio. Como pudo detectarlo?
 
-9. Por que no debes usar la misma cuenta de Google para OSINT y tu vida personal?
+9. Por qué no debes usar la misma cuenta de Google para OSINT y tu vida personal?
 
-10. Cual es la herramienta OSINT más importante y por que no es una herramienta técnica?
+10. Cual es la herramienta OSINT más importante y por qué no es una herramienta técnica?

@@ -1,5 +1,8 @@
 ---
 title: "SIEM y MITRE ATT&CK: El Cerebro y El Diccionario"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # SIEM y MITRE ATT&CK: El Cerebro y El Diccionario
@@ -39,7 +42,7 @@ Convierte logs de diferentes formatos a un esquema común. Por ejemplo, el campo
 Aplica reglas que cruzan eventos de diferentes fuentes. Ejemplo: "Si un usuario falla autenticación 3 veces en Windows + luego inicia sesión exitosamente desde una IP nueva + luego ejecuta un comando de elevacion de privilegios, genera alerta de posible compromiso de cuenta."
 
 **Almacenamiento:**
-Los logs se guardan en indices o bases de datos. La capacidad de almacenamiento determina cuanto tiempo histórico puedes consultar. Las regulaciones como PCI DSS exigen 1 año de retencion. La mayoría de las empresas mantienen 30-90 dias de datos en almacenamiento de alto rendimiento y hasta 1-2 años en almacenamiento de bajo costo.
+Los logs se guardan en indices o bases de datos. La capacidad de almacenamiento determina cuanto tiempo histórico puedes consultar. Las regulaciones como PCI DSS exigen 1 año de retencion. La mayoría de las empresas mantienen 30-90 días de datos en almacenamiento de alto rendimiento y hasta 1-2 años en almacenamiento de bajo costo.
 
 **Dashboards y visualizacion:**
 Paneles que muestran el estado de seguridad en tiempo real. Buenos dashboards muestran: alertas activas por severidad, fuentes de datos con problemas, tendencias de amenazas, y tiempo de respuesta promedio.
@@ -73,7 +76,7 @@ La relación es de complemento. El EDR es una fuente de datos para el SIEM. El X
 
 Muchas empresas compran un SIEM, lo instalan, y esperan que automáticamente detecte ataques. La realidad es que un SIEM sin configurar es un disco duro caro. Las reglas por defecto son genéricas y producen demasiados falsos positivos o demasiados falsos negativos.
 
-Un estudio de Gartner estima que hasta el 50% de las implementaciones de SIEM fallan en cumplir las expectativas del negocio. Las causas principales: falta de personal capacitado para mantenerlo, subestimacion del volumen de datos, y ausencia de procesos de respuesta a alertas.
+Una implementación de SIEM puede fallar aunque la herramienta funcione: las causas habituales incluyen falta de personal, cobertura incompleta de fuentes, costos de ingestión y ausencia de procesos para responder a alertas.
 
 ## MITRE ATT&CK: La Enciclopedia del Crimen
 
@@ -87,18 +90,18 @@ En lugar de decir "leyó contraseñas de la RAM," la industria entera acorda lla
 
 ### Estructura del Framework
 
-**Tácticas:** El "por que" del ataque. Que intenta lograr el atacante en esta fase? Las 14 tácticas actuales son:
+**Tácticas:** El "por qué" del ataque. Que intenta lograr el atacante en esta fase? Las 14 tácticas actuales son:
 - Reconocimiento (TA0043): Recolectar información del objetivo.
 - Desarrollo de Recursos (TA0042): Preparar herramientas y cuentas.
 - Acceso Inicial (TA0001): Entrar a la red.
-- Ejecución (TA0002): Ejecutar codigo malicioso.
+- Ejecución (TA0002): Ejecutar código malicioso.
 - Persistencia (TA0003): Mantener el acceso.
 - Elevacion de Privilegios (TA0004): Obtener más permisos.
 - Evasion de Defensas (TA0005): Evitar ser detectado.
 - Acceso a Credenciales (TA0006): Robar nombres de usuario y contraseñas.
 - Descubrimiento (TA0007): Explorar el entorno.
 - Movimiento Lateral (TA0008): Moverse a otros sistemas.
-- Recolección (TA0009): Reunir datos de interes.
+- Recolección (TA0009): Reunir datos de interés.
 - Comando y Control (TA0011): Comunicarse con servidores externos.
 - Exfiltración (TA0010): Robar datos.
 - Impacto (TA0040): Manipular, interrumpir o destruir.
@@ -118,7 +121,7 @@ En lugar de decir "leyó contraseñas de la RAM," la industria entera acorda lla
 
 ### Como Usar MITRE en el Día a Día
 
-Para el analista SOC: Cuando recibe una alerta, verifica si esta etiquetada con una técnica MITRE. Si lo esta (ejemplo: T1059 - PowerShell), busca la técnica en la pagina de MITRE para entender:
+Para el analista SOC: Cuando recibe una alerta, verifica si esta etiquetada con una técnica MITRE. Si lo esta (ejemplo: T1059 - PowerShell), busca la técnica en la página de MITRE para entender:
 - Como funciona la técnica.
 - Que datos recolecta el atacante.
 - Como detectarla (reglas sugeridas).
@@ -135,7 +138,7 @@ Para el equipo de arquitectura: Usa MITRE para identificar puntos ciegos en las 
 El trabajo moderno del defensor es mapear las reglas del SIEM a la matriz de MITRE. Cada regla de detección debería estar etiquetada con una o más técnicas de MITRE.
 
 Beneficios:
-- **Contexto inmediato:** Cuando la alerta llega al analista, ve T1059 y sabe que el atacante esta ejecutando codigo via scripting.
+- **Contexto inmediato:** Cuando la alerta llega al analista, ve T1059 y sabe que el atacante esta ejecutando código via scripting.
 - **Cobertura medible:** Puedes crear un dashboard que muestre cuántas técnicas de MITRE tienes cubiertas con reglas de detección.
 - **Detección de brechas:** Si no tienes reglas para T1003 (robo de credenciales), los atacantes pueden robar contraseñas sin ser detectados.
 - **Lenguaje común:** Todos los equipos (SOC, IR, Threat Intel) hablan el mismo idioma.
@@ -144,13 +147,13 @@ Beneficios:
 
 Una práctica avanzada es crear una matriz que muestre que técnicas de MITRE tu SIEM puede detectar. Cada celda de la matriz representa una combinación de táctica y técnica.
 
-La matriz revela patrones preocupantes. Por ejemplo, si tu matriz muestra buena cobertura en "Ejecución" pero mala en "Movimiento Lateral," significa que puedes detectar cuando el atacante ejecuta codigo, pero no cuando se mueve a otros sistemas.
+La matriz revela patrones preocupantes. Por ejemplo, si tu matriz muestra buena cobertura en "Ejecución" pero mala en "Movimiento Lateral," significa que puedes detectar cuando el atacante ejecuta código, pero no cuando se mueve a otros sistemas.
 
 ## Casos Reales de SIEM y MITRE
 
 ### Implementación Fallida (2019)
 
-Una empresa de retail contrato un SIEM. Dos años después, solo el 30% de las fuentes de datos estaban conectadas. Las reglas nunca se habian actualizado. El SIEM recibia logs de 3 de 15 firewalls, de ningún EDR, y de la mitad de los servidores.
+Escenario ilustrativo: una empresa contrata un SIEM, pero dos años después solo una parte de las fuentes de datos está conectada. Las reglas nunca se habian actualizado. El SIEM recibia logs de 3 de 15 firewalls, de ningún EDR, y de la mitad de los servidores.
 
 ### Mapeo MITRE que Salvo la Investigación (2021)
 
@@ -179,20 +182,20 @@ Un error común es tratar MITRE como una lista de verificación: "Tenemos detecc
 
 ## La Perspectiva del Atacante
 
-Un atacante que enfrenta un SIEM bien configurado sabe que sus movimientos serán detectados. Por eso los atacantes avanzados estudian el SIEM de la victima: buscan vulnerabilidades conocidas, intentan saturarlo con tráfico basura, atacan los forwarders para interrumpir la recolección, y usan técnicas no catalogadas en MITRE.
+Un atacante que enfrenta un SIEM bien configurado sabe que sus movimientos serán detectados. Por eso los atacantes avanzados estudian el SIEM de la víctima: buscan vulnerabilidades conocidas, intentan saturarlo con tráfico basura, atacan los forwarders para interrumpir la recolección, y usan técnicas no catalogadas en MITRE.
 
 El atacante también sabe que el analista humano es el eslabón débil. Si puede generar suficientes falsos positivos para saturarlo, puede operar bajo el ruido.
 
 ## Autoevaluación
 
-1. Configuras un SIEM nuevo. Conectas firewall (usa "source_ip") y Windows (usa "ClientAddress"). Por que la normalización es obligatoria? Que pasaría si no la hicieras?
-2. Un reporte dice: "Vulneramos el servidor usando T1110 (Brute Force)." Si buscas T1110 en MITRE, encuentras un tutorial para atacar tu empresa o una descripción universal? Cual es el valor de esta distincion?
-3. Por que MITRE es más útil para el Blue Team que CVSS? Que información adicional proporciona MITRE?
-4. Un directivo pregunta: "Para que pagamos un SIEM si ya tenemos antivirus y firewall?" Como justificas la compra usando la metafora de las cámaras y la visión global?
+1. Configuras un SIEM nuevo. Conectas firewall (usa "source_ip") y Windows (usa "ClientAddress"). Por qué la normalización es obligatoria? Que pasaría si no la hicieras?
+2. Un reporte dice: "Vulneramos el servidor usando T1110 (Brute Force)." Si buscas T1110 en MITRE, encuentras un tutorial para atacar tu empresa o una descripción universal? Cual es el valor de esta distinción?
+3. Por qué MITRE es más útil para el Blue Team que CVSS? Que información adicional proporciona MITRE?
+4. Un directivo pregunta: "Para que pagamos un SIEM si ya tenemos antivirus y firewall?" Como justificas la compra usando la metáfora de las cámaras y la visión global?
 5. Quieres crear una regla para detectar Mimikatz. Que técnicas MITRE deberías etiquetar?
 6. El equipo de IT usa PowerShell legítimamente. Como balanceas detección de actividad maliciosa sin falsos positivos?
 7. Creas un dashboard que muestra cobertura MITRE del 90%. Es esto una medida real de seguridad? Que más necesitas?
-8. Un atacante usa una técnica no catalogada en MITRE. Tu SIEM no la detecta. Pasas meses sin saber de la brecha. Que leccion aprendes sobre dependencia de frameworks?
+8. Un atacante usa una técnica no catalogada en MITRE. Tu SIEM no la detecta. Pasas meses sin saber de la brecha. Que lección aprendes sobre dependencia de frameworks?
 
 ## Casos Prácticos de Correlacion en SIEM
 
@@ -248,7 +251,7 @@ El atacante también sabe que el analista humano es el eslabón débil. Si puede
 **SIEM Cloud (SaaS):**
 - Microsoft Sentinel: SIEM nativo de Azure. Integración profunda con el ecosistema Microsoft. Modelo de pago por uso.
 - AWS Security Hub: SIEM nativo de AWS. Integra GuardDuty, Inspector, Macie.
-- Google Chronicle: SIEM en la nube de Google. Escalabilidad masiva. Precio predecible.
+- Google Google Security Operations: SIEM en la nube de Google. Escalabilidad masiva. Precio predecible.
 
 ### Consideraciones para Elegir un SIEM
 
@@ -279,10 +282,10 @@ Sistema de encolado que recibe los logs de los recolectores y los almacena tempo
 Normaliza, parsea, y enriquece los logs. Convierte logs de diferentes formatos (Windows Event Log, syslog, JSON, CEF) a un formato común. Añade contexto (geo-IP, información de activos, reputación de IPs).
 
 **Motor de Correlacion (Correlation Engine):**
-Aplica las reglas de correlacion a los eventos procesados. Evalua condiciones temporales (5 intentos de login fallidos en 1 minuto), condiciones lógicas (firewall bloquea conexion Y usuario reporta lentitud), y condiciones de umbral.
+Aplica las reglas de correlacion a los eventos procesados. Evalua condiciones temporales (5 intentos de login fallidos en 1 minuto), condiciones lógicas (firewall bloquea conexión Y usuario reporta lentitud), y condiciones de umbral.
 
 **Almacenamiento (Storage):**
-Base de datos optimizada para búsquedas de texto completo y consultas analíticas. Ejemplos: Elasticsearch, Splunk Indexes. Los datos se almacenan por periodos definidos (30 dias, 90 dias, 1 año) según políticas de retencion.
+Base de datos optimizada para búsquedas de texto completo y consultas analíticas. Ejemplos: Elasticsearch, Splunk Indexes. Los datos se almacenan por periodos definidos (30 días, 90 días, 1 año) según políticas de retencion.
 
 **Interfaz de Búsqueda (Search Interface):**
 Interfaz de usuario para consultar datos. Permite búsquedas ad-hoc, dashboards, y reportes programados. Ejemplos: Kibana (Elastic), Splunk Web, QRadar Console.
@@ -297,12 +300,12 @@ Interfaz de usuario para consultar datos. Permite búsquedas ad-hoc, dashboards,
 En Splunk (y arquitecturas similares), los Indexers almacenan y procesan datos, mientras que los Search Heads coordinan búsquedas entre Indexers. Separar estas funciones permite escalar independientemente.
 
 **Hot/Warm/Cold Storage:**
-- Hot: Datos de los últimos 7-30 dias, en almacenamiento rápido (SSD). Consultas frecuentes.
-- Warm: Datos de 30-90 dias, en almacenamiento más lento (HDD). Consultas ocasionales.
-- Cold: Datos de más de 90 dias, en almacenamiento de bajo costo (S3 Glacier, Azure Archive). Consultas excepcionales.
+- Hot: Datos de los últimos 7-30 días, en almacenamiento rápido (SSD). Consultas frecuentes.
+- Warm: Datos de 30-90 días, en almacenamiento más lento (HDD). Consultas ocasionales.
+- Cold: Datos de más de 90 días, en almacenamiento de bajo costo (S3 Glacier, Azure Archive). Consultas excepcionales.
 
 ## Preguntas Adicionales
 
 13. Configuras una regla de correlacion que detecta 5 intentos de inicio de sesión fallidos en 1 minuto desde la misma IP. La regla genera 10,000 alertas en una hora. Que esta mal y como lo corriges?
-14. El SIEM recibe logs de 100 firewalls, 500 servidores, y 10,000 endpoints. El almacenamiento se llena en 3 dias en vez de los 30 dias planificados. Que estrategias usas para priorizar que logs conservar?
+14. El SIEM recibe logs de 100 firewalls, 500 servidores, y 10,000 endpoints. El almacenamiento se llena en 3 días en vez de los 30 días planificados. Que estrategias usas para priorizar que logs conservar?
 15. Un administrador de SIEM configura un dashboard de cumplimiento PCI-DSS. Que eventos debe monitorear el dashboard? Como los controles están funcionando correctamente?

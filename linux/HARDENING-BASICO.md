@@ -1,5 +1,8 @@
 ---
 title: "Hardening Básico: Blindando el Castillo"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Hardening Básico: Blindando el Castillo
@@ -8,7 +11,7 @@ title: "Hardening Básico: Blindando el Castillo"
 
 Instalar Linux es fácil. Descargar una ISO, seguir un asistente, y en 15 minutos tienes un sistema funcionando. Lo difícil es hacer que ese sistema sobreviva más de 5 minutos expuesto directamente a Internet sin ser comprometido.
 
-Hardening no es un programa que instalas ni un botón que activas. Es un proceso sistemático de reducir la "superficie de ataque": apagar, borrar y bloquear todo lo que no sea estrictamente necesario para que el servidor cumpla su funcion.
+Hardening no es un programa que instalas ni un botón que activas. Es un proceso sistemático de reducir la "superficie de ataque": apagar, borrar y bloquear todo lo que no sea estrictamente necesario para que el servidor cumpla su función.
 
 Un servidor Linux recién instalado viene con servicios innecesarios activados, puertos abiertos, contraseñas por defecto, y configuraciones pensadas para la comodidad del usuario, no para la seguridad. El hardening transforma ese servidor "cómodo" en un servidor "paranoico" que solo hace lo que debe hacer y nada más.
 
@@ -18,7 +21,7 @@ Esta guía cubre las prácticas esenciales de hardening: configuración segura d
 
 Olvídate del castillo medieval que se usa en todos los tutoriales de hardening. Vamos a usar algo más práctico: un taller de cerrajeria.
 
-Un cerrajero recibe un lote de puertas nuevas de fábrica. Vienen con la cerradura básica de fábrica, idéntica para todas las puertas, con una llave genérica que cualquiera puede tener. La puerta cumple su funcion básica: separa el interior del exterior. Pero no es segura.
+Un cerrajero recibe un lote de puertas nuevas de fábrica. Vienen con la cerradura básica de fábrica, idéntica para todas las puertas, con una llave genérica que cualquiera puede tener. La puerta cumple su función básica: separa el interior del exterior. Pero no es segura.
 
 El cerrajero no se limita a instalar la puerta tal como viene. El cerrajero:
 1. Cambia la cerradura de fábrica por una de alta seguridad.
@@ -52,7 +55,7 @@ Un servidor web solo necesita:
 - SSH para administración (idealmente solo desde IPs específicas).
 - Actualizaciones de seguridad.
 
-No necesita: servidor de correo, servicio de impresion, Bluetooth, servidor de bases de datos local, entorno gráfico, herramientas de desarrollo, ni ningún otro servicio que no sea parte de su funcion.
+No necesita: servidor de correo, servicio de impresion, Bluetooth, servidor de bases de datos local, entorno gráfico, herramientas de desarrollo, ni ningún otro servicio que no sea parte de su función.
 
 Cada servicio adicional es un punto de entrada potencial. El atacante no necesita romper el servidor web si puede romper el servidor de correo que alguien olvido desactivar.
 
@@ -74,7 +77,7 @@ En el momento en que conectas el servidor a Internet, miles de bots comienzan a 
 
 **1. Deshabilitar el inicio de sesión de root (`PermitRootLogin no`)**
 
-Nunca, bajo ninguna circunstancia, se le debe permitir al usuario root iniciar sesión directamente por SSH. La razon es simple: si el atacante tiene que adivinar un usuario Y una contraseña, tiene que acertar dos cosas. Si sabe que el usuario es root (UID 0), solo tiene que acertar la contraseña.
+Nunca, bajo ninguna circunstancia, se le debe permitir al usuario root iniciar sesión directamente por SSH. La razón es simple: si el atacante tiene que adivinar un usuario Y una contraseña, tiene que acertar dos cosas. Si sabe que el usuario es root (UID 0), solo tiene que acertar la contraseña.
 
 La práctica segura es:
 - Los administradores inician sesión con su cuenta personal.
@@ -97,9 +100,9 @@ Ed25519 es el algoritmo recomendado hoy. Es más rápido y más seguro que RSA p
 
 **3. Cambiar el puerto (opcional pero útil)**
 
-Cambiar SSH del puerto 22 al puerto 5892 (o cualquier otro alto) no detendrá a un atacante determinado que escanee todos tus puertos. Pero elimina el 99% del ruido de los bots automatizados que solo escanean el puerto 22.
+Cambiar SSH del puerto 22 a otro puerto no detiene a quien escanee el servicio. Puede reducir parte del ruido automatizado dirigido solo al puerto predeterminado, pero no es un control de acceso ni sustituye MFA, llaves, filtrado y monitoreo.
 
-La principal ventaja es que limpia tus logs. En lugar de tener miles de entradas de intentos de conexion fallidos cada hora, tendrás silencio. Esto hace que las anomalías reales sean más fáciles de detectar.
+La principal ventaja es que limpia tus logs. En lugar de tener miles de entradas de intentos de conexión fallidos cada hora, tendrás silencio. Esto hace que las anomalías reales sean más fáciles de detectar.
 
 La desventaja: tendrás que recordar el puerto personalizado cada vez que te conectes. Y si gestionas múltiples servidores, cada uno puede tener un puerto diferente.
 
@@ -153,7 +156,7 @@ Y asegúrate de tener una segunda sesión SSH abierta ANTES de cerrar la primera
 
 **Ataque de canal lateral por timing:** Midiendo el tiempo que tarda el servidor en responder, un atacante puede determinar si un usuario existe o no, y enfocar sus ataques en cuentas existentes.
 
-**Man-in-the-middle (MitM):** Un atacante en la misma red puede interceptar la conexion SSH si no verificas la huella digital (fingerprint) del servidor **Ataque a llaves privadas:** Si la llave privada del administrador no tiene frase de paso (passphrase) y el atacante obtiene acceso a su máquina local, puede usarla inmediatamente.
+**Man-in-the-middle (MitM):** Un atacante en la misma red puede interceptar la conexión SSH si no verificas la huella digital (fingerprint) del servidor **Ataque a llaves privadas:** Si la llave privada del administrador no tiene frase de paso (passphrase) y el atacante obtiene acceso a su máquina local, puede usarla inmediatamente.
 
 **SSH agent forwarding:** Si tienes SSH agent forwarding activado y te conectas a un servidor comprometido, el atacante puede usar tu agente SSH para conectarse a otros servidores como si fuera tu.
 
@@ -181,7 +184,7 @@ ufw enable
 
 Analicemos cada línea:
 
-`ufw default deny incoming`: Rechaza todo el tráfico entrante por defecto. Cualquier conexion que intente entrar al servidor desde afuera es bloqueada a menos que haya una regla explicita que la permita.
+`ufw default deny incoming`: Rechaza todo el tráfico entrante por defecto. Cualquier conexión que intente entrar al servidor desde afuera es bloqueada a menos que haya una regla explicita que la permita.
 
 `ufw default allow outgoing`: Permite todo el tráfico saliente. El servidor puede conectarse a Internet libremente para descargar actualizaciones, consultar DNS, etc.
 
@@ -242,7 +245,7 @@ En Red Hat/CentOS/Fedora:
 
 Hay un debate en la industria sobre si las actualizaciones automáticas son seguras. El argumento en contra: una actualización defectuosa puede romper la aplicación que corre en el servidor. El argumento a favor: no aplicar una actualización de seguridad deja el servidor vulnerable a exploits públicos.
 
-Mi posición: las actualizaciones de seguridad deben aplicarse automáticamente. Las actualizaciones de funcionalidad (que añaden características) deben revisarse manualmente. La configuración de `unattended-upgrades` permite hacer exactamente esta distincion.
+Mi posición: las actualizaciones de seguridad deben aplicarse automáticamente. Las actualizaciones de funcionalidad (que añaden características) deben revisarse manualmente. La configuración de `unattended-upgrades` permite hacer exactamente esta distinción.
 
 ### Kernel Live Patching
 
@@ -283,7 +286,7 @@ Revisa los paquetes instalados y elimina los que no sean necesarios:
 En Debian/Ubuntu: `dpkg --get-selections | grep -v deinstall`
 En Red Hat: `rpm -qa`
 
-Pregúntate por cada paquete: "Es necesario para que el servidor cumpla su funcion?" Si la respuesta es no, eliminalo.
+Pregúntate por cada paquete: "Es necesario para que el servidor cumpla su función?" Si la respuesta es no, eliminalo.
 
 Herramientas de desarrollo (gcc, make, compiladores) son particularmente peligrosas en servidores de producción porque permiten a un atacante compilar exploits en el propio servidor.
 
@@ -504,7 +507,7 @@ setenforce 1          # Cambia a enforcing
 
 **Deshabilitar SELinux en lugar de configurarlo correctamente:** Es el error más común en entornos Red Hat. SELinux bloquea algo, y el administrador lo desactiva en vez de investigar la causa.
 
-**Actualizaciones automáticas sin monitoreo:** Configuras actualizaciones automáticas pero no revisas los logs. Una actualización que rompe un servicio pasa desapercibida por dias.
+**Actualizaciones automáticas sin monitoreo:** Configuras actualizaciones automáticas pero no revisas los logs. Una actualización que rompe un servicio pasa desapercibida por días.
 
 **SSH hardening sin respaldo:** Configuras SSH, reinicias el servicio, y te olvidaste de permitir el nuevo puerto en UFW. Te quedas fuera del servidor.
 
@@ -544,18 +547,18 @@ setenforce 1          # Cambia a enforcing
 
 ## Autoevaluación
 
-1. Alquilas un servidor nuevo en la nube. El proveedor te pregunta si quieres iniciar sesión con contraseña o con llave SSH. Cual eliges y por que? Explica que riesgos implica cada opción.
+1. Alquilas un servidor nuevo en la nube. El proveedor te pregunta si quieres iniciar sesión con contraseña o con llave SSH. Cual eliges y por qué? Explica que riesgos implica cada opción.
 
 2. Configuras UFW con `default deny incoming` y luego abres el puerto 443 para tu servidor web. De repente, el servidor no puede descargar actualizaciones. Que política se te olvido configurar y como la corriges?
 
 3. En `/etc/ssh/sshd_config` encuentras `PermitRootLogin yes`. Explica que tipo de ataque estas facilitando y describe como un atacante aprovecharia esta configuración. Que comando exacto editas y que valor pones?
 
-4. Un administrador dice: "SELinux es molesto porque bloquea cosas, mejor lo deshabilito." Defiende por que mantener SELinux en modo enforcing es mejor que deshabilitarlo. Describe como usarías el modo permissive para diagnosticar problemas.
+4. Un administrador dice: "SELinux es molesto porque bloquea cosas, mejor lo deshabilito." Defiende por qué mantener SELinux en modo enforcing es mejor que deshabilitarlo. Describe como usarías el modo permissive para diagnosticar problemas.
 
 5. Tu servidor tiene la particion `/tmp` montada sin `noexec`. Un atacante compromete el servidor web y descarga un script malicioso a `/tmp`. Explica como la opción `noexec` habría prevenido la ejecución del script y que alternativas usaria el atacante para evitarlo.
 
 6. Instalas unattended-upgrades para actualizaciones de seguridad automáticas. Dos meses después, descubres que una actualización rompió el servicio de base de datos y nadie lo noto durante semanas. Como configurarias las actualizaciones para evitar esto sin dejar de recibir parches de seguridad?
 
-7. Durante una auditoría, encuentras que el servidor tiene instalados gcc, make, python-dev, y varias bibliotecas de desarrollo. El servidor es de producción y no se usa para desarrollo. Explica por que esto es un riesgo y como mitigarias las herramientas de desarrollo sin afectar el funcionamiento del servidor.
+7. Durante una auditoría, encuentras que el servidor tiene instalados gcc, make, python-dev, y varias bibliotecas de desarrollo. El servidor es de producción y no se usa para desarrollo. Explica por qué esto es un riesgo y como mitigarias las herramientas de desarrollo sin afectar el funcionamiento del servidor.
 
 8. Configuras un servidor siguiendo las guías de hardening de este sitio. Sin embargo, un atacante logra comprometer el servidor web a través de una vulnerabilidad de día cero. Explica como las capas de hardening que aplicaste limitan el daño que el atacante puede causar incluso después del compromiso inicial.

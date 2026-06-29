@@ -22,6 +22,8 @@ export default function TopNav() {
       </Link>
 
       <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+        <Link href="/rutas" className="nav-text-link">Rutas</Link>
+        <Link href="/guias" className="nav-text-link">Índice</Link>
         <button
           type="button"
           onClick={toggleTheme}

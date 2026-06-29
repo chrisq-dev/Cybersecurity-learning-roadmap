@@ -1,5 +1,8 @@
 ---
 title: "Fundamentos IoT: Cuando tu Nevera es Hackeada"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 # Fundamentos IoT: Cuando tu Nevera es Hackeada
 

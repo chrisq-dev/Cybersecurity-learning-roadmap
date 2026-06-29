@@ -1,5 +1,8 @@
 ---
 title: "Windows Básico: Las Catacumbas del Sistema"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Windows Básico: Las Catacumbas del Sistema

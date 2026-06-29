@@ -1,5 +1,19 @@
 ---
 title: "AWS, Azure y GCP: Los Tres Reyes de la Nube"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
+reviewed: "2026-06-29"
+reviewed_against: "Catálogos oficiales de AWS, Microsoft Azure y Google Cloud consultados el 2026-06-29"
+official_sources:
+  - title: "AWS Security, Identity and Compliance"
+    url: "https://aws.amazon.com/products/security/"
+  - title: "Microsoft Azure Security"
+    url: "https://azure.microsoft.com/en-us/products/category/security/"
+  - title: "Google Cloud Security Products"
+    url: "https://cloud.google.com/security/products"
+  - title: "Microsoft — Azure Blueprints retirement"
+    url: "https://learn.microsoft.com/en-us/azure/governance/blueprints/blueprint-retirement"
 ---
 
 # AWS, Azure y GCP: Los Tres Reyes de la Nube
@@ -12,7 +26,7 @@ El mercado mundial de la nube esta dominado por tres corporaciones gigantes. Si 
 
 ## La Analogía
 
-Imagina tres cadenas de hoteles de lujo: Marriott, Hilton y Hyatt. Cada una tiene su propio diseno de habitaciones, su propio sistema de reservas y sus propias tarjetas de acceso.
+Imagina tres cadenas de hoteles de lujo: Marriott, Hilton y Hyatt. Cada una tiene su propio diseño de habitaciones, su propio sistema de reservas y sus propias tarjetas de acceso.
 
 Pero al final del día, las tres tienen:
 
@@ -54,7 +68,7 @@ Aprende estos nombres, aparecen en todos los reportes de seguridad y examenes:
 - **IAM (Identity and Access Management):** El sistema de control de usuarios y permisos.
 - **VPC (Virtual Private Cloud):** La red virtual donde viven tus servidores.
 - **RDS (Relational Database Service):** Bases de datos administradas (MySQL, PostgreSQL, SQL Server).
-- **Lambda:** Funciones serverless (codigo que se ejecuta sin servidor).
+- **Lambda:** Funciones serverless (código que se ejecuta sin servidor).
 - **CloudTrail:** Auditoría de todas las acciones en tu cuenta.
 - **CloudWatch:** Monitoreo de métricas y logs.
 - **Route 53:** Servicio de DNS.
@@ -71,7 +85,7 @@ Si el cliente es un Banco, un Hospital o una oficina de Gobierno que lleva 20 a�
 ### Ventajas y Desventajas
 
 Ventajas:
-- Integración nativa con Office 365, Active Directory y Windows Server.
+- Integración nativa con Microsoft 365, Active Directory y Windows Server.
 - Modelo de licencias empresariales (EA) que reduce costos para clientes existentes.
 - Cumplimiento normativo extenso (ISO, SOC, FedRAMP).
 - Soporte para aplicaciones .NET y SQL Server.
@@ -79,7 +93,7 @@ Ventajas:
 Desventajas:
 - Menos servicios que AWS.
 - Consola de administración menos intuitiva.
-- Gestión de permisos compleja (RBAC + Azure Policy + Blueprints).
+- Gestión de permisos compleja entre RBAC, Azure Policy, grupos de administración e infraestructura como código.
 - Menor presencia en startups y empresas tecnológicas.
 
 ### El Diccionario de Azure (La Traducción)
@@ -102,7 +116,7 @@ Azure tiene un modelo de permisos particularmente complejo que incluye:
 1. **RBAC (Role-Based Access Control):** Roles clasicos como Owner, Contributor, Reader.
 2. **Azure Policy:** Reglas de gobierno que se aplican automáticamente (ej. "bloquear la creación de VMs sin encriptación").
 3. **Management Groups:** Jerarquía de grupos que heredan políticas.
-4. **Blueprints:** Plantillas predefinidas de configuración segura.
+4. **Template Specs y Deployment Stacks:** Versionado y despliegue gobernado de infraestructura. Azure Blueprints está en retirada progresiva desde julio de 2026 y debe migrarse antes de su eliminación.
 
 El error común en Azure es:
 
@@ -196,7 +210,7 @@ GCP:
 gcloud storage ls
 ```
 
-Tres comandos diferentes para la misma accion: listar almacenamiento.
+Tres comandos diferentes para la misma acción: listar almacenamiento.
 
 ## Seguridad Multi-Nube
 
@@ -212,7 +226,7 @@ Cada vez más empresas usan varios proveedores de nube simultáneamente (multi-c
 
 ### Herramientas Multi-Nube
 
-- **Terraform:** Infraestructura como Codigo (IaC) para todas las nubes.
+- **Terraform:** Infraestructura como Código (IaC) para todas las nubes.
 - **Prisma Cloud (Palo Alto):** Seguridad multi-nube unificada.
 - **Wiz:** Escaneo de vulnerabilidades multi-nube.
 - **CloudHealth:** Gestión de costos multi-nube.
@@ -223,11 +237,11 @@ Cada vez más empresas usan varios proveedores de nube simultáneamente (multi-c
 
 Tesla tenía su infraestructura de Kubernetes en AWS. Un atacante encontró un dashboard de Kubernetes sin autenticación y lo uso para desplegar contenedores de minería de criptomonedas.
 
-El ataque no fue contra AWS, fue contra una configuración errónea de Kubernetes en AWS. La leccion: el proveedor de nube no es responsable de la configuración del software que tu instalas en el.
+El ataque no fue contra AWS, fue contra una configuración errónea de Kubernetes en AWS. La lección: el proveedor de nube no es responsable de la configuración del software que tu instalas en el.
 
 ### La Brecha de Microsoft Azure Active Directory (2021)
 
-Un investigador descubrió que Azure AD (Entra ID) tenía una vulnerabilidad que permitia a un atacante elevar privilegios de un usuario invitado a administrador global.
+Un investigador descubrió que Microsoft Entra ID tenía una vulnerabilidad que permitia a un atacante elevar privilegios de un usuario invitado a administrador global.
 
 Microsoft corrigio la vulnerabilidad, pero el caso muestra que incluso los servicios PaaS pueden tener fallos de seguridad. La responsabilidad es compartida: Microsoft corrige el servicio, el cliente debe monitorear los logs de actividad.
 
@@ -235,7 +249,7 @@ Microsoft corrigio la vulnerabilidad, pero el caso muestra que incluso los servi
 
 Coinbase uso Google Cloud Platform para su infraestructura de criptomonedas. Un atacante exploto una vulnerabilidad en un servicio de GCP (Cloud Functions) para acceder a datos de clientes.
 
-La leccion: en PaaS, el proveedor asegura la plataforma, pero el cliente asegura el codigo que ejecuta en ella.
+La lección: en PaaS, el proveedor asegura la plataforma, pero el cliente asegura el código que ejecuta en ella.
 
 ## Modos de Falla
 
@@ -295,7 +309,7 @@ Cada proveedor ofrece servicios nativos de seguridad. Conocerlos ayuda a configu
 ### AWS Security Services
 
 - **AWS WAF:** Web Application Firewall para proteger aplicaciones web.
-- **AWS Shield:** Protección DDoS (Standard es gratis, Advanced cuesta $3,000/mes).
+- **AWS Shield:** Protección DDoS con un nivel Standard incluido y opciones avanzadas sujetas a suscripción y consumo.
 - **AWS GuardDuty:** Detección de amenazas basada en machine learning (analiza CloudTrail, VPC Flow Logs, DNS).
 - **AWS Inspector:** Escaneo de vulnerabilidades en EC2 y ECR.
 - **AWS Security Hub:** Centro de comando de seguridad que agrega alertas de otros servicios.
@@ -308,15 +322,15 @@ Cada proveedor ofrece servicios nativos de seguridad. Conocerlos ayuda a configu
 ### Azure Security Services
 
 - **Azure Firewall:** Firewall como servicio administrado.
-- **Azure DDoS Protection:** Protección DDoS (Basic es gratis, Standard tiene costo).
-- **Azure Security Center:** Postura de seguridad unificada (gratis para evaluación básica).
-- **Azure Sentinel:** SIEM nativo en la nube.
+- **Azure DDoS Protection:** Protección DDoS con planes y capacidades que dependen del recurso y la arquitectura.
+- **Microsoft Defender for Cloud:** Gestión de postura cloud y recomendaciones de configuración, con capacidades que dependen del plan habilitado.
+- **Microsoft Sentinel:** SIEM nativo en la nube.
 - **Azure Key Vault:** Gestión de secretos, certificados y claves.
 - **Azure Policy:** Gobierno de recursos mediante reglas.
-- **Azure Blueprints:** Plantillas de entorno que cumplen con normativas.
+- **Azure Deployment Stacks + Template Specs:** Despliegues gobernados y artefactos versionados que sustituyen Azure Blueprints.
 - **Azure ATP (Advanced Threat Protection):** Detección de amenazas en Active Directory.
 - **Azure Information Protection:** Clasificación y protección de documentos.
-- **Microsoft Defender for Cloud:** Protección de cargas de trabajo multi-nube.
+- **Defender for Cloud workload protection:** Protección de cargas de trabajo según los planes habilitados.
 
 ### GCP Security Services
 
@@ -326,19 +340,19 @@ Cada proveedor ofrece servicios nativos de seguridad. Conocerlos ayuda a configu
 - **Cloud KMS:** Gestión de claves de cifrado.
 - **Cloud HSM:** HSM gestionado.
 - **Cloud DLP:** Prevención de pérdida de datos (detección de datos sensibles).
-- **Chronicle:** SIEM de Google.
+- **Google Security Operations:** SIEM de Google.
 - **Web Security Scanner:** Escaneo automático de vulnerabilidades web.
-- **Binary Authorization:** Solo permite desplegar imagenes de contenedor firmadas.
+- **Binary Authorization:** Solo permite desplegar imágenes de contenedor firmadas.
 - **Assured Workloads:** Cumplimiento normativo para cargas de trabajo reguladas.
 
 ### Tabla Comparativa de Servicios de Seguridad
 
 cada proveedor te vende su propio ecosistema, pero al final todos hacen lo mismo: proteger tus recursos. La diferencia esta en como se llama el servicio y cuanto te cobran.
 
-| Funcion | AWS | Azure | GCP |
+| Función | AWS | Azure | GCP |
 |---------|-----|-------|-----|
 | WAF | WAF | Azure WAF | Cloud Armor |
-| SIEM | Security Hub + 3ro | Azure Sentinel | Chronicle |
+| SIEM | Security Hub + 3ro | Microsoft Sentinel | Google Security Operations |
 | KMS | AWS KMS | Key Vault | Cloud KMS |
 | HSM | CloudHSM | Azure HSM | Cloud HSM |
 | Postura | Security Hub | Defender for Cloud | Security Command Center |
@@ -357,11 +371,11 @@ Si quieres especializarte en seguridad de nube, estas son las certificaciones cl
 ### Azure
 
 - **Microsoft Certified: Azure Security Engineer Associate (AZ-500):** Implementación de controles de seguridad en Azure.
-- **Microsoft Certified: Cybersecurity Architect Expert (SC-100):** Diseno de arquitecturas de seguridad.
+- **Microsoft Certified: Cybersecurity Architect Expert (SC-100):** Diseño de arquitecturas de seguridad.
 
 ### GCP
 
-- **Google Professional Cloud Security Engineer:** Diseno e implementación de seguridad en GCP.
+- **Google Professional Cloud Security Engineer:** Diseño e implementación de seguridad en GCP.
 - **Google Professional Cloud Architect:** Arquitectura de GCP (incluye seguridad).
 
 ### Multi-Nube / Independientes
@@ -378,7 +392,7 @@ Para los que quieren probar la seguridad de la nube desde el lado ofensivo:
 
 - **ScoutSuite:** Herramienta open-source de auditoría multi-nube. Escanea configuraciones y reporta fallos.
 - **Pacu:** Framework de ataque para AWS. Incluye modulos para escalada de privilegios, exfiltración de datos, y persistencia.
-- **CloudSploit:** Escaneo de configuración de seguridad (codigo abierto).
+- **CloudSploit:** Escaneo de configuración de seguridad (código abierto).
 - **Stratus Red Team:** Simulación de técnicas MITRE ATT&CK en la nube.
 
 ### Laboratorios Prácticos
@@ -404,13 +418,7 @@ Los backups en la nube (snapshots de EBS, copias de RDS, backups de Azure VM) de
 
 ### Falla 8: Ignorar los Costos de Seguridad
 
-Los servicios de seguridad en la nube tienen costo:
-- GuardDuty: $0.01 por GB de datos analizados.
-- AWS WAF: $5.00 por mes + $0.60 por millón de solicitudes.
-- Azure Sentinel: $2.46 por GB de datos ingeridos.
-- Cloud Armor: $5.00 por mes + $0.75 por millón de solicitudes.
-
-Sin presupuesto, los equipos de seguridad no activan estos servicios.
+Los costos cambian por región, volumen, plan, retención y tipo de dato. No uses cifras estáticas de una guía para presupuestar: consulta las calculadoras oficiales y registra los supuestos. Un diseño seguro debe contemplar desde el inicio el costo de telemetría, retención, protección y respuesta.
 
 ## Autoevaluación
 
@@ -418,16 +426,16 @@ Responde estas preguntas para verificar si comprendes los conceptos:
 
 1. Estas leyendo un reporte de inteligencia y dice: "El atacante vulneró una instancia EC2 y luego exfiltró datos de un bucket S3". Traduce esta oración al idioma de Microsoft Azure.
 
-2. Un desarrollador te dice: "Vamos a mover nuestro servidor local a la nube de AWS (IaaS). Como AWS tiene ingenieros de seguridad brillantes, ya no necesito parchear las vulnerabilidades de mi Linux". Basado en lo que aprendiste en la guía anterior, Por que este desarrollador esta equivocado?
+2. Un desarrollador te dice: "Vamos a mover nuestro servidor local a la nube de AWS (IaaS). Como AWS tiene ingenieros de seguridad brillantes, ya no necesito parchear las vulnerabilidades de mi Linux". Basado en lo que aprendiste en la guía anterior, Por qué este desarrollador esta equivocado?
 
-3. Si descubres que la pagina web de tu cliente es vulnerable a Inyección SQL (SQLi). La forma de ejecutar el ataque matemático SQLi cambia dependiendo de si el servidor esta en AWS, Azure o GCP? Por que?
+3. Si descubres que la página web de tu cliente es vulnerable a Inyección SQL (SQLi). La forma de ejecutar el ataque matemático SQLi cambia dependiendo de si el servidor esta en AWS, Azure o GCP? Por qué?
 
-4. Por que el servicio Entra ID (Azure AD) es el objetivo final y más codiciado para cualquier atacante que vulnera una red corporativa moderna alojada en la nube de Microsoft?
+4. Por qué el servicio Microsoft Entra ID es el objetivo final y más codiciado para cualquier atacante que vulnera una red corporativa moderna alojada en la nube de Microsoft?
 
-5. Explica por que un atacante no necesita saber si un servidor esta en AWS, Azure o GCP para explotar una vulnerabilidad de Inyección SQL.
+5. Explica por qué un atacante no necesita saber si un servidor esta en AWS, Azure o GCP para explotar una vulnerabilidad de Inyección SQL.
 
 6. Cual es la diferencia fundamental entre un Security Group (AWS) y una Network Security Group (Azure) en términos de stateful vs stateless?
 
 7. Un equipo de seguridad multi-nube necesita centralizar logs de AWS, Azure y GCP. Que desafios enfrenta y como podría resolverlos?
 
-8. Por que se considera que el vendor lock-in (dependencia excesiva de un proveedor) es un riesgo de seguridad?
+8. Por qué se considera que el vendor lock-in (dependencia excesiva de un proveedor) es un riesgo de seguridad?

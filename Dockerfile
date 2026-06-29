@@ -36,6 +36,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/web/.next/static /app/web/.next/s
 COPY --from=builder --chown=nextjs:nodejs /app/web/public /app/web/public
 
 COPY --from=builder --chown=nextjs:nodejs /app/INICIO-AQUI.md /app/
+COPY --from=builder --chown=nextjs:nodejs /app/ai-security /app/ai-security
 COPY --from=builder --chown=nextjs:nodejs /app/api-security /app/api-security
 COPY --from=builder --chown=nextjs:nodejs /app/appsec-devsecops /app/appsec-devsecops
 COPY --from=builder --chown=nextjs:nodejs /app/blue-team /app/blue-team
@@ -53,9 +54,12 @@ COPY --from=builder --chown=nextjs:nodejs /app/fundamentos /app/fundamentos
 COPY --from=builder --chown=nextjs:nodejs /app/glosario /app/glosario
 COPY --from=builder --chown=nextjs:nodejs /app/grc /app/grc
 COPY --from=builder --chown=nextjs:nodejs /app/identity-access /app/identity-access
+COPY --from=builder --chown=nextjs:nodejs /app/iot-ot-security /app/iot-ot-security
 COPY --from=builder --chown=nextjs:nodejs /app/linux /app/linux
 COPY --from=builder --chown=nextjs:nodejs /app/malware-basico /app/malware-basico
+COPY --from=builder --chown=nextjs:nodejs /app/mobile-security /app/mobile-security
 COPY --from=builder --chown=nextjs:nodejs /app/network-security /app/network-security
+COPY --from=builder --chown=nextjs:nodejs /app/osint-cti /app/osint-cti
 COPY --from=builder --chown=nextjs:nodejs /app/playbooks /app/playbooks
 COPY --from=builder --chown=nextjs:nodejs /app/privacy /app/privacy
 COPY --from=builder --chown=nextjs:nodejs /app/programacion /app/programacion

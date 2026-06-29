@@ -1,5 +1,8 @@
 ---
 title: "SSRF (Server-Side Request Forgery): Secuestrando al Mensajero"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # SSRF (Server-Side Request Forgery): Secuestrando al Mensajero
@@ -8,7 +11,7 @@ title: "SSRF (Server-Side Request Forgery): Secuestrando al Mensajero"
 
 Aprender como un atacante usa el propio servidor de la empresa como un Caballo de Troya para atacar recursos internos a los que es imposible acceder desde el internet público.
 
-A diferencia del CSRF (donde el atacante engaña a un Usuario/Cliente), en el Server-Side Request Forgery (SSRF) el atacante engaña al mismísimo Servidor. Convierte a la victima (el servidor web) en su propio mercenario.
+A diferencia del CSRF (donde el atacante engaña a un Usuario/Cliente), en el Server-Side Request Forgery (SSRF) el atacante engaña al mismísimo Servidor. Convierte a la víctima (el servidor web) en su propio mercenario.
 
 Esta vulnerabilidad se volvió infame tras causar el histórico hackeo del banco Capital One en 2019, donde se robaron los datos de 100 millones de personas. También fue clave en el ataque a Equifax en 2017 y en múltiples breaches de servicios cloud.
 
@@ -30,13 +33,13 @@ El atacante en la calle no intenta forzar la puerta blindada. Simplemente llama 
 
 El Mensajero entra a la cocina. Como trae el uniforme oficial, los guardias (Firewall) de la puerta lo dejan pasar sin sospechar nada. El mensajero extrae la información y se la lleva al delincuente en la calle.
 
-## Como Funciona el SSRF en el Codigo
+## Como Funciona el SSRF en el Código
 
 Donde buscar SSRF: en cualquier funcionalidad que le pida al servidor ir a buscar información a otra parte usando una URL que el usuario puede controlar.
 
-**Funcionalidades tipicamente vulnerables:**
+**Funcionalidades típicamente vulnerables:**
 
-- Cargar imagenes desde una URL externa (avatares, fotos de perfil)
+- Cargar imágenes desde una URL externa (avatares, fotos de perfil)
 - Descargar documentos desde enlaces (procesamiento de facturas, PDFs)
 - Webhooks: el servidor envía una petición a una URL cuando ocurre un evento
 - Importacion/exportacion de datos desde URLs
@@ -47,7 +50,7 @@ Donde buscar SSRF: en cualquier funcionalidad que le pida al servidor ir a busca
 
 **Ejemplo concreto:**
 
-Una pagina de foros tiene una funcion para subir fotos de perfil desde otras páginas.
+Una página de foros tiene una función para subir fotos de perfil desde otras páginas.
 
 La URL normal se ve así:
 ```
@@ -72,7 +75,7 @@ El servidor web (El Mensajero) es un robot sin sentido común. Va a la red inter
 
 El servidor devuelve la respuesta del recurso interno al atacante. Es el tipo más fácil de explotar. El atacante ve directamente el contenido.
 
-Ejemplo: El servidor descarga un archivo de una URL interna y lo muestra en la pagina.
+Ejemplo: El servidor descarga un archivo de una URL interna y lo muestra en la página.
 
 ### SSRF Ciego (Blind SSRF)
 
@@ -100,7 +103,7 @@ Si el servidor vulnerable resuelve el DNS de `dato123456.atacante.com`, el ataca
 
 ## El Cloud Metadata Endpoint: El Santo Grial del SSRF
 
-Cuando una empresa aloja su pagina web en la Nube de Amazon (AWS), Azure o Google Cloud, el proveedor de nube instala una "llave maestra invisible" en cada servidor. Esta llave vive en una IP mágica o un hostname especial.
+Cuando una empresa aloja su página web en la Nube de Amazon (AWS), Azure o Google Cloud, el proveedor de nube instala una "llave maestra invisible" en cada servidor. Esta llave vive en una IP mágica o un hostname especial.
 
 **AWS:** `http://169.254.169.254/latest/meta-data/`
 **Azure:** `http://169.254.169.254/metadata/instance?api-version=2021-02-01` (requiere header `Metadata: true`)
@@ -180,9 +183,9 @@ Los programadores suelen intentar bloquear SSRF con listas negras (blacklists). 
 
 El atacante usa:
 
-- Representacion decimal: `http://2852039166/` (169*256^3 + 254*256^2 + 169*256 + 254)
-- Representacion hexadecimal: `http://0xA9FEA9FE/`
-- Representacion octal: `http://0251.0376.0251.0376/`
+- Representación decimal: `http://2852039166/` (169*256^3 + 254*256^2 + 169*256 + 254)
+- Representación hexadecimal: `http://0xA9FEA9FE/`
+- Representación octal: `http://0251.0376.0251.0376/`
 - Notacion mixta: `http://169.254.0xA9FE/`
 - IPv6: `http://[::ffff:a9fe:a9fe]/`
 - Redirección: Un dominio propio que redirige a 169.254.169.254
@@ -250,7 +253,7 @@ def descargar_url(url):
         return error("No se pudo resolver el hostname")
 ```
 
-**Problema:** Vulnerable a DNS rebinding si la resolución cambia entre la verificación y la petición real. Solución: resolver la IP dos veces y verificar que coincida, o usar una sola conexion que verifique la IP antes de enviar datos.
+**Problema:** Vulnerable a DNS rebinding si la resolución cambia entre la verificación y la petición real. Solución: resolver la IP dos veces y verificar que coincida, o usar una sola conexión que verifique la IP antes de enviar datos.
 
 ### Deshabilitar Protocolos Peligrosos
 
@@ -297,24 +300,24 @@ Si la librería de red de tu lenguaje sigue redirecciones automáticamente, un a
 
 **Servidores cloud sin protección del metadata endpoint.** AWS, Azure y Google Cloud ofrecen formas de restringir el acceso al metadata endpoint a nivel de instancia o de red. No hacerlo es el error más común.
 
-**Asumir que "solo los administradores usan esta funcion".** Si un usuario administrador puede configurar una URL, y el servidor visita esa URL, el SSRF es posible. No importa si el usuario es "de confianza": las cuentas de administrador pueden ser comprometidas.
+**Asumir que "solo los administradores usan esta función".** Si un usuario administrador puede configurar una URL, y el servidor visita esa URL, el SSRF es posible. No importa si el usuario es "de confianza": las cuentas de administrador pueden ser comprometidas.
 
 **No validar la IP antes de conectar.** Verificar el nombre de dominio pero no la IP a la que resuelve. El DNS puede ser manipulado (DNS rebinding, DNS spoofing).
 
 ## Autoevaluación
 
-1. Estas auditando una pagina web y encuentras una funcionalidad para exportar un PDF. La URL es: `empresa.com/exportar?url=pagina_facturas.html`. Por que ese parámetro `url=` enciende todas las alarmas en tu cabeza como posible SSRF?
+1. Estas auditando una página web y encuentras una funcionalidad para exportar un PDF. La URL es: `empresa.com/exportar?url=pagina_facturas.html`. Por qué ese parámetro `url=` enciende todas las alarmas en tu cabeza como posible SSRF?
 
 2. A diferencia del ataque XSS (que ataca el navegador del cliente) y del CSRF (que engaña la sesión del cliente), quien es el actor tecnológico que físicamente realiza el trabajo sucio y rompe la red interna en un ataque SSRF?
 
-3. Un desarrollador de AWS se entera de la IP `169.254.169.254` e implementa un filtro en el backend: `if (url == "169.254.169.254") { bloquear; }`. Por que este filtro es fácil de evadir? Nombra al menos dos técnicas de bypass.
+3. Un desarrollador de AWS se entera de la IP `169.254.169.254` e implementa un filtro en el backend: `if (url == "169.254.169.254") { bloquear; }`. Por qué este filtro es fácil de evadir? Nombra al menos dos técnicas de bypass.
 
-4. Durante una entrevista de trabajo para Defensor (Blue Team), te preguntan cual es la arquitectura de red ideal para mitigar el impacto de un SSRF. Por que sugerirías "Segmentación de Red" en la cocina interna del servidor?
+4. Durante una entrevista de trabajo para Defensor (Blue Team), te preguntan cual es la arquitectura de red ideal para mitigar el impacto de un SSRF. Por qué sugerirías "Segmentación de Red" en la cocina interna del servidor?
 
 5. Explica la diferencia entre SSRF básico (con respuesta visible) y Blind SSRF. Como detectarias un Blind SSRF si el servidor no devuelve la respuesta?
 
-6. Tu aplicación necesita cargar imagenes desde URLs que los usuarios proporcionan. Diseña una estrategia de defensa contra SSRF considerando whitelisting, validación de IP, y limitacion de protocolos.
+6. Tu aplicación necesita cargar imágenes desde URLs que los usuarios proporcionan. Diseña una estrategia de defensa contra SSRF considerando whitelisting, validación de IP, y limitacion de protocolos.
 
 7. Un atacante descubre un SSRF en un servidor que corre en AWS. Que pasos seguiría para escalar desde el SSRF a un compromiso total de la cuenta de AWS? Describe el camino de ataque.
 
-8. Explica que es el DNS rebinding y como un atacante lo usaria para evadir un filtro que verifica la IP de una URL antes de permitir la conexion.
+8. Explica que es el DNS rebinding y como un atacante lo usaria para evadir un filtro que verifica la IP de una URL antes de permitir la conexión.

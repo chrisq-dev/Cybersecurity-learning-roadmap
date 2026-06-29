@@ -1,5 +1,8 @@
 ---
 title: "PAM (Privileged Access Management): La Bóveda Nuclear"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # PAM (Privileged Access Management): La Bóveda Nuclear
@@ -10,8 +13,8 @@ Aprender como proteger a los Dioses de la red corporativa.
 
 En la guía anterior (IAM) hablamos de empleados normales como la recepcionista o el de ventas. Pero en toda empresa existe un pequeño grupo de humanos (el equipo de IT / Administradores de Sistemas) cuyas cuentas tienen poder absoluto.
 
-- Si le robas la contrasena al de ventas, puedes leer el Excel de los clientes.
-- Si le robas la contrasena al Administrador de Red (Domain Admin), eres el dueño de la empresa entera. Puedes borrar servidores, apagar el Antivirus, y robar bases de datos encriptadas.
+- Si le robas la contraseña al de ventas, puedes leer el Excel de los clientes.
+- Si le robas la contraseña al Administrador de Red (Domain Admin), eres el dueño de la empresa entera. Puedes borrar servidores, apagar el Antivirus, y robar bases de datos encriptadas.
 
 Por eso, los hackers profesionales dedican el 90% de su tiempo a robar credenciales de Administradores. A esto se le llama Movimiento Lateral y Escalada de Privilegios.
 
@@ -23,18 +26,18 @@ El PAM (Privileged Access Management) es esa caja fuerte de titanio para las con
 
 ## El Problema: El Post-it en el Monitor
 
-Históricamente, el Administrador de Sistemas creaba una sola cuenta en el Servidor Maestro con la contrasena `PasswordSuperFuerte123!`. Para no olvidarla, el Administrador la anotaba en un Post-it amarillo debajo de su teclado, o peor aún, usaba esa misma contrasena gigante para iniciar sesión en su laptop de uso diario.
+Históricamente, el Administrador de Sistemas creaba una sola cuenta en el Servidor Maestro con la contraseña `PasswordSuperFuerte123!`. Para no olvidarla, el Administrador la anotaba en un Post-it amarillo debajo de su teclado, o peor aún, usaba esa misma contraseña gigante para iniciar sesión en su laptop de uso diario.
 
 ### El Ataque
 
 1. El hacker le hace Phishing a la recepcionista. Entra a su computadora.
 2. Desde la computadora de la recepcionista, el hacker explora la red en silencio (Movimiento Lateral).
 3. Descubre que el Administrador dejó su sesión iniciada en la red local.
-4. El hacker usa una herramienta como Mimikatz (visto en Forense de Memoria), extrae la contrasena gigante de la memoria RAM del Administrador, y automáticamente gana el juego. (Ataque Pass-The-Hash).
+4. El hacker usa una herramienta como Mimikatz (visto en Forense de Memoria), extrae la contraseña gigante de la memoria RAM del Administrador, y automáticamente gana el juego. (Ataque Pass-The-Hash).
 
 ### Cuentas de Servicio vs Cuentas de Administrador
 
-Por que esto importa: los hackers saben que las cuentas de servicio son como puertas sin cerrojo. Nadie las mira, nadie las cambia, perfectas para entrar sin hacer ruido.
+Por qué esto importa: los hackers saben que las cuentas de servicio son como puertas sin cerrojo. Nadie las mira, nadie las cambia, perfectas para entrar sin hacer ruido.
 
 Además de las cuentas humanas de administrador, existen las cuentas de servicio:
 
@@ -56,7 +59,7 @@ Para detener esta masacre, las corporaciones implementan sistemas de PAM (Privil
 
 **Paso 1: La Custodia**
 
-El sistema PAM inventa una contrasena de 120 caracteres aleatorios y la guarda adentro de una Bóveda Cibernética ultra blindada. El servidor maestro se configura para que solo acepte esa contrasena absurda.
+El sistema PAM inventa una contraseña de 120 caracteres aleatorios y la guarda adentro de una Bóveda Cibernética ultra blindada. El servidor maestro se configura para que solo acepte esa contraseña absurda.
 
 **Paso 2: El Chequeo (Checkout)**
 
@@ -64,15 +67,15 @@ Son las 3:00 PM y el Administrador necesita reiniciar el servidor. El Administra
 
 **Paso 3: La Entrega Temporal**
 
-La Bóveda aprueba la petición. No le muestra la contrasena al Admin, sino que le inyecta la sesión automáticamente en su pantalla. El Admin reinicia el servidor.
+La Bóveda aprueba la petición. No le muestra la contraseña al Admin, sino que le inyecta la sesión automáticamente en su pantalla. El Admin reinicia el servidor.
 
 **Paso 4: La Autodestrucción (Checkin)**
 
-El Administrador termina su trabajo a las 3:30 PM y cierra la sesión. Inmediatamente, la Bóveda inventa una contrasena nueva de 120 caracteres diferentes y se la cambia al servidor de forma invisible.
+El Administrador termina su trabajo a las 3:30 PM y cierra la sesión. Inmediatamente, la Bóveda inventa una contraseña nueva de 120 caracteres diferentes y se la cambia al servidor de forma invisible.
 
 ### Por Que Esto Destruye a los Hackers
 
-Incluso si el hacker logra infiltrarse en la computadora del Administrador a las 4:00 PM, no encontrará absolutamente nada. La contrasena ya roto, cambio, y nadie en el mundo humano sabe cual es la nueva.
+Incluso si el hacker logra infiltrarse en la computadora del Administrador a las 4:00 PM, no encontrará absolutamente nada. La contraseña ya roto, cambio, y nadie en el mundo humano sabe cual es la nueva.
 
 ### Modelos de PAM
 
@@ -82,12 +85,12 @@ El modelo clásico. Las contraseñas se almacenan en un vault centralizado.
 
 - El administrador solicita acceso al vault.
 - El vault verifica la identidad del administrador (MFA).
-- El vault entrega la contrasena o inicia la sesión.
-- El vault rota la contrasena después del uso.
+- El vault entrega la contraseña o inicia la sesión.
+- El vault rota la contraseña después del uso.
 
 **2. Privileged Session Management (PSM):**
 
-El administrador no ve la contrasena. El sistema PAM inicia una sesión remota (RDP, SSH) y el admin opera dentro de esa sesión.
+El administrador no ve la contraseña. El sistema PAM inicia una sesión remota (RDP, SSH) y el admin opera dentro de esa sesión.
 
 - Grabación de la sesión en video.
 - Control de comandos permitidos.
@@ -106,7 +109,7 @@ Esto es lo más cercano a Zero Trust en gestión de accesos.
 
 ## Grabación de Sesiones (Session Recording)
 
-Los sistemas PAM modernos incluyen una funcion de auditoría extrema.
+Los sistemas PAM modernos incluyen una función de auditoría extrema.
 
 Cuando la Bóveda le concede el acceso al Administrador, el sistema empieza a grabar en video toda la pantalla y guarda un registro de cada tecla que presiona en la consola de comandos.
 
@@ -158,16 +161,16 @@ Son cuentas de emergencia para usar cuando el sistema PAM no esta disponible (fa
 
 Características:
 
-- Contrasena larga y compleja almacenada en un sobre sellado físico.
+- Contraseña larga y compleja almacenada en un sobre sellado físico.
 - Solo accesible por personas autorizadas (dos personas deben abrir el sobre).
-- La contrasena se rota inmediatamente después de usar.
+- La contraseña se rota inmediatamente después de usar.
 - Cada uso genera una alerta al SOC.
 
 Si un administrador usa la cuenta Break Glass un sábado a las 3:00 AM, el SOC debe investigar inmediatamente.
 
 ## Segregacion de Deberes (SoD) en PAM
 
-Los sistemas PAM pueden aplicar segregacion de deberes:
+Los sistemas PAM pueden aplicar segregación de deberes:
 
 - Un administrador puede solicitar acceso a un servidor.
 - Otra persona (aprobador) debe aprobar la solicitud.
@@ -190,9 +193,9 @@ Las cuentas cloud (IAM roles, service accounts, root accounts) también deben ge
 ### Azure y PAM
 
 - Azure Privileged Identity Management (PIM) es el servicio de Microsoft para PAM en Azure.
-- Permite activar roles de Azure AD solo cuando se necesitan.
+- Permite activar roles de Microsoft Entra ID solo cuando se necesitan.
 - Las activaciones requieren aprobación y MFA.
-- Las sesiones tienen duracion limitada (tipicamente 1-8 horas).
+- Las sesiones tienen duracion limitada (típicamente 1-8 horas).
 
 ### GCP y PAM
 
@@ -212,7 +215,7 @@ El impacto:
 - Lockheed Martin fue atacada usando estos códigos.
 - RSA tuvo que reemplazar 40 millones de tokens.
 
-La leccion: incluso los fabricantes de seguridad pueden ser comprometidos. Las cuentas privilegiadas deben protegerse con todos los niveles de PAM.
+La lección: incluso los fabricantes de seguridad pueden ser comprometidos. Las cuentas privilegiadas deben protegerse con todos los niveles de PAM.
 
 ### El Ataque a Uber (2016)
 
@@ -224,7 +227,7 @@ Un atacante obtuvo las credenciales de un administrador de Uber (almacenadas en 
 
 Uber pago $100,000 al atacante para que eliminara los datos (y no lo reporto a las autoridades, lo que resulto en multas y demandas).
 
-La leccion: si las credenciales de administrador están en codigo fuente subido a GitHub, no importa que tan fuerte sea la contrasena.
+La lección: si las credenciales de administrador están en código fuente subido a GitHub, no importa que tan fuerte sea la contraseña.
 
 ### El Caso del Administrador Despedido (2018)
 
@@ -251,7 +254,7 @@ Las cuentas de servicio suelen tener contraseñas que no rotan nunca. Si un atac
 
 ### Falla 3: Falta de Aprobación en Checkout
 
-Permitir que los administradores se auto-aprueben el acceso. La segregacion de deberes es esencial.
+Permitir que los administradores se auto-aprueben el acceso. La segregación de deberes es esencial.
 
 ### Falla 4: Grabación de Sesiones Desactivada
 
@@ -273,7 +276,7 @@ Como atacante, las cuentas privilegiadas son mi objetivo final. No importa cuán
 
 1. **Escaneo de puertos:** Busco servidores con RDP (3389) o SSH (22) abiertos.
 2. **Enumeración de AD:** Uso herramientas como BloodHound para mapear relaciones de confianza y encontrar rutas a cuentas de administrador.
-3. **Credenciales en sitios de codigo:** Busco en GitHub contraseñas hardcodeadas.
+3. **Credenciales en sitios de código:** Busco en GitHub contraseñas hardcodeadas.
 4. **Dump de memoria:** Uso Mimikatz para extraer credenciales de la RAM.
 
 ### BloodHound: El Mapa del Tesoro
@@ -282,7 +285,7 @@ BloodHound es una herramienta que analiza Active Directory y muestra visualmente
 
 Ejemplo de ruta que BloodHound encontraria:
 
-"Usuario Juan -> Miembro del grupo Ventas -> Tiene acceso a la computadora del Admin -> Admin tiene sesión iniciada -> Extraer contrasena del Admin -> Admin es Domain Admin -> Game Over."
+"Usuario Juan -> Miembro del grupo Ventas -> Tiene acceso a la computadora del Admin -> Admin tiene sesión iniciada -> Extraer contraseña del Admin -> Admin es Domain Admin -> Game Over."
 
 ### Pass-the-Hash con Mimikatz
 
@@ -299,15 +302,15 @@ Esto extrae las contraseñas en texto plano de la memoria. Luego:
 sekurlsa::pth /user:Admin /domain:empresa.com /ntlm:HASH
 ```
 
-Esto inicia una nueva sesión como Admin usando el hash robado, sin necesidad de la contrasena.
+Esto inicia una nueva sesión como Admin usando el hash robado, sin necesidad de la contraseña.
 
 ### PAM Como Defensa contra Mimikatz
 
 Con PAM, incluso si el atacante ejecuta Mimikatz en la computadora del Admin:
 
 - No encuentra contraseñas en la memoria (nunca estuvieron ahí).
-- El Admin uso una sesión remota inyectada, no escribió la contrasena.
-- La contrasena ya roto y cambio.
+- El Admin uso una sesión remota inyectada, no escribió la contraseña.
+- La contraseña ya roto y cambio.
 
 ## PAM para Proveedores y Terceros
 
@@ -339,15 +342,15 @@ Los entornos DevOps (CI/CD, Kubernetes, automatización) tienen necesidades espe
 
 ### Cuentas de Servicio en CI/CD
 
-Los pipelines de CI/CD necesitan credenciales para desplegar codigo, acceder a registries de contenedores, y modificar infraestructura. Tradicionalmente, estas credenciales se almacenan como variables de entorno en Jenkins, GitLab o GitHub Actions.
+Los pipelines de CI/CD necesitan credenciales para desplegar código, acceder a registries de contenedores, y modificar infraestructura. Tradicionalmente, estas credenciales se almacenan como variables de entorno en Jenkins, GitLab o GitHub Actions.
 
 **Problema:** Cualquiera con acceso al pipeline puede leer las credenciales.
 
 **Solución PAM:**
 - Las herramientas de CI/CD se integran con el vault de PAM.
-- En lugar de almacenar la contrasena en una variable, el pipeline solicita la contrasena al vault en tiempo de ejecución.
-- El vault entrega la contrasena solo para la duracion del pipeline.
-- La contrasena se rota después de cada uso.
+- En lugar de almacenar la contraseña en una variable, el pipeline solicita la contraseña al vault en tiempo de ejecución.
+- El vault entrega la contraseña solo para la duracion del pipeline.
+- La contraseña se rota después de cada uso.
 
 ### Kubernetes y PAM
 
@@ -355,7 +358,7 @@ Kubernetes tiene su propio sistema de secrets, pero no es un PAM. Para entornos 
 
 1. **External Secrets Operator:** Sincroniza secrets de Kubernetes con un vault externo (AWS Secrets Manager, HashiCorp Vault, Azure Key Vault).
 2. **CSI Secrets Store:** Monta secrets del vault directamente en los pods como volumenes.
-3. **Pod Identity:** Asigna identidades Azure AD / AWS IAM a los pods para que puedan autenticarse sin secretos.
+3. **Pod Identity:** Asigna identidades Microsoft Entra ID / AWS IAM a los pods para que puedan autenticarse sin secretos.
 
 ### Ejemplo: Integración Jenkins + Vault
 
@@ -404,16 +407,16 @@ El ataque comenzó cuando los atacantes hicieron ingeniería social a empleados 
 **Lecciones:**
 - Las herramientas administrativas internas deben protegerse con PAM.
 - Los empleados con acceso privilegiado deben tener MFA obligatorio.
-- El acceso a funciones críticas (cambio de correo, reseteo de contrasena) debe requerir aprobación de un segundo empleado.
+- El acceso a funciones críticas (cambio de correo, reseteo de contraseña) debe requerir aprobación de un segundo empleado.
 
-Si Twitter hubiera tenido PAM con segregacion de deberes, un solo empleado comprometido no habría podido cambiar las cuentas.
+Si Twitter hubiera tenido PAM con segregación de deberes, un solo empleado comprometido no habría podido cambiar las cuentas.
 
 ### El Ataque a SolarWinds (2020)
 
-Los atacantes comprometieron las credenciales de un administrador de SolarWinds y las usaron para firmar el malware Sunburst. La cuenta de firma de codigo tenía permisos excesivos y no estaba protegida con PAM.
+Los atacantes comprometieron las credenciales de un administrador de SolarWinds y las usaron para firmar el malware Sunburst. La cuenta de firma de código tenía permisos excesivos y no estaba protegida con PAM.
 
 **Lecciones:**
-- Las cuentas de firma de codigo son cuentas privilegiadas y deben gestionarse con PAM.
+- Las cuentas de firma de código son cuentas privilegiadas y deben gestionarse con PAM.
 - La rotación de contraseñas y el acceso just-in-time habrian limitado el daño.
 
 ## Modos de Falla Adicionales
@@ -484,7 +487,7 @@ La tendencia en PAM es hacia:
 
 1. **Cero privilegios permanentes (Zero Standing Privileges):** Ningún usuario tiene acceso privilegiado permanente. Todo se otorga just-in-time.
 
-2. **Acceso sin contrasena (Passwordless):** Usar biometría, tokens físicos o certificados en lugar de contraseñas.
+2. **Acceso sin contraseña (Passwordless):** Usar biometría, tokens físicos o certificados en lugar de contraseñas.
 
 3. **Machine Learning para detección de anomalías:** El PAM aprende el comportamiento normal de los administradores y alerta cuando algo es inusual (acceso fuera de horario, desde ubicación extraña, a sistemas no habituales).
 
@@ -496,9 +499,9 @@ Responde estas preguntas para verificar si comprendes los conceptos:
 
 1. Un hacker logra tomar control de la computadora de un becario de Marketing. Explica que es el Movimiento Lateral y cual es el objetivo final (la cuenta objetivo) del hacker durante esta fase del ataque.
 
-2. El Administrador de Bases de Datos de tu empresa dice que el sistema PAM "es muy molesto" y propone que simplemente le dejen configurar una contrasena muy compleja (ej. 30 caracteres) y que el promete guardarla en su mente. Usando el concepto de la Bóveda Nuclear y la rotación de claves, explica por que la propuesta del Administrador sigue siendo un riesgo inaceptable para la empresa.
+2. El Administrador de Bases de Datos de tu empresa dice que el sistema PAM "es muy molesto" y propone que simplemente le dejen configurar una contraseña muy compleja (ej. 30 caracteres) y que el promete guardarla en su mente. Usando el concepto de la Bóveda Nuclear y la rotación de claves, explica por qué la propuesta del Administrador sigue siendo un riesgo inaceptable para la empresa.
 
-3. Un ataque de Pass-The-Hash (robar una credencial directamente de la Memoria RAM) depende de que la contrasena permanezca estática y valida por mucho tiempo. Como mitiga matemáticamente un sistema de Privileged Access Management (PAM) este vector de ataque específico?
+3. Un ataque de Pass-The-Hash (robar una credencial directamente de la Memoria RAM) depende de que la contraseña permanezca estática y valida por mucho tiempo. Como mitiga matemáticamente un sistema de Privileged Access Management (PAM) este vector de ataque específico?
 
 4. Ocurre una caída masiva del sistema de nominas el día de pago. El Administrador jura que el solo estaba "leyendo" la configuración y no tocó nada. Si la empresa cuenta con un sistema PAM de nivel empresarial, Que evidencia exacta buscaría el Analista Forense para comprobar o desmentir la versión del Administrador?
 
@@ -506,6 +509,6 @@ Responde estas preguntas para verificar si comprendes los conceptos:
 
 6. Explica el concepto de Just-In-Time (JIT) Access. Como reduce el riesgo comparado con tener cuentas administrativas permanentes?
 
-7. Por que las cuentas de servicio (usadas por aplicaciones) son un objetivo favorito de los atacantes y como PAM las protege?
+7. Por qué las cuentas de servicio (usadas por aplicaciones) son un objetivo favorito de los atacantes y como PAM las protege?
 
 8. Cual es la diferencia entre vault-based PAM y privileged session management (PSM)? En que escenarios usarías cada uno?

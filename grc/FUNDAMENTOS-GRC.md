@@ -1,5 +1,21 @@
 ---
 title: "Fundamentos de GRC: El Inspector del Casino"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
+reviewed: "2026-06-28"
+reviewed_against: "NIST CSF 2.0, NIST SP 800-53 Rev. 5, ISO/IEC 27001:2022 y PCI DSS v4.0.1"
+official_sources:
+  - title: "NIST Cybersecurity Framework 2.0"
+    url: "https://www.nist.gov/cyberframework"
+  - title: "NIST SP 800-53 Rev. 5"
+    url: "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final"
+  - title: "ISO/IEC 27001:2022"
+    url: "https://www.iso.org/standard/27001"
+  - title: "PCI SSC — Document Library"
+    url: "https://www.pcisecuritystandards.org/document_library/"
+  - title: "IIA — Three Lines Model"
+    url: "https://www.theiia.org/en/content/position-papers/2020/the-iias-three-lines-model-an-update-of-the-three-lines-of-defense"
 ---
 
 # Fundamentos de GRC: El Inspector del Casino
@@ -83,7 +99,7 @@ Puedes escribir las reglas internas que quieras (Gobierno), pero si tu empresa m
 - **Req 11:** Probar regularmente los sistemas y procesos de seguridad (pentesting trimestral, escaneo de vulnerabilidades).
 - **Req 12:** Mantener una política de seguridad de la información documentada.
 
-Por que esto importa: Si te hackean y el auditor descubre que no tenías Cifrado en Reposo, Visa y Mastercard te cobrarán una multa tan monstruosa que tu empresa irá a la quiebra. Es como si el dueño del casino te revisa las cuentas y descubre que le robaste — te saca a patadas.
+Por qué esto importa: Si te hackean y el auditor descubre que no tenías Cifrado en Reposo, Visa y Mastercard te cobrarán una multa tan monstruosa que tu empresa irá a la quiebra. Es como si el dueño del casino te revisa las cuentas y descubre que le robaste — te saca a patadas.
 
 2. **GDPR (Protección de Datos Europeos):** La ley más agresiva del planeta. Si una empresa pierde los datos (nombres, correos) de ciudadanos europeos por culpa de un hackeo, la multa legal puede ser del **4% de los ingresos anuales globales de la empresa**. Para Google, eso significa miles de millones de dólares.
 
@@ -116,21 +132,21 @@ Por que esto importa: Si te hackean y el auditor descubre que no tenías Cifrado
 **HIPAA (Health Insurance Portability and Accountability Act — EE.UU.):**
 - Protege datos médicos (PHI — Protected Health Information).
 - Requiere análisis de riesgos, políticas de privacidad, controles de acceso, cifrado, y notificación de brechas.
-- Multas: Desde $100 hasta $50,000 por violación, máximo $1.5 millones por año por violación.
+- Las sanciones dependen de la categoría, el año, la conducta y los ajustes regulatorios; deben consultarse en las fuentes vigentes de HHS.
 
-**NIST CSF (Cybersecurity Framework):**
-- Marco voluntario del gobierno de EE.UU. para mejorar la ciberseguridad.
-- 5 Funciones: Identificar, Proteger, Detectar, Responder, Recuperar.
-- Utilizado como referencia por empresas de todos los tamaños, incluso fuera de EE.UU.
+**NIST CSF 2.0 (Cybersecurity Framework):**
+- Marco de gestión de riesgo de ciberseguridad aplicable a organizaciones de cualquier tamaño y sector.
+- 6 funciones: Gobernar, Identificar, Proteger, Detectar, Responder y Recuperar.
+- La función Gobernar conecta estrategia, roles, políticas, cadena de suministro y supervisión con las otras cinco funciones.
 
 **NIST SP 800-53:**
 - Catálogo de controles de seguridad para sistemas federales de EE.UU. y contratistas del gobierno.
-- Más de 1,100 controles organizados en 20 familias.
+- Organiza controles y mejoras de control en familias para adaptar una línea base al riesgo y contexto del sistema.
 - Adoptado por muchas empresas como guía de mejores prácticas.
 
-### El Modelo de las Tres Líneas de Defensa
+### El Modelo de las Tres Líneas
 
-Un marco de gobierno de riesgos ampliamente aceptado:
+El modelo actualizado del Institute of Internal Auditors describe cómo se coordinan órgano de gobierno, gestión y auditoría interna:
 
 1. **Primera Línea (Gestión Operativa):** Los equipos técnicos y de negocio que implementan los controles día a día. Ej: El administrador de sistemas que configura firewalls y aplica parches.
 2. **Segunda Línea (Gestión de Riesgos y Cumplimiento):** El equipo de GRC que define políticas, evalúa riesgos, monitorea el cumplimiento y asesora a la primera línea. No ejecutan controles, verifican que se ejecuten correctamente.
@@ -201,11 +217,11 @@ La empresa tiene un plazo (típicamente 30-90 días) para corregir las no confor
 La automatización del cumplimiento está reemplazando los checklists manuales. Herramientas como **Scytale**, **Drata**, **Vanta** y **Secureframe** automatizan la recolección de evidencia conectándose directamente a las APIs de los sistemas:
 
 - **AWS/Azure/GCP:** Recolectan evidencia de configuración de seguridad (S3 Block Public Access, CloudTrail habilitado, MFA en cuentas root).
-- **Okta/Azure AD:** Evidencia de MFA, políticas de contraseñas, revisión de accesos.
+- **Okta/Microsoft Entra ID:** Evidencia de MFA, políticas de contraseñas, revisión de accesos.
 - **GitHub/GitLab:** Evidencia de revisión de código, SAST/DAST configurado, branch protection.
 - **EDR (CrowdStrike, SentinelOne):** Evidencia de que los endpoints tienen el agente instalado y actualizado.
 
-* **Por que esto importa:** La automatización reduce el tiempo de preparación de auditorías de meses a semanas. También elimina el error humano en la recolección de evidencia.
+* **Por qué esto importa:** La automatización reduce el tiempo de preparación de auditorías de meses a semanas. También elimina el error humano en la recolección de evidencia.
 
 ---
 

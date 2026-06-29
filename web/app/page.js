@@ -183,8 +183,9 @@ export default function Home() {
           Explorar el mapa
         </h2>
         <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '2rem', maxWidth: '820px' }}>
-          Empieza por Inicio Aquí y continúa con los fundamentos. Después puedes elegir un área o consultar el{' '}
-          <Link href="/guias">índice completo con las {totalPages} guías en orden</Link>.
+          Empieza por Inicio Aquí y continúa con los fundamentos. Después puedes seguir una{' '}
+          <Link href="/rutas">ruta temática</Link> o consultar el{' '}
+          <Link href="/guias">índice completo con las {totalPages} guías</Link>.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
@@ -232,7 +233,7 @@ export default function Home() {
         </h2>
         <div>
           <p style={{ margin: '0 0 0.65rem 0', fontSize: '0.95rem', lineHeight: 1.6, color: 'var(--text-muted)' }}>
-            Esta guía está en construcción. La idea es seguir agregando recursos, mejorando explicaciones y corrigiendo contenido conforme estudio, pruebo laboratorios y recibo feedback.
+            Esta guía está en construcción. La idea es seguir agregando recursos, mejorando explicaciones y corrigiendo contenido conforme estudio, contrasto fuentes oficiales y recibo feedback.
           </p>
           <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: 1.6, color: 'var(--text-muted)' }}>
             Si encuentras un error o una explicación confusa, puedes abrir un issue o contribuir desde{' '}

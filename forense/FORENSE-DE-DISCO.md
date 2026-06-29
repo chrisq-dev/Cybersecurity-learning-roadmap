@@ -1,5 +1,8 @@
 ---
 title: "Forense de Disco: Excavando el Almacenamiento Digital"
+level: "avanzado"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Forense de Disco: Excavando el Almacenamiento Digital
@@ -12,7 +15,7 @@ el disco duro es como la escena del crimen digital. Todo lo que el usuario hizo,
 
 ## La Anatomía de un Disco
 
-Antes de meterte a hacer imagenes y recovery, tienes que entender como esta organizado un disco. si no sabes leer la estructura, no vas a encontrar nada.
+Antes de meterte a hacer imágenes y recovery, tienes que entender como esta organizado un disco. si no sabes leer la estructura, no vas a encontrar nada.
 
 ### La Tabla de Particiones
 
@@ -52,7 +55,7 @@ La imagen incluye sectores asignados, no asignados, slack space, y area de siste
 
 Solo los archivos y carpetas, no el espacio no asignado. Más rápida pero menos completa.
 
-### Adquisicion en Vivo
+### Adquisición en Vivo
 
 Cuando el sistema esta encendido y no se puede apagar. Captura disco, memoria, y estado del sistema.
 
@@ -60,7 +63,7 @@ Herramientas: FTK Imager Lite, CAINE, KAPE.
 
 ### Triage Forense
 
-Recolección rápida de los archivos más relevantes para decidir si continuar con adquisicion completa.
+Recolección rápida de los archivos más relevantes para decidir si continuar con adquisición completa.
 
 ## Recuperación de Datos Eliminados
 
@@ -84,7 +87,7 @@ Archivos fragmentados en varios sectores no contiguos. La recuperación requiere
 
 ## Análisis de Archivos y Carpetas
 
-Por que esto importa: no es solo lo que dice el archivo, es lo que el archivo dice sin querer. Los metadatos te cuentan una historia que el usuario no sabia que estaba contando.
+Por qué esto importa: no es solo lo que dice el archivo, es lo que el archivo dice sin querer. Los metadatos te cuentan una historia que el usuario no sabia que estaba contando.
 
 ### Metadatos del Sistema de Archivos
 
@@ -145,7 +148,7 @@ Y si, pero con la práctica sabes cuáles mirar según el caso.
 - `.bash_history`: Historial de comandos del usuario.
 - `/tmp/`: Archivos temporales.
 - `/var/tmp/`: Archivos temporales persistentes.
-- `.thumbnails/`: Miniaturas de imagenes abiertas.
+- `.thumbnails/`: Miniaturas de imágenes abiertas.
 
 ## Formateo y Sobrescritura
 
@@ -190,7 +193,7 @@ La investigación de Enron requirio análisis forense de miles de discos duros d
 
 Trabajar sobre el disco original: Cualquier análisis modifica el disco.
 
-Usar sistema operativo de la victima: Arrancar desde el disco original contamina evidencia.
+Usar sistema operativo de la víctima: Arrancar desde el disco original contamina evidencia.
 
 Reportar sin contexto: "Encontré estos archivos" sin explicar donde y como.
 
@@ -275,7 +278,7 @@ Cifrado fuerte por hardware. Extracción via iTunes backup, checkra1n/palera1n, 
 
 ### Información que Revelan
 
-- Fecha de creación, modificacion, acceso.
+- Fecha de creación, modificación, acceso.
 - Versión del software que creo el archivo.
 - Nombre del autor.
 - Ruta de red (UNC) donde se guardó.
@@ -289,7 +292,7 @@ ExifTool, `stat`, `strings`, Metagoofil, FOCA.
 
 ### Windows Event Logs
 
-- Security (4624: login exito, 4625: fallo, 4688: proceso creado).
+- Security (4624: login éxito, 4625: fallo, 4688: proceso creado).
 - System (errores, servicios, drivers).
 - Application (aplicaciones).
 - PowerShell (4103, 4104: ejecución de scripts).
@@ -305,7 +308,7 @@ ExifTool, `stat`, `strings`, Metagoofil, FOCA.
 
 ### De Archivos
 
-Documentos Office protegidos con contrasena. `john-the-ripper`, `hashcat` para crackear hashes.
+Documentos Office protegidos con contraseña. `john-the-ripper`, `hashcat` para crackear hashes.
 
 ### De Navegadores
 
@@ -339,7 +342,7 @@ C:\$Recycle.Bin: Archivos eliminados.
 
 ### Documentos Office
 
-Metadatos: autor, último editor, empresa, fecha de creación, fecha de modificacion, versiones anteriores.
+Metadatos: autor, último editor, empresa, fecha de creación, fecha de modificación, versiones anteriores.
 
 Macros maliciosos: VBA code incrustado. Herramientas: olevba, vipermonkey.
 
@@ -349,7 +352,7 @@ Metadatos: autor, software, fechas. JavaScript incrustado. URLs y enlaces. Formu
 
 ### Archivos de Imagen
 
-Metadatos EXIF: cámara, GPS, fecha, software. Miniaturas (Thumbs.db) pueden contener imagenes eliminadas.
+Metadatos EXIF: cámara, GPS, fecha, software. Miniaturas (Thumbs.db) pueden contener imágenes eliminadas.
 
 ### Archivos de Base de Datos
 
@@ -381,7 +384,7 @@ Cuando se creo el archivo sospechoso. Cuando se ejecutó por última vez. Cuando
 
 ## Evidencia en Archivos Comprimidos
 
-ZIP, RAR, 7z. El archivo comprimido puede estar protegido con contrasena. Herramientas de cracking: John the Ripper, hashcat, fcrackzip.
+ZIP, RAR, 7z. El archivo comprimido puede estar protegido con contraseña. Herramientas de cracking: John the Ripper, hashcat, fcrackzip.
 
 ## Evidencia en Archivos Intercambiables
 
@@ -391,7 +394,7 @@ Torrents, descargas P2P. Logs de clientes torrent. Archivos .torrent.
 
 1. Un usuario "borró" un documento. Que pasa en el disco a nivel de MFT/clusters? Como lo recuperarias?
 
-2. Un abogado pregunta: "Por que el formateo rápido no borró los datos?" Explica.
+2. Un abogado pregunta: "Por qué el formateo rápido no borró los datos?" Explica.
 
 3. Un disco fue formateado completo (con ceros). Hay alguna chance de recuperar datos?
 
@@ -401,9 +404,9 @@ Torrents, descargas P2P. Logs de clientes torrent. Archivos .torrent.
 
 6. En un allanamiento, el equipo esta encendido. Apagas o no? Justifica.
 
-7. Que es slack space y por que es valioso para el perito?
+7. Que es slack space y por qué es valioso para el perito?
 
-8. Un atacante uso `shred -n 1` en Linux. Los datos son recuperables? Por que?
+8. Un atacante uso `shred -n 1` en Linux. Los datos son recuperables? Por qué?
 
 9. El disco tiene sectores defectuosos. Como haces la imagen forense sin perder datos?
 

@@ -1,5 +1,8 @@
 ---
 title: "El Protocolo HTTP: El Mensajero del Restaurante"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # El Protocolo HTTP: El Mensajero del Restaurante
@@ -18,7 +21,7 @@ La regla más importante de HTTP es que es un protocolo "Stateless" (Sin Memoria
 
 Le pides al mensajero una hamburguesa. El mensajero va, pide la hamburguesa y te la trae. Dos segundos después, le pides salsa de tomate. El mensajero te mirará confundido y te dirá: "Salsa para que? Quien eres tu? No recuerdo haberte traído nada".
 
-Para solucionar esta amnesia, los programadores inventaron las **Cookies**. Cada vez que inicias sesión, el servidor le pega un post-it (Cookie) al navegador que dice "Cliente Valido #845". De ahora en adelante, cada vez que el navegador le pida algo al servidor, reenviara el post-it. El servidor leerá el post-it y dirá: "Ah, tu eres el #845, aqui esta tu salsa".
+Para solucionar esta amnesia, los programadores inventaron las **Cookies**. Cada vez que inicias sesión, el servidor le pega un post-it (Cookie) al navegador que dice "Cliente Válido #845". De ahora en adelante, cada vez que el navegador le pida algo al servidor, reenviara el post-it. El servidor leerá el post-it y dirá: "Ah, tu eres el #845, aqui esta tu salsa".
 
 Este mecanismo parece simple pero tiene implicaciones profundas de seguridad. La Cookie es literalmente la única prueba de identidad que el servidor tiene. Si alguien más obtiene esa Cookie, el servidor no tiene forma de distinguir entre el legítimo usuario y el atacante.
 
@@ -28,7 +31,7 @@ Si un hacker logra copiar tu post-it (tu Cookie de Sesión), puede pegárselo en
 
 Las formas en que un hacker puede robar tu Cookie incluyen:
 
-**XSS (Cross-Site Scripting):** El hacker inyecta codigo JavaScript en una pagina que visitas. Ese codigo lee `document.cookie` y envía el valor al servidor del hacker. Si la Cookie no tiene la bandera `HttpOnly`, el JavaScript del navegador puede acceder a ella.
+**XSS (Cross-Site Scripting):** El hacker inyecta código JavaScript en una página que visitas. Ese código lee `document.cookie` y envía el valor al servidor del hacker. Si la Cookie no tiene la bandera `HttpOnly`, el JavaScript del navegador puede acceder a ella.
 
 **Sniffing de Red:** Si el sitio usa HTTP en lugar de HTTPS (sin encriptación), la Cookie viaja en texto plano por la red. Cualquiera en la misma red WiFi con Wireshark puede capturarla.
 
@@ -58,7 +61,7 @@ Headers comunes y su relevancia de seguridad:
 
 `Authorization: Bearer eyJhbGci...` -- Contiene tokens de autenticación, común en APIs modernas.
 
-`Referer: https://www.google.com/` -- Indica desde que pagina se hizo clic para llegar a esta. Usado en protección CSRF pero también puede filtrar información sensible.
+`Referer: https://www.google.com/` -- Indica desde que página se hizo clic para llegar a esta. Usado en protección CSRF pero también puede filtrar información sensible.
 
 `Content-Type: application/json` -- Indica el formato del cuerpo de la petición.
 
@@ -78,7 +81,7 @@ Los headers de respuesta HTTP son la primera línea de defensa que un servidor p
 
 `X-Content-Type-Options: nosniff` -- Evita que el navegador adivine el tipo MIME de un recurso, previniendo ataques de MIME sniffing.
 
-`X-Frame-Options: DENY` -- Evita que la pagina sea cargada dentro de un iframe, previniendo ataques de clickjacking.
+`X-Frame-Options: DENY` -- Evita que la página sea cargada dentro de un iframe, previniendo ataques de clickjacking.
 
 `Set-Cookie: session=abc123; HttpOnly; Secure; SameSite=Strict` -- Configura las cookies con las banderas de seguridad apropiadas.
 
@@ -90,13 +93,13 @@ Cuando le entregas la nota al mensajero (una Petición HTTP), la nota tiene un "
 
 ### GET: Dame información
 
-Es el método más común. Sirve solo para leer o traer información. Cuando escribes `google.com` en tu navegador, tu Chrome le envía un `GET /` al servidor de Google pidiéndole que le envíe la pagina principal.
+Es el método más común. Sirve solo para leer o traer información. Cuando escribes `google.com` en tu navegador, tu Chrome le envía un `GET /` al servidor de Google pidiéndole que le envíe la página principal.
 
 **Características de seguridad:** En un método GET, cualquier información extra viaja visiblemente en la URL (ej. `banco.com/saldo?cuenta=juan`). Esto significa que:
 
 - La información queda grabada en el historial de navegación del navegador.
 - Queda registrada en los logs del servidor.
-- Es visible en el header Referer cuando navegas a otra pagina.
+- Es visible en el header Referer cuando navegas a otra página.
 - Puede ser interceptada por cualquier persona viendo tu pantalla.
 
 **Regla de seguridad:** NUNCA uses GET para enviar información sensible. Contraseñas, tokens, números de tarjeta, datos personales jamás deben viajar en la URL.
@@ -125,7 +128,7 @@ Similar a PUT pero solo modifica los campos enviados, no reemplaza todo el recur
 
 ### HEAD: Solo los headers
 
-Igual que GET pero el servidor no devuelve el cuerpo, solo los headers. Usado para verificar si un recurso existe, su tamaño, o su última fecha de modificacion sin descargar el contenido completo.
+Igual que GET pero el servidor no devuelve el cuerpo, solo los headers. Usado para verificar si un recurso existe, su tamaño, o su última fecha de modificación sin descargar el contenido completo.
 
 ### OPTIONS: Que métodos aceptas?
 
@@ -135,7 +138,7 @@ Pregunta al servidor que métodos HTTP acepta para una ruta específica. Los ata
 
 GET, PUT, DELETE, HEAD y OPTIONS son **idempotentes**: hacer la misma petición 1 vez o 100 veces produce el mismo resultado en el servidor. POST, PATCH y CONNECT no lo son.
 
-Esta distincion importa para la seguridad porque los ataques de retransmision (replay attacks) pueden repetir peticiones idempotentes sin cambios, mientras que las no-idempotentes son más difíciles de retransmitir sin causar efectos visibles.
+Esta distinción importa para la seguridad porque los ataques de retransmision (replay attacks) pueden repetir peticiones idempotentes sin cambios, mientras que las no-idempotentes son más difíciles de retransmitir sin causar efectos visibles.
 
 ## Los Códigos de Estado
 
@@ -145,7 +148,7 @@ Cuando el mensajero regresa del servidor, siempre regresa con un número de 3 d�
 
 El servidor recibio la petición y continua procesandola. Raramente visto en la práctica.
 
-### 2xx: Exito
+### 2xx: Éxito
 
 **200 (OK):** Todo salió perfecto. La petición se proceso correctamente y la respuesta contiene los datos solicitados.
 
@@ -161,7 +164,7 @@ El servidor recibio la petición y continua procesandola. Raramente visto en la 
 
 **307/308:** Similar a 301/302 pero obligan a mantener el mismo método HTTP en la redirección. 301 y 302 pueden cambiar POST a GET, lo cual tiene implicaciones de seguridad.
 
-**El Ángulo del Hacker:** Las redirecciones abiertas son vulnerabilidades donde un sitio redirige a una URL que el atacante puede controlar. Por ejemplo, `sitio.com/redirect?url=http://phishing.com`. Esto permite phishing avanzado donde la victima ve el dominio legítimo al principio y luego es redirigida al sitio malicioso.
+**El Ángulo del Hacker:** Las redirecciones abiertas son vulnerabilidades donde un sitio redirige a una URL que el atacante puede controlar. Por ejemplo, `sitio.com/redirect?url=http://phishing.com`. Esto permite phishing avanzado donde la víctima ve el dominio legítimo al principio y luego es redirigida al sitio malicioso.
 
 ### 4xx: Errores del Cliente
 
@@ -177,7 +180,7 @@ El servidor recibio la petición y continua procesandola. Raramente visto en la 
 
 **429 (Too Many Requests):** El servidor te esta limitando porque enviaste demasiadas peticiones en poco tiempo. Mecanismo de Rate Limiting activado.
 
-**El Ángulo del Hacker:** A los atacantes de Red Team les encanta provocar errores 4xx y 5xx para ver si el servidor escupe información en la respuesta. Un error 500 que muestra un traceback de Python revela la estructura del codigo. Un error 400 con un mensaje SQL revela que hay una base de datos detrás.
+**El Ángulo del Hacker:** A los atacantes de Red Team les encanta provocar errores 4xx y 5xx para ver si el servidor escupe información en la respuesta. Un error 500 que muestra un traceback de Python revela la estructura del código. Un error 400 con un mensaje SQL revela que hay una base de datos detrás.
 
 ### 5xx: Errores del Servidor
 
@@ -195,11 +198,11 @@ Hasta ahora hemos hablado de HTTP en texto plano. Pero el internet moderno usa H
 
 ### Como Funciona el Apretón de Manos TLS
 
-1. Tu navegador se conecta al servidor en el puerto 443 y dice: "Hola, quiero una conexion segura. Estos son los algoritmos criptográficos que soporto."
+1. Tu navegador se conecta al servidor en el puerto 443 y dice: "Hola, quiero una conexión segura. Estos son los algoritmos criptográficos que soporto."
 
 2. El servidor responde: "Hola, usa este algoritmo. Y aqui esta mi Certificado Digital, que contiene mi clave pública y esta firmado por una Autoridad Certificadora (CA) de confianza."
 
-3. Tu navegador verifica que el certificado sea valido: que no haya expirado, que el nombre del dominio coincida, que este firmado por una CA confiable.
+3. Tu navegador verifica que el certificado sea válido: que no haya expirado, que el nombre del dominio coincida, que este firmado por una CA confiable.
 
 4. Tu navegador genera una clave simétrica temporal (la clave de sesión), la encripta con la clave pública del servidor, y se la envía.
 
@@ -211,9 +214,9 @@ Hasta ahora hemos hablado de HTTP en texto plano. Pero el internet moderno usa H
 
 **Certificados expirados:** El navegador muestra una advertencia de seguridad y muchos usuarios la ignoran y hacen clic en "Continuar de todas formas".
 
-**Certificados auto-firmados:** Sin una CA de confianza, la conexion puede ser interceptada por un atacante (Man-in-the-Middle) sin que el navegador pueda detectarlo.
+**Certificados auto-firmados:** Sin una CA de confianza, la conexión puede ser interceptada por un atacante (Man-in-the-Middle) sin que el navegador pueda detectarlo.
 
-**HTTPS pero con recursos HTTP:** Una pagina servida via HTTPS que carga imagenes, scripts o estilos via HTTP. Esto se llama "Mixed Content" y permite que un atacante modifique esos recursos inyectando codigo malicioso.
+**HTTPS pero con recursos HTTP:** Una página servida via HTTPS que carga imágenes, scripts o estilos via HTTP. Esto se llama "Mixed Content" y permite que un atacante modifique esos recursos inyectando código malicioso.
 
 **TLS viejo o mal configurado:** Usar TLS 1.0 o 1.1, o permitir cifrados débiles como RC4 o DES. Herramientas como SSL Labs verifican la calidad de tu configuración TLS.
 
@@ -221,17 +224,17 @@ Hasta ahora hemos hablado de HTTP en texto plano. Pero el internet moderno usa H
 
 Los atacantes no rompen la criptografía de TLS directamente (esencialmente imposible con la tecnología actual). En su lugar, atacan los extremos:
 
-**SSL Stripping:** El atacante intercepta la petición inicial HTTP (antes de la redirección a HTTPS) y mantiene toda la comunicación en HTTP. La victima cree que esta en HTTPS porque el ícono del candado aparece, pero en realidad esta hablando con el atacante en texto plano. La defensa es HSTS.
+**SSL Stripping:** El atacante intercepta la petición inicial HTTP (antes de la redirección a HTTPS) y mantiene toda la comunicación en HTTP. La víctima cree que esta en HTTPS porque el ícono del candado aparece, pero en realidad esta hablando con el atacante en texto plano. La defensa es HSTS.
 
-**Certificados falsos:** El atacante convence al usuario de instalar un certificado raíz falso en su dispositivo. Luego el atacante puede generar certificados validos para cualquier dominio, y el navegador de la victima los aceptara sin advertencias.
+**Certificados falsos:** El atacante convence al usuario de instalar un certificado raíz falso en su dispositivo. Luego el atacante puede generar certificados validos para cualquier dominio, y el navegador de la víctima los aceptara sin advertencias.
 
 **Phishing con HTTPS:** Los atacantes obtienen certificados SSL gratis (Let's Encrypt) para sus dominios de phishing. La presencia del candado verde ya no es garantía de que el sitio sea legítimo.
 
 ## HTTP/2 y HTTP/3: Evolución del Protocolo
 
-HTTP/2 (lanzado en 2015) mejoro el rendimiento permitiendo múltiples peticiones simultaneas sobre la misma conexion TCP (multiplexing), compresion de headers, y push de recursos desde el servidor.
+HTTP/2 (lanzado en 2015) mejoro el rendimiento permitiendo múltiples peticiones simultaneas sobre la misma conexión TCP (multiplexing), compresion de headers, y push de recursos desde el servidor.
 
-HTTP/3 (lanzado en 2022) va más allá: usa QUIC en lugar de TCP, que corre sobre UDP. QUIC reduce la latencia de conexion y maneja mejor la pérdida de paquetes.
+HTTP/3 (lanzado en 2022) va más allá: usa QUIC en lugar de TCP, que corre sobre UDP. QUIC reduce la latencia de conexión y maneja mejor la pérdida de paquetes.
 
 **Implicaciones de seguridad:** HTTP/2 y HTTP/3 introducen nuevas superficies de ataque. La compresion de headers en HTTP/2 puede ser explotada para ataques de oráculo (CRIME, BREACH). La implementación defectuosa de multiplexing puede llevar a problemas de seguridad. Los firewalls y sistemas de detección de intrusiones tuvieron que actualizarse para inspeccionar el tráfico HTTP/2 y QUIC.
 
@@ -241,7 +244,7 @@ Cuando no configuras bien la caché? Le regalas los datos de un usuario a otro s
 
 La caché HTTP permite almacenar respuestas para reutilizarlas sin tener que consultar al servidor original. Acelera la web pero introduce riesgos.
 
-**Caché poisoning (Envenenamiento de caché):** Un atacante engaña al servidor de caché para que almacene una respuesta maliciosa. Cuando otros usuarios soliciten el mismo recurso, recibiran la respuesta envenenada. Ejemplo: si la caché almacena una pagina HTML con un script inyectado por el atacante, todos los usuarios que accedan a esa pagina recibiran el script malicioso.
+**Caché poisoning (Envenenamiento de caché):** Un atacante engaña al servidor de caché para que almacene una respuesta maliciosa. Cuando otros usuarios soliciten el mismo recurso, recibiran la respuesta envenenada. Ejemplo: si la caché almacena una página HTML con un script inyectado por el atacante, todos los usuarios que accedan a esa página recibiran el script malicioso.
 
 **Información sensible en caché:** Si una respuesta contiene datos personales y el servidor permite su almacenamiento en caché, otro usuario podría recibir esa información accidentalmente. Esto es especialmente peligroso en proxies compartidos o computadoras públicas.
 
@@ -249,15 +252,15 @@ La caché HTTP permite almacenar respuestas para reutilizarlas sin tener que con
 
 ## El Flujo Completo de una Petición
 
-Para cerrar, veamos el viaje completo de una petición desde que presionas Enter hasta que ves la pagina:
+Para cerrar, veamos el viaje completo de una petición desde que presionas Enter hasta que ves la página:
 
 1. Escribes `https://ejemplo.com/login` en tu navegador.
 
 2. El navegador revisa su caché DNS. Si no tiene la IP, hace una consulta DNS recursiva para resolver `ejemplo.com` a una dirección IP.
 
-3. El navegador establece una conexion TCP con el servidor en el puerto 443 (handshake de 3 vías: SYN, SYN-ACK, ACK).
+3. El navegador establece una conexión TCP con el servidor en el puerto 443 (handshake de 3 vías: SYN, SYN-ACK, ACK).
 
-4. Sobre esa conexion TCP, se realiza el handshake TLS: intercambio de certificados, negociación de cifrado, establecimiento de claves.
+4. Sobre esa conexión TCP, se realiza el handshake TLS: intercambio de certificados, negociación de cifrado, establecimiento de claves.
 
 5. El navegador construye la petición HTTP: `POST /login HTTP/1.1`, con headers (Host, User-Agent, Content-Type, Cookie, etc.) y el cuerpo del formulario (usuario y contraseña).
 
@@ -269,7 +272,7 @@ Para cerrar, veamos el viaje completo de una petición desde que presionas Enter
 
 9. Tu navegador recibe la respuesta, guarda la cookie, y automáticamente hace una nueva petición GET a `/dashboard` incluyendo la cookie.
 
-10. El servidor recibe la cookie, identifica tu sesión, y devuelve la pagina del dashboard con un `200 OK`.
+10. El servidor recibe la cookie, identifica tu sesión, y devuelve la página del dashboard con un `200 OK`.
 
 Cada paso de este viaje es un punto donde un atacante puede interceptar, modificar, o bloquear la comunicación.
 
@@ -287,17 +290,17 @@ Cada paso de este viaje es un punto donde un atacante puede interceptar, modific
 
 ## Autoevaluación
 
-1. Te piden diseñar un formulario para que los empleados envíen sus datos de recursos humanos (salarios y seguro social). El desarrollador junior lo programo usando el método GET. Por que debes rechazar su codigo inmediatamente por motivos de seguridad?
+1. Te piden diseñar un formulario para que los empleados envíen sus datos de recursos humanos (salarios y seguro social). El desarrollador junior lo programo usando el método GET. Por qué debes rechazar su código inmediatamente por motivos de seguridad?
 
-2. Un atacante intenta visitar la ruta secreta `servidor.com/admin_panel`. El mensajero HTTP regresa con un codigo 403. Que deduces de la posición o el estatus del atacante en el sistema en ese momento? Que diferencia hay con un 401?
+2. Un atacante intenta visitar la ruta secreta `servidor.com/admin_panel`. El mensajero HTTP regresa con un código 403. Que deduces de la posición o el estatus del atacante en el sistema en ese momento? Que diferencia hay con un 401?
 
-3. Sabiendo que HTTP tiene "amnesia" (es Stateless), si un hacker logra robar el archivo donde están guardadas tus credenciales cifradas, pero NO logra robar tu Cookie de sesión activa de hoy, puede el hacker entrar a tu cuenta bancaria directamente pegando la contrasena robada? Explica por que.
+3. Sabiendo que HTTP tiene "amnesia" (es Stateless), si un hacker logra robar el archivo donde están guardadas tus credenciales cifradas, pero NO logra robar tu Cookie de sesión activa de hoy, puede el hacker entrar a tu cuenta bancaria directamente pegando la contraseña robada? Explica por qué.
 
-4. Estas analizando el tráfico de una aplicación móvil de un Banco. Notas que todas las peticiones a `api.banco.com` viajan por el puerto 80 (HTTP) en lugar del puerto 443 (HTTPS). Por que eso es una vulnerabilidad crítica aunque los datos viajen por método POST?
+4. Estas analizando el tráfico de una aplicación móvil de un Banco. Notas que todas las peticiones a `api.banco.com` viajan por el puerto 80 (HTTP) en lugar del puerto 443 (HTTPS). Por qué eso es una vulnerabilidad crítica aunque los datos viajen por método POST?
 
 5. Un sitio web envía la siguiente cookie: `Set-Cookie: session=abc123`. Que banderas de seguridad faltan y que riesgos introduce cada ausencia?
 
-6. Encuentras que tu sitio devuelve error 500 con el siguiente mensaje: `SQLSTATE[42000]: Syntax error near '1=1' at line 1`. Por que esto es información valiosa para un atacante y que debería hacer el equipo de desarrollo para evitar que estos mensajes se muestren al usuario?
+6. Encuentras que tu sitio devuelve error 500 con el siguiente mensaje: `SQLSTATE[42000]: Syntax error near '1=1' at line 1`. Por qué esto es información valiosa para un atacante y que debería hacer el equipo de desarrollo para evitar que estos mensajes se muestren al usuario?
 
 7. Implementas HSTS con `max-age=0`. Que efecto tiene esto en la seguridad de los usuarios que ya habian visitado tu sitio?
 

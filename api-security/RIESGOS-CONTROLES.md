@@ -1,5 +1,17 @@
 ---
 title: "Riesgos y Controles de API: Las Vulnerabilidades Específicas"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
+reviewed: "2026-06-28"
+reviewed_against: "OWASP API Security Top 10:2023"
+official_sources:
+  - title: "OWASP API Security Top 10:2023"
+    url: "https://owasp.org/API-Security/editions/2023/en/0x11-t10/"
+  - title: "OWASP API Security Project"
+    url: "https://owasp.org/API-Security/"
+  - title: "RFC 9110 — HTTP Semantics"
+    url: "https://www.rfc-editor.org/rfc/rfc9110.html"
 ---
 
 # Riesgos y Controles de API: Las Vulnerabilidades Específicas
@@ -12,7 +24,7 @@ Las APIs son maravillosas porque conectan sistemas mundiales en milisegundos, pe
 
 Esta guía cubre en profundidad las principales vulnerabilidades de APIs, con técnicas de explotación y estrategias de defensa. Si vas a auditar una API, este es tu punto de partida.
 
-## API1: Broken Object Level Authorization (BOLA)
+## API1:2023 Broken Object Level Authorization (BOLA)
 
 Es la vulnerabilidad #1 de las APIs en el mundo entero. Es el equivalente de IDOR (Insecure Direct Object Reference) en APIs clásicas, pero adaptado al contexto de las APIs modernas.
 
@@ -42,7 +54,7 @@ El Hacker toma el control, intercepta el mensaje antes de que salga del celular,
 
 Si el programador del banco construyo una API ingenua (el empleado del guardarropa tonto), la API no verifica si el usuario "juan" es realmente el dueño de la cuenta 16. La API simplemente obedece y le entrega al hacker el saldo del cliente 16.
 
-BOLA es la causa principal de las filtraciones masivas de datos en empresas modernas, según el OWASP API Security Top 10.
+BOLA ocupa la primera posición de OWASP API Security Top 10:2023 y representa un patrón crítico cuando una API no verifica autorización sobre cada objeto solicitado.
 
 ### Donde Encontrar BOLA
 
@@ -69,7 +81,7 @@ GET /api/usuarios/3
 ...
 ```
 
-3. **Modificacion de parámetros en POST/PUT:** No solo los GET son vulnerables. Los cuerpos JSON también:
+3. **Modificación de parámetros en POST/PUT:** No solo los GET son vulnerables. Los cuerpos JSON también:
 
 ```json
 // Original
@@ -109,24 +121,24 @@ Usa identificadores opacos o slugs. En lugar de `/api/usuarios/1234`, usa rutas 
 /api/mi/perfil  (deriva el ID del token de autenticacion)
 ```
 
-## API2: Broken Authentication (Autenticación Rota)
+## API2:2023 Broken Authentication (Autenticación Rota)
 
 Las APIs tienen mecanismos de autenticación diferentes a las aplicaciones web. Los problemas comunes incluyen:
 
 **Debilidades en JWT:**
 - Algoritmo "none" en JWT (el atacante cambia el algoritmo a "none" y elimina la firma)
 - Clave secreta débil en JWT (el atacante fuerza bruta la clave)
-- JWT sin expiracion (el token es valido para siempre)
+- JWT sin expiracion (el token es válido para siempre)
 - JWT sin revocacion (no se puede invalidar un token robado)
 
 **Debilidades en API Keys:**
 - API Keys fijas que nunca expiran
-- API Keys almacenadas en codigo fuente (hardcodeadas)
+- API Keys almacenadas en código fuente (hardcodeadas)
 - API Keys con permisos excesivos
 
 **Ataques a OAuth 2.0:**
 - CSRF en el flujo de autorización
-- Redirect URI abierta (el atacante intercepta el codigo de autorización)
+- Redirect URI abierta (el atacante intercepta el código de autorización)
 - Token robado del almacenamiento local del navegador
 
 ### El Ataque JWT "alg=none"
@@ -151,7 +163,7 @@ Si la librería de JWT del servidor no verifica que el algoritmo "none" no esta 
 4. **Revocacion de tokens:** Mantén una blacklist de tokens revocados o usa tokens de corta duracion.
 5. **Rate limiting en login:** Limita los intentos de autenticación.
 
-## API3: Broken Object Property Level Authorization
+## API3:2023 Broken Object Property Level Authorization
 
 Esta vulnerabilidad ocurre cuando la API permite a los usuarios acceder o modificar propiedades de objetos que no deberían poder.
 
@@ -209,7 +221,7 @@ GET /api/usuarios/1234
 - Usa proyecciones o vistas de datos.
 - Implementa un filtro de campos basado en el rol del usuario.
 
-## API4: Unrestricted Resource Consumption
+## API4:2023 Unrestricted Resource Consumption
 
 Las APIs son vulnerables a ataques de consumo de recursos porque no tienen las limitaciones naturales de una interfaz gráfica (un humano no puede hacer miles de peticiones por segundo, pero un script si).
 
@@ -271,9 +283,9 @@ query {
 
 **Defensa:** Implementa límites de profundidad de consulta y complejidad de query.
 
-## API5: Broken Function Level Authorization
+## API5:2023 Broken Function Level Authorization
 
-Ocurre cuando la API no verifica los permisos a nivel de funcion o endpoint. Un usuario normal puede acceder a endpoints de administrador.
+Ocurre cuando la API no verifica los permisos a nivel de función o endpoint. Un usuario normal puede acceder a endpoints de administrador.
 
 **Ejemplo:**
 
@@ -289,7 +301,7 @@ Si el atacante descubre el endpoint de admin (tal vez por documentación, enumer
 - Middleware de autorización centralizado.
 - No confiar en "Security by Obscurity" (endpoints ocultos no son seguros).
 
-## API6: Unrestricted Access to Sensitive Business Flows
+## API6:2023 Unrestricted Access to Sensitive Business Flows
 
 Las APIs exponen flujos de negocio que los atacantes pueden explotar de formas no previstas.
 
@@ -300,7 +312,7 @@ Las APIs exponen flujos de negocio que los atacantes pueden explotar de formas n
 
 **Defensa:** Implementar controles de estado en los flujos de negocio, limits por usuario, y detección de anomalías.
 
-## API7: Server-Side Request Forgery (SSRF)
+## API7:2023 Server-Side Request Forgery (SSRF)
 
 Las APIs frecuentemente hacen peticiones a otras APIs o servicios basados en parámetros del usuario. Esto las hace vulnerables a SSRF.
 
@@ -323,7 +335,7 @@ El atacante cambia la URL a un recurso interno:
 
 **Aprende más en:** La guía completa de SSRF en `web-owasp/SSRF.md`.
 
-## API8: Security Misconfiguration
+## API8:2023 Security Misconfiguration
 
 Las APIs sufren de los mismos problemas de configuración que las aplicaciones web, más algunos específicos:
 
@@ -340,7 +352,7 @@ Las APIs sufren de los mismos problemas de configuración que las aplicaciones w
 - No exponer documentación de API a internet sin autenticación.
 - Deshabilitar debug/consola en producción.
 
-## API9: Improper Inventory Management
+## API9:2023 Improper Inventory Management
 
 Las APIs gestionan mal su inventario de servicios y versiones. Los problemas comunes:
 
@@ -353,7 +365,7 @@ Las APIs gestionan mal su inventario de servicios y versiones. Los problemas com
 
 **Defensa:** Mantener un inventario actualizado de endpoints y versiones. Deprecar y eliminar versiones antiguas. No exponer ambientes internos.
 
-## API10: Unsafe Consumption of APIs
+## API10:2023 Unsafe Consumption of APIs
 
 Las APIs consumen otras APIs. Si un servicio consume una API de terceros o interna de forma insegura, las vulnerabilidades se propagan.
 
@@ -367,7 +379,7 @@ Las APIs consumen otras APIs. Si un servicio consume una API de terceros o inter
 
 ### Los Escudos Defensivos
 
-todas estas defensas son inutiles si no verificas que el usuario es dueño del recurso que pide. Ese es el hueco #1.
+todas estas defensas son inútiles si no verificas que el usuario es dueño del recurso que pide. Ese es el hueco #1.
 
 **Rate Limiting:** El Cantinero del bar que dice "No te voy a servir más de 2 cervezas por minuto". Limita el número de peticiones por cliente en un periodo de tiempo.
 
@@ -383,7 +395,7 @@ todas estas defensas son inutiles si no verificas que el usuario es dueño del r
 
 La operadora australiana Optus sufrio una breach que expuso datos de 9.8 millones de clientes. La vulnerabilidad era una API expuesta sin autenticación adecuada que permitia consultar datos de cualquier cliente. La API estaba en un endpoint no documentado que un atacante descubrió mediante enumeración.
 
-La leccion: no solo las APIs documentadas necesitan seguridad. Cualquier endpoint expuesto a internet, conocido o no, debe tener autenticación y autorización.
+La lección: no solo las APIs documentadas necesitan seguridad. Cualquier endpoint expuesto a internet, conocido o no, debe tener autenticación y autorización.
 
 ## Modos de Falla con APIs
 
@@ -401,18 +413,18 @@ La leccion: no solo las APIs documentadas necesitan seguridad. Cualquier endpoin
 
 ## Autoevaluación
 
-1. Un hacker descubre que al cambiar el número en la URL de una tienda web de `tienda.com/api/pedido/40` a `tienda.com/api/pedido/41`, puede descargar la factura de compra de otro cliente, exponiendo su tarjeta de crédito. Usando la analogía del Ticket de Guardarropa, explica por que la API permitió este ataque y como se llama esta vulnerabilidad.
+1. Un hacker descubre que al cambiar el número en la URL de una tienda web de `tienda.com/api/pedido/40` a `tienda.com/api/pedido/41`, puede descargar la factura de compra de otro cliente, exponiendo su tarjeta de crédito. Usando la analogía del Ticket de Guardarropa, explica por qué la API permitió este ataque y como se llama esta vulnerabilidad.
 
-2. Por que el uso del "Saneamiento de Entradas" (Input Sanitization, que aprendiste para evitar Inyecciones SQL) no sirve para detener un ataque BOLA? (Pista: Analiza si el dato que manda el hacker es codigo malicioso o es un número completamente legal.)
+2. Por qué el uso del "Saneamiento de Entradas" (Input Sanitization, que aprendiste para evitar Inyecciones SQL) no sirve para detener un ataque BOLA? (Pista: Analiza si el dato que manda el hacker es código malicioso o es un número completamente legal.)
 
 3. Estas diseñando la API de inicio de sesión (Login) de tu empresa. Explica como la implementación de un mecanismo estricto de Rate Limiting destruye la viabilidad financiera de un ataque de Fuerza Bruta.
 
-4. El contenido de un Token JWT (Ej. `"rol": "usuario_normal"`) viaja por internet en texto codificado (base64), lo que significa que el hacker puede decodificarlo y leerlo fácilmente. Si esto es así, por que el hacker no puede simplemente borrar la palabra `"usuario_normal"` de su propio Token, escribir `"Administrador"`, y engañar a la API?
+4. El contenido de un Token JWT (Ej. `"rol": "usuario_normal"`) viaja por internet en texto codificado (base64), lo que significa que el hacker puede decodificarlo y leerlo fácilmente. Si esto es así, por qué el hacker no puede simplemente borrar la palabra `"usuario_normal"` de su propio Token, escribir `"Administrador"`, y engañar a la API?
 
-5. Explica la diferencia entre BOLA (API1) y BFLA (API5). Cual es la diferencia entre "acceder al recurso de otro usuario" y "acceder a una funcion de administrador"?
+5. Explica la diferencia entre BOLA (API1) y BFLA (API5). Cual es la diferencia entre "acceder al recurso de otro usuario" y "acceder a una función de administrador"?
 
 6. Un endpoint de API permite actualizar el perfil del usuario. El desarrollador pasa directamente el cuerpo del JSON al modelo de la base de datos: `db.usuarios.actualizar(req.body)`. Que vulnerabilidad específica (nombrala por su nombre OWASP) se introduce y como se mitiga?
 
-7. Tu empresa descubre que una versión antigua de la API (v1) sigue activa en producción y no tiene autenticación. La versión v2 tiene autenticación. A que categoría del OWASP API Security Top 10 pertenece este problema y por que es peligroso mantener versiones antiguas?
+7. Tu empresa descubre que una versión antigua de la API (v1) sigue activa en producción y no tiene autenticación. La versión v2 tiene autenticación. A que categoría del OWASP API Security Top 10 pertenece este problema y por qué es peligroso mantener versiones antiguas?
 
 8. Un atacante consulta tu API GraphQL con una query que tiene 10 niveles de anidamiento. El servidor tarda 30 segundos en responder y termina en timeout. Que tipo de ataque es este (usa la terminología de OWASP API) y como lo mitigarias?

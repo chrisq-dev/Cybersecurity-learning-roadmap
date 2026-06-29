@@ -1,12 +1,15 @@
 ---
-title: "Computacion Básica: Entendiendo la Máquina"
+title: "Computación Básica: Entendiendo la Máquina"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
-# Computacion Básica: Entendiendo la Máquina
+# Computación Básica: Entendiendo la Máquina
 
 ## Objetivo de esta Guía
 
-Entender como funciona una computadora a nivel de hardware y componentes lógicos, y por que este conocimiento es la base innegociable de la ciberseguridad.
+Entender como funciona una computadora a nivel de hardware y componentes lógicos, y por qué este conocimiento es la base innegociable de la ciberseguridad.
 
 Antes de hablar de hackers, firewalls, malware o vulnerabilidades de red, debes interiorizar un hecho fundamental: una computadora no es una caja mágica. Es una máquina determinista que recibe instrucciones matemáticas, las procesa en memoria y emite un resultado. No hay magia. Solo electrónica y lógica.
 
@@ -41,15 +44,15 @@ Este ciclo se repite miles de millones de veces por segundo.
 
 **Donde falla la analogía del cocinero:** Un cocinero puede hacer varias cosas a la vez (picar verduras mientras vigila una salsa). Una CPU clásica no. Ejecuta una instrucción a la vez, pero tan rápido que parece simultaneo. Las CPU modernas tienen varios nucleos (cores), que son como tener varios cocineros trabajando en paralelo en la misma cocina.
 
-**Ángulo de ciberseguridad:** El malware también son instrucciones matemáticas. Necesitan a la CPU para ejecutarse. Sin CPU, un virus es solo texto inerte en un disco. Por eso los atacantes necesitan que su codigo se convierta en un proceso activo en RAM y use la CPU.
+**Ángulo de ciberseguridad:** El malware también son instrucciones matemáticas. Necesitan a la CPU para ejecutarse. Sin CPU, un virus es solo texto inerte en un disco. Por eso los atacantes necesitan que su código se convierta en un proceso activo en RAM y use la CPU.
 
-Un tipo de malware llamado cryptojacker secuestra la CPU para minar criptomonedas para el atacante. No roba datos ni borra archivos; simplemente usa la CPU. La victima nota que el equipo se vuelve lentísimo, los ventiladores giran al máximo, y la batería se agota en minutos. En 2018, el sitio web de la cadena de televisión Showtime fue infectado con un cryptojacker que usaba la CPU de los visitantes para minar Monero mientras navegaban. Los visitantes no sabían que su procesador estaba trabajando para un atacante.
+Un tipo de malware llamado cryptojacker secuestra la CPU para minar criptomonedas para el atacante. No roba datos ni borra archivos; simplemente usa la CPU. La víctima nota que el equipo se vuelve lentísimo, los ventiladores giran al máximo, y la batería se agota en minutos. En 2018, el sitio web de la cadena de televisión Showtime fue infectado con un cryptojacker que usaba la CPU de los visitantes para minar Monero mientras navegaban. Los visitantes no sabían que su procesador estaba trabajando para un atacante.
 
-**Fallo crítico:** La CPU no tiene concepto de "malware" o "programa legítimo." Ejecuta instrucciones. Punto. Si las instrucciones llegan a través de un mecanismo valido (un proceso legado por el sistema operativo), la CPU las ejecuta sin cuestionar. El Spectre y Meltdown (dos vulnerabilidades masivas descubiertas en 2018) explotaban una característica de diseno de la CPU llamada "ejecución especulativa" para acceder a memoria que no deberían. La CPU, en su afan de ser rápida, ejecutaba instrucciones antes de verificar los permisos. No es un bug de software; es una característica del hardware que se convirtio en vulnerabilidad.
+**Fallo crítico:** La CPU no tiene concepto de "malware" o "programa legítimo." Ejecuta instrucciones. Punto. Si las instrucciones llegan a través de un mecanismo válido (un proceso legado por el sistema operativo), la CPU las ejecuta sin cuestionar. El Spectre y Meltdown (dos vulnerabilidades masivas descubiertas en 2018) explotaban una característica de diseño de la CPU llamada "ejecución especulativa" para acceder a memoria que no deberían. La CPU, en su afan de ser rápida, ejecutaba instrucciones antes de verificar los permisos. No es un bug de software; es una característica del hardware que se convirtio en vulnerabilidad.
 
 ### El Cuello de Botella: El Bus y la Jerarquía de Memoria
 
-Por que esto importa: la CPU es rapidisima, pero la memoria RAM es lenta comparada con ella. Y el disco es una tortuga al lado de la RAM. El sistema siempre va a la velocidad del componente más lento en la cadena.
+Por qué esto importa: la CPU es rapidísima, pero la memoria RAM es lenta comparada con ella. Y el disco es una tortuga al lado de la RAM. El sistema siempre va a la velocidad del componente más lento en la cadena.
 
 Entre la CPU y los demás componentes hay un sistema de comunicación llamado "bus" (Front Side Bus, o buses modernos como PCI Express). Los datos viajan por estos buses. Pero hay una jerarquía de velocidades que limita el rendimiento:
 
@@ -96,17 +99,17 @@ La RAM (Memoria de Acceso Aleatorio) guarda la información temporal que la CPU 
 
 **La velocidad importa:** La RAM es aproximadamente 100,000 veces más rápida que un disco duro mecánico (HDD) y 10,000 veces más rápida que un SSD. Por eso los programas deben cargarse en RAM para ejecutarse. Si la CPU tuviera que leer instrucciones directamente desde el disco, la computadora seria increíblemente lenta.
 
-**Por que 8GB de RAM no son suficientes hoy:**
+**Por qué 8GB de RAM no son suficientes hoy:**
 - El sistema operativo moderno (Windows 11, macOS) ocupa entre 2 y 4 GB solo para funcionar.
 - Cada pestaña de navegador Chrome ocupa entre 100 MB y 1 GB dependiendo del contenido.
 - Cada programa abierto (Word, Spotify, Slack) ocupa su espacio.
 - Cuando la RAM se llena, el sistema operativo usa una parte del disco duro como "RAM falsa" (memoria virtual o swap). Esto es dramaticamente más lento. Es como obligar al cocinero a ir caminando a la despensa por cada ingrediente.
 
-**Ángulo de ciberseguridad:** La RAM es el lugar donde las herramientas de seguridad más importantes hacen su trabajo. Los antivirus y los EDR (Endpoint Detection and Response) escanean la RAM en busca de patrones de codigo malicioso, no solo el disco duro.
+**Ángulo de ciberseguridad:** La RAM es el lugar donde las herramientas de seguridad más importantes hacen su trabajo. Los antivirus y los EDR (Endpoint Detection and Response) escanean la RAM en busca de patrones de código malicioso, no solo el disco duro.
 
 **El ataque clásico a la RAM:**
 - Un atacante puede hacer un "volcado de memoria" (memory dump) si tiene acceso administrativo al sistema. Esto captura todo lo que esta en la RAM en un archivo. Desde ahí puede extraer contraseñas en texto plano, claves de cifrado, tokens de autenticación, y datos de sesiones activas.
-- Las herramientas como Mimikatz se especializan en extraer credenciales directamente de la RAM de una máquina Windows. No necesitan la contrasena del disco duro; la encuentran en la memoria del proceso de inicio de sesión.
+- Las herramientas como Mimikatz se especializan en extraer credenciales directamente de la RAM de una máquina Windows. No necesitan la contraseña del disco duro; la encuentran en la memoria del proceso de inicio de sesión.
 
 **Cold Boot Attack:** Un ataque físico avanzado. Los chips de RAM no se borran instantáneamente al apagar la computadora. Los datos persisten por segundos o incluso minutos, especialmente si se enfria el chip. Un atacante con acceso físico puede:
 1. Enfriar el chip de RAM con nitrógeno líquido o aire comprimido en lata invertido.
@@ -122,7 +125,7 @@ El disco es la memoria no volátil. Guarda información de forma permanente, inc
 
 **HDD (Disco Duro Mecánico):** Usa platos magneticos que giran a alta velocidad (5400, 7200, o 15000 RPM). Un brazo mecánico con una cabeza lectora se mueve sobre los platos para leer o escribir datos. Es tecnología de los 1950s, mejorada pero fundamentalmente igual.
 
-**SSD (Unidad de Estado Solido):** Usa memoria flash (chips de silicio) sin partes móviles. Es mucho más rápido, silencioso y resistente a golpes que un HDD. Sin embargo, tiene un número limitado de ciclos de escritura (cada celda puede escribirse un número finito de veces).
+**SSD (Unidad de Estado Sólido):** Usa memoria flash (chips de silicio) sin partes móviles. Es mucho más rápido, silencioso y resistente a golpes que un HDD. Sin embargo, tiene un número limitado de ciclos de escritura (cada celda puede escribirse un número finito de veces).
 
 **En la analogía:** La cámara frigorífica del restaurante. Es inmensa. Caben toneladas de ingredientes. Pero el cocinero tiene que caminar hasta ella, buscar en los estantes, y traer los ingredientes a la mesa de trabajo (RAM) antes de poder cocinar. Si la despensa es lenta (HDD), el cocinero espera. Si es rápida (SSD), espera menos.
 
@@ -139,7 +142,7 @@ El disco es la memoria no volátil. Guarda información de forma permanente, inc
 3. Roba (exfiltra) una copia de los datos antes de cifrarlos.
 4. Cifra los archivos en todos los discos a los que tiene acceso.
 5. Deja una nota de rescate.
-6. Si la victima no paga, pública los datos robados en un sitio de filtraciones (doble extorsión).
+6. Si la víctima no paga, pública los datos robados en un sitio de filtraciones (doble extorsión).
 
 **Caso real: Maersk (2017).** La naviera más grande del mundo fue golpeada por el ransomware NotPetya. El malware cifró los discos de miles de servidores en 76 países. Maersk perdió 300 millones de dólares en una semana. Tuvieron que reinstalar 4,000 servidores y 45,000 computadoras desde cero. Un empleado en Nigeria resulto tener una copia de seguridad offline que salvo a la empresa de tener que pagar el rescate, porque los atacantes no pudieron cifrar ese disco que estaba desconectado de la red.
 
@@ -153,7 +156,7 @@ Es el componente físico (chip de Wi-Fi o puerto Ethernet) que conecta la comput
 
 **Como funciona:**
 - Cada tarjeta de red tiene una dirección MAC (Media Access Control) única de fábrica. Es como un número de serie grabado en el hardware.
-- La tarjeta recibe senales electricas u ondas de radio y las convierte en datos binarios que la computadora puede procesar.
+- La tarjeta recibe señales electricas u ondas de radio y las convierte en datos binarios que la computadora puede procesar.
 - El sistema operativo asigna una dirección IP (lógica) a la interfaz de red para que otros dispositivos puedan encontrarla en la red.
 
 **Puertos: canales lógicos.** Una computadora puede tener muchas conexiones de red simultaneas. Los puertos (números del 0 al 65535) permiten distinguir entre ellas.
@@ -166,22 +169,22 @@ Es el componente físico (chip de Wi-Fi o puerto Ethernet) que conecta la comput
 
 **El escaneo de puertos:** Los atacantes usan herramientas como Nmap para descubrir que puertos están abiertos en una computadora remota. Si encuentran un puerto 3389 (RDP) abierto e intentan conectarse, pueden probar contraseñas comunes (fuerza bruta) para intentar acceder.
 
-**Caso real:** En 2020, durante la pandemia, miles de empresas habilitaron acceso RDP desde internet para que sus empleados trabajaran desde casa. Los atacantes automáticos escanearon internet en busca de puertos 3389 abiertos. El resultado fue una ola de ataques de ransomware que comenzaban con acceso RDP. Según el informe de Unit 42 de Palo Alto Networks, el 60% de los incidentes de ransomware en 2020-2021 involucraron RDP expuesto.
+**Caso real:** En 2020, durante la pandemia, miles de empresas habilitaron acceso RDP desde internet para que sus empleados trabajaran desde casa. Los atacantes automáticos escanearon internet en busca de puertos 3389 abiertos. El resultado fue una ola de ataques de ransomware que comenzaban con acceso RDP. RDP expuesto fue un vector relevante en campañas de ransomware durante ese periodo, lo que reforzó la necesidad de restringirlo y protegerlo con controles adicionales.
 
-**Fallo crítico:** La gente confía en que "el firewall bloqueará todo." Un firewall bien configurado filtra tráfico no deseado. Pero si abres un puerto para una aplicación legítima (como RDP), el firewall deja pasar el tráfico hacia ese puerto. Si la contrasena del servicio RDP es débil, el firewall no te protege; el atacante solo necesita adivinar o robar esa contrasena.
+**Fallo crítico:** La gente confía en que "el firewall bloqueará todo." Un firewall bien configurado filtra tráfico no deseado. Pero si abres un puerto para una aplicación legítima (como RDP), el firewall deja pasar el tráfico hacia ese puerto. Si la contraseña del servicio RDP es débil, el firewall no te protege; el atacante solo necesita adivinar o robar esa contraseña.
 
 ---
 
 ## El Software: El Alma de la Máquina
 
-El hardware (CPU, RAM, disco) por si solo es electrónica inerte. Necesita software (codigo) para cobrar vida. La relación entre hardware y software es la base de todo lo que hace una computadora.
+El hardware (CPU, RAM, disco) por si solo es electrónica inerte. Necesita software (código) para cobrar vida. La relación entre hardware y software es la base de todo lo que hace una computadora.
 
 ### Programa, Proceso y Servicio: Las Tres Caras del Software
 
 Estos tres términos se usan como sinónimos en la conversación cotidiana, pero en ciberseguridad confundirlos es un error grave que puede hacer que no entiendas como opera un ataque.
 
 **Programa (El Archivo Muerto):**
-Es el codigo almacenado en el disco duro. Por ejemplo, el archivo `chrome.exe` en Windows o `firefox` en Linux.
+Es el código almacenado en el disco duro. Por ejemplo, el archivo `chrome.exe` en Windows o `firefox` en Linux.
 - Es estático. No consume RAM. No consume CPU.
 - Es como un libro de recetas cerrado en una estantería. El libro tiene instrucciones, pero no esta haciendo nada. Solo existe.
 - Si un amigo te dice "descargué hacker.exe en mi disco, mi computadora ya esta infectada," esta equivocado. Mientras el archivo este en el disco sin ejecutarse, no puede hacer daño. Es como tener un libro de recetas de bombas en tu biblioteca: tenerlo no significa que hayas construido una bomba.
@@ -193,7 +196,7 @@ Es el programa cuando le das doble clic. El sistema operativo lee el programa de
 - Tiene un estado: ejecutándose, en espera, detenido, zombie.
 - Tiene un usuario asociado: el proceso hereda los permisos del usuario que lo ejecuta.
 
-**Por que la distincion es crítica en seguridad:**
+**Por qué la distinción es crítica en seguridad:**
 Cuando analizas un sistema en busca de malware, no buscas "programas malos en el disco." Buscas "procesos anómalos en la RAM." Un archivo malicioso en el disco no es peligroso hasta que se convierte en proceso. Los analistas de seguridad (especialmente los que trabajan en SOC) pasan su tiempo mirando procesos: que están haciendo, con quien se comunican por red, que archivos están abriendo, cuanta CPU consumen.
 
 **Servicio o Demonio (El Trabajador Silencioso):**
@@ -235,7 +238,7 @@ Tiene poder absoluto sobre el sistema. No hay restricciones:
 
 ### El Error Mortal del Usuario Administrador Constante
 
-Históricamente (y todavía hoy), mucha gente usa su computadora siempre con una cuenta de administrador. Es cómodo: nunca te sale el molesto mensaje de "se necesita permiso de administrador." Pero es letal por una razon:
+Históricamente (y todavía hoy), mucha gente usa su computadora siempre con una cuenta de administrador. Es cómodo: nunca te sale el molesto mensaje de "se necesita permiso de administrador." Pero es letal por una razón:
 
 Si usas una cuenta de administrador y abres un archivo adjunto de un correo malicioso, el malware hereda automáticamente tus permisos de administrador. El malware puede:
 - Instalarse en `C:\Windows\System32` (el corazón del sistema operativo).
@@ -253,8 +256,8 @@ Si usas una cuenta estándar y haces exactamente lo mismo, el malware intentará
 El principio de mínimo privilegio dice: a ningún usuario, empleado o programa se le debe dar más poder del estrictamente necesario para hacer su trabajo.
 
 **Como se aplica en una empresa:**
-- Un contador necesita acceso al sistema de facturacion, pero no al sistema de nómina ni a los logs del servidor.
-- Un desarrollador necesita acceso al sitio de codigo fuente, pero no a la base de datos de producción con datos reales de clientes.
+- Un contador necesita acceso al sistema de facturación, pero no al sistema de nómina ni a los logs del servidor.
+- Un desarrollador necesita acceso al sitio de código fuente, pero no a la base de datos de producción con datos reales de clientes.
 - Un becario necesita acceso a su carpeta de documentos, pero no a la configuración del router de la empresa.
 
 **Como se aplica a programas:**
@@ -262,7 +265,7 @@ El principio de mínimo privilegio dice: a ningún usuario, empleado o programa 
 - Una calculadora no necesita acceso a tu cámara web.
 - Un visor de fotos no necesita acceso a tu libreta de direcciones.
 
-Los sistemas operativos modernos (Android, iOS, Windows 10+) están implementando esto con permisos de aplicaciones granulares. Cuando una aplicación pide acceso a la cámara sin una razon clara, el sistema te alerta.
+Los sistemas operativos modernos (Android, iOS, Windows 10+) están implementando esto con permisos de aplicaciones granulares. Cuando una aplicación pide acceso a la cámara sin una razón clara, el sistema te alerta.
 
 ---
 
@@ -281,7 +284,7 @@ Un software especial (como VirtualBox, VMware, Hyper-V, o QEMU) es capaz de crea
   - Tipo 1 (Bare-metal): Corre directamente sobre el hardware físico, sin un sistema operativo host intermedio. Ejemplos: VMware ESXi, Microsoft Hyper-V, Proxmox. Se usa en centros de datos.
   - Tipo 2 (Hosted): Corre como un programa más dentro de un sistema operativo existente. Ejemplos: VirtualBox, VMware Workstation. Se usa en computadoras personales para desarrollo y pruebas.
 
-### Por que la Virtualización es Clave en Seguridad
+### Por qué la Virtualización es Clave en Seguridad
 
 Las máquinas virtuales ofrecen aislamiento (sandboxing). Si descargas un virus altamente destructivo y lo ejecutas dentro de una máquina virtual:
 
@@ -293,9 +296,9 @@ Esta es la forma en que los analistas de malware estudian los virus más peligro
 
 ### Fugas de Aislamiento: Cuando la VM No es Suficiente
 
-La virtualización no es 100% segura. Ha habido vulnerabilidades que permiten que el codigo dentro de la máquina virtual "escape" y afecte al host físico. Se llaman "VM Escape" y son extremadamente raras pero peligrosas.
+La virtualización no es 100% segura. Ha habido vulnerabilidades que permiten que el código dentro de la máquina virtual "escape" y afecte al host físico. Se llaman "VM Escape" y son extremadamente raras pero peligrosas.
 
-**Caso real: CVE-2017-5715 (Meltdown) y CVE-2017-5753 (Spectre).** Aunque no son vulnerabilidades de virtualización puras, estas fallas en el diseno de la CPU permitian que un proceso dentro de una máquina virtual leyera memoria del host o de otras máquinas virtuales en el mismo hardware. Los proveedores de nube (AWS, Azure, Google Cloud) tuvieron que aplicar parches de emergencia que ralentizaban el rendimiento de las CPU entre un 5% y un 30%.
+**Caso real: CVE-2017-5715 (Meltdown) y CVE-2017-5753 (Spectre).** Aunque no son vulnerabilidades de virtualización puras, estas fallas en el diseño de la CPU permitian que un proceso dentro de una máquina virtual leyera memoria del host o de otras máquinas virtuales en el mismo hardware. Los proveedores de nube (AWS, Azure, Google Cloud) tuvieron que aplicar parches de emergencia que ralentizaban el rendimiento de las CPU entre un 5% y un 30%.
 
 ### Contenedores vs Máquinas Virtuales
 
@@ -329,7 +332,7 @@ Que nos dice esto?
 - La cuenta usada fue 'admin' (la cuenta de administrador, la más peligrosa).
 - La IP de origen es la misma en todos los intentos.
 
-Un analista de seguridad viendo esto sabria inmediatamente que la cuenta 'admin' fue comprometida por un ataque de fuerza bruta. Accion: deshabilitar la cuenta, revisar que hizo el atacante, cambiar contraseñas.
+Un analista de seguridad viendo esto sabria inmediatamente que la cuenta 'admin' fue comprometida por un ataque de fuerza bruta. Acción: deshabilitar la cuenta, revisar que hizo el atacante, cambiar contraseñas.
 
 ### Tipos de Logs Importantes
 
@@ -360,7 +363,7 @@ No basta con generar logs. Hay que:
 
 ## Mini Laboratorio Práctico
 
-No necesitas instalar nada para empezar a ver estos conceptos en accion. Tu sistema operativo tiene herramientas integradas.
+No necesitas instalar nada para empezar a ver estos conceptos en acción. Tu sistema operativo tiene herramientas integradas.
 
 ### En Windows (Administrador de Tareas)
 
@@ -393,19 +396,19 @@ No necesitas instalar nada para empezar a ver estos conceptos en accion. Tu sist
 
 ## Autoevaluación: Criterio de Dominio
 
-Puedes decir que entiendes los fundamentos de computacion si puedes responder estas preguntas con claridad y, lo más importante, si puedes explicarselas a alguien más.
+Puedes decir que entiendes los fundamentos de computación si puedes responder estas preguntas con claridad y, lo más importante, si puedes explicarselas a alguien más.
 
-1. Un amigo te dice: "Descargué el archivo hacker.exe en mi disco duro. Mi computadora ya esta infectada." Por que esta equivocado técnicamente? Que tendría que pasar para que el archivo sea realmente peligroso?
+1. Un amigo te dice: "Descargué el archivo hacker.exe en mi disco duro. Mi computadora ya esta infectada." Por qué esta equivocado técnicamente? Que tendría que pasar para que el archivo sea realmente peligroso?
 
 2. Explica la diferencia entre un Cold Boot Attack y un volcado de memoria (memory dump). Que atacan exactamente y que información busca obtener cada uno?
 
-3. Por que el Principio de Mínimo Privilegio (PoLP) protege contra ataques de ransomware? Usa la analogía del restaurante para explicarlo.
+3. Por qué el Principio de Mínimo Privilegio (PoLP) protege contra ataques de ransomware? Usa la analogía del restaurante para explicarlo.
 
 4. Si un atacante compromete la cuenta de un usuario estándar en una empresa. Que puede y que no puede hacer? Que pasaría si la cuenta comprometida fuera de un administrador?
 
-5. En el ataque a Maersk con NotPetya, por que el backup offline (desconectado de la red) salvo a la empresa? Que principio de seguridad demuestra esto sobre la gestión de backups?
+5. En el ataque a Maersk con NotPetya, por qué el backup offline (desconectado de la red) salvo a la empresa? Que principio de seguridad demuestra esto sobre la gestión de backups?
 
-6. Abres el Administrador de Tareas de Windows y ves un proceso llamado `svch0st.exe` (con un cero en lugar de la 'o') consumiendo 95% de CPU. Que te dice esto? Es un proceso legítimo o sospechoso? Por que?
+6. Abres el Administrador de Tareas de Windows y ves un proceso llamado `svch0st.exe` (con un cero en lugar de la 'o') consumiendo 95% de CPU. Que te dice esto? Es un proceso legítimo o sospechoso? Por qué?
 
 7. Explica la diferencia entre una máquina virtual y un contenedor en términos de seguridad. En que situación usarías cada uno?
 

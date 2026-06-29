@@ -1,5 +1,8 @@
 ---
 title: "Metodología y Ética: El Ladrón Profesional"
+level: "avanzado"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Metodología y Ética: El Ladrón Profesional
@@ -41,7 +44,7 @@ Limitaciones de esta carta:
 
 ### Formas de Consentimiento
 
-**Valido:** Contrato firmado por ambas partes, con alcance detallado, fechas, límites, firmas, y testigos.
+**Válido:** Contrato firmado por ambas partes, con alcance detallado, fechas, límites, firmas, y testigos.
 
 **Invalido:** Consentimiento verbal ("si, hazlo"), correo electrónico sin respaldo contractual ("puedes probar"), o permiso de una persona sin autoridad ("el gerente de IT dijo que si").
 
@@ -61,7 +64,7 @@ El ladrón de bancos no entra corriendo el primer día. Pasa semanas observando:
 - Infraestructura: Descubrir dominios, subdominios, IPs, tecnologías.
 - Sin tocar el objetivo: Ningún paquete enviado al servidor. El atacante es invisible.
 
-**Por que es la fase más importante:** Un buen reconocimiento puede hacer que el resto del ataque sea trivial. Saber que el servidor usa Apache 2.4.49 con una vulnerabilidad CVE conocida te da el ataque en bandeja.
+**Por qué es la fase más importante:** Un buen reconocimiento puede hacer que el resto del ataque sea trivial. Saber que el servidor usa Apache 2.4.49 con una vulnerabilidad CVE conocida te da el ataque en bandeja.
 
 ### Fase 2: Escaneo y Enumeración
 
@@ -114,7 +117,7 @@ El ladrón limpia sus huellas y borra las cintas de seguridad.
 
 **OWASP Testing Guide:** Enfocado en aplicaciones web, con su propia taxonomia de pruebas.
 
-Cualquier modelo es valido. Lo importante es cubrir todo el ciclo: desde la investigación inicial hasta la entrega del reporte.
+Cualquier modelo es válido. Lo importante es cubrir todo el ciclo: desde la investigación inicial hasta la entrega del reporte.
 
 ## La Ética del Hacking Profesional
 
@@ -128,7 +131,7 @@ Cualquier modelo es valido. Lo importante es cubrir todo el ciclo: desde la inve
 
 **Responsabilidad:** Reportar todas las vulnerabilidades encontradas, no solo las que te pagaron por buscar. Si encuentras algo fuera del alcance, lo reportas pero no lo explotas.
 
-**Divulgación responsable:** Si descubres una vulnerabilidad en un software de terceros (no de tu cliente), notificas al proveedor, esperas un plazo razonable (usualmente 90 dias) para que publique un parche, y solo entonces haces pública la vulnerabilidad.
+**Divulgación responsable:** Si descubres una vulnerabilidad en un software de terceros (no de tu cliente), notificas al proveedor, esperas un plazo razonable (usualmente 90 días) para que publique un parche, y solo entonces haces pública la vulnerabilidad.
 
 ### Dilemas Éticos Frecuentes
 
@@ -136,7 +139,7 @@ Cualquier modelo es valido. Lo importante es cubrir todo el ciclo: desde la inve
 
 **El hallazgo fuera de alcance:** Encuentras una vulnerabilidad crítica en un sistema que no estaba en el alcance pero que compromete toda la red. La explotas para demostrar el riesgo? O solo la mencionas en el reporte? La respuesta correcta es mencionarla sin explotarla, a menos que el cliente autorice expandir el alcance.
 
-**El dato personal expuesto:** Encuentras una base de datos con datos de clientes accesible sin contrasena. Accedes para confirmar? Te detienes en el primer registro? La respuesta depende del ROE. Algunos contratos permiten acceso mínimo para demostrar la vulnerabilidad. Otros lo prohiben explícitamente.
+**El dato personal expuesto:** Encuentras una base de datos con datos de clientes accesible sin contraseña. Accedes para confirmar? Te detienes en el primer registro? La respuesta depende del ROE. Algunos contratos permiten acceso mínimo para demostrar la vulnerabilidad. Otros lo prohiben explícitamente.
 
 ### El Problema del Hacking "Gris"
 
@@ -168,14 +171,14 @@ No leer el contrato. Asumir permisos que no están escritos. No reportar hallazg
 
 ## Autoevaluación
 
-1. Un amigo aprendió Kali Linux y quiere escanear la IP de la universidad "sin hacer daño." Por que te niegas? Que riesgos legales existen?
+1. Un amigo aprendió Kali Linux y quiere escanear la IP de la universidad "sin hacer daño." Por qué te niegas? Que riesgos legales existen?
 2. En que fase de las 5 usarías SQL Injection? En que fase la persistencia via registro de Windows?
 3. Durante un pentest, descubres que la base de datos no esta en el cliente sino en AWS no listado en el contrato. La atacas? Explica legalmente.
-4. Por que el reconocimiento es la fase más importante del ataque? Que información obtienes que hace la explotación trivial?
-5. En un bug bounty, lees archivos de configuración del servidor y ves credenciales. Reportas. La empresa dice que violaste los términos. Tenían razon? Como demostrabas la vulnerabilidad sin violarlos?
+4. Por qué el reconocimiento es la fase más importante del ataque? Que información obtienes que hace la explotación trivial?
+5. En un bug bounty, lees archivos de configuración del servidor y ves credenciales. Reportas. La empresa dice que violaste los términos. Tenían razón? Como demostrabas la vulnerabilidad sin violarlos?
 6. Un cliente pide pentest sin contrato "para ahorrar tiempo." Aceptas? Que riesgos corres?
 7. Descubres que un empleado del cliente usa los servidores para minar crypto. Reportas? A quien? Que implicaciones éticas tiene?
-8. "Un hacker ético y un cibercriminal usan las mismas herramientas y técnicas. La única diferencia es el papel firmado." Explica por que es cierta y sus implicaciones.
+8. "Un hacker ético y un cibercriminal usan las mismas herramientas y técnicas. La única diferencia es el papel firmado." Explica por qué es cierta y sus implicaciones.
 
 ## Metodologías de Prueba Detalladas
 
@@ -217,7 +220,7 @@ Enfoque más academico y científico. Define métricas para medir la seguridad:
 
 **Fuerza Bruta:** Muchas contraseñas contra un solo usuario. Detectable por bloqueo de cuenta. Ruidoso.
 
-**Password Spraying:** Una contrasena común contra muchos usuarios. Ejemplo: "Invierno2024!" contra todos los correos de la empresa. No bloquea cuentas individuales porque solo intenta 1-2 veces por cuenta. Mucho más sigiloso.
+**Password Spraying:** Una contraseña común contra muchos usuarios. Ejemplo: "Invierno2024!" contra todos los correos de la empresa. No bloquea cuentas individuales porque solo intenta 1-2 veces por cuenta. Mucho más sigiloso.
 
 ### Kerberoasting
 
@@ -225,16 +228,16 @@ Técnica para obtener credenciales de cuentas de servicio en Active Directory:
 1. Un atacante con acceso a la red solicita tickets TGS para cuentas de servicio.
 2. El DC devuelve el ticket encriptado con el hash de la cuenta de servicio.
 3. El atacante descarga los tickets y los crackea offline.
-4. Si la contrasena de la cuenta de servicio es débil, la obtiene.
+4. Si la contraseña de la cuenta de servicio es débil, la obtiene.
 
 Detección: Monitorear Event ID 4769 (solicitud de ticket Kerberos) con Encryption Type 0x17 (RC4).
 
 ### PasstheHash
 
-Usar el hash NTLM en lugar de la contrasena para autenticarse:
+Usar el hash NTLM en lugar de la contraseña para autenticarse:
 1. El atacante obtiene el hash NTLM de un usuario (de la memoria LSASS, de un dump de SAM, etc.).
 2. Usa herramientas como Mimikatz para autenticarse usando solo el hash.
-3. No necesita conocer la contrasena en texto plano.
+3. No necesita conocer la contraseña en texto plano.
 
 Detección: Monitorear inicios de sesión con NTLM (Event ID 4624, Logon Type 3 o 9) desde cuentas que normalmente usan Kerberos.
 
@@ -269,10 +272,10 @@ Habilidades blandas necesarias:
 ## Preguntas Adicionales
 
 9. Durante un pentest, el firewall del cliente bloquea todas tus herramientas de C2. Como estableces comunicación con el sistema comprometido? Que alternativas existen?
-10. Explica la diferencia entre Password Spraying y Fuerza Bruta. Cual es más sigilosa y por que?
+10. Explica la diferencia entre Password Spraying y Fuerza Bruta. Cual es más sigilosa y por qué?
 11. Durante la post-explotación, encuentras que Active Directory tiene múltiples rutas de escalacion de privilegios. Cual reportas primero? Cual priorizas?
 12. El cliente te pide que NO uses técnicas de ingeniería social porque "sus empleados son muy inteligentes." Como respondes profesionalmente?
-13. Descubres que el CTO del cliente esta usando una contrasena débil en su cuenta de administrador. Lo incluyes en el reporte? Como manejas la situación diplomaticamente?
+13. Descubres que el CTO del cliente esta usando una contraseña débil en su cuenta de administrador. Lo incluyes en el reporte? Como manejas la situación diplomaticamente?
 14. Después del pentest, el cliente implementa las remediaciones pero te pide que no incluyas las vulnerabilidades en el reporte final para "no tener evidencias negativas." Cual es tu respuesta?
 
 ## Metodologías de Prueba Detalladas
@@ -315,7 +318,7 @@ Enfoque más academico y científico. Define métricas para medir la seguridad:
 
 **Fuerza Bruta:** Muchas contraseñas contra un solo usuario. Detectable por bloqueo de cuenta. Ruidoso.
 
-**Password Spraying:** Una contrasena común contra muchos usuarios. Ejemplo: "Invierno2024!" contra todos los correos de la empresa. No bloquea cuentas individuales porque solo intenta 1-2 veces por cuenta. Mucho más sigiloso.
+**Password Spraying:** Una contraseña común contra muchos usuarios. Ejemplo: "Invierno2024!" contra todos los correos de la empresa. No bloquea cuentas individuales porque solo intenta 1-2 veces por cuenta. Mucho más sigiloso.
 
 ### Kerberoasting
 
@@ -323,16 +326,16 @@ Técnica para obtener credenciales de cuentas de servicio en Active Directory:
 1. Un atacante con acceso a la red solicita tickets TGS para cuentas de servicio.
 2. El DC devuelve el ticket encriptado con el hash de la cuenta de servicio.
 3. El atacante descarga los tickets y los crackea offline.
-4. Si la contrasena de la cuenta de servicio es débil, la obtiene.
+4. Si la contraseña de la cuenta de servicio es débil, la obtiene.
 
 Detección: Monitorear Event ID 4769 (solicitud de ticket Kerberos) con Encryption Type 0x17 (RC4).
 
 ### PasstheHash
 
-Usar el hash NTLM en lugar de la contrasena para autenticarse:
+Usar el hash NTLM en lugar de la contraseña para autenticarse:
 1. El atacante obtiene el hash NTLM de un usuario (de la memoria LSASS, de un dump de SAM, etc.).
 2. Usa herramientas como Mimikatz para autenticarse usando solo el hash.
-3. No necesita conocer la contrasena en texto plano.
+3. No necesita conocer la contraseña en texto plano.
 
 Detección: Monitorear inicios de sesión con NTLM (Event ID 4624, Logon Type 3 o 9) desde cuentas que normalmente usan Kerberos.
 
@@ -367,10 +370,10 @@ Habilidades blandas necesarias:
 ## Preguntas Adicionales
 
 9. Durante un pentest, el firewall del cliente bloquea todas tus herramientas de C2. Como estableces comunicación con el sistema comprometido? Que alternativas existen?
-10. Explica la diferencia entre Password Spraying y Fuerza Bruta. Cual es más sigilosa y por que?
+10. Explica la diferencia entre Password Spraying y Fuerza Bruta. Cual es más sigilosa y por qué?
 11. Durante la post-explotación, encuentras que Active Directory tiene múltiples rutas de escalacion de privilegios. Cual reportas primero? Cual priorizas?
 12. El cliente te pide que NO uses técnicas de ingeniería social porque "sus empleados son muy inteligentes." Como respondes profesionalmente?
-13. Descubres que el CTO del cliente esta usando una contrasena débil en su cuenta de administrador. Lo incluyes en el reporte? Como manejas la situación diplomaticamente?
+13. Descubres que el CTO del cliente esta usando una contraseña débil en su cuenta de administrador. Lo incluyes en el reporte? Como manejas la situación diplomaticamente?
 14. Después del pentest, el cliente implementa las remediaciones pero te pide que no incluyas las vulnerabilidades en el reporte final para "no tener evidencias negativas." Cual es tu respuesta?
 
 ## Tipos de Pruebas de Seguridad
@@ -382,7 +385,7 @@ El tester no tiene información previa del objetivo.
 - Duracion tipica: 2-4 semanas.
 
 ### Pentest de Caja Blanca (White Box)
-El tester tiene acceso completo a la información (codigo fuente, diagramas de red, credenciales).
+El tester tiene acceso completo a la información (código fuente, diagramas de red, credenciales).
 - Ventajas: Evaluación más profunda. Encuentra vulnerabilidades que un atacante externo no encontraria fácilmente. Mayor cobertura.
 - Desventajas: No evalua la capacidad de detección del equipo defensor. Puede dar una falsa sensación de seguridad.
 - Duracion tipica: 3-6 semanas.
@@ -408,7 +411,7 @@ Documento firmado por ambas partes antes de comenzar cualquier prueba. Debe incl
 **Alcance técnico:**
 - Que sistemas, redes, y aplicaciones están incluidos y excluidos.
 - Que técnicas están permitidas (Ingeniería social? Phishing? Ataques físicos?).
-- Ventanas de prueba (horario, dias de la semana, fechas límites).
+- Ventanas de prueba (horario, días de la semana, fechas límites).
 - IPs de origen de las pruebas (para que el cliente pueda whitelistear si es necesario).
 
 **Puntos de contacto:**
@@ -422,7 +425,7 @@ Documento firmado por ambas partes antes de comenzar cualquier prueba. Debe incl
 - Cuando y como se eliminaran los datos después del reporte.
 
 **Límites y exclusiones:**
-- Que NO se debe hacer (denegación de servicio, modificacion de datos sin autorización, acceso a datos personales sin necesidad).
+- Que NO se debe hacer (denegación de servicio, modificación de datos sin autorización, acceso a datos personales sin necesidad).
 - Sistemas críticos que no deben ser tocados.
 - Usuarios que no deben ser objetivo (CEO, personal médico en hospitales, etc.).
 
@@ -443,4 +446,4 @@ Encuentras un archivo con contraseñas de empleados. No debes usarlas para acced
 16. Explica en detalle la diferencia entre Password Spraying y Fuerza Bruta. Bajo que circunstancias usarías cada técnica?
 17. Durante la post-explotación, encuentras múltiples rutas de escalacion en AD. Cual reportas primero? Cual priorizas para el cliente basándote en riesgo de negocio?
 18. El cliente te pide que NO uses ingeniería social porque "sus empleados son muy inteligentes." Como respondes profesionalmente explicando la importancia de la capa humana?
-19. Descubres que el CTO del cliente usa la contrasena "admin123" en su cuenta de administrador. Lo incluyes en el reporte? Como manejas esta situación con tacto?
+19. Descubres que el CTO del cliente usa la contraseña "admin123" en su cuenta de administrador. Lo incluyes en el reporte? Como manejas esta situación con tacto?

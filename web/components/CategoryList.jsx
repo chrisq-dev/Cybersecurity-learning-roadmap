@@ -6,12 +6,22 @@ import Link from 'next/link';
 export default function CategoryList({ structure }) {
   const [query, setQuery] = useState('');
   const [level, setLevel] = useState('todos');
+  const [contentType, setContentType] = useState('todos');
   const levels = [
     ['todos', 'Todos'],
-    ['inicial', 'Inicial'],
+    ['inicial', 'Introductorio'],
     ['intermedio', 'Intermedio'],
     ['avanzado', 'Avanzado'],
     ['referencia', 'Referencia'],
+  ];
+  const contentTypes = [
+    ['todos', 'Todos los tipos'],
+    ['guia', 'Guías'],
+    ['ruta', 'Rutas'],
+    ['playbook', 'Playbooks'],
+    ['glosario', 'Glosarios'],
+    ['recurso', 'Recursos'],
+    ['articulo', 'Artículos'],
   ];
 
   // Helper to normalize strings (remove accents and convert to lowercase)
@@ -34,8 +44,9 @@ export default function CategoryList({ structure }) {
         const titleMatches = normalizeStr(page.title).includes(normalizedQuery);
         const contentMatches = normalizeStr(page.searchText).includes(normalizedQuery);
         const levelMatches = level === 'todos' || page.level === level;
+        const typeMatches = contentType === 'todos' || page.contentType === contentType;
         // If the category itself matches, show all its pages. Otherwise, filter by title match.
-        return levelMatches && (categoryMatches || titleMatches || contentMatches);
+        return levelMatches && typeMatches && (categoryMatches || titleMatches || contentMatches);
       });
 
       return {
@@ -100,6 +111,15 @@ export default function CategoryList({ structure }) {
         })}
       </div>
 
+      <div className="content-type-filter">
+        <label htmlFor="content-type">Tipo de contenido</label>
+        <select id="content-type" value={contentType} onChange={(event) => setContentType(event.target.value)}>
+          {contentTypes.map(([value, label]) => (
+            <option value={value} key={value}>{label}</option>
+          ))}
+        </select>
+      </div>
+
       {/* Main Routes Grid */}
       <div style={{ textAlign: 'left', marginTop: '4rem' }}>
         <h2 className="serif-title" style={{ fontSize: '2rem', borderBottom: 'none', marginBottom: '1rem' }}>
@@ -120,6 +140,10 @@ export default function CategoryList({ structure }) {
                   {category.pages.map((page, pIdx) => (
                     <Link href={`/${page.slug.join('/')}`} key={pIdx} className="book-card" style={{ padding: '1rem', textDecoration: 'none' }}>
                       <h4 style={{ margin: 0, fontSize: '1.1rem', color: 'var(--text-main)' }}>{page.title}</h4>
+                      <p style={{ margin: '0.35rem 0 0', fontSize: '0.78rem', color: 'var(--text-muted)', textTransform: 'capitalize' }}>
+                        {page.level === 'inicial' ? 'introductorio' : page.level}
+                        {page.contentType ? ` · ${page.contentType.replace('-', ' ')}` : ''}
+                      </p>
                       {normalizedQuery && normalizeStr(page.searchText).includes(normalizedQuery) && !normalizeStr(page.title).includes(normalizedQuery) && (
                         <p style={{ margin: '0.4rem 0 0 0', fontSize: '0.85rem', lineHeight: 1.45, color: 'var(--text-muted)' }}>
                           {page.excerpt}...

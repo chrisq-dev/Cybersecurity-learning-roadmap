@@ -1,5 +1,8 @@
 ---
 title: "Forense de Memoria: Leyendo el Pensamiento del Sistema"
+level: "avanzado"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Forense de Memoria: Leyendo el Pensamiento del Sistema
@@ -8,7 +11,7 @@ title: "Forense de Memoria: Leyendo el Pensamiento del Sistema"
 
 Aprender a extraer y analizar la memoria RAM para descubrir la actividad en vivo del sistema.
 
-La memoria RAM es efimera. Apagas el equipo, desaparece. Pum. Se fue. Pero mientras el sistema esta encendido, la RAM contiene la foto completa de la actividad actual: procesos, conexiones de red, claves de cifrado, comandos, archivos abiertos, y codigo malicioso. Todo lo que el sistema esta pensando en ese momento.
+La memoria RAM es efimera. Apagas el equipo, desaparece. Pum. Se fue. Pero mientras el sistema esta encendido, la RAM contiene la foto completa de la actividad actual: procesos, conexiones de red, claves de cifrado, comandos, archivos abiertos, y código malicioso. Todo lo que el sistema esta pensando en ese momento.
 
 Porque basicamente, es eso.
 
@@ -24,7 +27,7 @@ pasa si abres un archivo, lo ves, y lo cierras? Una parte quedó en la RAM. Si e
 
 ### Que Hay en la RAM
 
-- Codigo de procesos en ejecución.
+- Código de procesos en ejecución.
 - Datos de procesos (variables, buffers).
 - Stack y heap de cada proceso.
 - Kernel y drivers.
@@ -66,7 +69,7 @@ Diferencia entre dump completo y dump parcial. Dump de usuario vs dump de kernel
 
 ### Recolección desde Hypervisor
 
-En máquinas virtuales, el hipervisor (Hyper-V, ESXi, KVM) puede tomar snapshot de la RAM de la VM sin tocar el SO huésped. Esto es ideal porque no hay modificacion del sistema.
+En máquinas virtuales, el hipervisor (Hyper-V, ESXi, KVM) puede tomar snapshot de la RAM de la VM sin tocar el SO huésped. Esto es ideal porque no hay modificación del sistema.
 
 ## Análisis con Volatility
 
@@ -99,7 +102,7 @@ Línea de comando completa de cada proceso.
 Archivos abiertos y referenciados en memoria. Incluye archivos eliminados en disco pero aún en RAM.
 
 `vol -f dump.raw windows.malfind`:
-Detecta regiones de memoria con patrones sospechosos (heap spray, shellcode, inyección de codigo). Escanea por permisos de ejecución y escritura no estándar.
+Detecta regiones de memoria con patrones sospechosos (heap spray, shellcode, inyección de código). Escanea por permisos de ejecución y escritura no estándar.
 
 `vol -f dump.raw windows.dlldump`:
 Extrae DLLs cargadas de la memoria para análisis estático de malware.
@@ -124,7 +127,7 @@ aqui van escenarios reales para que veas como se aplica todo esto. No es teoría
 
 ### Proceso Sospechoso
 
-El analista encuentra un proceso `svch0st.exe` (notese el 0). PID 4321, sin firma digital, con conexion a IP 185.130.5.xx:8443.
+El analista encuentra un proceso `svch0st.exe` (notese el 0). PID 4321, sin firma digital, con conexión a IP 185.130.5.xx:8443.
 
 Ejecuta `cmdline` y ve: `C:\Users\...\svch0st.exe -c 185.130.5.xx:8443`.
 
@@ -136,7 +139,7 @@ Extrae el binario con `dumpfiles` y lo manda a análisis estático.
 
 `malfind` detecta una region de memoria inyectada en un proceso legítimo (`explorer.exe`). La region tiene permisos RWX (lectura, escritura, ejecución) y contiene una DLL maliciosa.
 
-El atacante uso `CreateRemoteThread` para inyectar codigo en un proceso confiable.
+El atacante uso `CreateRemoteThread` para inyectar código en un proceso confiable.
 
 ### Keylogger en Memoria
 
@@ -144,7 +147,7 @@ En el stack del proceso `explorer.exe` se encuentran buffers con captura de tecl
 
 ## Rootkits y Procesos Ocultos
 
-Por que esto importa: un rootkit bien hecho no lo ves con las herramientas normales. El proceso malicioso esta ahí, corriendo, pero escondido. Y tu tienes que encontrarlo.
+Por qué esto importa: un rootkit bien hecho no lo ves con las herramientas normales. El proceso malicioso esta ahí, corriendo, pero escondido. Y tu tienes que encontrarlo.
 
 ### DKOM (Direct Kernel Object Manipulation)
 
@@ -198,7 +201,7 @@ Y ahora la otra cara de la moneda. Si tu sabes como se investiga la memoria, el 
 
 El atacante puede intentar:
 - No ejecutar malware en RAM (fileless pero con técnicas de persistencia en disco).
-- Usar procesos legítimos para codigo malicioso (living off the land).
+- Usar procesos legítimos para código malicioso (living off the land).
 - Rootkits que ocultan procesos de las herramientas de dump.
 - Borrar rastros de memoria antes de que llegue el perito.
 - Cifrado en memoria solo cuando es necesario.
@@ -213,7 +216,7 @@ Con el tiempo empiezas a reconocer los procesos normales de memoria. Cuando algo
 
 ### Procesos Legítimos vs Maliciosos
 
-Hay procesos que siempre deben estar en un sistema Windows limpio. Cualquier variacion es sospechosa:
+Hay procesos que siempre deben estar en un sistema Windows limpio. Cualquier variación es sospechosa:
 
 `svchost.exe`: Servicio de host. Debe ejecutarse desde `C:\Windows\System32`. Si se ejecuta desde `C:\Users` o `C:\Temp`, es malicioso.
 
@@ -221,7 +224,7 @@ Hay procesos que siempre deben estar en un sistema Windows limpio. Cualquier var
 
 `explorer.exe`: Shell de Windows. Solo una instancia por sesión de usuario. Múltiples instancias pueden indicar inyección.
 
-`csrss.exe`, `wininit.exe`, `services.exe`: Procesos del sistema. Cualquier variacion en nombre (csrsss.exe) es sospechosa.
+`csrss.exe`, `wininit.exe`, `services.exe`: Procesos del sistema. Cualquier variación en nombre (csrsss.exe) es sospechosa.
 
 ### Procesos con Nombre Sospechoso
 
@@ -255,7 +258,7 @@ Linux: `linux.bash` recupera historial de comandos bash de la memoria.
 
 `windows.netscan` muestra conexiones activas. IP, puerto, estado, PID.
 
-Un proceso legítimo (`svchost.exe`) con conexion a IP rusa en puerto 8443 es hallazgo inmediato.
+Un proceso legítimo (`svchost.exe`) con conexión a IP rusa en puerto 8443 es hallazgo inmediato.
 
 ### Registro en Memoria
 
@@ -282,7 +285,7 @@ Dump de RAM de un servidor Windows comprometido. Pasos:
 ### Hallazgos Tipicos
 
 - Proceso `wmiprvse.exe` sospechoso en `C:\Users\Public`.
-- Conexion a `185.130.5.xx:443`.
+- Conexión a `185.130.5.xx:443`.
 - Inyección de DLL en `explorer.exe`.
 - Comandos de PowerShell para descarga de payload.
 - Persistencia via Run key en registro.
@@ -308,7 +311,7 @@ Volatility puede construir una línea de tiempo de actividad del sistema basada 
 - Tiempos de creación de procesos.
 - Tiempos de conexiones de red.
 - Tiempos de acceso a archivos.
-- Tiempos de modificacion de registro.
+- Tiempos de modificación de registro.
 
 ### Correlacion con Otras Fuentes
 
@@ -318,7 +321,7 @@ Correlacionar eventos de memoria con logs de red y disco para reconstruir la his
 
 ### Detección de C2
 
-`netscan` revela conexion a IP sospechosa desde proceso legítimo. El atacante uso process hollowing en svchost.exe.
+`netscan` revela conexión a IP sospechosa desde proceso legítimo. El atacante uso process hollowing en svchost.exe.
 
 ### Detección de Keylogger
 
@@ -336,7 +339,7 @@ Sistemas con memoria cifrada (Intel SGX, AMD SEV) no permiten acceso a páginas 
 
 ### Anti-Forense en Memoria
 
-El malware puede sobrescribir su propio codigo en memoria después de ejecutarse. Puede detectar Volatility y alterar comportamiento.
+El malware puede sobrescribir su propio código en memoria después de ejecutarse. Puede detectar Volatility y alterar comportamiento.
 
 ### Dump Incompleto
 
@@ -344,7 +347,7 @@ Si el proceso de dump falla, parte de la memoria se pierde. Repetir dump si es p
 
 ## Integración con Otras Fuentes
 
-Correlacion de memoria con logs de disco, red y SIEM. Una conexion de red sospechosa en memoria se confirma con logs de firewall.
+Correlacion de memoria con logs de disco, red y SIEM. Una conexión de red sospechosa en memoria se confirma con logs de firewall.
 
 ## Memoria como Evidencia en Juicio
 
@@ -384,7 +387,7 @@ Caso: servidor comprometido. Pasos: info, psscan, netscan, malfind, cmdline, dum
 
 1. Un perito llega a una escena con la PC encendida. La pantalla muestra una consola con actividad. Cual es su prioridad?
 
-2. La herramienta de dump de RAM se ejecuta desde un USB en el sistema sospechoso. Por que es problematico?
+2. La herramienta de dump de RAM se ejecuta desde un USB en el sistema sospechoso. Por qué es problematico?
 
 3. Que información encuentras en un dump de RAM que no encuentras en un disco formateado?
 
@@ -392,7 +395,7 @@ Caso: servidor comprometido. Pasos: info, psscan, netscan, malfind, cmdline, dum
 
 5. Los procesos `explorer.exe` y `notepad.exe` aparecen en `pslist`. Pero `psscan` muestra un tercer proceso `svchost.exe` que no aparece en `pslist`. Que pasa?
 
-6. Como encuentras una contrasena de BitLocker en un dump de RAM?
+6. Como encuentras una contraseña de BitLocker en un dump de RAM?
 
 7. En Linux, el atacante ejecutó comandos en bash. Como recuperas esos comandos del dump?
 
@@ -400,4 +403,4 @@ Caso: servidor comprometido. Pasos: info, psscan, netscan, malfind, cmdline, dum
 
 9. Que ventaja tiene tomar un snapshot de RAM desde el hipervisor de una VM comparado con tomar el dump dentro del SO?
 
-10. Un rootkit oculta un proceso malicioso. Por que `psscan` puede encontrarlo pero `pslist` no?
+10. Un rootkit oculta un proceso malicioso. Por qué `psscan` puede encontrarlo pero `pslist` no?

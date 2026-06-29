@@ -1,5 +1,8 @@
 ---
 title: "Pretexting y OSINT: El Actor y la Basura Digital"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Pretexting y OSINT: El Actor y la Basura Digital
@@ -10,7 +13,7 @@ Aprender como los criminales usan la actuación teatral y la información públi
 
 El phishing depende de un clic ciego. Los ataques de alto nivel requieren una estrategia psicológica mucho más invasiva. El atacante necesita conocerte antes del golpe.
 
-El Pretexting es la creación de un escenario fabricado para persuadir a una victima de que revele información o realice una accion. No es solo un correo. Es actuar, improvisar, y manipular en tiempo real, a veces durante semanas enteras.
+El Pretexting es la creación de un escenario fabricado para persuadir a una víctima de que revele información o realice una acción. No es solo un correo. Es actuar, improvisar, y manipular en tiempo real, a veces durante semanas enteras.
 
 ## La Analogía: El Actor de Método
 
@@ -35,7 +38,7 @@ toda esta info es pública. No necesitas ser un acosador profesional, solo saber
 LinkedIn: Estructura, tecnologías, contactos.
 Facebook/Instagram: Vida personal, familiares, ubicaciones.
 Twitter: Opiniones, quejas, eventos.
-GitHub: Codigo, configuraciones.
+GitHub: Código, configuraciones.
 Glassdoor: Cultura interna, salarios, quejas.
 Google: Noticias, registros públicos.
 WHOIS: Información de dominios.
@@ -49,19 +52,19 @@ La gente publica voluntariamente las respuestas a sus preguntas de seguridad:
 - "Ciudad de nacimiento" -> Facebook
 - "Equipo favorito" -> Twitter
 
-Un estudio de Cambridge mostro que se pueden adivinar preguntas de seguridad con 75% de precision solo con redes sociales.
+Un estudio de Cambridge mostro que se pueden adivinar preguntas de seguridad con 75% de precisión solo con redes sociales.
 
-## Pretexting en Accion
+## Pretexting en Acción
 
 ### La Llamada Telefónica
 
 El hacker llama al helpdesk fingiendo ser el VP de Finanzas:
 
-"Mi computadora se bloqueo! Estoy por subir al avión para firmar un contrato de 10 millones. Necesito que me resetees la contrasena AHORA."
+"Mi computadora se bloqueo! Estoy por subir al avión para firmar un contrato de 10 millones. Necesito que me resetees la contraseña AHORA."
 
 Usa OSINT: "Como le dije a tu jefe Roberto en el golf de ayer..."
 
-El empleado, obedeciendo a la autoridad, dicta una nueva contrasena. El hacker de 19 años en pijama obtiene acceso total a la red financiera.
+El empleado, obedeciendo a la autoridad, dicta una nueva contraseña. El hacker de 19 años en pijama obtiene acceso total a la red financiera.
 
 ### Pretexting Presencial
 
@@ -75,7 +78,7 @@ Una vez dentro:
 
 ### Pretexting por Correo a RRHH
 
-"Hola, soy Juan Perez de Finanzas. Olvide mi contrasena del sistema de nominas y necesito acceder para procesar la nómina. Mi jefe Carlos Lopez me pidio que escriba. Mi empleado es 12345."
+"Hola, soy Juan Perez de Finanzas. Olvide mi contraseña del sistema de nominas y necesito acceder para procesar la nómina. Mi jefe Carlos Lopez me pidio que escriba. Mi empleado es 12345."
 
 El atacante obtuvo el número de empleado de una foto de gafete en LinkedIn.
 
@@ -96,11 +99,11 @@ Evaldas Rimasauskas registro una empresa fantasma con el mismo nombre que Quanta
 
 ### Kevin Mitnick y Nokia
 
-Mitnick investigó a un empleado de Nokia con acceso al codigo fuente. Llamó a IT de Nokia fingiendo ser el empleado: "Hola, soy John de ingeniería. Trabajo desde casa y necesito acceso al repositorio." IT le dio las credenciales sin verificar.
+Mitnick investigó a un empleado de Nokia con acceso al código fuente. Llamó a IT de Nokia fingiendo ser el empleado: "Hola, soy John de ingeniería. Trabajo desde casa y necesito acceso al repositorio." IT le dio las credenciales sin verificar.
 
 ### MGM Resorts 2023
 
-Scattered Spider investigo empleados de MGM en LinkedIn, identifico personal de IT, y llamó al helpdesk fingiendo ser empleados que necesitaban resetear MFA. Accedieron a una cuenta, escalaron privilegios, y comprometieron la infraestructura cloud. Costo: 100 millones de dólares y 10 dias de caída.
+Scattered Spider investigo empleados de MGM en LinkedIn, identifico personal de IT, y llamó al helpdesk fingiendo ser empleados que necesitaban resetear MFA. Accedieron a una cuenta, escalaron privilegios, y comprometieron la infraestructura cloud. Costo: 100 millones de dólares y 10 días de caída.
 
 ## Formas de Falla
 
@@ -108,7 +111,7 @@ Confiar en identificación por voz: "Reconocio su voz" no es validación suficie
 
 No verificar fuera de banda: El empleado debe colgar, buscar el número oficial, y llamar de vuelta.
 
-Procedimientos débiles: "Cualquier ejecutivo puede pedir reset de contrasena" es peligroso.
+Procedimientos débiles: "Cualquier ejecutivo puede pedir reset de contraseña" es peligroso.
 
 Falta de entrenamiento contra pretexting: Empleados entrenados para phishing por correo pero no llamadas.
 
@@ -118,7 +121,7 @@ Sobre-compartir en redes sociales: Cada publicación sobre tecnología, horarios
 
 ### Defensa: Protocolos Anti-Humanos
 
-- Ningún reset de contrasena por teléfono. Solicitud por escrito + verificación por videollamada.
+- Ningún reset de contraseña por teléfono. Solicitud por escrito + verificación por videollamada.
 - Solicitudes urgentes verificadas por segundo canal.
 - Helpdesk con procedimientos que no dependan de información pública.
 
@@ -176,7 +179,7 @@ Pistas que delatan un pretexting:
 - La persona no puede proporcionar un número de vuelta directo.
 - La historia tiene detalles que no coinciden (timestamps, nombres).
 - Urgencia excesiva.
-- Pide información o accion que no corresponde a su rol.
+- Pide información o acción que no corresponde a su rol.
 - Evita videollamada.
 - No puede responder preguntas básicas sobre el contexto que dice conocer.
 
@@ -191,9 +194,9 @@ Paso 4: Si dice "no llame", escalar a seguridad.
 
 Los atacantes usan modelos de voz para clonar voces. Ejemplo: llamada del "CEO" usando voz sintetica entrenada con videos de YouTube.
 
-Deepfake en tiempo real para videollamadas. La victima ve y escucha a la persona suplantada.
+Deepfake en tiempo real para videollamadas. La víctima ve y escucha a la persona suplantada.
 
-Defensa: Codigo de verificación fuera de banda. Pregunta que solo la persona real sabria. Palabra clave pre-acordada.
+Defensa: Código de verificación fuera de banda. Pregunta que solo la persona real sabria. Palabra clave pre-acordada.
 
 ## Pretexting en la Era Remota
 
@@ -201,11 +204,11 @@ El trabajo remoto multiplico el pretexting. Nadie conoce a los colegas en person
 
 Los atacantes se aprovechan: "Hola, soy el nuevo de IT, trabajo remoto desde España."
 
-Protocolo: Verificación visual (videollamada). Directorio de empleados con fotos. Codigo de verificación interno.
+Protocolo: Verificación visual (videollamada). Directorio de empleados con fotos. Código de verificación interno.
 
 ## El Costo del Pretexting Exitoso
 
-El ataque a MGM Resorts 2023: un atacante llamó al helpdesk, fingio ser un empleado, obtuvo reset de contrasena, entró a la red, cifró servidores. Costo: $100 millones.
+El ataque a MGM Resorts 2023: un atacante llamó al helpdesk, fingio ser un empleado, obtuvo reset de contraseña, entró a la red, cifró servidores. Costo: $100 millones.
 
 No es solo pérdida económica: reputación, clientes, reguladores.
 
@@ -221,11 +224,11 @@ Cada interacción física también usa un pretexto. El uniforme y la actitud son
 
 ### Clonación de Voz
 
-Con segundos de audio de una persona (YouTube, podcasts, llamadas), los atacantes clonan la voz con IA. Llaman a la victima con la voz del CEO.
+Con segundos de audio de una persona (YouTube, podcasts, llamadas), los atacantes clonan la voz con IA. Llaman a la víctima con la voz del CEO.
 
 ### Deepfake en Tiempo Real
 
-Deepfake para videollamadas. La victima ve y escucha a la persona suplantada. El atacante usa software como DeepFaceLab o Avatarify.
+Deepfake para videollamadas. La víctima ve y escucha a la persona suplantada. El atacante usa software como DeepFaceLab o Avatarify.
 
 ### Defensa contra IA
 
@@ -259,7 +262,7 @@ Seguir a un empleado a través de una puerta con control de acceso. El empleado 
 
 ### Shoulder Surfing
 
-Mirar la pantalla o teclado mientras la victima escribe su contrasena.
+Mirar la pantalla o teclado mientras la víctima escribe su contraseña.
 
 ### Dumpster Diving
 
@@ -273,7 +276,7 @@ Simulaciones de pretexting: llamadas de prueba al helpdesk, visitas de prueba a 
 
 ### Procedimientos
 
-Checklist de verificación de identidad obligatoria. Reset de contrasena requiere: nombre, fecha de nacimiento, último digito de empleado, codigo de verificación.
+Checklist de verificación de identidad obligatoria. Reset de contraseña requiere: nombre, fecha de nacimiento, último digito de empleado, código de verificación.
 
 ### Cultura
 
@@ -293,7 +296,7 @@ El protagonista de "Agarrame si puedes" uso pretexting para hacerse pasar por pi
 
 ### Políticas de Verificación
 
-Toda solicitud de acceso, reset de contrasena o cambio de privilegios debe verificarse por dos canales.
+Toda solicitud de acceso, reset de contraseña o cambio de privilegios debe verificarse por dos canales.
 
 ### Entrenamiento Continuo
 
@@ -369,17 +372,17 @@ Simular -> medir -> entrenar -> simular de nuevo. La defensa contra pretexting n
 
 El pretexting es la puerta de entrada a ataques mayores. Invertir en verificación de identidad, entrenamiento del helpdesk y procedimientos de doble verificación.
 
-## Reflexion Final
+## Reflexión Final
 
-La tecnología más avanzada no detiene a un empleado que dicta su contrasena por teléfono. La defensa comienza en las personas.
+La tecnología más avanzada no detiene a un empleado que dicta su contraseña por teléfono. La defensa comienza en las personas.
 
 ## Autoevaluación
 
-1. Un hacker descubre en LinkedIn que un nuevo empleado de Pagos empezó hace 3 dias. Usando pretexting, describe un escenario telefónico para lograr una transferencia no autorizada.
+1. Un hacker descubre en LinkedIn que un nuevo empleado de Pagos empezó hace 3 días. Usando pretexting, describe un escenario telefónico para lograr una transferencia no autorizada.
 
-2. Explica la relación entre OSINT y spear phishing. Por que investigar primero lo hace letal?
+2. Explica la relación entre OSINT y spear phishing. Por qué investigar primero lo hace letal?
 
-3. Por que EDR, firewalls e IPS no detectan a una secretaria dictando su contrasena por teléfono?
+3. Por qué EDR, firewalls e IPS no detectan a una secretaria dictando su contraseña por teléfono?
 
 4. Un empleado recibe llamada de alguien que dice ser IT, sabe su nombre, cargo, y jefe. Que procedimientos debe seguir para verificar?
 
@@ -387,10 +390,10 @@ La tecnología más avanzada no detiene a un empleado que dicta su contrasena po
 
 6. En el fraude a Google y Facebook, como se robaron 100 millones sin tecnología ofensiva?
 
-7. Un atacante llama al helpdesk diciendo ser el CEO. El empleado reconoce la voz. Por que no es verificación suficiente?
+7. Un atacante llama al helpdesk diciendo ser el CEO. El empleado reconoce la voz. Por qué no es verificación suficiente?
 
-8. Diseña un protocolo de 3 pasos para reset de contrasena por teléfono que cualquier empleado (incluyendo CEO) deba seguir.
+8. Diseña un protocolo de 3 pasos para reset de contraseña por teléfono que cualquier empleado (incluyendo CEO) deba seguir.
 
-9. Explica el principio de autoridad en pretexting. Por que los atacantes se hacen pasar por ejecutivos?
+9. Explica el principio de autoridad en pretexting. Por qué los atacantes se hacen pasar por ejecutivos?
 
-10. Cual es el vector de ataque más peligroso y difícil de mitigar, y por que recae en el factor humano?
+10. Cual es el vector de ataque más peligroso y difícil de mitigar, y por qué recae en el factor humano?

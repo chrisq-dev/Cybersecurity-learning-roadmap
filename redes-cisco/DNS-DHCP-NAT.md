@@ -1,5 +1,8 @@
 ---
 title: "DNS, DHCP y NAT: Los servicios que mantienen internet funcionando y como se rompen"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # DNS, DHCP y NAT: Los servicios que mantienen internet funcionando y como se rompen
@@ -14,7 +17,7 @@ Estos tres servicios son atacados constantemente porque están en la base de la 
 
 ## DNS: el directorio telefónico de internet
 
-### Que es y por que existe
+### Que es y por qué existe
 
 Las computadoras no entienden nombres. Entienden números. Cuando escribes "facebook.com" en tu navegador, tu computadora necesita saber la dirección IP de Facebook para poder enviar el paquete. DNS hace esa traducción.
 
@@ -104,9 +107,9 @@ TTL comunes:
 - 300 (5 minutos): para cambios frecuentes (balanceo de carga, failover)
 - 3600 (1 hora): valor por defecto común
 - 86400 (24 horas): para registros que cambian poco
-- 604800 (7 dias): máximo recomendado
+- 604800 (7 días): máximo recomendado
 
-Si cambias la IP de tu servidor web y el TTL es de 24 horas, los usuarios pueden tardar un día entero en ver el cambio. Por eso, antes de un cambio planeado, se reduce el TTL a 300 durante dias, se hace el cambio, y luego se restaura el TTL original.
+Si cambias la IP de tu servidor web y el TTL es de 24 horas, los usuarios pueden tardar un día entero en ver el cambio. Por eso, antes de un cambio planeado, se reduce el TTL a 300 durante días, se hace el cambio, y luego se restaura el TTL original.
 
 ### Tipos de consultas DNS
 
@@ -138,7 +141,7 @@ Las consultas y respuestas DNS usan un formato de mensaje común:
 
 El encabezado contiene:
 - ID de transacción: 16 bits, correlaciona consultas con respuestas
-- Flags: QR (consulta/respuesta), Opcode, AA (respuesta autoritativa), TC (truncado), RD (recursion deseada), RA (recursion disponible), RCODE (codigo de respuesta)
+- Flags: QR (consulta/respuesta), Opcode, AA (respuesta autoritativa), TC (truncado), RD (recursion deseada), RA (recursion disponible), RCODE (código de respuesta)
 - Preguntas, respuestas, autoridad, adicionales: contadores
 
 ### DNS sobre TCP vs UDP
@@ -163,7 +166,7 @@ DNSSEC no cifra las consultas. Solo verifica que las respuestas no han sido modi
 ### Como se ataca DNS
 
 **DNS Spoofing:**
-El atacante intercepta la consulta DNS y responde antes que el servidor legítimo. Como DNS usa UDP (sin conexion, sin verificación), el primer paquete que llega es aceptado.
+El atacante intercepta la consulta DNS y responde antes que el servidor legítimo. Como DNS usa UDP (sin conexión, sin verificación), el primer paquete que llega es aceptado.
 
 Mitigación: DNSSEC (firma las respuestas), aleatorizar el puerto origen y el ID de transacción.
 
@@ -192,7 +195,7 @@ El servidor DNS configurado esta caído. Los nombres no se resuelven. Ping a IPs
 Un registro A apunta a la IP equivocada. O un registro MX apunta a un servidor de correo que no existe.
 
 **TTL mal configurado:**
-Un TTL muy alto (dias) hace que los cambios tarden en propagarse. Un TTL muy bajo (segundos) genera muchas consultas y carga en los servidores.
+Un TTL muy alto (días) hace que los cambios tarden en propagarse. Un TTL muy bajo (segundos) genera muchas consultas y carga en los servidores.
 
 **Delegacion rota:**
 Los servidores NS configurados en el registro del dominio no coinciden con los servidores que realmente tienen los registros. El dominio no se resuelve.
@@ -202,7 +205,7 @@ No renuevas el dominio. Alguien más lo compra. Puede recibir el correo destinad
 
 ## DHCP: el recepcionista automático
 
-### Que es y por que existe
+### Que es y por qué existe
 
 DHCP (Dynamic Host Configuration Protocol) asigna direcciones IP, máscaras de subred, gateway predeterminado y servidores DNS a los dispositivos cuando se conectan a una red.
 
@@ -305,7 +308,7 @@ Configuras una opción incorrecta (por ejemplo, Option 150 mal formateada para t
 
 ## NAT: el traductor que salvo IPv4
 
-### Que es y por que existe
+### Que es y por qué existe
 
 NAT (Network Address Translation) permite que múltiples dispositivos con IPs privadas compartan una sola IP pública.
 
@@ -369,7 +372,7 @@ Esto crea una entrada permanente en la tabla NAT: todo el tráfico a la IP públ
 
 ### NAT como barrera de seguridad
 
-NAT no fue diseñado como mecanismo de seguridad, pero lo es. Los dispositivos detrás de NAT son invisibles desde internet. Un atacante no puede iniciar una conexion contra tu laptop si esta detrás de NAT.
+NAT no fue diseñado como mecanismo de seguridad, pero lo es. Los dispositivos detrás de NAT son invisibles desde internet. Un atacante no puede iniciar una conexión contra tu laptop si esta detrás de NAT.
 
 Pero NAT no es un firewall:
 - No inspecciona el contenido de los paquetes
@@ -443,7 +446,7 @@ Un atacante escaneo internet en busca de dispositivos IoT (cámaras, routers, DV
 
 4. Como funciona NAT/PAT? Explica el proceso completo desde que un dispositivo interno envía un paquete hasta que recibe la respuesta, incluyendo el contenido de la tabla NAT.
 
-5. Un empleado no puede conectarse a internet. Su computadora muestra una IP 169.254.x.x. Que significa esto? Que proceso de asignación de IPs fallo y por que aparece ese rango específico?
+5. Un empleado no puede conectarse a internet. Su computadora muestra una IP 169.254.x.x. Que significa esto? Que proceso de asignación de IPs fallo y por qué aparece ese rango específico?
 
 6. Que es DNSSEC y que problema de seguridad resuelve específicamente? Explica la cadena de confianza desde la raíz hasta el dominio.
 
@@ -451,6 +454,6 @@ Un atacante escaneo internet en busca de dispositivos IoT (cámaras, routers, DV
 
 8. Que es DHCP snooping y como previene los ataques de rogue DHCP server? Que diferencia hay entre un puerto confiable y uno no confiable en este contexto?
 
-9. Que es el tunneling DNS y como puede un atacante usarlo para exfiltrar datos? Por que es difícil de bloquear en una red corporativa?
+9. Que es el tunneling DNS y como puede un atacante usarlo para exfiltrar datos? Por qué es difícil de bloquear en una red corporativa?
 
 10. Un protocolo como FTP incluye la dirección IP en los datos de la aplicación. Que problema causa esto con NAT y como lo resuelve un ALG?

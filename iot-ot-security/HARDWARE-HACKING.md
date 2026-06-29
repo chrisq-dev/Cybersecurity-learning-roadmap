@@ -1,5 +1,8 @@
 ---
 title: "Hardware Hacking: Destripando Circuitos"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 # Hardware Hacking: Destripando Circuitos
 
@@ -170,7 +173,7 @@ i2cget -y 1 0x50 0x00   # Leer byte en dirección 0x00
 Cuando crees que tu control remoto es seguro? no todos los dispositivos usan Wi-Fi. Millones de aparatos usan ondas de radio simples: controles de garaje, llaves de automóviles modernos, sensores de temperatura de aviones, y timbres de casas.
 
 Para hackearlos, usamos **SDR (Software Defined Radio - Radio Definida por Software)**.
-Con una antena USB barata de $30 dólares (como el RTL-SDR) o equipos avanzados como el *HackRF One*, un atacante puede interceptar frecuencias de radio flotando en el aire.
+Con un receptor SDR compatible o un transceptor autorizado para la banda, un analista puede observar señales de radio. Capturar o retransmitir comunicaciones puede estar regulado; verifica la legislación y trabaja solo con sistemas propios o autorizados.
 
 ### El Ataque de Repetición (Replay Attack)
 Imagina que tú aprietas el botón de las llaves de tu auto para abrir la puerta. Tu llave envía un sonido (onda de radio) que dice `101010`.
@@ -212,13 +215,15 @@ A la noche, cuando estás durmiendo, el hacker va a tu auto y "reproduce" el mis
    ```
 
 **Herramientas SDR:**
-| Herramienta | Costo | Frecuencia | Capacidad |
-|------------|-------|-----------|-----------|
-| RTL-SDR | $25 | 24MHz - 1.7GHz | Solo recepción |
-| HackRF One | $300 | 1MHz - 6GHz | Tx + Rx, half-duplex |
-| LimeSDR | $300+ | 10MHz - 3.8GHz | Tx + Rx, full-duplex |
-| BladeRF | $400+ | 47MHz - 6GHz | Tx + Rx, FPGA programable |
-| USRP B200 | $1,000+ | 70MHz - 6GHz | Transceptor de alto rendimiento |
+| Herramienta | Cobertura aproximada | Capacidad |
+|------------|----------------------|-----------|
+| RTL-SDR | Depende del sintonizador del modelo | Solo recepción |
+| HackRF One | 1 MHz–6 GHz | Tx + Rx, *half-duplex* |
+| LimeSDR | Depende de la variante | Tx + Rx, *full-duplex* |
+| bladeRF | Depende de la variante | Tx + Rx y FPGA programable |
+| USRP B200 | 70 MHz–6 GHz | Transceptor de alto rendimiento |
+
+Verifica cobertura, potencia permitida, accesorios y precio en la ficha oficial del modelo antes de comprar.
 
 **Modulaciones Comunes en IoT:**
 | Modulación | Uso típico | Herramientas de decodificación |
@@ -311,27 +316,28 @@ Cuando el firmware está protegido en un microcontrolador con Read-Out Protectio
 3. **Laser Fault Injection:** Usar un láser para inducir fallos en celdas de memoria específicas (bit flipping).
 
 **Herramientas:**
-* **Phenom SEM (Scanning Electron Microscope):** $100k+ (generalmente solo accesible en laboratorios universitarios o de gobierno).
-* **Laser station (Riscure, Langlois):** $200k+.
+* **Microscopía electrónica y microprobing:** infraestructura especializada, normalmente disponible en laboratorios de investigación.
+* **Estaciones de inyección láser:** equipos especializados sujetos a procedimientos de seguridad y autorización.
 
 ---
 
 ## 7. Herramientas del Hardware Hacker
 
-| Herramienta | Función | Costo |
-|------------|---------|-------|
-| **Bus Pirate** | Interfaz universal (UART, SPI, I2C, 1-Wire, etc.) | $30 |
-| **Saleae Logic Analyzer** | Captura y análisis de señales digitales (8-16 canales) | $150-$500 |
-| **Proxmark3** | Lectura/clonación RFID (LF + HF) | $250 |
-| **Flipper Zero** | Multi-herramienta portátil (RFID, NFC, GPIO, IR, SDR) | $170 |
-| **ChipWhisperer** | Side-channel analysis + glitching | $300-$3,000 |
-| **HackRF One** | SDR transmisión/recepción | $300 |
-| **RTL-SDR** | SDR solo recepción | $25 |
-| **J-Link / J-Trace** | Debugging ARM SWD/JTAG | $50-$800 |
-| **CH341A** | Programador SPI Flash | $5 |
-| **Hot Air Station** | Soldadura/desoldadura SMD | $50-$200 |
-| **Digital Multimeter** | Medición de voltaje, continuidad, resistencia | $20-$100 |
-| **Oscilloscope** | Visualización de señales analógicas | $300-$3,000 |
+| Herramienta | Función | Limitación que debes revisar |
+|------------|---------|-----------------------------|
+| **Bus Pirate** | Interfaz para buses como UART, SPI e I2C | Voltajes y velocidad compatibles |
+| **Analizador lógico** | Captura de señales digitales | Canales, frecuencia de muestreo y sondas |
+| **Proxmark3** | Análisis RFID/NFC | Variante de hardware y bandas |
+| **Herramienta multiprotocolo** | RFID, NFC, GPIO, IR o radio según modelo | Regulación y capacidades reales |
+| **ChipWhisperer** | Análisis de canal lateral y *glitching* | Placa objetivo y módulos incluidos |
+| **SDR** | Recepción o transmisión de radio | Rango, potencia, filtros y licencia |
+| **Depurador JTAG/SWD** | Depuración de microcontroladores | Arquitecturas y licencias soportadas |
+| **Programador SPI Flash** | Lectura y escritura de memorias | Voltaje y adaptadores |
+| **Estación de aire caliente** | Soldadura y desoldadura SMD | Control térmico y seguridad |
+| **Multímetro** | Voltaje, continuidad y resistencia | Categoría de seguridad y precisión |
+| **Osciloscopio** | Visualización de señales | Ancho de banda, muestreo y sondas |
+
+Los modelos y precios cambian. Compara fichas oficiales y distribuidores autorizados cuando exista una necesidad concreta.
 
 ---
 

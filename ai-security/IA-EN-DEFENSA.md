@@ -1,5 +1,8 @@
 ---
 title: "IA en Defensa: El Copiloto del Blue Team"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 # IA en Defensa: El Copiloto del Blue Team
 

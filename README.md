@@ -8,6 +8,8 @@ Esto no es un mapa cerrado que promete enseñarte todo. La ciberseguridad es inf
 
 **→ [cbsdev.lat](https://cbsdev.lat)**
 
+**→ [Explorar rutas temáticas](https://cbsdev.lat/rutas)**
+
 **→ [Explorar el índice completo](https://cbsdev.lat/guias)**
 
 <img width="1920" height="989" alt="imagen" src="https://github.com/user-attachments/assets/42e62e67-d6b9-413c-88c2-4fac84662d93" />
@@ -36,7 +38,7 @@ El contenido está organizado como un mapa vivo de conocimientos técnicos, defe
 - **Empleabilidad:** rutas por rol, CV, LinkedIn, entrevistas, portafolio y criterios para aplicar.
 - **Recursos y cultura tech:** cómo usar la guía, roadmap inicial, plataformas de práctica, glosario hacker, certificaciones y referencias geek.
 
-Cada guía vive como un archivo Markdown dentro del repositorio. La web descubre esos archivos, los ordena por área y los convierte en páginas navegables.
+Cada guía vive como un archivo Markdown dentro del repositorio. La web descubre esos archivos, los ordena por área y los convierte en páginas navegables. Cada página muestra su nivel, tipo, fecha editorial y fuentes oficiales para ampliar o verificar la información.
 
 ## Por dónde empezar
 
@@ -44,8 +46,8 @@ Entra a la web y sigue la ruta recomendada:
 
 1. [cbsdev.lat/inicio-aqui](https://cbsdev.lat/inicio-aqui)
 2. [cbsdev.lat/recursos/como-usar-esta-guia](https://cbsdev.lat/recursos/como-usar-esta-guia)
-3. [cbsdev.lat/recursos/roadmap-90-dias](https://cbsdev.lat/recursos/roadmap-90-dias)
-4. [cbsdev.lat/fundamentos/computacion-basica](https://cbsdev.lat/fundamentos/computacion-basica)
+3. [cbsdev.lat/recursos/roadmap-90-días](https://cbsdev.lat/recursos/roadmap-90-dias)
+4. [cbsdev.lat/fundamentos/computación-basica](https://cbsdev.lat/fundamentos/computacion-basica)
 5. [cbsdev.lat/redes-cisco/fundamentos-redes](https://cbsdev.lat/redes-cisco/fundamentos-redes)
 
 Ruta general:
@@ -71,7 +73,9 @@ No uses este material contra terceros, redes públicas, empresas, usuarios o sis
 
 Las contribuciones son bienvenidas si respetan el enfoque educativo, defensivo y ético del proyecto.
 
-Antes de proponer cambios, revisa [CONTRIBUTING.md](CONTRIBUTING.md).
+Antes de proponer cambios, revisa [CONTRIBUTING.md](CONTRIBUTING.md) y [STYLE-GUIDE.md](STYLE-GUIDE.md).
+
+La validación automática comprueba metadatos, enlaces internos, lint y build mediante `cd web && npm run check`.
 
 ## Apoya la guía
 

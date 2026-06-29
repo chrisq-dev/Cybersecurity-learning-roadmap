@@ -1,5 +1,8 @@
 ---
 title: "Playbook: Servidor Comprometido (Expuesto a Internet)"
+level: "intermedio"
+content_type: "playbook"
+updated: "2026-06-29"
 ---
 # Playbook: Servidor Comprometido (Expuesto a Internet)
 
@@ -36,7 +39,7 @@ w
 last | grep -v "still logged in" | head -20
 ```
 
-**KQL para Azure Sentinel - Detección de Criptomineros:**
+**KQL para Microsoft Sentinel - Detección de Criptomineros:**
 ```kql
 VMConnection
 | where TimeGenerated > ago(1h)

@@ -1,5 +1,8 @@
 ---
 title: "La Búsqueda de Empleo: El Maratón Corporativo"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # La Búsqueda de Empleo: El Maratón Corporativo
@@ -9,7 +12,7 @@ title: "La Búsqueda de Empleo: El Maratón Corporativo"
 Muchos candidatos envían currículums esporádicamente, no reciben respuesta y concluyen que "la industria está saturada".
 La búsqueda de empleo no es un sprint de 100 metros, es un **Maratón Corporativo**. Y como cualquier proceso corporativo, requiere métricas, disciplina de embudo de ventas (Sales Funnel) y gestión del rechazo.
 
-**Por que esto importa:** Si no tratas tu búsqueda de trabajo como un trabajo en sí mismo, no vas a conseguir resultado. Es como hacer dieta un día y esperar bajar 10 kilos.
+**Por qué esto importa:** Si no tratas tu búsqueda de trabajo como un trabajo en sí mismo, no vas a conseguir resultado. Es como hacer dieta un día y esperar bajar 10 kilos.
 
 ---
 
@@ -74,7 +77,7 @@ Levántate a las 8:00 AM, vístete, siéntate en tu escritorio y divide tu día 
 - Sin redes sociales, sin notificaciones durante los bloques.
 - Aplicaciones de calidad > cantidad. Mejor 10 aplicaciones con tailoring que 30 genéricas.
 
-**Por que esto importa:** Si buscas trabajo en pijama a las 2 AM, tu cerebro está en modo Netflix, no en modo profesional. El horario importa.
+**Por qué esto importa:** Si buscas trabajo en pijama a las 2 AM, tu cerebro está en modo Netflix, no en modo profesional. El horario importa.
 
 ### El Registro de Vulnerabilidades (El Excel)
 
@@ -154,7 +157,7 @@ En la búsqueda de empleo, la regla es: **Asume el Rechazo**. Preparate mentalme
 - "No" ahora no significa "no" siempre. El mercado cambia, las empresas cambian.
 - Muchos profesionales exitosos tienen decenas de rechazos antes de su primer empleo.
 
-**Por que esto importa:** Cada rechazo te da información. Si no la usas, perdiste dos veces: perdiste el trabajo y perdiste la lección.
+**Por qué esto importa:** Cada rechazo te da información. Si no la usas, perdiste dos veces: perdiste el trabajo y perdiste la lección.
 
 ---
 

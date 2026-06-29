@@ -6,20 +6,25 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "content:check": "node scripts/validate-content.mjs",
+    "check": "npm run content:check && npm run lint && npm run build"
   },
   "dependencies": {
-    "gray-matter": "^4.0.3",
     "next": "16.2.9",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-icons": "^5.6.0",
     "react-markdown": "^10.1.0",
     "react-syntax-highlighter": "^16.1.1",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "yaml": "^2.9.0"
   },
   "devDependencies": {
     "eslint": "^9",
     "eslint-config-next": "16.2.9"
+  },
+  "overrides": {
+    "postcss": "8.5.16"
   }
 }

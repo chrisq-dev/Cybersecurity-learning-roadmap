@@ -3,9 +3,36 @@ import MarkdownRenderer from '../../components/MarkdownRenderer';
 import Pagination from '../../components/Pagination';
 import TableOfContents from '../../components/TableOfContents';
 import Link from 'next/link';
+import { OFFICIAL_SOURCES } from '../../lib/officialSources.mjs';
 
 const BASE_URL = "https://cbsdev.lat";
 const SOCIAL_IMAGE = "/og-mapa-ciberseguridad.png";
+const LEVEL_LABELS = {
+  inicial: "Introductorio",
+  intermedio: "Intermedio",
+  avanzado: "Avanzado",
+  referencia: "Referencia",
+};
+const TYPE_LABELS = {
+  articulo: "Artículo",
+  glosario: "Glosario",
+  guia: "Guía",
+  playbook: "Playbook",
+  recurso: "Recurso",
+  ruta: "Ruta temática",
+};
+
+
+function formatDate(value) {
+  if (!value) return null;
+
+  return new Intl.DateTimeFormat("es-MX", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(`${value}T00:00:00Z`));
+}
 
 export async function generateStaticParams() {
   const structure = getContentStructure();
@@ -98,8 +125,16 @@ export default async function Page({ params }) {
       name: "Christian Quiñones",
       url: "https://cbsdev.lat"
     },
+    dateModified: data.meta?.reviewed || data.meta?.updated,
+    educationalLevel: LEVEL_LABELS[data.meta?.level] || data.meta?.level,
     inLanguage: "es",
   };
+
+  const updatedDate = formatDate(data.meta?.reviewed || data.meta?.updated);
+  const levelLabel = LEVEL_LABELS[data.meta?.level] || data.meta?.level;
+  const typeLabel = TYPE_LABELS[data.meta?.content_type] || data.meta?.content_type;
+  const folder = resolvedParams.slug.length > 1 ? resolvedParams.slug[0] : "default";
+  const officialSources = data.meta?.official_sources || OFFICIAL_SOURCES[folder] || OFFICIAL_SOURCES.default;
 
   return (
     <article className="markdown-reader" style={{ paddingBottom: '5rem' }}>
@@ -114,6 +149,18 @@ export default async function Page({ params }) {
         <h1 className="serif-title guide-title" style={{ marginTop: '1.5rem', marginBottom: '0.5rem' }}>
           {data.title}
         </h1>
+        <div className="guide-meta" aria-label="Información editorial">
+          {levelLabel && <span className="guide-meta-badge">{levelLabel}</span>}
+          {typeLabel && <span className="guide-meta-badge">{typeLabel}</span>}
+          {updatedDate && (
+            <span>
+              {data.meta?.reviewed ? "Revisado" : "Actualizado"}: {updatedDate}
+            </span>
+          )}
+          {data.meta?.reviewed_against && (
+            <span>Contrastado con: {data.meta.reviewed_against}</span>
+          )}
+        </div>
       </header>
 
       <div className="content-layout">
@@ -122,6 +169,19 @@ export default async function Page({ params }) {
             content={data.content}
             basePath={resolvedParams.slug.length > 1 ? resolvedParams.slug.slice(0, -1).join('/') : ''}
           />
+          <section className="official-sources" aria-labelledby="official-sources-title">
+            <h2 id="official-sources-title">Fuentes oficiales y referencias</h2>
+            <p>Consulta estas fuentes primarias para verificar y ampliar la información de esta guía.</p>
+            <ul>
+              {officialSources.map((source) => (
+                <li key={source.url}>
+                  <a href={source.url} target="_blank" rel="noopener noreferrer">
+                    {source.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
           <Pagination prevPage={prevPage} nextPage={nextPage} />
         </div>
         <TableOfContents content={data.content} />

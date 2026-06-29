@@ -1,5 +1,23 @@
 ---
 title: "Playbook: Fuga de Datos y Extorsión"
+level: "intermedio"
+content_type: "playbook"
+updated: "2026-06-29"
+reviewed: "2026-06-29"
+reviewed_against: "Guías oficiales de ICO, ANPD, HHS, SEC, OFAC, FBI y CISA consultadas el 2026-06-29"
+official_sources:
+  - title: "ICO — Notificación de brechas"
+    url: "https://ico.org.uk/for-organisations/advice-for-small-organisations/personal-data-breaches/72-hours-how-to-respond-to-a-personal-data-breach/"
+  - title: "ANPD — Comunicación de incidentes"
+    url: "https://www.gov.br/anpd/pt-br/canais_atendimento/agente-de-tratamento/comunicado-de-incidente-de-seguranca-cis"
+  - title: "HHS — HIPAA Breach Notification"
+    url: "https://www.hhs.gov/hipaa/for-professionals/breach-notification/index.html"
+  - title: "SEC — Divulgación de incidentes materiales"
+    url: "https://www.sec.gov/newsroom/press-releases/2023-139"
+  - title: "FBI — Ransomware"
+    url: "https://www.fbi.gov/how-we-can-help-you/scams-and-safety/common-frauds-and-scams/ransomware"
+  - title: "U.S. Treasury — Riesgo de sanciones en pagos de ransomware"
+    url: "https://home.treasury.gov/news/press-releases/sm1142"
 ---
 # Playbook: Fuga de Datos y Extorsión
 
@@ -63,20 +81,22 @@ AzureNetworkAnalytics_CL
 ---
 
 ### Paso 1: Contención (El Control de Daños Legal)
-La contención en una Fuga de Datos no es técnica, es **Legal y de Relaciones Públicas (GRC)**.
+La contención de una fuga de datos combina acciones técnicas, legales, regulatorias y de comunicación. Deben avanzar en paralelo bajo un responsable de incidente.
 
-1. **Involucrar a los Abogados:** Llamar inmediatamente al equipo legal. En Europa (GDPR) y California (CCPA), la empresa tiene exactamente **72 horas legales** para notificar al gobierno sobre la fuga de datos. Si el equipo técnico oculta el ataque, las multas gubernamentales quebrarán a la empresa.
+1. **Activar asesoría legal y privacidad:** Preservar el privilegio jurídico cuando corresponda, identificar jurisdicciones, contratos y categorías de datos, y documentar cuándo la organización tuvo conocimiento del incidente. No existe un plazo universal de 72 horas.
 
-   **Plazos de Notificación por Regulación:**
+   **Referencias de notificación (resumen, no asesoría legal):**
 
-   | Regulación | Plazo | Multa Máxima |
-   |------------|-------|--------------|
-   | GDPR (UE) | 72 horas desde conocimiento | 20M EUR o 4% factura global |
-   | CCPA (California) | Sin plazo específico, pero "sin demora injustificada" | $2,500 por incidente por violación |
-   | LGPD (Brasil) | 72 horas | 2% factura anual (máx 50M BRL) |
-   | PCI-DSS | Inmediato al adquiriente | Multas contractuales + pérdida de licencia |
-   | HIPAA (Salud EE.UU.) | 60 días | $1.5M por violación por año |
-   | SOX (Empresas públicas) | Depende de materialidad | Multas SEC + penas de cárcel |
+   | Régimen | Regla general relevante |
+   |---------|-------------------------|
+   | GDPR (UE) | Notificar a la autoridad competente sin dilación indebida y, cuando sea posible, en 72 horas si la brecha puede implicar riesgo; hay excepciones y requisitos separados para titulares. |
+   | CCPA/leyes de California | La CCPA no impone una regla general de 72 horas. Revisa las leyes de notificación de brechas de California, el contrato y las obligaciones sectoriales aplicables. |
+   | LGPD/ANPD (Brasil) | La Resolución CD/ANPD 15/2024 establece tres días hábiles para incidentes que puedan ocasionar riesgo o daño relevante, salvo plazo específico distinto. |
+   | PCI DSS y marcas de pago | Seguir el plan de respuesta, los contratos y las instrucciones del adquirente y de las marcas; PCI DSS es un estándar, no una ley general. |
+   | HIPAA (EE. UU.) | Para brechas de PHI no asegurada, la regla depende del destinatario y del número de afectados; ciertos avisos deben realizarse sin demora injustificada y como máximo en 60 días. |
+   | SEC (emisores de EE. UU.) | Un incidente determinado como material se divulga generalmente en Form 8-K dentro de cuatro días hábiles desde esa determinación, sujeto a excepciones. |
+
+   La obligación concreta depende del lugar, sector, afectados, materialidad y contratos. El equipo legal debe validar la versión vigente de cada norma.
 
 2. **Identificar el "Agujero":** Aislar el servidor específico por el cual se robaron los datos (Contención de Red) para evitar que el hacker siga descargando más información mientras ocurre la negociación.
 
@@ -95,13 +115,13 @@ La contención en una Fuga de Datos no es técnica, es **Legal y de Relaciones P
    tcpdump -i eth0 -nn -s0 -w exfiltration.pcap port 443 or port 21
    ```
 
-3. **No Pagar (Aún):** Pagar a terroristas o carteles sancionados por la OFAC (EE. UU.) es un delito federal grave. Los abogados deben verificar quién es el grupo atacante antes de siquiera pensar en negociar.
+3. **No improvisar un pago:** Congelar cualquier decisión financiera hasta involucrar a dirección, legal, aseguradora y autoridades competentes. Una transacción con una persona o entidad bloqueada puede infringir sanciones de OFAC; la atribución suele ser incierta y exige análisis especializado.
 
-   **Consideraciones Legales sobre Pago de Rescate:**
-   * OFAC (Office of Foreign Assets Control) de EE.UU. sanciona a personas y organizaciones. Pagar a una entidad sancionada (como ciertos grupos de ransomware) puede resultar en multas millonarias.
-   * El FBI y CISA recomiendan NO pagar. Pagar no garantiza que los datos no se publiquen (solo el 4% de las víctimas que pagan recuperan todos sus datos según estudios).
-   * En España, la Ley de Seguridad Nacional no prohíbe explícitamente el pago, pero puede ser ilegal si el grupo atacante está en la lista de la ONU o UE.
-   * En caso de pago, se requiere reporte al FINCEN (EE.UU.) si supera $10,000.
+   **Consideraciones legales y operativas sobre un rescate:**
+   * OFAC advierte sobre el riesgo de sanciones al facilitar pagos vinculados con personas bloqueadas y recomienda reportar el incidente a las autoridades.
+   * FBI y CISA no apoyan el pago: no garantiza recuperación ni que los datos dejen de publicarse, y financia la actividad criminal.
+   * Las prohibiciones, obligaciones de reporte y efectos sobre el seguro dependen de la jurisdicción y de las partes de la transacción. No uses un umbral monetario genérico como regla.
+   * Preserva comunicaciones, billeteras, direcciones, muestras y comprobantes para la investigación; coordina cualquier contacto con autoridades a través del proceso aprobado.
 
 ### Identificación del Tipo de Datos Filtrados
 
@@ -141,9 +161,12 @@ Tenemos que tapar el agujero por el que el hacker sacó (Exfiltró) los 5 Teraby
    # AWS IAM - Desactivar claves de acceso
    aws iam update-access-key --access-key-id AKIA... --status Inactive --user-name admin-data
 
-   # Azure - Revocar sesiones
-   Revoke-AzureADUserAllRefreshToken -ObjectId "admin@empresa.com"
+   # Microsoft Entra ID - Revocar sesiones mediante Microsoft Graph
+   Connect-MgGraph -Scopes "User.RevokeSessions.All"
+   Revoke-MgUserSignInSession -UserId "admin@empresa.com"
    ```
+
+   Fuente: [Microsoft Graph — revokeSignInSessions](https://learn.microsoft.com/en-us/graph/api/user-revokesigninsessions?view=graph-rest-1.0).
 
 2. **Parchear la Vulnerabilidad:** Si el hacker entró por una Inyección SQL en la página web, el equipo de programación debe reescribir ese código en las próximas horas antes de volver a encender la página web de ventas.
 
@@ -161,7 +184,7 @@ Tenemos que tapar el agujero por el que el hacker sacó (Exfiltró) los 5 Teraby
 
 **Análisis de Logs Forenses para Determinar el Vector:**
 ```kql
-// Azure Sentinel - Identificar Inyección SQL en logs de aplicación
+// Microsoft Sentinel - Identificar Inyección SQL en logs de aplicación
 AppServiceHTTPLogs
 | where TimeGenerated > ago(7d)
 | where csUriQuery contains "'" or csUriQuery contains "--" or csUriQuery contains "union"

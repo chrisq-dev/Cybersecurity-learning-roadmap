@@ -1,5 +1,8 @@
 ---
 title: "Permisos y Usuarios: El Castillo y Sus Reglas"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Permisos y Usuarios: El Castillo y Sus Reglas
@@ -10,7 +13,7 @@ La seguridad de un servidor Linux no recae en antivirus ni en firewalls externos
 
 En Windows, cuando descargas un programa y le das doble clic, este intenta ejecutarse. En Linux, si descargas un programa destructivo e intentas ejecutarlo, el sistema te dirá: "Permiso denegado". No hay una ventana preguntando si quieres ejecutarlo con permisos de administrador. Simplemente no se ejecuta.
 
-Esa diferencia no es accidental. Responde a una filosofía de diseno donde el principio de mínimo privilegio esta integrado en el sistema operativo desde su base, no anadido como una capa posterior. Entender como funcionan los permisos en Linux no es una opción para un profesional de seguridad: es el requisito mínimo para poder defender un servidor.
+Esa diferencia no es accidental. Responde a una filosofía de diseño donde el principio de mínimo privilegio esta integrado en el sistema operativo desde su base, no anadido como una capa posterior. Entender como funcionan los permisos en Linux no es una opción para un profesional de seguridad: es el requisito mínimo para poder defender un servidor.
 
 Esta guía cubre usuarios, grupos, permisos clasicos (rwx), permisos especiales (SUID, SGID, sticky bit), sudo, y como cada uno de estos conceptos puede ser tanto una herramienta de defensa como un vector de ataque.
 
@@ -36,7 +39,7 @@ Esta analogía es útil porque refleja la realidad de los permisos en Linux: no 
 
 pasa si no entiendes usuarios y grupos en Linux? No puedes asegurar nada. Es como tener un edificio sin saber quien vive en cada departamento.
 
-Linux es un sistema multiusuario. Desde su diseno original, asume que múltiples personas pueden usar la misma máquina al mismo tiempo, ya sea a través de terminales físicas, conexiones de red, o procesos que se ejecutan en segundo plano.
+Linux es un sistema multiusuario. Desde su diseño original, asume que múltiples personas pueden usar la misma máquina al mismo tiempo, ya sea a través de terminales físicas, conexiones de red, o procesos que se ejecutan en segundo plano.
 
 ### El Usuario Root
 
@@ -56,7 +59,7 @@ Linux distingue entre dos tipos de cuentas:
 
 Estos usuarios del sistema no tienen contraseña (tienen `!` o `*` en `/etc/shadow`) y su shell suele ser `/usr/sbin/nologin` o `/bin/false`, lo que impide que alguien inicie sesión como ellos.
 
-La separacion entre usuarios de sistema y humanos es una medida de seguridad. Si un atacante compromete el servidor web, gana acceso como `www-data`, no como root. Para hacer daño significativo, necesita escalar privilegios.
+La separación entre usuarios de sistema y humanos es una medida de seguridad. Si un atacante compromete el servidor web, gana acceso como `www-data`, no como root. Para hacer daño significativo, necesita escalar privilegios.
 
 ### El Archivo /etc/passwd
 
@@ -82,10 +85,10 @@ Contiene las contraseñas hasheadas y solo es legible por root. Formato:
 - `$6$`: Algoritmo de hash (SHA-512). `$2y$` es Blowfish, `$5$` es SHA-256.
 - `salt`: Valor aleatorio anadido al hash para prevenir ataques de tablas rainbow.
 - `hash`: El hash de la contraseña.
-- `18345`: Dias desde el 1 de enero de 1970 hasta el último cambio de contraseña.
-- `0`: Dias minimos entre cambios de contraseña.
-- `99999`: Dias máximos antes de que la contraseña expire.
-- `7`: Dias de advertencia antes de la expiracion.
+- `18345`: Días desde el 1 de enero de 1970 hasta el último cambio de contraseña.
+- `0`: Días minimos entre cambios de contraseña.
+- `99999`: Días máximos antes de que la contraseña expire.
+- `7`: Días de advertencia antes de la expiracion.
 
 Si ves `!` o `*` en el campo de hash, la cuenta esta bloqueada o deshabilitada.
 
@@ -206,7 +209,7 @@ Solo root puede cambiar el dueño de un archivo. Un usuario normal no puede "reg
 
 ### Escenario de Seguridad
 
-En servidores web, es común que los archivos estaticos (HTML, CSS, imagenes) sean propiedad de `www-data` para que el servidor web pueda leerlos, pero no de `www-data` para que si el servidor web es comprometido, el atacante no pueda modificar los archivos.
+En servidores web, es común que los archivos estaticos (HTML, CSS, imágenes) sean propiedad de `www-data` para que el servidor web pueda leerlos, pero no de `www-data` para que si el servidor web es comprometido, el atacante no pueda modificar los archivos.
 
 La configuración tipica:
 - `/var/www/html/` es propiedad de `root:www-data`.
@@ -221,7 +224,7 @@ Para aplicaciones web que necesitan subir archivos, se crea un directorio espec�
 
 Cuando alguien dice "no me funciona, mejor pongo 777", esta tirando la toalla en lugar de diagnosticar el problema real. Los permisos 777 significan que cualquier proceso en el sistema, incluso uno comprometido por un atacante, puede modificar o ejecutar ese archivo.
 
-Si el archivo es un script de PHP en un servidor web, cualquier usuario del sistema puede modificarlo. Si el atacante logra acceso como cualquier usuario, puede añadir codigo malicioso al script.
+Si el archivo es un script de PHP en un servidor web, cualquier usuario del sistema puede modificarlo. Si el atacante logra acceso como cualquier usuario, puede añadir código malicioso al script.
 
 Si el archivo es un directorio, cualquier usuario puede borrar archivos dentro, incluso los que no le pertenecen.
 
@@ -244,7 +247,7 @@ Cuando un usuario normal ejecuta `passwd`, el proceso corre como root (el dueño
 
 ### Peligro del SUID
 
-El SUID es peligroso porque permite a usuarios sin privilegios ejecutar codigo con privilegios elevados. Si un binario SUID tiene una vulnerabilidad (buffer overflow, injection, etc.), cualquier usuario puede explotarla para escalar a root.
+El SUID es peligroso porque permite a usuarios sin privilegios ejecutar código con privilegios elevados. Si un binario SUID tiene una vulnerabilidad (buffer overflow, injection, etc.), cualquier usuario puede explotarla para escalar a root.
 
 Un atacante que compromete un servidor busca inmediatamente archivos SUID con:
 `find / -perm -4000 2>/dev/null`
@@ -285,7 +288,7 @@ Cualquier usuario puede escribir en `/tmp` (permisos 777), pero solo el dueño d
 
 `sudo` (SuperUser DO) permite a usuarios autorizados ejecutar comandos con los privilegios de otro usuario (normalmente root) sin compartir la contraseña de ese usuario.
 
-### Por que sudo y no root
+### Por qué sudo y no root
 
 Usar `sudo` en lugar de iniciar sesión como root:
 - **Auditoría:** Cada comando ejecutado con `sudo` queda registrado en `/var/log/auth.log`. Puedes saber exactamente quien ejecutó que y cuando.
@@ -316,7 +319,7 @@ Un atacante que compromete una cuenta con acceso a sudo limitado busca formas de
 - **Herramientas de búsqueda:** Si el usuario puede ejecutar `find` como root, puede usar `-exec` para ejecutar comandos: `sudo find / -exec /bin/bash \;`.
 - **Cambio de contraseña:** Si el usuario puede ejecutar `passwd` como root, puede cambiar la contraseña de root.
 
-Por eso el diseno de reglas de sudo debe ser específico y considerar las capacidades de escape de cada programa.
+Por eso el diseño de reglas de sudo debe ser específico y considerar las capacidades de escape de cada programa.
 
 ### sudoers Mal Configurado: Escenarios de Riesgo
 
@@ -336,7 +339,7 @@ Por eso el diseno de reglas de sudo debe ser específico y considerar las capaci
 
 **Cuentas de sistema con shell activo:** Usuarios del sistema como `ftp` o `nobody` con shell `/bin/bash` en vez de `/usr/sbin/nologin`. Si alguien logra autenticarse como ese usuario, obtiene un shell interactivo.
 
-**Grupo sudo heredado:** Añadir un usuario al grupo `sudo` (o `wheel` en Red Hat) y olvidar que ese grupo tiene acceso completo. No hay registro de por que se le dio acceso, y nadie lo revoca cuando ya no es necesario.
+**Grupo sudo heredado:** Añadir un usuario al grupo `sudo` (o `wheel` en Red Hat) y olvidar que ese grupo tiene acceso completo. No hay registro de por qué se le dio acceso, y nadie lo revoca cuando ya no es necesario.
 
 **Sticky bit faltante en /tmp:** Si el sticky bit no esta en `/tmp`, cualquier usuario puede borrar los archivos temporales de otros, lo que puede usarse para sabotear procesos que dependen de archivos temporales.
 
@@ -364,7 +367,7 @@ Un atacante que ha comprometido un servidor como usuario normal necesita escalar
 
 **Kernel exploits:** El atacante ejecuta `uname -a` para obtener la versión del kernel y la busca en bases de datos de exploits públicos. Si el kernel es vulnerable, compila y ejecuta un exploit que le da acceso root.
 
-**Búsqueda de archivos world-writable:** `find / -perm -o+w -type f 2>/dev/null`. Si encuentra archivos de configuración o scripts que cualquiera puede modificar, los altera para ejecutar codigo cuando root los ejecute.
+**Búsqueda de archivos world-writable:** `find / -perm -o+w -type f 2>/dev/null`. Si encuentra archivos de configuración o scripts que cualquiera puede modificar, los altera para ejecutar código cuando root los ejecute.
 
 **Búsqueda de archivos con contraseñas:** `grep -r "password" /etc/ /opt/ /usr/local/etc/ 2>/dev/null`. Los administradores suelen dejar contraseñas en archivos de configuración.
 
@@ -382,15 +385,15 @@ Un atacante que ha comprometido un servidor como usuario normal necesita escalar
 
 3. Encuentras en el servidor el binario `/usr/local/bin/custom-backup` con permisos `-rwsr-xr-x 1 root root 24500 jun 10 09:00`. Tu tarea es determinar si esto representa un riesgo. Que comandos ejecutarias para investigar? Que factores determinan si el SUID es peligroso aqui?
 
-4. Explica la diferencia entre ejecutar `sudo /usr/bin/vim /etc/hosts` y tener el binario vim con SUID root. Cual es más seguro y por que? Que implicaciones tiene cada uno para la auditoría?
+4. Explica la diferencia entre ejecutar `sudo /usr/bin/vim /etc/hosts` y tener el binario vim con SUID root. Cual es más seguro y por qué? Que implicaciones tiene cada uno para la auditoría?
 
 5. Durante una investigación forense, encuentras que un atacante ejecutó `chmod 777 /etc/shadow`. Explica que logró el atacante con esto y como podrías detectar este cambio. Que monitoreo preventivo recomendarias para detectar cambios similares?
 
-6. Tu servidor tiene la particion `/tmp` montada sin la opción `nosuid`. Un usuario normal crea un binario SUID en `/tmp`. Explica por que esto es peligroso y como lo mitigarias. Que comando usarías para verificar si la particion tiene la opción correcta?
+6. Tu servidor tiene la particion `/tmp` montada sin la opción `nosuid`. Un usuario normal crea un binario SUID en `/tmp`. Explica por qué esto es peligroso y como lo mitigarias. Que comando usarías para verificar si la particion tiene la opción correcta?
 
-7. Un administrador dice: "No necesito preocuparme por los permisos porque configuró sudo para que los usuarios solo puedan ejecutar `less` como root." Explica por que esta configuración es insegura y como un atacante podría escapar de `less` para obtener un shell root.
+7. Un administrador dice: "No necesito preocuparme por los permisos porque configuró sudo para que los usuarios solo puedan ejecutar `less` como root." Explica por qué esta configuración es insegura y como un atacante podría escapar de `less` para obtener un shell root.
 
-8. Revisas `/etc/sudoers` y encuentras estas líneas. Identifica cuáles son riesgos de seguridad y explica por que:
+8. Revisas `/etc/sudoers` y encuentras estas líneas. Identifica cuáles son riesgos de seguridad y explica por qué:
    - `pedro ALL=(ALL) NOPASSWD: ALL`
    - `%researchers ALL=(root) /usr/bin/python3 /home/researchers/scripts/*`
    - `laura ALL=(root) /bin/kill`

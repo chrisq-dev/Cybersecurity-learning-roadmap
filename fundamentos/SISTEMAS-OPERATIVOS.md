@@ -1,14 +1,17 @@
 ---
 title: "Sistemas Operativos: El Administrador del Caos"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Sistemas Operativos: El Administrador del Caos
 
 ## Objetivo de esta Guía
 
-Entender por que el Sistema Operativo (OS) es la barrera más importante entre el hardware de la computadora y el mundo exterior, y como los atacantes abusan de sus reglas para tomar el control de una máquina.
+Entender por qué el Sistema Operativo (OS) es la barrera más importante entre el hardware de la computadora y el mundo exterior, y como los atacantes abusan de sus reglas para tomar el control de una máquina.
 
-El hardware por si solo no entiende que es un usuario, que es una contrasena o que es un archivo. Toda esa "ilusión" la crea el Sistema Operativo. Sin un sistema operativo, tu computadora seria un monton de silicio y metal inerte. El sistema operativo es el que organiza el caos: decide que programa se ejecuta cuando, que parte de la memoria le toca a cada quien, como se guardan los archivos en el disco, y quien tiene permiso para hacer cada cosa.
+El hardware por si solo no entiende que es un usuario, que es una contraseña o que es un archivo. Toda esa "ilusión" la crea el Sistema Operativo. Sin un sistema operativo, tu computadora seria un monton de silicio y metal inerte. El sistema operativo es el que organiza el caos: decide que programa se ejecuta cuando, que parte de la memoria le toca a cada quien, como se guardan los archivos en el disco, y quien tiene permiso para hacer cada cosa.
 
 En esta guía vamos a abrir el capó de los dos sistemas operativos dominantes: Windows y Linux. No desde el punto de vista del usuario, sino desde el punto de vista del profesional de seguridad que necesita entender como se rompen y como se defienden.
 
@@ -16,11 +19,11 @@ En esta guía vamos a abrir el capó de los dos sistemas operativos dominantes: 
 
 ## La Arquitectura Base: El Núcleo y sus Anillos
 
-Si instalas un programa malicioso, por que este programa no puede simplemente decirle al hardware que queme el procesador o que borre todos los datos de los demás programas? La respuesta es el diseno de anillos de seguridad del sistema operativo.
+Si instalas un programa malicioso, por qué este programa no puede simplemente decirle al hardware que queme el procesador o que borre todos los datos de los demás programas? La respuesta es el diseño de anillos de seguridad del sistema operativo.
 
 ### Kernel Space: El Núcleo
 
-El kernel es el corazón del sistema operativo. Es el único codigo que tiene acceso directo y sin restricciones al hardware (CPU, memoria, disco, perifericos). Gestiona:
+El kernel es el corazón del sistema operativo. Es el único código que tiene acceso directo y sin restricciones al hardware (CPU, memoria, disco, perifericos). Gestiona:
 
 - La memoria: que proceso ocupa que dirección de RAM.
 - Los procesos: que programa se ejecuta cuando, por cuanto tiempo.
@@ -35,7 +38,7 @@ Aqui viven los programas que usas a diario: el navegador web, el procesador de t
 
 **Para hacer algo que requiera acceso al hardware (leer un archivo, enviar un paquete de red, mostrar algo en pantalla), un proceso en user space debe hacer una "llamada al sistema" (syscall).** Es como enviar una carta formal al kernel pidiendo permiso. El kernel recibe la syscall, verifica si el proceso tiene los permisos necesarios, y si todo esta bien, ejecuta la operación en nombre del proceso.
 
-### La Metafora del Castillo
+### La Metáfora del Castillo
 
 Imagina un castillo medieval con un rey (el kernel) y ciudadanos (los procesos en user space):
 
@@ -44,13 +47,13 @@ Imagina un castillo medieval con un rey (el kernel) y ciudadanos (los procesos e
 - El guardia revisa si el ciudadano tiene permiso (los permisos del usuario bajo el que corre el proceso).
 - Si el rey confía en la solicitud, la ejecuta. Si no, la rechaza y puede expulsar al ciudadano (matar el proceso).
 
-El castillo esta rodeado por un foso (la separacion entre kernel space y user space) que los programas normales no pueden cruzar.
+El castillo esta rodeado por un foso (la separación entre kernel space y user space) que los programas normales no pueden cruzar.
 
 ### Modo Kernel vs Modo Usuario: La Diferencia Crítica
 
 La CPU tiene un interruptor físico (lógico) que cambia entre modos. No es una simulación, es hardware real.
 
-La CPU misma tiene soporte de hardware para esta separacion. Cuando la CPU esta en "modo kernel" (ring 0 en la arquitectura x86), puede ejecutar cualquier instrucción y acceder a cualquier dirección de memoria. Cuando esta en "modo usuario" (ring 3), las instrucciones privilegiadas están bloqueadas.
+La CPU misma tiene soporte de hardware para esta separación. Cuando la CPU esta en "modo kernel" (ring 0 en la arquitectura x86), puede ejecutar cualquier instrucción y acceder a cualquier dirección de memoria. Cuando esta en "modo usuario" (ring 3), las instrucciones privilegiadas están bloqueadas.
 
 El sistema operativo cambia entre estos modos en cada syscall:
 1. Un proceso en modo usuario necesita leer un archivo.
@@ -67,7 +70,7 @@ Este cambio de modo no es trivial. Tiene un costo de rendimiento. Por eso las sy
 
 Normalmente, el malware vive en user space. Un antivirus o un EDR (Endpoint Detection and Response), que corre con privilegios elevados pero en modo kernel o con acceso especial, puede detectar el malware porque el malware no puede esconderse del antivirus.
 
-Pero existe una categoría de malware extremadamente peligroso: el rootkit. Un rootkit es un codigo malicioso que logra colarse dentro del kernel space. Cuando un atacante toma control del kernel:
+Pero existe una categoría de malware extremadamente peligroso: el rootkit. Un rootkit es un código malicioso que logra colarse dentro del kernel space. Cuando un atacante toma control del kernel:
 
 - El rootkit puede mentirle a cualquier proceso en user space, incluyendo el antivirus.
 - El rootkit puede interceptar syscalls. Cuando un programa pide "dame la lista de procesos," el rootkit responde "aqui tienes la lista, pero sin mi proceso" (ocultamiento).
@@ -83,20 +86,20 @@ Pero existe una categoría de malware extremadamente peligroso: el rootkit. Un r
 El objetivo más común del malware no es entrar al kernel directamente (es muy difícil), sino explotar una vulnerabilidad que le permita pasar de user space a kernel space. Esto se llama "escalacion de privilegios locales" (Local Privilege Escalation, LPE).
 
 **Como funciona:**
-1. El atacante compromete una cuenta de usuario normal (via phishing, contrasena débil, etc.).
+1. El atacante compromete una cuenta de usuario normal (via phishing, contraseña débil, etc.).
 2. Desde esa cuenta, ejecuta un exploit que aprovecha una vulnerabilidad en el kernel o en un servicio que corre como SYSTEM/root.
 3. El exploit le da acceso al kernel o a una cuenta de alta integridad (SYSTEM en Windows, root en Linux).
 4. Ahora el atacante tiene control total de la máquina.
 
 **Ejemplos clasicos de LPE:**
-- CVE-2021-1732 (Windows): Vulnerabilidad en la funcion de ventanas de Windows que permitia a un usuario normal obtener privilegios de SYSTEM.
+- CVE-2021-1732 (Windows): Vulnerabilidad en la función de ventanas de Windows que permitia a un usuario normal obtener privilegios de SYSTEM.
 - CVE-2022-0847 (Dirty Pipe, Linux): Vulnerabilidad en el kernel de Linux que permitia a cualquier usuario escribir en archivos a los que no debería tener acceso, incluyendo archivos del sistema.
 
 ---
 
-## Windows vs Linux: Dos Filosofías de Diseno
+## Windows vs Linux: Dos Filosofías de Diseño
 
-En ciberseguridad corporativa, te encontrarás con ambos sistemas. Windows domina los escritorios de las empresas y los servidores de Active Directory. Linux es el rey indiscutible de los servidores web, la infraestructura en la nube, los dispositivos IoT, y los sistemas embebidos. Entender sus diferencias de diseno es entender sus diferencias de seguridad.
+En ciberseguridad corporativa, te encontrarás con ambos sistemas. Windows domina los escritorios de las empresas y los servidores de Active Directory. Linux es el rey indiscutible de los servidores web, la infraestructura en la nube, los dispositivos IoT, y los sistemas embebidos. Entender sus diferencias de diseño es entender sus diferencias de seguridad.
 
 ### El Registro de Windows (Windows Registry)
 
@@ -143,7 +146,7 @@ En Linux, no existe un Registro centralizado. Todo se maneja a través de archiv
 - En sistemas Linux mal administrados, archivos críticos como `/etc/shadow` (que contiene los hashes de las contraseñas) pueden tener permisos demasiado permisivos.
 
 **La clave `/etc/shadow` vs `/etc/passwd`:**
-- `/etc/passwd`: Archivo legible por todos los usuarios. Contiene nombres de usuario, pero las contraseñas historicas se reemplazaron con una "x" que indica que la contrasena esta en `/etc/shadow`.
+- `/etc/passwd`: Archivo legible por todos los usuarios. Contiene nombres de usuario, pero las contraseñas historicas se reemplazaron con una "x" que indica que la contraseña esta en `/etc/shadow`.
 - `/etc/shadow`: Solo legible por root. Contiene los hashes de las contraseñas y las fechas de expiracion.
 - Si un atacante logra leer `/etc/shadow`, puede intentar descifrar los hashes fuera de línea usando herramientas como John the Ripper o Hashcat.
 
@@ -201,7 +204,7 @@ Cada archivo y carpeta tiene:
 
 ## Persistencia: Como Sobrevivir al Apagón
 
-Imagina que un atacante logra ejecutar su codigo malicioso en la RAM de tu computadora. Sabe que cuando apagues el equipo, la RAM se borrará y el perderá el control. Para evitarlo, debe crear persistencia: obligar al sistema operativo a ejecutar su codigo automáticamente cada vez que la máquina arranque.
+Imagina que un atacante logra ejecutar su código malicioso en la RAM de tu computadora. Sabe que cuando apagues el equipo, la RAM se borrará y el perderá el control. Para evitarlo, debe crear persistencia: obligar al sistema operativo a ejecutar su código automáticamente cada vez que la máquina arranque.
 
 La persistencia es lo que separa un ataque temporal (que desaparece al reiniciar) de una infección permanente. La mayoría del malware moderno invierte mucho esfuerzo en establecer persistencia.
 
@@ -218,7 +221,7 @@ Cualquier programa listado en estas llaves se ejecuta automáticamente.
 
 **Tareas Programadas (Scheduled Tasks):** Windows tiene un sistema de tareas programadas (Task Scheduler) que permite ejecutar programas en momentos específicos. Los atacantes crean tareas que ejecutan su malware cada vez que el sistema arranca o cada N minutos.
 
-**Servicios (Services):** El atacante instala su malware como un servicio de Windows. Los servicios se inician automáticamente (o manualmente, según configuración) y corren en segundo plano, tipicamente con privilegios de SYSTEM.
+**Servicios (Services):** El atacante instala su malware como un servicio de Windows. Los servicios se inician automáticamente (o manualmente, según configuración) y corren en segundo plano, típicamente con privilegios de SYSTEM.
 
 **DLL Hijacking:** El atacante reemplaza una DLL (Dynamic Link Library) que un programa legítimo carga al iniciarse. Cuando el programa legítimo arranca, carga sin saberlo la DLL maliciosa. Esta técnica es particularmente difícil de detectar porque la DLL se carga dentro de un proceso legítimo.
 
@@ -232,7 +235,7 @@ Cualquier programa listado en estas llaves se ejecuta automáticamente.
 
 **Archivos de configuración de shell (bashrc, profile):** El atacante añade comandos a `/etc/bashrc`, `~/.bashrc` o `~/.profile`. Cada vez que un usuario abre una terminal, el shell ejecuta estos archivos.
 
-**Kernel modules (LKM):** El atacante carga un modulo de kernel malicioso (Loadable Kernel Module). Esto le da acceso al kernel (rootkit) y es extremadamente difícil de detectar. Los LKM maliciosos son la forma más avanzada de persistencia en Linux.
+**Kernel modules (LKM):** El atacante carga un módulo de kernel malicioso (Loadable Kernel Module). Esto le da acceso al kernel (rootkit) y es extremadamente difícil de detectar. Los LKM maliciosos son la forma más avanzada de persistencia en Linux.
 
 ### Donde Buscan los Analistas de Seguridad
 
@@ -292,7 +295,7 @@ El directorio de configuración del sistema. Aqui viven los archivos de configur
 - `/etc/crontab`: Tareas programadas del sistema.
 - `/etc/nginx/nginx.conf` o `/etc/apache2/apache2.conf`: Configuración del servidor web.
 
-**Riesgo de seguridad:** Si un atacante modifica `/etc/shadow`, puede cambiar la contrasena de cualquier usuario. Si modifica `/etc/ssh/sshd_config`, puede permitir login como root por contrasena (una mala práctica). Si modifica `/etc/hosts`, puede redirigir el tráfico de un sitio web legítimo a un sitio malicioso (DNS poisoning local).
+**Riesgo de seguridad:** Si un atacante modifica `/etc/shadow`, puede cambiar la contraseña de cualquier usuario. Si modifica `/etc/ssh/sshd_config`, puede permitir login como root por contraseña (una mala práctica). Si modifica `/etc/hosts`, puede redirigir el tráfico de un sitio web legítimo a un sitio malicioso (DNS poisoning local).
 
 **`/var/log/`:**
 El directorio de logs del sistema.
@@ -348,17 +351,17 @@ Cada proceso cree que tiene su propio espacio de memoria privado, que va desde l
 **Ventaja de seguridad:** Un proceso no puede acceder a la memoria de otro proceso. Si el navegador web tiene un fallo y escribe en una dirección de memoria inválida, solo el navegador se cuelga. No puede corromper la memoria del antivirus ni del sistema operativo.
 
 **Como se rompe esta protección:**
-- **Buffer overflow:** El atacante escribe más datos de los que caben en un buffer, sobrescribiendo memoria adyacente. Si logra sobrescribir la dirección de retorno de una funcion, puede redirigir la ejecución a su propio codigo.
+- **Buffer overflow:** El atacante escribe más datos de los que caben en un buffer, sobrescribiendo memoria adyacente. Si logra sobrescribir la dirección de retorno de una función, puede redirigir la ejecución a su propio código.
 - **Use-after-free:** El programa libera memoria pero sigue usando el puntero. El atacante logra que esa memoria liberada sea reasignada a otro objeto que el controla.
-- **Race condition (TOCTOU):** El atacante explota la ventana entre que el sistema verifica un permiso y cuando ejecuta la accion.
+- **Race condition (TOCTOU):** El atacante explota la ventana entre que el sistema verifica un permiso y cuando ejecuta la acción.
 
 ### Protecciones Modernas de Memoria
 
 Los sistemas operativos modernos implementan varias protecciones de memoria que hacen más difíciles estos ataques:
 
-**ASLR (Address Space Layout Randomization):** El kernel coloca las regiones de memoria de cada proceso en posiciones aleatorias cada vez que se ejecuta. Un atacante no puede predecir donde estará el codigo o los datos, lo que hace más difícil explotar un buffer overflow.
+**ASLR (Address Space Layout Randomization):** El kernel coloca las regiones de memoria de cada proceso en posiciones aleatorias cada vez que se ejecuta. Un atacante no puede predecir donde estará el código o los datos, lo que hace más difícil explotar un buffer overflow.
 
-**DEP/NX (Data Execution Prevention / No-Execute):** Las regiones de memoria están marcadas como ejecutables o no ejecutables. El stack y el heap (donde se almacenan datos) no son ejecutables. Si un atacante introduce codigo en el stack (buffer overflow), la CPU se niega a ejecutarlo.
+**DEP/NX (Data Execution Prevention / No-Execute):** Las regiones de memoria están marcadas como ejecutables o no ejecutables. El stack y el heap (donde se almacenan datos) no son ejecutables. Si un atacante introduce código en el stack (buffer overflow), la CPU se niega a ejecutarlo.
 
 **Stack Canaries:** Valores centinela colocados en el stack antes de la dirección de retorno. Si un buffer overflow sobrescribe el canary, el sistema detecta la alteracion y termina el programa antes de que el atacante tome control.
 
@@ -368,7 +371,7 @@ Los sistemas operativos modernos implementan varias protecciones de memoria que 
 
 Ninguna protección es perfecta:
 
-- **Return-oriented programming (ROP):** El atacante no introduce codigo nuevo (eso lo bloquearia DEP). En lugar de eso, encadena fragmentos de codigo existente (gadgets) que terminan en instrucciones `ret` para construir la funcionalidad deseada.
+- **Return-oriented programming (ROP):** El atacante no introduce código nuevo (eso lo bloquearia DEP). En lugar de eso, encadena fragmentos de código existente (gadgets) que terminan en instrucciones `ret` para construir la funcionalidad deseada.
 - **ASLR bypass via information leak:** El atacante primero explota una vulnerabilidad de divulgación de información (por ejemplo, un error que lea memoria no autorizada) para descubrir la disposicion de memoria, y luego usa esa información para dirigir su exploit ROP.
 
 ---
@@ -391,7 +394,7 @@ Si algún eslabón de la cadena no tiene la firma correcta, el arranque se detie
 **Como se rompe Secure Boot:**
 - Vulnerabilidades en el bootloader (BootHole, CVE-2020-10713): Una vulnerabilidad en GRUB permitia a un atacante con acceso local eludir Secure Boot incluso con las firmas válidas.
 - Deshabilitacion de Secure Boot: En muchas placas madre, Secure Boot se puede deshabilitar desde la configuración del firmware. Un atacante con acceso físico puede deshabilitarlo.
-- Enrollment de claves maliciosas: Si un atacante puede agregar su propia clave de firma a la base de datos de UEFI, puede arrancar codigo firmado por el mismo.
+- Enrollment de claves maliciosas: Si un atacante puede agregar su propia clave de firma a la base de datos de UEFI, puede arrancar código firmado por el mismo.
 
 ### Bootkits: Malware que Arranca Antes que el SO
 
@@ -402,7 +405,7 @@ Un bootkit es un tipo de rootkit que infecta el proceso de arranque. Se carga an
 
 **Ejemplos historicos de bootkits:**
 - **TDL4 (Alureon):** Infectaba el Master Boot Record (MBR) de Windows. Cargaba su driver malicioso antes que Windows, dándole control total y capacidad de ocultarse.
-- **BlackLotus (2023):** El primer bootkit que lograba eludir Secure Boot en sistemas completamente actualizados. Usaba una vulnerabilidad en el binario de arranque firmado de Windows (CVE-2022-21894) para cargar su codigo sin firmar.
+- **BlackLotus (2023):** El primer bootkit que lograba eludir Secure Boot en sistemas completamente actualizados. Usaba una vulnerabilidad en el binario de arranque firmado de Windows (CVE-2022-21894) para cargar su código sin firmar.
 
 ---
 
@@ -420,7 +423,7 @@ El hardening (endurecimiento) es el proceso de reducir la superficie de ataque d
 
 **Configurar logs:** El sistema debe registrar eventos de seguridad (inicios de sesión, cambios en configuración, errores). Los logs deben enviarse a un servidor centralizado.
 
-**Cifrado de disco completo:** Si te roban el disco físico, que no puedan leer los datos sin la contrasena de cifrado (BitLocker en Windows, LUKS en Linux).
+**Cifrado de disco completo:** Si te roban el disco físico, que no puedan leer los datos sin la contraseña de cifrado (BitLocker en Windows, LUKS en Linux).
 
 ### Hardening Específico de Windows
 
@@ -434,7 +437,7 @@ El hardening (endurecimiento) es el proceso de reducir la superficie de ataque d
 ### Hardening Específico de Linux
 
 - Configurar el firewall (iptables, nftables, ufw) para bloquear todo excepto los puertos necesarios.
-- Deshabilitar login por contrasena para SSH y usar solo claves públicas.
+- Deshabilitar login por contraseña para SSH y usar solo claves públicas.
 - Deshabilitar login como root via SSH (`PermitRootLogin no` en `/etc/ssh/sshd_config`).
 - Configurar fail2ban para bloquear IPs con múltiples intentos de login fallidos.
 - Mantener el sistema actualizado (`apt update && apt upgrade` en Debian/Ubuntu, `yum update` en RHEL).
@@ -448,24 +451,24 @@ El hardening (endurecimiento) es el proceso de reducir la superficie de ataque d
 
 Puedes decir que entiendes los sistemas operativos desde el punto de vista de seguridad si puedes responder estas preguntas.
 
-1. Estamos analizando un malware muy avanzado que ni el antivirus puede ver a pesar de estar activo. En que espacio (user space o kernel space) se instalo este malware? Que nombre recibe este tipo de malware y por que es tan difícil de detectar?
+1. Estamos analizando un malware muy avanzado que ni el antivirus puede ver a pesar de estar activo. En que espacio (user space o kernel space) se instalo este malware? Que nombre recibe este tipo de malware y por qué es tan difícil de detectar?
 
 2. Un atacante quiere que su virus se ejecute cada vez que enciendes tu computadora con Windows. Nombra dos lugares del sistema (uno en el Registro, otro en el sistema de archivos) donde podría configurar esta persistencia.
 
-3. En Linux, las configuraciones son archivos de texto. Por que un usuario normal no puede simplemente abrir `/etc/shadow` con un editor de texto y cambiar su contrasena? Explica el mecanismo de permisos que lo impide.
+3. En Linux, las configuraciones son archivos de texto. Por qué un usuario normal no puede simplemente abrir `/etc/shadow` con un editor de texto y cambiar su contraseña? Explica el mecanismo de permisos que lo impide.
 
-4. Que es el "ataque de Sticky Keys" en Windows? Por que funciona y que medida de hardening lo previene?
+4. Que es el "ataque de Sticky Keys" en Windows? Por qué funciona y que medida de hardening lo previene?
 
-5. Un atacante compromete un servidor Linux y ejecuta un script que descarga herramientas en `/tmp/`. Por que elige `/tmp/` en lugar de otro directorio? Que principio de seguridad viola esta práctica?
+5. Un atacante compromete un servidor Linux y ejecuta un script que descarga herramientas en `/tmp/`. Por qué elige `/tmp/` en lugar de otro directorio? Que principio de seguridad viola esta práctica?
 
-6. Explica la diferencia entre un rootkit de kernel y un troyano que reemplaza un binario como `ls`. Cual es más difícil de detectar y por que?
+6. Explica la diferencia entre un rootkit de kernel y un troyano que reemplaza un binario como `ls`. Cual es más difícil de detectar y por qué?
 
-7. Un administrador ejecuta `chmod 777 -R /var/www/html` en un servidor web. Que acaba de hacer exactamente y por que es peligroso? Que alternativa debería haber usado?
+7. Un administrador ejecuta `chmod 777 -R /var/www/html` en un servidor web. Que acaba de hacer exactamente y por qué es peligroso? Que alternativa debería haber usado?
 
 8. En el contexto de sistemas de archivos, explica que son los Alternate Data Streams (ADS) de NTFS y como los atacantes los usan para ocultar malware. Existe un equivalente en ext4?
 
 9. Una empresa de comercio electrónico tiene su servidor web en Linux. El servidor de base de datos esta en Windows. Durante un ataque, el servidor web es comprometido via una vulnerabilidad en una aplicación PHP. Desde el servidor linux, el atacante intenta moverse lateralmente al servidor de base de datos Windows. Que servicios y puertos deberían estar bloqueados entre estos servidores para evitar este movimiento lateral?
 
-10. Explica la funcion de SELinux/AppArmor en Linux. Es DAC o MAC? Por que un administrador novato tiende a deshabilitarlo y por que eso es un error?
+10. Explica la función de SELinux/AppArmor en Linux. Es DAC o MAC? Por qué un administrador novato tiende a deshabilitarlo y por qué eso es un error?
 
 ---

@@ -1,5 +1,8 @@
 ---
 title: "Glosario de Cultura Hacker"
+level: "referencia"
+content_type: "glosario"
+updated: "2026-06-29"
 ---
 
 # Glosario de Cultura Hacker
@@ -16,11 +19,11 @@ La palabra más mal entendida de la tecnología. Hacker no significa criminal, a
 
 ### Cracker
 
-Si hacker es el que explora, cracker es el que rompe con intención de daño o beneficio propio. La palabra se inventó precisamente para eso: para dejar claro que no todo el que sabe de tecnología es un delincuente. En la práctica, los medios usan "hacker" para todo, pero adentro del ambiente la distincion importa.
+Si hacker es el que explora, cracker es el que rompe con intención de daño o beneficio propio. La palabra se inventó precisamente para eso: para dejar claro que no todo el que sabe de tecnología es un delincuente. En la práctica, los medios usan "hacker" para todo, pero adentro del ambiente la distinción importa.
 
 ### Script Kiddie
 
-Todo el mundo arranca siendo script kiddie. La diferencia es que unos se quedan ahí y otros aprenden que hay adentro de las herramientas que usan. El término se tira como insulto, pero si te lo dicen, tomalo como señal de que ya es momento de meterte en el codigo y dejar de apretar botones sin entender. El peligro real no es el novato, es el que nunca sale de ahí pero igual ejecuta herramientas contra sistemas ajenos.
+Todo el mundo arranca siendo script kiddie. La diferencia es que unos se quedan ahí y otros aprenden que hay adentro de las herramientas que usan. El término se tira como insulto, pero si te lo dicen, tomalo como señal de que ya es momento de meterte en el código y dejar de apretar botones sin entender. El peligro real no es el novato, es el que nunca sale de ahí pero igual ejecuta herramientas contra sistemas ajenos.
 
 ### Phreaking
 
@@ -32,11 +35,11 @@ No es solo la estética de pantalla verde con fosforitos. La cultura hacker es u
 
 ### Open Source
 
-Codigo abierto. Significa que el codigo fuente de un programa es público: cualquiera puede verlo, modificarlo y distribuirlo. En seguridad esto es fundamental, porque permite auditar el codigo. Wireshark, Metasploit, OSSEC, Suricata, el kernel de Linux, OpenSSL. Todo eso es open source. Hay modelos de negocio alrededor, licencias que protegen el uso, y debates intensos sobre que significa "libre". Pero en esencia es la idea de que el conocimiento compartido hace mejores herramientas.
+Código abierto. Significa que el código fuente de un programa es público: cualquiera puede verlo, modificarlo y distribuirlo. En seguridad esto es fundamental, porque permite auditar el código. Wireshark, Metasploit, OSSEC, Suricata, el kernel de Linux, OpenSSL. Todo eso es open source. Hay modelos de negocio alrededor, licencias que protegen el uso, y debates intensos sobre que significa "libre". Pero en esencia es la idea de que el conocimiento compartido hace mejores herramientas.
 
 ### Ética Hacker
 
-No es un documento firmado ni un codigo de conducta corporativo. Es un conjunto de principios que la comunidad fue construyendo con el tiempo: el acceso a la información debe ser abierto, la curiosidad es valida, la autoridad debe justificarse, el conocimiento debe compartirse, y no se debe dañar sistemas que no te pertenecen. Suena idealista, y lo es. Pero es la base sobre la que se construyo todo el concepto de seguridad ofensiva ética.
+No es un documento firmado ni un código de conducta corporativo. Es un conjunto de principios que la comunidad fue construyendo con el tiempo: el acceso a la información debe ser abierto, la curiosidad es valida, la autoridad debe justificarse, el conocimiento debe compartirse, y no se debe dañar sistemas que no te pertenecen. Suena idealista, y lo es. Pero es la base sobre la que se construyo todo el concepto de seguridad ofensiva ética.
 
 ### Cyberpunk
 
@@ -52,7 +55,7 @@ Una de las ramas más artisticas de la cultura hacker. Gente que escribe program
 
 ### Hacktivism
 
-Cuando el hacking se encuentra con la política. Grupos como Anonymous usan técnicas de hacking para protestar, denunciar o desobedecer digitalmente. Es un area gris: las mismas habilidades que usa un criminal las usa un hacktivista, pero la motivación es distinta. No todo hacktivista es heroe ni todo criminal es villano, pero la ley no suele hacer esa distincion.
+Cuando el hacking se encuentra con la política. Grupos como Anonymous usan técnicas de hacking para protestar, denunciar o desobedecer digitalmente. Es un area gris: las mismas habilidades que usa un criminal las usa un hacktivista, pero la motivación es distinta. No todo hacktivista es heroe ni todo criminal es villano, pero la ley no suele hacer esa distinción.
 
 ### 2600
 
@@ -60,7 +63,7 @@ La revista más antigua sobre cultura hacker aún en circulacion. Fundada en 198
 
 ### Hackerspace
 
-Un espacio físico donde la gente se junta a hacer cosas. Tienen impresoras 3D, equipos de electrónica, herramientas de software, y gente que sabe de todo un poco. Son el equivalente moderno de los clubes de computacion de los 70, donde los entusiastas se juntaban a programar porque no tenían computadora en casa. Hoy hay hackerspaces en casi cualquier ciudad del mundo, y muchos son el punto de partida de proyectos grandes.
+Un espacio físico donde la gente se junta a hacer cosas. Tienen impresoras 3D, equipos de electrónica, herramientas de software, y gente que sabe de todo un poco. Son el equivalente moderno de los clubes de computación de los 70, donde los entusiastas se juntaban a programar porque no tenían computadora en casa. Hoy hay hackerspaces en casi cualquier ciudad del mundo, y muchos son el punto de partida de proyectos grandes.
 
 ---
 
@@ -140,7 +143,7 @@ Públicas los detalles de la vulnerabilidad sin esperar a que la empresa la parc
 
 ### Coordinated Disclosure
 
-El punto medio: acuerdas con la empresa una fecha de publicación, generalmente 30, 60 o 90 dias después del reporte. Tiempo suficiente para que saquen el parche, no tanto como para que se olviden del bug. Es el estándar actual de la industria.
+El punto medio: acuerdas con la empresa una fecha de publicación, generalmente 30, 60 o 90 días después del reporte. Tiempo suficiente para que saquen el parche, no tanto como para que se olviden del bug. Es el estándar actual de la industria.
 
 ### Doxing
 
@@ -164,7 +167,7 @@ Una vulnerabilidad que nadie conoce excepto quien la descubrió. Sin parche, sin
 
 ### Exploit
 
-El codigo o técnica que aprovecha una vulnerabilidad. No es necesariamente malware: puede ser un script que usas en un laboratorio, una prueba de concepto que incluis en un reporte de bug bounty, o un ataque real. La diferencia no esta en el codigo, esta en quien lo ejecuta y con que permiso.
+El código o técnica que aprovecha una vulnerabilidad. No es necesariamente malware: puede ser un script que usas en un laboratorio, una prueba de concepto que incluis en un reporte de bug bounty, o un ataque real. La diferencia no esta en el código, esta en quien lo ejecuta y con que permiso.
 
 ### Payload
 
@@ -184,7 +187,7 @@ La interfaz donde ejecutas comandos. Puede ser local (tu terminal) o remota (cua
 
 ### Reverse Shell
 
-El atacante hace que la máquina objetivo se conecte hacia el. Sirve para evitar firewalls que bloquean conexiones entrantes pero permiten salientes. Es como si hicieras que la victima te llame a ti, en vez de llamarla tu a ella.
+El atacante hace que la máquina objetivo se conecte hacia el. Sirve para evitar firewalls que bloquean conexiones entrantes pero permiten salientes. Es como si hicieras que la víctima te llame a ti, en vez de llamarla tu a ella.
 
 ### Bind Shell
 
@@ -204,7 +207,7 @@ Un sistema diseñado para ser atacado. Simula servicios vulnerables para atraer 
 
 ### Sandbox
 
-Un entorno aislado donde ejecutas codigo sospechoso sin riesgo de contaminar el sistema real. Se usa para analizar malware, probar exploits, abrir archivos dudosos. Si el codigo hace algo malo, solo afecta a la máquina virtual o al contenedor, que se descarta después del análisis.
+Un entorno aislado donde ejecutas código sospechoso sin riesgo de contaminar el sistema real. Se usa para analizar malware, probar exploits, abrir archivos dudosos. Si el código hace algo malo, solo afecta a la máquina virtual o al contenedor, que se descarta después del análisis.
 
 ### Command and Control (C2)
 
@@ -232,7 +235,7 @@ El término profesional para referirse a quien ejecuta un ataque. Puede ser un c
 
 ### APT
 
-Advanced Persistent Threat. Cuando el ataque no viene de un actor individual, viene de un gobierno. Equipos con presupuesto militar, objetivos políticos y paciencia para esperar meses o años dentro de un sistema. Fancy Bear (Rusia), Lazarus (Corea del Norte), Equation Group (NSA). Si uno de estos apunta a una organización, no hay firewall que la salve. La buena noticia: el 99% de los ataques no son APTs.
+Advanced Persistent Threat. Cuando el ataque no viene de un actor individual, viene de un gobierno. Equipos con presupuesto militar, objetivos políticos y paciencia para esperar meses o años dentro de un sistema. Fancy Bear (Rusia), Lazarus (Corea del Norte), Equation Group (NSA). Defenderse requiere gestión de riesgo, detección y resiliencia; un firewall por sí solo no cubre todas las técnicas de un actor avanzado.
 
 ### Tor
 
@@ -248,7 +251,7 @@ Address Space Layout Randomization. Una técnica del sistema operativo que desor
 
 ### DEP
 
-Data Execution Prevention. Marca regiones de memoria como no ejecutables. Si un atacante mete codigo en un area de datos, el sistema se niega a ejecutarlo. Junto con ASLR, forma la base de las defensas modernas contra exploits de memoria.
+Data Execution Prevention. Marca regiones de memoria como no ejecutables. Si un atacante mete código en un area de datos, el sistema se niega a ejecutarlo. Junto con ASLR, forma la base de las defensas modernas contra exploits de memoria.
 
 ---
 
@@ -280,7 +283,7 @@ La persona que transfiere dinero robado entre cuentas a cambio de una comision, 
 
 ### SWATing
 
-Llamar a emergencias reportando un incidente falso y grave (tirador activo, rehenes) para que un equipo SWAT irrumpa en el domicilio de la victima. Ha causado muertes. No es una broma, no es un juego, no es hacking. Es terrorismo.
+Llamar a emergencias reportando un incidente falso y grave (tirador activo, rehenes) para que un equipo SWAT irrumpa en el domicilio de la víctima. Ha causado muertes. No es una broma, no es un juego, no es hacking. Es terrorismo.
 
 ---
 

@@ -1,5 +1,8 @@
 ---
 title: "Hackeando la Entrevista Técnica"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Hackeando la Entrevista Técnica
@@ -12,7 +15,7 @@ Llegaste a la entrevista final. Estás frente al CISO (Chief Information Securit
 La mayoría de los candidatos *Juniors* intentan impresionar al director diciendo: *"Puedo hackear una máquina de Windows en 3 minutos con Metasploit"*.
 Eso asusta al Director, porque demuestra inmadurez. El Director no quiere a alguien que rompe cosas por diversión; quiere a alguien que defiende la empresa corporativa usando Playbooks y Métricas de Riesgo.
 
-**Por que esto importa:** Imagina que eres el dueño de un banco. ¿Contratas al que te dice "mira cómo abro esta caja fuerte en 2 minutos" o al que te dice "mira cómo instalo una alarma que nadie puede abrir"? Exacto.
+**Por qué esto importa:** Imagina que eres el dueño de un banco. ¿Contratas al que te dice "mira cómo abro esta caja fuerte en 2 minutos" o al que te dice "mira cómo instalo una alarma que nadie puede abrir"? Exacto.
 
 ---
 
@@ -76,7 +79,7 @@ Hay preguntas diseñadas específicamente para ver si tienes mentalidad de Negoc
   2. "Preservo la evidencia: tomó captura de pantalla del mensaje de rescate, registro la hora del incidente, identifico el vector inicial (phishing, RDP expuesto)."
   3. "Activo el plan de respuesta a incidentes: notifico al CISO, legal y al equipo de IR. Inicio la cadena de custodia."
 
-**Por que esto importa:** Si no puedes explicar algo que usas todos los días, menos vas a poder explicar un ataque complejo. Es la prueba de fuego de "realmente entiende o solo memorizó comandos".
+**Por qué esto importa:** Si no puedes explicar algo que usas todos los días, menos vas a poder explicar un ataque complejo. Es la prueba de fuego de "realmente entiende o solo memorizó comandos".
 
 ---
 
@@ -155,7 +158,7 @@ Preguntas que demuestran interés y madurez:
 
 **Pregunta sobre experiencia no relevante:** "No tengo experiencia directa con [tecnología X], pero he trabajado con [tecnología Y] que comparte principios similares. Por ejemplo, [explicar analogía técnica]."
 
-**Pregunta sobre fracaso:** Usa STAR inverso: "En mi laboratorio, intenté implementar [X] pero no funcionó porque [causa]. Aprendí [lección] y lo resolví haciendo [acción correctiva]. Ahora incluyo [mejora] en todos mis proyectos."
+**Pregunta sobre fracaso:** Usa STAR inverso: "En mi laboratorio, intenté implementar [X] pero no funciónó porque [causa]. Aprendí [lección] y lo resolví haciendo [acción correctiva]. Ahora incluyo [mejora] en todos mis proyectos."
 
 **Salario:** "Estoy abierto a negociar basado en el paquete total. Mi expectativa está en el rango de mercado para un rol de [nivel] en [industria/ubicación]. ¿Cuál es el rango presupuestado para esta posición?"
 

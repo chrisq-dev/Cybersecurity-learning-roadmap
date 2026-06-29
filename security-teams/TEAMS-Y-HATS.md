@@ -1,5 +1,8 @@
 ---
 title: "Equipos de Seguridad: Los Juegos de Guerra"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Equipos de Seguridad: Los Juegos de Guerra
@@ -8,17 +11,17 @@ title: "Equipos de Seguridad: Los Juegos de Guerra"
 
 Destruir el mito de Hollywood de que la ciberseguridad se trata exclusivamente de ponerse una capucha negra y hackear bancos.
 
-En la vida real corporativa, la ciberseguridad es una operación militar altamente estructurada. Existen equipos separados con presupuestos separados, y el 90% del dinero (y de los empleos) no está en atacar, está en defender. Las películas te venden pura mentira.
+En organizaciones maduras existen funciones ofensivas, defensivas, de ingeniería, riesgo, cumplimiento y respuesta. Su estructura y presupuesto varían por tamaño y sector; los roles defensivos y de gobierno suelen cubrir una superficie operativa más amplia que las evaluaciones ofensivas.
 
 Esta guía desglosa la estructura organizativa de la ciberseguridad empresarial, los roles, las herramientas que usa cada equipo y cómo interactúan en el mundo real.
 
 ---
 
-## 1. Red Team (Los Asesinos a Sueldo)
+## 1. Red Team (Simulación adversaria autorizada)
 
 * **La Analogía:** Eres el Rey de un castillo. Crees que tus defensas son perfectas. Para estar seguro, contratas legalmente a un grupo de mercenarios expertos y les pagas para que intenten colarse al castillo a las 3:00 AM y "secuestrar" a la princesa. Si lo logran, te entregan un reporte de cómo lo hicieron.
 
-* **En Informática:** El Red Team (Equipo Rojo) hace *Offensive Security* (Pentesting, Ingeniería Social). Su trabajo es simular ser un grupo de hackers rusos (APT) para encontrar las vulnerabilidades de la empresa antes de que los criminales reales lo hagan.
+* **En informática:** El Red Team emula objetivos y técnicas de adversarios definidos dentro de un alcance autorizado. Un pentest y un ejercicio de Red Team no son equivalentes: difieren en objetivo, duración, sigilo y reglas de enfrentamiento.
 
 ### Herramientas y Metodologías del Red Team
 
@@ -45,9 +48,9 @@ El Red Team opera con un arsenal especializado que refleja el de los atacantes r
 - **White Box:** El Red Team recibe toda la información (código fuente, credenciales, diagramas de red). Enfoque en profundidad, no en evasión.
 - **Grey Box:** Punto medio. El equipo tiene credenciales de usuario estándar pero no conoce la arquitectura interna.
 
-* **Por que esto importa:** Un engagement Black Box es costoso (el equipo pasa semanas en reconocimiento), pero revela vulnerabilidades reales desde la perspectiva de un atacante externo. Un White Box es más rápido y barato, y encuentra vulnerabilidades profundas en el código. La mayoría de las empresas optan por Grey Box como balance costo-beneficio.
+* **Por qué esto importa:** Un engagement Black Box es costoso (el equipo pasa semanas en reconocimiento), pero revela vulnerabilidades reales desde la perspectiva de un atacante externo. Un White Box es más rápido y barato, y encuentra vulnerabilidades profundas en el código. La mayoría de las empresas optan por Grey Box como balance costo-beneficio.
 
-* **La Realidad Laboral:** Es el trabajo que todos los novatos quieren porque se ve genial en las películas. Sin embargo, representa menos del 10% de los empleos reales en el mercado. Por que esto importa: un atacante solo necesita tener suerte una vez; el defensor necesita tener suerte todos los días. Es como jugar al fútbol donde el otro equipo solo necesita un gol y tú tienes que mantener el arco en cero toda la temporada.
+* **La Realidad Laboral:** Es el trabajo que todos los novatos quieren porque se ve genial en las películas. Sin embargo, es solo una parte del mercado de trabajo en seguridad. Por qué esto importa: un atacante solo necesita tener suerte una vez; el defensor necesita tener suerte todos los días. Es como jugar al fútbol donde el otro equipo solo necesita un gol y tú tienes que mantener el arco en cero toda la temporada.
 
 ## 2. Blue Team (La Guardia del Castillo)
 
@@ -101,7 +104,7 @@ Históricamente, el Red Team y el Blue Team se odiaban. No es broma, el Red Team
 - **Ejercicio con tabla en vivo:** El Red Team ejecuta un ataque mientras el Blue Team observa en vivo las telemetrías. Al detectar el ataque, se detiene la simulación y se discute qué señales emitió el atacante y cómo mejorar la detección.
 - **Ejercicios automatizados:** Herramientas como **Atomic Red Team** (libería de pruebas de MITRE ATT&CK) y **CALDERA** (marco de emulación de adversarios) permiten ejecutar técnicas de ataque de forma segura y validar si el Blue Team las detecta.
 
-* **Por que esto importa:** Un Purple Team bien ejecutado reduce el tiempo entre la identificación de una vulnerabilidad y la implementación de una defensa, pasando de semanas a horas.
+* **Por qué esto importa:** Un Purple Team bien ejecutado reduce el tiempo entre la identificación de una vulnerabilidad y la implementación de una defensa, pasando de semanas a horas.
 
 ## 4. Más Allá de los Tres Colores
 
@@ -169,9 +172,9 @@ Un SOC 24/7 requiere personal suficiente para cubrir turnos rotativos:
   - 6-8 Tier 1 (Monitors)
   - 1-2 Ingenieros SIEM
 
-### Casos Reales de Coordinación Entre Equipos
+### Escenarios Ilustrativos de Coordinación Entre Equipos
 
-**Caso 1: Respuesta a Phishing Avanzado (2022)**
+**Escenario 1: Respuesta a phishing**
 Un empleado de finanzas recibe un correo de phishing que evade el gateway de email. El empleado hace clic y sus credenciales son robadas.
 1. **EDR (Blue Team):** Detecta un inicio de sesión anómalo desde Nigeria 30 minutos después del clic. Alerta al SIEM.
 2. **SOC Tier 1:** Revisa la alerta, confirma que el empleado está en la oficina (geolocalización IP imposible). Escala a Tier 2.
@@ -179,7 +182,7 @@ Un empleado de finanzas recibe un correo de phishing que evade el gateway de ema
 4. **Red Team:** Usa la misma técnica de phishing como aprendizaje. Crea una campaña de concientización dirigida.
 5. **GRC:** Documenta el incidente, actualiza la política de acceso remoto.
 
-**Caso 2: Ataque de Ransomware Contenido (2023)**
+**Escenario 2: Ataque de ransomware contenido**
 Un ransomware comienza a cifrar archivos en un servidor de archivos.
 1. **EDR (SentinelOne):** Detecta comportamiento de ransomware (escritura masiva de archivos con extensión .locked). Revierte automáticamente los cambios.
 2. **SOC Tier 3:** Investiga el vector de entrada. Descubre que el ransomware entró via RDP expuesto (puerto 3389 abierto a internet).
@@ -206,7 +209,7 @@ Un atacante real (Black Hat) conoce la estructura de equipos de defensa corporat
 
 - **Contra el Red Team:** No pueden hacer nada directamente, pero pueden fingir ser un pentester legítimo para obtener acceso (suplantación de identidad). Los falsos "pentesters" son un vector de ataque real.
 - **Contra el Blue Team:** Saben que el SOC tiene fatiga de alertas. Un atacante puede generar miles de alertas falsas (alert flooding) para esconder el ataque real entre el ruido.
-- **Contra la estructura:** Atacan en fines de semana o días festivos, cuando la dotación del SOC es mínima. El 45% de los ataques de ransomware ocurren fuera del horario laboral.
+- **Contra la estructura:** Atacan en fines de semana o días festivos, cuando la dotación del SOC es mínima. Muchos atacantes eligen horarios de menor cobertura operativa para retrasar la detección y la coordinación.
 - **El eslabón más débil:** Saben que los equipos tienen conflictos internos. Un atacante explota la falta de comunicación entre equipos para moverse lateralmente sin ser detectado.
 
 ## 7. Criterio de Dominio (Autoevaluación)

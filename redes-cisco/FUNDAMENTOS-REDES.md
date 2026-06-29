@@ -1,5 +1,8 @@
 ---
 title: "Fundamentos de Redes: Lo que nadie te explica sobre como viajan los datos"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Fundamentos de Redes: Lo que nadie te explica sobre como viajan los datos
@@ -14,21 +17,21 @@ Esta guía no es un listado de definiciones. Es el mapa mental que me hubiera gu
 
 Cuando alguien me pregunta como funciona internet, le digo: imagina que vives en una ciudad y quieres enviar una carta a alguien en otro país.
 
-Tienes un mensaje. Lo pones en un sobre con el nombre del destinatario. Eso es la capa de aplicación: el contenido que quieres comunicar. Luego tomas ese sobre y lo pones dentro de otro sobre más grande, donde escribes el nombre de la calle y el número de la casa. Eso es la capa de red: la dirección IP que le dice al sistema a donde va. Luego pones ese sobre dentro de otro donde escribes el codigo l, que ayuda a clasificar el envio en la central de correos. Eso es la máscara de subred. Finalmente, le pones una estampilla que dice "certificado" o "normal". Eso es la capa de transporte: TCP si quieres confirmación de entrega, UDP si te da igual.
+Tienes un mensaje. Lo pones en un sobre con el nombre del destinatario. Eso es la capa de aplicación: el contenido que quieres comunicar. Luego tomas ese sobre y lo pones dentro de otro sobre más grande, donde escribes el nombre de la calle y el número de la casa. Eso es la capa de red: la dirección IP que le dice al sistema a donde va. Luego pones ese sobre dentro de otro donde escribes el código l, que ayuda a clasificar el envio en la central de correos. Eso es la máscara de subred. Finalmente, le pones una estampilla que dice "certificado" o "normal". Eso es la capa de transporte: TCP si quieres confirmación de entrega, UDP si te da igual.
 
 El cartero local (el switch) lo lleva a la oficina de correos de tu barrio. Ahí, el router mira el destino y decide si mandarlo por avión, por barco o por camión. Cada decisión que toma el router es un salto. El paquete viaja de router en router hasta que llega a la oficina de correos del barrio destino, donde otro cartero (otro switch) lo entrega a la casa correcta.
 
 Cuando la carta llega, el destinatario abre los sobres en orden inverso: primero quita la estampilla (capa de transporte), luego verifica la dirección (capa de red), y finalmente lee el mensaje (capa de aplicación).
 
-Eso es todo. Internet no es magia. Es una cadena de sobres dentro de sobres, cada uno con una funcion específica, viajando a través de una red de carteros y oficinas de correos.
+Eso es todo. Internet no es magia. Es una cadena de sobres dentro de sobres, cada uno con una función específica, viajando a través de una red de carteros y oficinas de correos.
 
 ## El viaje completo de un dato desde la aplicación hasta el cable
 
-Voy a explicar el recorrido completo desde que abres una pagina web hasta que el contenido aparece en tu pantalla. No importa si usas Windows, macOS o Linux, el proceso es conceptualmente el mismo.
+Voy a explicar el recorrido completo desde que abres una página web hasta que el contenido aparece en tu pantalla. No importa si usas Windows, macOS o Linux, el proceso es conceptualmente el mismo.
 
 Tu navegador (Firefox, Chrome, Safari) necesita cargar https://ejemplo.com. Lo primero que hace es preguntar al sistema operativo: "resuelve este nombre a una dirección IP". El sistema operativo revisa su caché local. Si no la tiene, pregunta al servidor DNS configurado. El servidor DNS responde con una dirección IP, digamos 93.184.216.34.
 
-Ahora el navegador sabe a donde enviar la petición. Le dice al sistema operativo: "abre una conexion TCP hacia 93.184.216.34, puerto 443". El sistema operativo empieza el triple handshake de TCP. Envía un paquete SYN. Espera un SYN-ACK. Responde con un ACK. La conexion esta establecida.
+Ahora el navegador sabe a donde enviar la petición. Le dice al sistema operativo: "abre una conexión TCP hacia 93.184.216.34, puerto 443". El sistema operativo empieza el triple handshake de TCP. Envía un paquete SYN. Espera un SYN-ACK. Responde con un ACK. La conexión esta establecida.
 
 Luego, el navegador construye una petición HTTP cifrada con TLS. Esa petición viaja hacia abajo en la pila de protocolos. La capa de transporte la divide en segmentos. La capa de red la envuelve en paquetes IP. La capa de enlace la envuelve en tramas Ethernet.
 
@@ -52,7 +55,7 @@ no todos los dispositivos son iguales. Algunos solo repiten, otros aprenden, otr
 
 El hub es el dispositivo más simple y obsoleto. Cuando recibe una señal por un puerto, la replica por todos los demás puertos. No hay inteligencia. No hay aislamiento. Todos los dispositivos conectados a un hub comparten el mismo ancho de banda y ven todo el tráfico.
 
-Los hubs apenas se usan hoy, pero entenderlos ayuda a entender por que los switches fueron una revolucion.
+Los hubs apenas se usan hoy, pero entenderlos ayuda a entender por qué los switches fueron una revolucion.
 
 ### Bridge (el puente)
 
@@ -98,7 +101,7 @@ Pinout T568B (el más común):
 
 Solo los pines 1, 2, 3 y 6 se usan para datos en 10/100 Mbps. Los 8 se usan para Gigabit Ethernet.
 
-Tipos de cable según conexion:
+Tipos de cable según conexión:
 - Cable directo: ambos extremos con el mismo estándar. Conecta dispositivos diferentes (PC a switch).
 - Cable cruzado: un extremo T568A y el otro T568B. Conecta dispositivos iguales (PC a PC, switch a switch).
 - Cable rollover: los pines están invertidos. Se usa para consola de gestión.
@@ -139,7 +142,7 @@ Mecanismos de seguridad Wi-Fi:
 - WPA2: usa AES. Vulnerable a KRACK (Key Reinstallation Attack).
 - WPA3: usa SAE (Simultaneous Authentication of Equals). Reemplaza el pre-shared key por un handshake más seguro.
 
-El mejor cifrado no protege contra un atacante que ya esta conectado a la red. Si compartes la contrasena Wi-Fi, cualquier persona en la red puede intentar ataques contra otros dispositivos.
+El mejor cifrado no protege contra un atacante que ya esta conectado a la red. Si compartes la contraseña Wi-Fi, cualquier persona en la red puede intentar ataques contra otros dispositivos.
 
 ### Ethernet: el protocolo que lo une todo
 
@@ -190,7 +193,7 @@ El problema es que ARP no tiene autenticación. Cualquier dispositivo puede resp
 
 Esto se llama ARP spoofing o ARP poisoning. Permite al atacante interceptar, modificar o bloquear el tráfico entre dos dispositivos.
 
-La herramienta `arpspoof` (parte de dsniff) automatiza este ataque. Ejecutas `arpspoof -t victima gateway` y el tráfico de la victima pasa por tu máquina.
+La herramienta `arpspoof` (parte de dsniff) automatiza este ataque. Ejecutas `arpspoof -t victima gateway` y el tráfico de la víctima pasa por tu máquina.
 
 ### MAC flooding
 
@@ -246,7 +249,7 @@ La solución es la autonegociacion. Pero si falla (cables danados, configuració
 
 ### Cable danado
 
-Un cable mal crimpado, pisado por una silla, o con un conector suelto. El resultado es pérdida de paquetes, velocidad reducida, o conexion intermitente.
+Un cable mal crimpado, pisado por una silla, o con un conector suelto. El resultado es pérdida de paquetes, velocidad reducida, o conexión intermitente.
 
 Los switches modernos tienen indicadores de errores CRC. Un alto número de errores en un puerto indica un problema físico.
 
@@ -300,7 +303,7 @@ Para usarlo:
 1. Selecciona la interfaz de red que quieres monitorear (Ethernet, Wi-Fi).
 2. Aplica un filtro de captura si solo te interesa cierto tráfico (por ejemplo, `tcp port 80` para solo HTTP).
 3. Inicia la captura.
-4. Realiza la accion que quieres analizar (abrir una pagina web, hacer ping).
+4. Realiza la acción que quieres analizar (abrir una página web, hacer ping).
 5. Deten la captura y analiza los paquetes.
 
 Wireshark muestra cada paquete con su árbol de protocolos. Puedes expandir cada capa para ver los encabezados:
@@ -344,7 +347,7 @@ ARP traduce direcciones IP a direcciones MAC en una red local. Funciona así:
 4. El host B responde: "yo, mi MAC es aa:bb:cc:dd:ee:ff".
 5. El host A guarda la asociacion en su tabla ARP y envía el paquete.
 
-La tabla ARP tiene un temporizador de envejecimiento. Las entradas expiran después de un tiempo (tipicamente 20-60 segundos para entradas incompletas, 2-4 horas para entradas completas en algunos sistemas).
+La tabla ARP tiene un temporizador de envejecimiento. Las entradas expiran después de un tiempo (típicamente 20-60 segundos para entradas incompletas, 2-4 horas para entradas completas en algunos sistemas).
 
 ARP es inherentemente inseguro porque:
 - No tiene autenticación
@@ -380,7 +383,7 @@ En instalaciones profesionales, el cableado sigue un estándar llamado cableado 
 - Cableado vertical (backbone): conecta los cuartos de telecomunicaciones entre pisos.
 - Area de trabajo: desde el outlet hasta el dispositivo.
 
-Cada conexion debe ser probada con un certificador de cable. La certificación verifica:
+Cada conexión debe ser probada con un certificador de cable. La certificación verifica:
 - Mapa de pines (todos los pares conectados correctamente)
 - Longitud (máximo 100 metros)
 - Atenuacion (pérdida de señal)
@@ -391,9 +394,9 @@ Un cable que no pasa la certificación puede funcionar a 100 Mbps pero fallar a 
 
 ## Autoevaluación
 
-1. Cuando envías un paquete desde tu computadora a un servidor en otro país, las direcciones MAC cambian en cada salto pero la dirección IP no. Explica por que usando las funciones de cada una dentro del modelo de red.
+1. Cuando envías un paquete desde tu computadora a un servidor en otro país, las direcciones MAC cambian en cada salto pero la dirección IP no. Explica por qué usando las funciones de cada una dentro del modelo de red.
 
-2. Un switch recibe un paquete destinado a una MAC que no esta en su tabla. Que hace y por que esto es un riesgo de seguridad?
+2. Un switch recibe un paquete destinado a una MAC que no esta en su tabla. Que hace y por qué esto es un riesgo de seguridad?
 
 3. Un empleado se queja de que la red va lenta. Las luces del switch muestran actividad constante en todos los puertos incluso cuando nadie esta trabajando. Que esta probablemente ocurriendo y como lo diagnosticarias?
 
@@ -403,10 +406,10 @@ Un cable que no pasa la certificación puede funcionar a 100 Mbps pero fallar a 
 
 6. Si tu computadora puede hacer ping a la IP 8.8.8.8 pero no puede cargar google.com, en que capa del modelo de red esta el problema? Como lo confirmarias?
 
-7. Explica por que la tabla MAC de un switch tiene un tamaño finito y que ocurre cuando se llena. Que herramienta usaria un atacante para llenarla intencionalmente?
+7. Explica por qué la tabla MAC de un switch tiene un tamaño finito y que ocurre cuando se llena. Que herramienta usaria un atacante para llenarla intencionalmente?
 
 8. Un router recibe un paquete y lo reenvia por la interfaz equivocada. El paquete viaja hacia un router que no sabe que hacer con el y lo descarta. Como se llama este tipo de falla y como se diagnostica?
 
-9. Configuras un cable directo entre dos PCs para transferir archivos. Las PCs no se ven entre si. El cable esta correctamente crimpado. Que podría estar mal y por que?
+9. Configuras un cable directo entre dos PCs para transferir archivos. Las PCs no se ven entre si. El cable esta correctamente crimpado. Que podría estar mal y por qué?
 
 10. Que es ARP spoofing y como permite a un atacante interceptar tráfico entre dos dispositivos en la misma red?

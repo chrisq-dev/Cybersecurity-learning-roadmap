@@ -1,5 +1,8 @@
 ---
 title: "Backups: La Máquina del Tiempo"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Backups: La Máquina del Tiempo
@@ -104,7 +107,7 @@ Esquema más complejo basado en la secuencia matemática de la Torre de Hanoi. C
 | Backup completo mensual | Cada mes | 1 año | Cinta/Cloud Glacial |
 | Backup completo anual | Cada año | 7 años (legal) | Cinta/Cloud Glacial |
 
-* **Por que esto importa:** La retención no es solo técnica. Es legal. Muchas regulaciones (GDPR, SOX, HIPAA) exigen retención de datos por períodos específicos. Eliminar backups antes del plazo legal puede resultar en multas y sanciones.
+* **Por qué esto importa:** La retención no es solo técnica. Es legal. Muchas regulaciones (GDPR, SOX, HIPAA) exigen retención de datos por períodos específicos. Eliminar backups antes del plazo legal puede resultar en multas y sanciones.
 
 ---
 
@@ -208,7 +211,7 @@ Un atacante de ransomware conoce la importancia de los backups y los ataca direc
 
 5. **Ataque a backups inmutables:** Los atacantes ahora buscan vulnerabilidades en la configuración de inmutabilidad. Si el período de inmutabilidad expiró y el atacante tiene credenciales de administrador, puede eliminar los backups inmutables después de modificar el período de retención.
 
-* **Por que esto importa:** La única defensa probada contra ransomware es un backup **inmutable y air-gapped**. Un backup air-gapped (separado físicamente o con desconexión de red programada) no puede ser alcanzado por el ransomware. Ejemplo: cintas LTO almacenadas en una caja fuerte, o un NAS con conexión programada solo durante la ventana de backup.
+* **Por qué esto importa:** La única defensa probada contra ransomware es un backup **inmutable y air-gapped**. Un backup air-gapped (separado físicamente o con desconexión de red programada) no puede ser alcanzado por el ransomware. Ejemplo: cintas LTO almacenadas en una caja fuerte, o un NAS con conexión programada solo durante la ventana de backup.
 
 ---
 

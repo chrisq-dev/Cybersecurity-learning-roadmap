@@ -1,5 +1,8 @@
 ---
 title: "Cultura Tech y Ciberseguridad"
+level: "inicial"
+content_type: "articulo"
+updated: "2026-06-29"
 ---
 
 # Cultura Tech y Ciberseguridad
@@ -338,7 +341,7 @@ Esa idea está en la base de todo lo que estudiamos hoy. Un sistema, un script, 
 
 ### Margaret Hamilton
 
-Margaret Hamilton lideró parte del software del Apolo 11.
+Margaret Hamilton líderó parte del software del Apolo 11.
 
 Su historia es importante porque muestra que el software puede ser crítico para la vida real. No era una app cualquiera: un error podía afectar una misión histórica.
 

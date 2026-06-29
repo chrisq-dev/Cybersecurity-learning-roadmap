@@ -1,12 +1,15 @@
 ---
 title: "Roadmap Inicial de 90 Días"
+level: "referencia"
+content_type: "ruta"
+updated: "2026-06-29"
 ---
 
 # Roadmap Inicial de 90 Días
 
-Este roadmap no promete convertirte en experto en 90 dias. Si alguien te vende eso, corre.
+Este roadmap no promete convertirte en experto en 90 días. Si alguien te vende eso, corre.
 
-La ciberseguridad toma tiempo. Lo que si puede hacer un plan de 90 dias es darte estructura para construir base, crear habito y dejar de saltar entre temas sin dirección.
+La ciberseguridad toma tiempo. Lo que si puede hacer un plan de 90 días es darte estructura para construir base, crear habito y dejar de saltar entre temas sin dirección.
 
 La meta es terminar con:
 
@@ -25,7 +28,7 @@ Puedes adaptarlo a tu tiempo, escuela, trabajo o energía. Si una semana se comp
 
 La regla es avanzar con consistencia, no con ansiedad.
 
-## Dias 1 a 15: Base Técnica
+## Días 1 a 15: Base Técnica
 
 Objetivo: entender como funcionan computadoras, sistemas operativos y permisos. Suena básico, pero muchos estudiantes saltan esta base y después no logran conectar conceptos más avanzados.
 
@@ -50,7 +53,7 @@ Resultado esperado:
 
 Puedes explicar qué es un proceso, qué son permisos y por qué no todo debe ejecutarse como administrador.
 
-## Dias 16 a 30: Redes y Linux
+## Días 16 a 30: Redes y Linux
 
 Objetivo: entender comunicación entre sistemas. Esto es clave porque absolutamente todo en ciberseguridad pasa por una red. Todo.
 
@@ -74,9 +77,9 @@ Resultado esperado:
 
 Puedes explicar qué pasa, a alto nivel, cuando entras a una página web.
 
-## Dias 31 a 45: Web y Seguridad Básica
+## Días 31 a 45: Web y Seguridad Básica
 
-Objetivo: entender aplicaciones web y fallas comunes. Por que esto importa: el 90% de los ataques involucran una aplicación web. Literalmente.
+Objetivo: entender aplicaciones web y fallas comunes. Por qué esto importa: las aplicaciones web exponen identidad, datos y lógica de negocio a redes no confiables.
 
 Estudia:
 
@@ -101,7 +104,7 @@ Resultado esperado:
 
 Puedes explicar por qué una app puede fallar aunque "funcione bien" para el usuario.
 
-## Dias 46 a 60: Blue Team y Logs
+## Días 46 a 60: Blue Team y Logs
 
 Objetivo: empezar a pensar como defensor. Después aprendes a leerlos y cada línea cuenta una historia.
 
@@ -124,7 +127,7 @@ Resultado esperado:
 
 Puedes explicar una alerta sencilla sin inventar conclusiones.
 
-## Dias 61 a 75: Ruta Principal
+## Días 61 a 75: Ruta Principal
 
 Objetivo: elegir una dirección inicial. aqui muchos se traban porque quieren elegir la opción "correcta". no hay opción incorrecta, solo distintas.
 
@@ -156,7 +159,7 @@ Resultado esperado:
 
 Puedes explicar por qué elegiste esa ruta y qué necesitas estudiar después.
 
-## Dias 76 a 90: Portafolio Inicial
+## Días 76 a 90: Portafolio Inicial
 
 Objetivo: convertir estudio en evidencia pública o presentable. diferencia a alguien que estudio de alguien que realmente sabe? El portafolio. No importa si es chico, importa que exista.
 
@@ -191,7 +194,7 @@ Evita:
 - Estudiar solo viendo videos.
 - Creer que no avanzas porque todavía no sabes temas avanzados.
 
-## Después de los 90 Dias
+## Después de los 90 Días
 
 Después de este roadmap, no "terminaste" ciberseguridad. nadie "termina" esto. Es un camino largo y esta bien.
 

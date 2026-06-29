@@ -1,5 +1,8 @@
 ---
 title: "Procesos, Servicios y Logs: El Pulso de la Máquina"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Procesos, Servicios y Logs: El Pulso de la Máquina
@@ -12,7 +15,7 @@ Los procesos son los programas que están ejecutándose ahora mismo. Los servici
 
 Esta guía conecta estos tres conceptos porque en seguridad no funcionan de forma aislada. Cuando investigas un incidente, sigues la cadena: el log te dice que paso, el proceso te dice que esta pasando ahora, y el servicio te dice que va a pasar cuando el sistema se reinicie.
 
-Si no entiendes estas tres piezas, no puedes hacer respuesta a incidentes. No puedes detectar un minero de criptomonedas. No puedes encontrar un backdoor. No puedes saber si un ataque tuvo exito.
+Si no entiendes estas tres piezas, no puedes hacer respuesta a incidentes. No puedes detectar un minero de criptomonedas. No puedes encontrar un backdoor. No puedes saber si un ataque tuvo éxito.
 
 ## La Analogía: El Hospital con Pacientes, Doctores y Expedientes
 
@@ -24,7 +27,7 @@ Los **servicios** (o demonios) son los doctores del hospital. No son pacientes. 
 
 Los **logs** son los expedientes médicos. Todo lo que pasa queda registrado: a que hora ingreso un paciente, que medicamentos se le administraron, si hubo complicaciones, quien autorizo cada procedimiento. Cuando algo sale mal, el director del hospital no adivina lo que paso. Lee los expedientes.
 
-En seguridad, el paralelo es directo: cuando un servidor Linux es infectado, no verás un archivo gigante titulado "SOY-UN-VIRUS". Verás un proceso con un nombre sospechoso consumiendo CPU, o un servicio que no recuerdas haber instalado, o una entrada en los logs que muestra una conexion desde una IP extraña a las 3 AM.
+En seguridad, el paralelo es directo: cuando un servidor Linux es infectado, no verás un archivo gigante titulado "SOY-UN-VIRUS". Verás un proceso con un nombre sospechoso consumiendo CPU, o un servicio que no recuerdas haber instalado, o una entrada en los logs que muestra una conexión desde una IP extraña a las 3 AM.
 
 ## Procesos: Que Esta Vivo Ahora Mismo
 
@@ -60,7 +63,7 @@ Para el profesional de seguridad, systemd ofrece ventajas: mejor registro de log
 
 ### Procesos Zombie
 
-Un proceso zombie es un proceso que ha terminado su ejecución pero su entrada en la tabla de procesos no ha sido eliminada porque el proceso padre no recolecto su codigo de salida.
+Un proceso zombie es un proceso que ha terminado su ejecución pero su entrada en la tabla de procesos no ha sido eliminada porque el proceso padre no recolecto su código de salida.
 
 Los zombies no consumen CPU ni memoria (ya terminaron), pero ocupan una entrada en la tabla de procesos, que es un recurso limitado. Si se acumulan demasiados zombies, el sistema no puede crear nuevos procesos.
 
@@ -146,7 +149,7 @@ Mientras que `top` te muestra el estado actual en tiempo real, `ps` te da una fo
 
 Un atacante avanzado puede ocultar procesos mediante:
 - **Rootkits a nivel de kernel:** Modifican las funciones del kernel que reportan procesos, haciendo que `ps` y `top` no muestren ciertos procesos.
-- **Modificacion de /proc:** Eliminan la entrada del proceso en `/proc` o modifican sus metadatos.
+- **Modificación de /proc:** Eliminan la entrada del proceso en `/proc` o modifican sus metadatos.
 - **Process name masquerading:** Ejecutan el malware con un nombre que imita a un proceso legítimo. Por ejemplo, ejecutar un minero de criptomonedas con el nombre `httpd` o `syslogd`.
 
 Para detectar procesos ocultos:
@@ -174,7 +177,7 @@ Para detectar procesos ocultos:
 `killall apache2`: Mata todos los procesos llamados "apache2".
 `pkill -u usuario`: Mata todos los procesos de un usuario específico.
 
-### Por que kill -9 es el Último Recurso
+### Por qué kill -9 es el Último Recurso
 
 `kill -9` no permite que el proceso haga limpieza. Archivos abiertos pueden quedar corruptos. Datos en buffers pueden perderse. Conexiones de red pueden quedar en estado incierto.
 
@@ -313,7 +316,7 @@ Esto te dice: fecha, hora, servicio que registro (sshd), PID del proceso (12345)
 
 **`/var/log/dmesg`:** Buffer de mensajes del kernel desde el arranque. Útil para diagnosticar problemas de hardware.
 
-**`/var/log/btmp`:** Intentos de conexion fallidos (binario). Se lee con `lastb`.
+**`/var/log/btmp`:** Intentos de conexión fallidos (binario). Se lee con `lastb`.
 
 **`/var/log/wtmp`:** Historial de inicios de sesión exitosos (binario). Se lee con `last`.
 
@@ -327,9 +330,9 @@ Esto te dice: fecha, hora, servicio que registro (sshd), PID del proceso (12345)
 
 Nunca abras un log de 2GB en un editor de texto. Usa las herramientas de línea de comandos:
 
-`grep "Failed password" /var/log/auth.log`: Encuentra intentos de conexion fallidos.
+`grep "Failed password" /var/log/auth.log`: Encuentra intentos de conexión fallidos.
 `grep "Accepted" /var/log/auth.log`: Encuentra inicios de sesión exitosos (utiles para detectar accesos no autorizados).
-`tail -f /var/log/auth.log`: Monitorea en tiempo real los intentos de conexion.
+`tail -f /var/log/auth.log`: Monitorea en tiempo real los intentos de conexión.
 `grep "error" /var/log/apache2/error.log`: Encuentra errores del servidor web.
 `journalctl -u sshd.service --since yesterday`: Logs de SSH desde ayer (con sistema de logs de systemd).
 
@@ -452,4 +455,4 @@ Siempre verifica y documenta la zona horaria del servidor antes de hacer anális
 
 7. Durante una auditoría, encuentras un servicio llamado `system-update.service` en `/etc/systemd/system/`. El `ExecStart` apunta a `/usr/local/bin/system-updater`. No recuerdas haber instalado este servicio. Describe los pasos exactos que seguiras para investigar si es legítimo o malicioso.
 
-8. Un atacante comprometio un servidor y ejecutó `kill -9` en el proceso de rsyslog. Explica el impacto de esta accion (que logs se pierden y cuáles no) y como podrías detectar que rsyslog fue detenido intencionalmente.
+8. Un atacante comprometio un servidor y ejecutó `kill -9` en el proceso de rsyslog. Explica el impacto de esta acción (que logs se pierden y cuáles no) y como podrías detectar que rsyslog fue detenido intencionalmente.

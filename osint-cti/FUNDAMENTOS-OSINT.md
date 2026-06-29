@@ -1,12 +1,15 @@
 ---
 title: "Fundamentos de OSINT: El Arte de Buscar"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Fundamentos de OSINT: El Arte de Buscar
 
 OSINT (Open Source Intelligence) es la disciplina de recolección y análisis de información proveniente de fuentes públicas. No se trata de hacking ni de acceso no autorizado, sino de saber donde buscar y como conectar datos aparentemente inconexos.
 
-La información pública esta disponible en múltiples fuentes: redes sociales, registros de dominios, certificados SSL, repositorios de codigo, foros y documentos. Cada fragmento de información, individualmente insignificante, puede contribuir a construir un perfil completo cuando se analiza en conjunto.
+La información pública esta disponible en múltiples fuentes: redes sociales, registros de dominios, certificados SSL, repositorios de código, foros y documentos. Cada fragmento de información, individualmente insignificante, puede contribuir a construir un perfil completo cuando se analiza en conjunto.
 
 La relevancia del OSINT en ciberseguridad radica en que los atacantes utilizan estas mismas técnicas para recopilar información sobre sus objetivos antes de un ataque. Conocer que información esta disponible públicamente es el primer paso para protegerse.
 
@@ -30,7 +33,7 @@ Se crea, se publica, se indexa, se archiva, se borra. El momento de captura es c
 
 ### La Información No Miente, la Fuente Si
 
-Los datos pueden ser falsos. Verificar siempre con múltiples fuentes. Corroboracion cruzada. Nunca confíes en una sola fuente, por más que parezca legítima.
+Los datos pueden ser falsos. Verificar siempre con múltiples fuentes. Corroboración cruzada. Nunca confíes en una sola fuente, por más que parezca legítima.
 
 ## El Ciclo de Inteligencia OSINT
 
@@ -238,7 +241,7 @@ Ubicaciones: Check-ins, fotos con GPS. Familiares: Amigos, familia. Intereses: G
 
 ### Análisis de GitHub
 
-Repositorios públicos. Buscar: Claves API, tokens, contraseñas en codigo. Configuraciones de infraestructura. Nombres de empleados en commits. Proyectos internos expuestos. La cantidad de tokens en GitHub es aterradora.
+Repositorios públicos. Buscar: Claves API, tokens, contraseñas en código. Configuraciones de infraestructura. Nombres de empleados en commits. Proyectos internos expuestos. La cantidad de tokens en GitHub es aterradora.
 
 ## OSINT Geográfico (GEOINT)
 
@@ -389,7 +392,7 @@ Alertas de Google para palabras clave. Monitoreo de dominios. Verificación peri
 
 ## Autoevaluación
 
-1. El CEO publica en LinkedIn que la empresa migro a Office 365. Como usaria un atacante esta información?
+1. El CEO publica en LinkedIn que la empresa migro a Microsoft 365. Como usaria un atacante esta información?
 
 2. Un técnico sube un script a GitHub con una clave API. Que haces como OSINTer?
 
@@ -405,6 +408,6 @@ Alertas de Google para palabras clave. Monitoreo de dominios. Verificación peri
 
 8. Que buscarias en Shodan si atacas una empresa? Y en Censys?
 
-9. Por que es importante documentar cada paso en una investigación OSINT?
+9. Por qué es importante documentar cada paso en una investigación OSINT?
 
 10. Tu cliente es una empresa. Quiere saber que información pública existe sobre sus empleados. Que pasos sigues?

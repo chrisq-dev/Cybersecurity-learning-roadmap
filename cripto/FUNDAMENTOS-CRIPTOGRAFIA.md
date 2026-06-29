@@ -1,5 +1,8 @@
 ---
 title: "Fundamentos de Criptografía"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Fundamentos de Criptografía
@@ -38,7 +41,7 @@ Eso es el cifrado simétrico: un solo secreto compartido —la llave— se usa t
 
 En el mundo real, el algoritmo simétrico dominante hoy es AES (Advanced Encryption Standard). Pero no siempre fue así, y entender la historia es entender por qué ciertas decisiones de diseño importan.
 
-Sabes qué pasa cuando usas un algoritmo viejo solo porque "siempre funcionó"? Te van a partir al medio. La historia de la criptografía está llena de ejemplos de algoritmos que parecían seguros... hasta que alguien encontró la grieta.
+Sabes qué pasa cuando usas un algoritmo viejo solo porque "siempre funciónó"? Te van a partir al medio. La historia de la criptografía está llena de ejemplos de algoritmos que parecían seguros... hasta que alguien encontró la grieta.
 
 ### Breve Historia de la Lucha entre Cifradores y Criptoanalistas
 
@@ -287,7 +290,7 @@ La lección: el tamaño de llave importa, y lo que es seguro hoy no lo será ma�
 
 En 2015, un equipo de investigadores descubrió **Logjam**, que explotaba la debilidad de grupos Diffie-Hellman de 512 bits. Históricamente, EE.UU. había restringido la exportación de criptografía fuerte durante la Guerra Fría, limitando las llaves a 512 bits. Esa restricción quedó en la ley hasta los años 90, pero los sistemas legacy mantenían la compatibilidad.
 
-Logjam permitía a un atacante en posición MITM degradar una conexión TLS a Diffie-Hellman de 512 bits y luego romper la llave en tiempo real usando servicios en la nube como Amazon EC2. Afectó al 8.4% de los servidores HTTPS más populares. Los investigadores demostraron que podían romper un intercambio de 512 bits en cuestión de minutos.
+Logjam permitía a un atacante en posición MITM degradar una conexión TLS a Diffie-Hellman de 512 bits y luego romper la llave en tiempo real usando servicios en la nube como Amazon EC2. Los investigadores demostraron que configuraciones heredadas con grupos Diffie-Hellman débiles permitían degradación y ataques prácticos bajo condiciones específicas.
 
 La lección: mantener compatibilidad con algoritmos débiles por razones heredadas es una deuda técnica que eventualmente se cobra en forma de vulnerabilidades.
 
@@ -303,7 +306,7 @@ En 2014, se descubrió **Heartbleed (CVE-2014-0160)**, una vulnerabilidad en Ope
 
 Heartbleed no era un problema matemático. AES y RSA eran perfectamente seguros. El problema era una mala implementación del protocolo Heartbeat de TLS: no validaba los límites de un buffer. Un atacante enviaba un heartbeat con una longitud falsa y recibía hasta 64 KB de memoria del servidor que no debería haber visto.
 
-Afectó a millones de servidores. Se estima que el 17% de los servidores HTTPS seguros en internet eran vulnerables en el momento del anuncio. Empresas como Yahoo, Dropbox y GitHub estuvieron afectadas. El certificado de Yahoo fue revocado y re-emitido porque sus llaves privadas potencialmente habían sido expuestas.
+Heartbleed afectó implementaciones ampliamente desplegadas de OpenSSL y obligó a numerosas organizaciones a parchear, rotar claves y reemitir certificados. El certificado de Yahoo fue revocado y re-emitido porque sus llaves privadas potencialmente habían sido expuestas.
 
 La lección: un algoritmo seguro en una implementación insegura no es un sistema seguro. La criptografía es una cadena, y tan fuerte como su eslabón más débil.
 
@@ -395,19 +398,19 @@ Por eso hay un esfuerzo masivo del NIST, iniciado en 2016, para estandarizar **c
 
 ## Autoevaluación
 
-1. Un ataque de ransomware cifra 10 TB de datos de una empresa en 15 minutos usando AES. Luego exige un rescate y promete descifrar usando una llave RSA. Por que es computacionalmente necesario usar AES para el cifrado masivo en lugar de RSA? Explica la diferencia de rendimiento y por que la criptografía híbrida es la única opción práctica.
+1. Un ataque de ransomware cifra 10 TB de datos de una empresa en 15 minutos usando AES. Luego exige un rescate y promete descifrar usando una llave RSA. Por qué es computacionalmente necesario usar AES para el cifrado masivo en lugar de RSA? Explica la diferencia de rendimiento y por qué la criptografía híbrida es la única opción práctica.
 
-2. Si un atacante intercepta una conexión Diffie-Hellman y captura los valores públicos (g, p, A, B), por que no puede derivar la llave compartida? Identifica el problema matemático que lo protege y explica sus limitaciones prácticas si los parámetros son pequeños.
+2. Si un atacante intercepta una conexión Diffie-Hellman y captura los valores públicos (g, p, A, B), por qué no puede derivar la llave compartida? Identifica el problema matemático que lo protege y explica sus limitaciones prácticas si los parámetros son pequeños.
 
-3. Una base de datos almacena contraseñas cifradas con AES. Cuando el usuario inicia sesión, el servidor descifra la contraseña almacenada y la compara con la ingresada. Identifica por que este diseño es inseguro aunque AES sea matemáticamente fuerte. Por que el hashing es mejor alternativa aun siendo matemáticamente más débil?
+3. Una base de datos almacena contraseñas cifradas con AES. Cuando el usuario inicia sesión, el servidor descifra la contraseña almacenada y la compara con la ingresada. Identifica por qué este diseño es inseguro aunque AES sea matemáticamente fuerte. Por qué el hashing es mejor alternativa aun siendo matemáticamente más débil?
 
-4. En el ataque Logjam, los investigadores degradaron conexiones TLS a Diffie-Hellman de 512 bits. Explica por que es posible forzar a dos partes a usar un cifrado más débil incluso cuando ambas soportan opciones fuertes. Que cambios en el protocolo previenen esto?
+4. En el ataque Logjam, los investigadores degradaron conexiones TLS a Diffie-Hellman de 512 bits. Explica por qué es posible forzar a dos partes a usar un cifrado más débil incluso cuando ambas soportan opciones fuertes. Que cambios en el protocolo previenen esto?
 
-5. Dos imagenes BMP idénticas se cifran con AES en modo ECB. Aunque los píxeles individuales están cifrados, la imagen resultante aún muestra el contorno de la original. Explica por que ocurre y que modo de operación lo soluciona. Por que GCM es preferible a CBC en aplicaciones modernas?
+5. Dos imágenes BMP idénticas se cifran con AES en modo ECB. Aunque los píxeles individuales están cifrados, la imagen resultante aún muestra el contorno de la original. Explica por qué ocurre y que modo de operación lo soluciona. Por qué GCM es preferible a CBC en aplicaciones modernas?
 
-6. En el handshake TLS, el servidor y el cliente acuerdan una llave simétrica usando ECDHE, y luego usan AES-GCM para el resto de la comunicación. Por que no usan simplemente RSA para todo el tráfico? Explica el problema de rendimiento y la diferencia de escalabilidad.
+6. En el handshake TLS, el servidor y el cliente acuerdan una llave simétrica usando ECDHE, y luego usan AES-GCM para el resto de la comunicación. Por qué no usan simplemente RSA para todo el tráfico? Explica el problema de rendimiento y la diferencia de escalabilidad.
 
-7. Una computadora cuantica con suficiente poder de cómputo podría romper RSA-2048 en horas usando el algoritmo de Shor. Por que AES-256 no estaria igualmente vulnerable a la misma máquina? Describe la diferencia entre los algoritmos de Shor y Grover y sus respectivos impactos en cifrado simétrico y asimétrico.
+7. Una computadora cuantica con suficiente poder de cómputo podría romper RSA-2048 en horas usando el algoritmo de Shor. Por qué AES-256 no estaria igualmente vulnerable a la misma máquina? Describe la diferencia entre los algoritmos de Shor y Grover y sus respectivos impactos en cifrado simétrico y asimétrico.
 
 8. Una empresa implementa su propio sistema de cifrado combinando AES-256-CBC con SHA-256 para la integridad de los mensajes. Identifica al menos dos problemas de seguridad potenciales en esta implementación que un atacante podría explotar. Como se solucionan estos problemas en protocolos modernos?
 

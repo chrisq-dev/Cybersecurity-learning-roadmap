@@ -1,28 +1,31 @@
 ---
 title: "Fundamentos de AppSec: El Corrector y las Pruebas de Choque"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Fundamentos de AppSec: El Corrector y las Pruebas de Choque
 
 ## Objetivo de esta Guía
 
-Aprender como auditar el codigo fuente que escriben los programadores de tu empresa para encontrar vulnerabilidades antes de que lleguen a producción.
+Aprender como auditar el código fuente que escriben los programadores de tu empresa para encontrar vulnerabilidades antes de que lleguen a producción.
 
-La Seguridad de Aplicaciones (AppSec) parte de una premisa realista: los programadores estudian para hacer que las cosas funcionen rápido, no para hacerlas seguras. Si un programador de tu empresa construye una Base de Datos y la conecta a la pagina web, es altamente probable que el codigo tenga agujeros por donde un hacker puede pasar.
+La Seguridad de Aplicaciones (AppSec) parte de una premisa realista: los programadores estudian para hacer que las cosas funcionen rápido, no para hacerlas seguras. Si un programador de tu empresa construye una Base de Datos y la conecta a la página web, es altamente probable que el código tenga agujeros por donde un hacker puede pasar.
 
-El equipo de Seguridad no puede leer millones de líneas de codigo manualmente. Necesitamos herramientas automatizadas que nos ayuden a encontrar los problemas antes de que los encuentren los atacantes. AppSec es la disciplina que combina procesos, herramientas y conocimiento para integrar la seguridad en el ciclo de vida del desarrollo de software.
+El equipo de Seguridad no puede leer millones de líneas de código manualmente. Necesitamos herramientas automatizadas que nos ayuden a encontrar los problemas antes de que los encuentren los atacantes. AppSec es la disciplina que combina procesos, herramientas y conocimiento para integrar la seguridad en el ciclo de vida del desarrollo de software.
 
 Esta guía cubre las herramientas principales (SAST, DAST, SCA), como usarlas en conjunto, y los errores más comunes que cometen los equipos al implementarlas.
 
 ## El Problema de Fondo: La Falta de Saneamiento
 
-El 90% de los ataques a páginas web ocurren por un solo error de programación: Falta de Saneamiento de Entradas (Input Sanitization).
+Una parte importante de los fallos web aparece cuando datos no confiables cruzan límites de confianza sin validación ni tratamiento contextual. No existe un único error que explique por sí solo la mayoría de los ataques.
 
 **El Error:** El programador pone un cuadro de texto que dice "Escribe tu Nombre". El usuario escribe `Juan`. La Base de Datos guarda `Juan`.
 
-**El Ataque:** El Hacker no escribe su nombre. Escribe una orden destructiva en codigo SQL: `' OR 1=1; DROP TABLE usuarios; --`.
+**El Ataque:** El Hacker no escribe su nombre. Escribe una orden destructiva en código SQL: `' OR 1=1; DROP TABLE usuarios; --`.
 
-**La Consecuencia:** Como el programador fue perezoso y no le enseñó a la pagina web a diferenciar entre "Nombres humanos" y "Codigo de computadora", la Base de Datos obedece la orden del hacker y se borra a si misma por completo.
+**La Consecuencia:** Como el programador fue perezoso y no le enseñó a la página web a diferenciar entre "Nombres humanos" y "Código de computadora", la Base de Datos obedece la orden del hacker y se borra a si misma por completo.
 
 Para evitar que esto llegue a producción, usamos herramientas de seguridad integradas en el proceso de desarrollo.
 
@@ -36,12 +39,12 @@ Cuando escribes un documento en Microsoft Word y escribes mal una palabra, Word 
 
 ### En Programación
 
-SAST es un robot que lee el codigo fuente que el programador acaba de escribir en su computadora sin ejecutarlo. Examina el codigo en busca de patrones conocidos de vulnerabilidades.
+SAST es un robot que lee el código fuente que el programador acaba de escribir en su computadora sin ejecutarlo. Examina el código en busca de patrones conocidos de vulnerabilidades.
 
 **Lo que Atrapa:**
 - Concatenacion de strings en consultas SQL (SQL Injection potencial)
 - Uso de funciones peligrosas (`eval`, `exec`, `system`, `innerHTML`)
-- Contraseñas o claves hardcodeadas en el codigo
+- Contraseñas o claves hardcodeadas en el código
  - Desbordamiento de buffer en lenguajes como C/C++
  - Fugas de información en mensajes de error
  - Funciones de hash débiles (MD5, SHA1)
@@ -65,7 +68,7 @@ SAST es un robot que lee el codigo fuente que el programador acaba de escribir e
 
 ### Como Funciona Técnicamente
 
-SAST construye un árbol de sintaxis abstracta (AST) del codigo fuente y luego aplica reglas de búsqueda de patrones sobre ese árbol. Las reglas más avanzadas hacen análisis de flujo de datos (taint analysis): siguen el camino de los datos desde que entran al sistema (input) hasta que se usan en una funcion peligrosa (sink).
+SAST construye un árbol de sintaxis abstracta (AST) del código fuente y luego aplica reglas de búsqueda de patrones sobre ese árbol. Las reglas más avanzadas hacen análisis de flujo de datos (taint analysis): siguen el camino de los datos desde que entran al sistema (input) hasta que se usan en una función peligrosa (sink).
 
 **Ejemplo de análisis de flujo:**
 ```python
@@ -79,7 +82,7 @@ consulta = "SELECT * FROM usuarios WHERE nombre = '" + nombre + "'"
 db.execute(consulta)
 ```
 
-SAST detecta que el dato de entrada del usuario llega a una funcion de base de datos sin pasar por un proceso de sanitización, y marca la vulnerabilidad.
+SAST detecta que el dato de entrada del usuario llega a una función de base de datos sin pasar por un proceso de sanitización, y marca la vulnerabilidad.
 
 ## DAST: El Muñeco de Pruebas de Choque (Análisis Dinámico)
 
@@ -87,11 +90,11 @@ SAST es muy bueno leyendo texto, pero a veces, los errores de seguridad solo apa
 
 ### La Analogía
 
-SAST revisa que el diseno de los frenos del auto en papel sea correcto. DAST pone a un Muñeco de Pruebas de Choque adentro del auto real, lo arranca a 100 km/h y lo choca contra la pared para ver si el conductor sobrevive.
+SAST revisa que el diseño de los frenos del auto en papel sea correcto. DAST pone a un Muñeco de Pruebas de Choque adentro del auto real, lo arranca a 100 km/h y lo choca contra la pared para ver si el conductor sobrevive.
 
 ### En Programación
 
-DAST no tiene acceso al codigo fuente. Trata a la pagina web como una "Caja Negra" (igual que un hacker). Se conecta a la aplicación mientras esta corriendo y la ataca automáticamente.
+DAST no tiene acceso al código fuente. Trata a la página web como una "Caja Negra" (igual que un hacker). Se conecta a la aplicación mientras esta corriendo y la ataca automáticamente.
 
 **Lo que Atrapa:**
 - Inyecciones SQL (enviando comillas y comandos SQL en formularios)
@@ -111,7 +114,7 @@ DAST no tiene acceso al codigo fuente. Trata a la pagina web como una "Caja Negr
 - Detectify -- Comercial, basado en la nube
 
 **La Diferencia Clave con SAST:**
-- SAST analiza el codigo fuente (caja blanca)
+- SAST analiza el código fuente (caja blanca)
 - DAST analiza la aplicación corriendo (caja negra)
 - SAST encuentra el problema temprano en el desarrollo
 - DAST encuentra problemas que solo aparecen en tiempo de ejecución
@@ -124,13 +127,13 @@ SAST se usa temprano (en el IDE del programador o en el commit). DAST se usa má
 
 ## SCA: Análisis de Composicion de Software
 
-SCA (Software Composition Analysis) es el tercer pilar de AppSec. Analiza las dependencias de codigo abierto que usa tu aplicación en busca de vulnerabilidades conocidas.
+SCA (Software Composition Analysis) es el tercer pilar de AppSec. Analiza las dependencias de código abierto que usa tu aplicación en busca de vulnerabilidades conocidas.
 
 ### El Problema
 
-Las aplicaciones modernas usan cientos de dependencias. Un programador puede escribir 1,000 líneas de codigo seguro, pero si incluye una librería vulnerable (como Log4j en 2021), toda la aplicación es vulnerable.
+Las aplicaciones modernas usan cientos de dependencias. Un programador puede escribir 1,000 líneas de código seguro, pero si incluye una librería vulnerable (como Log4j en 2021), toda la aplicación es vulnerable.
 
-Se estima que el 90% del codigo de una aplicación moderna es codigo de terceros (librerías, frameworks, modulos npm, paquetes pip, gemas de Ruby, etc.).
+Se estima que el 90% del código de una aplicación moderna es código de terceros (librerías, frameworks, modulos npm, paquetes pip, gemas de Ruby, etc.).
 
 ### Lo que Atrapa SCA
 
@@ -150,9 +153,9 @@ Se estima que el 90% del codigo de una aplicación moderna es codigo de terceros
 
 ### El Caso Log4Shell (2021)
 
-Por que esto importa: Log4j nos enseñó que tu aplicación puede ser segura, pero una librería que ni sabias que tenías te puede tumbar la empresa.
+Por qué esto importa: Log4j nos enseñó que tu aplicación puede ser segura, pero una librería que ni sabias que tenías te puede tumbar la empresa.
 
-Log4j es una librería de logging para Java. En diciembre de 2021, se descubrió una vulnerabilidad (CVE-2021-44228) que permitia ejecución remota de codigo. La librería estaba en millones de servidores.
+Log4j es una librería de logging para Java. En diciembre de 2021, se descubrió una vulnerabilidad (CVE-2021-44228) que permitia ejecución remota de código. La librería estaba en millones de servidores.
 
 Una herramienta SCA detectaria que tu aplicación usa Log4j versión 2.14.1 y que hay una vulnerabilidad crítica. Te diria que actualices a 2.17.0 (la versión parcheada).
 
@@ -164,9 +167,9 @@ AppSec ha evolucionado más allá de SAST y DAST.
 
 ### IAST (Interactive Application Security Testing)
 
-Combina SAST y DAST. Se ejecuta dentro de la aplicación (como un agente) y analiza el codigo en tiempo real mientras las pruebas funcionales se ejecutan.
+Combina SAST y DAST. Se ejecuta dentro de la aplicación (como un agente) y analiza el código en tiempo real mientras las pruebas funcionales se ejecutan.
 
-**Ventaja:** Menos falsos positivos. Ve exactamente que codigo se ejecuta y con que datos.
+**Ventaja:** Menos falsos positivos. Ve exactamente que código se ejecuta y con que datos.
 
 **Herramientas:** Contrast Security, Seeker (Synopsys), Hdiv.
 
@@ -200,7 +203,7 @@ SCA se ejecuta en cada build para detectar vulnerabilidades en dependencias. Las
 
 ### Fase 5: Revisión Manual
 
-Ninguna herramienta automática encuentra el 100% de las vulnerabilidades. Las revisiones manuales de codigo (code review) y las pruebas de penetracion (pentest) son necesarias para encontrar problemas de lógica de negocio y vulnerabilidades complejas.
+Ninguna herramienta automática encuentra todas las vulnerabilidades. Las revisiones manuales de código (code review) y las pruebas de penetracion (pentest) son necesarias para encontrar problemas de lógica de negocio y vulnerabilidades complejas.
 
 ### Fase 6: Gestión de Hallazgos
 
@@ -218,7 +221,7 @@ El problema más grande de AppSec no es técnico, es humano. Las herramientas ge
 
 1. **Configurar las herramientas correctamente.** No uses las reglas por defecto; ajustalas a tu stack tecnológico.
 2. **Suprimir falsos positivos conocidos.** Si una regla siempre marca un falso positivo en un contexto específico, suprímela.
-3. **Establecer una línea base.** Primero escanea el codigo existente y clasifica los hallazgos. Luego solo revisa los nuevos hallazgos en los commits nuevos.
+3. **Establecer una línea base.** Primero escanea el código existente y clasifica los hallazgos. Luego solo revisa los nuevos hallazgos en los commits nuevos.
 4. **Formar a los desarrolladores.** Que entiendan que es un falso positivo y que no. Que sepan interpretar los reportes.
 5. **Tener un equipo AppSec dedicado.** Los desarrolladores no deberían ser los unicos responsables de interpretar los escaneos de seguridad.
 
@@ -236,11 +239,11 @@ El problema más grande de AppSec no es técnico, es humano. Las herramientas ge
 
 ## Autoevaluación
 
-1. Un desarrollador escribe una aplicación en Java. Mientras programa, accidentalmente deja la "Llave Secreta de Amazon AWS" escrita en la línea 45 de su codigo. Cual de las herramientas (SAST o DAST) es la ideal para encontrar este error específico, y por que?
+1. Un desarrollador escribe una aplicación en Java. Mientras programa, accidentalmente deja la "Llave Secreta de Amazon AWS" escrita en la línea 45 de su código. Cual de las herramientas (SAST o DAST) es la ideal para encontrar este error específico, y por qué?
 
 2. Explica el concepto de "Falta de Saneamiento de Entradas" (Input Sanitization) usando el ejemplo clásico de una Inyección SQL, y describe como un simple cuadro de "Buscar Usuario" se convierte en un arma letal si el desarrollador omite este paso.
 
-3. El equipo de Seguridad contrata un sistema DAST para escanear la pagina web de la empresa todas las noches. A diferencia de un SAST, por que el DAST necesita que la pagina web y la base de datos estén completamente operativas para poder hacer su trabajo?
+3. El equipo de Seguridad contrata un sistema DAST para escanear la página web de la empresa todas las noches. A diferencia de un SAST, por qué el DAST necesita que la página web y la base de datos estén completamente operativas para poder hacer su trabajo?
 
 4. El robot SAST reporto 50 "Falsos Positivos" (marcó como error algo que en realidad es seguro), lo que hizo que los programadores se enojaran y apagaran la herramienta. Que proceso de ajuste debe realizar el Arquitecto de Seguridad para que la herramienta SAST sea útil?
 
@@ -248,6 +251,6 @@ El problema más grande de AppSec no es técnico, es humano. Las herramientas ge
 
 6. Tu empresa usa una librería Open Source llamada "FastXML" que tiene una vulnerabilidad conocida CVE-2024-1234. El equipo de desarrollo no sabe que usa esa librería. Que herramienta de AppSec revelaria esta dependencia oculta?
 
-7. Un desarrollador argumenta: "Hacemos escaneo SAST en cada commit, no necesitamos DAST." Por que esta afirmación es incorrecta? Da un ejemplo de vulnerabilidad que DAST encontraria pero SAST no.
+7. Un desarrollador argumenta: "Hacemos escaneo SAST en cada commit, no necesitamos DAST." Por qué esta afirmación es incorrecta? Da un ejemplo de vulnerabilidad que DAST encontraria pero SAST no.
 
 8. Durante una auditoría, el equipo AppSec descubre que el pipeline CI/CD no bloquea los builds cuando SCA encuentra una vulnerabilidad crítica en una dependencia. Que riesgos introduce esta falta de bloqueo y como debería configurarse el pipeline correctamente?

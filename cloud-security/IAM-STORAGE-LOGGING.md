@@ -1,5 +1,8 @@
 ---
 title: "IAM, Storage y Logs: Las Piezas Clave de la Nube"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # IAM, Storage y Logs: Las Piezas Clave de la Nube
@@ -24,7 +27,7 @@ Si el conserje da mal las llaves (IAM mal configurado), la bodega queda expuesta
 
 ## Storage: La Bodega Gigante
 
-Imagina que tienes una empresa de Hospitales y tienes 5 millones de radiografías en formato JPG. No puedes guardar todo eso en el disco duro de una computadora normal porque se llenaría en dos dias.
+Imagina que tienes una empresa de Hospitales y tienes 5 millones de radiografías en formato JPG. No puedes guardar todo eso en el disco duro de una computadora normal porque se llenaría en dos días.
 
 Para esto existe el Almacenamiento en la Nube (AWS S3, Azure Blob, GCP Cloud Storage).
 
@@ -52,7 +55,7 @@ https://mi-hospital.s3.amazonaws.com/pacientes/radiografia-12345.jpg
 
 Que pasa si un programador novato (o perezoso) construye la bodega del hospital, pero se le olvida ponerle candado a la puerta principal? La bodega se vuelve Pública en Internet.
 
-Un Hacker no tiene que hackear ninguna contrasena. Simplemente entra a su navegador web, escribe la URL pública de la bodega, y comienza a descargar el millón de radiografías privadas frente a los ojos de Amazon.
+Un Hacker no tiene que hackear ninguna contraseña. Simplemente entra a su navegador web, escribe la URL pública de la bodega, y comienza a descargar el millón de radiografías privadas frente a los ojos de Amazon.
 
 ### Tipos de Acceso a un Bucket
 
@@ -99,7 +102,7 @@ IAM es el corazón, el cerebro y el alma de la seguridad en la Nube.
 
 Cuando no entiendes estos componentes? Le regalas el edificio entero al atacante.
 
-1. **Usuarios:** Representan a personas físicas o aplicaciones. Cada usuario tiene credenciales (contrasena, Access Key, certificado).
+1. **Usuarios:** Representan a personas físicas o aplicaciones. Cada usuario tiene credenciales (contraseña, Access Key, certificado).
 
 2. **Grupos:** Colecciones de usuarios. Los permisos se asignan a los grupos, no a los usuarios individualmente.
 
@@ -125,7 +128,7 @@ Cuando no entiendes estos componentes? Le regalas el edificio entero al atacante
 Componentes:
 
 - **Effect:** Allow o Deny (Permitir o Denegar).
-- **Action:** El servicio y la accion (s3:GetObject, ec2:StartInstances, iam:CreateUser).
+- **Action:** El servicio y la acción (s3:GetObject, ec2:StartInstances, iam:CreateUser).
 - **Resource:** El ARN (Amazon Resource Name) del recurso específico.
 - **Condition (opcional):** Condiciones adicionales (IP de origen, MFA requerido, horario).
 
@@ -155,7 +158,7 @@ No:
 
 ### El Vector de Ataque
 
-Si un atacante logra robar el usuario y la contrasena (o la API Key) de Juan, el atacante no adquiere "poderes mágicos" para destruir Amazon. El atacante solo hereda la llave de Juan.
+Si un atacante logra robar el usuario y la contraseña (o la API Key) de Juan, el atacante no adquiere "poderes mágicos" para destruir Amazon. El atacante solo hereda la llave de Juan.
 
 Si la llave de Juan dice "Solo Leer", el atacante no podrá borrar la base de datos, aunque lo intente mil veces.
 
@@ -167,7 +170,7 @@ La regla de oro del Blue Team: el Principio del Menor Privilegio.
 
 2. **Usar Grupos:** No asignes políticas a usuarios individuales. Asigna a grupos y luego agrega usuarios a los grupos.
 
-3. **Rotar Keys:** Las API Keys deben rotarse cada 90 dias como máximo.
+3. **Rotar Keys:** Las API Keys deben rotarse cada 90 días como máximo.
 
 4. **Eliminar Keys no Usadas:** Auditorías regulares para identificar y eliminar keys que no se usan.
 
@@ -189,7 +192,7 @@ CloudTrail registra todas las llamadas a la API de AWS, incluyendo:
 
 - Inicio de sesión en la consola.
 - Creación o eliminación de instancias EC2.
-- Modificacion de Security Groups.
+- Modificación de Security Groups.
 - Lectura o escritura en buckets S3.
 - Creación o eliminación de usuarios IAM.
 - Cambios en políticas IAM.
@@ -198,12 +201,12 @@ Cada evento contiene:
 
 - **Event ID:** Identificador único del evento.
 - **Event Time:** Fecha y hora exacta (UTC).
-- **User Identity:** Quien ejecutó la accion (usuario, rol, servicio).
-- **Source IP Address:** IP desde donde se ejecutó la accion.
+- **User Identity:** Quien ejecutó la acción (usuario, rol, servicio).
+- **Source IP Address:** IP desde donde se ejecutó la acción.
 - **Event Source:** Que servicio genero el evento (ec2.amazonaws.com, s3.amazonaws.com).
-- **Event Name:** La accion ejecutada (RunInstances, PutObject, DeleteBucket).
+- **Event Name:** La acción ejecutada (RunInstances, PutObject, DeleteBucket).
 - **Request Parameters:** Los parámetros de la solicitud (que instancia, que bucket).
-- **Response Elements:** El resultado de la accion.
+- **Response Elements:** El resultado de la acción.
 
 ### La Magia de la Nube (La Ventaja Defensiva)
 
@@ -238,7 +241,7 @@ Estos eventos deben generar alertas inmediatas en el SIEM:
 | CreateUser | Creación de un nuevo usuario |
 | CreateAccessKey | Creación de una nueva API Key |
 | DeleteTrail | Intento de desactivar la auditoría |
-| UpdateTrail | Modificacion de la configuración de auditoría |
+| UpdateTrail | Modificación de la configuración de auditoría |
 | PutBucketPolicy con Efecto Allow y Principal * | Hacer un bucket público |
 | AuthorizeSecurityGroupIngress | Abrir un puerto en el firewall |
 | RunInstances con InstanceType grande | Creación de recursos costosos |
@@ -249,11 +252,11 @@ AWS CloudTrail -> Azure Activity Log -> GCP Cloud Audit Logs
 
 AWS CloudTrail Insights -> Azure Monitor -> GCP Cloud Logging Operations
 
-La funcionalidad es la misma: registrar cada accion en la nube para permitir la auditoría y detección de anomalías.
+La funcionalidad es la misma: registrar cada acción en la nube para permitir la auditoría y detección de anomalías.
 
-### Limitationes de los Logs de Nube
+### Limitaciones de los Logs de Nube
 
-1. **Costos:** Almacenar logs de miles de recursos puede ser costoso. En AWS, CloudTrail cuesta $0.10 por 100,000 eventos.
+1. **Costos:** La ingestión, el almacenamiento, el análisis y la retención se facturan según el servicio, la región y el volumen. Consulta siempre las páginas oficiales de precios y calcula el costo con tu patrón real de uso.
 
 2. **Volumen:** Una cuenta activa puede generar millones de eventos por día. Se necesita un SIEM o herramienta de análisis.
 
@@ -267,9 +270,9 @@ La funcionalidad es la misma: registrar cada accion en la nube para permitir la 
 
 La atacante (Paige Thompson) exploto una vulnerabilidad en el WAF de Capital One para obtener credenciales temporales de una instancia EC2. Con esas credenciales, accedio a los buckets S3 de Capital One.
 
-CloudTrail registro cada accion que realizo la atacante. El análisis forense posterior permitió reconstruir todo el ataque.
+CloudTrail registro cada acción que realizo la atacante. El análisis forense posterior permitió reconstruir todo el ataque.
 
-La leccion: CloudTrail fue vital para la investigación, pero no evito el ataque. Los logs son reactivos, no preventivos.
+La lección: CloudTrail fue vital para la investigación, pero no evito el ataque. Los logs son reactivos, no preventivos.
 
 ### La Configuración Errónea de S3 de Accenture (2017)
 
@@ -277,7 +280,7 @@ Cuatro buckets S3 de Accenture estaban abiertos al público. CloudTrail no tení
 
 UpGuard (la empresa que descubrió la brecha) pudo acceder a los buckets sin autenticación. Accenture no tenía monitoreo de acceso a sus buckets.
 
-La leccion: los logs no sirven si no se configuran alertas sobre ellos.
+La lección: los logs no sirven si no se configuran alertas sobre ellos.
 
 ## Modos de Falla
 
@@ -347,7 +350,7 @@ Además de CloudTrail (logs de API), AWS ofrece VPC Flow Logs para monitorear el
 - IP de origen y destino.
 - Puerto de origen y destino.
 - Protocolo (TCP, UDP, ICMP).
-- Accion (ACCEPT o REJECT).
+- Acción (ACCEPT o REJECT).
 - Bytes y paquetes transferidos.
 - Interfaz de red (ENI).
 
@@ -383,7 +386,7 @@ Amazon GuardDuty es un servicio de detección de amenazas que analiza los logs d
 
 **Hallazgos de Compromiso de Cuenta:**
 
-- `Persistence:IAMUser/UserPermissions`: Modificacion de políticas IAM.
+- `Persistence:IAMUser/UserPermissions`: Modificación de políticas IAM.
 - `Stealth:IAMUser/CloudTrailLoggingDisabled`: Desactivacion de CloudTrail.
 - `UnauthorizedAccess:IAMUser/ConsoleLoginSuccess`: Inicio de sesión desde ubicación inusual.
 
@@ -398,7 +401,7 @@ GuardDuty puede integrarse con Lambda para responder automáticamente:
 
 ## Infrastructure as Code (IaC) Security
 
-La infraestructura en la nube se define mediante codigo (Terraform, CloudFormation, ARM). La seguridad debe integrarse en este codigo.
+La infraestructura en la nube se define mediante código (Terraform, CloudFormation, ARM). La seguridad debe integrarse en este código.
 
 ### Escaneo de IaC
 
@@ -474,15 +477,15 @@ Esta política deniega la creación de VMs sin discos encriptados.
 
 Implementar seguridad en la nube tiene costos que deben presupuestarse:
 
-| Servicio | Costo Aproximado (AWS) |
-|----------|----------------------|
-| CloudTrail | $0.10/100k eventos |
-| CloudWatch Logs | $0.50/GB ingestado |
-| GuardDuty | $0.01/GB datos analizados |
-| Config | $0.003/registro de configuración |
-| S3 Inventory | $0.001/millón de objetos listados |
+| Servicio | Unidad que conviene estimar |
+|----------|-----------------------------|
+| CloudTrail | Eventos, copias de trails y consultas |
+| CloudWatch Logs | Ingestión, almacenamiento, consultas y exportación |
+| GuardDuty | Fuentes de datos y volumen analizado |
+| AWS Config | Elementos de configuración y evaluaciones |
+| S3 Inventory | Objetos listados, frecuencia y formato de salida |
 
-Sin presupuesto, los equipos de seguridad no activan estos servicios.
+El presupuesto debe cubrir ingestión, retención, consultas y transferencia. Las tarifas cambian por región y con el tiempo; valida el cálculo en las páginas oficiales antes de decidir qué habilitar.
 
 ## Autoevaluación
 
@@ -490,7 +493,7 @@ Responde estas preguntas para verificar si comprendes los conceptos:
 
 1. Estas auditando la cuenta de AWS de una empresa. Descubres un Bucket S3 llamado "respaldos-financieros-2023" que tiene configurada la política pública de acceso de lectura (Public Read). Sin usar ninguna herramienta ofensiva como Kali Linux o Nmap, Como podrías demostrarle al cliente que este es un fallo de seguridad crítico en menos de 10 segundos?
 
-2. Si un empleado necesita descargar un reporte mensual desde la Nube, y tu eres el Administrador IAM, Por que asignarle al empleado el permiso genérico `AmazonS3FullAccess` (que permite leer, escribir y borrar) es una violación a las buenas prácticas de ciberseguridad?
+2. Si un empleado necesita descargar un reporte mensual desde la Nube, y tu eres el Administrador IAM, Por qué asignarle al empleado el permiso genérico `AmazonS3FullAccess` (que permite leer, escribir y borrar) es una violación a las buenas prácticas de ciberseguridad?
 
 3. Un atacante se roba las Credenciales de la cuenta de "Auditoría" y decide apagar 50 servidores de producción. Que servicio nativo de AWS debe revisar el Blue Team para encontrar la IP exacta del atacante y el minuto exacto en que apagó los servidores?
 
@@ -498,8 +501,8 @@ Responde estas preguntas para verificar si comprendes los conceptos:
 
 5. Explica la diferencia entre un User (usuario IAM) y un Role (rol IAM). Cuando usarías cada uno?
 
-6. Un administrador de AWS comete un error: asigna a un empleado una política IAM con `Action: "s3:*"` y `Resource: "*"`. Que alcance tiene esta política y por que es peligrosa?
+6. Un administrador de AWS comete un error: asigna a un empleado una política IAM con `Action: "s3:*"` y `Resource: "*"`. Que alcance tiene esta política y por qué es peligrosa?
 
-7. Por que se dice que CloudTrail es "inmutable" o que los logs no pueden ser borrados por un atacante? Como se logra esta protección?
+7. Por qué se dice que CloudTrail es "inmutable" o que los logs no pueden ser borrados por un atacante? Como se logra esta protección?
 
-8. Que es el "Block Public Access" de S3 y por que debería estar activado en todas las cuentas de AWS?
+8. Que es el "Block Public Access" de S3 y por qué debería estar activado en todas las cuentas de AWS?

@@ -1,12 +1,15 @@
 ---
 title: "Fundamentos Web: La Arquitectura del Restaurante"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Fundamentos Web: La Arquitectura del Restaurante
 
 ## Objetivo de esta Guía
 
-Desmitificar como funciona el internet por debajo del capó. No puedes hackear ni defender una pagina web si no entiendes sus piezas móviles. Para el 99% de las personas, "Internet" es simplemente un ícono de Chrome en su celular donde escriben cosas y mágicamente aparecen fotos. Para un profesional de la ciberseguridad, cada pagina web es un complejo sistema de tres niveles donde la confianza es la mayor vulnerabilidad.
+Desmitificar como funciona el internet por debajo del capó. No puedes hackear ni defender una página web si no entiendes sus piezas móviles. Para una persona usuaria, Internet puede parecer únicamente la interfaz del navegador; para seguridad importa comprender cada componente y límite de confianza. Para un profesional de la ciberseguridad, cada página web es un complejo sistema de tres niveles donde la confianza es la mayor vulnerabilidad.
 
 Esta guía asume cero experiencia previa. Si ya sabes programar, saltate las primeras secciones. Si vienes del mundo de redes o sistemas operativos, presta atención a la sección de "Fallo en Cadena" porque ahí es donde los arquitectos experimentados suelen tropezar.
 
@@ -34,19 +37,19 @@ Olvídate de las computadoras por un momento. Imagina que vas a cenar a un resta
 
 **La Alacena (Base de Datos):** El refrigerador gigante donde están guardados los ingredientes y los secretos. Solo el cocinero tiene acceso.
 
-Así es exactamente como funciona cualquier pagina web. Amazon, Facebook, tu banco, todos siguen este patrón.
+Así es exactamente como funciona cualquier página web. Amazon, Facebook, tu banco, todos siguen este patrón.
 
 ### El Frontend: La Mesa del Cliente
 
 Es todo lo que ocurre dentro de tu propio dispositivo, tu celular o tu laptop. Esta construido con tres lenguajes que funcionan en equipo.
 
-**HTML (HyperText Markup Language)** es la estructura. Son los huesos. Define si hay un parrafo, una imagen, un botón, una tabla. Sin HTML, la pagina es solo un lienzo en blanco. Cuando ves texto mal alineado o imagenes rotas, estas viendo HTML que fallo en su trabajo.
+**HTML (HyperText Markup Language)** es la estructura. Son los huesos. Define si hay un parrafo, una imagen, un botón, una tabla. Sin HTML, la página es solo un lienzo en blanco. Cuando ves texto mal alineado o imágenes rotas, estas viendo HTML que fallo en su trabajo.
 
 **CSS (Cascading Style Sheets)** es la pintura y los muebles. Define colores, tamanos, posiciones, animaciones. Sin CSS, todas las páginas web se verian como documentos de los años 90: fondo blanco, letra negra, links azules subrayados.
 
 **JavaScript** es el movimiento y la lógica del cliente. Es lo que hace que un botón cambie de color cuando pasas el ratón, que un menú se despliegue, que una imagen se desvanezca. Es el único lenguaje de programación que entienden los navegadores de forma nativa.
 
-La regla de oro del Frontend: **NUNCA es de confianza.** Como el menú esta en tu mesa, tu puedes tomar un bolígrafo, tachar el precio de la langosta de $100 dólares y escribir $1 dólar. El navegador te pertenece. El codigo que se descarga en tu máquina puede ser inspeccionado, modificado, interceptado y reescrito por ti. Cualquier programador que ponga lógica sensible en el Frontend esta regalando información a los atacantes.
+La regla de oro del Frontend: **NUNCA es de confianza.** Como el menú esta en tu mesa, tu puedes tomar un bolígrafo, tachar el precio de la langosta de $100 dólares y escribir $1 dólar. El navegador te pertenece. El código que se descarga en tu máquina puede ser inspeccionado, modificado, interceptado y reescrito por ti. Cualquier programador que ponga lógica sensible en el Frontend esta regalando información a los atacantes.
 
 Esto incluye: validaciones de formularios, cálculos de precios, reglas de descuento, restricciones deacceso. Todo eso debe duplicarse en el Backend. El Frontend es solo para la experiencia del usuario, jamás para la seguridad.
 
@@ -74,7 +77,7 @@ La mayoría de las filtraciones masivas de datos ocurren porque alguien logró s
 
 Toda la seguridad web se reduce a una pregunta: "Quien confía en quien y hasta donde?"
 
-El navegador confía en el servidor. El servidor confía en la base de datos. La base de datos confía en quien le habla desde adentro de la red. El programador confía en que el usuario va a escribir su nombre y no codigo malicioso. El usuario confía en que la pagina web no va a robar sus datos.
+El navegador confía en el servidor. El servidor confía en la base de datos. La base de datos confía en quien le habla desde adentro de la red. El programador confía en que el usuario va a escribir su nombre y no código malicioso. El usuario confía en que la página web no va a robar sus datos.
 
 Cada relación de confianza es un potencial punto de quiebre. La seguridad consiste en poner verificaciones en cada salto de confianza.
 
@@ -84,7 +87,7 @@ Cada relación de confianza es un potencial punto de quiebre. La seguridad consi
 
 No necesitas memorizar las 7 capas del modelo OSI para la seguridad web, pero si necesitas entender las que importan.
 
-**Capa 4 (Transporte):** TCP y UDP. TCP es el que garantiza que los paquetes lleguen en orden. Cuando abres una pagina, tu navegador abre una conexion TCP con el servidor. Sin TCP, los datos llegarian revueltos o no llegarian.
+**Capa 4 (Transporte):** TCP y UDP. TCP es el que garantiza que los paquetes lleguen en orden. Cuando abres una página, tu navegador abre una conexión TCP con el servidor. Sin TCP, los datos llegarian revueltos o no llegarian.
 
 **Capa 3 (Red):** IP. Cada dispositivo en internet tiene una dirección IP. Los servidores tienen IPs públicas. Tu celular tiene una IP privada detrás de un router (NAT). Cuando haces una petición, tu router traduce tu IP privada a su IP pública y viceversa.
 
@@ -94,7 +97,7 @@ No necesitas memorizar las 7 capas del modelo OSI para la seguridad web, pero si
 
 Cuando escribes `google.com` en tu navegador, tu computadora no sabe donde esta Google. Necesita traducir ese nombre a una dirección IP. Eso lo hace el **DNS (Domain Name System)**.
 
-Tu computadora le pregunta a un servidor DNS: "Oye, cual es la IP de google.com?" El servidor DNS responde: "Es 142.250.80.46". Tu navegador entonces abre una conexion a esa IP.
+Tu computadora le pregunta a un servidor DNS: "Oye, cual es la IP de google.com?" El servidor DNS responde: "Es 142.250.80.46". Tu navegador entonces abre una conexión a esa IP.
 
 El DNS es como la guía telefónica del internet. Si un atacante logra envenenar tu DNS (DNS Spoofing), puede hacer que cuando escribas `mibanco.com`, tu navegador viaje a la IP del hacker, que tiene una copia falsa del banco. Tu le escribiras tu contraseña al hacker y el la reenviara al banco real para que no notes el robo (Ataque de Intermediario).
 
@@ -102,7 +105,7 @@ El DNS también es usado por los atacantes para la **exfiltración de datos**. C
 
 ## El Proxy y el VPN: Intermediarios Necesarios
 
-Un **Proxy** es un intermediario entre tu y el servidor. Tu le dices al proxy "Tráeme google.com". El proxy va, trae la pagina y te la entrega. El servidor de Google ve la IP del proxy, no la tuya.
+Un **Proxy** es un intermediario entre tu y el servidor. Tu le dices al proxy "Tráeme google.com". El proxy va, trae la página y te la entrega. El servidor de Google ve la IP del proxy, no la tuya.
 
 Los proxies se usan para:
 - Ocultar la IP del cliente
@@ -112,7 +115,7 @@ Los proxies se usan para:
 
 Una **VPN (Virtual Private Network)** es diferente. No solo oculta tu IP, sino que crea un túnel encriptado entre tu dispositivo y el servidor VPN. Todo tu tráfico viaja dentro de ese túnel. Para el mundo exterior, estas saliendo desde la IP de la VPN.
 
-La diferencia crucial: el proxy solo intercepta el tráfico que configuras (tipicamente HTTP/HTTPS). La VPN intercepta TODO el tráfico de tu computadora, incluso el que no es web.
+La diferencia crucial: el proxy solo intercepta el tráfico que configuras (típicamente HTTP/HTTPS). La VPN intercepta TODO el tráfico de tu computadora, incluso el que no es web.
 
 Sin embargo, ni el proxy ni la VPN te hacen anónimo. El proveedor de la VPN ve todo tu tráfico. Si el proveedor guarda logs y es requerido por una autoridad, tu anonimato se desvanece.
 
@@ -148,7 +151,7 @@ El navegador guarda la Cookie y la reenvia obedientemente en cada petición al m
 
 **Cookie sin banderas de seguridad:** Las cookies deben tener las banderas `HttpOnly` (no accesible via JavaScript), `Secure` (solo via HTTPS) y `SameSite` (no enviada en peticiones de otros sitios).
 
-**Fijacion de Sesión (Session Fixation):** El atacante obliga a la victima a usar un identificador de sesión que el atacante ya conoce. Si el sitio no regenera el ID de sesión al iniciar sesión, el atacante puede secuestrar la sesión después de que la victima se autentique.
+**Fijacion de Sesión (Session Fixation):** El atacante obliga a la víctima a usar un identificador de sesión que el atacante ya conoce. Si el sitio no regenera el ID de sesión al iniciar sesión, el atacante puede secuestrar la sesión después de que la víctima se autentique.
 
 ## Fallo en Cadena: Como se Rompe Todo
 
@@ -164,7 +167,7 @@ Las vulnerabilidades no viven aisladas. Un error pequeño en una capa puede dese
 
 Ninguno de estos errores por si solo habría sido catastrófico. Pero encadenados, destruyen la empresa.
 
-La leccion: la seguridad no es una característica, es una propiedad emergente del sistema. No basta con asegurar una parte; hay que asegurar todo el ecosistema.
+La lección: la seguridad no es una característica, es una propiedad emergente del sistema. No basta con asegurar una parte; hay que asegurar todo el ecosistema.
 
 ## Modos de Falla del Arquitecto Web
 
@@ -184,9 +187,9 @@ Estos son los errores más comunes que cometen los arquitectos al diseñar siste
 
 ## El Ángulo del Hacker: Como Piensa un Atacante
 
-Cuando un hacker se enfrenta a una pagina web desconocida, sigue un proceso mental estructurado. No es un genio del mal sentado en un sótano; es un profesional siguiendo una metodología.
+Cuando un hacker se enfrenta a una página web desconocida, sigue un proceso mental estructurado. No es un genio del mal sentado en un sótano; es un profesional siguiendo una metodología.
 
-**Paso 1: Reconocimiento pasivo.** No toca el sitio. Busca información en Google, en registros DNS, en redes sociales de los empleados, en GitHub en busca de codigo filtrado. Busca subdominios, tecnologías utilizadas, empleados que trabajan ahí.
+**Paso 1: Reconocimiento pasivo.** No toca el sitio. Busca información en Google, en registros DNS, en redes sociales de los empleados, en GitHub en busca de código filtrado. Busca subdominios, tecnologías utilizadas, empleados que trabajan ahí.
 
 **Paso 2: Reconocimiento activo.** Escanea puertos, identifica tecnologías con herramientas como WhatWeb o Wappalyzer, busca archivos robados de configuración, robots.txt, archivos de respaldo.
 
@@ -202,11 +205,11 @@ Herramientas que usa: Burp Suite para interceptar y modificar tráfico HTTP, Nma
 
 ## Casos Reales de Falla Arquitectónica
 
-**Caso Sony PlayStation Network (2011):** Un atacante exploto una vulnerabilidad en la versión desactualizada de Apache HTTP Server que corria en los servidores de Sony. El servidor mal configurado permitió acceso a la base de datos de usuarios. Se robaron datos de 77 millones de cuentas, incluyendo números de tarjetas de crédito. Sony tuvo que apagar el servicio durante 23 dias, con un costo estimado de $171 millones de dólares.
+**Caso Sony PlayStation Network (2011):** Un atacante exploto una vulnerabilidad en la versión desactualizada de Apache HTTP Server que corria en los servidores de Sony. El servidor mal configurado permitió acceso a la base de datos de usuarios. Se robaron datos de 77 millones de cuentas, incluyendo números de tarjetas de crédito. Sony tuvo que apagar el servicio durante 23 días, con un costo estimado de $171 millones de dólares.
 
-**Caso Equifax (2017):** La vulnerabilidad en Apache Struts (CVE-2017-5638) permitió a los atacantes ejecutar codigo remoto en los servidores de Equifax. La empresa tenía más de 3 meses para aplicar el parche pero no lo hizo. Se expusieron datos de 147 millones de personas: nombres, números de seguro social, fechas de nacimiento, direcciones. La multa y los costos totales superaron los $1,400 millones de dólares.
+**Caso Equifax (2017):** La vulnerabilidad en Apache Struts (CVE-2017-5638) permitió a los atacantes ejecutar código remoto en los servidores de Equifax. La empresa tenía más de 3 meses para aplicar el parche pero no lo hizo. Se expusieron datos de 147 millones de personas: nombres, números de seguro social, fechas de nacimiento, direcciones. La multa y los costos totales superaron los $1,400 millones de dólares.
 
-**La leccion de Equifax:** No es que la vulnerabilidad fuera sofisticada. Es que el proceso de actualización de parches era manual y lento. La seguridad no es solo el codigo; es el proceso alrededor del codigo.
+**La lección de Equifax:** No es que la vulnerabilidad fuera sofisticada. Es que el proceso de actualización de parches era manual y lento. La seguridad no es solo el código; es el proceso alrededor del código.
 
 **Caso Marriott/Starwood (2018):** Atacantes estuvieron dentro de la red de Starwood desde 2014. Accedieron a la base de datos de reservas que contenia datos de 500 millones de huespedes. La vulnerabilidad inicial? Un acceso no autorizado a través de herramientas de administración remota mal configuradas. No fue un exploit complejo; fue una puerta abierta que nadie cerró.
 
@@ -214,18 +217,18 @@ Herramientas que usa: Burp Suite para interceptar y modificar tráfico HTTP, Nma
 
 Revisa si tu mente ya separó el concepto de "Internet" en sus componentes reales:
 
-1. Modificas el codigo de un juego de navegador usando la consola de Chrome y cambias tus monedas de oro de 10 a 9,999,000. Cuando refrescas la pagina, vuelves a tener 10 monedas. Por que el hackeo fallo? (Piensa en la diferencia entre el Menú y la Cocina).
+1. Modificas el código de un juego de navegador usando la consola de Chrome y cambias tus monedas de oro de 10 a 9,999,000. Cuando refrescas la página, vuelves a tener 10 monedas. Por qué el hackeo fallo? (Piensa en la diferencia entre el Menú y la Cocina).
 
-2. Por que es un error fatal de diseno guardar la regla `precio_del_zapato = 50.00` en el codigo JavaScript que se descarga en el navegador del cliente en lugar de verificarlo en el Servidor?
+2. Por qué es un error fatal de diseño guardar la regla `precio_del_zapato = 50.00` en el código JavaScript que se descarga en el navegador del cliente en lugar de verificarlo en el Servidor?
 
 3. Si un atacante logra robar la Base de Datos entera de contraseñas de los usuarios, a que nivel de la arquitectura tuvo que engañar para acceder a ella?
 
 4. Un arquitecto diseña un sistema donde el Frontend, el Backend y la Base de Datos están en el mismo servidor físico, sin segmentación de red. Que riesgos de seguridad introduce esta decisión frente a un escenario donde el atacante logra subir un archivo malicioso?
 
-5. Tu empresa recibe un reporte de que el identificador de sesión que usas es un número secuencial (12581, 12582, 12583...). Por que esto es una vulnerabilidad y como deberías generar los IDs de sesión correctamente?
+5. Tu empresa recibe un reporte de que el identificador de sesión que usas es un número secuencial (12581, 12582, 12583...). Por qué esto es una vulnerabilidad y como deberías generar los IDs de sesión correctamente?
 
-6. Encuentras que el servidor de base de datos de tu empresa tiene el puerto 3306 abierto al internet público. El equipo de sistemas argumenta que "tiene contraseña fuerte, es seguro". Por que esta confianza esta mal colocada y que podría hacer un atacante incluso sin conocer la contraseña?
+6. Encuentras que el servidor de base de datos de tu empresa tiene el puerto 3306 abierto al internet público. El equipo de sistemas argumenta que "tiene contraseña fuerte, es seguro". Por qué esta confianza esta mal colocada y que podría hacer un atacante incluso sin conocer la contraseña?
 
-7. Durante una auditoría, descubres que la aplicación mobile de la empresa guarda la dirección IP y puerto del servidor de base de datos en texto plano dentro del codigo de la app. Explica por que esto es peligroso, incluso si la base de datos requiere autenticación.
+7. Durante una auditoría, descubres que la aplicación mobile de la empresa guarda la dirección IP y puerto del servidor de base de datos en texto plano dentro del código de la app. Explica por qué esto es peligroso, incluso si la base de datos requiere autenticación.
 
 8. Un hacker realiza un escaneo de puertos a tu servidor web y encuentra abiertos los puertos 80, 443, y 22. Tu servidor usa contraseñas SSH débiles. Usando el concepto de "Fallo en Cadena", describe como estos dos hallazgos aislados podrían combinarse para comprometer la base de datos.

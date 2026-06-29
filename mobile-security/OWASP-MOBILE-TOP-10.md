@@ -1,5 +1,17 @@
 ---
 title: "OWASP Mobile Top 10 y Frida"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
+reviewed: "2026-06-28"
+reviewed_against: "OWASP Mobile Top 10:2024 Final Release"
+official_sources:
+  - title: "OWASP Mobile Top 10:2024"
+    url: "https://owasp.org/www-project-mobile-top-10/2023-risks/"
+  - title: "OWASP Mobile Application Security"
+    url: "https://mas.owasp.org/"
+  - title: "Android Security"
+    url: "https://source.android.com/docs/security"
 ---
 # OWASP Mobile Top 10 y Frida
 
@@ -11,153 +23,51 @@ Al igual que en las páginas web, la organización OWASP tiene un estándar glob
 
 ---
 
-## 1. El OWASP Mobile Top 10 (Los Errores Capitales)
+## 1. OWASP Mobile Top 10:2024
 
-de las 10 vulnerabilidades, estas son las tres que todo profesional debe conocer a la perfección. si dominas estas tres, ya estas por encima del 90% de los devs mobile:
+La edición final 2024 es la versión vigente en 2026. La numeración cambió de forma importante frente a 2016, por lo que un informe debe indicar siempre el año de la clasificación.
 
-### M1: Uso Inadecuado de Credenciales / Hardcoding
-(Como vimos en la guía de Ingeniería Inversa). Dejar llaves secretas incrustadas en el código fuente. Es como esconder la llave de tu casa debajo del tapete... pero publicando un mapa en internet de donde está el tapete.
+### M1: Improper Credential Usage
 
-Patrones comunes de hardcoding:
-* Claves de API de servicios cloud (AWS_ACCESS_KEY_ID, Firebase API Key, Google Maps API).
-* Tokens OAuth estáticos o client_secret embebidos.
-* Credenciales de bases de datos o servicios backend.
-* Keys criptográficas (AES, RSA) en el código.
-* URLs de endpoints internos (staging, development, producción).
+Uso incorrecto de credenciales: secretos incrustados, tokens expuestos, credenciales reutilizadas o gestión deficiente durante almacenamiento y transmisión.
 
-**Detección estática:** MobSF, semgrep o grep con patrones como `AKIA[0-9A-Z]{16}`, `-----BEGIN RSA PRIVATE KEY-----`, `password\s*=\s*["'][^"']+["']`.
+### M2: Inadequate Supply Chain Security
 
-### M2: Almacenamiento Inseguro de Datos
-Este es el error móvil más común del mundo. Es TAN fácil de evitar que da vergüenza ajena.
-Un desarrollador guarda el usuario y la contraseña del cliente para que no tenga que escribirla cada vez que abre la app. En lugar de usar el Almacenamiento Seguro del sistema operativo (El "Keychain" en iOS o el "Keystore" en Android), el desarrollador guarda la contraseña en un archivo de texto simple o en una base de datos local SQLite (`misdatos.db`).
+Riesgos introducidos por SDK, bibliotecas, procesos de construcción, tiendas, firmas y proveedores. Requiere inventario, procedencia, integridad y mantenimiento de dependencias.
 
-Si a la víctima le roban físicamente el celular, o si descarga un malware, el atacante simplemente lee ese archivo SQLite y roba la contraseña del banco en texto claro.
+### M3: Insecure Authentication/Authorization
 
-**Almacenamiento inseguro identificado comúnmente:**
+Autenticación o autorización que confía en decisiones del cliente, sesiones débiles o controles incompletos del servidor. Los permisos críticos deben validarse en un componente confiable.
 
-| Ubicación | Riesgo | Ejemplo |
-|-----------|--------|---------|
-| SharedPreferences (XML) | Root/malware puede leer | `/data/data/com.app/shared_prefs/` |
-| SQLite sin cifrar | Accesible con root | `/data/data/com.app/databases/` |
-| SD card externa | Cualquier app con READ_EXTERNAL_STORAGE | `storage/emulated/0/` |
-| Logcat | Cualquier app con READ_LOGS | `adb logcat` |
-| NSUserDefaults | Backup iCloud extraíble | `/var/mobile/Containers/Data/.../Library/Preferences/` |
-| CoreData SQLite iOS | Backup iCloud sin cifrar | `~/Library/Application Support/` |
-| Plist files | Backup iTunes | `Library/Preferences/*.plist` |
+### M4: Insufficient Input/Output Validation
 
-**Solución correcta:** Android Keystore (con respaldo hardware TEE) para claves, y EncryptedSharedPreferences para datos persistentes. En iOS, Keychain con acceso `kSecAttrAccessibleWhenUnlockedThisDeviceOnly`.
+Entradas y salidas no validadas cruzan WebViews, deep links, IPC, archivos o servicios backend y pueden producir inyección, navegación insegura o ejecución no prevista.
 
-**Por qué esto importa:** Es como si el banco te diera una billetera con la contraseña escrita en un papelito pegado adentro. Literalmente estas regalando los datos.
+### M5: Insecure Communication
 
-### M3: Comunicación Insegura (La Intercepción)
-Cuando te conectas al Wi-Fi de un Starbucks y abres la app del banco? Si la app no esta bien hecha, alguien en la mesa de al lado puede verte el saldo.
-Cuando la App Móvil se comunica con los servidores del Banco a través del Wi-Fi de un Starbucks, la comunicación debe estar fuertemente cifrada (HTTPS/SSL).
-Si la aplicación no obliga a usar cifrado, el atacante sentado en la mesa de al lado puede hacer un ataque *Man-in-the-Middle (MitM)* y capturar todas las transacciones financieras flotando en el aire.
+La aplicación transmite información sin protección suficiente, valida incorrectamente certificados o utiliza protocolos y configuraciones débiles.
 
-**Técnicas de interceptación:**
-* ARP Spoofing + ettercap para redirigir tráfico.
-* Proxy como Burp Suite o mitmproxy con certificado CA instalado en el dispositivo.
-* SSLSplit para tráfico que no pasa por el proxy.
-* DNS Spoofing para redirigir dominios.
+### M6: Inadequate Privacy Controls
 
-**Vulnerabilidades comunes:**
-* HTTP en lugar de HTTPS para tráfico de API.
-* TLS versión insegura (SSLv3, TLS 1.0) permitida.
-* Verificación de certificado TLS deshabilitada (`ALLOW_ALL_HOSTNAME_VERIFIER`).
-* Chain de certificados no validada (trust-all).
-* Mezcla de contenido HTTP y HTTPS (Mixed Content).
-* WebViews que cargan URLs HTTP.
+La aplicación recopila, utiliza, comparte o conserva más datos personales de los necesarios o no aplica consentimiento y transparencia adecuados.
 
-### M4: Autenticación y Autorización Insegura
+### M7: Insufficient Binary Protections
 
-La autenticación móvil tiene particularidades que la web no enfrenta:
+El binario carece de controles proporcionales contra manipulación, reempaquetado, instrumentación o análisis. La ofuscación aumenta esfuerzo, pero no reemplaza controles del servidor.
 
-* **Biométricos mal implementados:** Usar `BiometricPrompt` de Android sin fallback a PIN, o Face ID sin `LABDeviceFallback` en iOS.
-* **Tokens de sesión sin expiración:** JWTs con `exp` a 30 días o sin `iat` ni `jti`.
-* **OAuth2 misconfiguration:** Uso de `implicit grant` en lugar de `authorization code + PKCE`.
-* **Local authentication bypass:** Implementaciones que solo verifican en el cliente (`if (pin == "1234")`) en lugar de delegar al servidor.
-* **IDOR (Insecure Direct Object Reference):** Parámetros como `user_id=1234` en la URL de API que pueden modificarse para acceder a datos de otros usuarios.
-* **Session fixation:** El servidor acepta un token de sesión proporcionado por el cliente.
+### M8: Security Misconfiguration
 
-**Detección:** Interceptar tráfico con Burp Suite y modificar parámetros de autenticación, verificar respuesta sin token, probar con tokens expirados.
+Permisos, componentes exportados, backups, logs, modos de depuración o configuraciones de plataforma exponen capacidades y datos.
 
-### M5: Criptografía Insuficiente
+### M9: Insecure Data Storage
 
-| Error | Ejemplo | Impacto |
-|-------|---------|---------|
-| Algoritmo débil | DES, RC4, MD5, SHA1 | Fácil de forzar |
-| Modo inseguro | AES-ECB (mismo texto cifrado produce mismo cifrado) | Análisis de patrones |
-| IV fijo | IV hardcodeado en código | Misma clave + mismo IV = idéntico cifrado |
-| Clave derivada débil | `PBKDF2` con 1 iteración | Fuerza bruta de la clave |
-| Clave en código | `private static final byte[] KEY = "1234567890123456".getBytes()` | Extraíble con Jadx |
-| Random inseguro | `java.util.Random` en lugar de `SecureRandom` | Predecible |
-| Custom crypto | Algoritmo de cifrado implementado por el equipo | Errores catastróficos |
+Datos sensibles quedan en bases locales, preferencias, cachés, logs, capturas, portapapeles o backups sin controles suficientes.
 
-**Referencia:** Usar siempre AES-256-GCM para cifrado simétrico, RSA-OAEP para cifrado asimétrico, SHA-256/512 para hashing. Almacenar claves en Android Keystore / iOS Keychain.
+### M10: Insufficient Cryptography
 
-### M6: Autorización Insegura en el Lado del Servidor
+Algoritmos, parámetros, generación de aleatoriedad o gestión de claves no proporcionan la protección esperada.
 
-Incluso con autenticación correcta, los endpoints de API móviles pueden no validar permisos por recurso:
-
-* Un usuario normal puede acceder a endpoints de administrador modificando headers (`role: admin`) o IDs en URL.
-* APIs GraphQL sin restricciones de profundidad de consulta (batching attacks).
-* Rate limiting insuficiente permite fuerza bruta de endpoints.
-* La app móvil confía en la ocultación de UI (botón invisible) como control de acceso.
-
-### M7: Calidad del Código del Lado del Cliente
-
-* **Buffer overflow** en módulos nativos (C/C++) que procesan entrada del usuario.
-* **Format string vulnerabilities** en logs que exponen datos sensibles en Logcat.
-* **Memory leaks** que mantienen datos sensibles en RAM sin limpiar.
-* **WebView JavaScript injection** por no sanitizar entrada.
-* **Zip path traversal** al descomprimir archivos descargados.
-* **Leakage through background screenshots:** Apps sin `FLAG_SECURE` en la ventana pueden mostrar datos bancarios en el switcher de tareas.
-
-### M8: Manipulación de Código (Code Tampering)
-
-La naturaleza del código en el dispositivo permite:
-
-* **Repackaging:** El atacante descarga el APK, lo decompila, modifica el código malicioso (por ejemplo, quitar la verificación de PIN), lo recompila y lo redistribuye.
-* **Runtime manipulation:** Frida/Objection modifican el comportamiento en tiempo real sin modificar el APK.
-* **Method swizzling (iOS):** Reemplazar implementaciones de métodos Objective-C en tiempo de ejecución.
-* **Pirateado:** Eliminar licencias, verificación de compra in-app, suscripciones.
-
-**Defensas:**
-* Integrity checks: verificar checksum de `classes.dex` y recursos.
-* Firma de APK: Android verifica la firma en instalación.
-* Código ofuscado y con anti-tamper (DexGuard evalúa integridad).
-* Root/jailbreak detection para evitar entornos de análisis.
-
-### M9: Ingeniería Inversa (Reverse Engineering)
-
-Expuesto en detalle en la guía de RE. La capacidad del atacante de entender el código de la app permite:
-* Descubrir lógica de negocio propietaria.
-* Extraer secretos y claves (M1).
-* Identificar endpoints de API y parámetros.
-* Encontrar vulnerabilidades para explotar.
-* Robar propiedad intelectual.
-
-**Defensas:**
-* Ofuscación multi-capa (ProGuard + DexGuard + O-LLVM).
-* Cifrado de strings en runtime.
-* Detección de depuración y emulador.
-* Eliminación de metadata de debug (`debuggable=false`).
-* Minificación del código (`minifyEnabled=true`).
-
-### M10: Funcionalidad Extrania (Extraneous Functionality)
-
-Los desarrolladores dejan puertas abiertas accidentalmente:
-
-* **Debug endpoints:** URLs como `/api/v1/debug/simulate-payment` activas en producción.
-* **Menús ocultos:** Actividades Android exportadas con lógica administrativa.
-* **Logs excesivos:** `Log.d()` y `NSLog()` que exponen datos en producción.
-* **Backdoors:** Credenciales de administrador hardcodeadas para testing.
-* **Console logs:** Mensajes de consola en JavaScript (React Native / Cordova) que exponen claves.
-* **Flagger / Feature flags:** Funcionalidades incompletas accesibles en producción.
-
-**Detección:** Inspección del AndroidManifest.xml para actividades exportadas innecesarias. Análisis de logs con `adb logcat`. Revisión manual del código decompilado.
-
----
+El Top 10 es una referencia de concienciación. Para requisitos y pruebas más detalladas conviene usar OWASP MASVS y MASTG.
 
 ## 2. La Defensa del Banco: El "Pinning" (Anclaje)
 
@@ -326,8 +236,8 @@ frida-trace -U -i "java.*" com.banco.app # Traza todas las funciones Java
 
 ## Criterio de Dominio (Autoevaluación)
 
-1. Un banco guarda las contraseñas de sesión de los clientes en un archivo local SQLite dentro de la memoria interna del celular "porque el usuario no tiene acceso a esa carpeta". Explica por qué esto viola el principio OWASP M2 y cómo un malware podría acceder a esa base de datos.
+1. Un banco guarda las contraseñas de sesión de los clientes en un archivo local SQLite dentro de la memoria interna del celular "porque el usuario no tiene acceso a esa carpeta". Explica por qué esto se relaciona con OWASP M9:2024 y cómo un malware podría acceder a esa base de datos.
 2. ¿Qué es el SSL Pinning y por qué es una pesadilla para los atacantes (o pentesters) que intentan hacer un ataque de intermediario (Man-in-the-Middle) en una red Wi-Fi pública?
 3. En tus propias palabras, ¿Por qué la herramienta `Frida` se considera instrumentación "dinámica" en contraste con el uso de herramientas como `Jadx` (que es análisis "estático")?
-4. Enumera tres tipos de ofuscación que protegen contra M9 (Reverse Engineering) y explica brevemente cómo funciona cada uno.
-5. El OWASP M8 (Code Tampering) describe ataques de repackaging de APK. Explica cómo una app puede detectar que ha sido manipulada.
+4. Enumera tres tipos de ofuscación que protegen frente al riesgo M7:2024 (Insufficient Binary Protections) y explica brevemente cómo funciona cada uno.
+5. El reempaquetado de APK se relaciona con M7:2024 (Insufficient Binary Protections). Explica cómo una app puede detectar que ha sido manipulada.

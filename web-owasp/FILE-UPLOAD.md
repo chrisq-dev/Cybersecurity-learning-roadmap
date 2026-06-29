@@ -1,14 +1,17 @@
 ---
 title: "Subida de Archivos (File Upload): El Caballo de Troya Digital"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Subida de Archivos (File Upload): El Caballo de Troya Digital
 
 ## Objetivo de esta Guía
 
-Entender por que darle al usuario el poder de subir archivos a tu servidor es la accion técnica más peligrosa que un programador puede implementar, y como un atacante usa esta funcion para destruir el sistema desde adentro.
+Entender por qué darle al usuario el poder de subir archivos a tu servidor es la acción técnica más peligrosa que un programador puede implementar, y como un atacante usa esta función para destruir el sistema desde adentro.
 
-Casi todas las páginas modernas te piden subir algo: una foto de perfil, un curriculum en PDF, o un documento de Excel. Cuando haces esto, estas físicamente tomando un archivo de tu computadora y guardándolo permanentemente en el disco duro del servidor de la empresa. Para un hacker, esta es una invitación abierta.
+Casi todas las páginas modernas te piden subir algo: una foto de perfil, un currículum en PDF, o un documento de Excel. Cuando haces esto, estas físicamente tomando un archivo de tu computadora y guardándolo permanentemente en el disco duro del servidor de la empresa. Para un hacker, esta es una invitación abierta.
 
 La subida de archivos es peligrosa porque combina múltiples vectores de ataque en una sola funcionalidad. No es solo la "Web Shell" clásica. También puede ser XSS (si el archivo contiene JavaScript que se ejecuta al visualizarse), SSRF (si el servidor procesa el archivo y este contiene URLs), o ataques de denial of service (archivos extremadamente grandes o comprimidos que agotan los recursos del servidor).
 
@@ -27,11 +30,11 @@ Esto es exactamente lo que hace una **Web Shell**.
 
 ## La Web Shell: El Soldado Enemigo
 
-Una Web Shell es un archivo pequeño de codigo maligno (generalmente escrito en PHP, Python, ASP, JSP o Perl). Si un atacante logra subir una Web Shell al servidor, y luego "visita" ese archivo a través de su navegador, el atacante obtiene una consola de comandos con los poderes del servidor.
+Una Web Shell es un archivo pequeño de código maligno (generalmente escrito en PHP, Python, ASP, JSP o Perl). Si un atacante logra subir una Web Shell al servidor, y luego "visita" ese archivo a través de su navegador, el atacante obtiene una consola de comandos con los poderes del servidor.
 
 ### El Escenario
 
-La pagina web tiene un formulario: "Sube tu foto de perfil (Solo JPG)".
+La página web tiene un formulario: "Sube tu foto de perfil (Solo JPG)".
 
 El hacker crea un archivo maligno llamado `shell.php` con el siguiente contenido:
 
@@ -45,7 +48,7 @@ Esta línea le dice al servidor: "Toma lo que venga en el parámetro `cmd` de la
 
 El programador junior puso una defensa en JavaScript (en el navegador) que dice: "Si el archivo no termina en .jpg, muestra un error."
 
-El atacante usa Burp Suite (un proxy interceptador). En su navegador, sube un archivo real llamado `gato.jpg` para engañar a Chrome. Pero mientras el archivo viaja por el aire en las manos del Mensajero (HTTP), el atacante intercepta el paquete en Burp Suite, le borra la extensión y escribe `.php` con el codigo maligno adentro.
+El atacante usa Burp Suite (un proxy interceptador). En su navegador, sube un archivo real llamado `gato.jpg` para engañar a Chrome. Pero mientras el archivo viaja por el aire en las manos del Mensajero (HTTP), el atacante intercepta el paquete en Burp Suite, le borra la extensión y escribe `.php` con el código maligno adentro.
 
 El servidor trasero recibe el PHP directamente. La defensa del Frontend fue completamente inútil.
 
@@ -96,15 +99,15 @@ No solo los scripts ejecutables son peligrosos.
 </svg>
 ```
 
-**HTML:** Si el servidor permite subir archivos HTML, el atacante puede subir una pagina de phishing que imita la pagina de login del sitio. Cuando otros usuarios visiten esa pagina, pensaran que es parte del sitio legítimo.
+**HTML:** Si el servidor permite subir archivos HTML, el atacante puede subir una página de phishing que imita la página de login del sitio. Cuando otros usuarios visiten esa página, pensaran que es parte del sitio legítimo.
 
-**PDF con JavaScript:** Los PDFs pueden contener JavaScript incrustado. Si el visor de PDF del servidor procesa el JavaScript, puede haber ejecución de codigo.
+**PDF con JavaScript:** Los PDFs pueden contener JavaScript incrustado. Si el visor de PDF del servidor procesa el JavaScript, puede haber ejecución de código.
 
 **Archivos de Office con Macros:** Los archivos .docm, .xlsm pueden contener macros maliciosas. Si el servidor o algún usuario descarga y abre estos archivos, las macros se ejecutan.
 
 **ZIP Bomba:** Un archivo ZIP pequeño (unos pocos KB) que al descomprimirse ocupa gigabytes o terabytes. Usado para ataques de denial of service contra el servidor o contra los discos.
 
-**Polyglot Files:** Archivos que son validos en dos formatos simultáneamente. Por ejemplo, un GIF que también es un PHP valido. El servidor ve la cabecera GIF (y lo acepta como imagen), pero el interprete PHP ejecuta el codigo incrustado.
+**Polyglot Files:** Archivos que son validos en dos formatos simultáneamente. Por ejemplo, un GIF que también es un PHP válido. El servidor ve la cabecera GIF (y lo acepta como imagen), pero el interprete PHP ejecuta el código incrustado.
 
 ### Sobrescritura de Archivos del Sistema
 
@@ -144,7 +147,7 @@ def es_imagen_valida(contenido):
     return False
 ```
 
-**Limitacion:** El atacante puede crear un archivo polyglot que tenga Magic Bytes de imagen pero también contenga codigo PHP. Por eso necesitas capas adicionales.
+**Limitacion:** El atacante puede crear un archivo polyglot que tenga Magic Bytes de imagen pero también contenga código PHP. Por eso necesitas capas adicionales.
 
 ### Capa 2: Validación de Extensión
 
@@ -167,7 +170,7 @@ Esto previene:
 
 ### Capa 4: Almacenar Fuera del Webroot
 
-Los archivos subidos no deben estar en el mismo directorio que el codigo de la aplicación web.
+Los archivos subidos no deben estar en el mismo directorio que el código de la aplicación web.
 
 **Mal:** `/var/www/html/uploads/shell.php` (accesible via `https://sitio.com/uploads/shell.php`)
 **Bien:** `/var/data/uploads/a1b2c3d4.jpg` (no accesible directamente por URL)
@@ -236,13 +239,13 @@ Si el archivo contiene malware conocido, el antivirus lo detecta antes de que ll
 
 **Caso RapidShare (2012):** Un atacante subió un archivo PHP a RapidShare, un servicio de almacenamiento de archivos. El servidor no deshabilitaba la ejecución en el directorio de subida. El atacante ejecutó comandos en el servidor y robo la base de datos completa de usuarios.
 
-**Caso Webmin (2019):** Una vulnerabilidad de subida de archivos en Webmin (una herramienta de administración de servidores) permitió a atacantes ejecutar codigo remoto sin autenticación. La vulnerabilidad (CVE-2019-15107) permitia subir un archivo malicioso que se ejecutaba en el servidor.
+**Caso Webmin (2019):** Una vulnerabilidad de subida de archivos en Webmin (una herramienta de administración de servidores) permitió a atacantes ejecutar código remoto sin autenticación. La vulnerabilidad (CVE-2019-15107) permitia subir un archivo malicioso que se ejecutaba en el servidor.
 
 **Caso WordPress (multiple):** Los plugins de WordPress para subir archivos (contact forms, galerias, etc.) han sido vectores de ataque recurrentes. En 2020, un plugin de contacto popular tenía una vulnerabilidad que permitia subir archivos PHP sin restricciones.
 
 ## Modos de Falla con Subida de Archivos
 
-**Confiar solo en la extensión.** Un archivo llamado `imagen.jpg` puede contener codigo PHP. Los Magic Bytes son la única forma confiable de determinar el tipo.
+**Confiar solo en la extensión.** Un archivo llamado `imagen.jpg` puede contener código PHP. Los Magic Bytes son la única forma confiable de determinar el tipo.
 
 **Confiar solo en el Content-Type.** El header `Content-Type: image/jpeg` puede ser falsificado por el atacante con Burp Suite.
 
@@ -254,21 +257,21 @@ Si el archivo contiene malware conocido, el antivirus lo detecta antes de que ll
 
 **No validar el contenido de archivos comprimidos.** Un ZIP puede contener un archivo PHP malicioso. El servidor debe escanear el contenido del ZIP antes de descomprimirlo.
 
-**Procesar archivos sin sandbox.** Si el servidor procesa el archivo (convierte imagenes, extrae texto de PDFs), el procesamiento debe hacerse en un entorno aislado (sandbox) para evitar que un archivo malicioso explote vulnerabilidades en el procesador.
+**Procesar archivos sin sandbox.** Si el servidor procesa el archivo (convierte imágenes, extrae texto de PDFs), el procesamiento debe hacerse en un entorno aislado (sandbox) para evitar que un archivo malicioso explote vulnerabilidades en el procesador.
 
 ## Autoevaluación
 
-1. Por que es un error fatal de diseno programar las validaciones de "Subida Segura de Archivos" exclusivamente en el codigo Frontend (JavaScript) del navegador del usuario, en lugar del Backend?
+1. Por qué es un error fatal de diseño programar las validaciones de "Subida Segura de Archivos" exclusivamente en el código Frontend (JavaScript) del navegador del usuario, en lugar del Backend?
 
-2. Lograste subir una Web Shell (archivo malicioso en PHP) exitosamente al servidor de una universidad en la ruta `/imagenes/shell.php`. Sin embargo, al visitar la URL en tu navegador, la pagina no ejecuta los comandos, solo te muestra el codigo fuente en texto plano. Que regla de "Hardening" configuró correctamente el Blue Team en esa carpeta?
+2. Lograste subir una Web Shell (archivo malicioso en PHP) exitosamente al servidor de una universidad en la ruta `/imagenes/shell.php`. Sin embargo, al visitar la URL en tu navegador, la página no ejecuta los comandos, solo te muestra el código fuente en texto plano. Que regla de "Hardening" configuró correctamente el Blue Team en esa carpeta?
 
 3. Para engañar al filtro de extensiones del servidor, un atacante decide nombrar a su archivo `virus.php.jpg`. Explica como podría este "Doble Nombre" llegar a confundir al sistema operativo si esta mal configurado.
 
-4. Por que cambiar el nombre del archivo del usuario a un valor aleatorio complejo (Ej. de `foto.png` a `a2b4c6...png`) ayuda a prevenir que una Web Shell se active?
+4. Por qué cambiar el nombre del archivo del usuario a un valor aleatorio complejo (Ej. de `foto.png` a `a2b4c6...png`) ayuda a prevenir que una Web Shell se active?
 
-5. Explica el concepto de "Polyglot File" y como un atacante podría crear un archivo que sea simultáneamente un GIF valido y un script PHP valido.
+5. Explica el concepto de "Polyglot File" y como un atacante podría crear un archivo que sea simultáneamente un GIF válido y un script PHP válido.
 
-6. Tu aplicación web permite a los usuarios subir imagenes en formato SVG. Explica por que los SVGs son peligrosos incluso si el servidor los sirve como "imagenes" y no como "scripts".
+6. Tu aplicación web permite a los usuarios subir imágenes en formato SVG. Explica por qué los SVGs son peligrosos incluso si el servidor los sirve como "imágenes" y no como "scripts".
 
 7. Un equipo de desarrollo almacena los archivos subidos en un bucket S3 de AWS y usa URLs firmadas (pre-signed URLs) para servir los archivos. Que ventajas de seguridad tiene esta arquitectura comparada con almacenar los archivos en el servidor web?
 

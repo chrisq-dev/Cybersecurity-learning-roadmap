@@ -1,12 +1,15 @@
 ---
 title: "Contenedores (Docker): La Caja de Cristal"
+level: "avanzado"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Contenedores (Docker): La Caja de Cristal
 
 ## Objetivo de esta Guía
 
-Entender por que la Nube moderna abandonó las Máquinas Virtuales pesadas y abrazó las Burbujas ultraligeras, y como esto afecta la seguridad y el aislamiento.
+Entender por qué la Nube moderna abandonó las Máquinas Virtuales pesadas y abrazó las Burbujas ultraligeras, y como esto afecta la seguridad y el aislamiento.
 
 Anteriormente (Linux), aprendiste que las empresas instalan sus bases de datos en Servidores. Para no comprar 10 computadoras físicas, la industria inventó las Máquinas Virtuales (Virtualización): Meter 10 servidores fantasma adentro de un solo servidor físico.
 
@@ -103,7 +106,7 @@ En 2019, se descubrió una vulnerabilidad en runc (el runtime de contenedores de
 
 Como funcionaba:
 
-1. El atacante dentro del contenedor obtenia ejecución de codigo.
+1. El atacante dentro del contenedor obtenia ejecución de código.
 2. El atacante sobrescribia el binario `runc` en el host desde dentro del contenedor.
 3. La próxima vez que el host ejecutará `runc` (para crear otro contenedor), el binario malicioso se ejecutaba con permisos de root en el host.
 
@@ -172,7 +175,7 @@ Un contenedor privilegiado puede:
 
 ### Imagenes de Fuentes no Confiables
 
-Docker Hub tiene millones de imagenes públicas. Muchas contienen malware.
+Docker Hub tiene millones de imágenes públicas. Muchas contienen malware.
 
 ```dockerfile
 # NO HAGAS ESTO: imagen de fuente desconocida
@@ -180,9 +183,9 @@ FROM usuario_desconocido/nginx
 ```
 
 Guía segura:
-- Usar imagenes oficiales (`nginx`, `node`, `python`).
-- Usar imagenes firmadas (Docker Content Trust).
-- Escanear imagenes con herramientas como Trivy o Snyk.
+- Usar imágenes oficiales (`nginx`, `node`, `python`).
+- Usar imágenes firmadas (Docker Content Trust).
+- Escanear imágenes con herramientas como Trivy o Snyk.
 - Especificar versión exacta (no `latest`).
 
 ```dockerfile
@@ -219,7 +222,7 @@ CMD ["node", "app.js"]
 
 ### Multi-stage Builds
 
-Usar multi-stage builds para reducir el tamaño de la imagen y eliminar herramientas de compilacion que no son necesarias en producción:
+Usar multi-stage builds para reducir el tamaño de la imagen y eliminar herramientas de compilación que no son necesarias en producción:
 
 ```dockerfile
 # Etapa de compilacion
@@ -235,7 +238,7 @@ FROM nginx:alpine
 COPY --from=builder /app/dist /usr/share/nginx/html
 ```
 
-La imagen final solo contiene Nginx y los archivos estaticos, sin Node.js ni herramientas de compilacion.
+La imagen final solo contiene Nginx y los archivos estaticos, sin Node.js ni herramientas de compilación.
 
 ## Docker Secrets
 
@@ -266,7 +269,7 @@ Esto queda grabado en la imagen para siempre.
 
 ### El Contenedor que Escape en Shopify (2018)
 
-Un investigador de seguridad descubrió una vulnerabilidad en la plataforma Shopify que le permitia ejecutar codigo dentro de un contenedor. El contenedor estaba mal configurado:
+Un investigador de seguridad descubrió una vulnerabilidad en la plataforma Shopify que le permitia ejecutar código dentro de un contenedor. El contenedor estaba mal configurado:
 
 - Ejecutaba como root.
 - Tenía la capability `CAP_SYS_ADMIN`.
@@ -294,7 +297,7 @@ Montar `/var/run/docker.sock` dentro de un contenedor le da control total sobre 
 
 ### Falla 2: Imagenes Desactualizadas
 
-Las imagenes contienen vulnerabilidades conocidas. Usar `node:latest` sin escanear es como instalar Windows 95 sin parches.
+Las imágenes contienen vulnerabilidades conocidas. Usar `node:latest` sin escanear es como instalar Windows 95 sin parches.
 
 ### Falla 3: No Limitar Recursos
 
@@ -385,7 +388,7 @@ docker run --privileged --pid=host -v /var/run/docker.sock:/var/run/docker.sock 
 
 ## Image Scanning con Trivy
 
-Trivy es un escáner de vulnerabilidades para imagenes de contenedor (y otros targets).
+Trivy es un escáner de vulnerabilidades para imágenes de contenedor (y otros targets).
 
 ### Escaneo Básico
 
@@ -419,7 +422,7 @@ Si se encuentra una vulnerabilidad CRITICAL, el pipeline falla y la imagen no se
 
 ## Docker Content Trust (DCT)
 
-DCT asegura la integridad de las imagenes mediante firmas digitales.
+DCT asegura la integridad de las imágenes mediante firmas digitales.
 
 ### Como Funciona
 
@@ -453,21 +456,21 @@ El fix requirio actualizar runc en todos los servidores Docker y Kubernetes del 
 
 ### Docker Hub y las Imagenes Maliciosas (2018-2023)
 
-Docker Hub ha eliminado miles de imagenes maliciosas que contenian:
+Docker Hub ha eliminado miles de imágenes maliciosas que contenian:
 
 - Scripts de minería de criptomonedas.
 - Backdoors para acceso remoto.
 - Keyloggers.
 - Ransomware.
 
-Las imagenes maliciosas suelen:
-- Tener pocas descargas pero nombres similares a imagenes oficiales.
+Las imágenes maliciosas suelen:
+- Tener pocas descargas pero nombres similares a imágenes oficiales.
 - Usar técnicas de SEO poisoning en las descripciones.
 - Contener el malware en capas ocultas (no visibles en el Dockerfile).
 
 ### El Ataque a la Cadena de Suministro de Codecov (2021)
 
-Codecov, una herramienta de cobertura de codigo, fue comprometida. Los atacantes modificaron la imagen de Docker de Codecov para incluir malware que robaba credenciales de los pipelines de CI/CD de sus clientes.
+Codecov, una herramienta de cobertura de código, fue comprometida. Los atacantes modificaron la imagen de Docker de Codecov para incluir malware que robaba credenciales de los pipelines de CI/CD de sus clientes.
 
 Los clientes que usaban la imagen de Docker de Codecov sin verificar su integridad (DCT) ejecutaron el malware en sus pipelines.
 
@@ -475,17 +478,17 @@ Los clientes que usaban la imagen de Docker de Codecov sin verificar su integrid
 
 Responde estas preguntas para verificar si comprendes los conceptos:
 
-1. El equipo de desarrollo quiere desplegar 100 pequeños microservicios diferentes en un solo servidor físico. Explica, usando la diferencia de arquitectura entre Máquinas Virtuales (VMs) y Contenedores (Docker), por que usar Contenedores ahorrará una cantidad masiva de Memoria RAM (Pista: Piensa en el Sistema Operativo Invitado).
+1. El equipo de desarrollo quiere desplegar 100 pequeños microservicios diferentes en un solo servidor físico. Explica, usando la diferencia de arquitectura entre Máquinas Virtuales (VMs) y Contenedores (Docker), por qué usar Contenedores ahorrará una cantidad masiva de Memoria RAM (Pista: Piensa en el Sistema Operativo Invitado).
 
-2. Un atacante logra ejecutar codigo remoto malicioso (RCE) dentro del contenedor web de tu empresa. Sin embargo, el atacante se da cuenta de que no puede ver los archivos de contraseñas de la Base de Datos que esta corriendo en otro contenedor en la misma máquina física. Que característica del Kernel de Linux (Namespaces o Cgroups) es responsable de este aislamiento de visión?
+2. Un atacante logra ejecutar código remoto malicioso (RCE) dentro del contenedor web de tu empresa. Sin embargo, el atacante se da cuenta de que no puede ver los archivos de contraseñas de la Base de Datos que esta corriendo en otro contenedor en la misma máquina física. Que característica del Kernel de Linux (Namespaces o Cgroups) es responsable de este aislamiento de visión?
 
-3. Define que es un ataque de "Container Escape" (Fuga de Contenedor) y explica por que las consecuencias de este ataque son infinitamente más letales que si el atacante simplemente se quedara atrapado adentro de su contenedor original.
+3. Define que es un ataque de "Container Escape" (Fuga de Contenedor) y explica por qué las consecuencias de este ataque son infinitamente más letales que si el atacante simplemente se quedara atrapado adentro de su contenedor original.
 
-4. Con base en la filosofía de "Zero Trust", Por que otorgarle permisos de "Usuario Root" (Modo Dios en Linux) al usuario que se ejecuta adentro de un Contenedor de Docker es considerado una de las peores y más peligrosas prácticas de seguridad de la industria?
+4. Con base en la filosofía de "Zero Trust", Por qué otorgarle permisos de "Usuario Root" (Modo Dios en Linux) al usuario que se ejecuta adentro de un Contenedor de Docker es considerado una de las peores y más peligrosas prácticas de seguridad de la industria?
 
-5. Un administrador monta el socket de Docker (`/var/run/docker.sock`) dentro de un contenedor para que una aplicación de monitoreo pueda gestionar otros contenedores. Explica por que esta práctica es peligrosa y como un atacante podría explotarla.
+5. Un administrador monta el socket de Docker (`/var/run/docker.sock`) dentro de un contenedor para que una aplicación de monitoreo pueda gestionar otros contenedores. Explica por qué esta práctica es peligrosa y como un atacante podría explotarla.
 
-6. Que son las Linux Capabilities y por que agregar `CAP_SYS_ADMIN` a un contenedor es peligroso?
+6. Que son las Linux Capabilities y por qué agregar `CAP_SYS_ADMIN` a un contenedor es peligroso?
 
 7. Un contenedor ejecuta `node:latest` sin escanear la imagen. Que riesgos de seguridad específicos presenta esta práctica?
 

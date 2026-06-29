@@ -1,12 +1,15 @@
 ---
 title: "IP y Subnetting: Como los routers encuentran el camino y como los atacantes lo aprovechan"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # IP y Subnetting: Como los routers encuentran el camino y como los atacantes lo aprovechan
 
 ## Objetivo de esta guía
 
-Las direcciones IP son el sistema de coordenadas de internet. Sin ellas, no hay forma de que un paquete sepa donde ir. Pero no basta con entender que una IP es un número. Hay que entender como se estructuran las redes, por que se dividen en subredes, y como esa división es la base de la seguridad perimetral.
+Las direcciones IP son el sistema de coordenadas de internet. Sin ellas, no hay forma de que un paquete sepa donde ir. Pero no basta con entender que una IP es un número. Hay que entender como se estructuran las redes, por qué se dividen en subredes, y como esa división es la base de la seguridad perimetral.
 
 El subnetting asusta a mucha gente porque involucra números binarios y máscaras. Mi objetivo aqui es que entiendas la lógica, no que memorices tablas. En el mundo real, usas calculadoras de subnetting. Pero si no entiendes que calculan, no podrás diseñar redes seguras ni diagnosticar problemas de enrutamiento.
 
@@ -391,15 +394,15 @@ El hospital tuvo que reestructurar todo el direccionamiento, lo que requirio apa
 
 1. Tienes el bloque 192.168.10.0/24 y necesitas 4 subredes de igual tamaño. Cual es la nueva máscara de subred, y cuáles son las direcciones de red, broadcast, y el rango de hosts de cada subred?
 
-2. Explica la diferencia entre una dirección de red y una dirección de broadcast. Por que no se pueden asignar a dispositivos? Que ocurre si accidentalmente asignas una dirección de broadcast a un host?
+2. Explica la diferencia entre una dirección de red y una dirección de broadcast. Por qué no se pueden asignar a dispositivos? Que ocurre si accidentalmente asignas una dirección de broadcast a un host?
 
-3. Un administrador configura la máscara 255.255.255.0 en un host con IP 192.168.2.10. La puerta de enlace tiene IP 192.168.1.1 con máscara 255.255.255.0. Por que el host no puede acceder a internet? Que máscara debería tener?
+3. Un administrador configura la máscara 255.255.255.0 en un host con IP 192.168.2.10. La puerta de enlace tiene IP 192.168.1.1 con máscara 255.255.255.0. Por qué el host no puede acceder a internet? Que máscara debería tener?
 
-4. Que es CIDR y por que reemplazo al sistema de clases? Explica con un ejemplo donde una Clase C sea insuficiente y una Clase B sea derrochadora.
+4. Que es CIDR y por qué reemplazo al sistema de clases? Explica con un ejemplo donde una Clase C sea insuficiente y una Clase B sea derrochadora.
 
 5. Si un atacante realiza un escaneo de una subred /24, cuántas IPs debe probar? Y si la subred es /16? Cuanto tiempo le tomaría a 1000 paquetes por segundo escanear una /16 completa?
 
-6. Por que las direcciones privadas (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) no son enrutables en internet? Que tecnología hace posible que dispositivos con IPs privadas puedan navegar? Esto es una característica de seguridad o una limitacion?
+6. Por qué las direcciones privadas (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) no son enrutables en internet? Que tecnología hace posible que dispositivos con IPs privadas puedan navegar? Esto es una característica de seguridad o una limitacion?
 
 7. Explica el concepto de VLSM. Diseña el direccionamiento para una empresa que necesita 3 subredes de 120, 60 y 30 hosts respectivamente, partiendo de 192.168.1.0/24.
 

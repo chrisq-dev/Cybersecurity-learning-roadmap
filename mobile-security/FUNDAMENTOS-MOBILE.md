@@ -1,5 +1,8 @@
 ---
 title: "Seguridad Móvil: Un Ecosistema Diferente"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 # Seguridad Móvil: Un Ecosistema Diferente
 
@@ -103,7 +106,7 @@ iOS implementa una arquitectura de seguridad en múltiples capas:
 
 4. **Page Protection Layer (PPL):** Protege páginas de memoria del kernel contra escritura incluso desde código kernel comprometido.
 
-5. **Code Signing:** Todo código ejecutable en iOS debe estar firmado por Apple o por un desarrollador registrado con una cuenta válida ($99/año). El kernel verifica la firma antes de cargar cualquier binario o página de memoria. No existe la ejecución dinámica de código sin firma.
+5. **Code Signing:** iOS aplica firma de código y políticas de ejecución. Las vías de distribución, perfiles y requisitos dependen del programa y la región; consulta la documentación vigente de Apple. Existen mecanismos controlados para código generado o interpretado, por lo que no conviene expresarlo como una prohibición absoluta.
 
 6. **App Store Review:** Apple revisa manualmente cada aplicación antes de publicarla. Sin embargo, esto no es infalible: ha habido casos de malware aprobado como XcodeGhost (2015) o Lightspy (2020) que engañaron el proceso de revisión.
 

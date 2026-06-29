@@ -1,5 +1,8 @@
 ---
 title: "Base de Seguridad: El Arte de Gestionar Riesgos"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Base de Seguridad: El Arte de Gestionar Riesgos
@@ -12,7 +15,7 @@ La ciberseguridad no es instalar un antivirus o configurar un firewall; eso es t
 
 No es una enciclopedia de definiciones. Al terminar, podrás mirar una empresa, un sistema o incluso tu propia computadora y decir: "Aqui el riesgo es alto, allá es bajo, y esto es lo que haría al respecto."
 
-Una advertencia honesta: este camino no tiene atajos. Mucha gente compra cursos de "hacking ético" de 40 horas esperando salir siendo pentesters. La seguridad no se aprende en cursos de fin de semana. Se aprende entendiendo como fallan los sistemas, por que fallan, y aceptando que todos fallan. Este texto contiene lecciones prácticas de esos fracasos.
+Una advertencia honesta: este camino no tiene atajos. Mucha gente compra cursos de "hacking ético" de 40 horas esperando salir siendo pentesters. La seguridad no se aprende en cursos de fin de semana. Se aprende entendiendo como fallan los sistemas, por qué fallan, y aceptando que todos fallan. Este texto contiene lecciones prácticas de esos fracasos.
 
 ---
 
@@ -26,12 +29,12 @@ La información solo debe ser accesible para las personas autorizadas. Parece si
 
 La analogía que uso ahora no es un sobre sellado, sino un diagrama de Venn de secretos compartidos. Cada persona en una organización tiene un circulo de información que le pertenece. Cuando esos circulos se cruzan sin control, empiezan los problemas. Confidencialidad es asegurar que los circulos solo se crucen cuando deben y solo hasta donde deben.
 
-**Caso real: Equifax (2017).** 147 millones de registros robados. La causa inmediata fue una vulnerabilidad conocida en Apache Struts (CVE-2017-5638), un framework web. Pero la razon de fondo fue que un solo punto de entrada permitió acceso a toda la base de datos de datos personales. No había segmentación de confidencialidad. Una vez dentro, el atacante vio todo. Si hubiera habido segmentación de red y segregacion de datos, la vulnerabilidad web solo habría expuesto datos de la aplicación web, no el tesoro nacional de números de seguro social, fechas de nacimiento y direcciones.
+**Caso real: Equifax (2017).** 147 millones de registros robados. La causa inmediata fue una vulnerabilidad conocida en Apache Struts (CVE-2017-5638), un framework web. Pero la razón de fondo fue que un solo punto de entrada permitió acceso a toda la base de datos de datos personales. No había segmentación de confidencialidad. Una vez dentro, el atacante vio todo. Si hubiera habido segmentación de red y segregación de datos, la vulnerabilidad web solo habría expuesto datos de la aplicación web, no el tesoro nacional de números de seguro social, fechas de nacimiento y direcciones.
 
 **Fallo típico de confidencialidad:** La gente cree que confidencialidad es solo poner contraseñas. No alcanza. Confidencialidad incluye:
 
 - Cifrado en reposo (si te roban el disco físico, que no puedan leer los datos).
-- Cifrado en tránsito (si interceptan tu conexion WiFi, que no entiendan el tráfico).
+- Cifrado en tránsito (si interceptan tu conexión WiFi, que no entiendan el tráfico).
 - Segmentación de redes (que el servidor de cámaras de seguridad no pueda hablar con el de base de datos de clientes).
 - Control de acceso basado en el principio de necesidad de saber.
 - Clasificación de datos (no todos los datos tienen el mismo valor; tratar un excel de proveedores igual que un informe de RRHH con salarios es un error).
@@ -42,31 +45,31 @@ La analogía que uso ahora no es un sobre sellado, sino un diagrama de Venn de s
 
 El cifrado no es magia. Es matemática que convierte datos legibles en datos ilegibles usando una clave. Pero la gestión de esa clave es el problema real. Las empresas cifran sus bases de datos pero luego guardan la clave de cifrado en el mismo servidor, en un archivo de configuración sin proteger. Es como cerrar tu casa con la mejor cerradura del mundo y dejar la llave puesta por fuera.
 
-**Caso real de mala gestión:** En 2022, una empresa financiera descubrió que su base de datos de producción estaba cifrada con TDE (Transparent Data Encryption). Todo parecia seguro. Pero la clave maestra estaba almacenada en el mismo servidor de base de datos, en un archivo accesible por cualquier administrador. El cifrado era cosmetico. Servia para pasar auditorías pero no para detener a un atacante interno.
+**Escenario ilustrativo de mala gestión:** Una empresa financiera descubrió que su base de datos de producción estaba cifrada con TDE (Transparent Data Encryption). Todo parecia seguro. Pero la clave maestra estaba almacenada en el mismo servidor de base de datos, en un archivo accesible por cualquier administrador. El cifrado era cosmetico. Servia para pasar auditorías pero no para detener a un atacante interno.
 
 ### Integridad: Que Lo Que Ves Sea Verdad
 
 La información no debe ser modificada, borrada o corrompida de forma no autorizada durante su almacenamiento o tránsito. Este es el pilar que menos se menciona en los cursos para principiantes, pero es el que más daño causa cuando falla, porque el daño puede pasar desapercibido durante años.
 
-**Analogía:** Imagina que eres juez y recibes un expediente judicial. Todo parece en orden: la carpeta, las firmas, los sellos. Pero alguien reemplazo la pagina 3 sin que nadie lo notara. El sistema de justicia toma una decisión basada en información falsa. Una decisión que puede enviar a alguien a prisión o liberar a un criminal. Integridad es asegurar que cada pagina tiene un sello que delata cualquier alteracion, y que ese sello es verificable.
+**Analogía:** Imagina que eres juez y recibes un expediente judicial. Todo parece en orden: la carpeta, las firmas, los sellos. Pero alguien reemplazo la página 3 sin que nadie lo notara. El sistema de justicia toma una decisión basada en información falsa. Una decisión que puede enviar a alguien a prisión o liberar a un criminal. Integridad es asegurar que cada página tiene un sello que delata cualquier alteracion, y que ese sello es verificable.
 
-**Caso real: SolarWinds (2020).** Hasta donde se sabe, este fue el ataque más sofisticado de la historia reciente. No robo datos en el sentido clásico. Los atacantes (atribuido a APT29, un grupo ruso también conocido como Cozy Bear) lograron inyectar codigo malicioso en las actualizaciones legítimas del software SolarWinds Orion, una herramienta de monitoreo de redes usada por miles de empresas y agencias gubernamentales.
+**Caso real: SolarWinds (2020).** Hasta donde se sabe, este fue el ataque más sofisticado de la historia reciente. No robo datos en el sentido clásico. Los atacantes (atribuido a APT29, un grupo ruso también conocido como Cozy Bear) lograron inyectar código malicioso en las actualizaciones legítimas del software SolarWinds Orion, una herramienta de monitoreo de redes usada por miles de empresas y agencias gubernamentales.
 
-Los clientes descargaban lo que creían era una actualización firmada digitalmente y autentica. Las actualizaciones pasaban todos los controles: firma digital valida, hash correcto, certificado vigente. Pero el codigo malicioso estaba dentro. El problema fue de integridad: el mecanismo de firma de codigo estaba comprometido. Los atacantes habian logrado acceso al entorno de compilacion de SolarWinds y firmaban su codigo malicioso con las llaves oficiales.
+Los clientes descargaban lo que creían era una actualización firmada digitalmente y autentica. Las actualizaciones pasaban todos los controles: firma digital valida, hash correcto, certificado vigente. Pero el código malicioso estaba dentro. El problema fue de integridad: el mecanismo de firma de código estaba comprometido. Los atacantes habian logrado acceso al entorno de compilación de SolarWinds y firmaban su código malicioso con las llaves oficiales.
 
 La confianza en la cadena de suministro de software colapso. Miles de empresas, incluyendo agencias del gobierno de EE.UU. como el Departamento de Estado y el Departamento de Energía, instalaron voluntariamente una puerta trasera porque confiaban en la integridad del actualizador.
 
-**Fallo típico de integridad:** La gente confía en que "si el archivo tiene extensión .pdf y viene de mi jefe, es seguro." Los atacantes avanzados lo saben y explotan esa confianza. El phishing de alta calidad ya no te pide tu contrasena; te envía un documento de Google Docs real que parece legítimo pero contiene macros maliciosos. El documento es autentico. La integridad del archivo no esta comprometida. El problema son las acciones que el archivo ejecuta al abrirlo.
+**Fallo típico de integridad:** La gente confía en que "si el archivo tiene extensión .pdf y viene de mi jefe, es seguro." Los atacantes avanzados lo saben y explotan esa confianza. El phishing de alta calidad ya no te pide tu contraseña; te envía un documento de Google Docs real que parece legítimo pero contiene macros maliciosos. El documento es autentico. La integridad del archivo no esta comprometida. El problema son las acciones que el archivo ejecuta al abrirlo.
 
 **Como se defiende la integridad:**
 
 - Hashes criptográficos (SHA-256) para verificar que un archivo no ha cambiado ni un solo bit.
 - Firmas digitales para verificar quien creo el archivo y que no fue modificado.
 - Sistemas de integridad de archivos (como osquery, Tripwire o AIDE) que monitorean cambios en archivos críticos y alertan si algo se modifica sin autorización.
-- Inmutabilidad en logs: escribir una vez, no permitir borrado ni modificacion. Esto es crucial para la forénsica.
+- Inmutabilidad en logs: escribir una vez, no permitir borrado ni modificación. Esto es crucial para la forénsica.
 - Control de versiones y sellado de tiempo (timestamping) para demostrar que un documento existia en un estado en una fecha concreta.
 
-**Ángulo hacker:** Un atacante avanzado no quiere solo robar datos. Quiere modificar lentamente registros financieros, historiales médicos o resultados de examenes. El daño no es inmediatamente detectable, pero cuando se descubre, el sistema de confianza ya colapso. En 2021, el ataque a Codecov (un servicio de calidad de codigo) comprometio la integridad de las pruebas automatizadas de cientos de empresas. Los atacantes no robaron datos de clientes de Codecov directamente; modificaron el instalador de Codecov para que las empresas que lo descargaban introdujeran una puerta trasera en su propio software. Es una infección en cascada: el atacante compromete una herramienta, y esa herramienta compromete a todos los que confían en ella.
+**Ángulo hacker:** Un atacante avanzado no quiere solo robar datos. Quiere modificar lentamente registros financieros, historiales médicos o resultados de examenes. El daño no es inmediatamente detectable, pero cuando se descubre, el sistema de confianza ya colapso. En 2021, el ataque a Codecov (un servicio de calidad de código) comprometio la integridad de las pruebas automatizadas de cientos de empresas. Los atacantes no robaron datos de clientes de Codecov directamente; modificaron el instalador de Codecov para que las empresas que lo descargaban introdujeran una puerta trasera en su propio software. Es una infección en cascada: el atacante compromete una herramienta, y esa herramienta compromete a todos los que confían en ella.
 
 ### Disponibilidad: Que Este Ahí Cuando Lo Necesitas
 
@@ -74,7 +77,7 @@ Los sistemas y datos deben estar funcionando y ser accesibles cuando se necesita
 
 **Analogía:** Un hospital con los historiales médicos cifrados por ransomware no es un hospital funcional. No importa cuántos millones de registros tengas si no puedes acceder a ninguno. La disponibilidad es el pilar que conecta la seguridad informática con la continuidad del negocio, y muchas empresas lo descubren solo cuando ya es demasiado tarde.
 
-**Caso real: Colonial Pipeline (2021).** Colonial Pipeline transporta aproximadamente el 45% del combustible de la costa este de Estados Unidos. En mayo de 2021, la empresa fue atacada con ransomware DarkSide. El ransomware cifró los sistemas de facturacion y control. Colonial pago 4.4 millones de dólares en Bitcoin por la clave de descifrado.
+**Caso real: Colonial Pipeline (2021).** Colonial Pipeline transporta aproximadamente el 45% del combustible de la costa este de Estados Unidos. En mayo de 2021, la empresa fue atacada con ransomware DarkSide. El ransomware cifró los sistemas de facturación y control. Colonial pago 4.4 millones de dólares en Bitcoin por la clave de descifrado.
 
 Pero el problema más grave no fue el pago. Fue que el equipo de seguridad decidio apagar toda la operación manualmente, incluyendo la tubería principal, para evitar que el malware se propagara a los sistemas de control industrial (OT). La disponibilidad de la gasolina en varios estados colapso. Compra de pánico en Carolina del Norte, Virginia, Georgia. Vuelos cancelados en aeropuertos que dependian del combustible de la tubería. Emergencia declarada en 17 estados.
 
@@ -86,7 +89,7 @@ El ransomware no afectó directamente los sistemas de control de la tubería. Af
 - Planes de recuperación ante desastres (DRP) documentados y probados.
 - Copias de seguridad offline (air-gapped backups) que no puedan ser cifradas por el mismo ransomware.
 - Protección contra DDoS con capacidad de absorcion de tráfico.
-- Pruebas de restauracion periodicas. Un backup que no se prueba no es un backup; es una esperanza.
+- Pruebas de restauración periodicas. Un backup que no se prueba no es un backup; es una esperanza.
 - Acuerdos de nivel de servicio (SLA) con proveedores de nube que especifiquen tiempos máximos de caída.
 
 **Ángulo hacker:** El ransomware moderno no solo cifra archivos. Antes de cifrar, los atacantes exfiltran los datos (roban copias). Luego amenazan con publicarlos si no pagas. Esto se llama "doble extorsión" y es el estándar actual de los grupos de ransomware como REvil, LockBit y BlackCat (ALPHV). Ya no basta con restaurar los backups para solucionar el problema; la información confidencial esta en manos de los atacantes. La falla de disponibilidad se combina con una falla de confidencialidad, creando una crisis compuesta que no se resuelve solo con tecnología.
@@ -130,7 +133,7 @@ Pero esto no es una ecuación aritmetica exacta. No puedes poner números precis
 
 ### El Escenario del Servidor Perdido
 
-Descubres que tu servidor web tiene una vulnerabilidad crítica (CVE-2024-XXXX con CVSS 10.0) que permite ejecución remota de codigo. Tu jefe entra en pánico. Quiere parchar ya.
+Descubres que tu servidor web tiene una vulnerabilidad crítica hipotética con CVSS 10.0 que permite ejecución remota de código. Tu jefe entra en pánico. Quiere parchar ya.
 
 Pero el servidor esta apagado, desconectado de internet, guardado en una caja fuerte subterránea en la Antártida.
 
@@ -149,9 +152,9 @@ Las empresas usan una matriz de 5x5 (Probabilidad vs Impacto) para clasificar ri
 - Probabilidad: Muy Baja, Baja, Media, Alta, Muy Alta.
 - Impacto: Insignificante, Menor, Moderado, Mayor, Catastrófico.
 
-Un riesgo con probabilidad "Alta" e impacto "Catastrófico" es crítico y requiere accion inmediata. Un riesgo con probabilidad "Muy Baja" e impacto "Insignificante" probablemente se acepta y no se gasta dinero en el.
+Un riesgo con probabilidad "Alta" e impacto "Catastrófico" es crítico y requiere acción inmediata. Un riesgo con probabilidad "Muy Baja" e impacto "Insignificante" probablemente se acepta y no se gasta dinero en el.
 
-Pero hay una trampa: la matriz de riesgo depende de quien la llena. Un administrador de sistemas ve el riesgo de forma diferente a un Director de Finanzas o al CEO. El administrador dirá "Apache 2.4.49 es una vulnerabilidad crítica, riesgo alto." El Director de Finanzas dirá "ese servidor solo maneja datos públicos, si se cae no perdemos dinero; riesgo bajo." Ambos tienen razon desde su perspectiva.
+Pero hay una trampa: la matriz de riesgo depende de quien la llena. Un administrador de sistemas ve el riesgo de forma diferente a un Director de Finanzas o al CEO. El administrador dirá "Apache 2.4.49 es una vulnerabilidad crítica, riesgo alto." El Director de Finanzas dirá "ese servidor solo maneja datos públicos, si se cae no perdemos dinero; riesgo bajo." Ambos tienen razón desde su perspectiva.
 
 **En la práctica:** El riesgo se negocia. No es un número absoluto. Es una conversación entre el equipo técnico y el negocio sobre cuanto están dispuestos a aceptar.
 
@@ -182,7 +185,7 @@ El caso de Capital One en 2019 es el ejemplo perfecto. La atacante (Paige Thomps
 
 Ninguna de estas fallas por si sola habría permitido el ataque. Pero combinadas, la atacante logró extraer 100 millones de registros de tarjetas de crédito y 140,000 números de seguro social. Capital One terminó pagando 190 millones de dólares en multas y acuerdos.
 
-**La leccion:** No subestimes los riesgos bajos. No necesitas parchar cada vulnerabilidad menor. Pero si necesitas entender como se combinan y si el sistema tiene "puntos de quiebre" donde múltiples fallas menores convergen en un riesgo mayor.
+**La lección:** No subestimes los riesgos bajos. No necesitas parchar cada vulnerabilidad menor. Pero si necesitas entender como se combinan y si el sistema tiene "puntos de quiebre" donde múltiples fallas menores convergen en un riesgo mayor.
 
 ---
 
@@ -190,7 +193,7 @@ Ninguna de estas fallas por si sola habría permitido el ataque. Pero combinadas
 
 Para mitigar los riesgos, los Arquitectos de Seguridad instalan Controles. Hay dos formas de clasificarlos, y es importante entender ambas porque se usan en diferentes contextos.
 
-Según su naturaleza (el "que son") se dividen en físicos, técnicos y administrativos. Según su funcion (el "cuando actuan") se dividen en preventivos, detectivos y correctivos. Un mismo control puede tener varios roles.
+Según su naturaleza (el "que son") se dividen en físicos, técnicos y administrativos. Según su función (el "cuando actuan") se dividen en preventivos, detectivos y correctivos. Un mismo control puede tener varios roles.
 
 ### Según su Naturaleza
 
@@ -198,13 +201,13 @@ Según su naturaleza (el "que son") se dividen en físicos, técnicos y administ
 
 El fallo que nadie anticipa en los controles físicos: fallan por descuido humano y por costos. Una cámara de seguridad que nadie monitorea en tiempo real no es un control detectivo; es una grabación que verás después del robo. Un guardia que no fue entrenado para identificar tailgating (seguir a un empleado autorizado para entrar sin credencial) es un gasto, no un control.
 
-**Caso real:** En 2022, un atacante entró a las oficinas de una startup en San Francisco simplemente siguiendo a un empleado que abrió la puerta con su tarjeta de acceso. Una vez dentro, conecto un dispositivo USB malicioso a una computadora de recepción desatendida. La red interna estaba comprometida en quince minutos porque nadie pregunto quien era ni verifico su identidad. El control físico (la puerta con tarjeta) funciono. El control administrativo (la política de "sin acompanamiento no se debe permitir el acceso") fallo. La capacitación fallo.
+**Escenario ilustrativo:** Un atacante entra a las oficinas de una empresa simplemente siguiendo a un empleado que abrió la puerta con su tarjeta de acceso. Una vez dentro, conecto un dispositivo USB malicioso a una computadora de recepción desatendida. La red interna estaba comprometida en quince minutos porque nadie pregunto quien era ni verifico su identidad. El control físico (la puerta con tarjeta) funciono. El control administrativo (la política de "sin acompanamiento no se debe permitir el acceso") fallo. La capacitación fallo.
 
 **Controles Técnicos (Lógicos):** Firewalls, antivirus, contraseñas, cifrado, MFA, permisos en Active Directory, sistemas de detección de intrusiones (IDS), sistemas de prevención de intrusiones (IPS).
 
 El fallo más común en controles técnicos: configuración incorrecta. Un firewall mal configurado es peor que no tener firewall porque te da una falsa sensación de seguridad. Gastaste dinero, te sentiste protegido, pero la protección era ilusoria.
 
-**Caso real: Target (2013).** El ataque más famoso a sistemas de punto de venta de la historia comenzó con credenciales robadas de un proveedor externo de HVAC (calefaccion y aire acondicionado). Fazio Mechanical Services, un pequeño contratista de Pennsylvania, tenía acceso remoto a la red de Target para monitorear los sistemas de climatizacion.
+**Caso real: Target (2013).** El ataque más famoso a sistemas de punto de venta de la historia comenzó con credenciales robadas de un proveedor externo de HVAC (calefacción y aire acondicionado). Fazio Mechanical Services, un pequeño contratista de Pennsylvania, tenía acceso remoto a la red de Target para monitorear los sistemas de climatización.
 
 Los atacantes usaron esas credenciales para entrar a la red corporativa de Target. Una vez dentro, se movieron lateralmente por la red hasta alcanzar los sistemas de punto de venta (POS). Instalaron malware en las cajas registradoras que capturaba los datos de las tarjetas de crédito en tiempo real. 40 millones de tarjetas. Target pago 18.5 millones de dólares solo en acuerdos con los estados de EE.UU., más otros costos legales y de reputación que superaron los 200 millones.
 
@@ -212,11 +215,11 @@ El error técnico crítico: la red de proveedores (HVAC) no estaba segmentada de
 
 **Controles Administrativos:** Políticas, leyes de la empresa, entrenamiento contra phishing, reglas de recursos humanos, procedimientos operativos estándar, planes de respuesta a incidentes.
 
-Si un empleado anota su contrasena en un post-it en su monitor, ningún firewall técnico lo va a salvar. Necesitas un control administrativo: una política que prohíba escribir contraseñas en post-its, y un programa de entrenamiento para que el empleado entienda por que esa práctica es peligrosa. Pero también necesitas evaluar si el problema es que el empleado tiene demasiadas contraseñas que recordar y quizas necesitas un gestor de contraseñas corporativo (control técnico).
+Si un empleado anota su contraseña en un post-it en su monitor, ningún firewall técnico lo va a salvar. Necesitas un control administrativo: una política que prohíba escribir contraseñas en post-its, y un programa de entrenamiento para que el empleado entienda por qué esa práctica es peligrosa. Pero también necesitas evaluar si el problema es que el empleado tiene demasiadas contraseñas que recordar y quizas necesitas un gestor de contraseñas corporativo (control técnico).
 
 **El error de atribucion (falso de todos los controles):** La empresa cree que "tiene seguridad" porque gasto 50,000 dólares en un firewall de última generación. Pero el firewall no recibe actualizaciones de firmas, nadie revisa sus logs, y las alertas llevan 6 meses sin ser leidas. El control técnico existe en papel pero no en la práctica. Esto se llama "security theater" (teatro de seguridad) y es alarmantemente común.
 
-### Según su Funcion
+### Según su Función
 
 **Preventivos:** Intentan evitar que el ataque ocurra. Bloquean antes de que pase algo malo. Ejemplos: una cerradura en la puerta, un antivirus que analiza el archivo antes de abrirlo, un firewall que bloquea puertos no autorizados.
 
@@ -228,7 +231,7 @@ Si un empleado anota su contrasena en un post-it en su monitor, ningún firewall
 
 Tener solo controles preventivos y ningún detectivo. Esto es mucho más común de lo que parece. Las empresas invierten millones en firewalls, antivirus y cifrado (preventivos), pero no tienen sistemas de monitoreo o no los revisan. Confían en que nunca serán atacados, y cuando el ataque ocurre, se enteran meses después.
 
-**El dato que debería asustarte:** Según el informe M-Trends 2023 de Mandiant (Google), el tiempo de residencia promedio (el tiempo que un atacante pasa dentro de un sistema sin ser detectado) es de 16 dias para ataques de ransomware, pero de más de 200 dias para ataques de espionaje y exfiltración de datos. Y lo peor: la mitad de las empresas se enteran de una intrusion por un tercero (el FBI, un cliente, un proveedor, un investigador externo), no por sus propios controles detectivos.
+**Tiempo de permanencia:** Un atacante puede mantener acceso durante días o meses si la organización no dispone de telemetría y detecciones adecuadas. Los informes anuales cambian sus cifras, por lo que deben consultarse con su año y metodología.
 
 Es decir: no no sabes. Y cuando te enteras, el atacante ya tuvo meses para robar datos, instalar puertas traseras, y comprometer a otros clientes o proveedores.
 
@@ -240,7 +243,7 @@ La máxima de la seguridad corporativa es que todo control puede fallar. Tu fire
 
 Por lo tanto, se aplica la Defensa en Profundidad (Defense in Depth). Consiste en poner capas superpuestas de controles de diferentes tipos. Si el atacante rompe una capa, debe enfrentarse a la siguiente, que es de naturaleza distinta a la anterior.
 
-### Por que la Cebolla es una Metafora Imperfecta
+### Por qué la Cebolla es una Metáfora Imperfecta
 
 La cebolla tiene capas uniformes: todas son del mismo material, solo cambia el grosor. En seguridad, las capas deben ser heterogeneas. Si todas tus capas son técnicas (firewall, IDS, antivirus, cifrado), un atacante que entienda bien la tecnología las atravesara todas. En cambio, si mezclas capas técnicas con capas administrativas (entrenamiento, políticas) y físicas (control de acceso, vigilancia), el atacante enfrenta problemas de distinta naturaleza que requieren habilidades diferentes para superar cada una.
 
@@ -252,19 +255,19 @@ La cebolla tiene capas uniformes: todas son del mismo material, solo cambia el g
 
 **Capa 3 (Sistema Operativo):** El servidor tiene los parches de seguridad al día, el firewall de host (iptables/Windows Firewall) activado, y solo los servicios minimos instalados. El atacante usa credenciales robadas del administrador de la base de datos en lugar de explotar una vulnerabilidad del sistema operativo.
 
-**Capa 4 (Identidad):** Acceso a la base de datos requiere MFA. El atacante ya robo la sesión del administrador (token de autenticación), no la contrasena. El MFA no protege contra robo de sesión si la sesión ya fue autenticada.
+**Capa 4 (Identidad):** Acceso a la base de datos requiere MFA. El atacante ya robo la sesión del administrador (token de autenticación), no la contraseña. El MFA no protege contra robo de sesión si la sesión ya fue autenticada.
 
 **Capa 5 (Datos):** La base de datos tiene cifrado de columna para datos sensibles. El atacante, conectado como administrador, tiene acceso a las claves de cifrado porque están cargadas en memoria del servidor. Descifra los datos antes de exfiltrarlos.
 
 **Capa 6 (Monitoreo):** Cualquier consulta que devuelva más de 1000 registros dispara una alerta al SOC. El atacante realiza múltiples consultas de 500 registros cada una para no superar el umbral.
 
-**Resultado:** Las seis capas funcionaron según su diseno. Y aún así, el ataque tuvo exito. La defensa en profundidad no garantiza la seguridad. Lo que hace es aumentar el costo y el tiempo del ataque, con la esperanza de que el atacante se canse, cometa un error, o que alguien detecte la actividad anomala durante el proceso. En este ejemplo, la capa 6 (monitoreo) podría haber funcionado si el equipo SOC hubiera investigado por que un administrador estaba haciendo consultas a las 3 AM desde una ubicación inusual.
+**Resultado:** Las seis capas funcionaron según su diseño. Y aún así, el ataque tuvo éxito. La defensa en profundidad no garantiza la seguridad. Lo que hace es aumentar el costo y el tiempo del ataque, con la esperanza de que el atacante se canse, cometa un error, o que alguien detecte la actividad anómala durante el proceso. En este ejemplo, la capa 6 (monitoreo) podría haber funcionado si el equipo SOC hubiera investigado por qué un administrador estaba haciendo consultas a las 3 AM desde una ubicación inusual.
 
 ### El Problema de la Dependencia Común
 
 La defensa en profundidad falla cuando todas las capas dependen de la misma tecnología o del mismo equipo de personas. Si un atacante compromete a un administrador con acceso a todas las capas, las capas son irrelevantes. No importa cuántos firewalls tengas si el administrador los apaga "porque molestan."
 
-**Caso real: SolarWinds.** Los atacantes comprometieron la cadena de compilacion. No importaba cuántas capas de seguridad tuvieras en tu red interna si el software que instalabas confiadamente ya venia comprometido desde el fabricante. La dependencia era que todas las empresas confiaban en las actualizaciones de SolarWinds sin verificar independientemente la integridad de cada actualización.
+**Caso real: SolarWinds.** Los atacantes comprometieron la cadena de compilación. No importaba cuántas capas de seguridad tuvieras en tu red interna si el software que instalabas confiadamente ya venía comprometido desde el fabricante. La dependencia era que todas las empresas confiaban en las actualizaciones de SolarWinds sin verificar independientemente la integridad de cada actualización.
 
 ### La Paradoja de la Complejidad
 
@@ -286,16 +289,16 @@ La gente piensa que los permisos son un tema técnico. Son un tema de negocio co
 
 Cada vez que das acceso a alguien a un sistema, estas tomando una decisión de riesgo. El acceso es necesario para que la persona haga su trabajo. Pero ese mismo acceso puede ser usado para robar, modificar o destruir información.
 
-**El principio de mínimo privilegio (PoLP):** A ningún usuario, programa o proceso se le debe dar más permisos de los estrictamente necesarios para realizar su funcion.
+**El principio de mínimo privilegio (PoLP):** A ningún usuario, programa o proceso se le debe dar más permisos de los estrictamente necesarios para realizar su función.
 
-**Por que se viola este principio constantemente:**
+**Por qué se viola este principio constantemente:**
 
-- Es más fácil darle a alguien permisos de administrador que resolver por que su aplicación no funciona sin ellos.
+- Es más fácil darle a alguien permisos de administrador que resolver por qué su aplicación no funciona sin ellos.
 - "Es temporal, luego lo ajustamos." Ese "luego" nunca llega.
 - El empleado "se queja" de que no puede hacer su trabajo y el jefe presiona al equipo de IT para que le den más permisos.
 - No hay un proceso de revisión periódica de accesos.
 
-**El resultado:** Según el informe de Verizon Data Breach Investigations Report (DBIR) 2023, aproximadamente el 60% de los breaches involucran credenciales robadas o abusos de privilegios legítimos. No son exploits de día cero. Son cuentas con demasiados permisos que terminan en manos equivocadas.
+**El resultado:** El abuso de credenciales y privilegios legítimos aparece de forma recurrente en los informes de brechas. La gestión de identidad debe limitar tanto la posibilidad de compromiso como el alcance de una cuenta comprometida.
 
 ---
 
@@ -303,7 +306,7 @@ Cada vez que das acceso a alguien a un sistema, estas tomando una decisión de r
 
 Ninguna empresa opera en el vacio. Todos dependemos de proveedores: AWS, Microsoft 365, Google Workspace, Slack, Zoom, un proveedor de nómina, un servicio de email marketing, una API de pagos, un proveedor de hosting. Cada proveedor es una extensión de tu red y de tu superficie de ataque.
 
-**Caso real: Target (2013), ya mencionado.** Pero vale la pena repetir la leccion: la seguridad de tu empresa solo es tan fuerte como la del proveedor más débil al que le das acceso. Target invirtió millones en su propia seguridad, pero una empresa de aire acondicionado sin seguridad adecuada fue suficiente para comprometer 40 millones de tarjetas de crédito.
+**Caso real: Target (2013), ya mencionado.** Pero vale la pena repetir la lección: la seguridad de tu empresa solo es tan fuerte como la del proveedor más débil al que le das acceso. Target invirtió millones en su propia seguridad, pero una empresa de aire acondicionado sin seguridad adecuada fue suficiente para comprometer 40 millones de tarjetas de crédito.
 
 **Caso real: Kaseya (2021).** Kaseya es una empresa que desarrolla software de gestión de TI utilizado por proveedores de servicios gestionados (MSP) que a su vez dan soporte a miles de empresas pequeñas. El grupo de ransomware REvil exploto una vulnerabilidad de día cero en el producto VSA de Kaseya. Como Kaseya era un proveedor de confianza, sus clientes (los MSP) instalaron la actualización comprometida. Y esos MSP, a su vez, tenían acceso a los sistemas de sus clientes. En una sola máquina (Kaseya), comprometieron a 60 MSP y a través de ellos a aproximadamente 1,500 empresas.
 
@@ -323,9 +326,9 @@ Existen varios marcos de modelado de amenazas. El más conocido es STRIDE (cread
 
 **S**poofing (Suplantación): Un atacante se hace pasar por otro usuario o sistema. Ejemplo: falsificar un correo electrónico para que parezca que viene del CEO.
 
-**T**ampering (Alteracion): Un atacante modifica datos o codigo. Ejemplo: modificar el archivo de configuración de una aplicación web.
+**T**ampering (Alteracion): Un atacante modifica datos o código. Ejemplo: modificar el archivo de configuración de una aplicación web.
 
-**R**epudiation (Repudio): Un usuario realiza una accion y luego niega haberla hecho. Ejemplo: un empleado borra un archivo crítico y dice que no fue el.
+**R**epudiation (Repudio): Un usuario realiza una acción y luego niega haberla hecho. Ejemplo: un empleado borra un archivo crítico y dice que no fue el.
 
 **I**nformation Disclosure (Divulgación): Información confidencial se expone a personas no autorizadas. Ejemplo: una API que devuelve más datos de los necesarios.
 
@@ -358,7 +361,7 @@ La gente modela amenazas una vez al inicio del proyecto y nunca más. Las amenaz
 
 El enfoque tradicional de seguridad se basaba en "confiar en la red interna." Se asumia que si un dispositivo estaba dentro de la oficina o conectado a la VPN corporativa, era confiable. Este modelo se llama "perímetro de red" o "castle-and-moat" (el castillo y el foso): duro por fuera, blando por dentro.
 
-El Zero Trust (Confianza Cero) invierte este supuesto. Asume que la red interna es tan peligrosa como internet. No confía en ningún dispositivo, usuario o conexion por defecto, sin importar donde se encuentre.
+El Zero Trust (Confianza Cero) invierte este supuesto. Asume que la red interna es tan peligrosa como internet. No confía en ningún dispositivo, usuario o conexión por defecto, sin importar donde se encuentre.
 
 ### Principios Fundamentales de Zero Trust
 
@@ -368,9 +371,9 @@ El Zero Trust (Confianza Cero) invierte este supuesto. Asume que la red interna 
 
 **Microsegmentacion:** La red se divide en segmentos muy pequeños. Cada segmento tiene sus propias políticas de acceso. Un servidor de base de datos no puede hablar con la red social de la empresa.
 
-**Inspeccion continua:** No basta con verificar al inicio de la sesión. La verificación debe ser continua durante toda la conexion. Si el comportamiento del usuario cambia (por ejemplo, empieza a descargar archivos de forma masiva), el acceso se revoca automáticamente.
+**Inspeccion continua:** No basta con verificar al inicio de la sesión. La verificación debe ser continua durante toda la conexión. Si el comportamiento del usuario cambia (por ejemplo, empieza a descargar archivos de forma masiva), el acceso se revoca automáticamente.
 
-### Por que Zero Trust es Relevante Ahora
+### Por qué Zero Trust es Relevante Ahora
 
 El modelo tradicional falla por tres razones:
 
@@ -380,7 +383,7 @@ El modelo tradicional falla por tres razones:
 
 ### Caso Real de Fallo del Modelo Tradicional
 
-El ataque a Target (2013) es el ejemplo perfecto de por que el modelo de confianza interna falla. Una vez que los atacantes entraron a la red de Target (a través del proveedor de HVAC), la red interna no les opuso resistencia. Podían moverse libremente porque la red asumia que todo el tráfico interno era confiable. Zero Trust habría segmentado la red de HVAC de la red de pagos, y habría requerido autenticación adicional para cada salto.
+El ataque a Target (2013) es el ejemplo perfecto de por qué el modelo de confianza interna falla. Una vez que los atacantes entraron a la red de Target (a través del proveedor de HVAC), la red interna no les opuso resistencia. Podían moverse libremente porque la red asumia que todo el tráfico interno era confiable. Zero Trust habría segmentado la red de HVAC de la red de pagos, y habría requerido autenticación adicional para cada salto.
 
 ### La Transicion Práctica a Zero Trust
 
@@ -414,7 +417,7 @@ La seguridad sin métricas es opinion. Sin datos, no puedes saber si estas mejor
 **Métricas de resultado:** Miden que tan efectivo es lo que haces. Ejemplos:
 
 - Número de incidentes de seguridad confirmados por mes.
-- Tiempo de residencia promedio de los atacantes (dias desde la intrusion hasta la detección).
+- Tiempo de residencia promedio de los atacantes (días desde la intrusion hasta la detección).
 - Costo promedio por incidente.
 - Número de breaches que resultaron en exposición de datos de clientes.
 
@@ -445,10 +448,10 @@ Llevo años en esto y he visto empresas con la mejor tecnología del mundo caer 
 
 El phishing no es "un correo de un principe nigeriano." El spear-phishing moderno es aterradoramente convincente:
 
-- Los atacantes investigan a la victima en LinkedIn, ven quien es su jefe, que proyectos maneja, con quien trabaja.
+- Los atacantes investigan a la víctima en LinkedIn, ven quien es su jefe, que proyectos maneja, con quien trabaja.
 - Envían un correo que parece interno, usando el mismo tono, el mismo formato, las mismas firmas.
 - El adjunto se llama "presupuesto_Q4.xlsx" o "informe_reunión_board.pdf" y parece legítimo.
-- Cuando la victima abre el adjunto, se ejecuta un macro o se descarga un payload.
+- Cuando la víctima abre el adjunto, se ejecuta un macro o se descarga un payload.
 
 **Caso real: Twitter (2020).** Adolescentes de 17 años comprometieron las cuentas de Twitter de Barack Obama, Elon Musk, Bill Gates, Jeff Bezos y otras 130 cuentas de alto perfil. No fue un exploit técnico complejo. Usaron ingeniería social: llamaron a empleados de Twitter haciéndose pasar por el departamento de IT, y los convencieron de resetear las contraseñas de cuentas específicas.
 
@@ -466,23 +469,23 @@ No importaba que Twitter tuviera MFA, firewalls, sistemas de detección de intru
 
 Puedes decir que entiendes la base de la seguridad si puedes responder estas preguntas sin mirar arriba, y lo más importante, si puedes explicarselas a alguien más.
 
-1. Un hacker satura la pagina de tu universidad con tráfico falso hasta que el servidor colapsa y los estudiantes no pueden inscribirse en sus clases. Que pilar de la triada CIA fue atacado? Por que no es solo un problema técnico, sino un problema de negocio que afecta la reputación y los ingresos de la universidad?
+1. Un hacker satura la página de tu universidad con tráfico falso hasta que el servidor colapsa y los estudiantes no pueden inscribirse en sus clases. Que pilar de la triada CIA fue atacado? Por qué no es solo un problema técnico, sino un problema de negocio que afecta la reputación y los ingresos de la universidad?
 
-2. Usando la fórmula del riesgo, explica por que dejar la puerta de tu casa abierta en un barrio privado y vigilado (amenaza baja) tiene un riesgo diferente a dejarla abierta en una calle peligrosa (amenaza alta), si la vulnerabilidad es exactamente la misma. Hay personas que dicen "es el mismo riesgo, la vulnerabilidad es idéntica." Donde esta su error lógico?
+2. Usando la fórmula del riesgo, explica por qué dejar la puerta de tu casa abierta en un barrio privado y vigilado (amenaza baja) tiene un riesgo diferente a dejarla abierta en una calle peligrosa (amenaza alta), si la vulnerabilidad es exactamente la misma. Hay personas que dicen "es el mismo riesgo, la vulnerabilidad es idéntica." Donde esta su error lógico?
 
 3. Tienes un backup de tus fotos familiares en un disco externo. Que tipo de control es: preventivo, detectivo o correctivo? Ahora, si nunca pruebas restaurar ese backup, que tipo de control adicional fallo? Y si el backup esta en el mismo cuarto que tu computadora y hay un incendio, que principio de defensa en profundidad violaste?
 
-4. Un empleado escribe su contrasena en un post-it y lo pega en su monitor. Que tipo de control fallo: técnico, físico o administrativo? Que combinación de controles implementarias para resolver este problema sin castigar al empleado, considerando que quizas el problema real es que tiene que recordar 15 contraseñas diferentes?
+4. Un empleado escribe su contraseña en un post-it y lo pega en su monitor. Que tipo de control fallo: técnico, físico o administrativo? Que combinación de controles implementarias para resolver este problema sin castigar al empleado, considerando que quizas el problema real es que tiene que recordar 15 contraseñas diferentes?
 
 5. Explica la diferencia entre Amenaza, Vulnerabilidad y Riesgo usando un ejemplo del mundo empresarial: un servidor web con una vulnerabilidad conocida, expuesto a internet, que contiene datos financieros de clientes.
 
-6. En el ataque a SolarWinds, el problema no fue que robaron datos, sino que comprometieron la integridad de las actualizaciones de software. Por que esto es potencialmente más peligroso que un robo de datos tradicional? Que implicaciones tiene para la confianza en el software que usamos?
+6. En el ataque a SolarWinds, el problema no fue que robaron datos, sino que comprometieron la integridad de las actualizaciones de software. Por qué esto es potencialmente más peligroso que un robo de datos tradicional? Que implicaciones tiene para la confianza en el software que usamos?
 
-7. Una empresa tiene 5 firewalls, 2 sistemas IDS/IPS, y un equipo de 20 personas de seguridad. Aún así, sufren un breach porque un empleado del departamento de finanzas cayó en un spear-phishing. La reaccion de la gerencia es "compremos más firewalls." Por que esta reaccion esta fundamentalmente equivocada? Que deberían hacer en su lugar para abordar la causa raíz?
+7. Una empresa tiene 5 firewalls, 2 sistemas IDS/IPS, y un equipo de 20 personas de seguridad. Aún así, sufren un breach porque un empleado del departamento de finanzas cayó en un spear-phishing. La reaccion de la gerencia es "compremos más firewalls." Por qué esta reaccion esta fundamentalmente equivocada? Que deberían hacer en su lugar para abordar la causa raíz?
 
-8. Si tuvieras que diseñar la seguridad de una tienda online desde cero, que 5 capas de defensa en profundidad implementarias y por que elegirias esas en particular? Piensa en las capas como complementarias, no redundantes.
+8. Si tuvieras que diseñar la seguridad de una tienda online desde cero, que 5 capas de defensa en profundidad implementarias y por qué elegirias esas en particular? Piensa en las capas como complementarias, no redundantes.
 
-9. Explica la diferencia entre transferir el riesgo y aceptar el riesgo usando el ejemplo de un seguro de ciberseguridad. La empresa compra un seguro y piensa "ya no tengo riesgo." Por que esa mentalidad es peligrosa?
+9. Explica la diferencia entre transferir el riesgo y aceptar el riesgo usando el ejemplo de un seguro de ciberseguridad. La empresa compra un seguro y piensa "ya no tengo riesgo." Por qué esa mentalidad es peligrosa?
 
 10. En el ataque a Capital One (2019), varias fallas de seguridad que parecian de riesgo bajo se combinaron para permitir una fuga de datos masiva. Identifica tres de esas fallas y explica como su combinación fue más peligrosa que cada una por separado.
 

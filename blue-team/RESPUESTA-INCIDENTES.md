@@ -1,5 +1,17 @@
 ---
 title: "Respuesta a Incidentes (IR): Los Bomberos"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
+reviewed: "2026-06-28"
+reviewed_against: "NIST SP 800-61 Rev. 3 y SANS PICERL"
+official_sources:
+  - title: "NIST SP 800-61 Rev. 3"
+    url: "https://csrc.nist.gov/pubs/sp/800/61/r3/final"
+  - title: "SANS — Incident Response"
+    url: "https://www.sans.org/security-resources/glossary-of-terms/incident-response"
+  - title: "CISA — Incident and Vulnerability Response Playbooks"
+    url: "https://www.cisa.gov/sites/default/files/2024-08/Federal_Government_Cybersecurity_Incident_and_Vulnerability_Response_Playbooks_508C.pdf"
 ---
 
 # Respuesta a Incidentes (IR): Los Bomberos
@@ -18,18 +30,24 @@ El servidor principal es un edificio de oficinas. El ataque es un incendio en el
 
 **Protocolo profesional:** Llamas a los bomberos (IR). Ellos no apagan el edificio. Aíslan el tercer piso cerrando puertas cortafuegos, extraen el oxígeno del piso para contener el fuego, y preservan la escena del crimen. La prioridad es contener el daño sin destruir la evidencia.
 
-### Por que la Velocidad No lo es Todo
+### Por qué la Velocidad No lo es Todo
 
-En IR, la velocidad importa, pero la precision importa más. Actuar sin pensar puede:
+En IR, la velocidad importa, pero la precisión importa más. Actuar sin pensar puede:
 - Destruir evidencia vital.
 - Extender el alcance del ataque (ej: aislar el sistema equivocado y dejar al atacante en los demás).
 - Causar daño colateral (ej: bloquear a todos los usuarios en lugar de solo al atacante).
 
-La regla de oro: "Primero no hacer daño." Antes de cualquier accion, pregúntate: "Esto ayuda a contener o podría empeorar las cosas?"
+La regla de oro: "Primero no hacer daño." Antes de cualquier acción, pregúntate: "Esto ayuda a contener o podría empeorar las cosas?"
 
-## Las 6 Fases Clásicas (NIST / SANS)
+## Dos Marcos que No Deben Confundirse
 
-La industria global sigue el estándar NIST SP 800-61 o el modelo SANS PICERL. Seis pasos que son pregunta obligatoria en entrevistas de seguridad.
+**SANS PICERL** organiza el trabajo operativo en seis fases: Preparation, Identification, Containment, Eradication, Recovery y Lessons Learned. Las seis secciones siguientes utilizan ese modelo por su claridad didáctica.
+
+**NIST SP 800-61 Rev. 3**, publicado en abril de 2025 y vigente en 2026, sustituyó la Rev. 2. Ya no presenta esas seis fases como el ciclo NIST. Integra la respuesta a incidentes en las funciones de CSF 2.0: Govern, Identify y Protect apoyan la preparación; Detect, Respond y Recover concentran la respuesta; las mejoras se retroalimentan en todo el ciclo de gestión de riesgo.
+
+Ambos marcos pueden convivir: PICERL ayuda a describir acciones operativas y NIST conecta esas acciones con gobierno y gestión continua del riesgo.
+
+## Las 6 Fases Operativas de SANS PICERL
 
 ### Fase 1: Preparación (Antes del Incendio)
 
@@ -73,11 +91,11 @@ La alerta llega al SOC. El equipo de IR debe confirmar rápido si es un incident
 - Logs de sistemas (firewall, EDR, servidores).
 - Tráfico de red (picos anormales, conexiones a IPs sospechosas).
 
-**Error común:** Paralizisis por análisis. Pasar horas tratando de entender todo antes de actuar. El objetivo de la identificación no es entender todo, sino confirmar el incidente y tener información suficiente para empezar la contención. Los detalles finos se resuelven durante la investigación.
+**Error común:** Parálisis por análisis. Pasar horas tratando de entender todo antes de actuar. El objetivo de la identificación no es entender todo, sino confirmar el incidente y tener información suficiente para empezar la contención. Los detalles finos se resuelven durante la investigación.
 
 ### Fase 3: Contención (Cerrar las Puertas)
 
-El atacante esta adentro. No apagues el servidor. La contención significa aislar el sistema afectado para que no pueda comunicarse con el resto de la red, pero mantenerlo encendido para preservar la evidencia volátil.
+El atacante está dentro. La contención busca limitar el daño sin destruir evidencia innecesariamente. Aislar, suspender, apagar o mantener operativo un sistema son decisiones distintas: deben considerar propagación, seguridad física, continuidad, cifrado activo y valor de la evidencia volátil.
 
 **Contención a corto plazo (minutos):**
 - Aislar el sistema de la red (desconectar cable, deshabilitar puerto de switch, aislar via EDR).
@@ -85,13 +103,13 @@ El atacante esta adentro. No apagues el servidor. La contención significa aisla
 - Bloquear IPs maliciosas en el firewall.
 - Cambiar contraseñas de cuentas afectadas.
 
-**Contención a largo plazo (horas/dias):**
+**Contención a largo plazo (horas/días):**
 - Aplicar parches de seguridad en sistemas vulnerables.
 - Reconfigurar accesos y permisos.
 - Implementar reglas de bloqueo en firewall e IPS.
 - Establecer monitoreo intensivo en sistemas relacionados.
 
-**La regla de oro de la contención:** Aislar pero no apagar. La memoria RAM contiene: procesos en ejecución, conexiones de red activas, herramientas del atacante, claves de encriptación (en caso de ransomware), y evidencia de actividades recientes.
+**Preservación proporcional:** Cuando sea seguro y exista capacidad forense, capturar memoria antes de apagar puede conservar procesos, conexiones, herramientas y claves presentes en RAM. Si mantener el equipo encendido aumenta el daño o pone en riesgo personas o sistemas críticos, la prioridad es contener. No existe una regla universal de conservar todo sistema encendido.
 
 ### Fase 4: Erradicación (Matar el Fuego)
 
@@ -123,7 +141,7 @@ Restaurar los sistemas afectados a operación normal usando copias de seguridad 
 El paso más importante y el que más se omite. Dos semanas después del incidente, el equipo se reúne y escribe un documento que explica:
 
 **Que incluire en un post-mortem:**
-- Cronologia del incidente (cuando entró, cuando se detecto, cuando se contuvo, cuando se recupero).
+- Cronología del incidente (cuando entró, cuando se detecto, cuando se contuvo, cuando se recupero).
 - Causa raíz (como entró el atacante exactamente).
 - Fallas en las defensas (que reglas de detección no funcionaron, que controles fallaron).
 - Fortalezas en la respuesta (que se hizo bien).
@@ -143,9 +161,9 @@ Si tu, como analista, entras a la computadora del atacante y copias el archivo "
 
 **Preservación:** La evidencia no debe ser alterada. Se usan bloqueadores de escritura (write blockers) en discos para garantizar que ningún dato se modifique durante la copia.
 
-**Documentación:** Cada persona que toca la evidencia firma un registro. La cadena muestra quien, cuando, donde, y por que accedio.
+**Documentación:** Cada persona que toca la evidencia firma un registro. La cadena muestra quien, cuando, donde, y por qué accedio.
 
-**Integridad:** Se calcula el hash SHA-256 del archivo o disco inmediatamente después de la adquisicion. Cualquier modificacion cambiaría el hash, demostrando manipulación.
+**Integridad:** Se calcula el hash SHA-256 del archivo o disco inmediatamente después de la adquisición. Cualquier modificación cambiaría el hash, demostrando manipulación.
 
 **Almacenamiento seguro:** La evidencia se guarda en un lugar con acceso controlado (caja fuerte, cuarto con llave) y registro de acceso.
 
@@ -159,17 +177,19 @@ Si tu, como analista, entras a la computadora del atacante y copias el archivo "
 - No documentar cada paso (cadena de custodia rota).
 - Almacenar evidencia junto con otros datos (riesgo de contaminacion).
 
-## Casos Reales
+## Escenarios Ilustrativos
 
-### Respuesta Rápida (2021)
+Los siguientes escenarios explican decisiones frecuentes; no se presentan como casos documentados de organizaciones concretas.
 
-Una empresa financiera detecto actividad anomala a las 2:00 AM. El equipo de IR se activo en minutos. En lugar de apagar el servidor, lo aislaron de la red pero lo mantuvieron encendido. Los forenses adquirieron la memoria RAM y encontraron malware fileless. Identificaron el método de entrada (vulnerabilidad web) y la cerraron antes de que el atacante volviera.
+### Respuesta Rápida
 
-### Apagón Prematuro (2019)
+Una empresa financiera detecto actividad anómala a las 2:00 AM. El equipo de IR se activo en minutos. En lugar de apagar el servidor, lo aislaron de la red pero lo mantuvieron encendido. Los forenses adquirieron la memoria RAM y encontraron malware fileless. Identificaron el método de entrada (vulnerabilidad web) y la cerraron antes de que el atacante volviera.
+
+### Apagón Prematuro
 
 Una empresa detecto ransomware en una PC. El administrador apagó el servidor de archivos principal. El ransomware se detuvo, pero los backups (montados en la misma red) también estaban encriptados. Perdieron meses de datos.
 
-### Post-Mortem que Salvo la Empresa (2022)
+### Post-Mortem que Evitó una Repetición
 
 Una startup sufrio ransomware (rescate de $50,000). El equipo contuvo sin pagar. En el post-mortem descubrieron que el atacante entró por VPN sin 2FA. Implementaron 2FA en todos los accesos remotos. Seis meses después, otro ataque intento el mismo vector y fue bloqueado.
 
@@ -179,15 +199,15 @@ Sin plan: improvisación bajo presión. Sin práctica: el plan escrito no sirve 
 
 ## La Perspectiva del Atacante
 
-Un atacante que sabe que hay un equipo de IR competente sabe que el tiempo es su enemigo. Cada minuto reduce sus posibilidades de exito. Por eso atacan en horarios de bajo personal, atacan múltiples sistemas simultáneamente, borran logs, establecen accesos de respaldo, y estudian los horarios del equipo de seguridad.
+Un atacante que sabe que hay un equipo de IR competente sabe que el tiempo es su enemigo. Cada minuto reduce sus posibilidades de éxito. Por eso atacan en horarios de bajo personal, atacan múltiples sistemas simultáneamente, borran logs, establecen accesos de respaldo, y estudian los horarios del equipo de seguridad.
 
 ## Autoevaluación
 
 1. El CEO ordena apagar el servidor principal porque una PC tiene ransomware. Basado en contención y preservación de evidencia, que respondes y que haces?
-2. Enumera las 6 fases del ciclo de IR según NIST/SANS. Por que la fase 1 ocurre antes del incidente?
+2. Enumera las seis fases de SANS PICERL y explica cómo se relacionan con las funciones Detect, Respond y Recover de NIST CSF 2.0.
 3. El equipo descubre que el atacante entró por falta de 2FA. En que fase se documenta esto y se propone la solución?
 4. Explica la importancia legal de usar SHA-256 inmediatamente después de adquirir un disco forense. Que pasaría sin el hash?
-5. El equipo de IR aísla un servidor pero lo mantiene encendido. La gerencia pregunta: "Por que no lo apagan?" Como explicas la importancia de la memoria volátil?
+5. El equipo de IR aísla un servidor pero lo mantiene encendido. La gerencia pregunta: "Por qué no lo apagan?" Como explicas la importancia de la memoria volátil?
 6. Un simulacro revela que el proceso de comunicación falla: IT no sabe a quien contactar en legal. Como corriges esto?
 7. Después de contener un phishing donde 5 empleados hicieron clic, la empresa quiere enviar un correo masivo explicando. Es buena idea? Que riesgos hay?
 8. El post-mortem revela que el atacante uso TeamViewer (software legítimo aprobado por IT). Como diseñas una detección que distinga uso legítimo de malicioso?
@@ -222,7 +242,7 @@ Playbook de Ransomware:
 6. Evaluar opciones: pagar? restaurar de backups? reconstruir?
 7. Si hay backups limpios: formatear y restaurar.
 8. Si no hay backups: evaluar si existen descifradores públicos.
-9. Post-mortem: como entró? por que no se detecto? que mejorar?
+9. Post-mortem: como entró? por qué no se detecto? que mejorar?
 
 Playbook de Phishing:
 1. Usuario reporta correo sospechoso.
@@ -237,7 +257,7 @@ Playbook de Phishing:
 
 ## Forénsica Digital
 
-### Adquisicion de Evidencia
+### Adquisición de Evidencia
 
 **Orden de Volatilidad (Los datos más volatiles primero):**
 1. Registros y caché de CPU.

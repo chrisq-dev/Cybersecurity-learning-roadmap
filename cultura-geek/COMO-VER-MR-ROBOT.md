@@ -1,10 +1,13 @@
 ---
 title: "Cómo Ver Mr. Robot Estudiando Ciberseguridad"
+level: "inicial"
+content_type: "articulo"
+updated: "2026-06-29"
 ---
 
 # Cómo Ver Mr. Robot Estudiando Ciberseguridad
 
-Mr. Robot fue una de las razones por las que me interesé en la ciberseguridad. Y No me equivoqué.
+Mr. Robot fue una de las razones por las que me interésé en la ciberseguridad. Y No me equivoqué.
 
 No es una serie perfecta ni pretendo que sea un manual técnico. Pero pocas cosas logran lo que hizo Mr. Robot: mostrar que la ciberseguridad no es solo código, también es personas, poder y preguntas difíciles.
 

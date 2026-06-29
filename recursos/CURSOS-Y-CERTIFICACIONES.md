@@ -1,5 +1,19 @@
 ---
 title: "Cursos y Certificaciones Recomendadas"
+level: "referencia"
+content_type: "recurso"
+updated: "2026-06-29"
+reviewed: "2026-06-28"
+reviewed_against: "Páginas oficiales de los proveedores consultadas el 2026-06-28"
+official_sources:
+  - title: "CompTIA Security+"
+    url: "https://www.comptia.org/en-us/certifications/security/"
+  - title: "ISC2 Certified in Cybersecurity"
+    url: "https://www.isc2.org/certifications/cc"
+  - title: "Microsoft Security Operations Analyst"
+    url: "https://learn.microsoft.com/en-us/credentials/certifications/security-operations-analyst/"
+  - title: "OffSec PEN-200 / OSCP"
+    url: "https://www.offsec.com/courses/pen-200/"
 ---
 
 # Cursos y Certificaciones Recomendadas
@@ -8,7 +22,7 @@ Y no tienes que hacerlas todas. esta guía no intenta venderte certificaciones n
 
 Una certificación puede ayudar, pero no hace magia. Sirve para ordenar estudio, demostrar cierto nivel de base, pasar filtros de recursos humanos o enfocar una ruta. Lo importante es entender **cuando conviene tomarla**, **para que perfil sirve** y **que no debes esperar de ella**.
 
-Antes de pagar cualquier examen, revisa siempre la pagina oficial, el temario actualizado, el precio, la vigencia, el idioma, los requisitos y si realmente se alinea con tu objetivo. O sea, no compres un curso solo porque esta en oferta.
+Antes de pagar cualquier examen, revisa siempre la página oficial, el temario actualizado, el precio, la vigencia, el idioma, los requisitos y si realmente se alinea con tu objetivo. O sea, no compres un curso solo porque esta en oferta.
 
 ## Regla General: El Algoritmo ATS
 
@@ -131,7 +145,7 @@ Fuente oficial: [CompTIA Security+](https://www.comptia.org/en-us/certifications
 
 ## Blue Team y SOC
 
-Si te tira más el lado defensivo, por aqui empiezas. el Blue Team tiene tanta demanda como el Red Team, pero hablan menos de el.
+Si te interesa el lado defensivo, esta sección reúne opciones relacionadas con Blue Team y operaciones de seguridad.
 
 ### TryHackMe Pre Security y SOC Level 1
 
@@ -155,7 +169,9 @@ Fuente oficial: [TryHackMe](https://tryhackme.com/)
 
 **Qué no garantiza:** no sustituye experiencia en un SOC real, pero puede ayudarte a demostrar enfoque.
 
-Fuente oficial: [Security Blue Team - BTL1](https://www.securityblue.team/certifications/blue-team-level-1)
+Fuente oficial: [Centri — Blue Team Level 1 (BTL1)](https://www.centri.org/why-btl1/)
+
+> **Actualización 2026:** Security Blue Team cambió su marca a Centri. La certificación BTL1 conserva su nombre.
 
 ### Microsoft SC-200
 
@@ -171,7 +187,7 @@ Fuente oficial: [Microsoft Certified: Security Operations Analyst Associate](htt
 
 ## AppSec y Seguridad Web
 
-Si te gusta romper cosas en la web, este es tu camino. Después entendí que era solo entender como funciona la base de datos.
+Esta sección reúne referencias para seguridad de aplicaciones web y AppSec.
 
 ### PortSwigger Web Security Academy
 

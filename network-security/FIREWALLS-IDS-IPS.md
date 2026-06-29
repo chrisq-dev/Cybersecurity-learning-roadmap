@@ -1,5 +1,8 @@
 ---
 title: "Firewalls, IDS e IPS: Los Guardias del Castillo"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Firewalls, IDS e IPS: Los Guardias del Castillo
@@ -20,10 +23,10 @@ Guardia de seguridad enorme pero poco inteligente. Esta en la puerta con una lis
 ### Tipos de Firewalls
 
 **Firewall de filtrado de paquetes (Stateless):**
-Revisa solo cabeceras de paquetes (IP origen, IP destino, puerto, protocolo). No mantiene estado de conexiones. Rápido pero limitado. Cada paquete se evalua individualmente sin contexto de la conexion a la que pertenece.
+Revisa solo cabeceras de paquetes (IP origen, IP destino, puerto, protocolo). No mantiene estado de conexiones. Rápido pero limitado. Cada paquete se evalua individualmente sin contexto de la conexión a la que pertenece.
 
 **Firewall de inspeccion de estado (Stateful):**
-Mantiene una tabla de conexiones activas. Solo permite paquetes que pertenecen a conexiones establecidas. Si un paquete SYN externo llega al puerto 80, permite el establecimiento y registra la conexion. Los paquetes siguientes de esa conexion se permiten automáticamente. Es el estándar mínimo actual.
+Mantiene una tabla de conexiones activas. Solo permite paquetes que pertenecen a conexiones establecidas. Si un paquete SYN externo llega al puerto 80, permite el establecimiento y registra la conexión. Los paquetes siguientes de esa conexión se permiten automáticamente. Es el estándar mínimo actual.
 
 **Firewall de capa de aplicación (Proxy):**
 Inspecciona el contenido de la aplicación. Un proxy HTTP puede analizar el comando GET, la URL solicitada, el user-agent, y el cuerpo de la solicitud. Puede bloquear comandos específicos (PUT, DELETE) o detectar patrones de ataque en el contenido.
@@ -46,7 +49,7 @@ El firewall ve el sobre pero no la carta. HTTPS empeora el problema porque inclu
 22 (SSH), 3389 (RDP), 443 (paneles de administración) abiertos a toda internet. Los bots escanean constantemente estos puertos.
 
 **Reglas sin documentación:**
-Reglas agregadas hace años que nadie recuerda por que existen. Se acumulan y crean superficie de ataque innecesaria. Se estima que 30-50% de las reglas en firewalls corporativos son obsoletas.
+Reglas agregadas hace años que nadie recuerda por qué existen. Se acumulan y crean superficie de ataque innecesaria. Sin revisión periódica, las reglas obsoletas se acumulan y amplían la superficie de ataque.
 
 **Default deny mal implementado:**
 La política correcta es "denegar todo por defecto, permitir solo lo necesario." Muchas empresas usan "permitir todo por defecto, denegar solo lo malo," que es inseguro.
@@ -59,7 +62,7 @@ Como el firewall es ciego al contenido, necesitamos algo más inteligente detrá
 
 La D es Detection. El IDS SOLO LADRA, NO MUERDE. Si huele la inyección SQL, ladra (alerta al SIEM). Pero no detiene al atacante. El ataque sigue su curso mientras la alarma suena.
 
-Por que querríamos un guardia que solo avisa? Para evitar falsos positivos. Si el perro se equivoca y muerde al CEO (bloquea su tráfico legítimo), es un desastre corporativo. En modo solo detección, el analista revisa la alerta y decide si es real antes de actuar.
+Por qué querríamos un guardia que solo avisa? Para evitar falsos positivos. Si el perro se equivoca y muerde al CEO (bloquea su tráfico legítimo), es un desastre corporativo. En modo solo detección, el analista revisa la alerta y decide si es real antes de actuar.
 
 ### Métodos de Detección del IDS
 
@@ -86,7 +89,7 @@ Verifica que los protocolos se usen según los estándares RFC. Detecta desviaci
 
 ## IPS (Intrusion Prevention System): El Perro que Muerde
 
-Evolución del IDS. La P es Prevention. Se coloca en medio del tráfico (inline). Si huele un ataque, ladra (alerta al SIEM) y muerde al atacante (bloquea la conexion). El servidor se salva automáticamente sin intervención humana.
+Evolución del IDS. La P es Prevention. Se coloca en medio del tráfico (inline). Si huele un ataque, ladra (alerta al SIEM) y muerde al atacante (bloquea la conexión). El servidor se salva automáticamente sin intervención humana.
 
 ### El Riesgo del IPS: Falsos Positivos
 
@@ -167,12 +170,12 @@ El atacante también sabe que los firewalls mal administrados (configuraciones p
 
 1. Un analista instala Snort en modo IDS. El IDS detecta un exploit pero no lo bloquea. El analista se queja de que fallo. Cual es el error?
 2. Que regla de firewall protege la base de datos (3306) de internet pero permite conexiones del servidor web interno?
-3. Por que activar un IPS en modo prevención sin tuning previo puede causar una caída de producción?
+3. Por qué activar un IPS en modo prevención sin tuning previo puede causar una caída de producción?
 4. Como detecta un IPS malware dentro de tráfico HTTPS? Que implicaciones de privacidad tiene?
-5. Un atacante escanea puertos muy lentamente (1 paquete cada 10 segundos). Por que evade la detección del IDS?
+5. Un atacante escanea puertos muy lentamente (1 paquete cada 10 segundos). Por qué evade la detección del IDS?
 6. Tienes un firewall con 500 reglas acumuladas de 5 años. Nadie recuerda para que sirven. Como las limpias sin causar interrupción?
 7. Un empleado se conecta via VPN desde su casa. Su PC tiene malware que intenta propagarse a la red corporativa. Que defensas lo detectan y bloquean?
-8. Por que "el firewall me protege de todo" es una concepcion errónea? Que ataques no puede prevenir?
+8. Por qué "el firewall me protege de todo" es una concepcion errónea? Que ataques no puede prevenir?
 
 ## Arquitectura de Defensa Perimetral
 
@@ -296,4 +299,4 @@ Como un atacante evalua un firewall:
 
 9. Configuras un NGFW con descifrado TLS. Los empleados empiezan a recibir errores de certificado en sus navegadores. Que configuración falta y como la implementas sin interrumpir el trabajo?
 10. Un servidor en la DMZ necesita acceder a la base de datos en la red interna. Que reglas de firewall necesitas crear? Considera seguridad y funcionalidad.
-11. El firewall principal de tu empresa muestra picos de tráfico a las 3:00 AM todos los dias. El tráfico es HTTPS a una IP en Rusia. Es un ataque, un servicio legítimo, o un empleado?
+11. El firewall principal de tu empresa muestra picos de tráfico a las 3:00 AM todos los días. El tráfico es HTTPS a una IP en Rusia. Es un ataque, un servicio legítimo, o un empleado?

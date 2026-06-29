@@ -1,5 +1,8 @@
 ---
 title: "Cadena de Custodia: El Rastro Inquebrantable"
+level: "avanzado"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Cadena de Custodia: El Rastro Inquebrantable
@@ -47,7 +50,7 @@ La evidencia debe mantenerse en un estado que evite deterioro o alteracion accid
 
 - ID único de evidencia
 - Descripción detallada
-- Hash (SHA-256 u otro) — por que esto importa: es la única forma de demostrar que la evidencia no cambio
+- Hash (SHA-256 u otro) — por qué esto importa: es la única forma de demostrar que la evidencia no cambio
 - Fecha y hora (UTC, sincronizada con NTP)
 - Nombre y firma de quien entrega
 - Nombre y firma de quien recibe
@@ -132,7 +135,7 @@ Hash verificador SHA-256 integrado. Checksums MD5 adicional por redundancia.
 
 ## Tipos de Evidencia Digital
 
-Por que esto importa: saber si un dato es volátil o no determina que agarras primero cuando entras a la escena. Si apagas el equipo antes de capturar la RAM, esa evidencia se fue para siempre.
+Por qué esto importa: saber si un dato es volátil o no determina que agarras primero cuando entras a la escena. Si apagas el equipo antes de capturar la RAM, esa evidencia se fue para siempre.
 
 ### Volátil
 
@@ -186,7 +189,7 @@ Pasar evidencia de mano no documentada. Cada entrega debe registrarse y verifica
 
 la mayoría de las fallas no son técnicas. Son de procedimiento. Y el problema es que no te das cuenta hasta que estas en el estrado.
 
-Confiar en que nadie impugnara la cadena: La defensa siempre impugnara la cadena. Preparar para el peor escenario.
+Confiar en que nadie impugnará la cadena: La defensa siempre impugnará la cadena. Preparar para el peor escenario.
 
 Procedimiento oral no escrito: "Siempre hacemos así" no sirve en el estrado.
 
@@ -204,7 +207,7 @@ La defensa impugno exitosamente evidencia digital porque los oficiales no docume
 
 ### Caso Real: Silk Road (2013-2015)
 
-El FBI clono el servidor de Silk Road en Islandia sin orden judicial. Aunque tenían evidencia sólida, la defensa impugno la cadena de custodia de los discos. El caso dependio de testimonios de peritos sobre la integridad de las imagenes forenses.
+El FBI clono el servidor de Silk Road en Islandia sin orden judicial. Aunque tenían evidencia sólida, la defensa impugno la cadena de custodia de los discos. El caso dependio de testimonios de peritos sobre la integridad de las imágenes forenses.
 
 ## El Ángulo del Hacker
 
@@ -238,7 +241,7 @@ El perito debe anticipar anti-forense y tener métodos de recuperación.
 
 ## Documentación para el Tribunal
 
-De nada sirve tener la evidencia perfecta si no la puedes explicar. Y cuando digo explicar me refiero a que un juez que no sabe que es un hash entienda por que tus datos son confiables.
+De nada sirve tener la evidencia perfecta si no la puedes explicar. Y cuando digo explicar me refiero a que un juez que no sabe que es un hash entienda por qué tus datos son confiables.
 
 ### El Informe Pericial
 
@@ -397,7 +400,7 @@ Notas contemporaneas al evento. Manuscritas o digitales con timestamp. No modifi
 
 1. Juan, técnico de soporte, encuentra un disco con evidencia. Lo conecta a su PC y examina archivos. Que errores comete?
 
-2. Explica que es un hash y por que es crítico en la cadena de custodia.
+2. Explica que es un hash y por qué es crítico en la cadena de custodia.
 
 3. Un abogado en juicio pregunta: "Pudo alguien más haber accedido a esta evidencia?" Como respondes si documentaste cada acceso?
 
@@ -405,7 +408,7 @@ Notas contemporaneas al evento. Manuscritas o digitales con timestamp. No modifi
 
 5. El jefe de IT dice: "Conectamos el disco sospechoso a nuestro servidor y copiamos los archivos importantes." Que problemas ves?
 
-6. Por que no es suficiente confiar en que "nadie impugnara la cadena"?
+6. Por qué no es suficiente confiar en que "nadie impugnará la cadena"?
 
 7. Un perito extrae evidencia, la analiza, y meses después descubre que olvido documentar un paso. Que ocurre?
 
@@ -413,4 +416,4 @@ Notas contemporaneas al evento. Manuscritas o digitales con timestamp. No modifi
 
 9. La defensa alega que transferiste evidencia a un USB no cifrado. Como defiendes la integridad?
 
-10. Por que la cadena de custodia es más compleja en ambientes cloud que en locales?
+10. Por qué la cadena de custodia es más compleja en ambientes cloud que en locales?

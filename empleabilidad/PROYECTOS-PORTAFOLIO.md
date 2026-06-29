@@ -1,5 +1,8 @@
 ---
 title: "Proyectos y Portafolio: El Arquitecto vs El Albañil"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Proyectos y Portafolio: El Arquitecto vs El Albañil
@@ -11,7 +14,7 @@ Vamos a romper esa paradoja que te tiene loco: *"No me contratan porque no tengo
 En Recursos Humanos hay un secreto a voces: Un candidato que ha leído 100 libros sobre cómo funciona un SIEM (El Arquitecto Teórico) siempre perderá la entrevista técnica contra el candidato que instaló un SIEM gratuito en una computadora vieja en su casa y lo rompió intentando configurarlo (El Albañil Práctico).
 **La experiencia no se obtiene solo en un trabajo pagado. La experiencia se construye en el laboratorio de tu casa.**
 
-**Por que esto importa:** Un tipo con las manos sucias de tanto configurar servidores vale más que diez con certificados pero que nunca tocaron un sistema de verdad.
+**Por qué esto importa:** Un tipo con las manos sucias de tanto configurar servidores vale más que diez con certificados pero que nunca tocaron un sistema de verdad.
 
 ---
 
@@ -124,7 +127,7 @@ proyecto-wazuh-siem/
 - Resultados: alertas funcionando, dashboards, métricas.
 - Cómo replicar el proyecto (para que otros lo hagan).
 
-**Por que esto importa:** Es como tener un portafolio de fotos de tus proyectos de construcción. Si no lo muestras, nadie sabe que sabes construir.
+**Por qué esto importa:** Es como tener un portafolio de fotos de tus proyectos de construcción. Si no lo muestras, nadie sabe que sabes construir.
 
 ---
 

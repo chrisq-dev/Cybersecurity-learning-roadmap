@@ -1,5 +1,8 @@
 ---
 title: "CV y LinkedIn: El Pitch de Ventas"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # CV y LinkedIn: El Pitch de Ventas
@@ -20,9 +23,9 @@ pasa si escribes como si hablaras con otro ingeniero? El de RRHH no entiende nad
 
 Tu CV debe ser exactamente lo opuesto: Suave y digerible por fuera (Para Recursos Humanos), y extremadamente técnico y duro por dentro (Para la entrevista técnica final).
 
-**Por que esto importa:** RRHH necesita entender rápido de qué va tu CV. El CISO después va a querer ver los detalles técnicos. Si le das la misma info a los dos, uno de los dos no te va a entender.
+**Por qué esto importa:** RRHH necesita entender rápido de qué va tu CV. El CISO después va a querer ver los detalles técnicos. Si le das la misma info a los dos, uno de los dos no te va a entender.
 
-**Regla de Oro:** Elimina el 100% de las barras de progreso, logotipos de herramientas, fotos personales y colores fosforescentes. Usa un formato de una sola columna en blanco y negro (Ej. Formato Harvard). Los sistemas automáticos de RRHH (ATS) no pueden leer gráficos bonitos, y descartarán tu CV automáticamente.
+**Criterio de legibilidad:** Prioriza una estructura simple, texto seleccionable, encabezados convencionales y una sola columna cuando el CV deba pasar por un ATS. Los elementos gráficos pueden perder información durante el análisis automático, pero su comportamiento depende del sistema utilizado.
 
 ### Estructura recomendada del CV
 
@@ -87,7 +90,7 @@ Proyecto Home Lab: SIEM y Detección de Amenazas | Wazuh, Linux, Windows | Ene 2
 
 ## 2. Cómo Escribir la Experiencia (El Método STAR)
 
-el 99% de los candidatos escribe su experiencia laboral como si fuera una lista de tareas. Aburrido, inútil, y lo peor: no te consigue el trabajo.
+Muchos candidatos describen únicamente tareas. Un CV resulta más informativo cuando explica alcance, decisiones y resultados verificables.
 
 * **El CV del Novato (Malo):**
   * *"Sé usar Wireshark para analizar red".*
@@ -112,7 +115,7 @@ el 99% de los candidatos escribe su experiencia laboral como si fuera una lista 
 | Cumplimiento | Auditó, Verifiqué, Reporté, Certifiqué, Alinéé |
 | Automatización | Automatizé, Scripteé, Orquesté, Optimicé |
 
-**Por que esto importa:** A RRHH no le importa si sabes usar 50 herramientas. Le importa si sabes evitar que la empresa pierda plata. Es así de simple.
+**Por qué esto importa:** A RRHH no le importa si sabes usar 50 herramientas. Le importa si sabes evitar que la empresa pierda plata. Es así de simple.
 
 ### Traducción de Experiencia No-Seguridad a Seguridad
 
@@ -206,7 +209,7 @@ Mi approach: Empecé con los logs de autenticación, luego revisé procesos sosp
 
 **2. Análisis de vulnerabilidad actual (1 vez por semana):**
 ```
-La CVE-2025-XXXXX me llamó la atención esta semana. Es una vulnerabilidad crítica en [sistema] que permite ejecución remota de código.
+La vulnerabilidad [CVE-ID] me llamó la atención esta semana. Es una vulnerabilidad crítica en [sistema] que permite ejecución remota de código.
 
 Puntos clave:
 - CVSS: 9.8 (Crítica).

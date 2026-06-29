@@ -1,5 +1,8 @@
 ---
 title: "Hashing y Contraseñas"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Hashing y Contraseñas
@@ -258,7 +261,7 @@ Si estás diseñando un sistema hoy:
 
 ### LinkedIn 2012
 
-LinkedIn sufrió una filtración de 6.5 millones de hashes SHA-1 sin sal. No era texto plano, pero estaba muy lejos de ser seguro. SHA-1 sin sal es vulnerable a tablas arcoíris. Para 2016, el 90% de las contraseñas habían sido descifradas. La SEC multó a LinkedIn con $2.5 millones por violar las leyes de protección de datos.
+LinkedIn sufrió una filtración de 6.5 millones de hashes SHA-1 sin sal. No era texto plano, pero estaba muy lejos de ser seguro. SHA-1 sin sal es vulnerable a tablas arcoíris. La ausencia de sal facilitó ataques masivos de diccionario y tablas precalculadas contra los hashes filtrados.
 
 La lección: no basta con usar hashing. Hay que usar hashing diseñado para contraseñas, con sal.
 
@@ -394,20 +397,20 @@ Pero hasta que eso sea universal, el hashing de contraseñas sigue siendo una ha
 
 ## Autoevaluación
 
-1. Una base de datos almacena contraseñas usando SHA-256 sin sal. Un atacante roba la base de datos y logra descifrar el 60% de las contraseñas en 5 minutos. Explica exactamente que ataque uso y por que la sal lo habría prevenido.
+1. Una base de datos almacena contraseñas usando SHA-256 sin sal. Un atacante roba la base de datos y logra descifrar el 60% de las contraseñas en 5 minutos. Explica exactamente que ataque uso y por qué la sal lo habría prevenido.
 
 2. Tu jefe te dice: "Vamos a encriptar las contraseñas con AES-256 en la base de datos". Identifica al menos dos problemas de seguridad en esta estrategia comparada con usar hashing con sal y key stretching.
 
-3. En la analogía de la licuadora, explica por que una funcion hash siempre produce una salida de longitud fija sin importar el tamaño de la entrada. Por que esta propiedad es útil en sistemas de almacenamiento?
+3. En la analogía de la licuadora, explica por qué una función hash siempre produce una salida de longitud fija sin importar el tamaño de la entrada. Por qué esta propiedad es útil en sistemas de almacenamiento?
 
-4. La funcion SHA-256 se considera segura para integridad de archivos pero insegura para almacenar contraseñas. Explica la contradiccion aparente: como puede un algoritmo ser seguro para un propósito e inseguro para otro?
+4. La función SHA-256 se considera segura para integridad de archivos pero insegura para almacenar contraseñas. Explica la contradiccion aparente: como puede un algoritmo ser seguro para un propósito e inseguro para otro?
 
-5. LinkedIn en 2012 almacenaba hashes SHA-1 sin sal. Adobe en 2013 cifraba contraseñas con 3DES-ECB. Explica cual de los dos enfoques es menos inseguro y por que, analizando las debilidades específicas de cada uno.
+5. LinkedIn en 2012 almacenaba hashes SHA-1 sin sal. Adobe en 2013 cifraba contraseñas con 3DES-ECB. Explica cual de los dos enfoques es menos inseguro y por qué, analizando las debilidades específicas de cada uno.
 
 6. Argon2 tiene tres parámetros configurables: tiempo, memoria y paralelismo. Explica como un incremento en el parámetro de memoria afecta la capacidad de un atacante de usar GPUs o ASICs para descifrar las contraseñas robadas.
 
 7. Un sistema implementa bloqueo de cuenta después de 3 intentos fallidos durante 30 minutos. Sin embargo, un atacante logra evadir esta protección atacando 100,000 cuentas simultáneamente. Explica la lógica del ataque y como mitigarlo.
 
-8. Las funciones hash criptográficas deben ser resistentes a colisiones. Por que es importante que nadie pueda encontrar dos mensajes diferentes que produzcan el mismo hash? Da un ejemplo de un ataque del mundo real que explotaria una debilidad de colisiones.
+8. Las funciones hash criptográficas deben ser resistentes a colisiones. Por qué es importante que nadie pueda encontrar dos mensajes diferentes que produzcan el mismo hash? Da un ejemplo de un ataque del mundo real que explotaria una debilidad de colisiones.
 
 ---

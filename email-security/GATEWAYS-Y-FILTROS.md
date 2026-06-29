@@ -1,5 +1,8 @@
 ---
 title: "Seguridad de Gateways: El Control de Aduanas"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Seguridad de Gateways: El Control de Aduanas
@@ -8,7 +11,7 @@ title: "Seguridad de Gateways: El Control de Aduanas"
 
 Aprender como la empresa detiene los misiles balísticos (Ransomware adjunto) antes de que lleguen al escritorio del empleado.
 
-El protocolo DMARC (visto en la guía anterior) detiene las falsificaciones de identidad. Pero que pasa si un atacante envía un correo desde una cuenta de Gmail 100% real, y le adjunta un archivo PDF con un virus adentro? DMARC dejará pasar el correo porque técnicamente es un correo valido de Gmail. Necesitamos un sistema de Aduanas.
+El protocolo DMARC (visto en la guía anterior) detiene las falsificaciones de identidad. Pero que pasa si un atacante envía un correo desde una cuenta de Gmail 100% real, y le adjunta un archivo PDF con un virus adentro? DMARC dejará pasar el correo porque técnicamente es un correo válido de Gmail. Necesitamos un sistema de Aduanas.
 
 Aqui entra el Secure Email Gateway (SEG), el equivalente al control de aduanas en un aeropuerto. Todo correo que entra o sale de la empresa pasa por este sistema que inspecciona, analiza y decide si el contenido es seguro.
 
@@ -51,7 +54,7 @@ El SEG utiliza múltiples técnicas para identificar spam:
 
 - Filtrado por reputación de IP: Mantiene listas de IPs conocidas por enviar spam (DNSBL - DNS-based Blackhole Lists).
 - Filtrado por contenido: Analiza el texto del correo en busca de patrones tipicos de spam.
-- Filtrado por heuristicas: Combina múltiples senales (puntuación) para determinar si un correo es spam.
+- Filtrado por heuristicas: Combina múltiples señales (puntuación) para determinar si un correo es spam.
 - Filtrado por autenticación: Verifica SPF, DKIM y DMARC antes de cualquier otro análisis.
 
 **URL Rewriting (Reescritura de Enlaces)**
@@ -66,7 +69,7 @@ Cuando el usuario hace clic, la petición pasa por el SEG que:
 
 1. Analiza la URL en tiempo real contra bases de datos de phishing.
 2. Abre la URL en una máquina virtual remota (detección por comportamiento).
-3. Si es maliciosa, muestra una pagina de advertencia al usuario.
+3. Si es maliciosa, muestra una página de advertencia al usuario.
 4. Si es segura, redirige al destino original.
 
 Además, el SEG registra cada clic, permitiendo al SOC identificar usuarios que hacen clic en enlaces sospechosos y nuevos dominios de phishing.
@@ -129,7 +132,7 @@ El malware verifica si se esta ejecutando en una VM:
 
 El malware incluye un retraso:
 
-- Espera 10-15 minutos antes de ejecutar codigo malicioso.
+- Espera 10-15 minutos antes de ejecutar código malicioso.
 - El sandbox típico solo analiza por 2-3 minutos.
 - Cuando el sandbox destruye la VM y entrega el correo, el malware se activa en el equipo real.
 
@@ -162,7 +165,7 @@ Los SEGs modernos han mejorado sus sandboxes:
 
 - Rendimiento: Analizar cada archivo en una VM es costoso.
 - Falsos Positivos: Archivos legítimos pueden comportarse como malware.
-- Ventana de Evasion: Malware que espera horas o dias evade el análisis.
+- Ventana de Evasion: Malware que espera horas o días evade el análisis.
 - Cobertura: No todos los adjuntos se analizan en sandbox (solo los sospechosos).
 
 ## Casos Reales
@@ -177,7 +180,7 @@ El correo que anunciaba la actualización no contenia malware visible. Era un co
 - No tenía adjuntos maliciosos.
 - El enlace apuntaba al sitio legítimo de M.E.Doc.
 
-La leccion: el SEG no protege contra ataques a la cadena de suministro donde el software legítimo se vuelve malicioso.
+La lección: el SEG no protege contra ataques a la cadena de suministro donde el software legítimo se vuelve malicioso.
 
 ### El Phishing que Evadio el Sandbox (2020)
 
@@ -193,9 +196,9 @@ El sandbox del SEG lo clasifico como benigno y entregó el correo. El usuario ab
 
 Una empresa de logística perdió 2 millones de dólares cuando un empleado de Finanzas abrió un archivo Excel adjunto a un correo. El correo parecia venir de un proveedor legítimo (dominio real, SPF/DKIM correctos). El Excel contenia una macro que descargaba un ladrón de credenciales.
 
-El SEG tenía sandbox habilitado, pero el Excel estaba protegido con contrasena (el sandbox no podía abrirlo sin la contrasena). La contrasena estaba en el cuerpo del correo.
+El SEG tenía sandbox habilitado, pero el Excel estaba protegido con contraseña (el sandbox no podía abrirlo sin la contraseña). La contraseña estaba en el cuerpo del correo.
 
-La leccion: los archivos protegidos con contrasena son una señal de alerta para el SEG y deben ser bloqueados.
+La lección: los archivos protegidos con contraseña son una señal de alerta para el SEG y deben ser bloqueados.
 
 ## Modos de Falla
 
@@ -225,7 +228,7 @@ Como atacante, el SEG es un obstaculo molesto pero no insuperable.
 
 ### Evadir el SEG con Archivos Protegidos
 
-Envio un archivo ZIP protegido con contrasena. El SEG no puede abrirlo para analizar el contenido. La contrasena la pongo en el cuerpo del correo, que el SEG si puede leer.
+Envio un archivo ZIP protegido con contraseña. El SEG no puede abrirlo para analizar el contenido. La contraseña la pongo en el cuerpo del correo, que el SEG si puede leer.
 
 Variante: el archivo legítimo (una factura real) tiene un exploit oculto en los metadatos. El SEG analiza el PDF, ve una factura real, y lo deja pasar.
 
@@ -338,7 +341,7 @@ En lugar de adjuntar un archivo malicioso, el correo contiene un enlace a Google
 
 ### Imagenes con Texto
 
-En lugar de escribir el mensaje de phishing en texto (que el SEG puede analizar), el atacante incluye una imagen con el texto. Los OCRs de los SEGs modernos pueden detectar texto en imagenes, pero no siempre.
+En lugar de escribir el mensaje de phishing en texto (que el SEG puede analizar), el atacante incluye una imagen con el texto. Los OCRs de los SEGs modernos pueden detectar texto en imágenes, pero no siempre.
 
 ### Correo Fragmentado
 
@@ -435,7 +438,7 @@ En lugar de adjuntar un archivo malicioso, el correo contiene un enlace a Google
 
 ### Imagenes con Texto
 
-En lugar de escribir el mensaje de phishing en texto (que el SEG puede analizar), el atacante incluye una imagen con el texto. Los OCRs de los SEGs modernos pueden detectar texto en imagenes, pero no siempre.
+En lugar de escribir el mensaje de phishing en texto (que el SEG puede analizar), el atacante incluye una imagen con el texto. Los OCRs de los SEGs modernos pueden detectar texto en imágenes, pero no siempre.
 
 ### Correo Fragmentado
 
@@ -449,18 +452,18 @@ Usar acortadores de URL (bit.ly, tinyurl) o servicios de redirección legítimos
 
 Responde estas preguntas para verificar si comprendes los conceptos:
 
-1. El protocolo DMARC verifica la autenticidad matemática del remitente, mientras que un Secure Email Gateway (SEG) inspecciona el contenido del correo. Explica, usando la analogía de Aduanas, por que una empresa moderna necesita implementar ambos controles y no puede depender de uno solo.
+1. El protocolo DMARC verifica la autenticidad matemática del remitente, mientras que un Secure Email Gateway (SEG) inspecciona el contenido del correo. Explica, usando la analogía de Aduanas, por qué una empresa moderna necesita implementar ambos controles y no puede depender de uno solo.
 
-2. Un empleado del departamento de Recursos Humanos recibe cientos de currículums en formato PDF todos los dias. Un atacante le envía un PDF infectado con un Malware Zero-Day (totalmente desconocido para los Antivirus tradicionales). Explica como el proceso de Sandboxing en el Gateway de correo logrará detectar que el PDF es malicioso a pesar de no tener una firma de virus conocida.
+2. Un empleado del departamento de Recursos Humanos recibe cientos de currículums en formato PDF todos los días. Un atacante le envía un PDF infectado con un Malware Zero-Day (totalmente desconocido para los Antivirus tradicionales). Explica como el proceso de Sandboxing en el Gateway de correo logrará detectar que el PDF es malicioso a pesar de no tener una firma de virus conocida.
 
-3. El SEG de tu empresa incluye la funcion de URL Rewriting. Un usuario hace clic en un enlace de un correo para rastrear un paquete de Amazon. Usando la lógica del Hombre en el Medio, explica que hace la tecnología de URL Rewriting en el milisegundo entre que el usuario hace clic y la pagina web carga en su navegador.
+3. El SEG de tu empresa incluye la función de URL Rewriting. Un usuario hace clic en un enlace de un correo para rastrear un paquete de Amazon. Usando la lógica del Hombre en el Medio, explica que hace la tecnología de URL Rewriting en el milisegundo entre que el usuario hace clic y la página web carga en su navegador.
 
-4. Si la tecnología de Sandboxing es tan buena detonando bombas virtuales antes de que lleguen al usuario, Por que crees que los creadores de Malware avanzados programan sus virus para dormir y no hacer nada durante los primeros 10 minutos después de ser ejecutados?
+4. Si la tecnología de Sandboxing es tan buena detonando bombas virtuales antes de que lleguen al usuario, Por qué crees que los creadores de Malware avanzados programan sus virus para dormir y no hacer nada durante los primeros 10 minutos después de ser ejecutados?
 
-5. Un atacante envía un archivo ZIP protegido con contrasena adjunto a un correo. Por que esta técnica puede evadir el sandbox del SEG y como se podría mitigar este riesgo?
+5. Un atacante envía un archivo ZIP protegido con contraseña adjunto a un correo. Por qué esta técnica puede evadir el sandbox del SEG y como se podría mitigar este riesgo?
 
 6. Explica la diferencia entre la protección que ofrece DMARC y la protección que ofrece un SEG. En que escenarios uno es suficiente y el otro no?
 
 7. Un correo de un proveedor legítimo pero comprometido llega al SEG. El proveedor tiene SPF, DKIM y DMARC configurados correctamente. El correo es genuino desde el punto de vista técnico, pero contiene un enlace a un sitio de phishing. Como detectaria el SEG este ataque?
 
-8. Por que la configuración del SEG Outbound (correo saliente) es importante para prevenir la fuga de datos (DLP)?
+8. Por qué la configuración del SEG Outbound (correo saliente) es importante para prevenir la fuga de datos (DLP)?

@@ -1,12 +1,15 @@
 ---
 title: "IAM Avanzado: Escalada de Privilegios y Máscaras"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # IAM Avanzado: Escalada de Privilegios y Máscaras
 
 ## Objetivo de esta Guía
 
-Entender por que el hacking en la nube es un juego de ajedrez donde el atacante roba una llave de nivel muy bajo y hace malabares con el sistema de políticas para convertirse en Dios (Administrador).
+Entender por qué el hacking en la nube es un juego de ajedrez donde el atacante roba una llave de nivel muy bajo y hace malabares con el sistema de políticas para convertirse en Dios (Administrador).
 
 En el mundo On-Premise, un atacante usaba ataques de fuerza bruta o de corruption de memoria para volverse Administrador (root o SYSTEM). En la nube, las computadoras son tan efímeras que al atacante no le importan. El atacante ataca directamente a las Políticas JSON de Amazon o Google. A esto se le llama Escalada de Privilegios en la Nube.
 
@@ -42,7 +45,7 @@ Las llaves del Conserje en la nube no son de metal. Son un documento de texto es
 - **Versión:** La versión del lenguaje de políticas (2012-10-17 es la actual).
 - **Statement:** Un array de declaraciones de permisos.
   - **Effect:** Allow (permitir) o Deny (denegar).
-  - **Action:** El servicio y la accion (s3:GetObject, ec2:RunInstances, iam:CreateUser).
+  - **Action:** El servicio y la acción (s3:GetObject, ec2:RunInstances, iam:CreateUser).
   - **Resource:** El ARN del recurso específico.
   - **Condition (opcional):** Condiciones adicionales.
 
@@ -108,12 +111,12 @@ A esto se le llama Over-permissive Policies (Políticas con exceso de permisos).
 
 Algunas combinaciones de acciones son particularmente peligrosas:
 
-| Accion | Servicio | Riesgo |
+| Acción | Servicio | Riesgo |
 |--------|----------|--------|
 | iam:CreateUser + iam:CreateAccessKey | IAM | Crear usuarios con acceso a la cuenta |
 | iam:PassRole + ec2:RunInstances | IAM + EC2 | Lanzar instancias con roles privilegiados |
 | iam:CreatePolicy + iam:AttachPolicy | IAM | Crear y asignar políticas de administrador |
-| lambda:CreateFunction + lambda:InvokeFunction | Lambda | Ejecutar codigo con permisos del rol Lambda |
+| lambda:CreateFunction + lambda:InvokeFunction | Lambda | Ejecutar código con permisos del rol Lambda |
 | s3:PutBucketPolicy | S3 | Hacer un bucket público |
 
 Cada una de estas combinaciones permite a un atacante elevar sus privilegios.
@@ -171,7 +174,7 @@ Esta política exige MFA para poder asumir el rol. Incluso si el atacante roba l
 
 ## PassRole: El Caballo de Troya
 
-Otra técnica de escalada de privilegios es `iam:PassRole`. Esta accion permite a un usuario pasar un rol IAM a un servicio de AWS (como EC2 o Lambda).
+Otra técnica de escalada de privilegios es `iam:PassRole`. Esta acción permite a un usuario pasar un rol IAM a un servicio de AWS (como EC2 o Lambda).
 
 ### Como Funciona el Ataque PassRole
 
@@ -315,11 +318,11 @@ La atacante de Capital One exploto una vulnerabilidad de SSRF (Server Side Reque
 
 El rol IAM tenía permisos excesivos: permitia leer y escribir en todos los buckets S3 de la cuenta. Con esas credenciales, la atacante pudo exfiltrar 106 millones de registros de clientes.
 
-La leccion: el rol IAM de la instancia EC2 debería haber tenido permisos minimos para solo leer los buckets necesarios.
+La lección: el rol IAM de la instancia EC2 debería haber tenido permisos minimos para solo leer los buckets necesarios.
 
 ## Modos de Falla
 
-### Falla 1: Políticas con Asterisco en Accion y Recurso
+### Falla 1: Políticas con Asterisco en Acción y Recurso
 
 El error más común y peligroso: `Action: "*"` y `Resource: "*"`. Esto da acceso total a cualquier recurso.
 
@@ -383,7 +386,7 @@ aws lambda create-function \
   --zip-file fileb://function.zip
 ```
 
-La funcion Lambda se ejecuta con permisos de administrador.
+La función Lambda se ejecuta con permisos de administrador.
 
 ### Herramientas de Auditoría IAM
 
@@ -406,13 +409,13 @@ Los atacantes también usan herramientas para auditar políticas IAM:
 
 Responde estas preguntas para verificar si comprendes los conceptos:
 
-1. Estas auditando una cuenta de AWS y ves una política con la accion `iam:CreateUser` combinada con el recurso `*`. Por que esto es una catástrofe? (Pista: Piensa en lo que podría hacer el hacker si tiene el poder de crear nuevos usuarios invisibles).
+1. Estas auditando una cuenta de AWS y ves una política con la acción `iam:CreateUser` combinada con el recurso `*`. Por qué esto es una catástrofe? (Pista: Piensa en lo que podría hacer el hacker si tiene el poder de crear nuevos usuarios invisibles).
 
-2. En términos de permisos, Que significa el uso del símbolo comodín `*` en un archivo JSON de IAM, y por que los auditores de seguridad marcan su uso injustificado como un fallo crítico?
+2. En términos de permisos, Que significa el uso del símbolo comodín `*` en un archivo JSON de IAM, y por qué los auditores de seguridad marcan su uso injustificado como un fallo crítico?
 
 3. Como funciona la técnica de "Asumir un Rol" (AssumeRole) como un vector para que un atacante convierta una cuenta de bajo privilegio en una de alto privilegio?
 
-4. Si tu eres el Arquitecto de Seguridad de la empresa, Por que aplicar la doctrina de "Principio del Menor Privilegio" (Principle of Least Privilege) desde el día uno evita que un ataque de AssumeRole destruya a tu empresa?
+4. Si tu eres el Arquitecto de Seguridad de la empresa, Por qué aplicar la doctrina de "Principio del Menor Privilegio" (Principle of Least Privilege) desde el día uno evita que un ataque de AssumeRole destruya a tu empresa?
 
 5. Que diferencia hay entre `iam:PassRole` y `sts:AssumeRole`? En que escenarios de ataque se usa cada uno?
 

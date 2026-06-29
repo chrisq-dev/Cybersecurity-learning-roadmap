@@ -568,3 +568,132 @@ blockquote p {
     padding: 0.75rem 1rem;
   }
 }
+
+
+.guide-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.8rem;
+  margin-top: 1rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.guide-meta-badge {
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  background: var(--bg-card);
+  color: var(--text-main);
+}
+
+.official-sources {
+  margin-top: 3rem;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background: var(--bg-card);
+}
+
+.official-sources h2 {
+  margin-top: 0;
+}
+
+.official-sources p {
+  color: var(--text-muted);
+}
+
+.official-sources ul {
+  margin-bottom: 0;
+}
+
+.nav-text-link {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.nav-text-link:hover {
+  color: var(--text-main);
+}
+
+.routes-page {
+  padding: 2.5rem 0 5rem;
+}
+
+.routes-header {
+  max-width: 760px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.routes-header h1 {
+  margin-bottom: 1rem;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+}
+
+.routes-header p,
+.route-sequence > p {
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.routes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.route-sequence {
+  padding: 1.4rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background: var(--bg-card);
+}
+
+.route-sequence h2 {
+  margin: 0.3rem 0 0.6rem;
+  font-size: 1.25rem;
+}
+
+.route-sequence ol {
+  margin-bottom: 0;
+  padding-left: 1.4rem;
+}
+
+.route-sequence li {
+  padding: 0.3rem 0;
+}
+
+.route-audience {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .nav-text-link {
+    display: none;
+  }
+}
+
+.content-type-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.65rem;
+  margin: -2.75rem auto 3rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.content-type-filter select {
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  background: var(--bg-card);
+  color: var(--text-main);
+}

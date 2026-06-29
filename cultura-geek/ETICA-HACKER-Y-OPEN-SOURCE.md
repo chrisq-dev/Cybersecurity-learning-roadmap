@@ -1,5 +1,8 @@
 ---
 title: "Ética Hacker y Open Source"
+level: "inicial"
+content_type: "articulo"
+updated: "2026-06-29"
 ---
 
 # Ética Hacker y Open Source

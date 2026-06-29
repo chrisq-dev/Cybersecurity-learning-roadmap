@@ -1,5 +1,8 @@
 ---
 title: "Reconocimiento y Enumeración: Midiendo el Muro"
+level: "avanzado"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Reconocimiento y Enumeración: Midiendo el Muro
@@ -8,7 +11,7 @@ title: "Reconocimiento y Enumeración: Midiendo el Muro"
 
 Aprender la habilidad más importante del hacking: recolectar información del objetivo sin ser detectado. El novato lanza exploits ciegamente esperando que funcionen. El profesional pasa semanas estudiando el objetivo antes de ejecutar un solo ataque.
 
-El reconocimiento es la diferencia entre un ataque ruidoso que fracasa y un ataque quirúrgico que tiene exito. Esta guía cubre OSINT (reconocimiento pasivo), enumeración activa con Nmap, evasion de firewalls, y como los atacantes convierten información pública en acceso no autorizado. El 90% del exito de un ataque se juega en estas fases iniciales.
+El reconocimiento es la diferencia entre un ataque ruidoso que fracasa y un ataque quirúrgico que tiene éxito. Esta guía cubre OSINT (reconocimiento pasivo), enumeración activa con Nmap, evasion de firewalls, y como los atacantes convierten información pública en acceso no autorizado. El 90% del éxito de un ataque se juega en estas fases iniciales.
 
 ## La Analogía: Estudiando el Castillo
 
@@ -31,7 +34,7 @@ Búsquedas avanzadas con operadores:
 - `site:empresa.com filetype:pdf confidencial` - encuentra PDFs internos expuestos.
 - `site:empresa.com inurl:admin` - encuentra paneles de administración.
 - `site:empresa.com intitle:"index of"` - encuentra directorios abiertos.
-- `site:github.com empresa` - busca codigo filtrado en GitHub.
+- `site:github.com empresa` - busca código filtrado en GitHub.
 - `site:pastebin.com empresa` - busca filtraciones en Pastebin.
 
 **LinkedIn:**
@@ -67,7 +70,7 @@ Registros de dominio que revelan:
 
 **GitHub:**
 Repositorios públicos de empleados que pueden contener:
-- Codigo fuente de la empresa.
+- Código fuente de la empresa.
 - Configuraciones con credenciales.
 - Scripts de automatización interna.
 - Documentación técnica.
@@ -135,10 +138,10 @@ Nmap (Network Mapper) es el estándar de la industria para descubrimiento de red
 
 La opción `-sS` realiza un escaneo SYN, también llamado "stealth" o sigiloso:
 
-1. Nmap envía un paquete SYN (como si quisiera iniciar una conexion).
+1. Nmap envía un paquete SYN (como si quisiera iniciar una conexión).
 2. Si el puerto esta abierto, el servidor responde SYN-ACK.
-3. En lugar de completar la conexion con ACK, Nmap envía RST (reset).
-4. Como nunca se completo el handshake TCP, la aplicación de destino no registra la conexion en sus logs.
+3. En lugar de completar la conexión con ACK, Nmap envía RST (reset).
+4. Como nunca se completo el handshake TCP, la aplicación de destino no registra la conexión en sus logs.
 
 Limitacion: Aunque evade logs de aplicaciones, los firewalls y sistemas de detección de intrusiones pueden detectar escaneos SYN.
 
@@ -146,8 +149,8 @@ Limitacion: Aunque evade logs de aplicaciones, los firewalls y sistemas de detec
 
 | Tipo | Opción | Descripción | Detección |
 |------|--------|-------------|-----------|
-| SYN Scan | `-sS` | No completa conexion TCP | Media (firewalls lo ven) |
-| Connect Scan | `-sT` | Completa conexion TCP | Alta (logs de aplicación) |
+| SYN Scan | `-sS` | No completa conexión TCP | Media (firewalls lo ven) |
+| Connect Scan | `-sT` | Completa conexión TCP | Alta (logs de aplicación) |
 | UDP Scan | `-sU` | Escanea puertos UDP | Baja (UDP no tiene handshake) |
 | FIN Scan | `-sF` | Envía paquete FIN | Baja (firewalls no filtran FIN) |
 | Xmas Scan | `-sX` | Envía FIN+PSH+URG | Baja |
@@ -251,7 +254,7 @@ Un atacante encontró un repositorio público de un empleado con configuraciones
 
 ### Shodan y SCADA (2021)
 
-Un investigador uso Shodan para encontrar una planta de tratamiento de agua con paneles SCADA accesibles sin contrasena. El operador no sabia que estaba expuesto a internet.
+Un investigador uso Shodan para encontrar una planta de tratamiento de agua con paneles SCADA accesibles sin contraseña. El operador no sabia que estaba expuesto a internet.
 
 ### Escaneo que se Escaló (2022)
 
@@ -265,8 +268,8 @@ Apresurar el reconocimiento. Depender de una sola fuente. Ignorar la evasion (es
 
 1. Usas Nmap pero el firewall bloquea todo. Cambias a WHOIS. Es pasivo o activo?
 2. Encuentras puerto 3306 abierto. Haces banner grabbing y ves MySQL 5.7. Que fase completaste?
-3. Por que el SYN scan puede no dejar logs en aplicaciones? Que tipo de logs SI lo registran?
-4. Encuentras en un foro codigo fuente del servidor de tu cliente con una vulnerabilidad. Es trampa o hacking valido?
+3. Por qué el SYN scan puede no dejar logs en aplicaciones? Que tipo de logs SI lo registran?
+4. Encuentras en un foro código fuente del servidor de tu cliente con una vulnerabilidad. Es trampa o hacking válido?
 5. Nmap con `-D RND:10` - que hace y para que sirve?
 6. Encuentras un bucket S3 abierto con backups de BD. Accedes? Que riesgos legales?
 7. Un admin configura el banner como "Apache 2.2.3" cuando es 2.4.54 parcheado. Es seguridad por oscuridad suficiente? Que debería complementarlo?
@@ -309,7 +312,7 @@ Tipos de escaneo:
 
 Scripts NSE (Nmap Scripting Engine):
 - http-enum: Enumeración de directorios y archivos en servidores web.
-- http-title: Obtiene el título de la pagina web.
+- http-title: Obtiene el título de la página web.
 - smb-enum-shares: Enumeración de recursos compartidos SMB.
 - smb-os-discovery: Identifica sistema operativo via SMB.
 - dns-zone-transfer: Intenta transferencia de zona DNS.
@@ -364,7 +367,7 @@ Archivos que los administradores usan para guiar a los crawlers pero que a menud
 
 9. Durante la fase de enumeración, encuentras un servidor web que responde en el puerto 8080 pero no aparece en los registros DNS públicos. El cliente no menciono este servidor en el alcance. Que haces?
 10. El escaneo de puertos revela que el objetivo tiene un firewall que bloquea paquetes SYN. Que técnicas de Nmap usarías para evadir el firewall y determinar que puertos están abiertos?
-11. Durante la enumeración de Active Directory con BloodHound, encuentras una ruta de escalacion que permite a cualquier usuario del dominio convertirse en Domain Admin. Que tan urgente es reportar esto y por que?
+11. Durante la enumeración de Active Directory con BloodHound, encuentras una ruta de escalacion que permite a cualquier usuario del dominio convertirse en Domain Admin. Que tan urgente es reportar esto y por qué?
 12. Encuentras un bucket S3 de AWS abierto al público durante el reconocimiento. El bucket contiene archivos de configuración con credenciales. El cliente no menciono AWS en el alcance. Como procedes?
 
 ## Herramientas de OSINT Avanzado
@@ -399,7 +402,7 @@ site:example.com "-----BEGIN RSA PRIVATE KEY-----"
 
 **LinkedIn:** Identificar empleados, roles, tecnologías que usa la empresa, relaciones entre personal. Buscar ex-empleados que puedan tener acceso residual.
 
-**GitHub:** Buscar codigo, configuraciones, tokens, y credenciales filtradas por empleados de la empresa objetivo. Operadores: `org:example.com password`, `"example.com" "aws_secret_access_key"`.
+**GitHub:** Buscar código, configuraciones, tokens, y credenciales filtradas por empleados de la empresa objetivo. Operadores: `org:example.com password`, `"example.com" "aws_secret_access_key"`.
 
 **Twitter:** Menciones de la empresa, quejas de clientes (pueden revelar vulnerabilidades), empleados que publican sobre su trabajo y revelan tecnologías.
 
@@ -437,5 +440,5 @@ Buscar parámetros ocultos en endpoints web. Los desarrolladores a menudo anaden
 
 13. Durante el reconocimiento activo, tu escaneo de Nmap es detectado por el IDS del objetivo. Que implicaciones tiene esto para el resto de la prueba? Como modificas tu enfoque?
 14. Encuentras un bucket S3 configurado como público durante la enumeración. Contiene archivos de configuración con claves de API. El cliente no menciono AWS en el alcance. Como procedes ética y profesionalmente?
-15. Después de 3 dias de OSINT, tienes suficiente información para lanzar un ataque de phishing dirigido. Que información usarías para hacer el phishing más convincente? Como priorizas los objetivos?
+15. Después de 3 días de OSINT, tienes suficiente información para lanzar un ataque de phishing dirigido. Que información usarías para hacer el phishing más convincente? Como priorizas los objetivos?
 16. Utilizando Google Dorks encuentras un archivo de base de datos expuesto en un servidor público. El archivo contiene 10,000 registros de clientes. Cual es tu siguiente paso?

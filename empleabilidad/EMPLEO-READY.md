@@ -1,5 +1,8 @@
 ---
 title: "El Semáforo de Lanzamiento: ¿Cuándo estoy listo?"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # El Semáforo de Lanzamiento: ¿Cuándo estoy listo?
@@ -11,7 +14,7 @@ Superar el Síndrome del Impostor y la barrera del "Falso Nivel Junior" que para
 En la industria espacial, antes de lanzar un cohete, el equipo pasa por un protocolo llamado "Go / No-Go". Si un sensor clave falla, el lanzamiento se cancela.
 En Ciberseguridad, miles de estudiantes brillantes nunca envían su CV porque sienten que su "lanzamiento" no está listo. Creen que necesitan saber hackear al Pentágono para conseguir un puesto Junior. Esto es un error corporativo.
 
-**Por que esto importa:** Si esperas a sentirte "listo", jamás vas a aplicar. Nadie se siente listo la primera vez.
+**Por qué esto importa:** Si esperas a sentirte "listo", jamás vas a aplicar. Nadie se siente listo la primera vez.
 
 ---
 
@@ -28,7 +31,7 @@ Cuando entras a LinkedIn y ves una oferta para "Analista SOC Junior (Nivel Inici
 ** El CISO (Director de Seguridad) sabe que el candidato "ideal" que escribió RRHH no existe en el mundo real.
 El CISO te va a contratar por tu potencial analítico, no porque te sepas de memoria todos los comandos de Linux.
 
-**Por que esto importa:** Es como pedirle a un cocinero que se sepa 500 recetas de memoria. Lo que importa es que sepa cocinar, no cuántas recetas memorizó.
+**Por qué esto importa:** Es como pedirle a un cocinero que se sepa 500 recetas de memoria. Lo que importa es que sepa cocinar, no cuántas recetas memorizó.
 
 ### Cómo interpretar los requisitos irreales
 
@@ -37,7 +40,7 @@ Cuando veas una oferta "Junior" con requisitos exagerados, aplica este filtro me
 1. **Requisitos "deseables" vs "obligatorios":** Las listas mezclan lo que idealmente querrían (deseable) con lo mínimo necesario (obligatorio). Aplica aunque no cumplas todos los deseables.
 2. **El "año de experiencia" también incluye Home Lab:** Si configuraste un SIEM en tu casa durante 6 meses, tienes 6 meses de "experiencia práctica". Documentado en GitHub, cuenta.
 3. **Certificaciones escritas por quien no sabe:** Si piden CISSP para un puesto junior, quien escribió el anuncio no entiende la industria. El CISO lo sabe.
-4. **Empresas que buscan "unicornios":** Quieren un candidato que sepa de todo. No existe. Si cumples el 40-50% de los requisitos técnicos y demuestras capacidad de aprendizaje, aplica.
+4. **Empresas que buscan "unicornios":** Quieren un candidato que sepa de todo. No existe. Evalúa cuáles requisitos son obligatorios y cuáles deseables; una vacante puede admitir perfiles que demuestren fundamentos y capacidad de aprendizaje aunque no cubran todo.
 
 ---
 

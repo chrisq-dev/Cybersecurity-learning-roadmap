@@ -1,5 +1,8 @@
 ---
 title: "PowerShell y Eventos: Las Cámaras y el Misil"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # PowerShell y Eventos: Las Cámaras y el Misil
@@ -60,7 +63,7 @@ Windows organiza los eventos en canales (logs). Los principales que un profesion
 
 ### Los Event IDs Críticos para Seguridad
 
-No necesitas memorizar todos los Event IDs. Necesitas conocer los que aparecen en el 90% de las investigaciones. Los voy a agrupar por categoría.
+No necesitas memorizar todos los Event IDs. Conviene comenzar por los que responden a preguntas frecuentes de una investigación. Los voy a agrupar por categoría.
 
 #### Inicios de Sesión
 
@@ -90,7 +93,7 @@ No necesitas memorizar todos los Event IDs. Necesitas conocer los que aparecen e
   - `NewProcessName`: El proceso creado.
   - `CommandLine`: La línea de comandos completa. Aquí se ven los ataques: `powershell -enc <base64>`, `cmd /c`, `rundll32.exe javascript:`.
 
-  La detección se basa en patrones. `winword.exe` creando `cmd.exe` es malware. `svchost.exe` en una ruta que no es `C:\Windows\System32` es malware. Una línea de comandos que contiene `-enc` con base64 es el 99% de las veces un ataque.
+  La detección se basa en patrones. `winword.exe` creando `cmd.exe` es malware. `svchost.exe` en una ruta que no es `C:\Windows\System32` es malware. Una línea de comandos con `-enc` y Base64 merece contexto adicional: puede ser administración legítima o una técnica de ofuscación.
 
 - **4690 (Se intentó duplicar un identificador de objeto)**: Intento de duplicar un handle, a menudo usado en ataques de robo de tokens. Si ves muchos 4690 acompañados de 4688 sospechosos, estás viendo un ataque de inyección de procesos.
 

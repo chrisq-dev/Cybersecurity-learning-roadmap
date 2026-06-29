@@ -1,5 +1,8 @@
 ---
 title: "Fundamentos de Correo Electrónico: El Sello de Cera Real"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Fundamentos de Correo Electrónico: El Sello de Cera Real
@@ -53,7 +56,7 @@ La dirección de correo que ves en tu cliente de correo (la cabecera `From:`) es
 Con el tiempo se anadieron extensiones como:
 
 - SMTP-AUTH: autenticación para usar el servidor SMTP (evita que cualquiera use tu servidor para enviar correos). Pero no verifica la identidad del remitente declarado.
-- STARTTLS: cifrado de la conexion entre servidores SMTP. Protege el contenido en tránsito, pero no verifica la identidad del remitente.
+- STARTTLS: cifrado de la conexión entre servidores SMTP. Protege el contenido en tránsito, pero no verifica la identidad del remitente.
 
 Ninguna de estas extensiones resuelve el problema fundamental: el protocolo confía en el remitente declarado.
 
@@ -188,7 +191,7 @@ Estos reportes contienen:
 - Cuántos correos se enviaron desde el dominio.
 - Cuántos pasaron SPF, DKIM y DMARC.
 - Las IPs de los servidores que intentaron enviar correos.
-- La accion tomada por el servidor receptor (none, quarantine, reject).
+- La acción tomada por el servidor receptor (none, quarantine, reject).
 
 Para el Blue Team, estos reportes son oro puro. Revelan:
 
@@ -266,7 +269,7 @@ Como atacante, el correo electrónico es mi vector de entrada favorito. Es más 
 
 Si la empresa objetivo no tiene DMARC, mis opciones son:
 
-1. **Spoofing Directo:** Envio correos como `ceo@empresa.com`. El servidor receptor no verifica nada. La victima ve el nombre del CEO en su bandeja de entrada.
+1. **Spoofing Directo:** Envio correos como `ceo@empresa.com`. El servidor receptor no verifica nada. La víctima ve el nombre del CEO en su bandeja de entrada.
 
 2. **Spoofing con Display Name:** Uso una cuenta falsa de Gmail pero pongo el nombre de visualizacion del CEO: "Juan Perez (CEO)" con dirección `juan.perez@gmail.com`. Muchos usuarios miran solo el nombre, no la dirección.
 
@@ -284,7 +287,7 @@ Si la empresa tiene DMARC `p=reject`, no puedo falsificar su dominio. Pero tengo
 
 ### Como Atacar la Configuración de Correo
 
-Como atacante, si logró acceso a la consola de administración de Office 365 o Google Workspace:
+Como atacante, si logró acceso a la consola de administración de Microsoft 365 o Google Workspace:
 
 - Puedo agregar mi propia llave DKIM y firmar correos como si fueran del dominio legítimo.
 - Puedo modificar el registro SPF para incluir mi servidor.
@@ -315,7 +318,7 @@ Los reportes agregados (XML) se envían diariamente a la dirección configurada 
 - Resultados de DKIM (pass, fail).
 - Resultados de DMARC (pass, fail).
 - Direcciones IP de los servidores que enviaron correos.
-- Accion tomada por el receptor (none, quarantine, reject).
+- Acción tomada por el receptor (none, quarantine, reject).
 
 ### RUF (Reporting URI for Forensic Reports)
 
@@ -427,18 +430,18 @@ Esto significaba que cualquier atacante podía falsificar correos de la Casa Bla
 
 Responde estas preguntas para verificar si comprendes los conceptos:
 
-1. Un hacker envía un correo altamente convincente a todos los empleados de tu empresa, pero la dirección del remitente es `ceo-tuempresa@gmail.com` en lugar de `@tuempresa.com`. Por que los protocolos SPF, DKIM y DMARC no sirven para detener absolutamente nada en este escenario de ataque específico? (Pista: Analiza a quien le pertenece el dominio "gmail.com").
+1. Un hacker envía un correo altamente convincente a todos los empleados de tu empresa, pero la dirección del remitente es `ceo-tuempresa@gmail.com` en lugar de `@tuempresa.com`. Por qué los protocolos SPF, DKIM y DMARC no sirven para detener absolutamente nada en este escenario de ataque específico? (Pista: Analiza a quien le pertenece el dominio "gmail.com").
 
-2. Explica la falla fundamental de arquitectura que tiene el protocolo original SMTP y por que se compara con "enviar una carta por correo l sin que nadie verifique la identidad del remitente".
+2. Explica la falla fundamental de arquitectura que tiene el protocolo original SMTP y por qué se compara con "enviar una carta por correo l sin que nadie verifique la identidad del remitente".
 
-3. Durante una migración corporativa, la empresa contrata un nuevo servicio en la nube para enviar correos de marketing masivos (ej. MailChimp). Al día siguiente, todos los correos de la empresa hacia los clientes empiezan a rebotar y a ser marcados como SPAM por Gmail. Sabiendo como funciona el protocolo SPF, Que paso crítico olvido el equipo de IT y por que Gmail rechazo los correos genuinos?
+3. Durante una migración corporativa, la empresa contrata un nuevo servicio en la nube para enviar correos de marketing masivos (ej. MailChimp). Al día siguiente, todos los correos de la empresa hacia los clientes empiezan a rebotar y a ser marcados como SPAM por Gmail. Sabiendo como funciona el protocolo SPF, Que paso crítico olvido el equipo de IT y por qué Gmail rechazo los correos genuinos?
 
-4. El equipo de Seguridad de la empresa ha configurado correctamente SPF y DKIM, pero configuraron el protocolo DMARC con la política `p=none`. Usando la analogía del "Ejecutor de Órdenes", Por que esta configuración deja a la empresa completamente vulnerable a los ataques de falsificación de identidad (Spoofing) a pesar de tener los candados puestos?
+4. El equipo de Seguridad de la empresa ha configurado correctamente SPF y DKIM, pero configuraron el protocolo DMARC con la política `p=none`. Usando la analogía del "Ejecutor de Órdenes", Por qué esta configuración deja a la empresa completamente vulnerable a los ataques de falsificación de identidad (Spoofing) a pesar de tener los candados puestos?
 
 5. Explica la diferencia entre SPF (que verifica) y DKIM (que verifica). Usa la analogía del correo l para ilustrar la diferencia.
 
-6. Un atacante compromete el servidor DNS de una empresa y modifica el registro SPF para incluir su propia dirección IP. Como podría el equipo de seguridad detectar esta modificacion y que protocolo evitaria que los correos falsos lleguen a los destinatarios?
+6. Un atacante compromete el servidor DNS de una empresa y modifica el registro SPF para incluir su propia dirección IP. Como podría el equipo de seguridad detectar esta modificación y que protocolo evitaria que los correos falsos lleguen a los destinatarios?
 
-7. Por que la política DMARC `p=reject` es considerada la única configuración realmente segura? Que riesgos conlleva implementarla sin una fase de pruebas adecuada?
+7. Por qué la política DMARC `p=reject` es considerada la única configuración realmente segura? Que riesgos conlleva implementarla sin una fase de pruebas adecuada?
 
 8. Como funcionan los reportes DMARC (RUA) y que información valiosa proporcionan al equipo de seguridad?

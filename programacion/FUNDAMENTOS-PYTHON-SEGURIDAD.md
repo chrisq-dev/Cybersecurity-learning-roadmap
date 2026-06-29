@@ -1,5 +1,8 @@
 ---
 title: "Python para Seguridad: La Navaja Suiza"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 # Python para Seguridad: La Navaja Suiza
 
@@ -9,7 +12,7 @@ aqui vamos a entender por qué nadie en Ciberseguridad pierde el tiempo escribie
 
 Cuando un servidor está bajo ataque, cada segundo cuenta. Necesitas una herramienta que te permita escribir un script en 3 minutos, correrlo y apagar el incendio. Python es famoso por ser un lenguaje de "pegamento": te permite conectar el Sistema Operativo, Internet y bases de datos usando un par de comandos simples gracias a sus **Librerías**.
 
-**Por qué esto importa:** En ciberseguridad no importa que el codigo sea bonito. Importa que FUNCIONE y rápido. Python es el martillo más versatil que puedes tener en tu caja de herramientas.
+**Por qué esto importa:** En ciberseguridad no importa que el código sea bonito. Importa que FUNCIONE y rápido. Python es el martillo más versatil que puedes tener en tu caja de herramientas.
 
 ---
 
@@ -24,7 +27,7 @@ Si quieres controlar tu computadora, importas la librería de Sistema Operativo 
 Si quieres conectarte a Internet y descargar páginas web, importas la librería `requests`.
 
 > **Importante:**
-> En ciberseguridad, NUNCA escribas desde cero algo que ya existe en una librería. Un buen hacker no inventa algoritmos de criptografía nuevos; simplemente importa la librería `hashlib` y la usa.
+> En código de seguridad, prefiere bibliotecas mantenidas y revisadas para primitivas complejas, especialmente criptografía. Reutilizar código no elimina la obligación de revisar su API, mantenimiento, licencia y vulnerabilidades.
 
 Es como querer construir una casa y negarte a usar un martillo porque quieres inventar tu propia herramienta para clavar clavos. No tiene sentido.
 

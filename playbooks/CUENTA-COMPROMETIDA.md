@@ -1,5 +1,8 @@
 ---
 title: "Playbook: Cuenta Comprometida (Insider Threat)"
+level: "intermedio"
+content_type: "playbook"
+updated: "2026-06-29"
 ---
 # Playbook: Cuenta Comprometida (Insider Threat)
 
@@ -32,7 +35,7 @@ index=authentication action=success
 | table user, src_ip, Location, LocationPrev, _time
 ```
 
-**KQL (Azure Sentinel) - Viaje Imposible:**
+**KQL (Microsoft Sentinel) - Viaje Imposible:**
 ```kql
 SigninLogs
 | where ResultType == 0
@@ -83,13 +86,15 @@ La regla de oro contra un Espía es **no dejar que se entere de que ya lo descub
    Get-ADUser usuario.comprometido | Set-ADUser -AccountNotDelegated $true
    ```
 
-2. **Revocar Tokens:** Matar todas las sesiones activas (Oauth Tokens) en todas las aplicaciones en la Nube (AWS, Office 365, Salesforce). Esto expulsa al espía a mitad de cualquier descarga de archivos que estuviera haciendo.
+2. **Revocar tokens y sesiones:** Invalidar las sesiones del proveedor de identidad y revisar por separado aplicaciones federadas, credenciales de servicio y proveedores cloud. Revocar en Microsoft Entra ID no elimina automáticamente sesiones independientes de AWS o Salesforce.
 
-   **Revocación en Azure AD (Entra ID):**
+   **Microsoft Entra ID con Microsoft Graph PowerShell:**
    ```powershell
-   Revoke-AzureADUserAllRefreshToken -ObjectId "usuario@dominio.com"
-   Get-AzureADUser -ObjectId "usuario@dominio.com" | Revoke-AzureADSignedInUserSession
+   Connect-MgGraph -Scopes "User.RevokeSessions.All"
+   Revoke-MgUserSignInSession -UserId "usuario@dominio.com"
    ```
+
+   La revocación invalida tokens de actualización y cookies de sesión, pero los tokens de acceso existentes pueden conservar validez hasta expirar. Fuente: [Microsoft Graph — revokeSignInSessions](https://learn.microsoft.com/en-us/graph/api/user-revokesigninsessions?view=graph-rest-1.0).
 
    **Revocación en AWS:**
    ```bash
@@ -178,7 +183,7 @@ Una vez que las ventanas traseras están cerradas y el espía no tiene forma de 
 
 1. **Preservación de evidencias:**
    - Exportar logs de autenticación del SIEM (últimos 7-30 días).
-   - Obtener copia de los audit logs de Office 365 (Unified Audit Log).
+   - Obtener copia de los audit logs de Microsoft 365 (Unified Audit Log).
    - Capturar mailboxes del usuario comprometido (eDiscovery hold).
    - Preservar firewalls logs del perímetro de red.
    - Documentar la línea de tiempo exacta (Timeline).

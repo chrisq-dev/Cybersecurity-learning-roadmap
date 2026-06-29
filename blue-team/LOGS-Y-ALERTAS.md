@@ -1,20 +1,23 @@
 ---
 title: "Logs vs Alertas: Separando la Basura del Fuego"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Logs vs Alertas: Separando la Basura del Fuego
 
 ## Objetivo de esta Guía
 
-Aprender la diferencia crítica entre tener un dato guardado en un disco duro (log) y tener una llamada de emergencia a las 3:00 AM (alerta). El mayor problema del SOC no es que no puedan ver al atacante. Es que ven demasiado. Un banco mediano genera terabytes de registos todos los dias. Encontrar al atacante ahí es peor que buscar una aguja en un pajar: es buscar una aguja específica en una pila de 10 millones de agujas donde la mayoría son idénticas.
+Aprender la diferencia crítica entre tener un dato guardado en un disco duro (log) y tener una llamada de emergencia a las 3:00 AM (alerta). El mayor problema del SOC no es que no puedan ver al atacante. Es que ven demasiado. Un banco mediano genera terabytes de registos todos los días. Encontrar al atacante ahí es peor que buscar una aguja en un pajar: es buscar una aguja específica en una pila de 10 millones de agujas donde la mayoría son idénticas.
 
-Esta guía te enseña a distinguir entre ruido y señal, a construir alertas efectivas, a entender por que la fatiga de alertas es el enemigo silencioso del SOC, y a diseñar sistemas de detección que no ahoguen a los analistas en información inútil. Trabajaras con ejemplos reales de logs, reglas de alerta, y escenarios de tuning que enfrentaras en tu primer mes como analista.
+Esta guía te enseña a distinguir entre ruido y señal, a construir alertas efectivas, a entender por qué la fatiga de alertas es el enemigo silencioso del SOC, y a diseñar sistemas de detección que no ahoguen a los analistas en información inútil. Trabajaras con ejemplos reales de logs, reglas de alerta, y escenarios de tuning que enfrentaras en tu primer mes como analista.
 
 ## El Log: La Bitácora Aburrida
 
-Un log es una línea de texto que registra que algo ocurrió en un sistema. Cada computadora genera miles de logs por segundo sin intervención humana. Cuando mueves el mouse, el sistema anota internamente que el cursor cambio de posición. Cuando Juan inicia sesión a las 8:00 AM, Active Directory registra: "Evento 4624: Juan inicio sesión con exito."
+Un log es una línea de texto que registra que algo ocurrió en un sistema. Cada computadora genera miles de logs por segundo sin intervención humana. Cuando mueves el mouse, el sistema anota internamente que el cursor cambio de posición. Cuando Juan inicia sesión a las 8:00 AM, Active Directory registra: "Evento 4624: Juan inicio sesión con éxito."
 
-El log es estúpido. No sabe si la accion fue buena o mala. Solo atestigua que ocurrió y lo archiva en un disco. Esta falta de juicio es su principal fortaleza (es objetivo) y su principal debilidad (genera volumen masivo de datos sin significado).
+El log es estúpido. No sabe si la acción fue buena o mala. Solo atestigua que ocurrió y lo archiva en un disco. Esta falta de juicio es su principal fortaleza (es objetivo) y su principal debilidad (genera volumen masivo de datos sin significado).
 
 ### Anatomía de un Log
 
@@ -24,11 +27,11 @@ Un log típico contiene campos estandarizados que debes aprender a identificar:
 
 **Identificador del origen:** Que sistema genero el log (nombre del host, dirección IP, o UUID del dispositivo). Esto permite saber donde ocurrió el evento.
 
-**Tipo de evento:** Que categoría de evento se registro (autenticación, creación de proceso, conexion de red, cambio de configuración). En Windows, esto es el Event ID. En syslog, es el facility y severity.
+**Tipo de evento:** Que categoría de evento se registro (autenticación, creación de proceso, conexión de red, cambio de configuración). En Windows, esto es el Event ID. En syslog, es el facility y severity.
 
-**Usuario o entidad:** Que usuario o proceso ejecutó la accion. Esto es fundamental para atribuir actividades a personas específicas.
+**Usuario o entidad:** Que usuario o proceso ejecutó la acción. Esto es fundamental para atribuir actividades a personas específicas.
 
-**Resultado:** Si la accion fue exitosa o fallida (success/failure, allow/deny, 200/403).
+**Resultado:** Si la acción fue exitosa o fallida (success/failure, allow/deny, 200/403).
 
 **Detalles adicionales:** Contexto específico del evento como IPs, puertos, nombres de archivo, líneas de comando, o hashes.
 
@@ -62,7 +65,7 @@ Formato binario propietario de Microsoft. Se lee con herramientas como wevtutil,
 - Linux: syslog, auth.log, kern.log, dmesg. Cada servicio puede tener su propio archivo en /var/log/.
 
 **Servidores Web:**
-- Apache access log: IP, timestamp, método HTTP, URL, codigo de estado, user-agent.
+- Apache access log: IP, timestamp, método HTTP, URL, código de estado, user-agent.
 - Apache error log: Errores del servidor, incluyendo intentos de explotación.
 - Nginx access log: Similar a Apache, formato configurable.
 - IIS (Windows): Formato W3C, similar a Apache.
@@ -73,7 +76,7 @@ Formato binario propietario de Microsoft. Se lee con herramientas como wevtutil,
 - PostgreSQL log: Consultas, errores, conexiones, configurado via postgresql.conf.
 
 **Dispositivos de Red:**
-- Firewalls: Conexiones permitidas y denegadas, con IP origen/destino, puertos, protocolo, accion.
+- Firewalls: Conexiones permitidas y denegadas, con IP origen/destino, puertos, protocolo, acción.
 - Routers y switches: Cambios de configuración, caidas de enlace, errores de interfaz.
 - IDS/IPS: Alertas de detección con firma, severidad, payload del ataque.
 
@@ -86,7 +89,7 @@ Formato binario propietario de Microsoft. Se lee con herramientas como wevtutil,
 - Active Directory: Autenticación, cambios de grupo, creación de usuarios, replicación.
 - LDAP: Consultas y modificaciones al directorio.
 
-### Por que los Logs son Insuficientes por si Solos
+### Por qué los Logs son Insuficientes por si Solos
 
 Imagina a un analista Tier 1 viendo esta secuencia en tiempo real sin ningún filtro:
 1. Juan abrió Word.
@@ -98,15 +101,15 @@ Imagina a un analista Tier 1 viendo esta secuencia en tiempo real sin ningún fi
 7. El antivirus actualizo sus definiciones.
 8. El servicio de correo se reinicio por actualización de Windows.
 9. La base de datos reporto lentitud por indexacion.
-10. Un empleado cambio su contrasena por políticas de caducidad.
+10. Un empleado cambio su contraseña por políticas de caducidad.
 
-En esta secuencia, los eventos 5 y 6 son potencialmente graves. Pero están ahogados entre 8 eventos inocuos. El cerebro humano no puede sostener este nivel de discriminacion por 8 horas seguidas, 5 dias a la semana. Por eso necesitamos alertas.
+En esta secuencia, los eventos 5 y 6 son potencialmente graves. Pero están ahogados entre 8 eventos inocuos. El cerebro humano no puede sostener este nivel de discriminacion por 8 horas seguidas, 5 días a la semana. Por eso necesitamos alertas.
 
 ## La Alerta: El Grito del Sistema
 
 Una alerta es un log que fue evaluado por una regla y superó un umbral de peligrosidad. El trabajo del Blue Team avanzado no es leer logs manualmente. Es crear reglas para que las máquinas lean los logs por ellos y solo molesten al humano cuando sea necesario.
 
-La regla más básica: "Si un usuario falla su contrasena 1 vez, ignóralo. Si falla 50 veces en 1 minuto, enciende la sirena y alerta al analista."
+La regla más básica: "Si un usuario falla su contraseña 1 vez, ignóralo. Si falla 50 veces en 1 minuto, enciende la sirena y alerta al analista."
 
 Pero las alertas efectivas son mucho más complejas que simples umbrales. Una buena alerta responde estas preguntas automáticamente:
 - Que paso exactamente? (Título claro y específico).
@@ -115,7 +118,7 @@ Pero las alertas efectivas son mucho más complejas que simples umbrales. Una bu
 - Quien esta involucrado? (Usuario, proceso).
 - Cuando paso? (Timestamp exacto y ventana de tiempo relevante).
 - Que evidencia hay? (Logs que dispararon la regla).
-- Que debo hacer? (Accion recomendada o playbook asociado).
+- Que debo hacer? (Acción recomendada o playbook asociado).
 
 ### Tipos de Alertas según su Lógica de Detección
 
@@ -123,7 +126,7 @@ Pero las alertas efectivas son mucho más complejas que simples umbrales. Una bu
 
 Ejemplo: "10 intentos de autenticación fallidos en 5 minutos desde la misma IP."
 
-Problema: Si el umbral es 10 y el empleado olvida su contrasena 8 veces, no hay alerta. Pero si un atacante hace 9 intentos y se detiene, tampoco. El umbral es un número arbitrario que los atacantes pueden aprender y evadir.
+Problema: Si el umbral es 10 y el empleado olvida su contraseña 8 veces, no hay alerta. Pero si un atacante hace 9 intentos y se detiene, tampoco. El umbral es un número arbitrario que los atacantes pueden aprender y evadir.
 
 **Alertas basadas en firmas:** Buscan patrones específicos conocidos de malware o técnicas de ataque. Son precisas pero solo detectan lo que ya se conoce.
 
@@ -169,7 +172,7 @@ Si esto ocurre 500 veces al día, los analistas se cansan y empiezan a cerrar la
 4. Los analistas desarrollan "ceguera" a esas alertas.
 5. Un ataque real genera la misma alerta.
 6. El analista la cierra sin investigar por habito.
-7. El ataque tiene exito.
+7. El ataque tiene éxito.
 
 ### Falsos Negativos: El Asesino Silencioso
 
@@ -189,7 +192,7 @@ Un atacante comprometio una empresa de apuestas en Reino Unido. Estuvo presente 
 
 ### El caso de la Alerta Ignorada (2014)
 
-Un analista SOC de una empresa de telecomunicaciones recibia diariamente una alerta de conexion saliente a una IP sospechosa. Siempre resultaba ser tráfico legítimo de un servidor de actualizaciones. Empezó a cerrarla sin mirar. Un día, la misma alerta correspondia a un malware exfiltrando datos.
+Un analista SOC de una empresa de telecomunicaciones recibia diariamente una alerta de conexión saliente a una IP sospechosa. Siempre resultaba ser tráfico legítimo de un servidor de actualizaciones. Empezó a cerrarla sin mirar. Un día, la misma alerta correspondia a un malware exfiltrando datos.
 
 ### El caso del Log Sin Contexto (2020)
 
@@ -207,7 +210,7 @@ El atacante sabe que los logs son su peor enemigo. Por eso los borra, los modifi
 
 1. `{"ip": "10.0.0.1", "action": "GET /index.html", "status": 200}`. Es log o alerta? Que necesitaria para ser alerta?
 2. Regla: "Alertar si alguien ejecuta DROP TABLE." Recibes 500 alertas diarias del equipo de desarrollo. Es falso positivo o falso negativo? Como ajustas la regla?
-3. Por que enviar logs crudos a la pantalla del analista sin reglas de alerta garantiza su saturacion?
+3. Por qué enviar logs crudos a la pantalla del analista sin reglas de alerta garantiza su saturacion?
 4. Un atacante borra los Event Logs de Windows. Puede el SOC investigar? Que otras fuentes de datos podrían tener evidencia?
 5. Regla: "Alertar si usuario se conecta desde país diferente al habitual." Tu empresa es una aerolínea internacional. Como evitas 50,000 falsos positivos al día?
 6. Un analista recibe las mismas 100 alertas diarias y las cierra sin mirar. Un día una es diferente pero la cierra por inercia. Que falla queda expuesta?
@@ -226,9 +229,9 @@ El atacante sabe que los logs son su peor enemigo. Por eso los borra, los modifi
 
 **Sysmon (System Monitor - Sysinternals):**
 - Event ID 1: Creación de proceso (imagen, línea de comandos, hash).
-- Event ID 3: Conexion de red (origen, destino, puerto, protocolo).
+- Event ID 3: Conexión de red (origen, destino, puerto, protocolo).
 - Event ID 7: Carga de DLL (imagen cargada, DLL cargada).
-- Event ID 8: Creación de remote thread (indicador de inyección de codigo).
+- Event ID 8: Creación de remote thread (indicador de inyección de código).
 - Event ID 11: Creación de archivo.
 - Event ID 13: Cambio en registro.
 - Event ID 15: Pipe creado.
@@ -269,7 +272,7 @@ El atacante sabe que los logs son su peor enemigo. Por eso los borra, los modifi
 **Web Server (IIS, Apache, Nginx):**
 - Método HTTP (GET, POST, PUT, DELETE).
 - URL solicitada.
-- Codigo de respuesta (200, 404, 500).
+- Código de respuesta (200, 404, 500).
 - User-Agent.
 - IP del solicitante.
 - Parámetros enviados.
@@ -277,7 +280,7 @@ El atacante sabe que los logs son su peor enemigo. Por eso los borra, los modifi
 
 **Base de Datos:**
 - Consultas lentas.
-- Intentos de conexion fallidos.
+- Intentos de conexión fallidos.
 - Cambios en permisos.
 - Lecturas masivas de datos.
 
@@ -324,7 +327,7 @@ Formato moderno y más flexible:
 ## Preguntas Adicionales
 
 9. El equipo de IT implementa una nueva aplicación que genera 50,000 logs por segundo. El SIEM esta diseñado para 10,000 EPS. Como manejas esta situación sin perder capacidad de detección?
-10. Un administrador de sistemas ejecuta un script que modifica 500 cuentas de usuario en una hora. El SIEM genera 500 alertas de "modificacion de cuenta." Como evitas que este tipo de eventos abrumen a los analistas?
+10. Un administrador de sistemas ejecuta un script que modifica 500 cuentas de usuario en una hora. El SIEM genera 500 alertas de "modificación de cuenta." Como evitas que este tipo de eventos abrumen a los analistas?
 11. El CEO te pide que reduzcas los logs a solo "lo que importa." Como le explicas que un log que hoy parece irrelevante puede ser crítico en una investigación futura?
 12. Implementas Sysmon en 1000 endpoints. El volumen de logs se triplica. El equipo de operaciones se queja del rendimiento. Como balanceas la necesidad de telemetría de seguridad con el rendimiento del sistema?
 
@@ -345,7 +348,7 @@ Formato moderno y más flexible:
 
 **Por tipo de amenaza:** Ransomware > Acceso no autorizado > Malware conocido > Comportamiento sospechoso > Violación de política.
 
-**Por contexto temporal:** Una alerta de conexion a IP sospechosa a las 3 AM desde la cuenta de un empleado que nunca trabaja en ese horario es más crítica que la misma alerta a las 3 PM.
+**Por contexto temporal:** Una alerta de conexión a IP sospechosa a las 3 AM desde la cuenta de un empleado que nunca trabaja en ese horario es más crítica que la misma alerta a las 3 PM.
 
 **Por confianza en la regla:** Una alerta generada por una regla basada en IoCs confirmados (alta confianza) puede priorizarse sobre una alerta de una regla de análisis de comportamiento (confianza media/baja).
 

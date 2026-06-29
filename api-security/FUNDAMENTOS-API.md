@@ -1,5 +1,8 @@
 ---
 title: "Fundamentos de API: El Mensajero del Restaurante Moderno"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Fundamentos de API: El Mensajero del Restaurante Moderno
@@ -10,7 +13,7 @@ Desmitificar el acrónimo más usado en todo Silicon Valley: API (Application Pr
 
 Si quieres encontrar los peores agujeros de seguridad en el internet moderno, tienes que entender y auditar las APIs. Las APIs son el corazón de las aplicaciones modernas: apps móviles, aplicaciones web SPA (Single Page Applications), microservicios, IoT, y servicios cloud.
 
-Esta guía es el punto de partida para entender como funcionan las APIs, cual es su arquitectura, como viajan los datos, y por que son un blanco tan atractivo para los atacantes.
+Esta guía es el punto de partida para entender como funcionan las APIs, cual es su arquitectura, como viajan los datos, y por qué son un blanco tan atractivo para los atacantes.
 
 ## Que es una API?
 
@@ -85,7 +88,7 @@ JSON desplazó a XML por varias razones:
 
 ### El Hacker de APIs
 
-Un Hacker de élite ignora la bonita pagina web del banco. No le importa si el botón de "Transferir" es azul o verde.
+Un Hacker de élite ignora la bonita página web del banco. No le importa si el botón de "Transferir" es azul o verde.
 
 El Hacker abre una terminal de comandos, intercepta el papelito (JSON) antes de que llegue al mensajero, le cambia el valor (Ej. cambia `"saldo": 100` a `"saldo": 1000000`), y se lo entrega directamente a la API a espaldas del desarrollador.
 
@@ -99,7 +102,7 @@ Herramientas como Burp Suite, Postman, curl, y scripts en Python le permiten al 
 
 ### REST (Representational State Transfer)
 
-Es el tipo de API más común hoy en día. REST no es un protocolo, es un conjunto de principios de diseno.
+Es el tipo de API más común hoy en día. REST no es un protocolo, es un conjunto de principios de diseño.
 
 **Principios REST:**
 - Recursos identificados por URLs (ej. `/api/usuarios/5`)
@@ -157,7 +160,7 @@ No es una API tradicional sino un protocolo de comunicación bidireccional en ti
 
 ## Como se Autentican las APIs
 
-Las APIs no tienen interfaz gráfica para que el usuario ponga su usuario y contrasena. Necesitan mecanismos de autenticación programaticos.
+Las APIs no tienen interfaz gráfica para que el usuario ponga su usuario y contraseña. Necesitan mecanismos de autenticación programaticos.
 
 ### API Keys
 
@@ -175,7 +178,7 @@ X-API-Key: abc123def456
 
 ### Basic Auth
 
-El cliente envía usuario y contrasena en cada petición, codificados en base64:
+El cliente envía usuario y contraseña en cada petición, codificados en base64:
 
 ```
 GET /api/datos
@@ -211,9 +214,9 @@ JWT es un estándar abierto (RFC 7519) que define un formato compacto y autónom
 
 ### OAuth 2.0 y OpenID Connect
 
-OAuth 2.0 es un protocolo de autorización delegada. Permite que una aplicación acceda a recursos en nombre de un usuario sin conocer su contrasena.
+OAuth 2.0 es un protocolo de autorización delegada. Permite que una aplicación acceda a recursos en nombre de un usuario sin conocer su contraseña.
 
-**Ejemplo:** Cuando inicias sesión en un sitio con "Login with Google", estas usando OAuth 2.0. El sitio recibe un token de Google que le permite acceder a tu información básica sin que el sitio conozca tu contrasena de Google.
+**Ejemplo:** Cuando inicias sesión en un sitio con "Login with Google", estas usando OAuth 2.0. El sitio recibe un token de Google que le permite acceder a tu información básica sin que el sitio conozca tu contraseña de Google.
 
 OpenID Connect es una capa sobre OAuth 2.0 que añade autenticación (saber quien es el usuario).
 
@@ -266,7 +269,7 @@ GET /api/login
 Respuesta: 429 Too Many Requests
 ```
 
-**Por que es importante:** Sin rate limiting, un atacante puede probar millones de contraseñas por segundo (fuerza bruta).
+**Por qué es importante:** Sin rate limiting, un atacante puede probar millones de contraseñas por segundo (fuerza bruta).
 
 **Aprende más en:** La guía completa en `api-security/RIESGOS-CONTROLES.md`.
 
@@ -330,18 +333,18 @@ Si la API no verifica que el token pertenece al usuario 1234, el usuario atacant
 
 ## Autoevaluación
 
-1. Usando la analogía del "Mensajero y la Cocina", explica por que la arquitectura de Software como Servicio (SaaS) separa estrictamente la Aplicación del Celular (Frontend) de los Servidores de Base de Datos (Backend) y obliga a que toda comunicación pase por una API.
+1. Usando la analogía del "Mensajero y la Cocina", explica por qué la arquitectura de Software como Servicio (SaaS) separa estrictamente la Aplicación del Celular (Frontend) de los Servidores de Base de Datos (Backend) y obliga a que toda comunicación pase por una API.
 
-2. Un desarrollador junior afirma que su pagina web es segura "porque escondió el botón rojo de Borrar Cuenta usando codigo CSS para que sea invisible en la pantalla del usuario". Por que un Hacker de APIs se reiría de esta "medida de seguridad" y como lograría borrar la cuenta de todas formas?
+2. Un desarrollador junior afirma que su página web es segura "porque escondió el botón rojo de Borrar Cuenta usando código CSS para que sea invisible en la pantalla del usuario". Por qué un Hacker de APIs se reiría de esta "medida de seguridad" y como lograría borrar la cuenta de todas formas?
 
-3. Que es JSON y por que desplazó al antiguo formato XML como el lenguaje dominante para la comunicación entre APIs RESTful modernas?
+3. Que es JSON y por qué desplazó al antiguo formato XML como el lenguaje dominante para la comunicación entre APIs RESTful modernas?
 
 4. Si analizas el tráfico de red de tu computadora mientras juegas un videojuego multijugador masivo en línea, verás miles de paquetes JSON volando por segundo. Quien es el "Cliente" y quien es el "Mensajero" en este escenario interactivo?
 
-5. Explica la diferencia entre una API REST y una API GraphQL desde la perspectiva de un atacante. Cual es más fácil de mapear y por que?
+5. Explica la diferencia entre una API REST y una API GraphQL desde la perspectiva de un atacante. Cual es más fácil de mapear y por qué?
 
 6. Un atacante intercepta una petición que contiene un header `Authorization: Bearer <token>`. El token es un JWT. Que puede leer el atacante en el token? Que no puede modificar sin ser detectado?
 
-7. Tu empresa expone una API sin autenticación para un servicio interno que solo debería ser accesible desde la red interna. Un desarrollador dice "esta bien porque la IP interna no es accesible desde internet". Por que esta confianza es peligrosa? (Pista: Piensa en SSRF.)
+7. Tu empresa expone una API sin autenticación para un servicio interno que solo debería ser accesible desde la red interna. Un desarrollador dice "esta bien porque la IP interna no es accesible desde internet". Por qué esta confianza es peligrosa? (Pista: Piensa en SSRF.)
 
 8. Durante una auditoría, encuentras que la API de tu empresa usa versionado en la URL (`/api/v1/usuarios`) y que la versión 1 sigue activa 3 años después de lanzar la v2. Que riesgos introduce mantener versiones antiguas de una API?

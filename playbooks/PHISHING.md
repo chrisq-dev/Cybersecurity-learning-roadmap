@@ -1,5 +1,8 @@
 ---
 title: "Playbook: Compromiso por Phishing"
+level: "intermedio"
+content_type: "playbook"
+updated: "2026-06-29"
 ---
 # Playbook: Compromiso por Phishing
 
@@ -88,37 +91,28 @@ AuditLogs
 ### Paso 1: Contención (Cortar el Acceso)
 El hacker está adentro del buzón leyendo correos confidenciales. Tienes que sacarlo a patadas inmediatamente. cada minuto que pasa, el tipo está leyendo correos que no debería.
 
-1. **Forzar el Cierre de Sesión:** Entrar a la consola de Identidad (Active Directory / Entra ID) y presionar el botón "Revoke all sessions" (Revocar todos los Tokens de sesión activos). Esto expulsará al hacker (y al usuario legítimo) del correo instantáneamente, sin importar en qué dispositivo estén.
+1. **Revocar sesiones y contener la identidad:** Deshabilitar temporalmente la cuenta cuando el riesgo lo justifique e invalidar tokens de actualización y cookies de sesión mediante Microsoft Graph. La revocación fuerza una nueva autenticación, pero algunos tokens de acceso pueden seguir siendo válidos hasta expirar; verifica el resultado en los registros.
 
-   **Azure AD (Entra ID) - Revocación:**
+   **Microsoft Entra ID con Microsoft Graph PowerShell:**
    ```powershell
-   # Revocar tokens de refresco
-   Revoke-AzureADUserAllRefreshToken -ObjectId "jefe.finanzas@empresa.com"
+   Connect-MgGraph -Scopes "User.RevokeSessions.All", "User.EnableDisableAccount.All", "User.ReadWrite.All"
+   $userId = "jefe.finanzas@empresa.com"
 
-   # Revocar sesiones de usuario
-   Revoke-AzureADSignedInUserSession
-
-   # Deshabilitar la cuenta
-   Set-AzureADUser -ObjectId "jefe.finanzas@empresa.com" -AccountEnabled $false
+   Revoke-MgUserSignInSession -UserId $userId
+   Update-MgUser -UserId $userId -AccountEnabled:$false
    ```
 
-   **Exchange Online - Eliminar sesiones:**
-   ```powershell
-   # Eliminar todas las sesiones activas de Exchange
-   Get-Mailbox -Identity "jefe.finanzas@empresa.com" | Remove-MailboxPermission -User "jefe.finanzas@empresa.com" -AccessRights FullAccess
+   Fuente: [Microsoft Graph — revokeSignInSessions](https://learn.microsoft.com/en-us/graph/api/user-revokesigninsessions?view=graph-rest-1.0).
 
-   # Remover dispositivos móviles
-   Get-MobileDevice -Mailbox "jefe.finanzas@empresa.com" | Remove-MobileDevice
-   ```
-
-2. **Resetear la Contraseña:** Cambiar la contraseña comprometida por una contraseña temporal generada aleatoriamente de 20 caracteres.
+2. **Restablecer la contraseña:** Si la cuenta utiliza contraseña, asignar una temporal generada mediante el proceso seguro de la organización y exigir cambio en el siguiente inicio. No envíes el secreto por el buzón comprometido.
 
    ```powershell
-   # Generar contraseña temporal segura
-   $password = -join ((0x30..0x39) + (0x41..0x5A) + (0x61..0x7A) + (33..47) | Get-Random -Count 20 | % {[char]$_})
+   $passwordProfile = @{
+     Password = "<contraseña-temporal-generada-de-forma-segura>"
+     ForceChangePasswordNextSignIn = $true
+   }
 
-   # Resetear en Azure AD
-   Reset-AzureADUserPassword -ObjectId "jefe.finanzas@empresa.com" -Password $password -ForceChangePasswordNextLogin $true
+   Update-MgUser -UserId $userId -PasswordProfile $passwordProfile
    ```
 
 3. **Aislar la Computadora:** Aunque fue un ataque a la Nube (Correo), existe el riesgo de que el Phishing incluyera la descarga de un Malware. Por precaución, usar el EDR para aislar la computadora física de la red de la oficina (Visto en el Playbook de Malware).
@@ -206,7 +200,7 @@ El hacker fue expulsado. Pero en los 10 minutos que estuvo adentro, ¿Qué hizo?
 | Acceso a SharePoint | SharePoint Audit | Access denied logs, descargas |
 | Descarga OneDrive | OneDrive Audit | FileDownloaded events |
 | Teams Messages | Teams Audit | TeamsSessionStarted, MessageSent |
-| Modificó reglas | Azure AD | Set-Mailbox, New-InboxRule |
+| Modificó reglas | Microsoft Entra ID | Set-Mailbox, New-InboxRule |
 
 ---
 
@@ -215,16 +209,16 @@ La amenaza ha sido neutralizada y el buzón está limpio.
 
 1. **Auditoría con el Usuario:** Llamar por teléfono al Jefe de Finanzas. Preguntarle exactamente qué vio, en qué hizo clic y cómo ocurrió el ataque. Esta información servirá para la reunión forense (Purple Team).
 
-2. **Devolver el Acceso:** Entregarle la nueva contraseña temporal al usuario por una vía segura (Ej. SMS, no por el correo que acaba de recuperar).
+2. **Devolver el Acceso:** Entregar la credencial temporal mediante un canal aprobado y verificado o utilizar un Temporary Access Pass cuando el entorno lo permita.
 
-3. **Forzar MFA:** Obligar al usuario a volver a registrar su dispositivo móvil para la Autenticación Multi-Factor (MFA), asegurándose de que el dispositivo del hacker sea borrado del registro.
+3. **Revisar autenticadores:** Examinar los métodos registrados, eliminar únicamente los que no pertenezcan al usuario y aplicar el procedimiento de recuperación de identidad. Borrar todos los métodos sin validar puede bloquear al usuario y destruir evidencia útil.
 
    ```powershell
-   # Forzar registro de MFA
-   Set-MsolUser -UserPrincipalName "jefe.finanzas@empresa.com" -StrongAuthenticationRequirements @()
-   # Remover dispositivos antiguos
-   Get-AzureADUserRegisteredDevice -ObjectId "jefe.finanzas@empresa.com" | Remove-AzureADDevice
+   Connect-MgGraph -Scopes "UserAuthenticationMethod.ReadWrite.All"
+   Get-MgUserAuthenticationMethod -UserId $userId
    ```
+
+   La eliminación usa un cmdlet específico para cada tipo de método. Consulta [Microsoft Graph Identity SignIns](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.identity.signins/).
 
 ### Análisis Avanzado: Phishing Kit Analysis
 
@@ -292,7 +286,7 @@ Después del incidente, el Purple Team se reúne para:
 
 ## Resumen
 Usuario de Finanzas recibió un correo de spear phishing que suplantaba al CFO.
-El usuario ingresó sus credenciales en una página falsa de Office 365.
+El usuario ingresó sus credenciales en una página falsa de Microsoft 365.
 
 ## Timeline
 - 10:15 AM: Alerta de inicio de sesión desde Nigeria

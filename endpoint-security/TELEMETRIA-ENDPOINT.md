@@ -1,5 +1,8 @@
 ---
 title: "Telemetría del Endpoint: Las Cámaras Corporales"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Telemetría del Endpoint: Las Cámaras Corporales
@@ -10,13 +13,13 @@ Aprender de donde diablos saca un SOC Analyst la información para saber que un 
 
 El SIEM (el cerebro del cuartel general de seguridad) es una máquina vacía. Si los servidores y las laptops corporativas no le envían datos voluntariamente, el Analista de Seguridad estará ciego. A este envio continuo de información se le llama Telemetría.
 
-Sin telemetría, el equipo de seguridad opera a ciegas. Un ataque puede durar meses sin ser detectado. Con telemetría de calidad, cada accion del atacante queda registrada y puede ser analizada.
+Sin telemetría, el equipo de seguridad opera a ciegas. Un ataque puede durar meses sin ser detectado. Con telemetría de calidad, cada acción del atacante queda registrada y puede ser analizada.
 
 ## La Analogía
 
 Imagina a un policía patrullando una ciudad a media noche. Si ocurre un tiroteo y el policía no trae su radio, el Cuartel General no se entera de nada.
 
-Por eso, la policía moderna inventó las Bodycams (Cámaras Corporales). La cámara graba cada palabra, cada rostro y cada accion, y transmite el video en vivo al Cuartel General. Si algo sale mal, el Detective Forense puede rebobinar la cinta y ver exactamente como ocurrieron los hechos.
+Por eso, la policía moderna inventó las Bodycams (Cámaras Corporales). La cámara graba cada palabra, cada rostro y cada acción, y transmite el video en vivo al Cuartel General. Si algo sale mal, el Detective Forense puede rebobinar la cinta y ver exactamente como ocurrieron los hechos.
 
 En Ciberseguridad, la computadora del empleado de Finanzas es el policía patrullando. El agente de Telemetría es la Bodycam instalada en su pecho. El Cuartel General es el SIEM.
 
@@ -30,7 +33,7 @@ Cada vez que ocurre algo importante en el sistema, Windows anota un evento:
 
 - "9:00 AM - El usuario Juanito inicio sesión (Evento 4624)"
 - "9:05 AM - Juanito abrió Word.exe (Evento 4688)"
-- "9:06 AM - Juanito metió mal su contrasena (Evento 4625)"
+- "9:06 AM - Juanito metió mal su contraseña (Evento 4625)"
 
 ### Estructura de un Evento
 
@@ -40,9 +43,9 @@ Cada evento de Windows contiene:
 
 2. **Timestamp:** La hora exacta del evento (en UTC, aunque el SO lo muestre en hora local).
 
-3. **Usuario:** La cuenta de usuario que ejecutó la accion.
+3. **Usuario:** La cuenta de usuario que ejecutó la acción.
 
-4. **Origen:** La computadora desde donde se ejecutó la accion (importante para detectar inicios de sesión remotos).
+4. **Origen:** La computadora desde donde se ejecutó la acción (importante para detectar inicios de sesión remotos).
 
 5. **Detalle:** Información específica del evento, como el nombre del proceso ejecutado o la IP de origen.
 
@@ -67,7 +70,7 @@ No todos los eventos son utiles. Los analistas de SOC se enfocan en unos pocos:
 
 Los trata como si fueran notas de supermercado que tiras a la semana.
 
-Windows borra esta libreta cada pocos dias para ahorrar espacio en el disco duro. Por defecto:
+Windows borra esta libreta cada pocos días para ahorrar espacio en el disco duro. Por defecto:
 
 - Los logs de seguridad tienen un tamaño máximo de 20 MB (se sobrescriben rápidamente).
 - Los logs de sistema tienen un tamaño máximo de 20 MB.
@@ -121,14 +124,14 @@ Process Create:
 
 El analista ve inmediatamente: PowerShell ofuscado, descargando un archivo desde una IP sospechosa.
 
-**Event ID 3 - Conexion de Red:**
+**Event ID 3 - Conexión de Red:**
 
-Registra cada conexion de red que hace cualquier proceso:
+Registra cada conexión de red que hace cualquier proceso:
 
 - Protocolo (TCP/UDP).
 - Dirección IP de origen y destino.
 - Puerto de origen y destino.
-- Proceso que realizo la conexion.
+- Proceso que realizo la conexión.
 
 Ejemplo:
 
@@ -168,13 +171,13 @@ Registra cada consulta DNS que hace el sistema:
 
 Esto permite detectar comunicación con dominios de C2 (Command and Control) aunque la IP cambie constantemente (Domain Fluxing).
 
-### Por que Sysmon es Indispensable
+### Por qué Sysmon es Indispensable
 
 Windows nativo no registra:
 
 - La línea de comandos completa (solo el nombre del proceso).
 - El hash del proceso creado.
-- La conexion de red por proceso.
+- La conexión de red por proceso.
 - Las consultas DNS.
 
 Sysmon cierra todos estos vacíos. Es el estándar de la industria para telemetría de Windows en el SOC.
@@ -189,7 +192,7 @@ La configuración más usada de Sysmon es la de SwiftOnSecurity (disponible en G
 - Registrar modificaciones al registro de Windows (persistencia).
 - Ignorar eventos ruidosos de procesos legítimos (Windows Update, antivirus).
 
-Sin una configuración como esta, Sysmon generaria terabytes de logs inutiles. La configuración filtra el ruido y deja solo las senales importantes.
+Sin una configuración como esta, Sysmon generaría terabytes de logs inútiles. La configuración filtra el ruido y deja solo las señales importantes.
 
 ## Colectores y Forwarding Centralizado
 
@@ -205,7 +208,7 @@ Microsoft incluye el rol de Windows Event Collector en Windows Server. Configura
 
 ### Forwarders de Terceros
 
-Herramientas como Winlogbeat (de Elastic), NXLog o Splunk Universal Forwarder cumplen la misma funcion:
+Herramientas como Winlogbeat (de Elastic), NXLog o Splunk Universal Forwarder cumplen la misma función:
 
 - Se instalan en cada endpoint.
 - Leen los canales de Event Log y Sysmon.
@@ -251,7 +254,7 @@ El SIEM no solo guarda eventos, los enriquece:
 - Reputación: consultar bases de datos de amenazas (VirusTotal, AlienVault OTX).
 - Contexto: cruzar con información del empleado (departamento, rol, ubicación).
 
-Un evento de Sysmon que muestra una conexion a una IP en Russia es más preocupante si el empleado es de Contabilidad en México.
+Un evento de Sysmon que muestra una conexión a una IP en Russia es más preocupante si el empleado es de Contabilidad en México.
 
 ### Dashboards y Alertas
 
@@ -272,7 +275,7 @@ El grupo Guardians of Peace (GOP) ataco Sony Pictures en 2014. El ataque na sido
 - Los logs locales fueron borrados por el malware.
 - No había Sysmon instalado para capturar detalles de procesos.
 
-La leccion: si la telemetría no sale del endpoint, el atacante la destruye cuando obtiene privilegios.
+La lección: si la telemetría no sale del endpoint, el atacante la destruye cuando obtiene privilegios.
 
 ### El Caso del Empleado que Robo Datos (2019)
 
@@ -284,9 +287,9 @@ El SIEM correlaciono: "usuario fuera de horario + copia masiva a dispositivo nue
 
 ### La Falla de Telemetría en el ataque a SolarWinds (2020)
 
-Durante el ataque SolarWinds, el malware Sunburst permanecio inactivo por 14 dias. Muchas empresas tenían configuraciones de Sysmon que ignoraban eventos de procesos firmados por SolarWinds porque los consideraban "confiables".
+Durante el ataque SolarWinds, el malware Sunburst permanecio inactivo por 14 días. Muchas empresas tenían configuraciones de Sysmon que ignoraban eventos de procesos firmados por SolarWinds porque los consideraban "confiables".
 
-La leccion: la lista blanca de procesos debe ser mínima. Incluso los procesos firmados pueden ser maliciosos si ejecutan codigo inyectado.
+La lección: la lista blanca de procesos debe ser mínima. Incluso los procesos firmados pueden ser maliciosos si ejecutan código inyectado.
 
 ## Modos de Falla
 
@@ -296,7 +299,7 @@ Si los logs solo existen localmente, el atacante los borra al obtener Admin. La 
 
 ### Falla 2: Enviar Demasiados Logs Sin Filtro
 
-Enviar absolutamente todo genera ruido insoportable. El SOC se satura y pierde las senales reales. Hay que aplicar filtrado en el origen.
+Enviar absolutamente todo genera ruido insoportable. El SOC se satura y pierde las señales reales. Hay que aplicar filtrado en el origen.
 
 ### Falla 3: Confiar Ciegamente en la Configuración por Defecto
 
@@ -321,7 +324,7 @@ Como atacante, se que la telemetría es mi enemiga. Mis objetivos son:
 
 ### Evitar la Detección
 
-- No usar cmd.exe ni powershell.exe si puedo inyectar codigo directamente en memoria.
+- No usar cmd.exe ni powershell.exe si puedo inyectar código directamente en memoria.
 - Usar herramientas que no generan Event ID 4688 (ej. ejecución directa via .NET).
 - Deshabilitar ETW (Event Tracing for Windows) desde el kernel si tengo privilegios.
 
@@ -342,7 +345,7 @@ Sysmon registra la línea de comandos. Como atacante:
 - Uso `-EncodedCommand` con Base64 (los EDR y SIEM detectan esto).
 - Alternativa: parto el comando en variables y las concateno.
 - Alternativa: uso `-Command` con cadenas escapadas.
-- Alternativa: uso `Invoke-Expression` con codigo ofuscado.
+- Alternativa: uso `Invoke-Expression` con código ofuscado.
 
 ### Usar Procesos Legítimos como Señuelo
 
@@ -352,11 +355,11 @@ Me meto dentro de un proceso que nadie audita:
 - `explorer.exe` - Explorador de Windows.
 - `notepad.exe` - Bloc de notas (el usuario siempre tiene uno abierto).
 
-Si logró inyectar codigo en `explorer.exe`, mis acciones se registraran como si fueran del proceso legítimo.
+Si logró inyectar código en `explorer.exe`, mis acciones se registraran como si fueran del proceso legítimo.
 
 ### Domain Fronting
 
-Para que la conexion saliente no levante sospechas, uso Domain Fronting:
+Para que la conexión saliente no levante sospechas, uso Domain Fronting:
 
 - Me conecto a un CDN legítimo (CloudFront, Akamai).
 - El CDN reenvia el tráfico a mi servidor C2 real.
@@ -376,7 +379,7 @@ ETW es el mecanismo de tracing del kernel de Windows. Es la fuente de datos que 
 ### Proveedores ETW Importantes para Seguridad
 
 - **Microsoft-Windows-Kernel-Process:** Eventos de creación y terminacion de procesos.
-- **Microsoft-Windows-Kernel-Network:** Eventos de conexion de red.
+- **Microsoft-Windows-Kernel-Network:** Eventos de conexión de red.
 - **Microsoft-Windows-Kernel-File:** Eventos de operaciones con archivos.
 - **Microsoft-Windows-Kernel-Registry:** Eventos de acceso al registro.
 - **Microsoft-Windows-Security-Auditing:** Eventos de seguridad (logons, privilegios).
@@ -389,7 +392,7 @@ Los atacantes avanzados saben que ETW es una fuente de telemetría crítica. Han
 1. **Modificar el registro:** Deshabilitar ETW en `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI`.
 2. **Patch en memoria:** Modificar las funciones de ETW en memoria para que no registren eventos.
 3. **Usar llamadas directas al kernel (Syscalls):** Evitar las APIs de Windows que ETW monitorea.
-4. **Inyección en procesos confiables:** El codigo inyectado se ejecuta en un proceso que tiene ETW deshabilitado.
+4. **Inyección en procesos confiables:** El código inyectado se ejecuta en un proceso que tiene ETW deshabilitado.
 
 Los EDRs modernos detectan cuando ETW es deshabilitado y generan una alerta de "Tampering" inmediatamente.
 
@@ -444,18 +447,18 @@ Los defensores responden con:
 
 Responde estas preguntas para verificar si comprendes los conceptos:
 
-1. Un Analista del SOC revisa su pantalla del SIEM y nota que no ha recibido ni un solo log de eventos de las laptops del departamento de Finanzas durante las últimas 48 horas. Usando la analogía de la Bodycam, explica que significa este "Silencio de Telemetría" y por que es una emergencia crítica.
+1. Un Analista del SOC revisa su pantalla del SIEM y nota que no ha recibido ni un solo log de eventos de las laptops del departamento de Finanzas durante las últimas 48 horas. Usando la analogía de la Bodycam, explica que significa este "Silencio de Telemetría" y por qué es una emergencia crítica.
 
-2. Por que depender exclusivamente de la lectura de los "Event Logs" locales guardados en la laptop del usuario comprometido es una falla técnica durante una investigación de Incident Response o Forense? (Pista: Piensa en lo primero que hace un hacker profesional cuando obtiene permisos de Administrador).
+2. Por qué depender exclusivamente de la lectura de los "Event Logs" locales guardados en la laptop del usuario comprometido es una falla técnica durante una investigación de Incident Response o Forense? (Pista: Piensa en lo primero que hace un hacker profesional cuando obtiene permisos de Administrador).
 
 3. Cual es la diferencia principal entre los Event Logs que vienen por defecto en Windows y la telemetría hiper-detallada que provee la herramienta avanzada Sysmon?
 
-4. El SIEM levanta una alerta basada en la Telemetría (Sysmon Event ID 1): `powershell.exe -ExecutionPolicy Bypass -encodedCommand aW52b2tlLW1pbWlrYXR6...`. Por que este simple evento (un programa legal ejecutando codigo ofuscado) es suficiente para que el Analista de Seguridad desconecte la máquina de la red inmediatamente?
+4. El SIEM levanta una alerta basada en la Telemetría (Sysmon Event ID 1): `powershell.exe -ExecutionPolicy Bypass -encodedCommand aW52b2tlLW1pbWlrYXR6...`. Por qué este simple evento (un programa legal ejecutando código ofuscado) es suficiente para que el Analista de Seguridad desconecte la máquina de la red inmediatamente?
 
-5. Explica por que un atacante que obtiene privilegios de Administrador en un endpoint puede borrar los logs locales, pero no puede borrar los logs que ya fueron enviados al SIEM.
+5. Explica por qué un atacante que obtiene privilegios de Administrador en un endpoint puede borrar los logs locales, pero no puede borrar los logs que ya fueron enviados al SIEM.
 
-6. Que información adicional proporciona Sysmon Event ID 3 (conexion de red) que no esta disponible en los logs nativos de Windows?
+6. Que información adicional proporciona Sysmon Event ID 3 (conexión de red) que no esta disponible en los logs nativos de Windows?
 
-7. Un equipo de IT configura Windows Event Forwarding pero no activa la auditoría de línea de comandos en GPO. Que eventos críticos se pierden y por que?
+7. Un equipo de IT configura Windows Event Forwarding pero no activa la auditoría de línea de comandos en GPO. Que eventos críticos se pierden y por qué?
 
 8. Como usaria un atacante la técnica de "proc hollowing" para evitar que Sysmon registre la creación de un proceso malicioso?

@@ -8,7 +8,7 @@ export default function sitemap() {
   const guideUrls = structure.flatMap((category) =>
     category.pages.map((page) => ({
       url: `${BASE_URL}/${page.slug.join('/')}`,
-      lastModified: new Date(),
+      lastModified: new Date(`${page.reviewed || page.updated}T00:00:00Z`),
       changeFrequency: 'monthly',
       priority: 0.8,
     }))
@@ -25,6 +25,12 @@ export default function sitemap() {
       url: `${BASE_URL}/guias`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/rutas`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
       priority: 0.9,
     },
     ...guideUrls,

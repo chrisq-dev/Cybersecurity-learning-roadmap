@@ -1,5 +1,8 @@
 ---
 title: "YARA y SIGMA: Los Carteles de Se Busca"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # YARA y SIGMA: Los Carteles de Se Busca
@@ -52,7 +55,7 @@ Define la lógica que determina si la regla coincide:
 - `filesize`: Tamaño del archivo. `filesize < 500KB` limita el escaneo a archivos pequeños.
 - Funciones: `pe.sections[0].name == ".text"` accede a estructuras del formato PE (Portable Executable de Windows).
 
-### YARA en Accion
+### YARA en Acción
 
 Cuando el equipo de seguridad de Microsoft descubre un nuevo malware en sus sistemas, escribe una regla YARA y la publica en plataformas como VirusTotal, GitHub, o listas de correo. En minutos, cualquier empresa del mundo puede descargar esa regla, importarla a su EDR, y proteger todas sus computadoras.
 
@@ -68,7 +71,7 @@ El proceso es:
 
 **Ofuscación:** Si el malware esta empaquetado o cifrado con una herramienta diferente, los bytes visibles cambian y la regla no coincide. Solución: las reglas deben apuntar a características del descifrador o del comportamiento, no del contenido ofuscado.
 
-**Polimorfismo:** Algunos malwares cambian su codigo en cada replicación. Las reglas basadas en strings fijos son inutiles. Solución: usar reglas basadas en comportamiento o en características estructurales que el polimorfismo no altera.
+**Polimorfismo:** Algunos malwares cambian su código en cada replicación. Las reglas basadas en strings fijos son inútiles. Solución: usar reglas basadas en comportamiento o en características estructurales que el polimorfismo no altera.
 
 **Rendimiento:** Ejecutar miles de reglas YARA en cada archivo consume CPU. En endpoints con recursos limitados, la batería de reglas debe priorizarse. Las reglas más pesadas (con regex o búsquedas de archivos grandes) deben ejecutarse solo cuando hay suficiente capacidad de procesamiento.
 
@@ -149,7 +152,7 @@ El problema del Blue Team es que cada empresa usa un SIEM diferente. SIGMA es el
 index=windows EventCode=1 Image=*\\powershell.exe CommandLine=*Net.WebClient* AND *DownloadString*
 ```
 
-**A KQL (Azure Sentinel):**
+**A KQL (Microsoft Sentinel):**
 ```
 SecurityEvent | where EventID == 4688 | where ProcessName endswith "\\powershell.exe" | where CommandLine contains "Net.WebClient" and CommandLine contains "DownloadString"
 ```
@@ -215,20 +218,20 @@ Reglas demasiado específicas que solo detectan una muestra. Falta de pruebas co
 
 ## La Perspectiva del Atacante
 
-Un atacante que sabe que su objetivo usa YARA y SIGMA tomará precauciones: ofuscara su codigo, probara contra VirusTotal (con cuidado), usara herramientas nativas (LOLBins), y revisara los repositorios públicos de SIGMA para saber que comportamientos están monitoreados.
+Un atacante que sabe que su objetivo usa YARA y SIGMA tomará precauciones: ofuscara su código, probara contra VirusTotal (con cuidado), usara herramientas nativas (LOLBins), y revisara los repositorios públicos de SIGMA para saber que comportamientos están monitoreados.
 
 El atacante más sofisticado sabe que YARA y SIGMA son solo el primer nivel. Si puede evadirlos, aún enfrenta al analista humano, que es más imprevisible.
 
 ## Autoevaluación
 
-1. Un atacante ofusca su .exe cifrando el codigo interno. Por que esto evita las reglas YARA? Que enfoque alternativo detectaria el comportamiento malicioso?
-2. Por que una regla SIGMA que detecta "borrar logs del sistema" es más robusta que una regla YARA que busca "borrador.exe"?
+1. Un atacante ofusca su .exe cifrando el código interno. Por qué esto evita las reglas YARA? Que enfoque alternativo detectaria el comportamiento malicioso?
+2. Por qué una regla SIGMA que detecta "borrar logs del sistema" es más robusta que una regla YARA que busca "borrador.exe"?
 3. Eres jefe de seguridad en Colombia. Recibes reglas SIGMA de un ataque bancario en Europa. Que ordenas a tu equipo en las próximas horas?
 4. YARA analiza _____ mientras SIGMA analiza _____. Proporciona un ejemplo concreto de cada uno.
-5. Un ataque fileless solo existe en memoria. Que herramienta (YARA o SIGMA) lo detecta mejor? Por que?
+5. Un ataque fileless solo existe en memoria. Que herramienta (YARA o SIGMA) lo detecta mejor? Por qué?
 6. Tu equipo tiene 1000 reglas YARA en cada endpoint. El rendimiento baja. Como priorizas cuáles mantener? Que criterios usas?
 7. Descargas el repositorio Sigma completo y conviertes todas las reglas a Splunk. El SIEM colapsa. Donde estuvo el error?
-8. Un analista crea una regla YARA buscando "This program cannot be run in DOS mode" (presente en todo .exe). Por que es pésima?
+8. Un analista crea una regla YARA buscando "This program cannot be run in DOS mode" (presente en todo .exe). Por qué es pésima?
 
 ## Sigma - Sintaxis Avanzada
 

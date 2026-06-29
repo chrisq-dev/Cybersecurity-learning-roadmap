@@ -1,5 +1,8 @@
 ---
 title: "VPN, Proxy y Segmentación: El Submarino y el Túnel"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # VPN, Proxy y Segmentación: El Submarino y el Túnel
@@ -19,7 +22,7 @@ La VPN (Virtual Private Network) crea un túnel cifrado desde la computadora del
 ### Como Funciona una VPN
 
 1. El empleado activa el cliente VPN en su computadora.
-2. El cliente establece una conexion cifrada (usualmente TLS o IPsec) con el servidor VPN de la empresa.
+2. El cliente establece una conexión cifrada (usualmente TLS o IPsec) con el servidor VPN de la empresa.
 3. Todo el tráfico de red del empleado se encapsula dentro de paquetes cifrados.
 4. El servidor VPN descifra y reenvia a la red interna.
 5. Para el resto de internet, el empleado parece estar en la oficina.
@@ -55,9 +58,9 @@ Desventajas: Mayor carga en el servidor VPN, mayor latencia.
 El túnel es de dos vías. Si la computadora del empleado tiene malware, y el empleado se conecta a la VPN, el malware usa el túnel para entrar a la red corporativa, saltándose el firewall perimetral.
 
 **Mitigaciones:**
-- Posture assessment: La VPN verifica que el endpoint tenga antivirus, parches, y firewall activo antes de permitir la conexion.
+- Posture assessment: La VPN verifica que el endpoint tenga antivirus, parches, y firewall activo antes de permitir la conexión.
 - ZTNA (Zero Trust Network Access): En lugar de VPN que da acceso a toda la red, ZTNA da acceso solo a la aplicación específica que el empleado necesita.
-- 2FA obligatorio: Autenticación de dos factores para toda conexion VPN.
+- 2FA obligatorio: Autenticación de dos factores para toda conexión VPN.
 - Segmentación de acceso VPN: Los usuarios VPN se colocan en una VLAN separada con acceso restringido.
 
 ## El Proxy Forward: La Secretaria del Empleado
@@ -179,7 +182,7 @@ Empleados usaban VPNs personales para evadir el proxy corporativo. Una de esas V
 
 ## Modos de Falla
 
-VPN sin 2FA ni control de endpoint. Red plana (sin segmentación). Proxy como cuello de botella sin redundancia. Confianza excesiva en la red interna. Segmentación mal diseñada (por departamento en lugar de por funcion). No monitorear tráfico entre segmentos.
+VPN sin 2FA ni control de endpoint. Red plana (sin segmentación). Proxy como cuello de botella sin redundancia. Confianza excesiva en la red interna. Segmentación mal diseñada (por departamento en lugar de por función). No monitorear tráfico entre segmentos.
 
 ## La Perspectiva del Atacante
 
@@ -193,14 +196,14 @@ Las VPNs sin 2FA y los proxies mal configurados son puertas de entrada preferida
 
 ## Autoevaluación
 
-1. Un empleado en una cafetería con WiFi público activa la VPN corporativa. Un atacante en la misma red intenta MitM. Por que la VPN lo protege?
+1. Un empleado en una cafetería con WiFi público activa la VPN corporativa. Un atacante en la misma red intenta MitM. Por qué la VPN lo protege?
 2. Tu red es plana. Un atacante infecta una PC de RH y accede al servidor de producción. Diseña la segmentación para prevenir esto.
-3. Por que exponer Apache directamente a internet es mala práctica? Que beneficios da un reverse proxy?
+3. Por qué exponer Apache directamente a internet es mala práctica? Que beneficios da un reverse proxy?
 4. El proxy forward oculta la IP del empleado. Explica como. Que implicaciones de privacidad tiene?
-5. Split tunnel vs Full tunnel: cual es más seguro para la empresa y por que?
-6. Segmentar por departamento (ventas, RH, IT) o por funcion (web, app, BD, usuarios)? Cual es mejor para seguridad?
+5. Split tunnel vs Full tunnel: cual es más seguro para la empresa y por qué?
+6. Segmentar por departamento (ventas, RH, IT) o por función (web, app, BD, usuarios)? Cual es mejor para seguridad?
 7. Un admin configura VPN site-to-site sin cifrado "por rendimiento." Que riesgos introduce?
-8. Implementas Zero Trust. Un empleado de ventas necesita acceder a una app de nómina. En Zero Trust, solo obtiene acceso a esa app, no a toda la red. Explica como es diferente de VPN tradicional y por que es más seguro.
+8. Implementas Zero Trust. Un empleado de ventas necesita acceder a una app de nómina. En Zero Trust, solo obtiene acceso a esa app, no a toda la red. Explica como es diferente de VPN tradicional y por qué es más seguro.
 
 ## Protocolos de VPN Comparados
 
@@ -236,7 +239,7 @@ Las VPNs sin 2FA y los proxies mal configurados son puertas de entrada preferida
 **Cifrado:** Curve25519, ChaCha20, Poly1305, BLAKE2s.
 **Autenticación:** Claves públicas/privadas (pre-shared opcional).
 
-**Fortalezas:** Extremadamente rápido, codigo simple (4000 líneas vs 400,000+ de OpenVPN/OpenSSL), menor latencia, configuración simple.
+**Fortalezas:** Extremadamente rápido, código simple (4000 líneas vs 400,000+ de OpenVPN/OpenSSL), menor latencia, configuración simple.
 **Debilidades:** Las IPs son estaticas (asociadas a claves), no tiene autenticación de usuario nativa sin herramientas adicionales.
 **Mejor para:** Site-to-site, mobile, IoT, cualquier escenario que priorice rendimiento.
 
@@ -309,19 +312,19 @@ access-list 101 permit ip any any (trafico legitimo)
 - Latencia del túnel VPN.
 - Throughput actual vs. capacidad.
 - Paquetes perdidos/retransmitidos.
-- Reintentos de conexion.
+- Reintentos de conexión.
 
 **Accesos:**
 - Usuarios conectados actualmente.
 - Duracion de las sesiones.
-- Horarios de conexion.
+- Horarios de conexión.
 - Ubicación geográfica de origen.
 - Dispositivos utilizados.
 
 **Seguridad:**
 - Fallos de autenticación.
 - Conexiones desde IPs sospechosas.
-- Intentos de conexion simultaneos desde múltiples ubicaciones.
+- Intentos de conexión simultaneos desde múltiples ubicaciones.
 
 ## Preguntas Adicionales
 

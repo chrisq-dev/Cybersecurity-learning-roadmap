@@ -1,5 +1,8 @@
 ---
 title: "Parseo de Logs y APIs: El Analista de Datos"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 # Parseo de Logs y APIs: El Analista de Datos
 
@@ -98,7 +101,7 @@ respuesta = requests.get(url_api, headers=headers)
 
 # VirusTotal siempre responde en formato JSON (El idioma universal).
 # Así que usamos.json para leerlo
-datos = respuesta.json
+datos = respuesta.json()
 
 # Parseamos la respuesta para ver cuántos antivirus mundiales marcaron esta IP como "Maliciosa"
 votos_maliciosos = datos['data']['attributes']['last_analysis_stats']['malicious']
@@ -107,7 +110,7 @@ print("Esta IP fue marcada como virus por " + str(votos_maliciosos) + " empresas
 ```
 
 > **El Ángulo de Ciberseguridad (SOAR):**
-> Lo que acabas de ver arriba es el principio de lo que en el mundo corporativo se llama **SOAR (Security Orchestration, Automation, and Response)**. Las empresas de un billón de dólares no usan analistas humanos para revisar IPs; conectan Firewalls, Python y APIs (como la de VirusTotal o CrowdStrike) para que los sistemas se defiendan, bloqueen atacantes y se manden reportes entre ellos de forma 100% automatizada.
+> Lo anterior muestra una pieza básica de enriquecimiento que puede integrarse en un flujo SOAR. Las organizaciones combinan automatización con revisión humana, listas de permitidos, manejo de errores y criterios de confianza antes de bloquear; una reputación externa por sí sola no demuestra que una IP sea maliciosa.
 >
 > **Por qué esto importa:** Esto es literalmente magia digital. Tu script le habla a VirusTotal, VirusTotal le responde, y tu firewall bloquea la IP automáticamente. Todo sin que nadie toque un teclado.
 

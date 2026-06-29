@@ -1,5 +1,8 @@
 ---
 title: "Continuidad y DRP: El Simulacro de Incendio"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Continuidad y DRP: El Simulacro de Incendio
@@ -89,7 +92,7 @@ Lista completa de servidores, aplicaciones, licencias, contratos de soporte, con
 
 ### El Mayor Error: No Probar el Plan
 
-Por que esto importa: El mayor error de los equipos técnicos es escribir un DRP gigantesco... **y nunca probarlo**. Un plan que no ha sido probado en un simulacro, es un plan que va a fallar durante la crisis real.
+Por qué esto importa: El mayor error de los equipos técnicos es escribir un DRP gigantesco... **y nunca probarlo**. Un plan que no ha sido probado en un simulacro, es un plan que va a fallar durante la crisis real.
 
 ### Tipos de Pruebas de DRP
 
@@ -132,7 +135,7 @@ Cada vez más empresas abandonan los sitios físicos y usan la nube como sitio d
 - **Backup and DR Service:** Servicio gestionado de backup y recuperación para GCP y on-premises.
 - **Persistent Disk Snapshots:** Snapshots de discos persistentes con capacidad de restore rápido.
 
-* **Por que esto importa:** La nube elimina la necesidad de mantener un centro de datos físico de respaldo (Hot Site es carísimo). Pero introduce dependencia del proveedor cloud: si AWS/Azure/GCP tienen una caída regional, tu DRP también falla. La estrategia multicloud (respaldar en AWS y Azure simultáneamente) mitiga esto.
+* **Por qué esto importa:** La nube elimina la necesidad de mantener un centro de datos físico de respaldo (Hot Site es carísimo). Pero introduce dependencia del proveedor cloud: si AWS/Azure/GCP tienen una caída regional, tu DRP también falla. La estrategia multicloud (respaldar en AWS y Azure simultáneamente) mitiga esto.
 
 ---
 

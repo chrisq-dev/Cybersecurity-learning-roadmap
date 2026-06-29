@@ -1,5 +1,8 @@
 ---
 title: "Fundamentos de Wi-Fi: El Megáfono Invisible"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Fundamentos de Wi-Fi: El Megáfono Invisible
@@ -78,7 +81,7 @@ Cuando gritas con un megáfono por mucho tiempo? Eventualmente alguien te va a e
 - Introdujo **OWE (Opportunistic Wireless Encryption)** para redes abiertas: cifrado sin autenticación (no necesitas contraseña, pero el tráfico está cifrado).
 - **WPA3-Enterprise:** Modo empresarial con autenticación 802.1X y cifrado AES-256-GCM (vs AES-128 en WPA2).
 
-* **Por que esto importa:** Aunque WPA3 es el estándar más seguro, la mayoría de las redes corporativas aún usan WPA2 porque la migración a WPA3 requiere hardware compatible. Un atacante con hardware adecuado puede atacar WPA2 offline usando el handshake capturado y listas de contraseñas (rockyou.txt, Have I Been Pwned).
+* **Por qué esto importa:** Aunque WPA3 es el estándar más seguro, la mayoría de las redes corporativas aún usan WPA2 porque la migración a WPA3 requiere hardware compatible. Un atacante con hardware adecuado puede atacar WPA2 offline usando el handshake capturado y listas de contraseñas (rockyou.txt, Have I Been Pwned).
 
 ### WPA-Enterprise: El Estándar Corporativo
 
@@ -91,7 +94,7 @@ A diferencia de WPA-Personal (una sola contraseña compartida), WPA-Enterprise u
   - **PEAP-MSCHAPv2:** El servidor tiene un certificado; el cliente usa usuario/contraseña. Vulnerable a ataques de servidor RADIUS falso si el usuario no verifica el certificado del servidor.
   - **EAP-TTLS:** Similar a PEAP pero con túnel TLS que protege la autenticación interna.
 
-* **Por que esto importa:** Un atacante puede configurar un punto de acceso falso con WPA-Enterprise y un certificado autofirmado. Si el usuario acepta el certificado sin verificar (algo común), el atacante captura las credenciales del dominio.
+* **Por qué esto importa:** Un atacante puede configurar un punto de acceso falso con WPA-Enterprise y un certificado autofirmado. Si el usuario acepta el certificado sin verificar (algo común), el atacante captura las credenciales del dominio.
 
 ---
 
@@ -121,7 +124,7 @@ Incluso con WPA3, existe un ataque que no requiere matemáticas complejas, solo 
 
 * **El Ataque (Evil Twin):** Los celulares están programados para conectarse automáticamente a las redes conocidas que tengan "mejor señal". Tu celular ignora el módem del techo y se conecta directamente a la mochila del hacker (El Gemelo Malvado).
 
-* **Por que esto importa:** El hacker te da internet real para que no sospeches, pero se convierte en un "Hombre en el Medio" (Man-In-The-Middle). A partir de ese momento, cada página que abres y cada mensaje que mandas, pasa primero por la computadora del hacker antes de ir al internet público.
+* **Por qué esto importa:** El hacker te da internet real para que no sospeches, pero se convierte en un "Hombre en el Medio" (Man-In-The-Middle). A partir de ese momento, cada página que abres y cada mensaje que mandas, pasa primero por la computadora del hacker antes de ir al internet público.
 
 **Herramientas para Evil Twin:**
 - **Bettercap:** Framework de ataque MITM con módulo de Evil Twin integrado. `bettercap -eval "set wifi.ap.ssid Starbucks_Gratis; wifi.ap"`

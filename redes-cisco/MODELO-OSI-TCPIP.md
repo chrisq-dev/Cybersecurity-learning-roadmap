@@ -1,5 +1,8 @@
 ---
 title: "Modelo OSI y TCP/IP: El mapa mental que separa a los operadores de los ingenieros"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Modelo OSI y TCP/IP: El mapa mental que separa a los operadores de los ingenieros
@@ -8,11 +11,11 @@ title: "Modelo OSI y TCP/IP: El mapa mental que separa a los operadores de los i
 
 Cuando algo falla en una red, la gente dice "se cayó internet". Esa frase no ayuda a nadie. Lo que necesitas es un método para aislar exactamente donde esta el problema. El modelo OSI es ese método.
 
-No se estudia para pasar un examen. Se estudia para que, cuando un servidor deje de responder a las 3 de la mañana, puedas descartar capas una por una hasta encontrar la causa raíz. Es la diferencia entre reiniciar el router sin saber por que, y decir "el problema esta en la capa de transporte, específicamente en el puerto 443, probablemente el firewall lo esta bloqueando".
+No se estudia para pasar un examen. Se estudia para que, cuando un servidor deje de responder a las 3 de la mañana, puedas descartar capas una por una hasta encontrar la causa raíz. Es la diferencia entre reiniciar el router sin saber por qué, y decir "el problema esta en la capa de transporte, específicamente en el puerto 443, probablemente el firewall lo esta bloqueando".
 
 En esta guía no solo vamos a recorrer las capas. Vamos a ver como falla cada una, como se ataca cada una, y como se diagnostica.
 
-## Por que existen los modelos de capas
+## Por qué existen los modelos de capas
 
 Antes de que existiera el modelo OSI, cada fabricante de equipos de red hacia las cosas a su manera. IBM tenía su propia arquitectura, Digital Equipment tenía la suya, Novell tenía IPX/SPX. Ninguna era compatible con la otra. Conectar equipos de diferentes fabricantes era una pesadilla.
 
@@ -28,7 +31,7 @@ Funciona así: la capa de aplicación genera datos. Digamos que son los bytes de
 
 En el destino ocurre el proceso inverso: la desencapsulacion. Cada capa quita su encabezado correspondiente, verifica la información, y pasa los datos a la capa superior.
 
-Lo importante aqui es que cada capa solo entiende su propio encabezado. La capa de red no sabe si los datos son HTTP o FTP. Solo sabe que tiene que llevarlos a una dirección IP. La capa de transporte no sabe cual es la dirección IP de destino. Solo sabe que tiene que entregar los datos al puerto correcto. Esta separacion de responsabilidades es lo que hace que el modelo sea tan poderoso.
+Lo importante aqui es que cada capa solo entiende su propio encabezado. La capa de red no sabe si los datos son HTTP o FTP. Solo sabe que tiene que llevarlos a una dirección IP. La capa de transporte no sabe cual es la dirección IP de destino. Solo sabe que tiene que entregar los datos al puerto correcto. Esta separación de responsabilidades es lo que hace que el modelo sea tan poderoso.
 
 ### Unidad de Datos por Capa
 
@@ -58,14 +61,14 @@ Estándares comunes:
 
 Cada estándar define la codificación de señal, el tipo de cable, la distancia máxima, y el tipo de conector.
 
-Cuando falla la capa 1, no hay mucho que investigar. O hay conexion o no la hay. Si el cable esta roto, el puerto danado, o la fuente de luz apagada, no hay datos que fluyan.
+Cuando falla la capa 1, no hay mucho que investigar. O hay conexión o no la hay. Si el cable esta roto, el puerto danado, o la fuente de luz apagada, no hay datos que fluyan.
 
 El problema con la capa 1 es que sus fallas son fáciles de diagnosticar pero fáciles de ignorar. La gente asume que "el cable esta bien" sin verificarlo. He visto técnicos pasar horas configurando direcciones IP cuando el problema era un cable mal crimpado.
 
 Ataques de capa 1:
 - Corte físico de cables de red o fibra
 - Interferencia electromagneticas para degradar la señal
-- Conexion física de dispositivos de escucha (network taps)
+- Conexión física de dispositivos de escucha (network taps)
 - Van Eck phreaking: capturar la radiacion electromagnetica de un cable o pantalla para reconstruir los datos
 
 ### Capa 2: Enlace de datos
@@ -155,7 +158,7 @@ Esta capa es la responsable de la confiabilidad de la comunicación. Aqui operan
 
 #### TCP (Transmission Control Protocol)
 
-TCP es orientado a conexion. Antes de enviar datos, establece una conexion mediante el triple handshake: SYN, SYN-ACK, ACK. Durante la transmision, cada segmento recibido es confirmado. Si un segmento se pierde, se retransmite. Los segmentos llegan en orden.
+TCP es orientado a conexión. Antes de enviar datos, establece una conexión mediante el triple handshake: SYN, SYN-ACK, ACK. Durante la transmision, cada segmento recibido es confirmado. Si un segmento se pierde, se retransmite. Los segmentos llegan en orden.
 
 El encabezado TCP tiene 20 bytes (mínimo):
 
@@ -169,10 +172,10 @@ El encabezado TCP tiene 20 bytes (mínimo):
 ```
 
 Flags TCP importantes:
-- SYN: sincronizar, iniciar conexion
+- SYN: sincronizar, iniciar conexión
 - ACK: acuse de recibo
-- FIN: finalizar conexion
-- RST: resetear conexion
+- FIN: finalizar conexión
+- RST: resetear conexión
 - PSH: empujar datos a la aplicación sin buffering
 - URG: datos urgentes
 
@@ -201,7 +204,7 @@ Los puertos son números de 16 bits que identifican la aplicación o servicio. S
 Esta capa establece, mantiene y termina sesiones entre aplicaciones. Coordina quien habla, por cuanto tiempo, y que hacer si la comunicación se interrumpe.
 
 Ejemplos reales:
-- Cuando descargas un archivo grande y se corta la conexion, la capa de sesión permite reanudar la descarga desde donde se quedó.
+- Cuando descargas un archivo grande y se corta la conexión, la capa de sesión permite reanudar la descarga desde donde se quedó.
 - En una videollamada, la capa de sesión sincroniza los flujos de audio y video.
 
 En la práctica, la capa de sesión rara vez se implementa por separado. La mayoría de las aplicaciones manejan la sesión internamente. Protocolos como NetBIOS y RPC operan en esta capa.
@@ -295,26 +298,26 @@ Path MTU Discovery (PMTUD) permite descubrir el MTU mínimo en el camino hacia e
 
 ## TCP en profundidad: estados del handshake y flags
 
-### Estados de una conexion TCP
+### Estados de una conexión TCP
 
 Cuando examinas conexiones con `netstat`, ves estados como:
 
 - LISTEN: el servidor esta esperando conexiones entrantes
 - SYN_SENT: el cliente envio SYN, esperando SYN-ACK
 - SYN_RECV: el servidor recibio SYN, envio SYN-ACK, esperando ACK
-- ESTABLISHED: la conexion esta activa, datos fluyen
-- FIN_WAIT_1: el socket cerró la conexion, envio FIN
+- ESTABLISHED: la conexión esta activa, datos fluyen
+- FIN_WAIT_1: el socket cerró la conexión, envio FIN
 - FIN_WAIT_2: el socket recibio ACK de su FIN, esperando FIN del otro lado
 - CLOSE_WAIT: el socket recibio FIN, envio ACK, esperando que la aplicación cierre
 - TIME_WAIT: el socket envio ACK final, esperando que paquetes tardios se descarten
-- CLOSED: la conexion terminó
+- CLOSED: la conexión terminó
 
 ### Flags TCP
 
-- SYN (Synchronize): inicia una conexion
+- SYN (Synchronize): inicia una conexión
 - ACK (Acknowledgment): confirma recepción de datos
-- FIN (Finish): finaliza una conexion
-- RST (Reset): resetea una conexion abruptamente
+- FIN (Finish): finaliza una conexión
+- RST (Reset): resetea una conexión abruptamente
 - PSH (Push): envía datos inmediatamente sin buffering
 - URG (Urgent): datos urgentes
 
@@ -331,7 +334,7 @@ Si el receptor esta lento (no puede procesar datos tan rápido como llegan), red
 TCP también controla la congestion de la red, no solo la capacidad del receptor.
 
 Algoritmos de control de congestion:
-- Slow Start: comienza con una ventana pequeña (tipicamente 1-10 segmentos) y la duplica en cada RTT hasta alcanzar el umbral.
+- Slow Start: comienza con una ventana pequeña (típicamente 1-10 segmentos) y la duplica en cada RTT hasta alcanzar el umbral.
 - Congestion Avoidance: incremento lineal (1 segmento por RTT) en lugar de exponencial.
 - Fast Retransmit: si recibe 3 ACKs duplicados, retransmite el segmento perdido sin esperar el timeout.
 - Fast Recovery: después de fast retransmit, reduce la ventana pero no vuelve a slow start.
@@ -344,7 +347,7 @@ La ventana efectiva es min(cwnd, rwnd). El emisor no puede enviar más allá del
 
 | Característica | TCP | UDP |
 |---------------|-----|-----|
-| Conexion | Orientado a conexion | Sin conexion |
+| Conexión | Orientado a conexión | Sin conexión |
 | Confiabilidad | Confiable (ACK, retransmision) | No confiable (sin ACK) |
 | Orden | Ordenado (secuencias) | No ordenado |
 | Control de flujo | Si (ventana deslizante) | No |
@@ -367,7 +370,7 @@ La ventana efectiva es min(cwnd, rwnd). El emisor no puede enviar más allá del
 
 La capa de Acceso a Red del TCP/IP es prácticamente una caja negra. El modelo no específica como funciona; asume que existe una tecnología subyacente que entrega paquetes IP.
 
-Esto resulto ser un diseno acertado porque permitió que IP funcionara sobre cualquier tecnología de red: Ethernet, Wi-Fi, PPPoE, ATM, Frame Relay, incluso sobre palomas mensajeras (literalmente, hubo un experimento llamado IP over Avian Carriers).
+Esto resulto ser un diseño acertado porque permitió que IP funcionara sobre cualquier tecnología de red: Ethernet, Wi-Fi, PPPoE, ATM, Frame Relay, incluso sobre palomas mensajeras (literalmente, hubo un experimento llamado IP over Avian Carriers).
 
 ## Como se relacionan las capas en un ataque
 
@@ -400,7 +403,7 @@ Cada capa tiene vulnerabilidades inherentes y técnicas de ataque asociadas.
 - UDP flood: inundar con paquetes UDP aleatorios
 
 **Capa 5:**
-- Session fixation: forzar a una victima a usar un ID de sesión conocido
+- Session fixation: forzar a una víctima a usar un ID de sesión conocido
 - RPC attacks: explotar vulnerabilidades en llamadas a procedimientos remotos
 
 **Capa 6:**
@@ -435,7 +438,7 @@ Cuando algo falla, sigo este orden de verificación:
 2. Capa 2: la computadora tiene una dirección MAC? El switch la reconoce? `arp -a` muestra la MAC del gateway?
 3. Capa 3: puedo hacer ping a la puerta de enlace? `ipconfig` o `ip addr` muestra una IP valida? Puedo hacer ping a 8.8.8.8?
 4. Capa 4: el puerto esta abierto? `telnet servidor 443` o `nc -zv servidor 443`? `netstat -an` muestra conexiones establecidas?
-5. Capa 5-7: el servicio responde? El certificado SSL es valido? `curl -v https://servidor` muestra la respuesta correcta?
+5. Capa 5-7: el servicio responde? El certificado SSL es válido? `curl -v https://servidor` muestra la respuesta correcta?
 
 Cada paso elimina un conjunto de posibles causas.
 
@@ -447,17 +450,17 @@ Cada paso elimina un conjunto de posibles causas.
 2. `ipconfig` muestra una IP 169.254.x.x. Eso es una Automatic Private IP Addressing (APIPA). Significa que DHCP fallo. No recibio una IP valida.
 3. Causa probable: servidor DHCP caído o pool agotado. Diagnóstico: verifico el servidor DHCP en la red.
 
-**Caso 2:** Un usuario dice "la pagina web no carga".
+**Caso 2:** Un usuario dice "la página web no carga".
 
 1. Ping a 8.8.8.8 funciona.
 2. Ping a google.com falla (nombre no resuelve).
 3. Causa probable: DNS fallando. `nslookup google.com` muestra que no hay respuesta.
 4. Causa raíz: el servidor DNS configurado esta caído.
 
-**Caso 3:** Un usuario dice "la pagina web da error de certificado".
+**Caso 3:** Un usuario dice "la página web da error de certificado".
 
 1. Ping a google.com funciona.
-2. La pagina carga pero dice "Tu conexion no es privada".
+2. La página carga pero dice "Tu conexión no es privada".
 3. Causa probable: certificado SSL caducado o invalido.
 4. `openssl s_client -connect servidor:443` muestra los detalles del certificado.
 
@@ -465,7 +468,7 @@ Cada paso elimina un conjunto de posibles causas.
 
 ### El ataque SYN flood que tumbo un servidor bancario
 
-Un servidor web de un banco recibio 50,000 paquetes SYN por segundo desde direcciones IP falsas. Cada SYN hacia que el servidor reservara memoria para la conexion y esperara el ACK que nunca llegaba. En minutos, la tabla de conexiones se lleno, usando toda la memoria disponible. El servidor dejó de aceptar conexiones legítimas.
+Un servidor web de un banco recibio 50,000 paquetes SYN por segundo desde direcciones IP falsas. Cada SYN hacia que el servidor reservara memoria para la conexión y esperara el ACK que nunca llegaba. En minutos, la tabla de conexiones se lleno, usando toda la memoria disponible. El servidor dejó de aceptar conexiones legítimas.
 
 El diagnóstico fue claro en capa 4: `netstat -n | grep SYN_RECV` mostraba miles de conexiones en estado SYN_RECV. La utilizacion de CPU y memoria del servidor estaba al máximo.
 
@@ -481,7 +484,7 @@ El ataque ocurrió en capa 3 (fragmentacion IP). El firewall no reensamblaba los
 
 Un atacante en una red Wi-Fi pública interceptaba las peticiones HTTP y las convertia a HTTP, eliminando la capa de cifrado. El usuario creia que estaba en HTTPS porque había escrito https:// en el navegador, pero el atacante había interceptado la redirección.
 
-El ataque ocurrió en la capa de presentación (capa 6): el atacante degradaba la conexion de HTTPS a HTTP. La mitigación es HSTS (HTTP Strict Transport Security), que obliga al navegador a usar siempre HTTPS para un dominio específico.
+El ataque ocurrió en la capa de presentación (capa 6): el atacante degradaba la conexión de HTTPS a HTTP. La mitigación es HSTS (HTTP Strict Transport Security), que obliga al navegador a usar siempre HTTPS para un dominio específico.
 
 ## Autoevaluación
 
@@ -491,16 +494,16 @@ El ataque ocurrió en la capa de presentación (capa 6): el atacante degradaba l
 
 3. Si un atacante realiza un SYN flood contra un servidor, que capa del modelo OSI esta siendo atacada, cual es el mecanismo exacto del ataque, y como mitiga SYN cookies el problema?
 
-4. Cual es la diferencia fundamental entre TCP y UDP en términos de como manejan la pérdida de paquetes? Da dos ejemplos de aplicaciones donde UDP sea preferible a TCP y explica por que.
+4. Cual es la diferencia fundamental entre TCP y UDP en términos de como manejan la pérdida de paquetes? Da dos ejemplos de aplicaciones donde UDP sea preferible a TCP y explica por qué.
 
 5. Un administrador recibe una alerta de que la tabla MAC de un switch esta llena al 100%. En que capa del modelo se clasifica este ataque, como funciona exactamente, y que impacto tiene en la red?
 
-6. Cuando visitas un sitio HTTPS, en que capas ocurren el cifrado y el descifrado de los datos? Por que el certificado SSL es necesario y que capa verifica su validez?
+6. Cuando visitas un sitio HTTPS, en que capas ocurren el cifrado y el descifrado de los datos? Por qué el certificado SSL es necesario y que capa verifica su validez?
 
 7. Un paquete viaja desde tu computadora hasta un servidor web en otro continente. En cada salto entre routers, la dirección MAC cambia pero la IP no. Explica este proceso en términos de las capas 2 y 3 del modelo OSI.
 
 8. Si un atacante realiza un ataque de DNS spoofing y redirige a los usuarios a un sitio falso, en que capa del modelo OSI esta ocurriendo el ataque? Como se relaciona con las capas inferiores para que el usuario nunca note la redirección?
 
-9. Un técnico dice "el problema es de capa 8". Sabiendo que el modelo OSI tiene 7 capas, que cree que significa "capa 8" y por que se usa esta expresión?
+9. Un técnico dice "el problema es de capa 8". Sabiendo que el modelo OSI tiene 7 capas, que cree que significa "capa 8" y por qué se usa esta expresión?
 
 10. Explica la diferencia entre un firewall stateful y uno stateless en términos de las capas del modelo OSI que cada uno inspecciona.

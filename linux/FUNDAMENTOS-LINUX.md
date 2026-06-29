@@ -1,5 +1,8 @@
 ---
 title: "Fundamentos de Linux: El Idioma de los Servidores"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Fundamentos de Linux: El Idioma de los Servidores
@@ -8,19 +11,19 @@ title: "Fundamentos de Linux: El Idioma de los Servidores"
 
 Si quieres trabajar en ciberseguridad, hay una verdad que no puedes esquivar: la infraestructura crítica del mundo corre sobre Linux. Los servidores web, las bases de datos bancarias, los sistemas de control aereo, los routers, los firewalls de grado empresarial, los satélites y hasta las herramientas de hacking que usan los equipos rojos están construidas sobre este sistema operativo.
 
-Esta guía no es un manual de usuario. Es un mapa para que entiendas por que Linux piensa como piensa, por que su filosofía de diseno es la clave de su seguridad, y como navegar su geografía interna sin perderte. No te voy a enseñar a instalar Linux. Te voy a enseñar a entenderlo.
+Esta guía no es un manual de usuario. Es un mapa para que entiendas por qué Linux piensa como piensa, por qué su filosofía de diseño es la clave de su seguridad, y como navegar su geografía interna sin perderte. No te voy a enseñar a instalar Linux. Te voy a enseñar a entenderlo.
 
-Si solo sabes usar Windows, eres ciego al 90% de los ataques reales. Los incidentes de seguridad no ocurren en pantallas bonitas con iconos. Ocurren en terminales negras donde un administrador escribe comandos mientras el servidor se esta incendiando.
+Conocer únicamente Windows deja una brecha importante para analizar servidores, contenedores y gran parte de la infraestructura basada en Linux. Los incidentes de seguridad no ocurren en pantallas bonitas con iconos. Ocurren en terminales negras donde un administrador escribe comandos mientras el servidor se esta incendiando.
 
-## El Problema de Fondo: Por que Linux Existe
+## El Problema de Fondo: Por qué Linux Existe
 
 Linux no nacio en un laboratorio corporativo. Nacio en 1991 de la frustración de un estudiante finlandes llamado Linus Torvalds. En esa epoca, los sistemas operativos Unix eran poderosos pero costosos y cerrados. Windows apenas comenzaba su dominio en el mercado de escritorios. Torvalds quería algo que funcionara como Unix pero que cualquiera pudiera modificar, estudiar y compartir sin pagar licencias millonarias.
 
-Esa decisión de diseno cambio todo. Al hacer el kernel de Linux público bajo la licencia GPL, Torvalds creo un ecosistema donde miles de programadores alrededor del mundo podían revisar el codigo, encontrar vulnerabilidades y proponer parches. Este modelo de desarrollo colaborativo es la razon por la que Linux tiene menos vulnerabilidades conocidas que Windows, y por la que cuando aparece una, la comunidad la parchea en horas, no en meses.
+Esa decisión de diseño cambio todo. Al hacer el kernel de Linux público bajo la licencia GPL, Torvalds creo un ecosistema donde miles de programadores alrededor del mundo podían revisar el código, encontrar vulnerabilidades y proponer parches. Este modelo de desarrollo colaborativo es la razón por la que Linux tiene menos vulnerabilidades conocidas que Windows, y por la que cuando aparece una, la comunidad la parchea en horas, no en meses.
 
-Para un profesional de seguridad, esto significa algo concreto: puedes auditar tu propio sistema operativo. Puedes saber exactamente que hace cada línea de codigo que se ejecuta en tu máquina. En Windows, el codigo fuente del kernel es propiedad de Microsoft y no lo puedes ver. En Linux, todo esta ahí en sitios como kernel.org para que lo examines. Esa transparencia radical es la base de la confianza que la industria de seguridad deposita en el.
+Para un profesional de seguridad, esto significa algo concreto: puedes auditar tu propio sistema operativo. Puedes saber exactamente que hace cada línea de código que se ejecuta en tu máquina. En Windows, el código fuente del kernel es propiedad de Microsoft y no lo puedes ver. En Linux, todo esta ahí en sitios como kernel.org para que lo examines. Esa transparencia radical es la base de la confianza que la industria de seguridad deposita en el.
 
-El desarrollo de Linux introdujo un modelo que hoy se llama "muchos ojos" (Linus's Law): "dado el número suficiente de revisores, todos los errores son superficiales". Esto no es una garantía absoluta -- vulnerabilidades como Heartbleed (2014) estuvieron presentes en OpenSSL por dos años a pesar de ser codigo abierto. Pero la tendencia general es que el codigo abierto se audita más y se parchea más rápido que el codigo cerrado.
+El desarrollo de Linux introdujo un modelo que hoy se llama "muchos ojos" (Linus's Law): "dado el número suficiente de revisores, todos los errores son superficiales". Esto no es una garantía absoluta -- vulnerabilidades como Heartbleed (2014) estuvieron presentes en OpenSSL por dos años a pesar de ser código abierto. Pero la tendencia general es que el código abierto se audita más y se parchea más rápido que el código cerrado.
 
 ## La Analogía: El Conductor, el Mecánico y el Ingeniero
 
@@ -30,13 +33,13 @@ Windows y macOS están diseñados para el conductor. Te subes al auto, el tabler
 
 Linux te abre el capó. Te muestra el motor, te da las herramientas para desarmarlo y te dice "haz lo que quieras, pero informate". No hay pantallas bonitas. Hay una terminal de texto. Y si metes la pata, el auto se rompe y es tu responsabilidad arreglarlo.
 
-La ciberseguridad requiere el enfoque del mecánico. Un hacker no usa botones. Un hacker le habla directamente al motor con comandos, pidiéndole que haga cosas que el diseñador original jamás contemplo. Para hacer eso, necesitas saber exactamente donde esta cada pieza, como comunicarte con ellas en su idioma nativo, y que pasa cuando las empujas más allá de sus límites de diseno.
+La ciberseguridad requiere el enfoque del mecánico. Un hacker no usa botones. Un hacker le habla directamente al motor con comandos, pidiéndole que haga cosas que el diseñador original jamás contemplo. Para hacer eso, necesitas saber exactamente donde esta cada pieza, como comunicarte con ellas en su idioma nativo, y que pasa cuando las empujas más allá de sus límites de diseño.
 
-Pero hay un tercer nivel: el ingeniero. El ingeniero no solo sabe reparar el auto, sino que entiende los principios de diseno que lo hacen funcionar. Sabe por que el motor usa una correa de distribución en vez de una cadena, y que implicaciones tiene eso para el mantenimiento. En Linux, el ingeniero entiende por que el kernel separa el espacio de usuario del espacio de kernel, por que los archivos tienen dueños y grupos, y por que ciertos directorios existen. Ese es el nivel al que apunta esta guía.
+Pero hay un tercer nivel: el ingeniero. El ingeniero no solo sabe reparar el auto, sino que entiende los principios de diseño que lo hacen funcionar. Sabe por qué el motor usa una correa de distribución en vez de una cadena, y que implicaciones tiene eso para el mantenimiento. En Linux, el ingeniero entiende por qué el kernel separa el espacio de usuario del espacio de kernel, por qué los archivos tienen dueños y grupos, y por qué ciertos directorios existen. Ese es el nivel al que apunta esta guía.
 
 ## La Filosofía Central: Todo es un Archivo
 
-Esta es la regla más importante de Linux y la que menos se explica en los tutoriales para principiantes. "Todo es un archivo" no es una metafora bonita. Es una descripción literal de como funciona el sistema operativo.
+Esta es la regla más importante de Linux y la que menos se explica en los tutoriales para principiantes. "Todo es un archivo" no es una metáfora bonita. Es una descripción literal de como funciona el sistema operativo.
 
 En Linux, los dispositivos de hardware, los procesos en ejecución, los sockets de red, los archivos de configuración y la memoria se representan como descriptores de archivo en el sistema operativo. Esto significa que las mismas funciones del sistema que usas para leer un documento de texto (open, read, write, close) las puedes usar para leer lo que escribe el teclado, lo que recibe la tarjeta de red, o el estado actual de la memoria RAM.
 
@@ -51,10 +54,10 @@ Linux distingue varios tipos de archivos. Cuando ejecutas `ls -l`, la primera co
 - `l`: Enlace simbolico (link). Un acceso directo a otro archivo.
 - `c`: Dispositivo de caracteres (character device). Dispositivos como el teclado o el mouse que transfieren datos byte por byte.
 - `b`: Dispositivo de bloques (block device). Dispositivos como discos duros o USBs que transfieren datos en bloques.
-- `s`: Socket. Un punto de conexion entre procesos, usado para comunicación local.
+- `s`: Socket. Un punto de conexión entre procesos, usado para comunicación local.
 - `p`: Pipe con nombre (named pipe). Un canal de comunicación entre procesos.
 
-Entender esta distincion es clave para la seguridad. No es lo mismo un archivo regular que un dispositivo de bloque. Si alguien ejecuta `cat /dev/sda` (el disco duro completo), el sistema no le mostrará texto legible, sino datos binarios del disco. Pero si el usuario tiene permisos, puede leer literalmente todos los datos del disco, incluyendo archivos borrados que aún no han sido sobrescritos.
+Entender esta distinción es clave para la seguridad. No es lo mismo un archivo regular que un dispositivo de bloque. Si alguien ejecuta `cat /dev/sda` (el disco duro completo), el sistema no le mostrará texto legible, sino datos binarios del disco. Pero si el usuario tiene permisos, puede leer literalmente todos los datos del disco, incluyendo archivos borrados que aún no han sido sobrescritos.
 
 ### Descriptores de Archivo (File Descriptors)
 
@@ -154,7 +157,7 @@ Los archivos más críticos para seguridad:
 
 `/var/log/apache2/` o `/var/log/nginx/`: Logs del servidor web. Contienen cada petición HTTP que recibe el servidor. Son una fuente rica de información sobre ataques web como SQL injection, XSS, y directory traversal.
 
-`/var/log/btmp`: Registra intentos de conexion fallidos. Se lee con `lastb` en vez de `cat` porque es un archivo binario.
+`/var/log/btmp`: Registra intentos de conexión fallidos. Se lee con `lastb` en vez de `cat` porque es un archivo binario.
 
 `/var/log/wtmp`: Registra inicios de sesión historicos (exitosos). Se lee con `last`.
 
@@ -171,7 +174,7 @@ El comando `logrotate` gestiona la rotación de logs, comprimiendo y eliminando 
 
 `/tmp` es el único directorio del sistema donde cualquier usuario puede escribir, leer y ejecutar. Esto lo convierte en el punto de entrada favorito para ataques.
 
-Un atacante que logra ejecutar codigo en un servidor web (por ejemplo, a través de una vulnerabilidad de subida de archivos como las que se explican en [OWASP File Upload](../web-owasp/FILE-UPLOAD.md)) normalmente descarga sus herramientas en `/tmp` porque ahí no necesita permisos especiales para escribir. Los scripts de minería de criptomonedas, los backdoors, y los exploit kits suelen residir en `/tmp` antes de moverse a ubicaciones más permanentes.
+Un atacante que logra ejecutar código en un servidor web (por ejemplo, a través de una vulnerabilidad de subida de archivos como las que se explican en [OWASP File Upload](../web-owasp/FILE-UPLOAD.md)) normalmente descarga sus herramientas en `/tmp` porque ahí no necesita permisos especiales para escribir. Los scripts de minería de criptomonedas, los backdoors, y los exploit kits suelen residir en `/tmp` antes de moverse a ubicaciones más permanentes.
 
 El problema es que los administradores limitados confían en que `/tmp` se limpia al reiniciar. Pero los sistemas modernos con systemd pueden configurar `/tmp` para que se monte en memoria RAM (tmpfs), lo que significa que el contenido se pierde al reiniciar. Sin embargo, si el atacante establecio persistencia mediante servicios systemd o entradas en crontab, el malware se descargara nuevamente en cada reinicio.
 
@@ -255,11 +258,11 @@ Las variables de entorno más importantes para seguridad:
 - `SHELL`: El shell que se usa para la sesión.
 - `USER` y `LOGNAME`: Nombre del usuario actual.
 
-`LD_PRELOAD` es particularmente peligroso. Un atacante que puede modificar esta variable para un proceso con privilegios puede inyectar codigo en ese proceso. Por eso, los binarios SUID ignoran `LD_PRELOAD` como medida de seguridad.
+`LD_PRELOAD` es particularmente peligroso. Un atacante que puede modificar esta variable para un proceso con privilegios puede inyectar código en ese proceso. Por eso, los binarios SUID ignoran `LD_PRELOAD` como medida de seguridad.
 
 ## El Proceso de Arranque (Boot Sequence)
 
-Entender como arranca Linux es importante para entender donde un atacante puede plantar codigo en diferentes etapas:
+Entender como arranca Linux es importante para entender donde un atacante puede plantar código en diferentes etapas:
 
 1. **BIOS/UEFI**: El firmware de la placa madre encuentra el cargador de arranque. Ataques a este nivel son raros pero devastadores (firmware implants).
 2. **Cargador de arranque (GRUB)**: Carga el kernel en memoria. Un atacante con acceso físico puede modificar GRUB para arrancar un kernel diferente o añadir parámetros maliciosos.
@@ -287,10 +290,10 @@ Las system calls son la interfaz entre user space y kernel space. Algunas de las
 - `connect()`: Conecta un socket a una dirección remota.
 
 Un atacante que quiere hacer algo que requiere privilegios elevados (como leer la memoria de otro proceso) necesita:
-1. Ejecutar codigo en un contexto que ya tiene esos privilegios (escalada de privilegios), o
-2. Explotar una vulnerabilidad en el kernel que le permita ejecutar codigo en kernel space (kernel exploit).
+1. Ejecutar código en un contexto que ya tiene esos privilegios (escalada de privilegios), o
+2. Explotar una vulnerabilidad en el kernel que le permita ejecutar código en kernel space (kernel exploit).
 
-Esta separacion es la base de la seguridad de Linux. Incluso si un programa es malicioso, no puede hacer daño directo al hardware a menos que explote una vulnerabilidad en el kernel mismo.
+Esta separación es la base de la seguridad de Linux. Incluso si un programa es malicioso, no puede hacer daño directo al hardware a menos que explote una vulnerabilidad en el kernel mismo.
 
 ### Cuando Falla la Separacion
 
@@ -298,17 +301,17 @@ Históricamente, vulnerabilidades como **Dirty COW** (CVE-2016-5195) permitieron
 
 Otra vulnerabilidad famosa fue **CVE-2014-3153** (conocida como "towelroot"), que afectaba el manejo de futexes del kernel y permitia escalar privilegios en dispositivos Android. Fue usada ampliamente para rootear dispositivos.
 
-**CVE-2017-1000112** fue una vulnerabilidad en el manejo de UDP del kernel que permitia denegación remota de servicio o potencialmente ejecución de codigo.
+**CVE-2017-1000112** fue una vulnerabilidad en el manejo de UDP del kernel que permitia denegación remota de servicio o potencialmente ejecución de código.
 
 **CVE-2021-3493** fue una vulnerabilidad en el sistema de archivos overlayfs de Linux que permitia a un usuario local escalar privilegios a root. Afectaba a Ubuntu y otras distribuciones.
 
-Estos casos ilustran por que mantener el kernel actualizado es la medida de seguridad más importante en cualquier servidor Linux. Un servidor con kernel antiguo es vulnerable a exploits públicos que cualquier atacante con acceso local puede ejecutar.
+Estos casos ilustran por qué mantener el kernel actualizado es la medida de seguridad más importante en cualquier servidor Linux. Un servidor con kernel antiguo es vulnerable a exploits públicos que cualquier atacante con acceso local puede ejecutar.
 
 ## Distribuciones: El Mismo Motor, Diferentes Carrocerias
 
 Técnicamente, "Linux" es solo el kernel. Lo que la mayoría de la gente llama "Linux" es en realidad una distribución: el kernel de Linux empaquetado junto con programas, bibliotecas, un gestor de paquetes y configuraciones por defecto.
 
-Diferentes distribuciones toman decisiones de diseno distintas que afectan la seguridad. No es lo mismo administrar un Ubuntu Desktop que un Red Hat Enterprise Linux o un Alpine Linux minimalista.
+Diferentes distribuciones toman decisiones de diseño distintas que afectan la seguridad. No es lo mismo administrar un Ubuntu Desktop que un Red Hat Enterprise Linux o un Alpine Linux minimalista.
 
 ### Familias de Distribuciones
 
@@ -340,11 +343,11 @@ Otra diferencia crítica: en Ubuntu, los servicios se administran con `systemctl
 
 **El Ataque a Equifax (2017):** Equifax sufrio una de las filtraciones más grandes de la historia (147 millones de personas) por no parchear una vulnerabilidad en Apache Struts. El servidor afectado corria Linux. El equipo de seguridad sabia de la vulnerabilidad desde hacia meses pero no aplico el parche. Este caso muestra que la seguridad de Linux no depende del sistema operativo sino de la disciplina del administrador. El sistema operativo más seguro del mundo es inseguro si no se actualiza.
 
-**El Gusano Mirai (2016):** Mirai infectaba dispositivos IoT que corrian Linux en versiones antiguas con contraseñas por defecto sin cambiar. Los dispositivos comprometidos (cámaras IP, routers, DVRs) formaron una botnet que lanzo ataques DDoS de hasta 1 Tbps contra Dyn, derribando sitios como Twitter, Netflix y Reddit. La leccion: no importa que Linux sea seguro si el administrador deja la contraseña por defecto. El codigo fuente de Mirai se público en líneas, lo que llevo a innumerables variantes.
+**El Gusano Mirai (2016):** Mirai infectaba dispositivos IoT que corrian Linux en versiones antiguas con contraseñas por defecto sin cambiar. Los dispositivos comprometidos (cámaras IP, routers, DVRs) formaron una botnet que lanzo ataques DDoS de hasta 1 Tbps contra Dyn, derribando sitios como Twitter, Netflix y Reddit. La lección: no importa que Linux sea seguro si el administrador deja la contraseña por defecto. El código fuente de Mirai se público en líneas, lo que llevo a innumerables variantes.
 
 **El Hackeo a los Servidores de la Universidad de Cambridge (2020):** Atacantes comprometieron servidores Linux de la universidad a través de vulnerabilidades en servicios expuestos -- SSH con contraseñas débiles y servidores web sin parchear. Los atacantes instalaron mineros de criptomonedas en `/tmp` y establecieron persistencia mediante servicios systemd ocultos. El incidente se detecto porque un administrador noto que el comando `top` mostraba uso de CPU anormalmente alto durante horas de baja actividad.
 
-**El Caso de la Linux Mint Website (2016):** Atacantes comprometieron el sitio web de Linux Mint y reemplazaron la imagen ISO oficial con una versión modificada que contenia un backdoor. Los usuarios que descargaron e instalaron el sistema desde esa ISO comprometida recibieron un sistema infectado de fábrica. Esto muestra que la cadena de suministro (supply chain) es un vector de ataque incluso para el software de codigo abierto más confiable.
+**El Caso de la Linux Mint Website (2016):** Atacantes comprometieron el sitio web de Linux Mint y reemplazaron la imagen ISO oficial con una versión modificada que contenia un backdoor. Los usuarios que descargaron e instalaron el sistema desde esa ISO comprometida recibieron un sistema infectado de fábrica. Esto muestra que la cadena de suministro (supply chain) es un vector de ataque incluso para el software de código abierto más confiable.
 
 **Dirty COW (2016):** Dirty COW (CVE-2016-5195) fue una vulnerabilidad en el kernel de Linux que permitia a cualquier usuario local escalar privilegios a root. La vulnerabilidad existio por 9 años en el kernel antes de ser descubierta. Afectaba a todas las distribuciones Linux. Los atacantes usaban un exploit simple que se podía descargar y compilar en segundos para obtener acceso root en cualquier servidor donde tuvieran una cuenta local.
 
@@ -358,7 +361,7 @@ Un atacante que compromete un servidor Linux suele seguir estos pasos:
 
 **Escalada de privilegios:** El atacante busca archivos SUID mal configurados con `find / -perm -4000`. Si encuentra un binario SUID que no debería serlo, puede explotarlo para volverse root. También busca kernels vulnerables con exploits públicos, por ejemplo ejecutando `uname -a` para obtener la versión del kernel y comparandola con una base de datos de vulnerabilidades.
 
-**Persistencia:** El atacante crea archivos en `/etc/cron.d/` o instala un servicio systemd que arranque su malware automáticamente. La técnica favorita es añadir una línea en `/etc/crontab` que ejecute un script desde `/tmp` cada minuto. También puede modificar `~/.bashrc` o `~/.profile` del administrador para ejecutar codigo cada vez que el administrador inicia sesión.
+**Persistencia:** El atacante crea archivos en `/etc/cron.d/` o instala un servicio systemd que arranque su malware automáticamente. La técnica favorita es añadir una línea en `/etc/crontab` que ejecute un script desde `/tmp` cada minuto. También puede modificar `~/.bashrc` o `~/.profile` del administrador para ejecutar código cada vez que el administrador inicia sesión.
 
 **Limpieza de rastros:** El atacante modifica o elimina archivos de log en `/var/log`. También puede modificar `~/.bash_history` para eliminar comandos incriminatorios. Los atacantes avanzados usan `logrotate` para forzar la rotación de logs antes de tiempo, eliminando evidencia de forma que parezca una operación normal del sistema.
 
@@ -386,18 +389,18 @@ Un atacante que compromete un servidor Linux suele seguir estos pasos:
 
 ## Autoevaluación
 
-1. Tu servidor Linux deja de arrancar. El mensaje de error indica que la particion raíz esta corrupta. Sin embargo, tienes otra particion con datos intactos en `/home`. Explica por que el sistema no puede arrancar aunque los datos de los usuarios estén intactos, y describe que pasos tomarias para recuperar el sistema.
+1. Tu servidor Linux deja de arrancar. El mensaje de error indica que la particion raíz esta corrupta. Sin embargo, tienes otra particion con datos intactos en `/home`. Explica por qué el sistema no puede arrancar aunque los datos de los usuarios estén intactos, y describe que pasos tomarias para recuperar el sistema.
 
-2. Encuentras un archivo sospechoso en `/tmp` llamado `.systemd-update.sh`. Cuando lo abres con `cat`, ves codigo que descarga un binario desde una IP extraña y lo ejecuta. Explica por que el atacante eligio `/tmp` y que podrías hacer para prevenir la ejecución de este tipo de archivos sin impedir que las aplicaciones legítimas usen `/tmp`.
+2. Encuentras un archivo sospechoso en `/tmp` llamado `.systemd-update.sh`. Cuando lo abres con `cat`, ves código que descarga un binario desde una IP extraña y lo ejecuta. Explica por qué el atacante eligio `/tmp` y que podrías hacer para prevenir la ejecución de este tipo de archivos sin impedir que las aplicaciones legítimas usen `/tmp`.
 
-3. Un administrador te dice que su servidor Linux es seguro porque instalo un antivirus y el antivirus no encuentra nada malo. Explica por que el modelo de permisos de Linux es más fundamental que cualquier antivirus, y menciona al menos tres técnicas de ataque que un antivirus no detectaria.
+3. Un administrador te dice que su servidor Linux es seguro porque instalo un antivirus y el antivirus no encuentra nada malo. Explica por qué el modelo de permisos de Linux es más fundamental que cualquier antivirus, y menciona al menos tres técnicas de ataque que un antivirus no detectaria.
 
-4. Durante una investigación forense, encuentras que los archivos de log en `/var/log/auth.log` fueron borrados, pero los logs del servicio web en `/var/log/apache2/` están intactos. Que te dice esto sobre el nivel de sofisticacion del atacante? Que prioridades tuvo y por que no borró los otros logs?
+4. Durante una investigación forense, encuentras que los archivos de log en `/var/log/auth.log` fueron borrados, pero los logs del servicio web en `/var/log/apache2/` están intactos. Que te dice esto sobre el nivel de sofisticacion del atacante? Que prioridades tuvo y por qué no borró los otros logs?
 
-5. Descargas un programa desde Internet y al ejecutarlo, el sistema dice "Permission denied". Ni siquiera te pregunta si quieres ejecutarlo con permisos de administrador. Explica que mecanismo de seguridad de Linux esta bloqueando la ejecución y por que esto es mejor que el modelo de Windows donde un doble clic puede ejecutar cualquier descarga.
+5. Descargas un programa desde Internet y al ejecutarlo, el sistema dice "Permission denied". Ni siquiera te pregunta si quieres ejecutarlo con permisos de administrador. Explica que mecanismo de seguridad de Linux esta bloqueando la ejecución y por qué esto es mejor que el modelo de Windows donde un doble clic puede ejecutar cualquier descarga.
 
 6. Un colega insiste en usar Ubuntu Desktop para un servidor web de producción crítico. Tu prefieres usar Debian Server o una distribución minimalista. Defiende tu posición basándote en superficie de ataque, servicios por defecto, ciclo de actualizaciones y comunidad de soporte.
 
-7. Examinas `/etc/passwd` y ves que hay una cuenta llamada `backup` con shell `/bin/bash` que ha estado inactiva por 3 años. La contraseña de la cuenta tiene 20 caracteres. Explica por que esta cuenta sigue siendo un riesgo de seguridad, incluso con una contraseña fuerte.
+7. Examinas `/etc/passwd` y ves que hay una cuenta llamada `backup` con shell `/bin/bash` que ha estado inactiva por 3 años. La contraseña de la cuenta tiene 20 caracteres. Explica por qué esta cuenta sigue siendo un riesgo de seguridad, incluso con una contraseña fuerte.
 
-8. Un atacante logra acceso a tu servidor como el usuario `www-data` (el usuario del servidor web). Explica por que este es solo el primer paso y describe que debe hacer el atacante para volverse root. Menciona al menos dos técnicas específicas de escalada de privilegios que usaria.
+8. Un atacante logra acceso a tu servidor como el usuario `www-data` (el usuario del servidor web). Explica por qué este es solo el primer paso y describe que debe hacer el atacante para volverse root. Menciona al menos dos técnicas específicas de escalada de privilegios que usaria.

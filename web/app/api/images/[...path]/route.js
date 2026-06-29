@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { NextResponse } from 'next/server';
 
-const ROOT_DIR = path.resolve(/* turbopackIgnore: true */ process.cwd(), '..');
+const ROOT_DIR = path.resolve(/*turbopackIgnore: true*/ process.cwd(), '..');
 const MIME_TYPES = {
   '.gif': 'image/gif',
   '.jpg': 'image/jpeg',

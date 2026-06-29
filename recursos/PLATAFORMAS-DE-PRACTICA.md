@@ -1,5 +1,8 @@
 ---
 title: "Plataformas de Práctica"
+level: "referencia"
+content_type: "recurso"
+updated: "2026-06-29"
 ---
 
 # Plataformas de Práctica

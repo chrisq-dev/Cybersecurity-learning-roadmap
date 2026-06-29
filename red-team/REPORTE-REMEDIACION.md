@@ -1,5 +1,8 @@
 ---
 title: "El Reporte: El Único Entregable Real"
+level: "avanzado"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # El Reporte: El Único Entregable Real
@@ -8,7 +11,7 @@ title: "El Reporte: El Único Entregable Real"
 
 Aceptar la verdad del trabajo ofensivo: a la empresa no le importa cuántas terminales abriste. Lo único que compran es un PDF de 40 páginas que explique que esta roto, donde, y como arreglarlo. Un hacker ético genial técnicamente pero que no escribe bien terminará desempleado.
 
-Traducir el codigo a riesgo de negocio para la junta directiva es la habilidad más cotizada de la industria. Esta guía cubre como estructurar un reporte profesional, diferenciar entre audiencia ejecutiva y técnica, usar CVSS para priorizar, y evitar los errores que arruinan la credibilidad.
+Traducir el código a riesgo de negocio para la junta directiva es la habilidad más cotizada de la industria. Esta guía cubre como estructurar un reporte profesional, diferenciar entre audiencia ejecutiva y técnica, usar CVSS para priorizar, y evitar los errores que arruinan la credibilidad.
 
 ## El Entregable Único
 
@@ -34,7 +37,7 @@ Un buen reporte se divide en dos partes porque lo leen dos audiencias que hablan
 
 El CEO no sabe que es Nmap, puerto 22, o SQLi. El CEO habla dinero y riesgo reputacional.
 
-El resumen ejecutivo es una pagina que responde:
+El resumen ejecutivo es una página que responde:
 1. Alguien puede entrar y robarnos? (Si/No + contexto).
 2. Si nos roban, cuanto perdemos? (en dinero, demandas, reputación).
 3. Podemos arreglarlo rápido? (tiempo y costo estimado).
@@ -46,7 +49,7 @@ El resumen ejecutivo es una pagina que responde:
 **Reglas del resumen ejecutivo:**
 - Sin jerga técnica. No menciones herramientas (Burp Suite, Kali, Nmap).
 - Enfocarse en impacto de negocio (pérdida financiera, daño reputacional, multas regulatorias).
-- Ser honesto pero no catastrofista. Asustar lo suficiente para accion pero no generar pánico.
+- Ser honesto pero no catastrofista. Asustar lo suficiente para acción pero no generar pánico.
 - Incluir logros positivos ("El firewall perimetral esta correctamente configurado") para ser objetivo.
 
 ### Reporte Técnico (Para Programadores y Blue Team)
@@ -55,18 +58,18 @@ Sección detallada para quienes implementaran las correcciones.
 
 **Por cada hallazgo incluir:**
 
-- **Título:** Claro y descriptivo. "Inyección SQL en parámetro id del modulo de búsqueda"
+- **Título:** Claro y descriptivo. "Inyección SQL en parámetro id del módulo de búsqueda"
 - **Severidad:** CVSS score y clasificación (Critical/High/Medium/Low).
 - **Ubicación:** URL exacta, parámetro, IP, archivo, configuración.
 - **Descripción:** Explicación de la vulnerabilidad y como funciona.
 - **Evidencia:** Captura de pantalla, request/response HTTP, comando ejecutado, log.
 - **Pasos de reproduccion:** Instrucciones paso a paso para replicar.
 - **Impacto:** Que puede lograr un atacante al explotarla.
-- **Remediación:** Solución específica, con codigo si aplica.
+- **Remediación:** Solución específica, con código si aplica.
 - **Referencias:** Enlaces a documentación oficial, CVE, buenas prácticas.
 
 **La regla de la remediación:**
-Nunca senales un problema sin ofrecer solución. Si encuentras SQLi, incluyes el codigo corregido usando prepared statements. Si encuentras un servidor sin parche, indicas exactamente que parche instalar y donde descargarlo. Un reporte sin remediaciones esta incompleto.
+Nunca señales un problema sin ofrecer solución. Si encuentras SQLi, incluyes el código corregido usando prepared statements. Si encuentras un servidor sin parche, indicas exactamente que parche instalar y donde descargarlo. Un reporte sin remediaciones esta incompleto.
 
 ## Midiendo el Miedo: CVSS
 
@@ -85,7 +88,7 @@ Cuando entregas 50 hallazgos, el equipo no puede arreglar todo en un día. Neces
 
 ### Interpretacion de Scores
 
-| Score | Severidad | Accion recomendada |
+| Score | Severidad | Acción recomendada |
 |-------|-----------|-------------------|
 | 0.1 - 3.9 | Bajo | Arreglar cuando haya tiempo |
 | 4.0 - 6.9 | Medio | Incluir en sprint actual |
@@ -139,10 +142,10 @@ Un cliente satisfecho contrata de nuevo. Uno insatisfecho no, sin importar la ca
 
 ## Autoevaluación
 
-1. Redactas el resumen ejecutivo para la junta directiva de un banco. Mencionar "Burp Suite" o "Kali Linux" es pésima idea. Por que? Como describes los hallazgos?
+1. Redactas el resumen ejecutivo para la junta directiva de un banco. Mencionar "Burp Suite" o "Kali Linux" es pésima idea. Por qué? Como describes los hallazgos?
 2. Encuentras un error que expone nombres de empleados (bajo) y otro que permite borrar la base de datos sin autenticación (crítico). Que métrica usas para clasificar? Que limitaciones tiene?
-3. Por que un reporte solo con capturas de pantalla pero sin remediación es incompleto? Que responsabilidad tiene el tester?
-4. "Hackear y escribir el reporte son habilidades idénticas." Por que es falso? Que habilidades de comunicación son necesarias?
+3. Por qué un reporte solo con capturas de pantalla pero sin remediación es incompleto? Que responsabilidad tiene el tester?
+4. "Hackear y escribir el reporte son habilidades idénticas." Por qué es falso? Que habilidades de comunicación son necesarias?
 5. Encuentras 30 vulnerabilidades, 25 son "Altas" o "Críticas" según CVSS. El equipo no puede arreglar todo. Como priorizas? Que criterio adicional usas?
 6. Un hallazgo crítico que reportaste resulta ser falso positivo. Como recuperas la confianza del cliente? Que cambios haces en tu proceso?
 7. El equipo de desarrollo dice que tu reporte de 100 páginas es muy extenso. Como lo reestructuras? Que secciones son esenciales y cuáles van en apendices?
@@ -231,8 +234,8 @@ Por lo tanto:
 
 9. Un cliente te pide que "suavices" el lenguaje del reporte para que la junta directiva no se alarme. Cual es tu respuesta profesional?
 10. Durante el re-test, descubres que el cliente "corrigio" una vulnerabilidad de una forma que introduce una vulnerabilidad peor. Como lo documentas?
-11. Tu reporte tiene 80 páginas. El CISO del cliente te dice que solo leyó el resumen ejecutivo. Como aseguras que los hallazgos críticos sean visibles incluso para quien solo lee una pagina?
-12. Un hallazgo que reportaste como "Alto" fue reclasificado por el cliente como "Bajo" porque "ese sistema no es crítico." Debes aceptar su reclasificacion? Como manejas esta situación?
+11. Tu reporte tiene 80 páginas. El CISO del cliente te dice que solo leyó el resumen ejecutivo. Como aseguras que los hallazgos críticos sean visibles incluso para quien solo lee una página?
+12. Un hallazgo que reportaste como "Alto" fue reclasificado por el cliente como "Bajo" porque "ese sistema no es crítico." Debes aceptar su reclasificación? Como manejas esta situación?
 13. El equipo de desarrollo del cliente argumenta que una vulnerabilidad no es explotable "en la práctica." Como respondes sin entrar en una discusión técnica interminable?
 14. Tu reporte incluye un hallazgo que requiere cambios arquitectonicos profundos. El cliente dice que es demasiado costoso. Ofreces una mitigación parcial o insistes en la solución completa?
 
@@ -243,7 +246,7 @@ Por lo tanto:
 Sección más importante del reporte. La lee la alta dirección que toma decisiones de presupuesto y prioridades.
 
 **Debe incluir:**
-- Que se evaluo y por que.
+- Que se evaluo y por qué.
 - Número total de hallazgos, categorizados por severidad.
 - Riesgo general de la organización (bajo, medio, alto, crítico).
 - Que es lo más crítico que debe remediarse primero.
@@ -286,7 +289,7 @@ Cada hallazgo debe ser autónomo (puede entenderse sin leer todo el reporte).
 
 **Ejemplo de hallazgo:**
 
-**Título:** Inyección SQL en modulo de búsqueda de productos
+**Título:** Inyección SQL en módulo de búsqueda de productos
 **Severidad:** Crítico
 **CWE:** CWE-89
 **Descripción:** La aplicación web no sanitiza correctamente el parámetro "search" en /products/search. Un atacante puede inyectar comandos SQL y acceder a la base de datos subyacente.
@@ -303,13 +306,13 @@ Van más allá de parchar vulnerabilidades específicas. Guian la mejora a largo
 **Ejemplos:**
 - "Implementar un programa de bug bounty para recibir reportes de la comunidad de seguridad."
 - "Establecer un proceso de revisión de seguridad en el SDLC."
-- "Capacitar a los desarrolladores en prácticas de codigo seguro."
+- "Capacitar a los desarrolladores en prácticas de código seguro."
 - "Implementar un WAF o NGFW para mitigar ataques web comunes mientras se corrigen las aplicaciones."
 
 ### Priorización de Remedacion
 
 Método CVSS para cuantificar severidad:
-- CVSS v3.1 Base Score: 0.0 - 10.0.
+- CVSS v4.0 Base Score: 0.0 - 10.0; incluye siempre el vector y la versión utilizados.
 - Vector: AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H.
 
 Factores además de CVSS:
@@ -361,16 +364,16 @@ Por eso es importante:
 
 **Correctiva:** Corrige la vulnerabilidad directamente. Ejemplo: Parchear el servidor, sanitizar el input, actualizar la configuración.
 
-**Compensatoria:** Mitiga el riesgo sin corregir la vulnerabilidad de raíz. Ejemplo: Implementar un WAF para bloquear SQLi mientras se reescribe el codigo de la aplicación.
+**Compensatoria:** Mitiga el riesgo sin corregir la vulnerabilidad de raíz. Ejemplo: Implementar un WAF para bloquear SQLi mientras se reescribe el código de la aplicación.
 
 **Aceptación del Riesgo:** El cliente acepta el riesgo y no implementa ninguna corrección. Debe haber una justificacion formal y aprobación de la alta dirección.
 
 ### Plazos de Remediación Sugeridos
 
 - **Crítico:** 24-48 horas.
-- **Alto:** 7-14 dias.
-- **Medio:** 30-60 dias.
-- **Bajo:** 90-120 dias.
+- **Alto:** 7-14 días.
+- **Medio:** 30-60 días.
+- **Bajo:** 90-120 días.
 - **Informativo:** Próximo ciclo de mejora.
 
 ## Formatos de Reporte
@@ -383,7 +386,7 @@ Por eso es importante:
 - Recomendaciones de configuración específicas.
 
 ### Reporte Ejecutivo (Audiencia: Dirección, Junta Directiva)
-- Resumen de una pagina.
+- Resumen de una página.
 - Gráficos de severidad y tendencias.
 - Riesgo de negocio en términos financieros.
 - Recomendaciones estratégicas.
@@ -400,12 +403,12 @@ Por eso es importante:
 Durante el pentest, pueden surgir hallazgos que el cliente cuestiona:
 
 **Caso 1: El cliente dice que es falso positivo.**
-Procedimiento: Pedir evidencia de que esta remediado. Verificar con una prueba adicional. Si el cliente tiene razon, retirar el hallazgo del reporte o moverlo a "Informativo."
+Procedimiento: Pedir evidencia de que esta remediado. Verificar con una prueba adicional. Si el cliente tiene razón, retirar el hallazgo del reporte o moverlo a "Informativo."
 
 **Caso 2: El cliente dice que el riesgo es menor.**
 Procedimiento: Documentar el desacuerdo en el reporte. El cliente puede firmar una aceptación de riesgo. Mantener la severidad original según el criterio del tester.
 
-**Caso 3: El cliente dice que "es así por diseno."**
+**Caso 3: El cliente dice que "es así por diseño."**
 Procedimiento: Evaluar si realmente es intencional o es una excusa. Si es intencional, documentar como "Riesgo Aceptado" con la justificacion del cliente.
 
 ## Preguntas Adicionales

@@ -1,5 +1,8 @@
 ---
 title: "Ingeniería Inversa: Destripando el APK"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 # Ingeniería Inversa: Destripando el APK
 

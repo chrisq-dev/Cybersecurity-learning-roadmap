@@ -1,5 +1,8 @@
 ---
 title: "El Mapa de Skills: El Árbol de Habilidades"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # El Mapa de Skills: El Árbol de Habilidades
@@ -11,7 +14,7 @@ aqui vamos a conectar los puntos. ninguna herramienta de ciberseguridad vive ais
 En un videojuego, tienes un "Árbol de Habilidades" (Skill Tree). No puedes desbloquear la habilidad de "Lanzar Fuego" Nivel 3 si no aprendiste primero a "Encender una chispa" Nivel 1.
 Sabes qué hacen los novatos? Querer aprender Kubernetes sin saber cómo funciona una Dirección IP. Eso crea "Agujeros de Conocimiento" que los destruirán en las entrevistas de trabajo.
 
-**Por que esto importa:** Es como querer construir un rascacielos sin saber poner ladrillos. En la entrevista, cuando te pregunten lo básico, te vas a caer.
+**Por qué esto importa:** Es como querer construir un rascacielos sin saber poner ladrillos. En la entrevista, cuando te pregunten lo básico, te vas a caer.
 
 ---
 
@@ -53,7 +56,7 @@ Dominio fundamental sin excepción. Todo ataque y toda defensa ocurre sobre una 
 - Modelo de responsabilidad compartida: qué asegura el proveedor vs. qué asegura el cliente.
 - IaaS, PaaS, SaaS: diferencias de seguridad en cada modelo.
 - AWS: VPC, subredes públicas/privadas, Security Groups, NACLs, S3 (políticas de acceso, buckets públicos), IAM (roles, políticas, usuarios), CloudTrail (auditoría).
-- Azure: Virtual Networks, NSG, Azure AD, RBAC, Key Vault, Policy.
+- Azure: Virtual Networks, NSG, Microsoft Entra ID, RBAC, Key Vault, Policy.
 - Principios de hardening en la nube: mínimo privilegio, cifrado en reposo y en tránsito, logging centralizado.
 
 **Contenedores:**
@@ -165,7 +168,7 @@ La Ciberseguridad no es sobre "Hackear". Es sobre calcular que si el servidor de
 - Gestión presupuestaria: justificar inversiones en seguridad basándose en reducción de riesgo.
 - Negociación: balance entre seguridad y productividad, excepciones, aceptación de riesgo.
 
-**Por que esto importa:** puedes ser el mejor técnico del mundo, pero si no sabes hablar en plata, te van a pagar como a un técnico. El que traduce tecnología a dinero, ese es el que gana.
+**Por qué esto importa:** puedes ser el mejor técnico del mundo, pero si no sabes hablar en plata, te van a pagar como a un técnico. El que traduce tecnología a dinero, ese es el que gana.
 
 ---
 

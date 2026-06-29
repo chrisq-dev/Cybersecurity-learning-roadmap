@@ -1,5 +1,8 @@
 ---
 title: "SCADA y OT: Hackeando el Mundo Físico"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 # SCADA y OT: Hackeando el Mundo Físico
 
@@ -193,7 +196,7 @@ El modelo de referencia para segmentación de redes OT/ICS (ISA-99 / IEC 62443):
 
 ## 6. El Caso de Estudio: Stuxnet (El Arma Digital)
 
-Cuando un país decide hackear a otro país con codigo? Pasa Stuxnet. el ejemplo definitivo de por qué la ciberseguridad industrial es un asunto de guerra internacional es el virus **Stuxnet (2010)**.
+Cuando un país decide hackear a otro país con código? Pasa Stuxnet. el ejemplo definitivo de por qué la ciberseguridad industrial es un asunto de guerra internacional es el virus **Stuxnet (2010)**.
 
 **El Objetivo:** La planta secreta de enriquecimiento de Uranio nuclear de Natanz, en Irán.
 **El Problema:** La planta estaba "Air-gapped" (Totalmente desconectada de internet). No había forma de hackearla remotamente.
@@ -283,7 +286,7 @@ Actualizar el sistema operativo podría introducir un retraso de 3 milisegundos 
 | **Nozomi Guardian** | Monitoreo de red OT en tiempo real, detección de anomalías de protocolo industrial |
 | **Dragos Platform** | Threat intelligence + detección de amenazas en entornos ICS |
 | **Claroty Continuous Threat Detection** | Visibilidad de assets OT sin agentes |
-| **Microsoft Defender for IoT** | Agente de monitoreo OT integrado con Azure Sentinel |
+| **Microsoft Defender for IoT** | Agente de monitoreo OT integrado con Microsoft Sentinel |
 | **Tenable OT Security** | Gestión de vulnerabilidades específicas ICS |
 | **Wireshark + disectores ICS** | Análisis de tráfico industrial open-source |
 

@@ -1,5 +1,8 @@
 ---
 title: "El Checklist de Aplicación: Protocolo de Despegue"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # El Checklist de Aplicación: Protocolo de Despegue
@@ -23,7 +26,7 @@ Cuando mandas un CV y el reclutador te googlea antes de la entrevista? Te van a 
 * **Huella digital profesional:** Crea perfiles coherentes (LinkedIn, GitHub, Medium) con misma foto, nombre y descripción profesional. La coherencia genera confianza.
 * **Por qué importa:** El reclutador y el Blue Team harán un Análisis OSINT sobre tu perfil antes de contratarte. Si tu puesto requiere manejar contraseñas de bancos y tu perfil de internet grita "Inmadurez", serás rechazado por riesgo corporativo.
 
-**Por que esto importa:** Estás pidiendo que te confíen las llaves del reino. Si tu huella digital dice "desorden", te descartan antes del primer sí.
+**Por qué esto importa:** Estás pidiendo que te confíen las llaves del reino. Si tu huella digital dice "desorden", te descartan antes del primer sí.
 
 **Qué eliminar:**
 - Fotos en situaciones comprometedoras.
@@ -56,7 +59,7 @@ Error de novato. * **La Acción:** Nunca envíes el mismo CV a todas las empresa
 - Cuando el ajuste requiere mentir sobre tu experiencia.
 - Cuando el rol requiere habilidades que claramente no posees (mejor invertir tiempo en roles realistas).
 
-**Por que esto importa:** Si el puesto pide Active Directory y tu hablas solo de Linux, el ATS no hace la conexión. Es como mandar una llave inglesa cuando te pidieron un destornillador.
+**Por qué esto importa:** Si el puesto pide Active Directory y tu hablas solo de Linux, el ATS no hace la conexión. Es como mandar una llave inglesa cuando te pidieron un destornillador.
 
 ### Paso 3: El Chequeo del ATS (Robot Reclutador)
 
@@ -140,7 +143,7 @@ Gracias de antemano,
 - Ferias de empleo universitarias y de la industria.
 - Grupos de WhatsApp/Telegram/Discord de ciberseguridad local.
 
-**Por que esto importa:** Es como tener un referente interno que avala tu perfil. Esa recomendación vale más que mil CVs.
+**Por qué esto importa:** Es como tener un referente interno que avala tu perfil. Esa recomendación vale más que mil CVs.
 
 ---
 

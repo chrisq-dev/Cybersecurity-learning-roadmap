@@ -1,10 +1,13 @@
 ---
 title: "Inspiración: Mr. Robot"
+level: "inicial"
+content_type: "articulo"
+updated: "2026-06-29"
 ---
 
 # Inspiración: Mr. Robot
 
-Mr. Robot fue una de las razones por las que me interesé más en la ciberseguridad.
+Mr. Robot fue una de las razones por las que me interésé más en la ciberseguridad.
 
 No fue solo por la terminal, los comandos o la estética oscura. Eso llama la atención, claro. Pero lo que más me marcó fue ver que la ciberseguridad no era solo "hackear computadoras". También era entender personas, empresas, poder, privacidad, errores humanos, vigilancia, confianza y consecuencias.
 
@@ -102,7 +105,7 @@ Mr. Robot dedica tanto o más tiempo a la manipulación humana que al código. E
 | Técnica | Escena en la Serie | Aplicación Real |
 |---|---|---|
 | Pretexting | Elliot se hace pasar por técnico de mantenimiento | Atacantes llaman al helpdesk fingiendo ser empleados |
-| Phishing | Correos maliciosos enviados a empleados de E Corp | El 91% de los ataques cibernéticos comienzan con phishing |
+| Phishing | Correos maliciosos enviados a empleados de E Corp | El phishing continúa siendo un vector frecuente de acceso inicial |
 | Tailgating | Elliot sigue a un empleado a través de una puerta segura | Acceso físico no autorizado siguiendo a personal autorizado |
 | Dumpster Diving | Elliot revisa la basura de E Corp buscando documentos | Información sensible en papeles desechados sin destruir |
 | Vishing | Llamadas telefónicas falsas para obtener información | Ataques a helpdesk para reseteo de contraseñas |

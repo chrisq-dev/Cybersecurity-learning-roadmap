@@ -1,5 +1,8 @@
 ---
 title: "Cómo Usar Esta Guía"
+level: "referencia"
+content_type: "recurso"
+updated: "2026-06-29"
 ---
 # Cómo Usar Esta Guía
 
@@ -9,7 +12,7 @@ Cada sección incluye fundamentos teoricos, ejemplos prácticos, analogias expli
 
 Esta guía no está pensada para que la termines rápido.
 
-Está pensada para que tengas un lugar ordenado al cual volver cuando te sientas perdido entre tantos temas: redes, Linux, web, Blue Team, cloud, certificaciones, laboratorios, cultura hacker y empleabilidad.
+Está pensada para que tengas un lugar ordenado al cual volver cuando te sientas perdido entre tantos temas: redes, Linux, web, Blue Team, cloud, certificaciones, playbooks, cultura hacker y empleabilidad.
 
 La idea es simple: avanzar poco a poco, entender los fundamentos y conectar temas sin intentar dominar todo al mismo tiempo.
 
@@ -139,7 +142,7 @@ Si te pierdes:
 - Vuelve a fundamentos.
 - Revisa glosario.
 - Busca el concepto anterior.
-- Haz un laboratorio pequeño.
+- Busca un ejemplo documentado y relaciónalo con el concepto.
 - Escribe qué parte no entiendes.
 - Pregunta con contexto.
 

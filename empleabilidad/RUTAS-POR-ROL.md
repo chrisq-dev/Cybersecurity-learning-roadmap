@@ -1,5 +1,8 @@
 ---
 title: "Rutas de Carrera: Las Clases RPG"
+level: "inicial"
+content_type: "ruta"
+updated: "2026-06-29"
 ---
 
 # Rutas de Carrera: Las Clases RPG
@@ -14,7 +17,7 @@ En los videojuegos de rol (RPG), tú no eliges jugar como "Aventurero". Tienes q
 
 ## 1. El Guardia de la Torre (SOC Analyst Nivel 1)
 
-Esta es la clase con la que el 80% de las personas entran a la industria (Entry-Level). Es la puerta de entrada.
+Es una puerta de entrada habitual para perfiles iniciales.
 * **La Misión:** Estás sentado en la torre más alta del castillo mirando 5 monitores. Tu trabajo es mirar el Radar (SIEM) y decidir si la mancha roja que se acerca es un dragón real (Un Hacker) o simplemente una paloma grande (Un Falso Positivo).
 * **Las Habilidades (Skills):**
   * Entender de Redes para saber si la IP pertenece a Rusia o a la oficina de ventas.
@@ -22,7 +25,7 @@ Esta es la clase con la que el 80% de las personas entran a la industria (Entry-
   * Si detectas al dragón, tocas la alarma y escalas el problema al Nivel 2.
 * **Ideal para:** Personas analíticas que disfrutan resolviendo rompecabezas de datos y buscando agujas en pajares.
 
-**Rango salarial (referencia LATAM/EE.UU.):** $18k-$40k USD anual (junior). Incrementa con experiencia y certificaciones.
+**Compensación:** depende del país, modalidad, sector, experiencia y alcance real del puesto. Consulta fuentes salariales locales con fecha y metodología visibles.
 
 **Certificaciones recomendadas:** CompTIA Security+, CySA+, SC-200 (Microsoft Sentinel), Splunk Core Certified User.
 
@@ -51,7 +54,7 @@ Esta es la clase con la que el 80% de las personas entran a la industria (Entry-
   * Automatización de respuesta (playbooks en SOAR).
 * **Ideal para:** Adictos a la adrenalina que funcionan perfectamente bajo presión extrema corporativa.
 
-**Rango salarial:** $60k-$120k USD anual. Varía según experiencia y ubicación.
+**Compensación:** depende del país, modalidad, sector, experiencia y alcance real del puesto. Consulta fuentes salariales locales con fecha y metodología visibles.
 
 **Certificaciones recomendadas:** GCFE/GCFA (SANS), CHFI, GNFA, DFIR Certifications.
 
@@ -82,9 +85,9 @@ Esta es la clase con la que el 80% de las personas entran a la industria (Entry-
   * Seguridad en CI/CD (DevSecOps): SAST, DAST, escaneo de secretos.
 * **Ideal para:** Constructores metódicos que odian las emergencias a las 3:00 AM y prefieren prevenir el desastre diseñando infraestructuras inquebrantables.
 
-**Por que esto importa:** Si eres de los que prefieren prevenir que curar, esta es tu clase. Duermes tranquilo sabiendo que tu castillo está blindado.
+**Por qué esto importa:** Si eres de los que prefieren prevenir que curar, esta es tu clase. Duermes tranquilo sabiendo que tu castillo está blindado.
 
-**Rango salarial:** $90k-$180k USD anual. Especialización cloud bien remunerada.
+**Compensación:** depende del país, modalidad, sector, experiencia y alcance real del puesto. Consulta fuentes salariales locales con fecha y metodología visibles.
 
 **Certificaciones recomendadas:** AWS Security Specialty, Azure Security Engineer (AZ-500), CCSK, CCSP.
 
@@ -109,7 +112,7 @@ Rol ofensivo autorizado. El atacante contratado para encontrar fallas antes que 
   * Conocimiento de OWASP Top 10, MITRE ATT&CK.
 * **Ideal para:** Personas metódicas con mentalidad de "romper para construir".
 
-**Rango salarial:** $70k-$150k USD anual.
+**Compensación:** depende del país, modalidad, sector, experiencia y alcance real del puesto. Consulta fuentes salariales locales con fecha y metodología visibles.
 
 **Certificaciones recomendadas:** OSCP, PNPT, GPEN, GWAPT, OSWE.
 
@@ -132,7 +135,7 @@ Rol de verificación y cumplimiento. El que revisa que se sigan las reglas.
   * Comunicación escrita: reportes de auditoría claros y accionables.
 * **Ideal para:** Personas detallistas, metódicas, con capacidad crítica y objetividad.
 
-**Rango salarial:** $50k-$110k USD anual.
+**Compensación:** depende del país, modalidad, sector, experiencia y alcance real del puesto. Consulta fuentes salariales locales con fecha y metodología visibles.
 
 **Certificaciones recomendadas:** ISO 27001 LA, CISA, CISM, CRISC.
 
@@ -156,7 +159,7 @@ Rol estratégico enfocado en la gestión de riesgos y cumplimiento normativo.
   * Conocimiento regulatorio: GDPR, PCI-DSS, HIPAA, SOX, LGPD.
 * **Ideal para:** Personas con visión estratégica, capacidad de análisis y comunicación ejecutiva.
 
-**Rango salarial:** $60k-$130k USD anual.
+**Compensación:** depende del país, modalidad, sector, experiencia y alcance real del puesto. Consulta fuentes salariales locales con fecha y metodología visibles.
 
 **Certificaciones recomendadas:** CRISC, CISM, CISA, ISO 27001 Lead Implementer.
 
@@ -180,7 +183,7 @@ Rol proactivo de búsqueda de amenazas. No espera alertas, sale a buscar.
   * Automatización de detecciones personalizadas.
 * **Ideal para:** Investigadores curiosos que disfrutan encontrando lo que otros pasan por alto.
 
-**Rango salarial:** $80k-$150k USD anual.
+**Compensación:** depende del país, modalidad, sector, experiencia y alcance real del puesto. Consulta fuentes salariales locales con fecha y metodología visibles.
 
 **Certificaciones recomendadas:** GCFA, GNFA, Certified Threat Hunter (EC-Council).
 
@@ -195,15 +198,15 @@ Rol proactivo de búsqueda de amenazas. No espera alertas, sale a buscar.
 
 ## 8. Tabla Comparativa de Roles
 
-| Rol | Entry-Level? | Remoto | Estrés | Salario (Junior) | Salario (Senior) |
-|---|---|---|---|---|---|
-| SOC Analyst N1 | Sí | Frecuente | Medio | $18k-$40k | $50k-$80k |
-| Incident Responder | No | Frecuente | Alto | $60k-$90k | $90k-$140k |
-| Cloud Security Eng. | No | Alto | Bajo-Medio | $80k-$120k | $120k-$180k |
-| Pentester | Raro | Medio | Medio | $50k-$80k | $100k-$150k |
-| Auditor Seguridad | Sí | Frecuente | Bajo | $40k-$60k | $80k-$110k |
-| Analista GRC | Sí | Frecuente | Medio | $40k-$60k | $80k-$130k |
-| Threat Hunter | No | Frecuente | Medio-Alto | $70k-$100k | $100k-$150k |
+| Rol | ¿Suele ser inicial? | Trabajo remoto | Presión operativa | Enfoque principal |
+|---|---|---|---|---|
+| SOC Analyst N1 | Sí | Frecuente | Media | Monitoreo y triage |
+| Incident Responder | No | Frecuente | Alta | Contención e investigación |
+| Cloud Security Engineer | No | Frecuente | Media | Arquitectura y automatización |
+| Pentester | Pocas veces | Variable | Media | Evaluación ofensiva autorizada |
+| Auditor de seguridad | Sí | Frecuente | Baja-media | Evidencia y controles |
+| Analista GRC | Sí | Frecuente | Media | Riesgo y cumplimiento |
+| Threat Hunter | No | Frecuente | Media-alta | Búsqueda proactiva |
 
 ---
 

@@ -1,5 +1,8 @@
 ---
 title: "Fundamentos de Windows Corporativo: La Isla vs El Imperio"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Fundamentos de Windows Corporativo: La Isla vs El Imperio
@@ -344,7 +347,7 @@ Las GPOs se almacenan en SYSVOL, accesible para todos los usuarios autenticados 
 
 ### Sobre el Phishing como Puerta de Entrada
 
-El 91% de los ataques corporativos comienzan con phishing. No porque sea una técnica sofisticada, sino porque funciona. Un correo bien redactado dirigido a un empleado de contabilidad o recursos humanos tiene altas probabilidades de éxito. El payload inicial suele ser un documento de Office con macros maliciosas que ejecutan PowerShell.
+El phishing continúa siendo un vector relevante porque intenta convertir a una persona o una sesión legítima en el punto de entrada. Un correo bien redactado dirigido a un empleado de contabilidad o recursos humanos tiene altas probabilidades de éxito. El payload inicial suele ser un documento de Office con macros maliciosas que ejecutan PowerShell.
 
 Una vez que el atacante tiene ejecución de código en una máquina dentro del dominio, el resto de la cadena depende de su capacidad para moverse sin ser detectado. Es por esto que las empresas invierten tanto en seguridad perimetral (filtros antiphishing, sandboxing de correos) y en capacitación de empleados. Pero la seguridad perimetral nunca es suficiente; siempre habrá un correo que pase los filtros y un empleado que haga clic.
 

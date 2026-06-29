@@ -1,5 +1,8 @@
 ---
 title: "Fundamentos de Bases de Datos: El Maletín y La Bóveda"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Fundamentos de Bases de Datos: El Maletín y La Bóveda
@@ -24,13 +27,13 @@ Se coloca el dinero en un Maletín Blindado y se contrata un Camión de Valores 
 
 El camión llega sano y salvo a la sucursal de destino. El guardia saca el dinero del maletín blindado y lo deja en el piso del banco. El viaje terminó. El camión blindado ya no sirve de nada. Si un empleado malicioso de limpieza esta caminando por el banco, puede simplemente agacharse y robarse el millón de dólares.
 
-En informática: Tu usuario escribe su contrasena en la pagina web usando HTTPS. Viaja encriptada y segura. Pero cuando llega al servidor web, el servidor le quita la encriptación para poder leerla, y la guarda en la Base de Datos en texto completamente plano (`contrasena123`). Si un hacker logra entrar a la red interna y copia la Base de Datos, se lleva todo.
+En informática: Tu usuario escribe su contraseña en la página web usando HTTPS. Viaja encriptada y segura. Pero cuando llega al servidor web, el servidor le quita la encriptación para poder leerla, y la guarda en la Base de Datos en texto completamente plano (`contrasena123`). Si un hacker logra entrar a la red interna y copia la Base de Datos, se lleva todo.
 
 ## Cifrado en Tránsito (TLS/SSL)
 
 ### Como Funciona TLS
 
-1. Cliente se conecta al servidor y solicita una conexion segura.
+1. Cliente se conecta al servidor y solicita una conexión segura.
 2. Servidor envía su certificado digital (contiene la llave pública).
 3. Cliente verifica el certificado contra una autoridad certificadora (CA).
 4. Cliente y servidor acuerdan una llave simétrica temporal (handshake).
@@ -63,13 +66,13 @@ En informática: El Disco Duro físico donde la Base de Datos guarda su informac
 
 ### TDE (Transparent Data Encryption)
 
-TDE encripta automáticamente los datos cuando se escriben al disco y los descifra cuando se leen. Es transparente para la aplicación (no requiere cambios en el codigo).
+TDE encripta automáticamente los datos cuando se escriben al disco y los descifra cuando se leen. Es transparente para la aplicación (no requiere cambios en el código).
 
 **Como funciona:**
 
 1. La base de datos tiene una clave de encriptación de base de datos (DEK).
 2. La DEK se almacena encriptada por una clave maestra (certificado).
-3. La clave maestra se almacena en un modulo de seguridad (HSM) o en el sistema operativo.
+3. La clave maestra se almacena en un módulo de seguridad (HSM) o en el sistema operativo.
 4. Cuando la base de datos escribe datos al disco, los encripta automáticamente.
 5. Cuando lee datos del disco, los descifra automáticamente.
 
@@ -161,7 +164,7 @@ Un HSM es un dispositivo físico (o virtual) que almacena claves criptográficas
 
 Para encriptar la clave de la base de datos, necesitas otra clave (la clave maestra). Para proteger la clave maestra, necesitas otro sistema (HSM, Key Vault). Y así sucesivamente.
 
-La cadena termina en un Root of Trust: un HSM físico o un modulo de plataforma segura (TPM) en el hardware.
+La cadena termina en un Root of Trust: un HSM físico o un módulo de plataforma segura (TPM) en el hardware.
 
 ## Backup y Cifrado
 
@@ -171,7 +174,7 @@ Los backups de bases de datos deben estar cifrados. Un backup sin cifrar es un r
 
 1. Cifrar todos los backups con TDE o cifrado nativo.
 2. Almacenar las claves de cifrado de backup separadas de los datos.
-3. Probar la restauracion de backups periodicamente.
+3. Probar la restauración de backups periodicamente.
 4. Almacenar backups en ubicaciones geograficamente separadas.
 5. Usar almacenamiento inmutable (los backups no pueden ser modificados o borrados).
 
@@ -181,7 +184,7 @@ Los backups de bases de datos deben estar cifrados. Un backup sin cifrar es un r
 
 Equifax sufrio una brecha que expuso datos de 147 millones de personas. La causa fue una vulnerabilidad en Apache Struts (CVE-2017-5638).
 
-Los datos robados incluian nombres, números de seguro social, fechas de nacimiento y direcciones. Si Equifax hubiera tenido cifrado en reposo a nivel de columna para los números de seguro social, los atacantes habrian obtenido datos cifrados inutiles.
+Los datos robados incluian nombres, números de seguro social, fechas de nacimiento y direcciones. Si Equifax hubiera tenido cifrado en reposo a nivel de columna para los números de seguro social, los atacantes habrian obtenido datos cifrados inútiles.
 
 Sin embargo, el cifrado en reposo no habría detenido el ataque: los atacantes usaron credenciales de una aplicación legítima que tenía acceso a los datos descifrados. Necesitaban también controles de acceso.
 
@@ -249,7 +252,7 @@ Existe un nivel de cifrado aún más profundo que TDE y el cifrado de columna: e
 
 ### Como Funciona
 
-1. El cliente genera una llave de cifrado (derivada de la contrasena del usuario).
+1. El cliente genera una llave de cifrado (derivada de la contraseña del usuario).
 2. El cliente cifra los datos localmente antes de enviarlos al servidor.
 3. El servidor almacena los datos cifrados (sin poder descifrarlos).
 4. Cuando el cliente necesita los datos, los descarga cifrados y los descifra localmente.
@@ -321,7 +324,7 @@ LinkedIn sufrio una brecha donde 6.5 millones de contraseñas de usuarios fueron
 
 El cifrado en reposo no habría ayudado porque los atacantes accedieron a la base de datos en funcionamiento a través de una vulnerabilidad. Pero si LinkedIn hubiera usado cifrado de columna para las contraseñas, el ataque habría sido más difícil.
 
-La leccion: las contraseñas nunca deben almacenarse en texto plano ni con hashes débiles. Deben tener salt y usar algoritmos lentos (bcrypt, scrypt, Argon2).
+La lección: las contraseñas nunca deben almacenarse en texto plano ni con hashes débiles. Deben tener salt y usar algoritmos lentos (bcrypt, scrypt, Argon2).
 
 ### El Robo de Discos en el Centro de Datos de Google (2013)
 
@@ -358,7 +361,7 @@ Como atacante, el cifrado en reposo me obliga a cambiar mis técnicas.
 Si la base de datos tiene TDE, no pierdo tiempo tratando de robar discos. En su lugar:
 
 1. Busco SQL Injection en la aplicación web. La aplicación tiene acceso a los datos descifrados, y a través de SQL Injection, yo también.
-2. Busco credenciales de la aplicación en sitios de codigo, configuraciones, o variables de entorno.
+2. Busco credenciales de la aplicación en sitios de código, configuraciones, o variables de entorno.
 3. Si la aplicación tiene una API, busco vulnerabilidades que me permitan extraer datos.
 
 ### Ataque a las Claves de Cifrado
@@ -368,7 +371,7 @@ Las claves de cifrado suelen estar en:
 - Archivos de configuración en el servidor.
 - Almacén de certificados de Windows.
 - Variables de entorno.
-- Codigo fuente de la aplicación.
+- Código fuente de la aplicación.
 - Scripts de deployment (Terraform, Ansible).
 
 Si encuentro las claves, el cifrado es inútil.
@@ -393,7 +396,7 @@ Un backup robado me da todos los datos, generalmente en un formato que puedo res
 
 ### Ataque a la Memoria (Memory Dump)
 
-Si logró ejecutar codigo en el servidor de base de datos, puedo hacer un dump de la memoria del proceso de la base de datos. La base de datos mantiene los datos descifrados en memoria para responder consultas rápidamente.
+Si logró ejecutar código en el servidor de base de datos, puedo hacer un dump de la memoria del proceso de la base de datos. La base de datos mantiene los datos descifrados en memoria para responder consultas rápidamente.
 
 Herramientas como `procdump` (Windows) o `gcore` (Linux) pueden extraer la memoria de un proceso en ejecución.
 
@@ -401,18 +404,18 @@ Herramientas como `procdump` (Windows) o `gcore` (Linux) pueden extraer la memor
 
 Responde estas preguntas para verificar si comprendes los conceptos:
 
-1. El Arquitecto de Software de tu empresa argumenta: "No necesitamos cifrar los discos duros de la base de datos (Cifrado en Reposo) porque nuestra pagina web ya tiene un certificado HTTPS muy seguro". Usando la analogía del Camión de Valores, explica por que este argumento es técnicamente incorrecto y peligroso.
+1. El Arquitecto de Software de tu empresa argumenta: "No necesitamos cifrar los discos duros de la base de datos (Cifrado en Reposo) porque nuestra página web ya tiene un certificado HTTPS muy seguro". Usando la analogía del Camión de Valores, explica por qué este argumento es técnicamente incorrecto y peligroso.
 
 2. Un empleado del Centro de Datos entra físicamente a la sala de servidores de la empresa a las 3:00 AM, roba físicamente el Disco Duro del servidor de Base de Datos principal, y se lo lleva a su casa. Si la base de datos estaba configurada con TDE (Transparent Data Encryption), Que verá el empleado cuando conecte el disco duro robado en su computadora personal?
 
-3. Sabiendo que el Cifrado en Reposo protege contra el robo físico de los discos, Por que un ataque de Inyección SQL ejecutado a través de la pagina web si lograría extraer los datos de forma legible a pesar de que el disco duro este encriptado con TDE? (Pista: Piensa en quien esta "leyendo" legalmente los datos y entregándoselos al atacante).
+3. Sabiendo que el Cifrado en Reposo protege contra el robo físico de los discos, Por qué un ataque de Inyección SQL ejecutado a través de la página web si lograría extraer los datos de forma legible a pesar de que el disco duro este encriptado con TDE? (Pista: Piensa en quien esta "leyendo" legalmente los datos y entregándoselos al atacante).
 
-4. El equipo de seguridad decide implementar Cifrado en Reposo (AES-256) en la Base de Datos. Matemáticamente, esto requiere una Llave Maestra de Encriptación. Basándote en lo aprendido anteriormente, Por que guardar esta Llave Maestra en un archivo de texto plano en el mismo servidor web anula completamente todo el propósito del cifrado?
+4. El equipo de seguridad decide implementar Cifrado en Reposo (AES-256) en la Base de Datos. Matemáticamente, esto requiere una Llave Maestra de Encriptación. Basándote en lo aprendido anteriormente, Por qué guardar esta Llave Maestra en un archivo de texto plano en el mismo servidor web anula completamente todo el propósito del cifrado?
 
 5. Explica la diferencia entre cifrado en tránsito (TLS/HTTPS) y cifrado en reposo (TDE). Que protege cada uno y que dejan sin proteger?
 
 6. Un atacante compromete un servidor de base de datos con TDE habilitado. Como podría el atacante obtener los datos descifrados sin tener la clave maestra?
 
-7. Por que los backups de bases de datos deben cifrarse incluso si la base de datos en producción ya esta cifrada con TDE?
+7. Por qué los backups de bases de datos deben cifrarse incluso si la base de datos en producción ya esta cifrada con TDE?
 
-8. Que es un HSM (Hardware Security Module) y por que es importante para la gestión de claves de cifrado?
+8. Que es un HSM (Hardware Security Module) y por qué es importante para la gestión de claves de cifrado?

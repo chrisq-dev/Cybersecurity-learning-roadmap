@@ -1,12 +1,15 @@
 ---
 title: "Threat Hunting: El Patrullaje Nocturno"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Threat Hunting: El Patrullaje Nocturno
 
 ## Objetivo de esta Guía
 
-Entender por que esperar pasivamente a que suene la alarma es una garantía de que serás comprometido, y como los mejores equipos defensivos operan bajo la mentalidad de "el atacante ya esta adentro." El Threat Hunting (caza de amenazas) es el nivel más alto del Blue Team, donde la mentalidad ofensiva y defensiva se fusionan en una sola disciplina.
+Entender por qué esperar pasivamente a que suene la alarma es una garantía de que serás comprometido, y como los mejores equipos defensivos operan bajo la mentalidad de "el atacante ya esta adentro." El Threat Hunting (caza de amenazas) es el nivel más alto del Blue Team, donde la mentalidad ofensiva y defensiva se fusionan en una sola disciplina.
 
 Un cazador no espera alertas. Busca activamente lo que las reglas automáticas no detectaron. Es la diferencia entre un guardia que mira una pantalla y un detective que sale a la calle a buscar pistas. Esta guía cubre las metodologías de caza, las hipótesis de búsqueda, como ejecutar una caza paso a paso, y como convertir los hallazgos en mejoras permanentes para la organización.
 
@@ -25,11 +28,11 @@ La doctrina moderna cambio con el concepto de "assumed breach" (brecha asumida).
 
 **Cambio de enfoque:** No esperar alertas, sino buscar activamente anomalías en los datos disponibles. El SIEM no es una pantalla de alertas, es una base de datos para explorar.
 
-**Cambio de métrica:** El exito no se mide por "cuántas alertas procesamos" sino por "cuántas hipótesis probamos y que aprendimos."
+**Cambio de métrica:** El éxito no se mide por "cuántas alertas procesamos" sino por "cuántas hipótesis probamos y que aprendimos."
 
 **Cambio cultural:** El equipo deja de pensar como bombero (apagar incendios) y empieza a pensar como detective (prevenir crímenes).
 
-### Por que el Hunting es Necesario
+### Por qué el Hunting es Necesario
 
 Las reglas automáticas de detección solo capturan lo que ya se conoce: firmas de malware existentes, patrones de ataque documentados, técnicas catalogadas en MITRE. Los atacantes innovan constantemente. Entre el momento en que aparece una nueva técnica y el momento en que se escribe una regla para detectarla, hay una ventana de vulnerabilidad.
 
@@ -60,7 +63,7 @@ El cazador fórmula una hipótesis basada en inteligencia de amenazas, reportes 
 
 Proceso:
 1. Leer un reporte: "El grupo APT29 esta usando una nueva técnica de persistencia via servicios de Windows."
-2. Formular hipótesis: "Si APT29 esta en nuestra red, podría haber instalado servicios sospechosos en los últimos 30 dias."
+2. Formular hipótesis: "Si APT29 esta en nuestra red, podría haber instalado servicios sospechosos en los últimos 30 días."
 3. Diseñar búsqueda: Consultar el SIEM para listar todos los servicios instalados recientemente, filtrando por nombres que coincidan con patrones de APT29.
 4. Analizar resultados: Revisar la lista manualmente, buscando servicios en sistemas donde no se esperan.
 5. Investigar anomalías: Para cada servicio sospechoso, investigar el contexto (quien lo instalo, cuando, desde donde).
@@ -90,8 +93,8 @@ Proceso:
 El cazador establece una línea base de comportamiento normal y busca desviaciones. Esta es la metodología más poderosa porque puede detectar ataques sin firmas conocidas.
 
 Proceso:
-1. Establecer línea base: Durante 30-90 dias, recolectar datos de comportamiento normal de usuarios, sistemas, y redes.
-2. Definir métricas: Horarios de trabajo tipicos, volumen de datos transferido, destinos de conexion frecuentes, aplicaciones usadas.
+1. Establecer línea base: Durante 30-90 días, recolectar datos de comportamiento normal de usuarios, sistemas, y redes.
+2. Definir métricas: Horarios de trabajo tipicos, volumen de datos transferido, destinos de conexión frecuentes, aplicaciones usadas.
 3. Buscar desviaciones: Identificar comportamientos que se salen de la línea base establecida.
 4. Investigar: Para cada desviacion, determinar si tiene una explicación legítima o si es sospechosa.
 
@@ -116,7 +119,7 @@ Un reporte de inteligencia indica que un grupo de ransomware esta usando conexio
 **Paso 2: Hipótesis**
 "Si un atacante esta en nuestra red usando RDP para moverse lateralmente, debería haber sesiones RDP exitosas (Logon Type 10 en Windows) desde cuentas de usuarios que normalmente no usan RDP, en horarios no laborales."
 
-**Paso 3: Diseno de la búsqueda**
+**Paso 3: Diseño de la búsqueda**
 ```
 index=windows EventCode=4624 LogonType=10
 | where date_wday in ("Saturday", "Sunday") OR (date_hour >= 19 OR date_hour <= 6)
@@ -154,7 +157,7 @@ Un equipo de hunting revisaba logs de DNS buscando dominios generados algoritmic
 
 ### El Certificado Robado (2021)
 
-Un cazador noto que un certificado emitido para un servidor interno estaba siendo utilizado desde una IP externa. El certificado era valido, la autenticación era exitosa, pero el origen era incorrecto. Sin hunting, este ataque nunca se habría detectado porque desde la perspectiva técnica todo era correcto.
+Un cazador noto que un certificado emitido para un servidor interno estaba siendo utilizado desde una IP externa. El certificado era válido, la autenticación era exitosa, pero el origen era incorrecto. Sin hunting, este ataque nunca se habría detectado porque desde la perspectiva técnica todo era correcto.
 
 ### La Línea Base que Revelo Shadow IT (2022)
 
@@ -198,10 +201,10 @@ El atacante avanzado estudia los patrones de la red, limita sus actividades a ve
 
 ## Autoevaluación
 
-1. Por que assumed breach es superior a "nuestro antivirus nos protege"? Que implicaciones prácticas tiene?
+1. Por qué assumed breach es superior a "nuestro antivirus nos protege"? Que implicaciones prácticas tiene?
 2. Un cazador busca procesos que se comuniquen con 169.254.169.254. Que técnica de ataque busca? (Pista: relacionada con nube AWS/Azure/GCP)
-3. Por que el exito del hunting depende de tener un Detection Engineer en el equipo?
-4. "Para ser buen Threat Hunter necesitas pensar como atacante." Es cierta o falsa? Por que?
+3. Por qué el éxito del hunting depende de tener un Detection Engineer en el equipo?
+4. "Para ser buen Threat Hunter necesitas pensar como atacante." Es cierta o falsa? Por qué?
 5. Encuentras un servidor Linux ejecutando cURL hacia IP externa cada noche a las 2:00 AM. No hay cron jobs conocidos. Cuáles son tus siguientes pasos?
 6. El equipo de hunting dedica 2 horas semanales y el resto responde alertas. Que problema organizativo tiene esto?
 7. Después de 3 meses de hunting sin encontrar ataques, los directivos cuestionan el programa. Que métricas usarías para demostrar su valor?
@@ -248,15 +251,15 @@ Aplicación: Un cazador efectivo busca patrones de comportamiento (TTPs) no IoCs
 
 ### Búsqueda: Lateral Movement via RDP
 
-**Hipótesis:** Un atacante que compromete una estacion de trabajo usara RDP para moverse lateralmente.
+**Hipótesis:** Un atacante que compromete una estación de trabajo usará RDP para moverse lateralmente.
 
 **Fuentes:** Logs de Event ID 4624 (Logon Type 10 = RemoteInteractive), logs de firewall (puerto 3389).
 
 **Búsqueda:**
-1. Identificar todas las conexiones RDP exitosas en los últimos 30 dias.
+1. Identificar todas las conexiones RDP exitosas en los últimos 30 días.
 2. Agrupar por usuario origen, sistema origen, sistema destino.
 3. Identificar anomalías: usuarios que nunca usaron RDP y de repente lo hacen (posible cuenta comprometida), conexiones desde sistemas que no son estaciones de administración, conexiones en horarios no laborales.
-4. Verificar si el usuario tenía justificacion para la conexion (mantenimiento, soporte). Si no hay justificacion, escalar a investigación.
+4. Verificar si el usuario tenía justificacion para la conexión (mantenimiento, soporte). Si no hay justificacion, escalar a investigación.
 
 ### Búsqueda: Unusual Process Creation
 
@@ -315,7 +318,7 @@ Los notebooks permiten documentar y compartir el proceso de hunting.
 - Threat Intel Feeds: Para correlacionar IoCs con datos internos.
 - Comunidad: DFIR Report, Red Canary, The DFIR Report.
 
-## Medidas de Exito en Hunting
+## Medidas de Éxito en Hunting
 
 Como saber si el programa de hunting es efectivo:
 

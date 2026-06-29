@@ -1,12 +1,28 @@
 ---
 title: "Fundamentos de Privacidad: La Cortina y la Máscara"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
+reviewed: "2026-06-29"
+reviewed_against: "GDPR, CCPA/CPRA y guías oficiales de privacidad consultadas el 2026-06-29"
+official_sources:
+  - title: "ICO — Notificación de brechas en 72 horas"
+    url: "https://ico.org.uk/for-organisations/advice-for-small-organisations/personal-data-breaches/72-hours-how-to-respond-to-a-personal-data-breach/"
+  - title: "California OAG — CCPA"
+    url: "https://www.oag.ca.gov/privacy/ccpa"
+  - title: "CPPA — Umbrales monetarios vigentes desde 2025"
+    url: "https://cppa.ca.gov/regulations/cpi_adjustment.html"
+  - title: "ANPD — Comunicación de incidentes"
+    url: "https://www.gov.br/anpd/pt-br/canais_atendimento/agente-de-tratamento/comunicado-de-incidente-de-seguranca-cis"
+  - title: "Tor Project — Cómo funciona Tor"
+    url: "https://support.torproject.org/about-tor/how-tor-works/overview/"
 ---
 
 # Fundamentos de Privacidad: La Cortina y la Máscara
 
 ## Objetivo de esta Guía
 
-Resolver la peor y más peligrosa confusión conceptual en la historia del internet: Creer que Privacidad es lo mismo que Anonimato.
+Distinguir privacidad, anonimato y seudonimato, conceptos relacionados que requieren modelos de amenaza y controles diferentes.
 
 Las corporaciones te venden "Privacidad" y los periodistas perseguidos necesitan "Anonimato". Mezclarlos puede llevar a consecuencias legales y de seguridad catastróficas.
 
@@ -27,12 +43,12 @@ Esta guía desglosa las diferencias técnicas, las herramientas que implementan 
 El internet fue diseñado sin privacidad ni anonimato incorporados. El protocolo IP (IPv4) original asume que todos los participantes son confiables. Los paquetes viajan en texto plano y cada salto de red (router) puede leer el contenido y saber quién lo envió.
 
 **Técnicas de identificación en internet:**
-- **Dirección IP:** Identificador único de tu conexión. Tu ISP asigna una IP pública a tu router. Cada sitio web que visitas registra tu IP.
-- **Huellas digitales del navegador (Browser Fingerprinting):** Incluso sin cookies, tu navegador es identificable por la combinación de características: resolución de pantalla, sistema operativo, fuente instaladas, plugins, zona horaria, User-Agent. El proyecto Panopticlick (EFF) demuestra que el 90% de los navegadores son únicos.
+- **Dirección IP:** Identifica un punto de conexión, no necesariamente a una persona. Puede ser dinámica o compartida mediante NAT, pero sigue siendo un dato útil para correlacionar actividad.
+- **Huellas digitales del navegador (Browser Fingerprinting):** Incluso sin cookies, tu navegador es identificable por la combinación de características: resolución de pantalla, sistema operativo, fuente instaladas, plugins, zona horaria, User-Agent. El proyecto Cover Your Tracks de EFF permite observar cómo una combinación de atributos puede hacer identificable un navegador.
 - **Cookies de rastreo:** Cookies de terceros que siguen tu navegación entre sitios web. Google y Facebook construyen perfiles de comportamiento basados en estas cookies.
 - **Supercookies / Evercookies:** Técnicas que recrean cookies eliminadas usando almacenamiento local (Flash, HTML5 LocalStorage, ETags). Difíciles de eliminar manualmente.
 
-* **Por que esto importa:** Entender la diferencia entre privacidad y anonimato determina qué herramienta usar en cada situación. Usar la herramienta incorrecta (una VPN para publicar denuncias anónimas) puede llevar a la cárcel o la muerte en regímenes autoritarios.
+* **Por qué esto importa:** Entender la diferencia entre privacidad y anonimato determina qué herramienta usar en cada situación. Usar la herramienta incorrecta (una VPN para publicar denuncias anónimas) puede llevar a la cárcel o la muerte en regímenes autoritarios.
 
 ---
 
@@ -42,29 +58,29 @@ El internet fue diseñado sin privacidad ni anonimato incorporados. El protocolo
 
 Una VPN es un túnel criptográfico (La Cortina).
 
-* **La Falacia:** Los YouTubers te dicen que "uses VPN para ser anónimo y que los gobiernos no te persigan". Esto es una mentira técnica bien grande.
-* **La Realidad:** Cuando usas una VPN comercial, tu proveedor de internet (Tu compañía telefónica local) ya no puede ver qué páginas visitas (porque cerraste la cortina). Pero la empresa dueña de la VPN **sí puede verlo**. Si un juez les pide tu información, se la entregarán. **La VPN te da privacidad frente a tu vecino, no te da anonimato frente a las autoridades.**
+* **Límite del modelo:** Una VPN desplaza parte de la confianza desde el proveedor de internet hacia el operador de la VPN. El ISP ve el túnel y el proveedor puede observar metadatos o destinos según el protocolo y sus registros.
+* **Implicación:** Una VPN puede proteger tráfico en una red local hostil y ocultar la IP de origen al sitio destino, pero por sí sola no garantiza anonimato. Debes evaluar jurisdicción, política de registros, auditorías y método de pago según tu modelo de amenaza.
 
 ### Arquitectura Técnica de una VPN
 
 - **Protocolo OpenVPN:** Estándar abierto. Usa cifrado TLS para el canal de control y cifrado simétrico (AES-256-GCM) para el canal de datos. Corre sobre UDP (puerto 1194) o TCP (puerto 443). Configurable mediante archivos .ovpn.
-- **Protocolo WireGuard:** Moderno, más rápido y con menos código (4000 líneas vs 100,000+ de OpenVPN). Cifrado con Curve25519, ChaCha20 y Poly1305. Integrado en el kernel de Linux desde 2020.
+- **Protocolo WireGuard:** Protocolo y software de túnel con una base de código reducida y un conjunto criptográfico deliberadamente acotado. Su disponibilidad y operación dependen del sistema y del producto que lo integre.
 - **Protocolo IPsec/IKEv2:** Común en dispositivos móviles. Usa puerto UDP 500 y 4500. Robusto, pero complejo de configurar.
 
 **Logs de VPN: Lo que importa**
 - VPN sin logs: La empresa afirma no registrar tu actividad. Difícil de verificar independientemente.
 - VPN con logs: Guardan marcas de tiempo, IP de origen, IP de destino y volumen de datos. Entregables bajo citación judicial.
-- Jurisdicción: Una VPN con sede en un país sin leyes de retención de datos (ej: Islas Vírgenes Británicas, Panamá) puede rechazar órdenes legales extranjeras. Una VPN con sede en EE. UU. (casi todas las comerciales) está sujeta a órdenes de la NSA/FBI.
+- Jurisdicción y estructura corporativa: determinan qué órdenes, obligaciones y mecanismos de cooperación pueden aplicar. No basta con el país anunciado en marketing; revisa la entidad legal, infraestructura, política y auditorías.
 
-### Red Tor (The Onion Router) = Anonimato Extremo
+### Red Tor (The Onion Router): reducción de vinculación
 
 La red Tor, diseñada originalmente por la Marina de EE. UU., es la máscara de plástico. Lo que cambia la perspectiva es entender que tu conexión no va directo a ningún lado.
 
-* **El Enrutamiento de Cebolla:** Cuando te conectas a internet usando Tor, tu conexión rebota aleatoriamente por 3 computadoras voluntarias diferentes alrededor del planeta (Nodos) antes de llegar al servidor final (Ej. Netflix o un sitio en la Deep Web).
+* **El enrutamiento de cebolla:** Para navegación web ordinaria, Tor construye un circuito mediante relays operados por voluntarios. La selección no es simplemente aleatoria: usa criterios de capacidad, función y seguridad, incluido un conjunto de nodos de entrada (*guards*).
 
-* **El Secreto (Capas):** Cada nodo solo conoce el salto anterior y el salto siguiente. El Nodo 3 sabe qué página estás visitando, pero no sabe tu IP. El Nodo 1 sabe tu IP, pero no tiene idea de qué página estás intentando abrir. Ningún nodo en el planeta tierra tiene la pieza completa del rompecabezas.
+* **Capas:** Cada relay conoce el salto anterior y el siguiente, no la ruta completa. El guard conoce la IP de origen; el relay de salida conecta con el destino, pero no conoce directamente esa IP de origen. HTTPS sigue siendo necesario en la web pública para proteger contenido frente al relay de salida y otros intermediarios.
 
-* **Por que esto importa:** Es por esto que los periodistas disidentes en regímenes autoritarios usan Tor. Es matemáticamente imposible que el gobierno sepa *quién* está publicando un artículo en contra de ellos (Anonimato).
+* **Por qué esto importa:** Tor dificulta vincular origen y destino, pero no ofrece una garantía absoluta. Un adversario con visibilidad suficiente, errores de operación o un endpoint comprometido puede desanonimizar al usuario.
 
 ### Limitaciones y Riesgos de Tor
 
@@ -72,9 +88,9 @@ La red Tor, diseñada originalmente por la Marina de EE. UU., es la máscara de 
 
 **Nodos de salida maliciosos:** El nodo de salida (el que se conecta al sitio destino) puede ver el tráfico descifrado si el sitio no usa HTTPS. Un operador malicioso de un nodo de salida puede interceptar contraseñas que no estén cifradas por TLS.
 
-**Ataques de correlación de tráfico:** Una agencia estatal (NSA, GCHQ) que monitoree tanto tu ISP como el nodo de entrada y el nodo de salida puede correlacionar tiempos y volúmenes de tráfico para romper el anonimato. Este ataque es costoso pero posible.
+**Ataques de correlación de tráfico:** Un adversario capaz de observar ambos extremos puede correlacionar volumen y tiempos. Tor Project reconoce esta limitación de los sistemas prácticos de baja latencia; el costo y la viabilidad dependen del adversario y del caso.
 
-**Configuración incorrecta:** Usar Tor con JavaScript habilitado o con plugins del navegador puede filtrar tu IP real. El navegador Tor (Tor Browser Bundle) viene preconfigurado para mitigar estos riesgos.
+**Configuración y comportamiento:** Tor Browser configura defensas de privacidad y ofrece niveles de seguridad que restringen funciones web. JavaScript no está deshabilitado en el nivel predeterminado; cambiar el navegador, instalar extensiones, abrir documentos externamente o iniciar sesión en identidades conocidas puede reducir el anonimato.
 
 ### Servicios Onion (Deep Web / Dark Web)
 
@@ -82,7 +98,7 @@ Tor no solo permite navegar de forma anónima. También permite alojar sitios we
 
 - **Dirección .onion:** Dominio generado criptográficamente a partir de la clave pública del servidor. Ejemplo: `http://xp44cagp447byxd7y2v7ysxgm2e7h2i5pyd5nazk2j6kxq2q4n4fyd.onion`
 - **Anonimato bidireccional:** Tanto el visitante como el servidor son anónimos. Nadie sabe dónde está alojado el sitio ni quién lo visita.
-- **Usos:** Facebook, ProPublica y el New York Times tienen versiones onion de sus sitios para proteger a lectores en países con censura.
+- **Usos:** Medios, organizaciones y servicios de denuncia pueden publicar versiones onion. Verifica sus direcciones desde el sitio oficial; una dirección copiada de terceros puede ser una suplantación.
 
 ---
 
@@ -90,7 +106,7 @@ Tor no solo permite navegar de forma anónima. También permite alojar sitios we
 
 ### GDPR (Regulación General de Protección de Datos — Europa)
 
-El GDPR, vigente desde mayo de 2018, es la regulación de privacidad más estricta del mundo. Se aplica a cualquier empresa que procese datos de ciudadanos de la UE, sin importar dónde esté ubicada.
+El GDPR se aplica desde mayo de 2018. Su alcance territorial depende del establecimiento y de si una organización ofrece bienes o servicios a personas en la Unión o monitoriza allí su comportamiento; no depende simplemente de la ciudadanía.
 
 **Principios clave del GDPR:**
 - **Consentimiento explícito:** El usuario debe aceptar activamente el procesamiento de sus datos. No vale el silencio o casillas pre-marcadas.
@@ -103,17 +119,16 @@ El GDPR, vigente desde mayo de 2018, es la regulación de privacidad más estric
 
 ### CCPA/CPRA (California Consumer Privacy Act)
 
-La ley de privacidad más estricta de EE. UU., vigente desde 2020. Inspirada en el GDPR pero con diferencias:
+La CPRA modificó la CCPA; no es una ley separada. Entre otros derechos, permite conocer, eliminar y corregir información, limitar ciertos usos de información sensible y optar por no venderla ni compartirla para publicidad conductual entre contextos.
 
-- **Derecho a opt-out:** El usuario puede optar por no vender sus datos personales. Los sitios web deben tener un enlace "Do Not Sell My Personal Information".
-- **Umbral de aplicación:** Empresas con ingresos brutos > $25 millones, o que procesen datos de > 50,000 residentes de California.
-- **Sanciones:** $2,500 por infracción no intencional, $7,500 por infracción intencional.
+- **Ámbito empresarial:** En 2026, uno de los criterios monetarios es superar $26,625,000 de ingresos brutos anuales. También puede aplicar a negocios que compren, vendan o compartan información de 100,000 o más residentes u hogares de California, o que obtengan al menos 50% de sus ingresos de vender información personal. Existen condiciones y excepciones adicionales.
+- **Importes ajustables:** Los umbrales y sanciones monetarias se ajustan periódicamente. Consulta la página de la CPPA citada en las fuentes antes de publicar una cifra.
 
 ### Otras Regulaciones Relevantes
 
 - **LGPD (Brasil):** Similar al GDPR. Vigente desde 2020. Multas de hasta el 2% de los ingresos en Brasil (máximo 50 millones de reales).
 - **PIPEDA (Canadá):** Ley federal de protección de datos personales. Exige consentimiento para recolección y uso de datos.
-- **HIPAA (EE. UU. — Salud):** Regula específicamente datos médicos. Requiere medidas técnicas (cifrado, controles de acceso) y administrativas.
+- **HIPAA (EE. UU. — Salud):** Protege información de salud dentro de su ámbito regulado. Su Security Rule distingue salvaguardas obligatorias y especificaciones de implementación; el cifrado se trata como una medida evaluable, no como una obligación universal sin contexto.
 - **PCI DSS (Tarjetas de crédito):** No es una ley, es un estándar contractual. Regula cómo se almacenan, procesan y transmiten los datos de tarjetas de crédito.
 
 ---
@@ -134,9 +149,9 @@ Técnica matemática que añade ruido estadístico controlado a los datos para q
 
 - **Cifrado en tránsito (TLS/HTTPS):** Protege los datos mientras viajan por la red. Es la cortina de privacidad estándar. Sin embargo, los metadatos (a quién le hablas, cuándo, por cuánto tiempo) quedan expuestos.
 - **Cifrado en reposo:** Protege los datos almacenados en discos, bases de datos y backups. Crucial para cumplimiento (PCI DSS, GDPR).
-- **Cifrado de extremo a extremo (E2EE):** Solo el emisor y el receptor pueden leer los mensajes. Ni el proveedor del servicio tiene acceso. Ejemplos: Signal, WhatsApp, ProtonMail. Es la herramienta de privacidad más poderosa disponible para comunicaciones.
+- **Cifrado de extremo a extremo (E2EE):** Diseñado para que solo los extremos autorizados accedan al contenido. Sus garantías dependen del protocolo, la gestión de claves, las copias de seguridad, los dispositivos y qué metadatos conserva el servicio.
 
-* **Por que esto importa:** El cifrado E2EE es la única tecnología que garantiza privacidad incluso contra el proveedor del servicio. Es por esto que los gobiernos presionan para prohibirlo o debilitarlo (backdoors).
+* **Por qué esto importa:** E2EE reduce la capacidad del proveedor de leer el contenido, pero no oculta necesariamente metadatos ni protege un dispositivo comprometido. La privacidad depende del sistema completo y del modelo de amenaza.
 
 ---
 

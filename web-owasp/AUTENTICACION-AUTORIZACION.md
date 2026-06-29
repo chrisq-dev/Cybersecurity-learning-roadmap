@@ -1,16 +1,19 @@
 ---
 title: "Autenticación vs Autorización: La Discoteca y los Cadeneros"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Autenticación vs Autorización: La Discoteca y los Cadeneros
 
 ## Objetivo de esta Guía
 
-Entender por que el "Control de Acceso Roto" se ha convertido en el Error #1 del mundo en el ranking de OWASP. Los programadores de hoy son buenos usando contraseñas complejas. Lo que hacen terriblemente mal es verificar quien eres una vez que ya entraste al sistema.
+Entender por qué el "Control de Acceso Roto" se ha convertido en el Error #1 del mundo en el ranking de OWASP. Los programadores de hoy son buenos usando contraseñas complejas. Lo que hacen terriblemente mal es verificar quien eres una vez que ya entraste al sistema.
 
 Confundir la diferencia entre Autenticación y Autorización es lo que permite que un estudiante de secundaria con un navegador web pueda robar la base de datos de millones de pacientes de un hospital moderno.
 
-Esta guía no solo explica la teoría. Cubre los patrones de ataque más comunes (IDOR, escalada de privilegios, broken access control en APIs) y las defensas prácticas que todo desarrollador debería implementar. Es la guía que debes leer si quieres entender por que el 99% de los bugs bounty pagados en plataformas como HackerOne son fallos de autorización y no exploits de codigo complejos.
+Esta guía no solo explica la teoría. Cubre los patrones de ataque más comunes (IDOR, escalada de privilegios, broken access control en APIs) y las defensas prácticas que todo desarrollador debería implementar. La guía conecta fallos de autorización frecuentes con controles que deben aplicarse en cada solicitud del backend.
 
 ## El Concepto Fundamental: AuthN vs AuthZ
 
@@ -44,7 +47,7 @@ banco.com/ver_pdf?recibo_id=100
 
 ### El Ataque (IDOR)
 
-Un Hacker no necesita escribir codigo maligno ni inyectar virus. Simplemente da clic en la URL, borra el número 100, escribe el número 101, y presiona Enter.
+Un Hacker no necesita escribir código maligno ni inyectar virus. Simplemente da clic en la URL, borra el número 100, escribe el número 101, y presiona Enter.
 
 ```
 banco.com/ver_pdf?recibo_id=101
@@ -56,7 +59,7 @@ El Servidor recibe la orden. Verifica que el hacker tiene una sesión iniciada (
 
 El Servidor olvido preguntarle al cadenero VIP: "Espera, este hacker tiene la sesión iniciada, pero el recibo 101 le pertenece a el, o le pertenece al CEO de la empresa?"
 
-Al cambiar un simple número en la URL, el hacker acaba de robar los estados de cuenta bancarios de cada uno de los clientes del banco (102, 103, 104...). Sin tirar una sola línea de codigo, vulneró la empresa entera.
+Al cambiar un simple número en la URL, el hacker acaba de robar los estados de cuenta bancarios de cada uno de los clientes del banco (102, 103, 104...). Sin tirar una sola línea de código, vulneró la empresa entera.
 
 ### Donde Encontrar IDOR
 
@@ -160,7 +163,7 @@ Una API bancaria tiene estos endpoints:
 - `GET /api/cuentas/1234` -- Detalle de mi cuenta 1234
 - `POST /api/transferir` -- Realizar una transferencia
 
-Si el desarrollador verifica la autenticación (token valido) pero no la autorización (el token pertenece al dueño de la cuenta 1234), cualquier usuario autenticado puede ver cualquier cuenta.
+Si el desarrollador verifica la autenticación (token válido) pero no la autorización (el token pertenece al dueño de la cuenta 1234), cualquier usuario autenticado puede ver cualquier cuenta.
 
 **Aprende más en:** La guía completa de riesgos de API en `api-security/RIESGOS-CONTROLES.md`.
 
@@ -175,9 +178,9 @@ Es la filosofía de seguridad que dice: un usuario (o un proceso) debe tener sol
 - Un usuario normal no debería poder cambiar su propio rol.
 - Un usuario normal no debería poder acceder a la consola de administración.
 
-**En el codigo:**
+**En el código:**
 
-Cada funcion del Backend debe verificar explícitamente si el usuario actual tiene permiso para realizar la accion solicitada. No asumas nada.
+Cada función del Backend debe verificar explícitamente si el usuario actual tiene permiso para realizar la acción solicitada. No asumas nada.
 
 ```python
 def borrar_usuario(id_usuario_a_borrar):
@@ -197,7 +200,7 @@ Existen varios modelos para implementar autorización. Cada uno tiene sus casos 
 
 ### RBAC (Role-Based Access Control)
 
-RBAC suena simple, pero en la práctica el 80% de las empresas lo configura mal desde el día uno.
+RBAC parece simple, pero su mantenimiento se complica cuando los roles crecen sin revisión ni criterios claros.
 
 El más común. Los usuarios tienen roles. Los roles tienen permisos.
 
@@ -235,7 +238,7 @@ La defensa contra Broken Access Control no es técnica, es arquitectónica. No h
 
 ### Patrón de Verificación Centralizada
 
-Crea una funcion o middleware central que verifique la autorización para cada accion sensible. No disperses la lógica de autorización por todo el codigo.
+Crea una función o middleware central que verifique la autorización para cada acción sensible. No disperses la lógica de autorización por todo el código.
 
 ```python
 def requiere_permiso(permiso):
@@ -298,7 +301,7 @@ Los endpoints de autenticación y autorización deben tener rate limiting para p
 
 ## Casos Reales de Broken Access Control
 
-**Caso Facebook (2018):** Un investigador descubrió que podía acceder a cualquier cuenta de Facebook simplemente modificando un parámetro en la respuesta del servidor durante el flujo de "olvide mi contrasena". Podía leer mensajes privados, fotos, y publicaciones de cualquier usuario. Facebook pago $40,000 en bug bounty.
+**Caso Facebook (2018):** Un investigador descubrió que podía acceder a cualquier cuenta de Facebook simplemente modificando un parámetro en la respuesta del servidor durante el flujo de "olvide mi contraseña". Podía leer mensajes privados, fotos, y publicaciones de cualquier usuario. Facebook pago $40,000 en bug bounty.
 
 **Caso Parler (2021):** Después del asalto al Capitolio de EE.UU., activistas descargaron videos de Parler que mostraban evidencia del evento. Parler tenía un IDOR masivo: los videos públicos tenían IDs numericos secuenciales. Los activistas simplemente iteraron sobre los IDs y descargaron miles de videos que los usuarios habian marcado como privados pero que la API no verificaba la autorización.
 
@@ -314,7 +317,7 @@ Los endpoints de autenticación y autorización deben tener rate limiting para p
 
 **JWT sin verificar la firma.** El atacante puede modificar cualquier campo del token.
 
-**No cerrar sesión en el servidor.** Si la sesión solo se cierra en el Frontend (borrando el token del cliente), el token robado sigue siendo valido.
+**No cerrar sesión en el servidor.** Si la sesión solo se cierra en el Frontend (borrando el token del cliente), el token robado sigue siendo válido.
 
 **Permisos por defecto demasiado abiertos.** Crear nuevos usuarios con permisos de administrador por defecto.
 
@@ -324,9 +327,9 @@ Los endpoints de autenticación y autorización deben tener rate limiting para p
 
 1. Un ataque de IDOR (cambiar números en la URL) es un fallo en la Autenticación o en la Autorización? Justifica tu respuesta.
 
-2. Entras a la pagina de tu Universidad. Para ver tu boleta de calificaciones, la URL es `universidad.com/boleta?alumno_id=5000`. Al cambiar el número a `5001`, la pagina te devuelve un error. Pero al cambiar a `5002`, te devuelve la boleta de tu amigo con todas sus calificaciones. Que error crítico de programación cometió el Backend?
+2. Entras a la página de tu Universidad. Para ver tu boleta de calificaciones, la URL es `universidad.com/boleta?alumno_id=5000`. Al cambiar el número a `5001`, la página te devuelve un error. Pero al cambiar a `5002`, te devuelve la boleta de tu amigo con todas sus calificaciones. Que error crítico de programación cometió el Backend?
 
-3. Por que depender del codigo HTML/JavaScript (Frontend) para ocultar el botón rojo de "Borrar Base de Datos" a los usuarios normales es una defensa inútil contra un hacker profesional?
+3. Por qué depender del código HTML/JavaScript (Frontend) para ocultar el botón rojo de "Borrar Base de Datos" a los usuarios normales es una defensa inútil contra un hacker profesional?
 
 4. En términos de Severidad, si un atacante descubre un IDOR en un foro que le permite leer los "Borradores de Post" de otros usuarios antes de que los publiquen, versus un IDOR en un Banco que le permite leer las "Tarjetas de Crédito", ambos ataques tienen la misma gravedad corporativa? Explica.
 
@@ -334,9 +337,9 @@ Los endpoints de autenticación y autorización deben tener rate limiting para p
 
 6. Un equipo de desarrollo implementa RBAC con tres roles: `usuario`, `editor`, `admin`. Descubres que cuando un `usuario` solicita cambiar su propio rol a `admin` via API, el servidor lo permite. Que falla de autorización específica esta ocurriendo y como se llama?
 
-7. Tu aplicación usa UUIDs para los IDs de los recursos en lugar de números secuenciales. Un desarrollador argumenta que "como los UUIDs no son adivinables, no necesitamos verificar la propiedad del recurso". Por que esta lógica es peligrosa?
+7. Tu aplicación usa UUIDs para los IDs de los recursos en lugar de números secuenciales. Un desarrollador argumenta que "como los UUIDs no son adivinables, no necesitamos verificar la propiedad del recurso". Por qué esta lógica es peligrosa?
 
-8. Durante una auditoría de codigo, encuentras el siguiente fragmento en el Backend de una aplicación de mensajeria:
+8. Durante una auditoría de código, encuentras el siguiente fragmento en el Backend de una aplicación de mensajeria:
 
 ```python
 def leer_mensaje(id_mensaje):
@@ -344,4 +347,4 @@ def leer_mensaje(id_mensaje):
     return mensaje.contenido
 ```
 
-Que vulnerabilidad de autorización tiene este codigo y como la corregirias?
+Que vulnerabilidad de autorización tiene este código y como la corregirias?

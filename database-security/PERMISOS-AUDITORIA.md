@@ -1,5 +1,8 @@
 ---
 title: "Permisos y Auditoría de DB: Las Gafas Mágicas y la Cámara de Seguridad"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Permisos y Auditoría de DB: Las Gafas Mágicas y la Cámara de Seguridad
@@ -136,7 +139,7 @@ Tipos de máscaras:
 
 ### Quien Puede Ver los Datos Reales
 
-Los usuarios con permisos `UNMASK` pueden ver los datos sin enmascarar. Esto tipicamente incluye:
+Los usuarios con permisos `UNMASK` pueden ver los datos sin enmascarar. Esto típicamente incluye:
 
 - Administradores de base de datos (DBA).
 - Auditores.
@@ -179,7 +182,7 @@ DAM registra:
 - **Que:** `SELECT Salario FROM Empleados`.
 - **Donde:** Servidor `SQL-PROD-01`, Base de datos `Nominas`.
 - **Cuando:** `2024-01-15 02:15:30 UTC`.
-- **Desde:** IP `192.168.1.50` (estacion de trabajo del DBA).
+- **Desde:** IP `192.168.1.50` (estación de trabajo del DBA).
 - **Filas afectadas:** 1 fila devuelta.
 
 ### Alertas en Tiempo Real
@@ -230,11 +233,11 @@ Los logs de DAM deben enviarse al SIEM central para correlacion con otros evento
 - Un DBA accede a las 3:00 AM (fuera de horario).
 - Un DBA consulta tablas que no corresponden a su trabajo.
 
-En el SIEM, estas senales se correlacionan para detectar Insider Threats.
+En el SIEM, estas señales se correlacionan para detectar Insider Threats.
 
 ## Segregacion de Deberes (SoD) en Bases de Datos
 
-La segregacion de deberes asegura que ninguna persona tenga permisos para realizar dos funciones incompatibles.
+La segregación de deberes asegura que ninguna persona tenga permisos para realizar dos funciones incompatibles.
 
 ### Ejemplo de SoD en DB
 
@@ -259,7 +262,7 @@ La inyección SQL es el enemigo #1 de las bases de datos. Un atacante que explot
 
 ### Defensas Contra SQL Injection
 
-1. **Parametrizacion de Consultas (Prepared Statements):** La única defensa realmente efectiva. Separar los datos del codigo SQL.
+1. **Parametrizacion de Consultas (Prepared Statements):** La única defensa realmente efectiva. Separar los datos del código SQL.
 
 ```python
 # VULNERABLE
@@ -285,7 +288,7 @@ Marriott descubrió que 500 millones de registros de clientes fueron robados. Lo
 
 Los atacantes usaron acceso legítimo (credenciales robadas) para acceder a datos de clientes. No necesitaron SQL Injection ni vulnerabilidades técnicas. Fue un abuso de privilegios.
 
-La leccion: el monitoreo de actividad (DAM) y el enmascaramiento de datos habrian limitado el daño.
+La lección: el monitoreo de actividad (DAM) y el enmascaramiento de datos habrian limitado el daño.
 
 ### El DBA que Robo Datos de Tarjetas de Crédito (2017)
 
@@ -299,7 +302,7 @@ El ataque fue descubierto cuando un socio comercial noto transacciones fraudulen
 
 ### El Ataque a la Cadena de Suministro de Target (2013)
 
-Target fue hackeado cuando atacantes robaron credenciales de un proveedor de HVAC (calefaccion). Esas credenciales les dieron acceso a la red interna de Target, desde donde accedieron a la base de datos de tarjetas de crédito.
+Target fue hackeado cuando atacantes robaron credenciales de un proveedor de HVAC (calefacción). Esas credenciales les dieron acceso a la red interna de Target, desde donde accedieron a la base de datos de tarjetas de crédito.
 
 El ataque comprometio 40 millones de tarjetas de crédito. Target no tenía:
 
@@ -347,7 +350,7 @@ Si encuentro SQL Injection en una aplicación web, no necesito ver los datos dir
 ' IF (SELECT SUBSTRING(contrasena,1,1) FROM usuarios WHERE id=1) = 'a' WAITFOR DELAY '00:00:05' --
 ```
 
-Si la pagina tarda 5 segundos en cargar, el primer carácter de la contrasena es 'a'. Es lento pero efectivo.
+Si la página tarda 5 segundos en cargar, el primer carácter de la contraseña es 'a'. Es lento pero efectivo.
 
 **2. Abuso de Usuarios con Permisos Excesivos:**
 
@@ -381,13 +384,13 @@ Responde estas preguntas para verificar si comprendes los conceptos:
 
 2. Explica la diferencia entre usar Cifrado en Reposo (TDE) para proteger una Base de Datos contra un robo físico, y usar Enmascaramiento Dinámico de Datos (Masking) para protegerla contra un Insider Threat (Empleado malicioso).
 
-3. Por que es fundamental que la herramienta de Auditoría de Base de Datos (DAM) envíe los logs de monitoreo a un servidor SIEM centralizado de forma inmediata, en lugar de guardar los registros (logs) dentro del mismo servidor de Base de Datos? (Pista: Piensa en el Modo Dios del Administrador).
+3. Por qué es fundamental que la herramienta de Auditoría de Base de Datos (DAM) envíe los logs de monitoreo a un servidor SIEM centralizado de forma inmediata, en lugar de guardar los registros (logs) dentro del mismo servidor de Base de Datos? (Pista: Piensa en el Modo Dios del Administrador).
 
-4. Un atacante logra hacer un ataque exitoso de Inyección SQL desde la pagina web pública, ordenándole a la Base de Datos que extraiga la tabla de "Usuarios". Si el sistema de Base de Datos tiene configurado Dynamic Data Masking para las columnas de Contraseñas y Correos, Que información recibirá el atacante en su pantalla?
+4. Un atacante logra hacer un ataque exitoso de Inyección SQL desde la página web pública, ordenándole a la Base de Datos que extraiga la tabla de "Usuarios". Si el sistema de Base de Datos tiene configurado Dynamic Data Masking para las columnas de Contraseñas y Correos, Que información recibirá el atacante en su pantalla?
 
-5. Por que es peligroso que la aplicación web se conecte a la base de datos con el usuario administrador (sa, root) en lugar de un usuario con permisos limitados?
+5. Por qué es peligroso que la aplicación web se conecte a la base de datos con el usuario administrador (sa, root) en lugar de un usuario con permisos limitados?
 
-6. Explica el concepto de segregacion de deberes (SoD) en bases de datos. Da un ejemplo de dos roles que no deberían estar en la misma persona.
+6. Explica el concepto de segregación de deberes (SoD) en bases de datos. Da un ejemplo de dos roles que no deberían estar en la misma persona.
 
 7. Un administrador de base de datos consulta la tabla de salarios de empleados a las 2:00 AM desde su casa. Que herramientas permitirian detectar esta actividad como sospechosa?
 

@@ -1,5 +1,8 @@
 ---
 title: "PKI y TLS"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # PKI y TLS
@@ -220,7 +223,7 @@ Las consecuencias:
 - Yahoo, con 800 millones de usuarios, fue uno de los afectados más notorios.
 - Yahoo tuvo que revocar todos sus certificados y emitir nuevos.
 - Empresas de todos los tamaños tuvieron que hacer lo mismo.
-- Se estima que el 17% de los servidores HTTPS seguros eran vulnerables al momento del anuncio.
+- La vulnerabilidad afectó implementaciones ampliamente desplegadas de OpenSSL.
 
 Heartbleed demostró que la cadena de confianza no termina en la CA —también depende de que el servidor proteja adecuadamente su llave privada.
 
@@ -248,7 +251,7 @@ Si el usuario ignora la advertencia del navegador, el atacante puede:
 
 El ataque **SSLstrip** (2009) de Moxie Marlinspike iba un paso más allá: en lugar de presentar un certificado falso, el atacante simplemente eliminaba la "s" de HTTPS cuando el usuario escribía la URL, forzando al usuario a conectarse por HTTP no cifrado mientras el atacante mantenía una conexión HTTPS con el servidor real. El usuario veía HTTP en su navegador, pero como la mayoría de los usuarios no revisa la URL, no notaba la diferencia.
 
-SSLstrip funcionó durante años hasta que la adopción de HSTS se generalizó. **HSTS (HTTP Strict Transport Security)** es un header que el servidor envía al navegador indicando que siempre debe usar HTTPS para ese dominio, incluso si el usuario escribe http://. Los navegadores modernos también incluyen listas precargadas de sitios que deben usar HSTS obligatoriamente (como los bancos y Google).
+SSLstrip funciónó durante años hasta que la adopción de HSTS se generalizó. **HSTS (HTTP Strict Transport Security)** es un header que el servidor envía al navegador indicando que siempre debe usar HTTPS para ese dominio, incluso si el usuario escribe http://. Los navegadores modernos también incluyen listas precargadas de sitios que deben usar HSTS obligatoriamente (como los bancos y Google).
 
 Una variante más reciente es **SSLstrip 2.0**, que intenta engañar al navegador para que ignore HSTS usando un certificado válido para un dominio ligeramente diferente (homógrafo). Por ejemplo, usando "g00gle.com" con ceros en lugar de "google.com" con oes, con un certificado válido para g00gle.com.
 
@@ -377,18 +380,18 @@ El sistema PKI no es perfecto. Pero sigue siendo la mejor solución que tenemos 
 
 1. Estás navegando desde la red WiFi de un aeropuerto que puede estar controlada por un atacante. Intentas entrar a tu banco, pero Chrome muestra una pantalla roja que dice "NET::ERR_CERT_AUTHORITY_INVALID". Si ignoras la advertencia y continúas, que ataque clásico estas permitiendo? Explica como funciona el ataque en el contexto del handshake TLS.
 
-2. En el modelo PKI, explica la funcion de las Autoridades Certificadoras (CAs) usando la analogía del pasaporte. Que pasaría en el mundo real si una oficina gubernamental que emite pasaportes fuera comprometida por criminales?
+2. En el modelo PKI, explica la función de las Autoridades Certificadoras (CAs) usando la analogía del pasaporte. Que pasaría en el mundo real si una oficina gubernamental que emite pasaportes fuera comprometida por criminales?
 
-3. Para proteger una videollamada HD de 2 horas (unos 5 GB de datos), el protocolo TLS no usa cifrado asimétrico para todo el tráfico. Explica por que usa ECDHE solo al principio para acordar una llave simétrica y luego usa AES-GCM para el contenido. Incluye el concepto de Perfect Forward Secrecy.
+3. Para proteger una videollamada HD de 2 horas (unos 5 GB de datos), el protocolo TLS no usa cifrado asimétrico para todo el tráfico. Explica por qué usa ECDHE solo al principio para acordar una llave simétrica y luego usa AES-GCM para el contenido. Incluye el concepto de Perfect Forward Secrecy.
 
-4. Una empresa opera su propio servidor web con un certificado auto-firmado. Los empleados que acceden internamente ven una advertencia de seguridad en el navegador. Explica por que un certificado auto-firmado es inherentemente inseguro para comunicaciones externas y cual es la diferencia con un certificado firmado por una CA confiable.
+4. Una empresa opera su propio servidor web con un certificado auto-firmado. Los empleados que acceden internamente ven una advertencia de seguridad en el navegador. Explica por qué un certificado auto-firmado es inherentemente inseguro para comunicaciones externas y cual es la diferencia con un certificado firmado por una CA confiable.
 
-5. Durante el handshake TLS 1.2, el servidor envía su certificado junto con los parámetros Diffie-Hellman efimeros. Explica por que el servidor firma estos parámetros con su llave privada. Que pasaría si no los firmara?
+5. Durante el handshake TLS 1.2, el servidor envía su certificado junto con los parámetros Diffie-Hellman efimeros. Explica por qué el servidor firma estos parámetros con su llave privada. Que pasaría si no los firmara?
 
-6. En 2011, la CA DigiNotar fue comprometida y se emitieron certificados falsos para google.com. Explica el impacto de este ataque: por que los navegadores confiaban inicialmente en esos certificados falsos, y que tuvo que hacer la industria para mitigar el daño.
+6. En 2011, la CA DigiNotar fue comprometida y se emitieron certificados falsos para google.com. Explica el impacto de este ataque: por qué los navegadores confiaban inicialmente en esos certificados falsos, y que tuvo que hacer la industria para mitigar el daño.
 
 7. Un atacante compromete una CA intermedia y emite un certificado falso para un banco. Explica como Certificate Transparency (CT) y los registros DNS CAA pueden detectar o prevenir este ataque incluso si la firma criptográfica del certificado es perfectamente valida.
 
-8. Heartbleed permitia leer 64 KB de memoria del servidor. Explica por que este ataque es diferente a un ataque contra el algoritmo RSA. Por que Yahoo tuvo que revocar y reemitir todos sus certificados aunque el algoritmo RSA mismo no hubiera sido comprometido?
+8. Heartbleed permitia leer 64 KB de memoria del servidor. Explica por qué este ataque es diferente a un ataque contra el algoritmo RSA. Por qué Yahoo tuvo que revocar y reemitir todos sus certificados aunque el algoritmo RSA mismo no hubiera sido comprometido?
 
 ---

@@ -1,5 +1,8 @@
 ---
 title: "Riesgo y Controles: Las Matemáticas de la Seguridad"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Riesgo y Controles: Las Matemáticas de la Seguridad
@@ -10,7 +13,7 @@ Aprender la habilidad más escasa en el mercado laboral técnico: Hablar el leng
 
 Si eres un Ingeniero de Ciberseguridad y vas a la oficina del Director Financiero (CFO) a pedirle $100,000 dólares para comprar un Firewall nuevo porque "los hackers rusos usan una vulnerabilidad TCP/IP", el CFO te ignorará por completo.
 
-La forma correcta de hacerlo es ir a su oficina y decirle: *"Si no compramos este Firewall, tenemos un 40% de probabilidad matemática de perder $500,000 dólares este año"*. El CFO te dará el cheque inmediatamente. Por que esto importa: porque los ejecutivos solo entienden un idioma, y no es el técnico.
+La forma correcta de hacerlo es ir a su oficina y decirle: *"Si no compramos este Firewall, tenemos un 40% de probabilidad matemática de perder $500,000 dólares este año"*. El CFO te dará el cheque inmediatamente. Por qué esto importa: porque los ejecutivos solo entienden un idioma, y no es el técnico.
 
 A esto se le llama **Gestión de Riesgos**.
 
@@ -38,7 +41,7 @@ El riesgo de seguridad de la información se define como:
 
 **Ejemplo práctico:**
 - Amenaza: Grupo ransomware LockBit.
-- Vulnerabilidad: Servidor de bases de datos sin parchear contra CVE-2023-XXXX.
+- Vulnerabilidad: Servidor de bases de datos sin parchear contra una vulnerabilidad crítica hipotética.
 - Impacto: $2 millones en pérdida de ventas durante el tiempo de inactividad + $500,000 en reputación.
 - Riesgo: Si la probabilidad de explotación es del 20%, el riesgo financiero es de $500,000 anuales.
 

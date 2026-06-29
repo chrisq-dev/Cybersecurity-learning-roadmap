@@ -1,12 +1,15 @@
 ---
 title: "Arquitectura de Seguridad: El Castillo Medieval"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Arquitectura de Seguridad: El Castillo Medieval
 
 ## Objetivo de esta Guía
 
-Aprender la ley fundamental del diseno de redes corporativas: Nunca confíes tu empresa a un solo candado.
+Aprender la ley fundamental del diseño de redes corporativas: Nunca confíes tu empresa a un solo candado.
 
 En las fases anteriores aprendiste herramientas individuales: Antivirus, Firewalls, Backups. La Arquitectura de Seguridad es el arte de ensamblar todas esas piezas como si fueran bloques de Lego para crear un ecosistema donde, si una pieza falla, la siguiente detenga la catástrofe.
 
@@ -16,7 +19,7 @@ Esta guía cubre los principios fundamentales de la arquitectura de seguridad: d
 
 La mejor manera de entender la arquitectura de seguridad es pensar en un castillo medieval.
 
-El diseno del castillo asume que, eventualmente, el enemigo cruzará el foso con agua. Por lo tanto, no pones a tu Rey justo detrás del foso. Lo proteges con múltiples capas concéntricas.
+El diseño del castillo asume que, eventualmente, el enemigo cruzará el foso con agua. Por lo tanto, no pones a tu Rey justo detrás del foso. Lo proteges con múltiples capas concéntricas.
 
 Cada capa del castillo tiene un propósito defensivo específico:
 
@@ -58,7 +61,7 @@ El modelo M&M fracaso por varias razones:
 
 Movilidad: Los empleados ya no trabajan solo desde la oficina. Llevan sus laptops a cafes, hogares, hoteles. Se conectan a redes inseguras y traen malware de vuelta a la oficina.
 
-Nube: Los datos y aplicaciones ya no están solo en el datacenter de la empresa. Están en AWS, Azure, Google Cloud, Salesforce, Office 365. El perímetro de la red ya no existe.
+Nube: Los datos y aplicaciones ya no están solo en el datacenter de la empresa. Están en AWS, Azure, Google Cloud, Salesforce, Microsoft 365. El perímetro de la red ya no existe.
 
 BYOD: Los empleados usan sus dispositivos personales para trabajar. La empresa no controla esos dispositivos.
 
@@ -66,9 +69,9 @@ Phishing: El atacante no necesita cruzar el firewall. Solo necesita que un emple
 
 El resultado: el firewall perimetral se ha vuelvo una barrera porosa. Los atacantes entran a través de usuarios comprometidos, no a través de puertos de red.
 
-### Caso Real: La Arquitectura M&M en Accion
+### Caso Real: La Arquitectura M&M en Acción
 
-Target (2013): Los atacantes entraron a la red de Target a través de las credenciales de un proveedor de HVAC (sistemas de climatizacion). Una vez dentro (detrás del firewall), encontraron una red plana sin segmentación. Desde el sistema de HVAC, se movieron lateralmente al sistema de punto de venta (POS) y robaron los datos de 40 millones de tarjetas de crédito.
+Target (2013): Los atacantes entraron a la red de Target a través de las credenciales de un proveedor de HVAC (sistemas de climatización). Una vez dentro (detrás del firewall), encontraron una red plana sin segmentación. Desde el sistema de HVAC, se movieron lateralmente al sistema de punto de venta (POS) y robaron los datos de 40 millones de tarjetas de crédito.
 
 Si Target hubiera tenido segmentación de red, el sistema de HVAC no habría podido comunicarse con los sistemas POS. Pero como tenían una arquitectura M&M, una vez dentro, los atacantes tenían acceso a todo.
 
@@ -99,7 +102,7 @@ Capa 5: Seguridad de Endpoint
 - Protege cada dispositivo individual.
 
 Capa 6: Seguridad de Aplicaciones
-- WAF (Web Application Firewall), escaneo de vulnerabilidades, revisión de codigo.
+- WAF (Web Application Firewall), escaneo de vulnerabilidades, revisión de código.
 - Protege las aplicaciones que la empresa desarrolla y usa.
 
 Capa 7: Seguridad de Datos
@@ -138,7 +141,7 @@ Segmentación Lógica (VLANs): Redes separadas lógicamente usando VLANs en el m
 
 Segmentación por Microsegmentacion: Tecnologías como NSX de VMware o AWS Security Groups que permiten aislar hasta el nivel de una sola máquina virtual o contenedor.
 
-### Diseno de Segmentación
+### Diseño de Segmentación
 
 Una segmentación bien diseñada separa:
 
@@ -148,7 +151,7 @@ Usuarios por Departamento:
 - VLAN de Recursos Humanos
 - VLAN de Ingeniería
 
-Sistemas por Funcion:
+Sistemas por Función:
 - VLAN de Servidores Web (accesible desde internet)
 - VLAN de Bases de Datos (solo accesible desde servidores web)
 - VLAN de Active Directory
@@ -186,9 +189,9 @@ Detección de Movimiento Lateral: El tráfico entre segmentos que no debería oc
 
 Reduccion de la Superficie de Ataque: Los sistemas internos no necesitan estar expuestos a toda la red.
 
-### Caso Real: La Segmentación que Salvo a una Empresa
+### Escenario Ilustrativo: Contención Mediante Segmentación
 
-En 2022, una empresa mediana sufrio un ataque de ransomware. El atacante entró a través de un correo de phishing en el departamento de Marketing. El malware intento propagarse a los servidores de bases de datos.
+Una empresa mediana sufre un ataque de ransomware. El atacante entró a través de un correo de phishing en el departamento de Marketing. El malware intento propagarse a los servidores de bases de datos.
 
 Pero la empresa tenía segmentación de red. El departamento de Marketing estaba en una VLAN separada con un firewall interno. El tráfico del malware hacia la base de datos fue bloqueado por el firewall. El ataque solo afectó a 20 computadoras de Marketing, no a los 500 servidores de la empresa.
 
@@ -196,7 +199,7 @@ La empresa pudo restaurar las computadoras de Marketing desde backups en menos d
 
 ## Principo de Menor Privilegio
 
-El principio de menor privilegio (Least Privilege) dicta que un usuario, proceso, o sistema debe tener solo los permisos minimos necesarios para realizar su funcion.
+El principio de menor privilegio (Least Privilege) dicta que un usuario, proceso, o sistema debe tener solo los permisos minimos necesarios para realizar su función.
 
 ### Implementación del Menor Privilegio
 
@@ -236,15 +239,15 @@ Las técnicas comunes de escalada de privilegios:
 - Servicios mal configurados que corren como SYSTEM
 - Tareas programadas que se ejecutan con privilegios elevados
 
-Un buen diseno de menor privilegio dificulta o imposibilita estas técnicas.
+Un buen diseño de menor privilegio dificulta o imposibilita estas técnicas.
 
 ## Seguridad por Capas vs. Seguridad por Oscuridad
 
-Un concepto importante en arquitectura de seguridad es que la seguridad no debe depender del secreto. El diseno de la arquitectura debe ser público sin que esto la debilite.
+Un concepto importante en arquitectura de seguridad es que la seguridad no debe depender del secreto. El diseño de la arquitectura debe ser público sin que esto la debilite.
 
 Seguridad por Oscuridad: Confiar en que el atacante no conoce tu arquitectura. Es fragil: si el atacante descubre la configuración, la defensa colapsa.
 
-Seguridad por Capas: La arquitectura es segura incluso si el atacante conoce todos los detalles de su diseno. Cada capa asume que la capa anterior puede ser comprometida.
+Seguridad por Capas: La arquitectura es segura incluso si el atacante conoce todos los detalles de su diseño. Cada capa asume que la capa anterior puede ser comprometida.
 
 Un buen arquitecto diseña para el escenario en que el atacante tiene los planos del castillo.
 
@@ -288,7 +291,7 @@ La DMZ es una red separada que contiene los servidores que deben ser accesibles 
 
 Los servidores en la DMZ pueden ser accedidos desde internet, pero no tienen acceso directo a la red interna. Si un atacante compromete un servidor en la DMZ, aún debe cruzar un firewall para llegar a la red interna.
 
-### Diseno Típico de Zonas
+### Diseño Típico de Zonas
 
 Internet -> Firewall -> DMZ (servidores públicos) -> Firewall -> Red Interna -> Firewall -> Zona de Datos (bases de datos) -> Firewall -> Zona de Gestión (administración)
 
@@ -308,7 +311,7 @@ El cliente asegura en la nube (configuraciones, sistemas operativos, datos, iden
 
 ### Principios de Arquitectura Cloud
 
-Infraestructura como Codigo (IaC): La infraestructura se define en archivos (Terraform, CloudFormation). Esto permite versionado, revisión, y auditoría.
+Infraestructura como Código (IaC): La infraestructura se define en archivos (Terraform, CloudFormation). Esto permite versionado, revisión, y auditoría.
 
 Políticas de Red: Usar Security Groups y Network ACLs para microsegmentacion.
 
@@ -332,7 +335,7 @@ Falta de monitoreo entre segmentos: Tener segmentación pero no monitorear el tr
 
 No planificar para fallos: Diseñar la arquitectura asumiendo que los firewalls nunca fallaran, que los EDR siempre detectaran, que los backups siempre funcionaran.
 
-Arquitectura estática: Diseñar para la empresa de hoy sin considerar el crecimiento futuro, la adquisicion de nuevas empresas, la migración a la nube.
+Arquitectura estática: Diseñar para la empresa de hoy sin considerar el crecimiento futuro, la adquisición de nuevas empresas, la migración a la nube.
 
 Complejidad excesiva: Tantos firewalls, segmentos, y reglas que el equipo de operaciones no puede mantener la configuración. La complejidad se convierte en inseguridad.
 
@@ -370,7 +373,7 @@ Cada uno de estos pasos aumenta la probabilidad de detección.
 
 Revisa si puedes diseñar la fortaleza corporativa:
 
-1. El Director de Sistemas de una empresa decide gastar $500,000 en el mejor Firewall de nueva generación (NGFW) del mercado, argumentando que con esa protección perimetral ya no es necesario instalar software Antivirus (EDR) en las computadoras de los empleados. Usando el concepto de "Defensa en Profundidad", por que esta es una decisión arquitectónica catastrófica?
+1. El Director de Sistemas de una empresa decide gastar $500,000 en el mejor Firewall de nueva generación (NGFW) del mercado, argumentando que con esa protección perimetral ya no es necesario instalar software Antivirus (EDR) en las computadoras de los empleados. Usando el concepto de "Defensa en Profundidad", por qué esta es una decisión arquitectónica catastrófica?
 
 2. Un empleado del departamento de Marketing inserta un USB infectado en su computadora. El ransomware se ejecuta, pero misteriosamente es incapaz de escanear o infectar los servidores del departamento de Contabilidad. Explica como el principio de Segmentación de Red logró salvar a la empresa de una crisis total.
 
@@ -388,4 +391,4 @@ Revisa si puedes diseñar la fortaleza corporativa:
 
 9. El equipo de operaciones argumenta que la segmentación es "demasiado compleja" y que "ralentiza el trabajo". Como respondes a este argumento desde la perspectiva de seguridad?
 
-10. Explica por que la seguridad por capas es superior a la seguridad por oscuridad en el diseno arquitectónico.
+10. Explica por qué la seguridad por capas es superior a la seguridad por oscuridad en el diseño arquitectónico.

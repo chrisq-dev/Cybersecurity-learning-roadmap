@@ -1,13 +1,13 @@
 # Contribuir
 
-Este repositorio es una web pública de recursos de ciberseguridad en español. La meta es mantener guías claras, profundas, prácticas y éticas para personas que quieren aprender con orden.
+Este repositorio es una web pública de recursos de ciberseguridad en español. La meta es mantener una biblioteca informativa clara, verificable y ética para personas que quieren comprender la ciberseguridad con orden.
 
 ## Qué tipo de contribuciones sirven
 
 - Correcciones de errores técnicos.
 - Mejoras de claridad.
-- Nuevas guías y laboratorios seguros y autorizados.
-- Preguntas de autoevaluación.
+- Nuevas guías y rutas temáticas.
+- Preguntas de autoevaluación opcionales.
 - Hojas de referencia.
 - Plantillas de reportes.
 - Recursos gratuitos y legales.
@@ -24,6 +24,8 @@ Este repositorio es una web pública de recursos de ciberseguridad en español. 
 
 ## Estilo
 
+Lee [STYLE-GUIDE.md](STYLE-GUIDE.md) antes de modificar contenido.
+
 - Escribir en español.
 - Usar un tono profesional, accesible y directo.
 - Explicar los términos técnicos la primera vez que aparecen.
@@ -38,7 +40,7 @@ Este repositorio es una web pública de recursos de ciberseguridad en español. 
 
 1. Crea el archivo dentro de una carpeta temática, no en la raíz del repositorio.
 2. Usa un nombre descriptivo en mayúsculas y separado por guiones, por ejemplo `MODELO-DE-AMENAZAS.md`.
-3. Agrega el frontmatter con `title`.
+3. Agrega el frontmatter editorial obligatorio.
 4. Repite el mismo título como encabezado H1.
 5. Usa encabezados H2 y H3 para que la tabla de contenido funcione correctamente.
 
@@ -51,6 +53,9 @@ Los Markdown colocados dentro de una carpeta temática se publican automáticame
 ```md
 ---
 title: "Modelado de amenazas"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-28"
 ---
 
 # Modelado de amenazas
@@ -67,17 +72,9 @@ Define los conceptos con lenguaje claro antes de introducir herramientas o técn
 
 Desarrolla el proceso paso a paso y agrega un ejemplo comprensible.
 
-## Ejemplo práctico seguro
-
-Describe una práctica para un laboratorio propio, una plataforma autorizada o un entorno aislado.
-
 ## Riesgos y controles
 
 Explica qué puede fallar, cuál sería el impacto y qué controles reducen el riesgo.
-
-## Perspectiva del atacante
-
-Describe el abuso desde una perspectiva educativa y acompáñalo con detección o mitigación.
 
 ## Errores comunes
 
@@ -99,7 +96,7 @@ La plantilla es una base, no una obligación rígida. Las guías culturales, glo
 
 ## Enlaces e imágenes
 
-- Usa enlaces relativos para otras guías: `[Fundamentos de redes](../redes-cisco/FUNDAMENTOS-REDES.md)`.
+- Usa enlaces relativos para otras guías: `[Fundamentos de redes](redes-cisco/FUNDAMENTOS-REDES.md)`.
 - Coloca imágenes compartidas en `assets/`.
 - Incluye texto alternativo descriptivo.
 - No dependas de imágenes para explicar información esencial.
@@ -109,14 +106,14 @@ La plantilla es una base, no una obligación rígida. Las guías culturales, glo
 Revisa:
 
 - [README.md](README.md)
-- [INICIO-AQUÍ.md](INICIO-AQUI.md)
+- [INICIO-AQUI.md](INICIO-AQUI.md)
+- [STYLE-GUIDE.md](STYLE-GUIDE.md)
 
 Después valida la web:
 
 ```bash
 cd web
-npm run lint
-npm run build
+npm run check
 ```
 
 Confirma también que:

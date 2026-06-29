@@ -1,12 +1,15 @@
 ---
 title: "Active Directory: El Trono de Hierro"
+level: "intermedio"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Active Directory: El Trono de Hierro
 
 ## Objetivo de esta Guía
 
-Quiero ser honesto contigo desde el principio: Active Directory es el tema más complejo y el más lucrativo que puedes aprender en ciberseguridad corporativa. No es exageración decir que el 90% de los ataques de ransomware que terminan en titulares de noticias involucran a Active Directory de alguna forma. No porque AD sea inseguro, sino porque es el centro de todo. Es el sistema que controla quién tiene acceso a qué en una organización. Si un atacante lo controla, controla la organización entera.
+Active Directory es un componente central de muchas redes corporativas. Los operadores de ransomware suelen intentar comprometerlo porque concentra identidad, políticas y acceso a recursos. No porque AD sea inseguro, sino porque es el centro de todo. Es el sistema que controla quién tiene acceso a qué en una organización. Si un atacante lo controla, controla la organización entera.
 
 En la guía de fundamentos viste la diferencia entre una isla (Workgroup) y un imperio (Dominio). Esta guía es un mapa detallado del imperio. Vamos a cubrir la arquitectura de Active Directory, el protocolo Kerberos a fondo, las Políticas de Grupo (GPO), las confianzas entre dominios, y los ataques más avanzados que existen. Pero no voy a solo listar conceptos. Te voy a mostrar cómo cada pieza funciona, cómo falla, y cómo un atacante la explota. No saldrás de aquí siendo un experto en AD —eso toma años— pero saldrás sabiendo lo que realmente importa para seguridad.
 

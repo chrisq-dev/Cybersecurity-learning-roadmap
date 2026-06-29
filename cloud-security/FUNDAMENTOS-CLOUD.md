@@ -1,5 +1,8 @@
 ---
 title: "Fundamentos de la Nube: La Computadora de Alguien Más"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Fundamentos de la Nube: La Computadora de Alguien Más
@@ -8,7 +11,7 @@ title: "Fundamentos de la Nube: La Computadora de Alguien Más"
 
 Destruir la ilusión de que la Nube es un ente mágico y etéreo, y entender la vulnerabilidad más grande y peligrosa de migrar los servidores de tu empresa a Amazon, Google o Microsoft.
 
-Hace 15 años (On-Premise), si una empresa quería una pagina web, tenía que comprar un servidor físico de metal de $5,000 USD, ponerlo en un cuarto con aire acondicionado y contratar un guardia de seguridad. Hoy, abren una cuenta en Amazon (AWS), le dan clic a un botón, y en 30 segundos Amazon les presta un servidor virtual en otro país por $5 dólares al mes.
+En un modelo tradicional (on-premises), una empresa compra y opera servidores físicos, energía, refrigeración y espacio. En la nube puede aprovisionar capacidad bajo demanda y pagar según el servicio y el consumo; eso cambia el modelo financiero, pero no garantiza que el costo sea menor.
 
 Esa es la Nube: la computadora de alguien más.
 
@@ -19,26 +22,26 @@ Para entender la seguridad en la nube, debes entender los 3 modelos de servicio.
 ### Infraestructura como Servicio (IaaS)
 
 - La Analogía: Rentas un terreno vacio con paredes y techo.
-- Tecnología: Amazon te presta un Servidor Linux completamente vacio (EC2). Tu tienes que instalarle la puerta, los muebles (Base de datos), la plomería (Redes) y pintarlo (El codigo).
-- Seguridad: Tu eres responsable de casi todo. Si te hackean porque tu base de datos no tenía contrasena, es 100% tu culpa.
+- Tecnología: Amazon te presta un Servidor Linux completamente vacio (EC2). Tu tienes que instalarle la puerta, los muebles (Base de datos), la plomería (Redes) y pintarlo (El código).
+- Seguridad: El cliente administra el sistema operativo, las aplicaciones, identidades, configuración y datos; el proveedor administra la infraestructura subyacente. El contrato define los límites exactos.
 
 ### Plataforma como Servicio (PaaS)
 
 - La Analogía: Rentas un departamento amueblado.
 - Tecnología: Amazon te dice: No te preocupes por instalar Linux ni la base de datos. Toma esta base de datos mágica (RDS) que ya funciona. Solo mete tus datos.
-- Seguridad: Amazon se encarga de que la base de datos no tenga virus de sistema operativo. Tu solo te encargas de que las contraseñas de tus usuarios sean fuertes.
+- Seguridad: El proveedor opera más capas de la plataforma; el cliente conserva responsabilidades sobre identidades, configuración, datos y uso seguro del servicio.
 
 ### Software como Servicio (SaaS)
 
 - La Analogía: Pagas una noche en un Hotel de Lujo de 5 Estrellas (All Inclusive).
 - Tecnología: Google Mail (Gmail) o Netflix. Tu no servidor usan, ni te importa. Solo entras, consumes el servicio y te vas.
-- Seguridad: Google se encarga del 99% de la seguridad. Tu única responsabilidad es no darle tu contrasena de Gmail a un estafador.
+- Seguridad: El proveedor opera la aplicación y su infraestructura, mientras el cliente sigue administrando cuentas, accesos, configuración, dispositivos y datos según el servicio.
 
 ## El Modelo de Responsabilidad Compartida
 
-Si hay un solo concepto que debes memorizar en esta guía para no ir a prisión, es el Modelo de Responsabilidad Compartida (Shared Responsibility Model).
+El concepto central de esta guía es el modelo de responsabilidad compartida (*shared responsibility model*).
 
-Cuando una empresa migra a AWS y es hackeada a la semana siguiente, el CEO de la empresa siempre sale a la prensa a decir: Amazon fue hackeado, es culpa de la Nube. Esto es falso en el 99.9% de los casos.
+Cuando una empresa migra a AWS y es hackeada a la semana siguiente, el CEO de la empresa siempre sale a la prensa a decir: Amazon fue hackeado, es culpa de la Nube. Esa conclusión suele confundir un incidente en la configuración del cliente con un compromiso del proveedor cloud.
 
 ### La Regla de Oro
 
@@ -76,11 +79,11 @@ El Hacking en la Nube es Hacking de Identidad, no Hacking de Redes.
 
 ### La Inmortalidad de la API Key
 
-A diferencia de una contrasena que puedes cambiar, una API Key suele estar hardcodeada en:
+A diferencia de una contraseña que puedes cambiar, una API Key suele estar hardcodeada en:
 
 - Archivos de configuración en sitios como GitHub.
 - Variables de entorno en servidores.
-- Codigo fuente de aplicaciones móviles (reversible).
+- Código fuente de aplicaciones móviles (reversible).
 - Archivos de configuración de CI/CD (Jenkins, GitLab CI).
 
 Cuando una API Key se filtra, rotarla implica:
@@ -90,7 +93,7 @@ Cuando una API Key se filtra, rotarla implica:
 3. Verificar que no haya servicios caídos por el cambio.
 4. Revocar la llave anterior.
 
-Este proceso puede tomar dias en empresas grandes.
+Este proceso puede tomar días en empresas grandes.
 
 ## Seguridad de Red en la Nube: Security Groups y NACLs
 
@@ -138,7 +141,7 @@ El error más común en la nube es abrir puertos innecesarios a 0.0.0.0/0 (todo 
 
 - Puerto 22 (SSH) abierto al mundo: ataque de fuerza bruta.
 - Puerto 3306 (MySQL) abierto al mundo: acceso directo a base de datos.
-- Puerto 6379 (Redis) abierto al mundo: acceso a caché (sin autenticación, tipicamente).
+- Puerto 6379 (Redis) abierto al mundo: acceso a caché (sin autenticación, típicamente).
 - Puerto 27017 (MongoDB) abierto al mundo: acceso a base de datos NoSQL.
 
 ## El Riesgo de las Configuraciones por Defecto
@@ -189,7 +192,7 @@ Los buckets fueron encontrados por UpGuard, una empresa de seguridad, que notifi
 
 ### El Ataque a Code Spaces (2014)
 
-Code Spaces, una empresa que alojaba codigo fuente de clientes, fue atacada cuando un atacante obtuvo acceso a la consola de administración de AWS.
+Code Spaces, una empresa que alojaba código fuente de clientes, fue atacada cuando un atacante obtuvo acceso a la consola de administración de AWS.
 
 El atacante:
 
@@ -198,13 +201,13 @@ El atacante:
 3. Code Spaces no tenía copias de seguridad externas.
 4. La empresa cerró operaciones permanentemente.
 
-La leccion: las credenciales de la nube deben protegerse con MFA y los backups deben estar en cuentas separadas.
+La lección: las credenciales de la nube deben protegerse con MFA y los backups deben estar en cuentas separadas.
 
 ## Modos de Falla
 
 ### Falla 1: Confundir Modelos de Responsabilidad
 
-El equipo cree que al migrar a PaaS, el proveedor se encarga de todo, incluyendo las contraseñas de la base de datos. Esto lleva a bases de datos sin contrasena o con contraseñas débiles.
+El equipo cree que al migrar a PaaS, el proveedor se encarga de todo, incluyendo las contraseñas de la base de datos. Esto lleva a bases de datos sin contraseña o con contraseñas débiles.
 
 ### Falla 2: API Keys en Repositorios Públicos
 
@@ -224,7 +227,7 @@ No configurar alertas de CloudTrail para detectar actividades anomalas como:
 
 ### Falla 5: No Usar MFA en Cuentas Root
 
-La cuenta root (Administrador absoluto) sin MFA es el riesgo más grande. Si un atacante obtiene la contrasena de la cuenta root, tiene control total.
+La cuenta root (Administrador absoluto) sin MFA es el riesgo más grande. Si un atacante obtiene la contraseña de la cuenta root, tiene control total.
 
 ### Falla 6: Backups en la Misma Cuenta
 
@@ -317,9 +320,9 @@ Usa múltiples proveedores de nube pública simultáneamente.
 
 ## Automation y DevOps en la Nube
 
-La nube no se administra manualmente. Se administra a través de codigo y automatización.
+La nube no se administra manualmente. Se administra a través de código y automatización.
 
-### Infraestructura como Codigo (IaC)
+### Infraestructura como Código (IaC)
 
 Los recursos de nube se definen en archivos de configuración (Terraform, CloudFormation, ARM templates). Esto permite:
 
@@ -330,11 +333,11 @@ Los recursos de nube se definen en archivos de configuración (Terraform, CloudF
 
 ### Riesgos de Seguridad en IaC
 
-1. **Secretos en codigo:** Contraseñas, API Keys y certificados hardcodeados en los archivos de IaC. Herramientas como tfsec, checkov o cfn-nag escanean estos archivos en busca de secretos.
+1. **Secretos en código:** Contraseñas, API Keys y certificados hardcodeados en los archivos de IaC. Herramientas como tfsec, checkov o cfn-nag escanean estos archivos en busca de secretos.
 
 2. **Políticas demasiado permisivas:** La mayoría de ejemplos de IaC usan políticas anchas (ej. `Action: "*"`). Sin revisión, estas políticas llegan a producción.
 
-3. **Infraestructura inmutable:** Una vez desplegada, la infraestructura no debe modificarse manualmente. Cualquier cambio debe hacerse a través del codigo. Las modificaciones manuales crean "drift" que rompe la consistencia.
+3. **Infraestructura inmutable:** Una vez desplegada, la infraestructura no debe modificarse manualmente. Cualquier cambio debe hacerse a través del código. Las modificaciones manuales crean "drift" que rompe la consistencia.
 
 ### Shift Left Security en la Nube
 
@@ -383,16 +386,16 @@ Responde estas preguntas para verificar si comprendes los conceptos:
 
 1. El servidor de la base de datos de tu empresa esta alojado en una máquina virtual de AWS (Modelo IaaS). Un hacker descubre que el software del servidor web (Apache) estaba desactualizado desde hace 3 años, entra y roba los datos. Quien tiene la responsabilidad legal de este fallo según el Modelo de Responsabilidad Compartida, Amazon o la Empresa? Justifica.
 
-2. Contratas un servicio de Google Drive (SaaS) para guardar archivos. Un hacker no ataca a Google, sino que adivina la contrasena 12345 de tu jefe y descarga los archivos. Por que Google no puede ser demandado por esta filtración de datos?
+2. Contratas un servicio de Google Drive (SaaS) para guardar archivos. Un hacker no ataca a Google, sino que adivina la contraseña 12345 de tu jefe y descarga los archivos. Por qué Google no puede ser demandado por esta filtración de datos?
 
-3. Por que el robo de una API Key con permisos administrativos en la nube es infinitamente más devastador para una empresa moderna que el robo físico de una computadora de escritorio en sus oficinas?
+3. Por qué el robo de una API Key con permisos administrativos en la nube es infinitamente más devastador para una empresa moderna que el robo físico de una computadora de escritorio en sus oficinas?
 
-4. Un amigo te dice: Alojé mi pagina web en Microsoft Azure, así que ya no necesito configurar un Firewall ni preocuparme por la Inyección SQL, porque Microsoft me defiende. Por que tu amigo esta a punto de perder su negocio?
+4. Un amigo te dice: Alojé mi página web en Microsoft Azure, así que ya no necesito configurar un Firewall ni preocuparme por la Inyección SQL, porque Microsoft me defiende. Por qué tu amigo esta a punto de perder su negocio?
 
 5. Explica la diferencia entre un Security Group (firewall de instancia) y una Network ACL (firewall de subred). En que situación usarías cada uno?
 
 6. Un desarrollador sube una API Key de AWS a un sitio público como GitHub. La llave tiene permisos de administrador. Describe el impacto inmediato y que pasos debe seguir el equipo de seguridad para mitigar el riesgo.
 
-7. Por que el endpoint de metadatos de AWS (169.254.169.254) es un objetivo crítico para un atacante que explota una vulnerabilidad SSRF en una aplicación web alojada en EC2?
+7. Por qué el endpoint de metadatos de AWS (169.254.169.254) es un objetivo crítico para un atacante que explota una vulnerabilidad SSRF en una aplicación web alojada en EC2?
 
 8. Una empresa tiene todos sus backups en la misma cuenta de AWS que los servidores de producción. Que riesgo específico corre si un atacante compromete la cuenta?

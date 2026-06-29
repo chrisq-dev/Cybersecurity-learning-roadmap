@@ -1,11 +1,14 @@
 ---
 title: "Python Básico: Escribiéndole al Robot"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 # Python Básico: Escribiéndole al Robot
 
 ## Objetivo de esta Guía
 
-el objetivo aqui es perderle el terror a la palabra "Programación". no necesitas ser un ingeniero de software para escribir codigo útil.
+el objetivo aqui es perderle el terror a la palabra "Programación". no necesitas ser un ingeniero de software para escribir código útil.
 A diferencia de los Ingenieros de Software, que construyen aplicaciones gigantescas de millones de líneas de código durante meses (como WhatsApp o Excel), en Ciberseguridad usamos la programación para crear **Scripts Tácticos**.
 
 Un script es simplemente un programa pequeñito, feo (sin botones ni ventanas bonitas), que resuelve un problema crítico en menos de 5 segundos, como escanear si 1,000 puertos están abiertos. Y para eso, Python es el rey absoluto.
@@ -48,7 +51,7 @@ ip_victima = "192.168.1.55"
 
 un script que solo avanza en línea recta es inútil. el robot necesita tomar decisiones basado en lo que está viendo en tiempo real. Para eso usamos `if` (Si pasa esto) y `else` (De lo contrario, haz esto otro).
 
-**Por qué esto importa:** Si no sabes tomar decisiones en codigo, tu script es un robot que solo sabe ir derecho y chocar contra la pared. Los if/else son el volante.
+**Por qué esto importa:** Si no sabes tomar decisiones en código, tu script es un robot que solo sabe ir derecho y chocar contra la pared. Los if/else son el volante.
 
 **Escenario Hacker:** Estás escaneando un puerto. Quieres que el robot decida qué hacer dependiendo de si la puerta está abierta o cerrada.
 

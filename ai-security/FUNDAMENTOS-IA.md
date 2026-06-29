@@ -1,5 +1,8 @@
 ---
 title: "Fundamentos de IA y LLMs: La Nueva Frontera"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 # Fundamentos de IA y LLMs: La Nueva Frontera
 
@@ -53,7 +56,7 @@ No necesitas saber la arquitectura exacta de transformers para entender los ries
 
 ### El Contexto es Todo
 
-Un LLM tiene un **contexto limitado** —una ventana de texto que puede "ver" en un momento dado. Todo lo que está en esa ventana influye en su respuesta. Si en esa ventana hay instrucciones maliciosas mezcladas con contenido legítimo, el modelo no puede distinguir cuál es cuál.
+Un LLM procesa una ventana de contexto limitada. Las instrucciones maliciosas mezcladas con contenido legítimo pueden influir en la respuesta porque separar datos e instrucciones no es una frontera de seguridad perfecta.
 
 Imagínate que estás en una reunión donde alguien te da instrucciones oficiales y al mismo tiempo otra persona te susurra órdenes al oído. Para el LLM, ambas voces tienen el mismo peso.
 
@@ -61,11 +64,11 @@ Imagínate que estás en una reunión donde alguien te da instrucciones oficiale
 
 Cada modelo tiene parámetros configurables que afectan cómo responde. Entenderlos es clave para la seguridad:
 
-- **Temperatura:** Controla qué tan "creativa" es la respuesta. Temperatura baja (0.1) = siempre la misma respuesta para el mismo input. Temperatura alta (1.5) = respuestas más variadas y aleatorias. Para seguridad, la temperatura baja es más predecible, pero también más fácil de explotar porque el atacante sabe exactamente qué va a responder.
+- **Temperatura:** Modifica la distribución usada durante el muestreo. Un valor bajo suele reducir la variación, pero no garantiza una salida idéntica: también influyen el modelo, la semilla, la infraestructura y otros parámetros.
 - **Top-p (nucleus sampling):** En lugar de elegir siempre la palabra más probable, el modelo elige entre un conjunto de palabras que suman cierta probabilidad. Esto afecta cuán "impredecible" es.
 - **Max tokens:** El límite de cuánto puede generar el modelo. Si el límite es muy bajo, el modelo podría truncar respuestas importantes (como omitir la palabra "NO" al final).
 
-**Por qué esto importa:** Un atacante puede experimentar con diferentes temperaturas para encontrar la configuración que haga al modelo más vulnerable. Si el modelo siempre responde igual (temperatura baja), el atacante puede diseñar un exploit exacto.
+**Por qué esto importa:** La seguridad no debe depender de que una salida parezca estable. Evalúa varias configuraciones y ejecuciones, y aplica controles deterministas fuera del modelo para autorizar acciones.
 
 ### Los Límites del Entrenamiento
 
@@ -79,7 +82,7 @@ Los creadores del modelo ponen capas de seguridad después del entrenamiento (lo
 
 ---
 
-## 3. Por qué los Firewalls y WAFs ya no sirven
+## 3. Por qué un WAF no basta para prompt injection
 
 Históricamente, la ciberseguridad se ha basado en **firmas** y **sintaxis**.
 Un WAF (Web Application Firewall) bloquea un ataque porque ve el código malicioso `OR 1=1; DROP TABLE users;`. El firewall sabe que eso es una inyección SQL. Es un ataque sintáctico.
@@ -93,19 +96,19 @@ Para un Firewall tradicional, esto es solo texto normal. No hay comillas, ni sí
 
 **A esto se le llama un Ataque Semántico.** Y es la razón por la que necesitamos una rama completamente nueva en ciberseguridad.
 
-**Por qué esto importa:** Las empresas gastan millones en firewalls y WAFs pensando que están protegidas. Y lo están... contra ataques del 2010. Contra un prompt injection, esas defensas son papel mojado. Es como tener un vigilante en la puerta que revisa que nadie entre con armas, pero deja pasar a alguien con un parlante que te convence de abrir la puerta tu mismo.
+**Por qué esto importa:** Un WAF sigue siendo útil contra riesgos HTTP y ataques web conocidos, pero no comprende por sí solo la intención de todos los datos que consume un modelo. Prompt injection requiere además aislamiento, control de herramientas, validación de salidas y autorización.
 
 ---
 
 ## 4. Human in the Loop (HITL)
 
-Dado que es matemáticamente imposible asegurar que un LLM nunca será engañado por un ataque semántico, la principal estrategia de defensa arquitectónica es el **Human in the Loop** (Humano en el Medio).
+No existe una defensa única que elimine prompt injection. Para acciones de alto impacto, una estrategia importante es introducir aprobación humana basada en información suficiente, además de mínimo privilegio y controles deterministas.
 
 Nunca debes darle al "pasante ingenuo" (el LLM) el poder absoluto para ejecutar acciones críticas (como borrar una base de datos, hacer una transferencia bancaria o enviar correos a clientes) de forma autónoma.
 
-Siempre debe haber un punto donde el LLM diga: *"He redactado el correo para el cliente y estoy listo para enviarlo. Humano, ¿apruebas esta acción?"*.
+Debe existir una aprobación proporcional al riesgo antes de acciones irreversibles o sensibles. Automatizaciones de bajo impacto pueden usar límites y políticas sin revisión manual en cada ejecución.
 
-**Por qué esto importa:** No importa qué tan bueno sea tu modelo. No importa cuánto lo entrenes. Siempre va a haber un prompt injection que no probaste. Siempre. El HITL no es opcional —es la última línea de defensa cuando todo lo demás falló. Y eventualmente va a fallar.
+**Por qué esto importa:** La aprobación humana reduce ciertos riesgos, pero también puede fallar por fatiga o falta de contexto. Debe formar parte de una defensa en profundidad, no sustituir límites técnicos.
 
 ### Cómo Implementar HITL Bien
 
@@ -167,8 +170,8 @@ El LLM nunca tiene acceso directo a los datos:
 
 ## 7. Casos Reales de Fracaso
 
-### El Chatbot de Air Canada (2024)
-Un cliente preguntó al chatbot de Air Canada sobre la política de equipaje. El chatbot inventó una política que no existía. El cliente siguió la política inventada y cuando llegó al aeropuerto, le cobraron. Air Canada intentó argumentar que "el chatbot es responsable de sus propias acciones". El tribunal falló en contra de Air Canada.
+### El Chatbot de Air Canadá (2024)
+Un cliente preguntó al chatbot de Air Canadá sobre la política de equipaje. El chatbot inventó una política que no existía. El cliente siguió la política inventada y cuando llegó al aeropuerto, le cobraron. Air Canadá intentó argumentar que "el chatbot es responsable de sus propias acciones". El tribunal falló en contra de Air Canadá.
 
 **Lección:** Un LLM desplegado al público sin supervisión humana puede generar obligaciones legales para tu empresa.
 

@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
+import { parseFrontmatter } from './frontmatter.mjs';
 
-const ROOT_DIR = path.join(/* turbopackIgnore: true */ process.cwd(), '..');
+const ROOT_DIR = path.join(/*turbopackIgnore: true*/ process.cwd(), '..');
 
 // List of folders we want to ignore (system or non-content folders)
 const IGNORE_FOLDERS = [
@@ -65,10 +65,7 @@ const PAGE_ORDER = {
   forense: ['CADENA-DE-CUSTODIA', 'FORENSE-DE-DISCO', 'FORENSE-DE-MEMORIA'],
   'malware-basico': ['TIPOS-DE-MALWARE', 'RANSOMWARE', 'BOTNETS-Y-C2'],
   'red-team': ['METODOLOGIA-ETICA', 'RECONOCIMIENTO-ENUMERACION', 'REPORTE-REMEDIACION'],
-  labs: ['PRIMEROS-LABS', 'LABS-GUIADOS-FUNDAMENTOS', 'LABS-GUIADOS-BLUE-WEB', 'PROYECTOS-GUIADOS'],
   playbooks: ['CUENTA-COMPROMETIDA', 'PHISHING', 'SERVIDOR-EXPUESTO', 'MALWARE-ENDPOINT', 'FUGA-DATOS'],
-  'capstone-projects': ['SOC-INVESTIGATION', 'APPSEC-REVIEW', 'CLOUD-SECURITY-REVIEW', 'SECURE-SMALL-BUSINESS'],
-  cheatsheets: ['GLOSARIO', 'REDES', 'LINUX', 'WEB', 'BLUE-TEAM', 'PYTHON'],
   empleabilidad: ['RUTA-TRABAJO', 'RUTAS-POR-ROL', 'EMPLEO-READY', 'PROYECTOS-PORTAFOLIO', 'MAPA-DE-SKILLS', 'CV-LINKEDIN', 'ENTREVISTAS', 'CHECKLIST-APLICAR'],
   recursos: [
     'COMO-USAR-ESTA-GUIA',
@@ -78,8 +75,9 @@ const PAGE_ORDER = {
     'CURSOS-Y-CERTIFICACIONES',
   ],
   'cultura-geek': ['INSPIRACION-MR-ROBOT', 'COMO-VER-MR-ROBOT', 'CULTURA-TECH-Y-CIBERSEGURIDAD', 'ETICA-HACKER-Y-OPEN-SOURCE'],
-  writeups: ['PLANTILLA-REPORTE'],
 };
+
+const CONTENT_FOLDERS = Object.freeze(Object.keys(PAGE_ORDER).filter(Boolean));
 
 function slugifyPart(value) {
   return value.replace(/\.md$/i, '').toLowerCase();
@@ -246,98 +244,72 @@ function createExcerpt(content) {
   return createSearchText(content).slice(0, 180);
 }
 
+function getEditorialMeta(data, inferredLevel) {
+  return {
+    level: data.level || inferredLevel,
+    contentType: data.content_type || "guia",
+    updated: data.updated || null,
+    reviewed: data.reviewed || null,
+    reviewedAgainst: data.reviewed_against || null,
+  };
+}
+
 // Get all content categories and their markdown files
 export function getContentStructure() {
-  const items = fs.readdirSync(ROOT_DIR, { withFileTypes: true });
   const structure = [];
-
-  // Root files are limited to the public student entry point.
   const rootFiles = [];
 
-  items.forEach((item) => {
-    if (!item.isDirectory()) {
-      if (
-        item.name.endsWith('.md') &&
-        PUBLIC_ROOT_FILES.includes(item.name) &&
-        !INTERNAL_ROOT_FILES.includes(item.name)
-      ) {
-        const filePath = path.join(ROOT_DIR, item.name);
-        const fileContent = fs.readFileSync(filePath, 'utf8');
-        const { data } = matter(fileContent);
+  for (const fileName of PUBLIC_ROOT_FILES) {
+    const filePath = path.join(ROOT_DIR, fileName);
+    if (!fs.existsSync(filePath)) continue;
 
-        // Extract title from content if not in frontmatter
-        let title = data.title;
-        if (!title) {
-          const match = fileContent.match(/^#\s+(.+)$/m);
-          title = match ? match[1] : item.name.replace('.md', '');
-        }
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const { data } = parseFrontmatter(fileContent);
+    const title = data.title || fileContent.match(/^#\s+(.+)$/m)?.[1] || fileName.replace('.md', '');
+    const inferredLevel = inferLevel({ fileName, title, isRoot: true });
 
-        rootFiles.push({
-          slug: [slugifyPart(item.name)],
-          title: title,
-          fileName: item.name,
-          isRoot: true,
-          level: inferLevel({ fileName: item.name, title, isRoot: true }),
-          searchText: createSearchText(fileContent),
-          excerpt: createExcerpt(fileContent),
-        });
-      }
-    }
-  });
-
-  if (rootFiles.length > 0) {
-    sortPagesByStudyOrder('', rootFiles);
-
-    structure.push({
-      category: 'Inicio',
-      folder: '',
-      pages: rootFiles
+    rootFiles.push({
+      slug: [slugifyPart(fileName)],
+      title,
+      fileName,
+      isRoot: true,
+      ...getEditorialMeta(data, inferredLevel),
+      searchText: createSearchText(fileContent),
+      excerpt: createExcerpt(fileContent),
     });
   }
 
-  // Now scan subdirectories
-  items.forEach((item) => {
-    if (
-      item.isDirectory() &&
-      !IGNORE_FOLDERS.includes(item.name) &&
-      !item.name.startsWith('.')
-    ) {
-      const folderPath = path.join(ROOT_DIR, item.name);
-      const pages = [];
-      const files = getMarkdownFilesRecursive(folderPath, [item.name]);
+  if (rootFiles.length > 0) {
+    sortPagesByStudyOrder('', rootFiles);
+    structure.push({ category: 'Inicio', folder: '', pages: rootFiles });
+  }
 
-      files.forEach((file) => {
-        const fileContent = fs.readFileSync(file.filePath, 'utf8');
-        const { data } = matter(fileContent);
+  for (const folder of CONTENT_FOLDERS) {
+    const folderPath = path.join(/*turbopackIgnore: true*/ ROOT_DIR, folder);
+    if (!fs.existsSync(folderPath)) continue;
 
-        let title = data.title;
-        if (!title) {
-          const match = fileContent.match(/^#\s+(.+)$/m);
-          title = match ? match[1] : file.fileName.replace('.md', '');
-        }
+    const pages = getMarkdownFilesRecursive(folderPath, [folder]).map((file) => {
+      const fileContent = fs.readFileSync(file.filePath, 'utf8');
+      const { data } = parseFrontmatter(fileContent);
+      const title = data.title || fileContent.match(/^#\s+(.+)$/m)?.[1] || file.fileName.replace('.md', '');
+      const inferredLevel = inferLevel({ folder, fileName: file.fileName, title });
 
-        pages.push({
-          slug: file.slugParts,
-          title: title,
-          fileName: file.fileName,
-          isRoot: false,
-          level: inferLevel({ folder: item.name, fileName: file.fileName, title }),
-          searchText: createSearchText(fileContent),
-          excerpt: createExcerpt(fileContent),
-        });
-      });
+      return {
+        slug: file.slugParts,
+        title,
+        fileName: file.fileName,
+        isRoot: false,
+        ...getEditorialMeta(data, inferredLevel),
+        searchText: createSearchText(fileContent),
+        excerpt: createExcerpt(fileContent),
+      };
+    });
 
-      if (pages.length > 0) {
-        sortPagesByStudyOrder(item.name, pages);
-
-        structure.push({
-          category: formatFolderName(item.name),
-          folder: item.name,
-          pages: pages
-        });
-      }
+    if (pages.length > 0) {
+      sortPagesByStudyOrder(folder, pages);
+      structure.push({ category: formatFolderName(folder), folder, pages });
     }
-  });
+  }
 
   const STUDY_ORDER = [
     'Inicio',
@@ -375,11 +347,7 @@ export function getContentStructure() {
     'Endpoint Security',
     'Database Security',
     'Red Team',
-    'Labs',
     'Playbooks',
-    'Writeups',
-    'Cheatsheets',
-    'Evaluaciones',
     'Empleabilidad',
     'Recursos',
     'Cultura Geek'
@@ -408,7 +376,7 @@ export function getMarkdownContent(slug) {
   }
 
   const fileContent = fs.readFileSync(filePath, 'utf8');
-  const { data, content } = matter(fileContent);
+  const { data, content } = parseFrontmatter(fileContent);
 
   // Extract title if not in frontmatter
   let title = data.title;

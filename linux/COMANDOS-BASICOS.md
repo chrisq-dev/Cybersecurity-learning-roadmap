@@ -1,5 +1,8 @@
 ---
 title: "Comandos Básicos: Navegación Táctica y Búsqueda"
+level: "inicial"
+content_type: "guia"
+updated: "2026-06-29"
 ---
 
 # Comandos Básicos: Navegación Táctica y Búsqueda
@@ -53,14 +56,14 @@ Cuando trabajas en múltiples servidores simultáneamente (algo común en respue
 `ls` solo muestra los archivos no ocultos, en formato compacto. Esto es prácticamente inútil para seguridad porque los archivos más interesantes (los de configuración, los historiales, los archivos temporales de aplicaciones) suelen comenzar con punto y están ocultos.
 
 `ls -la` es el comando que deberías usar siempre:
-- `-l` da formato largo: muestra permisos, dueño, grupo, tamaño, fecha de modificacion.
+- `-l` da formato largo: muestra permisos, dueño, grupo, tamaño, fecha de modificación.
 - `-a` muestra todos los archivos, incluyendo los ocultos (los que empiezan con punto).
 
 El `-la` no es opcional. Es el estándar. Cualquier tutorial o guía que muestre `ls` sin banderas te esta ensenando la versión incompleta.
 
 `ls -lah` añade `-h` para mostrar tamanos en formato humano (KB, MB, GB). Esto es útil cuando buscas archivos grandes que no deberían estar ahí, como un atacante que almacena una base de datos robada.
 
-Un truco que uso en investigaciones: `ls -la --sort=time` ordena los archivos por fecha de modificacion, mostrando primero los más recientes. Cuando investigas un incidente, los archivos que el atacante tocó suelen estar entre los más recientemente modificados.
+Un truco que uso en investigaciones: `ls -la --sort=time` ordena los archivos por fecha de modificación, mostrando primero los más recientes. Cuando investigas un incidente, los archivos que el atacante tocó suelen estar entre los más recientemente modificados.
 
 Otro: `ls -laR` es una búsqueda recursiva que muestra todo el contenido de subdirectorios. Es ruidoso pero útil para hacer un inventario rápido de lo que hay en una carpeta sospechosa.
 
@@ -74,7 +77,7 @@ Siempre usa `pwd` antes de `cd` si no estas seguro de tu posición.
 
 ## Lectura Estrategica: cat, less, head, tail
 
-Cuando encuentras un archivo en una investigación, no lo abres con un editor gráfico. Lo lees en la terminal. La razon es simple: velocidad. Un editor gráfico carga el archivo entero en memoria, lo que puede tardar segundos o minutos si el archivo es enorme. La terminal te muestra solo lo que necesitas.
+Cuando encuentras un archivo en una investigación, no lo abres con un editor gráfico. Lo lees en la terminal. La razón es simple: velocidad. Un editor gráfico carga el archivo entero en memoria, lo que puede tardar segundos o minutos si el archivo es enorme. La terminal te muestra solo lo que necesitas.
 
 ### cat: Lectura Directa
 
@@ -86,7 +89,7 @@ Nunca uses `cat` en archivos binarios. El resultado será un ruido incomprensibl
 
 ### less: Lectura Paginada
 
-`less` es la versión inteligente de `cat`. Muestra el archivo pagina por pagina. Puedes navegar con las flechas, buscar texto escribiendo `/` seguido del término, y salir con `q`.
+`less` es la versión inteligente de `cat`. Muestra el archivo página por página. Puedes navegar con las flechas, buscar texto escribiendo `/` seguido del término, y salir con `q`.
 
 `less` no carga el archivo entero en memoria. Solo carga la parte que estas viendo. Esto significa que puedes abrir un archivo de 10GB sin que la terminal se congele. En ciberseguridad, esto es crucial porque los logs de servidores grandes pueden pesar gigabytes.
 
@@ -106,7 +109,7 @@ Es útil para echar un vistazo rápido a la estructura de un archivo sin abrirlo
 
 `tail -f` (follow) se queda ejecutando y muestra en tiempo real las nuevas líneas que se anaden al archivo. Esto es indispensable para monitorear logs en vivo.
 
-Escenario real: Estas respondiendo a un ataque de fuerza bruta activo. Abres una terminal, ejecutas `tail -f /var/log/auth.log`, y ves aparecer en pantalla, en tiempo real, cada intento de conexion fallido. Ves la IP del atacante, el usuario que intenta usar, y cada cuanto lo hace. Con esa información, puedes tomar decisiones inmediatas: bloquear la IP con `iptables`, o notificar al equipo de red para que la filtre en el borde.
+Escenario real: Estas respondiendo a un ataque de fuerza bruta activo. Abres una terminal, ejecutas `tail -f /var/log/auth.log`, y ves aparecer en pantalla, en tiempo real, cada intento de conexión fallido. Ves la IP del atacante, el usuario que intenta usar, y cada cuanto lo hace. Con esa información, puedes tomar decisiones inmediatas: bloquear la IP con `iptables`, o notificar al equipo de red para que la filtre en el borde.
 
 ### tac: La Versión Inversa
 
@@ -158,7 +161,7 @@ Una trampa común: los caracteres como el punto (.) en regex significan "cualqui
 
 ## Búsqueda de Archivos: find
 
-`find` busca archivos en el sistema de archivos según criterios que tu defines. No solo por nombre: también por tamaño, fecha de modificacion, permisos, dueño, y más.
+`find` busca archivos en el sistema de archivos según criterios que tu defines. No solo por nombre: también por tamaño, fecha de modificación, permisos, dueño, y más.
 
 ### Búsqueda por Nombre
 
@@ -176,13 +179,13 @@ Una trampa común: los caracteres como el punto (.) en regex significan "cualqui
 
 `find / -mtime -1` archivos modificados en las últimas 24 horas.
 
-`find / -atime +30` archivos que no se han accedido en más de 30 dias. Esto puede indicar archivos que el atacante dejó y a los que no ha vuelto.
+`find / -atime +30` archivos que no se han accedido en más de 30 días. Esto puede indicar archivos que el atacante dejó y a los que no ha vuelto.
 
 ### Búsqueda por Permisos
 
 `find / -perm -4000` encuentra archivos con el bit SUID activado. Estos son programas que se ejecutan con los permisos del dueño, no del usuario que los ejecuta. Un atacante que logra escribir un archivo SUID puede usarlo para escalar privilegios.
 
-`find / -perm -o+w` busca archivos que cualquiera puede escribir (world-writable). Un atacante podría modificar estos archivos para inyectar codigo malicioso.
+`find / -perm -o+w` busca archivos que cualquiera puede escribir (world-writable). Un atacante podría modificar estos archivos para inyectar código malicioso.
 
 ### Combinaciones utiles
 
@@ -212,7 +215,7 @@ La salida de A se vuelve la entrada de B, y la salida de B se vuelve la entrada 
 5. Cuenta ocurrencias unicas
 6. Ordena numericamente en reversa
 
-El resultado es una lista de IPs ordenadas por número de intentos fallidos de conexion. La IP que más intentos hizo aparece primero. Eso es probablemente el atacante.
+El resultado es una lista de IPs ordenadas por número de intentos fallidos de conexión. La IP que más intentos hizo aparece primero. Eso es probablemente el atacante.
 
 `dmesg | grep -i "usb" | tail -20`: Muestra los últimos 20 mensajes del kernel relacionados con dispositivos USB. Útil si sospechas que alguien conecto un dispositivo no autorizado.
 
@@ -243,7 +246,7 @@ Esto te muestra en pantalla los inicios de sesión exitosos y simultáneamente l
 
 `find /tmp -name "*.tmp" -mtime +7 | xargs rm`
 
-Esto encuentra archivos temporales con más de 7 dias de antigüedad y los elimina. Sin `xargs`, tendrías que hacerlo manualmente uno por uno.
+Esto encuentra archivos temporales con más de 7 días de antigüedad y los elimina. Sin `xargs`, tendrías que hacerlo manualmente uno por uno.
 
 ### wc: Contar Líneas, Palabras, Caracteres
 
@@ -298,7 +301,7 @@ Esto elimina solo las líneas que contienen su IP, dejando el resto del log inta
 
 ## awk: Procesamiento de Columnas
 
-`awk` es un lenguaje de procesamiento de texto diseñado para trabajar con datos estructurados en columnas. No es solo un comando: es un lenguaje completo, pero para el 90% de los casos de uso en seguridad, solo necesitas unos pocos patrones.
+`awk` es un lenguaje de procesamiento de texto diseñado para trabajar con datos estructurados en columnas. No es solo un comando: es un lenguaje completo, y muchos análisis iniciales pueden resolverse con un conjunto pequeño de patrones.
 
 ### Estructura Básica
 
@@ -427,11 +430,11 @@ En 2018, un atacante comprometio un servidor Jenkins mal configurado en una empr
 
 3. Durante una investigación de incidentes, necesitas encontrar todos los archivos que el atacante modifico en las últimas 2 horas. El servidor tiene 5TB de almacenamiento. Como usarías `find` para hacer esto sin esperar 30 minutos a que termine el escaneo de todo el disco?
 
-4. Recibes un log de autenticación de 2GB. Te interesan solo los intentos de conexion del usuario "admin" desde la IP "10.0.0.50". Escribe el comando `grep` exacto que usarías, y explica por que es mejor que abrir el archivo en un editor de texto.
+4. Recibes un log de autenticación de 2GB. Te interesan solo los intentos de conexión del usuario "admin" desde la IP "10.0.0.50". Escribe el comando `grep` exacto que usarías, y explica por qué es mejor que abrir el archivo en un editor de texto.
 
 5. Te piden auditar un servidor para asegurarte de que no hay scripts sospechosos ejecutándose. Usas `ps aux` y la lista tiene 300 líneas. Como usarías un pipe para encontrar instantáneamente si algún proceso es un script `bash` o `python` que no debería estar ahí?
 
-6. Un administrador ejecuta `cat file.txt > file.txt`. El archivo termina vacio. Explica por que ocurre esto y como se podría haber evitado.
+6. Un administrador ejecuta `cat file.txt > file.txt`. El archivo termina vacio. Explica por qué ocurre esto y como se podría haber evitado.
 
 7. Estas revisando los logs de un servidor web y encuentras 50,000 peticiones desde una IP china en los últimos 5 minutos. Quieres ver las últimas 10 peticiones de esa IP para entender que estaba haciendo el atacante. Escribe el comando completo usando `grep`, `tail`, y pipes.
 
