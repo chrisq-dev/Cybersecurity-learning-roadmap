@@ -10,7 +10,7 @@ Esto no es un mapa cerrado que promete enseñarte todo. La ciberseguridad es inf
 
 **→ [Explorar rutas temáticas](https://cbsdev.lat/rutas)**
 
-**→ [Explorar todas las guías](https://cbsdev.lat/rutas)**
+**→ [Comenzar desde cero](https://cbsdev.lat/inicio-aqui)**
 
 <img width="1920" height="989" alt="imagen" src="https://github.com/user-attachments/assets/42e62e67-d6b9-413c-88c2-4fac84662d93" />
 
