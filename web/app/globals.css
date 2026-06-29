@@ -676,7 +676,8 @@ blockquote p {
 
 @media (max-width: 640px) {
   .nav-text-link {
-    display: none;
+    display: inline-flex;
+    align-items: center;
   }
 }
 

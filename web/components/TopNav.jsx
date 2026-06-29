@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import { FaMoon, FaSun, FaRoute } from 'react-icons/fa';
 
 export default function TopNav() {
   function toggleTheme() {
@@ -22,7 +22,10 @@ export default function TopNav() {
       </Link>
 
       <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-        <Link href="/rutas" className="nav-text-link">Rutas</Link>
+        <Link href="/rutas" className="nav-text-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+          <FaRoute size={14} />
+          <span className="hide-on-mobile">Rutas</span>
+        </Link>
         <button
           type="button"
           onClick={toggleTheme}
