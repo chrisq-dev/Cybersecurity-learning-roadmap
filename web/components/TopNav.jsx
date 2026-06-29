@@ -12,6 +12,23 @@ export default function TopNav() {
     window.localStorage.setItem('theme', nextTheme);
   }
 
+  const pillStyle = {
+    color: 'var(--text-main)',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+    textDecoration: 'none',
+    fontSize: '0.9rem',
+    transition: 'color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast)',
+    border: '1px solid var(--border-color)',
+    borderRadius: '999px',
+    padding: '0.45rem 0.75rem',
+    background: 'var(--bg-card)',
+    boxShadow: '0 3px 10px var(--border-glow)',
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+  };
+
   return (
     <nav className="top-nav">
       <Link href="/" style={{ textDecoration: 'none', color: 'var(--text-main)', display: 'flex', alignItems: 'center' }}>
@@ -22,16 +39,18 @@ export default function TopNav() {
       </Link>
 
       <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-        <Link href="/rutas" className="nav-text-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+        <Link href="/rutas" className="nav-hover" style={pillStyle}>
           <FaRoute size={14} />
           <span className="hide-on-mobile">Rutas</span>
         </Link>
+
         <button
           type="button"
           onClick={toggleTheme}
-          className="theme-toggle"
+          className="nav-hover theme-toggle"
           aria-label="Cambiar modo de color"
           title="Cambiar modo de color"
+          style={pillStyle}
         >
           <FaMoon className="theme-icon theme-icon-moon" size={14} />
           <FaSun className="theme-icon theme-icon-sun" size={14} />
@@ -45,21 +64,8 @@ export default function TopNav() {
           rel="noopener noreferrer"
           title="Perfil de GitHub de Christian"
           aria-label="Perfil de GitHub de Christian"
-          style={{
-            color: 'var(--text-main)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            textDecoration: 'none',
-            fontSize: '0.9rem',
-            transition: 'color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast)',
-            border: '1px solid var(--border-color)',
-            borderRadius: '999px',
-            padding: '0.45rem 0.75rem',
-            background: 'var(--bg-card)',
-            boxShadow: '0 3px 10px var(--border-glow)'
-          }}
           className="nav-hover github-profile-link"
+          style={pillStyle}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
             <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3"></path>
