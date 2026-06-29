@@ -89,24 +89,6 @@ export const OFFICIAL_SOURCES = {
       "url": "https://attack.mitre.org/"
     }
   ],
-  "seguridad-personal": [
-    {
-      "title": "CISA Secure Our World",
-      "url": "https://www.cisa.gov/secure-our-world"
-    },
-    {
-      "title": "NIST Digital Identity Guidelines",
-      "url": "https://pages.nist.gov/800-63-4/"
-    },
-    {
-      "title": "FTC Consumer Advice",
-      "url": "https://consumer.ftc.gov/"
-    },
-    {
-      "title": "FIDO Alliance Passkeys",
-      "url": "https://fidoalliance.org/passkeys/"
-    }
-  ],
   "cloud-security": [
     {
       "title": "NIST SP 800-145: Cloud Computing",

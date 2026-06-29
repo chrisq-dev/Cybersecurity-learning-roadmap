@@ -41,7 +41,6 @@ const PAGE_ORDER = {
   'web-owasp': ['FUNDAMENTOS-WEB', 'HTTP', 'AUTENTICACION-AUTORIZACION', 'OWASP-TOP-10', 'SQL-INJECTION', 'XSS', 'CSRF', 'SSRF', 'FILE-UPLOAD'],
   'blue-team': ['FUNDAMENTOS-BLUE-TEAM', 'LOGS-Y-ALERTAS', 'SIEM-MITRE', 'SIGMA-YARA', 'DETECTION-ENGINEERING', 'THREAT-HUNTING', 'RESPUESTA-INCIDENTES'],
   'security-teams': ['TEAMS-Y-HATS'],
-  'seguridad-personal': ['PROTEGETE-EN-INTERNET', 'CUENTAS-Y-CONTRASENAS', 'ESTAFAS-CON-IA', 'CELULAR-Y-DISPOSITIVOS', 'PRIVACIDAD-DIARIA', 'SI-TE-HACKEARON', 'FAMILIA-Y-USUARIOS-NO-TECNICOS'],
   'cloud-security': ['FUNDAMENTOS-CLOUD', 'IAM-STORAGE-LOGGING', 'IAM-AVANZADO', 'AWS-AZURE-GCP'],
   'iot-ot-security': ['FUNDAMENTOS-IOT', 'SCADA-Y-OT', 'HARDWARE-HACKING'],
   'osint-cti': ['FUNDAMENTOS-OSINT', 'THREAT-INTELLIGENCE', 'HERRAMIENTAS-Y-PRIVACIDAD'],
@@ -216,7 +215,6 @@ function inferLevel({ folder = '', fileName = '', title = '', isRoot = false }) 
     folder === 'database-security' ||
     folder === 'network-security' ||
     folder === 'business-continuity' ||
-    folder === 'seguridad-personal' ||
     folder === 'grc' ||
     folder === 'privacy' ||
     folder === 'email-security' ||
@@ -324,7 +322,6 @@ export function getContentStructure() {
     'Web OWASP',
     'Blue Team',
     'Security Teams',
-    'Seguridad Personal 2026',
     'Cloud Security',
     'IoT y Seguridad Industrial',
     'Seguridad en IA y LLMs',

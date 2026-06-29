@@ -2,46 +2,11 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Rutas temáticas",
-  description: "Secuencias de lectura para protegerse en internet y explorar el mapa de ciberseguridad por objetivo.",
+  description: "Secuencias de lectura para explorar el mapa de ciberseguridad por interés profesional.",
   alternates: { canonical: "https://cbsdev.lat/rutas" },
 };
 
 const routes = [
-  {
-    "title": "Protegerme como usuario",
-    "description": "Medidas actuales para proteger correo, celular, contraseñas, privacidad y dinero frente a estafas modernas.",
-    "audience": "Usuarios no técnicos, familias y personas que quieren protegerse",
-    "items": [
-      [
-        "Protégete en internet",
-        "/seguridad-personal/protegete-en-internet"
-      ],
-      [
-        "Cuentas, contraseñas y passkeys",
-        "/seguridad-personal/cuentas-y-contrasenas"
-      ],
-      [
-        "Estafas con IA y mensajes urgentes",
-        "/seguridad-personal/estafas-con-ia"
-      ],
-      [
-        "Celular y dispositivos personales",
-        "/seguridad-personal/celular-y-dispositivos"
-      ],
-      [
-        "Privacidad diaria sin paranoia",
-        "/seguridad-personal/privacidad-diaria"
-      ],
-      [
-        "Si te hackearon",
-        "/seguridad-personal/si-te-hackearon"
-      ],
-      [
-        "Familia y usuarios no técnicos",
-        "/seguridad-personal/familia-y-usuarios-no-tecnicos"
-      ]
-    ]
-  },
   {
     "title": "Fundamentos desde cero",
     "description": "Base técnica para entender el resto del mapa sin asumir conocimientos previos.",
@@ -266,7 +231,7 @@ export default function RoutesPage() {
     <div className="routes-page">
       <header className="routes-header">
         <h1 className="serif-title">Rutas temáticas</h1>
-        <p>Estas rutas organizan lecturas; no son cursos, laboratorios ni secuencias obligatorias. Elige la que corresponda a lo que quieres proteger o comprender.</p>
+        <p>Estas rutas organizan lecturas; no son cursos, laboratorios ni secuencias obligatorias. Elige la que corresponda a lo que quieres comprender.</p>
       </header>
       <div className="routes-grid">
         {routes.map((route) => (
