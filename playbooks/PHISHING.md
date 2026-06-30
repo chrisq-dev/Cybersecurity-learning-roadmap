@@ -171,8 +171,8 @@ El hacker fue expulsado. Pero en los 10 minutos que estuvo adentro, ¿Qué hizo?
 
    ```powershell
    # Buscar envíos masivos sospechosos (BEC/Phishing interno)
-   Get-Mailbox -Identity "jefe.finanzas@empresa.com" |
-       Search-Mailbox -SearchQuery "sent:>=$((Get-Date).AddDays(-1))" -TargetMailbox "forensic@empresa.com" -TargetFolder "PhishingInvestigation"
+    Get-Mailbox -Identity "jefe.finanzas@empresa.com" |
+        Search-MailboxAuditLog -Identity "jefe.finanzas@empresa.com" -StartDate (Get-Date).AddDays(-1) -ResultSize 1000
 
    # Identificar correos enviados a destinatarios externos
    Get-MessageTrace -SenderAddress "jefe.finanzas@empresa.com" -StartDate (Get-Date).AddDays(-1) |
@@ -195,7 +195,7 @@ El hacker fue expulsado. Pero en los 10 minutos que estuvo adentro, ¿Qué hizo?
 
 | Acción del Atacante | Log Source | Query |
 |--------------------|------------|-------|
-| Lectura de correos | Exchange Audit | `Search-Mailbox -Identity user -SearchQuery "read"` |
+| Lectura de correos | Exchange Audit | `Search-MailboxAuditLog -Identity user -StartDate (Get-Date).AddDays(-7)` |
 | Descarga de attach | Exchange Audit | `Get-MessageTrace -SenderAddress user` |
 | Acceso a SharePoint | SharePoint Audit | Access denied logs, descargas |
 | Descarga OneDrive | OneDrive Audit | FileDownloaded events |

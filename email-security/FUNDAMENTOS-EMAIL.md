@@ -1,6 +1,6 @@
 ---
 title: "Fundamentos de Correo Electrónico: El Sello de Cera Real"
-level: "inicial"
+level: "intermedio"
 content_type: "guia"
 updated: "2026-06-29"
 ---

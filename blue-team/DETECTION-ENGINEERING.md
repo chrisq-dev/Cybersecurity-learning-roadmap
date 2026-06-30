@@ -269,10 +269,4 @@ Un Detection Engineer efectivo construye relaciones con IT, desarrollo, y operac
 11. El equipo de Red Team prueba tus reglas durante un ejercicio y las evade todas. Como conviertes este resultado en una mejora concreta de tus reglas?
 12. Una regla bien afinada tiene 0 falsos positivos pero solo detecta el 10% de los ataques. Otra regla detecta el 90% pero genera 1000 falsos positivos al día. Cual prefieres y por qué?
 
-## Preguntas Adicionales
-
-13. Un nuevo empleado de IT ejecuta scripts de PowerShell que generan alertas. Es un atacante o un empleado aprendiendo? Como lo determinas sin crear falsos positivos ni perder un ataque real?
-14. Implementas una regla que detecta el uso de certutil.exe para descargar archivos. El equipo de IT usa certutil para descargar parches. Como resuelves este conflicto?
-15. El equipo de Red Team prueba tus reglas durante un ejercicio y las evade todas. Como conviertes este resultado en una mejora concreta?
-16. Una regla bien afinada tiene 0 falsos positivos pero solo detecta el 10% de los ataques. Otra detecta el 90% pero genera 1000 falsos positivos al día. Cual prefieres y por qué?
 17. Que métricas usarías para medir la efectividad de tu programa de Detection Engineering? Como las presentarias a la dirección para justificar el presupuesto?

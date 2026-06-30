@@ -1,6 +1,6 @@
 ---
 title: "Inyección SQL (SQLi): Engañando al Archivero"
-level: "inicial"
+level: "intermedio"
 content_type: "guia"
 updated: "2026-06-29"
 ---
