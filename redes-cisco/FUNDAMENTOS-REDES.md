@@ -9,7 +9,7 @@ updated: "2026-06-29"
 
 ## Objetivo de esta guía
 
-Cuando empece en ciberseguridad, mi mayor problema era que no entendia como viajaban realmente los datos. Sabia que había "paquetes" y "cables", pero no tenía una imagen mental clara del recorrido. Eso es peligroso, porque si no entiendes el camino, no puedes defenderlo ni detectar cuando alguien lo esta interceptando.
+Cuando empece en ciberseguridad, mi mayor problema era que no entendía como viajaban realmente los datos. Sabía que había "paquetes" y "cables", pero no tenía una imagen mental clara del recorrido. Eso es peligroso, porque si no entiendes el camino, no puedes defenderlo ni detectar cuando alguien lo esta interceptando.
 
 Esta guía no es un listado de definiciones. Es el mapa mental que me hubiera gustado tener cuando empece. Vamos a construir desde cero como se mueve la información desde tu computadora hasta un servidor al otro lado del mundo, que puede fallar en el camino, y como un atacante aprovecha cada etapa.
 
@@ -17,7 +17,7 @@ Esta guía no es un listado de definiciones. Es el mapa mental que me hubiera gu
 
 Cuando alguien me pregunta como funciona internet, le digo: imagina que vives en una ciudad y quieres enviar una carta a alguien en otro país.
 
-Tienes un mensaje. Lo pones en un sobre con el nombre del destinatario. Eso es la capa de aplicación: el contenido que quieres comunicar. Luego tomas ese sobre y lo pones dentro de otro sobre más grande, donde escribes el nombre de la calle y el número de la casa. Eso es la capa de red: la dirección IP que le dice al sistema a donde va. Luego pones ese sobre dentro de otro donde escribes el código l, que ayuda a clasificar el envio en la central de correos. Eso es la máscara de subred. Finalmente, le pones una estampilla que dice "certificado" o "normal". Eso es la capa de transporte: TCP si quieres confirmación de entrega, UDP si te da igual.
+Tienes un mensaje. Lo pones en un sobre con el nombre del destinatario. Eso es la capa de aplicación: el contenido que quieres comunicar. Luego tomas ese sobre y lo pones dentro de otro sobre más grande, donde escribes el nombre de la calle y el número de la casa. Eso es la capa de red: la dirección IP que le dice al sistema a donde va. Luego pones ese sobre dentro de otro donde escribes el código l, que ayuda a clasificar el envío en la central de correos. Eso es la máscara de subred. Finalmente, le pones una estampilla que dice "certificado" o "normal". Eso es la capa de transporte: TCP si quieres confirmación de entrega, UDP si te da igual.
 
 El cartero local (el switch) lo lleva a la oficina de correos de tu barrio. Ahí, el router mira el destino y decide si mandarlo por avión, por barco o por camión. Cada decisión que toma el router es un salto. El paquete viaja de router en router hasta que llega a la oficina de correos del barrio destino, donde otro cartero (otro switch) lo entrega a la casa correcta.
 
@@ -37,13 +37,13 @@ Luego, el navegador construye una petición HTTP cifrada con TLS. Esa petición 
 
 Cada una de esas tramas es un conjunto de bytes que viaja por el cable. El primer dispositivo que las recibe es el switch de tu casa u oficina.
 
-El switch mira la dirección MAC de destino. Si no la conoce, inunda la trama por todos los puertos menos el de origen. Si la conoce, la reenvia solo por el puerto correspondiente. En este caso, la MAC de destino es la de tu router, así que el switch la reenvia al puerto donde esta conectado el router.
+El switch mira la dirección MAC de destino. Si no la conoce, inunda la trama por todos los puertos menos el de origen. Si la conoce, la reenvía solo por el puerto correspondiente. En este caso, la MAC de destino es la de tu router, así que el switch la reenvía al puerto donde esta conectado el router.
 
 El router recibe la trama, la desencapsula hasta el nivel IP, mira la dirección IP de destino, consulta su tabla de enrutamiento, y decide por cual interfaz reenviarla. Cambia la dirección MAC de origen por la suya y la de destino por la del siguiente router. Vuelve a encapsular y la envía.
 
 Este proceso se repite en cada router. Cada uno decide el siguiente salto basado en su tabla de enrutamiento. Los protocolos de enrutamiento como OSPF, EIGRP o BGP construyen esas tablas intercambiando información entre routers.
 
-Eventualmente, el paquete llega al router del servidor destino. Ese router lo reenvia al switch del servidor. El switch lo entrega al servidor. El servidor desencapsula capa por capa hasta llegar a la aplicación web, que procesa la petición y envía la respuesta.
+Eventualmente, el paquete llega al router del servidor destino. Ese router lo reenvía al switch del servidor. El switch lo entrega al servidor. El servidor desencapsula capa por capa hasta llegar a la aplicación web, que procesa la petición y envía la respuesta.
 
 La respuesta hace el camino inverso, pasando por los mismos routers (o por otros diferentes, porque internet es asimétrico).
 
@@ -55,15 +55,15 @@ no todos los dispositivos son iguales. Algunos solo repiten, otros aprenden, otr
 
 El hub es el dispositivo más simple y obsoleto. Cuando recibe una señal por un puerto, la replica por todos los demás puertos. No hay inteligencia. No hay aislamiento. Todos los dispositivos conectados a un hub comparten el mismo ancho de banda y ven todo el tráfico.
 
-Los hubs apenas se usan hoy, pero entenderlos ayuda a entender por qué los switches fueron una revolucion.
+Los hubs apenas se usan hoy, pero entenderlos ayuda a entender por qué los switches fueron una revolución.
 
 ### Bridge (el puente)
 
-Un bridge conecta dos segmentos de red. Aprende que MACs están a cada lado y solo reenvia tráfico entre segmentos cuando es necesario. Reduce el dominio de colision. Los bridges fueron reemplazados por switches, que son esencialmente bridges multipuerto.
+Un bridge conecta dos segmentos de red. Aprende que MACs están a cada lado y solo reenvía tráfico entre segmentos cuando es necesario. Reduce el dominio de colisión. Los bridges fueron reemplazados por switches, que son esencialmente bridges multipuerto.
 
 ### Switch
 
-El switch es un bridge con muchos puertos. Cada puerto es un dominio de colision independiente. Esto significa que dos dispositivos en el mismo switch pueden transmitir simultáneamente sin interferir entre si.
+El switch es un bridge con muchos puertos. Cada puerto es un dominio de colisión independiente. Esto significa que dos dispositivos en el mismo switch pueden transmitir simultáneamente sin interferir entre si.
 
 El switch opera en capa 2. No entiende de IPs. Solo entiende de MACs. Su inteligencia se limita a: aprender MACs, buscar MACs en su tabla, reenviar solo cuando es necesario.
 
@@ -83,11 +83,11 @@ Distribuye el tráfico entre múltiples servidores. Opera en capa 4 o 7. Puede t
 
 ### Cable de cobre UTP
 
-El cable UTP (Unshielded Twisted Pair) es el estándar en redes locales. Consiste en 4 pares de cables trenzados dentro de una cubierta protectora. El trenzado reduce la interferencia electromagnetica.
+El cable UTP (Unshielded Twisted Pair) es el estándar en redes locales. Consiste en 4 pares de cables trenzados dentro de una cubierta protectora. El trenzado reduce la interferencia electromagnética.
 
-Los pares tienen colores: naranja/blanco-naranja, verde/blanco-verde, azul/blanco-azul, marron/blanco-marron.
+Los pares tienen colores: naranja/blanco-naranja, verde/blanco-verde, azul/blanco-azul, marrón/blanco-marrón.
 
-Existen dos estándares de crimpado: T568A y T568B. La diferencia es que los pares naranja y verde están intercambiados. Ambos funcionan igual, pero debes usar el mismo en toda tu instalacion.
+Existen dos estándares de crimpado: T568A y T568B. La diferencia es que los pares naranja y verde están intercambiados. Ambos funcionan igual, pero debes usar el mismo en toda tu instalación.
 
 Pinout T568B (el más común):
 - Pin 1: Blanco-Naranja
@@ -96,8 +96,8 @@ Pinout T568B (el más común):
 - Pin 4: Azul
 - Pin 5: Blanco-Azul
 - Pin 6: Verde
-- Pin 7: Blanco-Marron
-- Pin 8: Marron
+- Pin 7: Blanco-Marrón
+- Pin 8: Marrón
 
 Solo los pines 1, 2, 3 y 6 se usan para datos en 10/100 Mbps. Los 8 se usan para Gigabit Ethernet.
 
@@ -118,7 +118,7 @@ La distancia máxima de un segmento de cobre es 100 metros. Más allá, la seña
 
 ### Fibra óptica
 
-La fibra óptica usa luz para transmitir datos. No es susceptible a interferencias electromagneticas. Las distancias son mucho mayores: kilómetros en lugar de metros.
+La fibra óptica usa luz para transmitir datos. No es susceptible a interferencias electromagnéticas. Las distancias son mucho mayores: kilómetros en lugar de metros.
 
 Tipos de fibra:
 - Monomodo: núcleo muy fino (9 micras). Una sola trayectoria de luz. Larga distancia (hasta 100 km). Laser como fuente de luz. Cara.
@@ -134,7 +134,7 @@ Wi-Fi es un conjunto de estándares IEEE 802.11. Opera en dos bandas principales
 
 La de 2.4 GHz tiene 14 canales (11 utilizables en USA, 13 en Europa). Los canales se superponen. Solo los canales 1, 6 y 11 no se superponen. Si pones dos redes en canales que se superponen, interfieren entre si.
 
-La de 5 GHz tiene muchos más canales que no se superponen. Pero la señal se atenua más con paredes y obstaculos.
+La de 5 GHz tiene muchos más canales que no se superponen. Pero la señal se atenúa más con paredes y obstáculos.
 
 Mecanismos de seguridad Wi-Fi:
 - WEP: roto desde 2001. No se debe usar.
@@ -149,7 +149,7 @@ El mejor cifrado no protege contra un atacante que ya esta conectado a la red. S
 Ethernet es el protocolo de capa 2 más usado. Define como se estructuran las tramas y como los dispositivos acceden al medio.
 
 La trama Ethernet tiene esta estructura:
-- Preambulo: 7 bytes de sincronizacion
+- Preámbulo: 7 bytes de sincronización
 - SFD (Start Frame Delimiter): 1 byte
 - MAC destino: 6 bytes
 - MAC origen: 6 bytes
@@ -157,7 +157,7 @@ La trama Ethernet tiene esta estructura:
 - Datos: 46-1500 bytes
 - FCS (Frame Check Sequence): 4 bytes (CRC)
 
-El tamaño mínimo de la trama es 64 bytes (incluyendo las MACs, Tipo y FCS). Si los datos son menores de 46 bytes, se anaden bytes de relleno.
+El tamaño mínimo de la trama es 64 bytes (incluyendo las MACs, Tipo y FCS). Si los datos son menores de 46 bytes, se añaden bytes de relleno.
 
 El tamaño máximo es 1518 bytes (o 1522 con etiqueta VLAN 802.1Q).
 
@@ -165,9 +165,9 @@ Si la trama es más grande que el MTU (Maximum Transmission Unit) de un enlace, 
 
 ## CSMA/CD y CSMA/CA
 
-Ethernet clásico usaba CSMA/CD (Carrier Sense Multiple Access with Collision Detection). Los dispositivos escuchaban si el medio estaba libre antes de transmitir. Si dos transmitian al mismo tiempo, detectaban la colision y esperaban un tiempo aleatorio antes de reintentar.
+Ethernet clásico usaba CSMA/CD (Carrier Sense Multiple Access with Collision Detection). Los dispositivos escuchaban si el medio estaba libre antes de transmitir. Si dos transmitían al mismo tiempo, detectaban la colisión y esperaban un tiempo aleatorio antes de reintentar.
 
-Los switches eliminaron las colisiones porque cada puerto es un dominio de colision independiente. Hoy el fullduplex es la norma, y CSMA/CD solo es relevante en modo half-duplex o con hubs.
+Los switches eliminaron las colisiones porque cada puerto es un dominio de colisión independiente. Hoy el fullduplex es la norma, y CSMA/CD solo es relevante en modo half-duplex o con hubs.
 
 Wi-Fi usa CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance). No puede detectar colisiones (porque no puede escuchar mientras transmite), así que las evita activamente. Los dispositivos esperan un tiempo aleatorio antes de transmitir y usan RTS/CTS (Request to Send/Clear to Send) para reservar el medio.
 
@@ -229,9 +229,9 @@ La moraleja: STP no es opcional. Siempre debe estar habilitado en redes con swit
 
 ### ARP spoofing en una universidad
 
-Un estudiante en una universidad pública ejecutó ARP spoofing contra el gateway de la red de estudiantes. Durante una semana, todo el tráfico de sus companeros paso por su laptop. Capturo cientos de contraseñas de servicios que usaban HTTP en lugar de HTTPS.
+Un estudiante en una universidad pública ejecutó ARP spoofing contra el gateway de la red de estudiantes. Durante una semana, todo el tráfico de sus compañeros paso por su laptop. Capturo cientos de contraseñas de servicios que usaban HTTP en lugar de HTTPS.
 
-La universidad no detecto el ataque porque no tenía herramientas de monitoreo de red. El estudiante fue descubierto solo porque presumio de su hackeo en redes sociales.
+La universidad no detecto el ataque porque no tenía herramientas de monitoreo de red. El estudiante fue descubierto solo porque presumió de su hackeo en redes sociales.
 
 ### Cable submarino cortado
 
@@ -243,11 +243,11 @@ Un ataque de capa 1 puro. No hay firewall que proteja contra un cable físico co
 
 ### Duplex mismatch
 
-Un dispositivo configurado en full-duplex y el otro en half-duplex. El primero transmite sin esperar, el segundo solo transmite cuando el medio esta libre. El half-duplex detecta colisiones y retransmite, pero el full-duplex no. Resultado: rendimiento pesimo, muchos errores CRC.
+Un dispositivo configurado en full-duplex y el otro en half-duplex. El primero transmite sin esperar, el segundo solo transmite cuando el medio esta libre. El half-duplex detecta colisiones y retransmite, pero el full-duplex no. Resultado: rendimiento pésimo, muchos errores CRC.
 
-La solución es la autonegociacion. Pero si falla (cables danados, configuración manual), el mismatch es inevitable.
+La solución es la autonegociacion. Pero si falla (cables dañados, configuración manual), el mismatch es inevitable.
 
-### Cable danado
+### Cable dañado
 
 Un cable mal crimpado, pisado por una silla, o con un conector suelto. El resultado es pérdida de paquetes, velocidad reducida, o conexión intermitente.
 
@@ -255,7 +255,7 @@ Los switches modernos tienen indicadores de errores CRC. Un alto número de erro
 
 ### Tormenta de broadcast
 
-Una tormenta de broadcast ocurre cuando hay demasiados paquetes broadcast en la red. El switch reenvia broadcasts a todos los puertos. Cada dispositivo debe procesar cada broadcast. Si hay suficientes, la red se satura y los dispositivos no pueden procesar tráfico legítimo.
+Una tormenta de broadcast ocurre cuando hay demasiados paquetes broadcast en la red. El switch reenvía broadcasts a todos los puertos. Cada dispositivo debe procesar cada broadcast. Si hay suficientes, la red se satura y los dispositivos no pueden procesar tráfico legítimo.
 
 Causas:
 - STP mal configurado
@@ -272,7 +272,7 @@ Un bucle de enrutamiento causa un aumento en el uso de CPU y ancho de banda de l
 
 El MTU de un enlace es menor que el de otro. Los paquetes grandes se descartan y necesitan ser fragmentados. Si el camino tiene un enlace con MTU menor, los paquetes grandes no llegan.
 
-El sintoma típico: las conexiones que usan paquetes pequeños (SSH, Telnet) funcionan, pero las transferencias de archivos grandes fallan.
+El síntoma típico: las conexiones que usan paquetes pequeños (SSH, Telnet) funcionan, pero las transferencias de archivos grandes fallan.
 
 ## Comandos de diagnóstico esenciales
 
@@ -304,7 +304,7 @@ Para usarlo:
 2. Aplica un filtro de captura si solo te interesa cierto tráfico (por ejemplo, `tcp port 80` para solo HTTP).
 3. Inicia la captura.
 4. Realiza la acción que quieres analizar (abrir una página web, hacer ping).
-5. Deten la captura y analiza los paquetes.
+5. Detén la captura y analiza los paquetes.
 
 Wireshark muestra cada paquete con su árbol de protocolos. Puedes expandir cada capa para ver los encabezados:
 
@@ -314,7 +314,7 @@ Wireshark muestra cada paquete con su árbol de protocolos. Puedes expandir cada
 - TCP/UDP: puertos origen y destino
 - HTTP/TLS/etc: datos de la aplicación
 
-Algo que aprendi con Wireshark: ver el tráfico en tiempo real te da una comprensión intuitiva que ningún libro puede dar. Cuando ves el triple handshake TCP (SYN, SYN-ACK, ACK) en la pantalla, entiendes TCP para siempre.
+Algo que aprendí con Wireshark: ver el tráfico en tiempo real te da una comprensión intuitiva que ningún libro puede dar. Cuando ves el triple handshake TCP (SYN, SYN-ACK, ACK) en la pantalla, entiendes TCP para siempre.
 
 ## Protocolos adicionales importantes
 
@@ -345,7 +345,7 @@ ARP traduce direcciones IP a direcciones MAC en una red local. Funciona así:
 2. El host A busca en su tabla ARP si tiene la MAC de 192.168.1.2.
 3. Si no la tiene, envía un broadcast ARP: "quien tiene la IP 192.168.1.2?"
 4. El host B responde: "yo, mi MAC es aa:bb:cc:dd:ee:ff".
-5. El host A guarda la asociacion en su tabla ARP y envía el paquete.
+5. El host A guarda la asociación en su tabla ARP y envía el paquete.
 
 La tabla ARP tiene un temporizador de envejecimiento. Las entradas expiran después de un tiempo (típicamente 20-60 segundos para entradas incompletas, 2-4 horas para entradas completas en algunos sistemas).
 
@@ -369,7 +369,7 @@ Desventajas: punto único de fallo, escalabilidad limitada.
 
 Cada nodo (peer) es tanto cliente como servidor. Comparten recursos directamente sin un servidor central.
 
-Ejemplos: BitTorrent, Bitcoin, algunas aplicaciones de mensajeria.
+Ejemplos: BitTorrent, Bitcoin, algunas aplicaciones de mensajería.
 
 Ventajas: sin punto único de fallo, escalabilidad inherente.
 Desventajas: seguridad descentralizada, difícil de administrar.
@@ -381,12 +381,12 @@ En instalaciones profesionales, el cableado sigue un estándar llamado cableado 
 - Cuarto de telecomunicaciones: donde están los switches y el patch panel.
 - Cableado horizontal: desde el patch panel hasta los outlets en las oficinas.
 - Cableado vertical (backbone): conecta los cuartos de telecomunicaciones entre pisos.
-- Area de trabajo: desde el outlet hasta el dispositivo.
+- Área de trabajo: desde el outlet hasta el dispositivo.
 
 Cada conexión debe ser probada con un certificador de cable. La certificación verifica:
 - Mapa de pines (todos los pares conectados correctamente)
 - Longitud (máximo 100 metros)
-- Atenuacion (pérdida de señal)
+- Atenuación (pérdida de señal)
 - NEXT (Near-End Crosstalk)
 - Return Loss
 
@@ -398,17 +398,17 @@ Un cable que no pasa la certificación puede funcionar a 100 Mbps pero fallar a 
 
 2. Un switch recibe un paquete destinado a una MAC que no esta en su tabla. Que hace y por qué esto es un riesgo de seguridad?
 
-3. Un empleado se queja de que la red va lenta. Las luces del switch muestran actividad constante en todos los puertos incluso cuando nadie esta trabajando. Que esta probablemente ocurriendo y como lo diagnosticarias?
+3. Un empleado se queja de que la red va lenta. Las luces del switch muestran actividad constante en todos los puertos incluso cuando nadie esta trabajando. Que esta probablemente ocurriendo y como lo diagnosticarías?
 
 4. Cual es la diferencia entre un bucle de capa 2 y una tormenta de broadcast? Están siempre relacionados o pueden ocurrir independientemente?
 
 5. Un atacante estaciona una camioneta afuera de un edificio con una antena direccional. Que medio físico es el más vulnerable a esto, y que medidas de mitigación existen?
 
-6. Si tu computadora puede hacer ping a la IP 8.8.8.8 pero no puede cargar google.com, en que capa del modelo de red esta el problema? Como lo confirmarias?
+6. Si tu computadora puede hacer ping a la IP 8.8.8.8 pero no puede cargar google.com, en que capa del modelo de red esta el problema? Como lo confirmarías?
 
-7. Explica por qué la tabla MAC de un switch tiene un tamaño finito y que ocurre cuando se llena. Que herramienta usaria un atacante para llenarla intencionalmente?
+7. Explica por qué la tabla MAC de un switch tiene un tamaño finito y que ocurre cuando se llena. Que herramienta usaría un atacante para llenarla intencionalmente?
 
-8. Un router recibe un paquete y lo reenvia por la interfaz equivocada. El paquete viaja hacia un router que no sabe que hacer con el y lo descarta. Como se llama este tipo de falla y como se diagnostica?
+8. Un router recibe un paquete y lo reenvía por la interfaz equivocada. El paquete viaja hacia un router que no sabe que hacer con el y lo descarta. Como se llama este tipo de falla y como se diagnostica?
 
 9. Configuras un cable directo entre dos PCs para transferir archivos. Las PCs no se ven entre si. El cable esta correctamente crimpado. Que podría estar mal y por qué?
 

@@ -76,10 +76,10 @@ Esto es Shift Left: detectar el error en el minuto 1, no en el mes 6.
 1. **IDE:** Plugin SAST en el editor del desarrollador
 2. **Pre-commit:** Hooks de Git que ejecutan escaneos básicos antes del commit
 3. **Commit:** Escaneo SAST automático en cada push al repositorio
-4. **Build:** Compilacion con escaneo de dependencias (SCA)
+4. **Build:** Compilación con escaneo de dependencias (SCA)
 5. **Test:** Pruebas automatizadas incluyendo DAST básico
 6. **Staging:** Escaneo DAST completo contra ambiente de pre-producción
-7. **Producción:** Monitoreo continuo (RASP, WAF, escaneos periodicos)
+7. **Producción:** Monitoreo continuo (RASP, WAF, escaneos periódicos)
 
 ## Pipelines CI/CD: La Banda Transportadora
 
@@ -89,7 +89,7 @@ Cuando el programador termina su código, lo pone en la banda transportadora (Gi
 
 ### Etapa 1: Build
 
-El código se compila o transpila. Si hay errores de sintaxis, el pipeline falla aqui mismo.
+El código se compila o transpila. Si hay errores de sintaxis, el pipeline falla aquí mismo.
 
 ### Etapa 2: Pruebas SAST
 
@@ -159,7 +159,7 @@ El fracaso real es cuando la vulnerabilidad llega a producción y un atacante la
 
 ### DevSecOps + Agile
 
-Las metodologías agiles (Scrum, Kanban) se complementan con DevSecOps. Cada sprint incluye tareas de seguridad:
+Las metodologías ágiles (Scrum, Kanban) se complementan con DevSecOps. Cada sprint incluye tareas de seguridad:
 - Historias de usuario con criterios de aceptación de seguridad
 - Definición de "Done" que incluye pasar los escaneos SAST/DAST/SCA
 - Sprint retrospectivas que incluyen revisión de incidentes de seguridad
@@ -184,7 +184,7 @@ Como sabes si tu implementación de DevSecOps esta funcionando?
 **Métricas de Cultura:**
 - Tiempo entre que un desarrollador recibe un reporte de seguridad y lo corrige
 - Número de reuniones entre seguridad y desarrollo (más es mejor)
-- Encuestas de satisfaccion del equipo de desarrollo con el proceso de seguridad
+- Encuestas de satisfacción del equipo de desarrollo con el proceso de seguridad
 
 ## El Caso de Éxito: Etsy
 
@@ -192,7 +192,7 @@ Etsy es frecuentemente citado como un caso de éxito de DevSecOps. Antes de impl
 
 - Pasaron de desplegar una vez por semana a 50 veces por día
 - Redujeron el tiempo de detección de vulnerabilidades de semanas a minutos
-- Los desarrolladores se sintieron más seguros al desplegar porque el pipeline los protegia
+- Los desarrolladores se sintieron más seguros al desplegar porque el pipeline los protegía
 
 ## Modos de Falla en DevSecOps
 
@@ -222,4 +222,4 @@ Etsy es frecuentemente citado como un caso de éxito de DevSecOps. Antes de impl
 
 7. Un desarrollador descubre que puede bypassear el pipeline de seguridad haciendo commits directamente a la rama de producción sin pasar por CI/CD. Que cambios de proceso y cultura necesita implementar la empresa para evitar esta práctica?
 
-8. Durante una auditoría de DevSecOps, encuentras que el pipeline no incluye escaneo de contenedores Docker. En un entorno donde la aplicación se despliega en Kubernetes, explica los riesgos de esta omision.
+8. Durante una auditoría de DevSecOps, encuentras que el pipeline no incluye escaneo de contenedores Docker. En un entorno donde la aplicación se despliega en Kubernetes, explica los riesgos de esta omisión.

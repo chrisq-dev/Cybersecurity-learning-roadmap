@@ -11,7 +11,7 @@ updated: "2026-06-29"
 
 Desmitificar como funciona el internet por debajo del capó. No puedes hackear ni defender una página web si no entiendes sus piezas móviles. Para una persona usuaria, Internet puede parecer únicamente la interfaz del navegador; para seguridad importa comprender cada componente y límite de confianza. Para un profesional de la ciberseguridad, cada página web es un complejo sistema de tres niveles donde la confianza es la mayor vulnerabilidad.
 
-Esta guía asume cero experiencia previa. Si ya sabes programar, saltate las primeras secciones. Si vienes del mundo de redes o sistemas operativos, presta atención a la sección de "Fallo en Cadena" porque ahí es donde los arquitectos experimentados suelen tropezar.
+Esta guía asume cero experiencia previa. Si ya sabes programar, sáltate las primeras secciones. Si vienes del mundo de redes o sistemas operativos, presta atención a la sección de "Fallo en Cadena" porque ahí es donde los arquitectos experimentados suelen tropezar.
 
 ## El Mapa General: Cliente, Servidor y Tubería
 
@@ -23,7 +23,7 @@ El **Servidor** es una computadora que vive en un centro de datos, encendida 24/
 
 La **Tubería** es la red de routers, cables submarinos, antenas 5G y switches que conectan al cliente con el servidor. La tubería no entiende de contenido; solo sabe mover paquetes. Es la parte más ingenua de todo el sistema.
 
-El error filosofico más común entre principiantes es pensar que "la nube" es un concepto mágico. No lo es. La nube son simplemente servidores de otras personas en edificios de Amazon, Google o Microsoft. Sigue siendo un servidor con una dirección IP, solo que no te pertenece a ti.
+El error filosófico más común entre principiantes es pensar que "la nube" es un concepto mágico. No lo es. La nube son simplemente servidores de otras personas en edificios de Amazon, Google o Microsoft. Sigue siendo un servidor con una dirección IP, solo que no te pertenece a ti.
 
 ## La Arquitectura Clásica en Tres Capas
 
@@ -43,9 +43,9 @@ Así es exactamente como funciona cualquier página web. Amazon, Facebook, tu ba
 
 Es todo lo que ocurre dentro de tu propio dispositivo, tu celular o tu laptop. Esta construido con tres lenguajes que funcionan en equipo.
 
-**HTML (HyperText Markup Language)** es la estructura. Son los huesos. Define si hay un parrafo, una imagen, un botón, una tabla. Sin HTML, la página es solo un lienzo en blanco. Cuando ves texto mal alineado o imágenes rotas, estas viendo HTML que fallo en su trabajo.
+**HTML (HyperText Markup Language)** es la estructura. Son los huesos. Define si hay un párrafo, una imagen, un botón, una tabla. Sin HTML, la página es solo un lienzo en blanco. Cuando ves texto mal alineado o imágenes rotas, estas viendo HTML que fallo en su trabajo.
 
-**CSS (Cascading Style Sheets)** es la pintura y los muebles. Define colores, tamanos, posiciones, animaciones. Sin CSS, todas las páginas web se verian como documentos de los años 90: fondo blanco, letra negra, links azules subrayados.
+**CSS (Cascading Style Sheets)** es la pintura y los muebles. Define colores, tamaños, posiciones, animaciones. Sin CSS, todas las páginas web se verían como documentos de los años 90: fondo blanco, letra negra, links azules subrayados.
 
 **JavaScript** es el movimiento y la lógica del cliente. Es lo que hace que un botón cambie de color cuando pasas el ratón, que un menú se despliegue, que una imagen se desvanezca. Es el único lenguaje de programación que entienden los navegadores de forma nativa.
 
@@ -61,7 +61,7 @@ Su trabajo es ser el cerebro ciego del sistema. Recibe la nota del mesero que di
 
 El Backend alberga la **lógica de negocio**. Esta frase suena abstracta pero es simple: la lógica de negocio son las reglas que hacen que tu empresa funcione. Como se calculan los impuestos, como se verifica que un usuario tiene saldo suficiente, como se determina si un producto esta en stock. Si la lógica de negocio tiene fallos, el hacker no necesita exploits complejos; solo necesita entender las reglas mejor que el programador.
 
-El Backend también maneja la **sesión del usuario**. Cuando inicias sesión, el servidor crea un identificador único, una sesión, y se lo entrega al navegador en forma de Cookie. El navegador guarda esa Cookie y la reenvia en cada petición para que el servidor sepa quien eres. Si un atacante roba esa Cookie, se convierte en ti.
+El Backend también maneja la **sesión del usuario**. Cuando inicias sesión, el servidor crea un identificador único, una sesión, y se lo entrega al navegador en forma de Cookie. El navegador guarda esa Cookie y la reenvía en cada petición para que el servidor sepa quien eres. Si un atacante roba esa Cookie, se convierte en ti.
 
 ### La Base de Datos: La Alacena
 
@@ -71,7 +71,7 @@ El cocinero (Backend) es el único que tiene las llaves de la alacena. La base d
 
 Si un atacante logra engañar al cocinero (por ejemplo, con una Inyección SQL), obtiene la llave de la alacena entera. No necesita forzar la puerta; el cocinero se la abre voluntariamente porque confía ciegamente en las órdenes que recibe.
 
-La mayoría de las filtraciones masivas de datos ocurren porque alguien logró saltarse al Backend y hablar directamente con la base de datos, o porque logró manipular al Backend para que entregará información que no debia.
+La mayoría de las filtraciones masivas de datos ocurren porque alguien logró saltarse al Backend y hablar directamente con la base de datos, o porque logró manipular al Backend para que entregará información que no debía.
 
 ## La Confianza como Vulnerabilidad Fundamental
 
@@ -87,7 +87,7 @@ Cada relación de confianza es un potencial punto de quiebre. La seguridad consi
 
 No necesitas memorizar las 7 capas del modelo OSI para la seguridad web, pero si necesitas entender las que importan.
 
-**Capa 4 (Transporte):** TCP y UDP. TCP es el que garantiza que los paquetes lleguen en orden. Cuando abres una página, tu navegador abre una conexión TCP con el servidor. Sin TCP, los datos llegarian revueltos o no llegarian.
+**Capa 4 (Transporte):** TCP y UDP. TCP es el que garantiza que los paquetes lleguen en orden. Cuando abres una página, tu navegador abre una conexión TCP con el servidor. Sin TCP, los datos llegarían revueltos o no llegarían.
 
 **Capa 3 (Red):** IP. Cada dispositivo en internet tiene una dirección IP. Los servidores tienen IPs públicas. Tu celular tiene una IP privada detrás de un router (NAT). Cuando haces una petición, tu router traduce tu IP privada a su IP pública y viceversa.
 
@@ -99,7 +99,7 @@ Cuando escribes `google.com` en tu navegador, tu computadora no sabe donde esta 
 
 Tu computadora le pregunta a un servidor DNS: "Oye, cual es la IP de google.com?" El servidor DNS responde: "Es 142.250.80.46". Tu navegador entonces abre una conexión a esa IP.
 
-El DNS es como la guía telefónica del internet. Si un atacante logra envenenar tu DNS (DNS Spoofing), puede hacer que cuando escribas `mibanco.com`, tu navegador viaje a la IP del hacker, que tiene una copia falsa del banco. Tu le escribiras tu contraseña al hacker y el la reenviara al banco real para que no notes el robo (Ataque de Intermediario).
+El DNS es como la guía telefónica del internet. Si un atacante logra envenenar tu DNS (DNS Spoofing), puede hacer que cuando escribas `mibanco.com`, tu navegador viaje a la IP del hacker, que tiene una copia falsa del banco. Tu le escribirás tu contraseña al hacker y el la reenviara al banco real para que no notes el robo (Ataque de Intermediario).
 
 El DNS también es usado por los atacantes para la **exfiltración de datos**. Cuando un hacker ya esta dentro de una red y quiere sacar información sin ser detectado, puede codificar los datos robados en consultas DNS. Como el tráfico DNS suele estar permitido en los firewalls, los datos pasan desapercibidos.
 
@@ -139,9 +139,9 @@ No necesitan exploits complejos.
 
 HTTP no tiene memoria. No recuerda quien eres entre una petición y la siguiente. Para solucionar esto, los programadores inventaron las sesiones y las cookies.
 
-Cuando inicias sesión en un sitio, el servidor crea un identificador único de sesión (un string larguísimo y aleatorio) y lo guarda en su memoria o en una base de datos de sesiones. Luego le dice al navegador: "Guarda esta Cookie y mandamela cada vez que me pidas algo".
+Cuando inicias sesión en un sitio, el servidor crea un identificador único de sesión (un string larguísimo y aleatorio) y lo guarda en su memoria o en una base de datos de sesiones. Luego le dice al navegador: "Guarda esta Cookie y mándamela cada vez que me pidas algo".
 
-El navegador guarda la Cookie y la reenvia obedientemente en cada petición al mismo dominio. El servidor recibe la Cookie, busca la sesión en su almacén y sabe quien eres.
+El navegador guarda la Cookie y la reenvía obedientemente en cada petición al mismo dominio. El servidor recibe la Cookie, busca la sesión en su almacén y sabe quien eres.
 
 **Problemas de seguridad comunes con sesiones:**
 
@@ -149,9 +149,9 @@ El navegador guarda la Cookie y la reenvia obedientemente en cada petición al m
 
 **Sesión predecible:** Si el identificador de sesión es secuencial (ej. `usuario_1`, `usuario_2`), un atacante puede adivinar sesiones activas. Los identificadores deben ser criptográficamente aleatorios.
 
-**Cookie sin banderas de seguridad:** Las cookies deben tener las banderas `HttpOnly` (no accesible via JavaScript), `Secure` (solo via HTTPS) y `SameSite` (no enviada en peticiones de otros sitios).
+**Cookie sin banderas de seguridad:** Las cookies deben tener las banderas `HttpOnly` (no accesible vía JavaScript), `Secure` (solo vía HTTPS) y `SameSite` (no enviada en peticiones de otros sitios).
 
-**Fijacion de Sesión (Session Fixation):** El atacante obliga a la víctima a usar un identificador de sesión que el atacante ya conoce. Si el sitio no regenera el ID de sesión al iniciar sesión, el atacante puede secuestrar la sesión después de que la víctima se autentique.
+**Fijación de Sesión (Session Fixation):** El atacante obliga a la víctima a usar un identificador de sesión que el atacante ya conoce. Si el sitio no regenera el ID de sesión al iniciar sesión, el atacante puede secuestrar la sesión después de que la víctima se autentique.
 
 ## Fallo en Cadena: Como se Rompe Todo
 
@@ -162,7 +162,7 @@ Las vulnerabilidades no viven aisladas. Un error pequeño en una capa puede dese
 1. Un programador deja abierto el puerto 27017 de MongoDB en el servidor de desarrollo (Error de configuración).
 2. Un atacante escanea internet, encuentra el puerto abierto y extrae la base de datos completa (Error de red).
 3. La base de datos contenía contraseñas en texto plano porque el programador no implementó hashing (Error de criptografía).
-4. Con esas contraseñas, el atacante prueba suerte en otros servicios de la empresa usando las mismas credenciales (Reutilizacion de contraseñas).
+4. Con esas contraseñas, el atacante prueba suerte en otros servicios de la empresa usando las mismas credenciales (Reutilización de contraseñas).
 5. El atacante accede al correo electrónico del administrador y desde ahí solicita un reseteo de contraseña del servidor principal (Escalada de privilegios).
 
 Ninguno de estos errores por si solo habría sido catastrófico. Pero encadenados, destruyen la empresa.
@@ -183,7 +183,7 @@ Estos son los errores más comunes que cometen los arquitectos al diseñar siste
 
 **Logging insuficiente.** No registrar las acciones importantes. Cuando ocurre un breach, no saber que paso, cuando paso ni como entró el atacante. Sin logs, no hay investigación forense posible.
 
-**Dependencias sin actualizar.** Usar librerías de terceros con vulnerabilidades conocidas. El ataque a Equifax en 2017 ocurrió porque no actualizaron Apache Struts, a pesar de que el parche existia desde meses antes.
+**Dependencias sin actualizar.** Usar librerías de terceros con vulnerabilidades conocidas. El ataque a Equifax en 2017 ocurrió porque no actualizaron Apache Struts, a pesar de que el parche existía desde meses antes.
 
 ## El Ángulo del Hacker: Como Piensa un Atacante
 
@@ -205,13 +205,13 @@ Herramientas que usa: Burp Suite para interceptar y modificar tráfico HTTP, Nma
 
 ## Casos Reales de Falla Arquitectónica
 
-**Caso Sony PlayStation Network (2011):** Un atacante exploto una vulnerabilidad en la versión desactualizada de Apache HTTP Server que corria en los servidores de Sony. El servidor mal configurado permitió acceso a la base de datos de usuarios. Se robaron datos de 77 millones de cuentas, incluyendo números de tarjetas de crédito. Sony tuvo que apagar el servicio durante 23 días, con un costo estimado de $171 millones de dólares.
+**Caso Sony PlayStation Network (2011):** Un atacante exploto una vulnerabilidad en la versión desactualizada de Apache HTTP Server que corría en los servidores de Sony. El servidor mal configurado permitió acceso a la base de datos de usuarios. Se robaron datos de 77 millones de cuentas, incluyendo números de tarjetas de crédito. Sony tuvo que apagar el servicio durante 23 días, con un costo estimado de $171 millones de dólares.
 
 **Caso Equifax (2017):** La vulnerabilidad en Apache Struts (CVE-2017-5638) permitió a los atacantes ejecutar código remoto en los servidores de Equifax. La empresa tenía más de 3 meses para aplicar el parche pero no lo hizo. Se expusieron datos de 147 millones de personas: nombres, números de seguro social, fechas de nacimiento, direcciones. La multa y los costos totales superaron los $1,400 millones de dólares.
 
 **La lección de Equifax:** No es que la vulnerabilidad fuera sofisticada. Es que el proceso de actualización de parches era manual y lento. La seguridad no es solo el código; es el proceso alrededor del código.
 
-**Caso Marriott/Starwood (2018):** Atacantes estuvieron dentro de la red de Starwood desde 2014. Accedieron a la base de datos de reservas que contenia datos de 500 millones de huespedes. La vulnerabilidad inicial? Un acceso no autorizado a través de herramientas de administración remota mal configuradas. No fue un exploit complejo; fue una puerta abierta que nadie cerró.
+**Caso Marriott/Starwood (2018):** Atacantes estuvieron dentro de la red de Starwood desde 2014. Accedieron a la base de datos de reservas que contenía datos de 500 millones de huéspedes. La vulnerabilidad inicial? Un acceso no autorizado a través de herramientas de administración remota mal configuradas. No fue un exploit complejo; fue una puerta abierta que nadie cerró.
 
 ## Autoevaluación
 

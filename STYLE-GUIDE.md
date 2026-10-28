@@ -36,7 +36,7 @@ reviewed_against: "Nombre y versión del estándar"
 5. Conexiones con otras guías.
 6. Fuentes oficiales y referencias.
 
-Las preguntas de autoevaluación son opcionales. Los laboratorios y ejercicios no forman parte del objetivo editorial del proyecto.
+Las preguntas de autoevaluación son opcionales. Los laboratorios guiados no son obligatorios; si una guía incluye ejercicios, deben ser conceptuales, seguros y realizarse en entornos propios o autorizados.
 
 ## Fuentes y actualidad
 
@@ -58,3 +58,5 @@ Las preguntas de autoevaluación son opcionales. Los laboratorios y ejercicios n
 ## Tono
 
 Usa analogías para facilitar la comprensión, pero no como evidencia técnica. Evita lenguaje sensacionalista, descalificaciones y afirmaciones de autoridad personal. Una guía debe permitir que el lector diferencie hechos, interpretación y recomendación.
+
+No presentes ataques, malware o abuso como hazañas. Describe impacto, legalidad, controles y mitigaciones. En ejemplos, usa hosts de documentación (`192.0.2.0/24`) y nombres genéricos en lugar de personas o víctimas reales.

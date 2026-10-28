@@ -96,7 +96,7 @@ Protocolo de corto alcance para wearables, sensores, balizas.
   - **BLUR attacks:** Spoofing de BLE a través de relay de paquetes.
   - **BLE Spam:** Inundación de paquetes de advertising para DoS.
 
-### LoRaWAN (Long Range Wide Area Network)
+### LoRaWAN (Long Range Wide Área Network)
 
 Protocolo LPWAN para IoT de largo alcance y bajo consumo (km de distancia con baterías de años).
 
@@ -186,7 +186,7 @@ Protocolo que permite a dispositivos descubrirse en la red local y abrir puertos
 
 **Riesgos:**
 * **UPnP SSDP reflection DDoS:** Amplificación de tráfico para ataques DDoS.
-* **CallStranger (CVE-2020-12695):** Exfiltración de datos via UPnP SUBSCRIBE.
+* **CallStranger (CVE-2020-12695):** Exfiltración de datos vía UPnP SUBSCRIBE.
 * **Port mapping automático:** Expone servicios inseguros del IoT a internet sin que el usuario lo sepa.
 
 ### Firmware Backdoors
@@ -209,11 +209,11 @@ Los fabricantes a veces dejan puertas traseras intencionales (debug) o accidenta
 | CVE-2023-27217 | Múltiples routers TP-Link | RCE sin autenticación |
 | CVE-2019-12558 | Philips Hue Bridge | Subida de firmware malicioso sin autenticación |
 | CVE-2020-2906 | Cisco RV320/RV325 | Bypass de autenticación y dumping de credenciales |
-| CVE-2021-31630 | Raspberry Pi (OpenHAB vulnerabilities) | RCE via MQTT injection |
-| CVE-2017-17215 | Huawei HG532 (router) | RCE via UPnP (usado en botnet Mirai-variants) |
-| CVE-2020-9376 | TP-Link Archer series | Command Injection via ping parameter |
-| CVE-2022-48195 | Múltiples cámaras IP (AVTECH, Hikvision) | RCE via API insegura (usado en botnets) |
-| CVE-2019-12725 | Zeroshell (router OS) | RCE via Command Injection |
+| CVE-2021-31630 | Raspberry Pi (OpenHAB vulnerabilities) | RCE vía MQTT injection |
+| CVE-2017-17215 | Huawei HG532 (router) | RCE vía UPnP (usado en botnet Mirai-variants) |
+| CVE-2020-9376 | TP-Link Archer series | Command Injection vía ping parameter |
+| CVE-2022-48195 | Múltiples cámaras IP (AVTECH, Hikvision) | RCE vía API insegura (usado en botnets) |
+| CVE-2019-12725 | Zeroshell (router OS) | RCE vía Command Injection |
 
 ---
 

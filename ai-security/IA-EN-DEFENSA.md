@@ -76,7 +76,7 @@ Cuando investigas un incidente, tienes cientos de eventos en orden cronológico.
 
 ## 2. Automatización de Respuesta a Incidentes
 
-La IA no solo analiza —también puede ejecutar acciones de respuesta. Pero aqui hay que tener cuidado.
+La IA no solo analiza —también puede ejecutar acciones de respuesta. Pero aquí hay que tener cuidado.
 
 ### Lo que la IA PUEDE hacer:
 - Bloquear una IP en el firewall después de verificación humana

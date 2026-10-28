@@ -7,7 +7,7 @@ updated: "2026-06-29"
 
 # Glosario de Cultura Hacker
 
-Esto no es un diccionario formal. Es más bien la charla que te daria alguien que lleva un rato en esto mientras toman algo. Los términos están agrupados por tema, pero dentro de cada grupo no hay orden estricto. Salta de uno a otro como quieras.
+Esto no es un diccionario formal. Es más bien la charla que te daría alguien que lleva un rato en esto mientras toman algo. Los términos están agrupados por tema, pero dentro de cada grupo no hay orden estricto. Salta de uno a otro como quieras.
 
 ---
 
@@ -23,15 +23,15 @@ Si hacker es el que explora, cracker es el que rompe con intención de daño o b
 
 ### Script Kiddie
 
-Todo el mundo arranca siendo script kiddie. La diferencia es que unos se quedan ahí y otros aprenden que hay adentro de las herramientas que usan. El término se tira como insulto, pero si te lo dicen, tomalo como señal de que ya es momento de meterte en el código y dejar de apretar botones sin entender. El peligro real no es el novato, es el que nunca sale de ahí pero igual ejecuta herramientas contra sistemas ajenos.
+Todo el mundo arranca siendo script kiddie. La diferencia es que unos se quedan ahí y otros aprenden que hay adentro de las herramientas que usan. El término se tira como insulto, pero si te lo dicen, tómalo como señal de que ya es momento de meterte en el código y dejar de apretar botones sin entender. El peligro real no es el novato, es el que nunca sale de ahí pero igual ejecuta herramientas contra sistemas ajenos.
 
 ### Phreaking
 
-La puerta de entrada a la cultura hacker para toda una generación. Antes de que existiera internet como lo conocemos, existia la red telefónica. Y un grupo de curiosos descubrió que podían manipularla con silbatos de plástico, tonos de audio y cajas hechas a mano. Captain Crunch, John Draper, la caja azul. Steve Jobs y Steve Wozniak hicieron sus primeras ganancias vendiendo dispositivos para phreaking. Todo el hacking moderno arranco ahí.
+La puerta de entrada a la cultura hacker para toda una generación. Antes de que existiera internet como lo conocemos, existía la red telefónica. Y un grupo de curiosos descubrió que podían manipularla con silbatos de plástico, tonos de audio y cajas hechas a mano. Captain Crunch, John Draper, la caja azul. Steve Jobs y Steve Wozniak hicieron sus primeras ganancias vendiendo dispositivos para phreaking. Todo el hacking moderno arranco ahí.
 
 ### Cultura Hacker
 
-No es solo la estética de pantalla verde con fosforitos. La cultura hacker es un conjunto de valores: curiosidad como motor, aprendizaje autónomo, compartir conocimiento, cuestionar la autoridad, construir sobre lo que otros hicieron. Nacio en los laboratorios del MIT en los 60, crecio con el movimiento del software libre, y hoy esta en todas partes, desde Wikipedia hasta el kernel de Linux.
+No es solo la estética de pantalla verde con fosforitos. La cultura hacker es un conjunto de valores: curiosidad como motor, aprendizaje autónomo, compartir conocimiento, cuestionar la autoridad, construir sobre lo que otros hicieron. Nació en los laboratorios del MIT en los 60, creció con el movimiento del software libre, y hoy esta en todas partes, desde Wikipedia hasta el kernel de Linux.
 
 ### Open Source
 
@@ -43,23 +43,23 @@ No es un documento firmado ni un código de conducta corporativo. Es un conjunto
 
 ### Cyberpunk
 
-Un genero, una estética, una advertencia. Nacio en la literatura con autores como William Gibson (Neuromancer) y Bruce Sterling, y explora futuros donde la tecnología avanza mucho más rápido que las leyes y la ética. Corporaciones que controlan gobiernos, hackers callejeros con implantes, inteligencia artificial descontrolada. Influencio todo: desde Matrix hasta Mr. Robot, desde la moda hasta como se diseñan los teclados de las películas.
+Un genero, una estética, una advertencia. Nació en la literatura con autores como William Gibson (Neuromancer) y Bruce Sterling, y explora futuros donde la tecnología avanza mucho más rápido que las leyes y la ética. Corporaciones que controlan gobiernos, hackers callejeros con implantes, inteligencia artificial descontrolada. Influencio todo: desde Matrix hasta Mr. Robot, desde la moda hasta como se diseñan los teclados de las películas.
 
 ### Cypherpunk
 
-Si el cyberpunk es la estética, el cypherpunk es la militancia. Un movimiento que sostiene que la criptografía es una herramienta política: sirve para proteger la privacidad de las personas contra gobiernos y corporaciones. Surgio en los 90 y dio origen a PGP, Tor, las criptomonedas y Signal. Su lema podría resumirse así: "la privacidad no es opcional, y la criptografía es como se protege."
+Si el cyberpunk es la estética, el cypherpunk es la militancia. Un movimiento que sostiene que la criptografía es una herramienta política: sirve para proteger la privacidad de las personas contra gobiernos y corporaciones. Surgió en los 90 y dio origen a PGP, Tor, las criptomonedas y Signal. Su lema podría resumirse así: "la privacidad no es opcional, y la criptografía es como se protege."
 
 ### Demo Scene
 
-Una de las ramas más artisticas de la cultura hacker. Gente que escribe programas que generan animaciones y musica en tiempo real, compitiendo por hacer lo más impresionante con los recursos más limitados. No es seguridad, pero comparte el espiritu de exploracion técnica, optimización y creatividad. Si alguna vez viste una intro de un juego de los 90 con un logo en 3D girando y musica de chip, viste el trabajo de la demo scene.
+Una de las ramas más artísticas de la cultura hacker. Gente que escribe programas que generan animaciones y musica en tiempo real, compitiendo por hacer lo más impresionante con los recursos más limitados. No es seguridad, pero comparte el espíritu de exploración técnica, optimización y creatividad. Si alguna vez viste una intro de un juego de los 90 con un logo en 3D girando y musica de chip, viste el trabajo de la demo scene.
 
 ### Hacktivism
 
-Cuando el hacking se encuentra con la política. Grupos como Anonymous usan técnicas de hacking para protestar, denunciar o desobedecer digitalmente. Es un area gris: las mismas habilidades que usa un criminal las usa un hacktivista, pero la motivación es distinta. No todo hacktivista es heroe ni todo criminal es villano, pero la ley no suele hacer esa distinción.
+Cuando el hacking se encuentra con la política. Grupos como Anonymous usan técnicas de hacking para protestar, denunciar o desobedecer digitalmente. Es un área gris: las mismas habilidades que usa un criminal las usa un hacktivista, pero la motivación es distinta. No todo hacktivista es héroe ni todo criminal es villano, pero la ley no suele hacer esa distinción.
 
 ### 2600
 
-La revista más antigua sobre cultura hacker aún en circulacion. Fundada en 1984. Su nombre viene de la frecuencia de 2600 Hz que los phreakers usaban para manipular sistemas telefónicos. Durante décadas fue el punto de encuentro de la comunidad: articulos técnicos, anuncios de conferencias, y una sección de cartas donde la gente compartia descubrimientos sin revelar delitos.
+La revista más antigua sobre cultura hacker aún en circulación. Fundada en 1984. Su nombre viene de la frecuencia de 2600 Hz que los phreakers usaban para manipular sistemas telefónicos. Durante décadas fue el punto de encuentro de la comunidad: artículos técnicos, anuncios de conferencias, y una sección de cartas donde la gente compartía descubrimientos sin revelar delitos.
 
 ### Hackerspace
 
@@ -79,7 +79,7 @@ El que usa su conocimiento para actividades no autorizadas. La diferencia con wh
 
 ### Grey Hat
 
-La zona más incómoda. Alguien que quizas no busca dañar, pero actúa sin permiso o en los bordes de lo legal. Un investigador que encuentra una vulnerabilidad, entra al sistema para confirmarla, y luego avisa a la empresa. Técnicamente cometió un delito. Éticamente hizo lo correcto. La ley no siempre distingue matices, y en ciberseguridad profesional el permiso importa más que la intención.
+La zona más incómoda. Alguien que quizás no busca dañar, pero actúa sin permiso o en los bordes de lo legal. Un investigador que encuentra una vulnerabilidad, entra al sistema para confirmarla, y luego avisa a la empresa. Técnicamente cometió un delito. Éticamente hizo lo correcto. La ley no siempre distingue matices, y en ciberseguridad profesional el permiso importa más que la intención.
 
 ### Red Team
 
@@ -99,7 +99,7 @@ Chief Information Security Officer. El ejecutivo que define la estrategia de seg
 
 ### Security Champion
 
-Un miembro del equipo de desarrollo que promueve prácticas seguras sin ser un profesional de seguridad dedicado. Es la persona a la que sus companeros recurren cuando tienen dudas de seguridad. No reemplaza al equipo de seguridad, pero lo multiplica.
+Un miembro del equipo de desarrollo que promueve prácticas seguras sin ser un profesional de seguridad dedicado. Es la persona a la que sus compañeros recurren cuando tienen dudas de seguridad. No reemplaza al equipo de seguridad, pero lo multiplica.
 
 ---
 
@@ -115,7 +115,7 @@ Una empresa te dice: "encuentra fallos en nuestros sistemas, dentro de estas reg
 
 ### DEF CON
 
-La conferencia de hacking más importante del mundo. Nacio en 1993 cuando un grupo de amigos decidio juntarse en Las Vegas a hablar de cosas que en esa epoca te podían meter preso. Hoy son 30 mil personas donde ves a un tipo en cosplay de hacker al lado de un CISO de un banco. Es técnicamente riguroso y socialmente caotico. Si vas, lleva desodorante.
+La conferencia de hacking más importante del mundo. Nació en 1993 cuando un grupo de amigos decidió juntarse en Las Vegas a hablar de cosas que en esa época te podían meter preso. Hoy son 30 mil personas donde ves a un tipo en cosplay de hacker al lado de un CISO de un banco. Es técnicamente riguroso y socialmente caótico. Si vas, lleva desodorante.
 
 ### Black Hat (conferencia)
 
@@ -155,7 +155,7 @@ Operational Security. Los hábitos que evitan que regales información sobre ti,
 
 ### Whistleblower
 
-Alguien que denuncia internamente prácticas ilegales o contrarias a la ética dentro de su organización. Edward Snowden, Chelsea Manning, Frances Haugen. Son figuras polarizantes: para unos son heroes, para otros traidores. En seguridad, el whistleblowing expone vulnerabilidades que de otra forma nadie sabria que existen.
+Alguien que denuncia internamente prácticas ilegales o contrarias a la ética dentro de su organización. Edward Snowden, Chelsea Manning, Frances Haugen. Son figuras polarizantes: para unos son héroes, para otros traidores. En seguridad, el whistleblowing expone vulnerabilidades que de otra forma nadie sabría que existen.
 
 ---
 
@@ -175,7 +175,7 @@ Lo que hace el exploit después de colarse. Puede abrir una shell, instalar un p
 
 ### PoC
 
-Proof of Concept. Una demostración de que una vulnerabilidad existe y puede ser explotada. No es un exploit completo listo para usar, es la prueba de que el riesgo es real. Se usa en reportes de bug bounty, investigaciones y articulos técnicos.
+Proof of Concept. Una demostración de que una vulnerabilidad existe y puede ser explotada. No es un exploit completo listo para usar, es la prueba de que el riesgo es real. Se usa en reportes de bug bounty, investigaciones y artículos técnicos.
 
 ### Root
 
@@ -203,7 +203,7 @@ Malware que se oculta en las capas más profundas del sistema operativo. No es u
 
 ### Honeypot
 
-Un sistema diseñado para ser atacado. Simula servicios vulnerables para atraer atacantes y estudiarlos. Se usa para recolectar información sobre técnicas y herramientas sin poner en riesgo sistemas reales. Es basicamente una trampa para ratones digital.
+Un sistema diseñado para ser atacado. Simula servicios vulnerables para atraer atacantes y estudiarlos. Se usa para recolectar información sobre técnicas y herramientas sin poner en riesgo sistemas reales. Es básicamente una trampa para ratones digital.
 
 ### Sandbox
 
@@ -219,7 +219,7 @@ La infraestructura que los atacantes usan para mandar instrucciones a los sistem
 
 ### RTFM
 
-Read The Fucking Manual. Suena grosero, y lo es, pero aprender a leer documentación es una de las habilidades más utiles que puedes desarrollar. La mayoría de las preguntas que te haces ya tienen respuesta en algún manual. RTFM no es un insulto, es un consejo disfrazado de mala onda.
+Read The Fucking Manual. Suena grosero, y lo es, pero aprender a leer documentación es una de las habilidades más útiles que puedes desarrollar. La mayoría de las preguntas que te haces ya tienen respuesta en algún manual. RTFM no es un insulto, es un consejo disfrazado de mala onda.
 
 ### PEBKAC
 
@@ -227,7 +227,7 @@ Problem Exists Between Keyboard And Chair. El problema no es la computadora, es 
 
 ### L33t / Leet
 
-La escritura hacker donde las letras se reemplazan por números y símbolos. Hacker se escribe h4ck3r. Leet se escribe 1337. Nacio en los BBS de los 90 como una forma de identidad de grupo. Hoy sobrevive en nombres de usuario, configuraciones y memes. Es más nostalgia que otra cosa.
+La escritura hacker donde las letras se reemplazan por números y símbolos. Hacker se escribe h4ck3r. Leet se escribe 1337. Nació en los BBS de los 90 como una forma de identidad de grupo. Hoy sobrevive en nombres de usuario, configuraciones y memes. Es más nostalgia que otra cosa.
 
 ### Threat Actor
 
@@ -239,7 +239,7 @@ Advanced Persistent Threat. Cuando el ataque no viene de un actor individual, vi
 
 ### Tor
 
-The Onion Router. Una red que oculta tu tráfico pasandolo por varias capas de cifrado y saltando entre nodos en distintos países. Se usa para proteger la privacidad, acceder a sitios bloqueados, y también para actividades ilegales. La tecnología es neutral, el uso no.
+The Onion Router. Una red que oculta tu tráfico pasándolo por varias capas de cifrado y saltando entre nodos en distintos países. Se usa para proteger la privacidad, acceder a sitios bloqueados, y también para actividades ilegales. La tecnología es neutral, el uso no.
 
 ### Dark Web / Deep Web
 
@@ -251,7 +251,7 @@ Address Space Layout Randomization. Una técnica del sistema operativo que desor
 
 ### DEP
 
-Data Execution Prevention. Marca regiones de memoria como no ejecutables. Si un atacante mete código en un area de datos, el sistema se niega a ejecutarlo. Junto con ASLR, forma la base de las defensas modernas contra exploits de memoria.
+Data Execution Prevention. Marca regiones de memoria como no ejecutables. Si un atacante mete código en un área de datos, el sistema se niega a ejecutarlo. Junto con ASLR, forma la base de las defensas modernas contra exploits de memoria.
 
 ---
 
@@ -271,7 +271,7 @@ El negocio de robar, traficar y usar datos de tarjetas de crédito. Incluye la c
 
 ### Mercados Clandestinos
 
-Tiendas en la dark web donde se compra y vende de todo: datos robados, credenciales, exploits, malware, drogas, armas. Operan con criptomonedas y tienen sistemas de reputación como MercadoLibre, pero para cosas ilegales. Algunos duran años, otros desaparecen de un día para el otro llevandose el dinero de sus usuarios.
+Tiendas en la dark web donde se compra y vende de todo: datos robados, credenciales, exploits, malware, drogas, armas. Operan con criptomonedas y tienen sistemas de reputación como MercadoLibre, pero para cosas ilegales. Algunos duran años, otros desaparecen de un día para el otro llevándose el dinero de sus usuarios.
 
 ### Booter / Stresser
 
@@ -279,7 +279,7 @@ Servicios que venden ataques DDoS. Se presentan como herramientas de prueba de e
 
 ### Money Mule
 
-La persona que transfiere dinero robado entre cuentas a cambio de una comision, a veces sin saber que esta participando en un delito. Los criminales reclutan mules con ofertas de trabajo falsas o estafas romanticas. Es un eslabón débil en la cadena de lavado de dinero.
+La persona que transfiere dinero robado entre cuentas a cambio de una comisión, a veces sin saber que esta participando en un delito. Los criminales reclutan mules con ofertas de trabajo falsas o estafas románticas. Es un eslabón débil en la cadena de lavado de dinero.
 
 ### SWATing
 
@@ -295,7 +295,7 @@ Confía, pero verifica. En seguridad no alcanza con confiar en que alguien hizo 
 
 ### "There is no patch for human stupidity"
 
-No hay parche para la estupidez humana. Suena pesimista, pero senala una verdad: por más firewalls y cifrado que pongas, si un usuario hace clic donde no debe, todo se cae. La solución no es burlarse del usuario, es diseñar sistemas que asuman el error humano.
+No hay parche para la estupidez humana. Suena pesimista, pero señala una verdad: por más firewalls y cifrado que pongas, si un usuario hace clic donde no debe, todo se cae. La solución no es burlarse del usuario, es diseñar sistemas que asuman el error humano.
 
 ### "Move fast and break things"
 
@@ -311,11 +311,11 @@ Lo que públicas en internet puede persistir aunque lo borres. Capturas de panta
 
 ---
 
-## Grupos y Referencias Historicas
+## Grupos y Referencias Históricas
 
 ### Cult of the Dead Cow (cDc)
 
-Uno de los grupos de hacking más antiguos, fundado en 1984. Crearon Back Orifice, una herramienta de administración remota que en su epoca fue controvertidisima. Acunaron el término "hacktivism". Su boletin TEXT FILES es parte del archivo histórico de la cultura hacker. Siguen activos, aunque con menos perfil que en los 90.
+Uno de los grupos de hacking más antiguos, fundado en 1984. Crearon Back Orifice, una herramienta de administración remota que en su época fue controvertidisima. Acunaron el término "hacktivism". Su boletín TEXT FILES es parte del archivo histórico de la cultura hacker. Siguen activos, aunque con menos perfil que en los 90.
 
 ### L0pht
 
@@ -331,4 +331,4 @@ El colectivo más famoso y más mal entendido. No es un grupo con miembros, es u
 
 ### Stuxnet
 
-El gusano que cambio la forma en que el mundo ve el ciberconflicto. Descubierto en 2010, ataco centrifugadoras nucleares en Irán causando daño físico verificable. No robaba datos ni pedia rescate: destruía hardware. Fue desarrollado por Estados Unidos e Israel (según informes no confirmados oficialmente). Marca el momento en que el ciberataque paso de ser un problema de IT a un arma geopolítica.
+El gusano que cambio la forma en que el mundo ve el ciberconflicto. Descubierto en 2010, ataco centrifugadoras nucleares en Irán causando daño físico verificable. No robaba datos ni pedía rescate: destruía hardware. Fue desarrollado por Estados Unidos e Israel (según informes no confirmados oficialmente). Marca el momento en que el ciberataque paso de ser un problema de IT a un arma geopolítica.

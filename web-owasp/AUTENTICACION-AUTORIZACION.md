@@ -21,7 +21,7 @@ Para que nunca lo olvides, usaremos la analogía de la Discoteca Exclusiva.
 
 **Autenticación (Authentication - AuthN):** Es el Guardia de Seguridad en la puerta de la calle. Te pide tu ID y confirma que la foto coincida con tu cara. Si coincide, te deja entrar al edificio. Eres quien dices ser.
 
-**Autorización (Authorization - AuthZ):** Es el Cadenero de la Sala VIP en el segundo piso. Tu ya estas adentro de la discoteca (ya pasaste la Autenticación), pero cuando intentas subir al segundo piso, el cadenero te detiene y dice: "Tu pulsera es normal. Aqui solo entran VIPs. Acceso Denegado." Tienes permiso para hacer esto.
+**Autorización (Authorization - AuthZ):** Es el Cadenero de la Sala VIP en el segundo piso. Tu ya estas adentro de la discoteca (ya pasaste la Autenticación), pero cuando intentas subir al segundo piso, el cadenero te detiene y dice: "Tu pulsera es normal. Aquí solo entran VIPs. Acceso Denegado." Tienes permiso para hacer esto.
 
 ### El Error Más Común
 
@@ -55,7 +55,7 @@ banco.com/ver_pdf?recibo_id=101
 
 **Que pasa en la cocina (El Backend)?**
 
-El Servidor recibe la orden. Verifica que el hacker tiene una sesión iniciada (Autenticación), así que dice: "Okay, estas logueado. Quieres el recibo 101. Aqui lo tienes!"
+El Servidor recibe la orden. Verifica que el hacker tiene una sesión iniciada (Autenticación), así que dice: "Okay, estas logueado. Quieres el recibo 101. Aquí lo tienes!"
 
 El Servidor olvido preguntarle al cadenero VIP: "Espera, este hacker tiene la sesión iniciada, pero el recibo 101 le pertenece a el, o le pertenece al CEO de la empresa?"
 
@@ -65,7 +65,7 @@ Al cambiar un simple número en la URL, el hacker acaba de robar los estados de 
 
 Los IDORs aparecen en cualquier parámetro que identifiqué un recurso:
 
-- IDs numericos en URLs: `/usuario/5`, `/factura/1234`
+- IDs numéricos en URLs: `/usuario/5`, `/factura/1234`
 - IDs en cuerpos JSON: `{"orden_id": 456}`
 - Nombres de archivos: `/documentos/factura-juan.pdf`
 - Tokens débiles: `{"token": "abc123"}` donde el token es predecible
@@ -169,7 +169,7 @@ Si el desarrollador verifica la autenticación (token válido) pero no la autori
 
 ## El Principio de Menor Privilegio
 
-Es la filosofía de seguridad que dice: un usuario (o un proceso) debe tener solo los permisos minimos necesarios para realizar su trabajo, y nada más.
+Es la filosofía de seguridad que dice: un usuario (o un proceso) debe tener solo los permisos mínimos necesarios para realizar su trabajo, y nada más.
 
 **Aplicación práctica:**
 
@@ -213,7 +213,7 @@ El más común. Los usuarios tienen roles. Los roles tienen permisos.
 **Vulnerabilidades comunes:**
 - Escalada de rol no verificada
 - Roles mal configurados
-- Un usuario puede tener múltiples roles y la lógica de union de permisos es incorrecta
+- Un usuario puede tener múltiples roles y la lógica de unión de permisos es incorrecta
 
 ### ABAC (Attribute-Based Access Control)
 
@@ -258,7 +258,7 @@ def borrar_usuario(id):
 
 ### No Exponer IDs Directos
 
-En lugar de usar IDs numericos secuenciales en las URLs, usa identificadores opacos (UUIDs, hashes, slugs).
+En lugar de usar IDs numéricos secuenciales en las URLs, usa identificadores opacos (UUIDs, hashes, slugs).
 
 **Mal:** `/api/factura/1234`
 **Bien:** `/api/factura/a1b2c3d4-e5f6-7890-abcd-ef1234567890`
@@ -303,7 +303,7 @@ Los endpoints de autenticación y autorización deben tener rate limiting para p
 
 **Caso Facebook (2018):** Un investigador descubrió que podía acceder a cualquier cuenta de Facebook simplemente modificando un parámetro en la respuesta del servidor durante el flujo de "olvide mi contraseña". Podía leer mensajes privados, fotos, y publicaciones de cualquier usuario. Facebook pago $40,000 en bug bounty.
 
-**Caso Parler (2021):** Después del asalto al Capitolio de EE.UU., activistas descargaron videos de Parler que mostraban evidencia del evento. Parler tenía un IDOR masivo: los videos públicos tenían IDs numericos secuenciales. Los activistas simplemente iteraron sobre los IDs y descargaron miles de videos que los usuarios habian marcado como privados pero que la API no verificaba la autorización.
+**Caso Parler (2021):** Después del asalto al Capitolio de EE.UU., activistas descargaron videos de Parler que mostraban evidencia del evento. Parler tenía un IDOR masivo: los videos públicos tenían IDs numéricos secuenciales. Los activistas simplemente iteraron sobre los IDs y descargaron miles de videos que los usuarios habían marcado como privados pero que la API no verificaba la autorización.
 
 **Caso T-Mobile (2022):** Un atacante encontró una API interna de T-Mobile que no requería autenticación. Podía consultar cualquier número de teléfono y obtener información personal del cliente. No era un IDOR clásico pero era un fallo de control de acceso total.
 
@@ -335,11 +335,11 @@ Los endpoints de autenticación y autorización deben tener rate limiting para p
 
 5. Explica la diferencia entre Escalada de Privilegios Horizontal y Vertical. Da un ejemplo de cada uno.
 
-6. Un equipo de desarrollo implementa RBAC con tres roles: `usuario`, `editor`, `admin`. Descubres que cuando un `usuario` solicita cambiar su propio rol a `admin` via API, el servidor lo permite. Que falla de autorización específica esta ocurriendo y como se llama?
+6. Un equipo de desarrollo implementa RBAC con tres roles: `usuario`, `editor`, `admin`. Descubres que cuando un `usuario` solicita cambiar su propio rol a `admin` vía API, el servidor lo permite. Que falla de autorización específica esta ocurriendo y como se llama?
 
 7. Tu aplicación usa UUIDs para los IDs de los recursos en lugar de números secuenciales. Un desarrollador argumenta que "como los UUIDs no son adivinables, no necesitamos verificar la propiedad del recurso". Por qué esta lógica es peligrosa?
 
-8. Durante una auditoría de código, encuentras el siguiente fragmento en el Backend de una aplicación de mensajeria:
+8. Durante una auditoría de código, encuentras el siguiente fragmento en el Backend de una aplicación de mensajería:
 
 ```python
 def leer_mensaje(id_mensaje):
@@ -347,4 +347,4 @@ def leer_mensaje(id_mensaje):
     return mensaje.contenido
 ```
 
-Que vulnerabilidad de autorización tiene este código y como la corregirias?
+Que vulnerabilidad de autorización tiene este código y como la corregirías?

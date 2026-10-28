@@ -33,7 +33,7 @@ En lugar de construir un edificio entero para cada empleado, construyes un solo 
 
 ## Máquina Virtual vs Contenedor
 
-### Diferencias Arquitectonicas
+### Diferencias Arquitectónicas
 
 | Característica | Máquina Virtual | Contenedor |
 |----------------|-----------------|------------|
@@ -79,7 +79,7 @@ Cuando ejecutas `docker run`, Docker crea un nuevo conjunto de namespaces para e
 
 Los Cgroups (Control Groups) limitan lo que el contenedor puede usar. Sin cgroups, un contenedor podría consumir toda la RAM del servidor y matar a los demás.
 
-Configuración tipica de recursos para un contenedor:
+Configuración típica de recursos para un contenedor:
 
 ```bash
 docker run --memory="512m" --cpus="0.5" nginx
@@ -92,22 +92,22 @@ Métricas que controlan los cgroups:
 - **memory.limit_in_bytes:** Memoria máxima.
 - **cpu.cfs_quota_us:** Tiempo de CPU máximo.
 - **blkio.throttle.read_bps_device:** Velocidad de lectura de disco.
-- **pid.max:** Número máximo de procesos.
+- **pid.máx:** Número máximo de procesos.
 
 ### El Riesgo: Escapar del Contenedor (Container Breakout)
 
-Aqui esta el talón de Aquiles de Docker. Como todos los contenedores comparten el mismo "suelo" (el Kernel de Linux del servidor anfitrión), si un hacker logra hackear la aplicación adentro de la Caja de Cristal, y encuentra un Zero-Day en el motor de Docker, puede "romper el cristal" (Container Escape).
+Aquí esta el talón de Aquiles de Docker. Como todos los contenedores comparten el mismo "suelo" (el Kernel de Linux del servidor anfitrión), si un hacker logra hackear la aplicación adentro de la Caja de Cristal, y encuentra un Zero-Day en el motor de Docker, puede "romper el cristal" (Container Escape).
 
 Si rompe el cristal, cae directamente al suelo del servidor físico (Root access al Host). Desde ahí, tiene el poder absoluto para destruir y borrar todas las otras 500 cajas de cristal del edificio.
 
 ### Container Breakout Conocido: CVE-2019-5736
 
-En 2019, se descubrió una vulnerabilidad en runc (el runtime de contenedores de Docker y Kubernetes) que permitia a un atacante con acceso al contenedor escapar al host.
+En 2019, se descubrió una vulnerabilidad en runc (el runtime de contenedores de Docker y Kubernetes) que permitía a un atacante con acceso al contenedor escapar al host.
 
 Como funcionaba:
 
-1. El atacante dentro del contenedor obtenia ejecución de código.
-2. El atacante sobrescribia el binario `runc` en el host desde dentro del contenedor.
+1. El atacante dentro del contenedor obtenía ejecución de código.
+2. El atacante sobrescribía el binario `runc` en el host desde dentro del contenedor.
 3. La próxima vez que el host ejecutará `runc` (para crear otro contenedor), el binario malicioso se ejecutaba con permisos de root en el host.
 
 La vulnerabilidad afectaba a todos los contenedores que ejecutaban como root adentro (que es la mayoría).
@@ -138,7 +138,7 @@ Por defecto, Docker elimina muchas capabilities peligrosas:
 
 - `CAP_SYS_ADMIN` - acceso administrativo al kernel.
 - `CAP_NET_ADMIN` - configuración de red.
-- `CAP_SYS_MODULE` - carga de modulos del kernel.
+- `CAP_SYS_MODULE` - carga de módulos del kernel.
 
 Pero a veces los administradores las agregan de vuelta para que la aplicación funcione. Esto es peligroso.
 
@@ -147,7 +147,7 @@ Pero a veces los administradores las agregan de vuelta para que la aplicación f
 docker run --cap-add=NET_ADMIN --cap-add=SYS_ADMIN nginx
 ```
 
-### Volumenes Montados
+### Volúmenes Montados
 
 Montar el sistema de archivos del host dentro del contenedor es necesario para persistencia, pero peligroso.
 
@@ -169,11 +169,11 @@ docker run --privileged nginx
 
 Un contenedor privilegiado puede:
 - Acceder a todos los discos del host.
-- Cargar modulos del kernel.
+- Cargar módulos del kernel.
 - Modificar la configuración de red del host.
 - Escapar del contenedor fácilmente.
 
-### Imagenes de Fuentes no Confiables
+### Imágenes de Fuentes no Confiables
 
 Docker Hub tiene millones de imágenes públicas. Muchas contienen malware.
 
@@ -238,7 +238,7 @@ FROM nginx:alpine
 COPY --from=builder /app/dist /usr/share/nginx/html
 ```
 
-La imagen final solo contiene Nginx y los archivos estaticos, sin Node.js ni herramientas de compilación.
+La imagen final solo contiene Nginx y los archivos estáticos, sin Node.js ni herramientas de compilación.
 
 ## Docker Secrets
 
@@ -269,7 +269,7 @@ Esto queda grabado en la imagen para siempre.
 
 ### El Contenedor que Escape en Shopify (2018)
 
-Un investigador de seguridad descubrió una vulnerabilidad en la plataforma Shopify que le permitia ejecutar código dentro de un contenedor. El contenedor estaba mal configurado:
+Un investigador de seguridad descubrió una vulnerabilidad en la plataforma Shopify que le permitía ejecutar código dentro de un contenedor. El contenedor estaba mal configurado:
 
 - Ejecutaba como root.
 - Tenía la capability `CAP_SYS_ADMIN`.
@@ -295,7 +295,7 @@ Se estima que miles de servidores Docker fueron comprometidos de esta forma.
 
 Montar `/var/run/docker.sock` dentro de un contenedor le da control total sobre el demonio de Docker. El contenedor puede crear, modificar o eliminar cualquier otro contenedor.
 
-### Falla 2: Imagenes Desactualizadas
+### Falla 2: Imágenes Desactualizadas
 
 Las imágenes contienen vulnerabilidades conocidas. Usar `node:latest` sin escanear es como instalar Windows 95 sin parches.
 
@@ -322,7 +322,7 @@ Cuando comprometo un contenedor, lo primero que hago es:
 1. Revisar que usuario soy (`whoami`).
 2. Revisar las capabilities (`cat /proc/1/status | grep Cap`).
 3. Revisar los dispositivos montados (`ls -la /dev`).
-4. Revisar los volumenes montados (`mount | grep /dev/sda`).
+4. Revisar los volúmenes montados (`mount | grep /dev/sda`).
 5. Revisar la red (`ip addr`, `cat /etc/hosts`).
 
 Si encuentro el socket de Docker montado, puedo ejecutar:
@@ -344,11 +344,11 @@ Las aplicaciones dentro de contenedores suelen tener:
 
 Si el contenedor tiene un rol IAM (en AWS), puedo acceder al endpoint de metadatos y obtener credenciales temporales.
 
-### Container Breakout via Kernel Exploit
+### Container Breakout vía Kernel Exploit
 
 Si el kernel del host es viejo, puedo buscar un CVE que permita escalar privilegios desde el contenedor al host.
 
-CVE-2022-0847 (Dirty Pipe): vulnerabilidad en el kernel de Linux que permitia a un proceso no privilegiado sobrescribir archivos de solo lectura. Funcionaba dentro de contenedores.
+CVE-2022-0847 (Dirty Pipe): vulnerabilidad en el kernel de Linux que permitía a un proceso no privilegiado sobrescribir archivos de solo lectura. Funcionaba dentro de contenedores.
 
 ### Ataque a la Red del Contenedor
 
@@ -360,12 +360,12 @@ esta herramienta solo detecta problemas, no los arregla. Pero saber que tienes e
 
 Docker Bench Security es una herramienta que audita la configuración de Docker contra el CIS Benchmark de Docker.
 
-### Categorías que Evalua
+### Categorías que Evalúa
 
 1. **Configuración del Host:** Permisos de archivos de Docker, uso de AppArmor/SElinux, restricciones del kernel.
 2. **Configuración del Daemon:** TLS habilitado, almacenamiento de logs, políticas de descarga.
-3. **Configuración de Contenedores:** Usuario no root, recursos limitados, filesystem read-only, capabilities minimas.
-4. **Imagenes:** Escaneo de vulnerabilidades, etiquetado correcto, sin capas innecesarias.
+3. **Configuración de Contenedores:** Usuario no root, recursos limitados, filesystem read-only, capabilities mínimas.
+4. **Imágenes:** Escaneo de vulnerabilidades, etiquetado correcto, sin capas innecesarias.
 5. **Red:** Uso de redes definidas por el usuario, no --net=host.
 6. **Seguridad del Host:** Secomp, AppArmor, SELinux.
 
@@ -450,13 +450,13 @@ DCT protege contra:
 
 ### El Escape de Contenedor en SUSE (2019)
 
-Un investigador descubrió una vulnerabilidad en runc (CVE-2019-5736) que afectaba a todos los contenedores que ejecutaban como root. La vulnerabilidad permitia a un atacante escapar del contenedor al host.
+Un investigador descubrió una vulnerabilidad en runc (CVE-2019-5736) que afectaba a todos los contenedores que ejecutaban como root. La vulnerabilidad permitía a un atacante escapar del contenedor al host.
 
-El fix requirio actualizar runc en todos los servidores Docker y Kubernetes del mundo. Las empresas que no actualizaron quedaron vulnerables.
+El fix requirió actualizar runc en todos los servidores Docker y Kubernetes del mundo. Las empresas que no actualizaron quedaron vulnerables.
 
-### Docker Hub y las Imagenes Maliciosas (2018-2023)
+### Docker Hub y las Imágenes Maliciosas (2018-2023)
 
-Docker Hub ha eliminado miles de imágenes maliciosas que contenian:
+Docker Hub ha eliminado miles de imágenes maliciosas que contenían:
 
 - Scripts de minería de criptomonedas.
 - Backdoors para acceso remoto.

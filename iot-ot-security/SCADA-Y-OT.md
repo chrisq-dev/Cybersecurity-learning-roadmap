@@ -15,7 +15,7 @@ Aquí no hackeamos bases de datos para robar números de tarjeta; aquí hackeamo
 
 ## 1. La Diferencia entre IT y OT
 
-aqui esta el primer concepto que cambia la forma de pensar:
+aquí esta el primer concepto que cambia la forma de pensar:
 
 * **IT (Information Technology):** Maneja **Datos**. Son tus servidores Windows, bases de datos SQL, la nube y los empleados usando Word.
 * **OT (Operational Technology):** Maneja **Física**. Son los sistemas que abren y cierran válvulas de presión en una refinería de petróleo, los brazos robóticos que arman autos, y el sistema que cambia la luz del semáforo a verde.
@@ -28,7 +28,7 @@ Si una planta de fundición de acero está operando a 2,000 grados Celsius, **no
 
 En OT, **el software no puede fallar, ni siquiera para protegerse de un hacker, porque las personas mueren**.
 
-**Por qué esto importa:** Todo lo que aprendiste en IT sobre "apagar y prender" no sirve aqui. En OT, si apagas el sistema, la gente muere. Así de simple.
+**Por qué esto importa:** Todo lo que aprendiste en IT sobre "apagar y prender" no sirve aquí. En OT, si apagas el sistema, la gente muere. Así de simple.
 
 ---
 
@@ -141,7 +141,7 @@ El modelo de referencia para segmentación de redes OT/ICS (ISA-99 / IEC 62443):
 | **Nivel 5** | Enterprise IT / Cloud | Red corporativa, internet | Servidores Exchange, SAP, ERP |
 | **Nivel 4** | Site Business Planning & Logistics | Planificación del sitio | Historiadores, servidores de producción |
 | **Nivel 3** | Site Operations & Control | Supervisión de toda la planta | SCADA, DCS, servidores de ingeniería |
-| **Nivel 2** | Area Supervisory Control | Control de área específica | HMI, alarmas, estaciones de ingeniería |
+| **Nivel 2** | Área Supervisory Control | Control de área específica | HMI, alarmas, estaciones de ingeniería |
 | **Nivel 1** | Basic Control | Control directo de proceso | PLCs, RTUs, DCS controllers, drives |
 | **Nivel 0** | Process / Field | Sensores y actuadores | Sensores de temperatura, válvulas, motores |
 
@@ -170,13 +170,13 @@ El modelo de referencia para segmentación de redes OT/ICS (ISA-99 / IEC 62443):
 | CVE-2015-5374 | 2015 | Schneider Electric Modicon M340/M580 | Bypass de autenticación, RCE en PLC |
 | CVE-2017-7921 | 2017 | Hikvision cameras (usadas en ICS) | Bypass de autenticación, backdoor account |
 | CVE-2018-16527 | 2018 | Emerson DeltaV DCS | DoS, RCE |
-| CVE-2021-22718 | 2021 | Schneider Electric EcoStruxure | RCE sin autenticación via SOAP |
+| CVE-2021-22718 | 2021 | Schneider Electric EcoStruxure | RCE sin autenticación vía SOAP |
 | CVE-2020-15369 | 2020 | Rockwell Automation FactoryTalk | Path traversal, RCE |
 | CVE-2021-22204 | 2021 | ExifTool (procesamiento de imágenes DICOM) | RCE en estaciones de ingeniería |
-| CVE-2023-3595 | 2023 | Múltiples PLCs Rockwell | RCE via PCCC protocol |
+| CVE-2023-3595 | 2023 | Múltiples PLCs Rockwell | RCE vía PCCC protocol |
 | CVE-2022-1161 | 2022 | CODESYS (runtime de PLC) | Stack buffer overflow, RCE |
 | CVE-2021-33044 | 2021 | Moxa (routers industriales) | RCE sin autenticación |
-| CVE-2019-10981 | 2019 | Beckhoff TwinCAT | RCE via ADS protocol |
+| CVE-2019-10981 | 2019 | Beckhoff TwinCAT | RCE vía ADS protocol |
 
 ### Herramientas de Evaluación OT
 
@@ -217,7 +217,7 @@ Cuando un país decide hackear a otro país con código? Pasa Stuxnet. el ejempl
 
 Stuxnet fue la primera "Arma Cibernética" de la historia. Retrasó el programa nuclear de Irán por años, usando únicamente código.
 
-Es como en las películas de espías cuando el agente secreto envenena al guardia, pero aqui todo pasó con unos y unos y ceros.
+Es como en las películas de espías cuando el agente secreto envenena al guardia, pero aquí todo pasó con unos y unos y ceros.
 
 ---
 
@@ -230,7 +230,7 @@ La familia de estándares **IEC 62443** define los requisitos de seguridad para 
 1. **Segmentación de red estricta** (Modelo Purdue).
 2. **DMZ OT/IT:** Zona intermedia con servidores de parcheo, antivirus, actualizaciones, replicación de datos.
 3. **Control de acceso basado en roles:** No compartir cuentas, MFA en accesos de ingeniería.
-4. **Bastion Hosts / Jump Boxes:** Único punto de acceso a la red OT, con logging completo de sesiones.
+4. **Bastión Hosts / Jump Boxes:** Único punto de acceso a la red OT, con logging completo de sesiones.
 5. **Monitorización continua:** IDS industrial (Nozomi, Dragos, Claroty, Microsoft Defender for IoT).
 6. **Gestión de parches en OT:**
    - Los parches no se aplican directamente (pueden romper el proceso).

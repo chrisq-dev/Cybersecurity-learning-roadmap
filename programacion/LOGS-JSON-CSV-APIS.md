@@ -8,7 +8,7 @@ updated: "2026-06-29"
 
 ## Objetivo de esta Guía
 
-aqui vamos a aprender la habilidad número uno de un analista de seguridad defensiva (Blue Team): Leer, filtrar y entender archivos de texto gigantescos de forma automática.
+aquí vamos a aprender la habilidad número uno de un analista de seguridad defensiva (Blue Team): Leer, filtrar y entender archivos de texto gigantescos de forma automática.
 
 Cuando trabajas en una empresa grande? Un Firewall de nivel empresarial no genera "un par" de alertas al día. Genera **20 millones de líneas de texto diarias** anotando cada paquete de red que entró o salió. Nadie en el mundo lee eso con sus propios ojos. Tu trabajo es escribir un script en Python que lea el archivo, separe la basura de la evidencia real, y te entregue un reporte de 5 líneas con las Direcciones IP de los verdaderos atacantes. A esto se le llama **Parseo (Parsing)**.
 

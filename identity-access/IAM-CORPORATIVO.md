@@ -40,7 +40,7 @@ En informática, esto se llama RBAC (Role-Based Access Control). El sistema sabe
 La autenticación se clasifica en tres factores:
 
 1. **Algo que sabes (Conocimiento):** Una contraseña, un PIN.
-2. **Algo que tienes (Posesion):** Un teléfono, un token físico, una tarjeta inteligente.
+2. **Algo que tienes (Posesión):** Un teléfono, un token físico, una tarjeta inteligente.
 3. **Algo que eres (Inherencia):** Huella dactilar, reconocimiento facial, iris.
 
 ### Autenticación de Un Solo Factor (SFA)
@@ -84,7 +84,7 @@ Ejemplo:
 - Consistente (todos los analistas tienen los mismos permisos).
 
 **Desventajas:**
-- Rigido (un analista senior puede necesitar más permisos que uno junior).
+- Rígido (un analista senior puede necesitar más permisos que uno junior).
 - Puede llevar a exceso de permisos (todos los analistas tienen los mismos permisos).
 
 ### ABAC (Attribute-Based Access Control)
@@ -110,7 +110,7 @@ Ejemplo de política ABAC:
 
 **Desventajas:**
 - Complejo de implementar.
-- Difícil de depurar (por qué me denego acceso?).
+- Difícil de depurar (por qué me denegó acceso?).
 
 ## Active Directory y Entra ID
 
@@ -141,9 +141,9 @@ Diferencias con AD on-premise:
 | Apps | Windows integrado | SaaS + SAML |
 | Ubicación | Servidor local | Global, Microsoft |
 
-### Sincronizacion AD - Entra ID
+### Sincronización AD - Entra ID
 
-Muchas empresas usan ambos (hibrido). Microsoft Entra Connect Sync sincroniza usuarios entre AD on-premise y Entra ID.
+Muchas empresas usan ambos (híbrido). Microsoft Entra Connect Sync sincroniza usuarios entre AD on-premise y Entra ID.
 
 Esto permite:
 - Un solo inicio de sesión para apps locales y cloud.
@@ -196,17 +196,17 @@ Si el atacante roba el Token de la sesión SSO:
 - Puede escalar a aplicaciones más sensibles.
 
 Protecciones:
-- Tokens de corta duracion (15-60 minutos).
-- Revocacion inmediata de sesiones.
+- Tokens de corta duración (15-60 minutos).
+- Revocación inmediata de sesiones.
 - Anomaly detection (ubicación inusual, dispositivo nuevo).
 
-## Federacion de Identidades
+## Federación de Identidades
 
-La federacion permite que usuarios de una organización accedan a recursos de otra organización sin crear cuentas separadas.
+La federación permite que usuarios de una organización accedan a recursos de otra organización sin crear cuentas separadas.
 
 ### Ejemplo Práctico
 
-Empresa A (tiene AD) se fusiona con Empresa B (tiene G Suite). En lugar de crear 500 cuentas nuevas en AD, establecen una federacion:
+Empresa A (tiene AD) se fusiona con Empresa B (tiene G Suite). En lugar de crear 500 cuentas nuevas en AD, establecen una federación:
 
 - Usuarios de B acceden a recursos de A usando sus credenciales de G Suite.
 - La confianza se establece mediante metadatos SAML intercambiados entre los dos IdPs.
@@ -214,7 +214,7 @@ Empresa A (tiene AD) se fusiona con Empresa B (tiene G Suite). En lugar de crear
 ### Confederation vs. SSO
 
 - **SSO:** Un solo IdP para múltiples aplicaciones dentro de la misma organización.
-- **Federacion:** Múltiples organizaciones confían entre si para autenticación.
+- **Federación:** Múltiples organizaciones confían entre si para autenticación.
 
 ## Provisioning y Deprovisioning
 
@@ -246,9 +246,9 @@ IGA es el marco de gobierno que asegura que las identidades sean gestionadas cor
 
 ### Procesos de IGA
 
-1. **Recertificacion de Accesos:** Periodicamente, los managers revisan que permisos tienen sus empleados y confirman que siguen siendo necesarios.
+1. **Recertificacion de Accesos:** Periódicamente, los gerentes revisan que permisos tienen sus empleados y confirman que siguen siendo necesarios.
 
-2. **Segregacion de Deberes (SoD):** Prevenir que una misma persona tenga permisos incompatibles (ej. crear una orden de compra y aprobarla).
+2. **Segregación de Deberes (SoD):** Prevenir que una misma persona tenga permisos incompatibles (ej. crear una orden de compra y aprobarla).
 
 3. **Auditoría de Accesos:** Reportes de quien tiene acceso a que, usado por auditores internos y externos.
 
@@ -273,7 +273,7 @@ El impacto potencial era enorme: los clientes de Okta confían en Okta para aute
 El ataque SolarWinds uso técnicas de suplantación de identidad para moverse lateralmente:
 
 1. Comprometieron una cuenta de administrador de SolarWinds.
-2. Usaron esa cuenta para firmar digitalmente el malware (parecia legítimo).
+2. Usaron esa cuenta para firmar digitalmente el malware (parecía legítimo).
 3. El malware se distribuyo como una actualización legítima.
 
 La lección: las identidades privilegiadas (como cuentas de firma de código) deben protegerse con extrema rigurosidad.
@@ -286,7 +286,7 @@ Un exempleado de una empresa de tecnología mantuvo acceso a los sistemas de la 
 - Revocar sus tokens de SSO.
 - Cambiar contraseñas de servicio compartidas.
 
-El exempleado accedio a la base de datos de clientes y vendio la información a un competidor.
+El exempleado accedió a la base de datos de clientes y vendió la información a un competidor.
 
 ## Modos de Falla
 
@@ -304,7 +304,7 @@ Varios administradores usando la misma cuenta (ej. "admin", "root"). No hay audi
 
 ### Falla 4: SSO sin Protección de Sesión
 
-Tokens de SSO sin expiracion o sin revocacion rápida.
+Tokens de SSO sin expiración o sin revocación rápida.
 
 ### Falla 5: Deprovisioning Lento
 
@@ -336,9 +336,9 @@ Si comprometo una computadora con un administrador logueado, puedo extraer:
 
 Con estos, puedo autenticarme como ese usuario sin conocer la contraseña.
 
-### Abuso de Confianza de Federacion
+### Abuso de Confianza de Federación
 
-Si la empresa confía en un IdP externo (federacion), y ese IdP es comprometido, puedo autenticarme como cualquier usuario de la empresa federada.
+Si la empresa confía en un IdP externo (federación), y ese IdP es comprometido, puedo autenticarme como cualquier usuario de la empresa federada.
 
 ## SAML vs OAuth vs OpenID Connect
 
@@ -395,7 +395,7 @@ El IdP líder del mercado. Ofrece SSO, MFA, y gestión del ciclo de vida de iden
 El IdP de Microsoft, integrado con Microsoft 365, Azure y aplicaciones empresariales.
 
 - Ventajas: Integración nativa con Microsoft ecosystem, incluido en licencias empresariales.
-- Desventajas: Complejidad en configuración de federacion.
+- Desventajas: Complejidad en configuración de federación.
 
 ### Google Workspace
 
@@ -410,7 +410,7 @@ IdP enfocado en PYMES. Ofrece funcionalidades similares a Okta a menor costo.
 
 ### PingIdentity
 
-IdP enfocado en empresas grandes y gobierno. Ofrece federacion avanzada y API security.
+IdP enfocado en empresas grandes y gobierno. Ofrece federación avanzada y API security.
 
 ## Modelo de Madurez de IAM
 
@@ -437,12 +437,12 @@ Las empresas pasan por etapas en su madurez de IAM:
 - SSO para todas las aplicaciones SaaS.
 - MFA para todos los usuarios.
 - Provisioning automatizado (SCIM).
-- Recertificaciones periodicas.
+- Recertificaciones periódicas.
 
 ### Nivel 4: Avanzado
 
 - IAM con ABAC + RBAC.
-- Federacion con socios y proveedores.
+- Federación con socios y proveedores.
 - Identity Analytics para detección de anomalías.
 - Zero Trust (verificar siempre, confiar nunca).
 - PAM para cuentas privilegiadas.
@@ -493,6 +493,6 @@ Responde estas preguntas para verificar si comprendes los conceptos:
 
 6. Que es el ataque Pass-the-Hash y como se relaciona con la captura de credenciales de administradores en Active Directory?
 
-7. Por qué la sincronizacion entre AD on-premise y Entra ID (Microsoft Entra Connect Sync) puede ser un vector de ataque? Que pasaría si un atacante compromete el servidor de sincronizacion?
+7. Por qué la sincronización entre AD on-premise y Entra ID (Microsoft Entra Connect Sync) puede ser un vector de ataque? Que pasaría si un atacante compromete el servidor de sincronización?
 
-8. Un empleado cambia de departamento (de Marketing a Finanzas) pero mantiene los permisos de ambos departamentos. Que problema de seguridad representa esto y como lo solucionaria un sistema IGA (Identity Governance)?
+8. Un empleado cambia de departamento (de Marketing a Finanzas) pero mantiene los permisos de ambos departamentos. Que problema de seguridad representa esto y como lo solucionaría un sistema IGA (Identity Governance)?

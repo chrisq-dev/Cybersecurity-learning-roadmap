@@ -6,9 +6,9 @@ updated: "2026-06-29"
 ---
 # Cómo Usar Esta Guía
 
-Esta guía esta diseñada como un recurso de referencia y estudio para quienes buscan aprender ciberseguridad de manera estructurada. Organiza el conocimiento en áreas tematicas que se complementan entre si, permitiendo un avance progresivo sin necesidad de seguir un orden rigido.
+Esta guía esta diseñada como un recurso de referencia y estudio para quienes buscan aprender ciberseguridad de manera estructurada. Organiza el conocimiento en áreas temáticas que se complementan entre si, permitiendo un avance progresivo sin necesidad de seguir un orden rígido.
 
-Cada sección incluye fundamentos teoricos, ejemplos prácticos, analogias explicativas y preguntas de autoevaluación para verificar la comprensión de los conceptos.
+Cada sección incluye fundamentos teóricos, ejemplos prácticos, analogías explicativas y preguntas de autoevaluación para verificar la comprensión de los conceptos.
 
 Esta guía no está pensada para que la termines rápido.
 

@@ -11,7 +11,7 @@ updated: "2026-06-29"
 
 Aprender de donde diablos saca un SOC Analyst la información para saber que un empleado a tres mil kilómetros de distancia abrió un virus de Excel en su computadora.
 
-El SIEM (el cerebro del cuartel general de seguridad) es una máquina vacía. Si los servidores y las laptops corporativas no le envían datos voluntariamente, el Analista de Seguridad estará ciego. A este envio continuo de información se le llama Telemetría.
+El SIEM (el cerebro del cuartel general de seguridad) es una máquina vacía. Si los servidores y las laptops corporativas no le envían datos voluntariamente, el Analista de Seguridad estará ciego. A este envío continuo de información se le llama Telemetría.
 
 Sin telemetría, el equipo de seguridad opera a ciegas. Un ataque puede durar meses sin ser detectado. Con telemetría de calidad, cada acción del atacante queda registrada y puede ser analizada.
 
@@ -51,7 +51,7 @@ Cada evento de Windows contiene:
 
 ### Los Eventos Críticos para Seguridad
 
-No todos los eventos son utiles. Los analistas de SOC se enfocan en unos pocos:
+No todos los eventos son útiles. Los analistas de SOC se enfocan en unos pocos:
 
 | Event ID | Descripción | Uso en Seguridad |
 |----------|-------------|------------------|
@@ -62,11 +62,11 @@ No todos los eventos son utiles. Los analistas de SOC se enfocan en unos pocos:
 | 4672 | Privilegios especiales asignados | Detectar escalada de privilegios |
 | 4688 | Creación de proceso | Detectar ejecución de malware |
 | 4698 | Tarea programada creada | Detectar persistencia |
-| 4719 | Política de auditoría modificada | Detectar evasion de Logs |
+| 4719 | Política de auditoría modificada | Detectar evasión de Logs |
 | 4720 | Usuario creado | Detectar cuentas sospechosas |
 | 4732 | Usuario agregado a grupo | Detectar escalada de privilegios |
 
-### La Limitacion: Retencion Local
+### La Limitación: Retención Local
 
 Los trata como si fueran notas de supermercado que tiras a la semana.
 
@@ -85,7 +85,7 @@ Si el equipo Forense llega a investigar un hackeo 3 meses después, la libreta y
 Microsoft provee una tecnología nativa llamada Windows Event Forwarding que permite:
 
 - Enviar eventos a un colector central (Windows Event Collector).
-- Usar autenticación Kerberos para asegurar la transmision.
+- Usar autenticación Kerberos para asegurar la transmisión.
 - Filtrar que eventos enviar (no enviar todo, solo los críticos).
 
 La configuración se hace mediante GPO y no requiere software adicional. Es la opción más usada en entornos corporativos.
@@ -213,7 +213,7 @@ Herramientas como Winlogbeat (de Elastic), NXLog o Splunk Universal Forwarder cu
 - Se instalan en cada endpoint.
 - Leen los canales de Event Log y Sysmon.
 - Envían los eventos al SIEM en tiempo real.
-- Comprimen y cifran la transmision.
+- Comprimen y cifran la transmisión.
 
 ### El Problema de la Latencia
 
@@ -221,13 +221,13 @@ En empresas globales con miles de endpoints, la cantidad de eventos puede satura
 
 - Transmitir en lotes cada 5-10 segundos en lugar de evento por evento.
 - Filtrar eventos de baja importancia en el endpoint antes de enviarlos.
-- Usar colas de mensajeria como Kafka para absorber picos.
+- Usar colas de mensajería como Kafka para absorber picos.
 
-## La Correlacion en el SIEM
+## La Correlación en el SIEM
 
 Cuando el SIEM recibe los eventos, el trabajo real comienza.
 
-### Reglas de Correlacion
+### Reglas de Correlación
 
 El analista escribe reglas que conectan eventos aparentemente aislados:
 
@@ -281,13 +281,13 @@ La lección: si la telemetría no sale del endpoint, el atacante la destruye cua
 
 Una empresa de tecnología tuvo un caso de Insider Threat: un empleado descargó 50,000 documentos de clientes antes de renunciar.
 
-Sysmon Event ID 11 (archivo creado) mostro que el empleado estaba copiando archivos a una USB. Sysmon Event ID 3 mostro que la USB era el único dispositivo de almacenamiento conectado fuera de horario.
+Sysmon Event ID 11 (archivo creado) mostró que el empleado estaba copiando archivos a una USB. Sysmon Event ID 3 mostró que la USB era el único dispositivo de almacenamiento conectado fuera de horario.
 
 El SIEM correlaciono: "usuario fuera de horario + copia masiva a dispositivo nuevo = posible fuga de datos".
 
 ### La Falla de Telemetría en el ataque a SolarWinds (2020)
 
-Durante el ataque SolarWinds, el malware Sunburst permanecio inactivo por 14 días. Muchas empresas tenían configuraciones de Sysmon que ignoraban eventos de procesos firmados por SolarWinds porque los consideraban "confiables".
+Durante el ataque SolarWinds, el malware Sunburst permaneció inactivo por 14 días. Muchas empresas tenían configuraciones de Sysmon que ignoraban eventos de procesos firmados por SolarWinds porque los consideraban "confiables".
 
 La lección: la lista blanca de procesos debe ser mínima. Incluso los procesos firmados pueden ser maliciosos si ejecutan código inyectado.
 
@@ -325,7 +325,7 @@ Como atacante, se que la telemetría es mi enemiga. Mis objetivos son:
 ### Evitar la Detección
 
 - No usar cmd.exe ni powershell.exe si puedo inyectar código directamente en memoria.
-- Usar herramientas que no generan Event ID 4688 (ej. ejecución directa via .NET).
+- Usar herramientas que no generan Event ID 4688 (ej. ejecución directa vía .NET).
 - Deshabilitar ETW (Event Tracing for Windows) desde el kernel si tengo privilegios.
 
 ### Borrar los Logs
@@ -362,7 +362,7 @@ Si logró inyectar código en `explorer.exe`, mis acciones se registraran como s
 Para que la conexión saliente no levante sospechas, uso Domain Fronting:
 
 - Me conecto a un CDN legítimo (CloudFront, Akamai).
-- El CDN reenvia el tráfico a mi servidor C2 real.
+- El CDN reenvía el tráfico a mi servidor C2 real.
 - Para el firewall y el EDR, el tráfico va a un dominio legítimo.
 
 ## ETW (Event Tracing for Windows): La Fuente de Datos del Kernel
@@ -378,14 +378,14 @@ ETW es el mecanismo de tracing del kernel de Windows. Es la fuente de datos que 
 
 ### Proveedores ETW Importantes para Seguridad
 
-- **Microsoft-Windows-Kernel-Process:** Eventos de creación y terminacion de procesos.
+- **Microsoft-Windows-Kernel-Process:** Eventos de creación y terminación de procesos.
 - **Microsoft-Windows-Kernel-Network:** Eventos de conexión de red.
 - **Microsoft-Windows-Kernel-File:** Eventos de operaciones con archivos.
 - **Microsoft-Windows-Kernel-Registry:** Eventos de acceso al registro.
 - **Microsoft-Windows-Security-Auditing:** Eventos de seguridad (logons, privilegios).
 - **Microsoft-Windows-PowerShell:** Eventos de ejecución de comandos PowerShell.
 
-### Evasion de ETW
+### Evasión de ETW
 
 Los atacantes avanzados saben que ETW es una fuente de telemetría crítica. Han desarrollado técnicas para deshabilitarlo:
 
@@ -404,7 +404,7 @@ PowerShell es la herramienta favorita de los atacantes (Living-off-the-Land). Mi
 
 Registra el contenido de los bloques de script de PowerShell, incluso si el script esta ofuscado u oculto.
 
-Configuración via GPO:
+Configuración vía GPO:
 
 ```xml
 <PowerShellLogging>
@@ -416,11 +416,11 @@ Esto genera el Event ID 4104 en los logs de Windows.
 
 ### Module Logging
 
-Registra cuando se cargan modulos de PowerShell y las llamadas a cmdlets específicos.
+Registra cuando se cargan módulos de PowerShell y las llamadas a cmdlets específicos.
 
 ### Transcription
 
-Crea una transcripcion completa de la sesión de PowerShell en un archivo de texto, incluyendo entrada y salida.
+Crea una transcripción completa de la sesión de PowerShell en un archivo de texto, incluyendo entrada y salida.
 
 ```xml
 <PowerShellLogging>
@@ -430,7 +430,7 @@ Crea una transcripcion completa de la sesión de PowerShell en un archivo de tex
 </PowerShellLogging>
 ```
 
-### Defensa Contra la Evasion de PowerShell
+### Defensa Contra la Evasión de PowerShell
 
 Los atacantes usan:
 - `-EncodedCommand` para ocultar comandos (fácil de detectar).
@@ -461,4 +461,4 @@ Responde estas preguntas para verificar si comprendes los conceptos:
 
 7. Un equipo de IT configura Windows Event Forwarding pero no activa la auditoría de línea de comandos en GPO. Que eventos críticos se pierden y por qué?
 
-8. Como usaria un atacante la técnica de "proc hollowing" para evitar que Sysmon registre la creación de un proceso malicioso?
+8. Como usaría un atacante la técnica de "proc hollowing" para evitar que Sysmon registre la creación de un proceso malicioso?

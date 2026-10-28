@@ -9,7 +9,7 @@ updated: "2026-06-29"
 
 Este roadmap no promete convertirte en experto en 90 días. Si alguien te vende eso, corre.
 
-La ciberseguridad toma tiempo. Lo que si puede hacer un plan de 90 días es darte estructura para construir base, crear habito y dejar de saltar entre temas sin dirección.
+La ciberseguridad toma tiempo. Lo que sí puede hacer un plan de 90 días es darte estructura para construir base, crear hábito y dejar de saltar entre temas sin dirección.
 
 La meta es terminar con:
 
@@ -17,7 +17,7 @@ La meta es terminar con:
 - Notas propias.
 - Laboratorios básicos.
 - Una ruta principal elegida.
-- Primeros proyectos o writeups.
+- Primeros proyectos o informes de práctica.
 - Mejor criterio para seguir estudiando.
 
 ## Como Usarlo
@@ -106,7 +106,7 @@ Puedes explicar por qué una app puede fallar aunque "funcione bien" para el usu
 
 ## Días 46 a 60: Blue Team y Logs
 
-Objetivo: empezar a pensar como defensor. Después aprendes a leerlos y cada línea cuenta una historia.
+Objetivo: empezar a pensar como defensor. Después aprendes a leerlos: cada línea cuenta una historia.
 
 Estudia:
 
@@ -129,7 +129,7 @@ Puedes explicar una alerta sencilla sin inventar conclusiones.
 
 ## Días 61 a 75: Ruta Principal
 
-Objetivo: elegir una dirección inicial. aqui muchos se traban porque quieren elegir la opción "correcta". no hay opción incorrecta, solo distintas.
+Objetivo: elegir una dirección inicial. aquí muchos se traban porque quieren elegir la opción "correcta". no hay opción incorrecta, solo distintas.
 
 Elige una:
 
@@ -147,7 +147,7 @@ No tienes que casarte con esa ruta para siempre. Solo necesitas una dirección p
 Práctica según tu ruta:
 
 - SOC: logs, SIEM, CyberDefenders.
-- OSINT: perfiles falsos, Google Dorks, Maltego.
+- OSINT: Google Dorks, Maltego y verificación de fuentes públicas.
 - AppSec / Mobile: PortSwigger, OWASP, APIs, Frida.
 - Cloud / IoT: IAM, AWS/Azure, SCADA/hardware hacking.
 - IA: Prompt Injection, bypass de filtros en LLMs.

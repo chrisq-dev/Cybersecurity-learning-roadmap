@@ -13,9 +13,9 @@ La seguridad de un servidor Linux no recae en antivirus ni en firewalls externos
 
 En Windows, cuando descargas un programa y le das doble clic, este intenta ejecutarse. En Linux, si descargas un programa destructivo e intentas ejecutarlo, el sistema te dirá: "Permiso denegado". No hay una ventana preguntando si quieres ejecutarlo con permisos de administrador. Simplemente no se ejecuta.
 
-Esa diferencia no es accidental. Responde a una filosofía de diseño donde el principio de mínimo privilegio esta integrado en el sistema operativo desde su base, no anadido como una capa posterior. Entender como funcionan los permisos en Linux no es una opción para un profesional de seguridad: es el requisito mínimo para poder defender un servidor.
+Esa diferencia no es accidental. Responde a una filosofía de diseño donde el principio de mínimo privilegio esta integrado en el sistema operativo desde su base, no añadido como una capa posterior. Entender como funcionan los permisos en Linux no es una opción para un profesional de seguridad: es el requisito mínimo para poder defender un servidor.
 
-Esta guía cubre usuarios, grupos, permisos clasicos (rwx), permisos especiales (SUID, SGID, sticky bit), sudo, y como cada uno de estos conceptos puede ser tanto una herramienta de defensa como un vector de ataque.
+Esta guía cubre usuarios, grupos, permisos clásicos (rwx), permisos especiales (SUID, SGID, sticky bit), sudo, y como cada uno de estos conceptos puede ser tanto una herramienta de defensa como un vector de ataque.
 
 ## La Analogía: El Edificio de Departamentos
 
@@ -69,7 +69,7 @@ Cada línea en `/etc/passwd` representa un usuario y tiene el formato:
 
 Campos:
 - `usuario`: Nombre de la cuenta.
-- `x`: Indica que la contraseña esta en `/etc/shadow`. Si este campo esta vacio, la cuenta no tiene contraseña.
+- `x`: Indica que la contraseña esta en `/etc/shadow`. Si este campo esta vacío, la cuenta no tiene contraseña.
 - `UID`: User ID. 0 es root, 1-999 son usuarios del sistema, 1000+ son usuarios humanos.
 - `GID`: Group ID del grupo primario del usuario.
 - `descripcion`: Nombre completo o descripción del usuario (GECOS field).
@@ -83,12 +83,12 @@ Contiene las contraseñas hasheadas y solo es legible por root. Formato:
 `usuario:$6$salt$hash:18345:0:99999:7:...`
 
 - `$6$`: Algoritmo de hash (SHA-512). `$2y$` es Blowfish, `$5$` es SHA-256.
-- `salt`: Valor aleatorio anadido al hash para prevenir ataques de tablas rainbow.
+- `salt`: Valor aleatorio añadido al hash para prevenir ataques de tablas rainbow.
 - `hash`: El hash de la contraseña.
 - `18345`: Días desde el 1 de enero de 1970 hasta el último cambio de contraseña.
-- `0`: Días minimos entre cambios de contraseña.
+- `0`: Días mínimos entre cambios de contraseña.
 - `99999`: Días máximos antes de que la contraseña expire.
-- `7`: Días de advertencia antes de la expiracion.
+- `7`: Días de advertencia antes de la expiración.
 
 Si ves `!` o `*` en el campo de hash, la cuenta esta bloqueada o deshabilitada.
 
@@ -147,11 +147,11 @@ La combinación `r-x` te permite listar y acceder, pero no crear ni borrar archi
 
 La combinación `rwx` te da control total sobre el directorio.
 
-### Notacion Simbolica vs Notacion Octal
+### Notación Simbólica vs Notación Octal
 
 Los permisos se pueden expresar de dos formas:
 
-**Simbolica:** `chmod u+x archivo.sh` añade ejecución al dueño. `chmod g-w archivo` quita escritura al grupo. `chmod o=r archivo` pone solo lectura para otros.
+**Simbólica:** `chmod u+x archivo.sh` añade ejecución al dueño. `chmod g-w archivo` quita escritura al grupo. `chmod o=r archivo` pone solo lectura para otros.
 
 **Octal (numérica):** `chmod 755 archivo` asigna rwxr-xr-x. Esta es la forma preferida por administradores experimentados porque es más precisa y menos propensa a errores.
 
@@ -209,9 +209,9 @@ Solo root puede cambiar el dueño de un archivo. Un usuario normal no puede "reg
 
 ### Escenario de Seguridad
 
-En servidores web, es común que los archivos estaticos (HTML, CSS, imágenes) sean propiedad de `www-data` para que el servidor web pueda leerlos, pero no de `www-data` para que si el servidor web es comprometido, el atacante no pueda modificar los archivos.
+En servidores web, es común que los archivos estáticos (HTML, CSS, imágenes) sean propiedad de `www-data` para que el servidor web pueda leerlos, pero no de `www-data` para que si el servidor web es comprometido, el atacante no pueda modificar los archivos.
 
-La configuración tipica:
+La configuración típica:
 - `/var/www/html/` es propiedad de `root:www-data`.
 - Los permisos son `755` para directorios y `644` para archivos.
 - El servidor web (www-data) puede leer pero no escribir.
@@ -327,7 +327,7 @@ Por eso el diseño de reglas de sudo debe ser específico y considerar las capac
 
 `usuario ALL=(root) /usr/bin/vim`: El usuario puede ejecutar vim como root. Vim permite ejecutar comandos del shell con `:!comando`. El atacante puede ejecutar cualquier cosa.
 
-`usuario ALL=(root) /bin/cat /var/log/auth.log`: Parece restrictivo, pero el usuario no necesita restriccion porque `cat` es de solo lectura. Sin embargo, si el atacante puede leer archivos privilegiados, podría leer `/etc/shadow`.
+`usuario ALL=(root) /bin/cat /var/log/auth.log`: Parece restrictivo, pero el usuario no necesita restricción porque `cat` es de solo lectura. Sin embargo, si el atacante puede leer archivos privilegiados, podría leer `/etc/shadow`.
 
 ## Modos de Falla Comunes
 
@@ -349,9 +349,9 @@ Por eso el diseño de reglas de sudo debe ser específico y considerar las capac
 
 ## Casos Reales
 
-**El Ataque a los Servidores de la Universidad de California (2021):** Un atacante comprometio un servidor Linux a través de una vulnerabilidad en un plugin de WordPress. El servidor web corria como `www-data`. El atacante encontró un binario SUID mal configurado en `/usr/local/bin` (un script de backup con SUID root) y lo uso para escalar privilegios a root inmediatamente. Una vez como root, instalo un rootkit que ocultaba su presencia durante 6 meses antes de ser detectado.
+**El Ataque a los Servidores de la Universidad de California (2021):** Un atacante comprometió un servidor Linux a través de una vulnerabilidad en un plugin de WordPress. El servidor web corría como `www-data`. El atacante encontró un binario SUID mal configurado en `/usr/local/bin` (un script de backup con SUID root) y lo uso para escalar privilegios a root inmediatamente. Una vez como root, instalo un rootkit que ocultaba su presencia durante 6 meses antes de ser detectado.
 
-**El Incidente de la Configuración de Docker (2019):** Un administrador anadio su usuario al grupo `docker` para no tener que usar `sudo` con cada comando de Docker. El grupo docker equivale a acceso root sin contraseña. Un proceso malicioso dentro de un contenedor pudo montar el sistema de archivos del host y leer `/etc/shadow`.
+**El Incidente de la Configuración de Docker (2019):** Un administrador añadió su usuario al grupo `docker` para no tener que usar `sudo` con cada comando de Docker. El grupo docker equivale a acceso root sin contraseña. Un proceso malicioso dentro de un contenedor pudo montar el sistema de archivos del host y leer `/etc/shadow`.
 
 **El Caso del Script SUID en un Entorno Compartido (2018):** En un servidor de desarrollo compartido, un desarrollador creo un script con SUID root para que su equipo pudiera reiniciar un servicio sin necesidad de contraseña. El script ejecutaba comandos basados en variables de entorno. Un atacante interno manipuló las variables de entorno para ejecutar comandos arbitrarios como root.
 
@@ -375,7 +375,7 @@ Un atacante que ha comprometido un servidor como usuario normal necesita escalar
 
 **Abuso de capabilities:** Linux capabilities permite asignar privilegios específicos sin SUID. Si un binario tiene la capacidad `CAP_DAC_OVERRIDE`, puede leer cualquier archivo del sistema.
 
-**Escalada via NFS:** Si el sistema exporta directorios via NFS con opciones inseguras (como `no_root_squash`), un atacante con acceso a un cliente NFS puede crear archivos con UID 0 (root) que, al ser ejecutados en el servidor, corren como root.
+**Escalada vía NFS:** Si el sistema exporta directorios vía NFS con opciones inseguras (como `no_root_squash`), un atacante con acceso a un cliente NFS puede crear archivos con UID 0 (root) que, al ser ejecutados en el servidor, corren como root.
 
 ## Autoevaluación
 
@@ -383,13 +383,13 @@ Un atacante que ha comprometido un servidor como usuario normal necesita escalar
 
 2. Un desarrollador te pide ayuda: "Mi aplicación web necesita escribir archivos en `/var/www/app/uploads/`. Le puse permisos 777 al directorio para que funcione, pero se que esta mal. Que configuración de permisos y dueño debería tener realmente?" Diseña la solución paso a paso.
 
-3. Encuentras en el servidor el binario `/usr/local/bin/custom-backup` con permisos `-rwsr-xr-x 1 root root 24500 jun 10 09:00`. Tu tarea es determinar si esto representa un riesgo. Que comandos ejecutarias para investigar? Que factores determinan si el SUID es peligroso aqui?
+3. Encuentras en el servidor el binario `/usr/local/bin/custom-backup` con permisos `-rwsr-xr-x 1 root root 24500 jun 10 09:00`. Tu tarea es determinar si esto representa un riesgo. Que comandos ejecutarías para investigar? Que factores determinan si el SUID es peligroso aquí?
 
 4. Explica la diferencia entre ejecutar `sudo /usr/bin/vim /etc/hosts` y tener el binario vim con SUID root. Cual es más seguro y por qué? Que implicaciones tiene cada uno para la auditoría?
 
-5. Durante una investigación forense, encuentras que un atacante ejecutó `chmod 777 /etc/shadow`. Explica que logró el atacante con esto y como podrías detectar este cambio. Que monitoreo preventivo recomendarias para detectar cambios similares?
+5. Durante una investigación forense, encuentras que un atacante ejecutó `chmod 777 /etc/shadow`. Explica que logró el atacante con esto y como podrías detectar este cambio. Que monitoreo preventivo recomendarías para detectar cambios similares?
 
-6. Tu servidor tiene la particion `/tmp` montada sin la opción `nosuid`. Un usuario normal crea un binario SUID en `/tmp`. Explica por qué esto es peligroso y como lo mitigarias. Que comando usarías para verificar si la particion tiene la opción correcta?
+6. Tu servidor tiene la partición `/tmp` montada sin la opción `nosuid`. Un usuario normal crea un binario SUID en `/tmp`. Explica por qué esto es peligroso y como lo mitigarías. Que comando usarías para verificar si la partición tiene la opción correcta?
 
 7. Un administrador dice: "No necesito preocuparme por los permisos porque configuró sudo para que los usuarios solo puedan ejecutar `less` como root." Explica por qué esta configuración es insegura y como un atacante podría escapar de `less` para obtener un shell root.
 

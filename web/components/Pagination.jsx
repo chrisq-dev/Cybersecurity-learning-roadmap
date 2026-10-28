@@ -10,7 +10,7 @@ export default function Pagination({ prevPage, nextPage }) {
           <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
             ← Anterior
           </span>
-          <h4 style={{ margin: 0, color: 'var(--text-main)', fontSize: '1.1rem' }}>{prevPage.title}</h4>
+          <p style={{ margin: 0, color: 'var(--text-main)', fontSize: '1.1rem' }}>{prevPage.title}</p>
         </Link>
       ) : <div />}
 
@@ -19,7 +19,7 @@ export default function Pagination({ prevPage, nextPage }) {
           <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
             Siguiente →
           </span>
-          <h4 style={{ margin: 0, color: 'var(--text-main)', fontSize: '1.1rem' }}>{nextPage.title}</h4>
+          <p style={{ margin: 0, color: 'var(--text-main)', fontSize: '1.1rem' }}>{nextPage.title}</p>
         </Link>
       ) : <div />}
     </div>

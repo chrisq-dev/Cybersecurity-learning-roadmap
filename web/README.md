@@ -2,7 +2,7 @@
 
 Aplicación Next.js para leer las guías del repositorio como una plataforma web en español.
 
-La app lee los archivos Markdown del directorio padre, genera rutas estaticas y permite navegar las guías como una plataforma local de estudio.
+La app lee los archivos Markdown del directorio padre, genera rutas estáticas y permite navegar las guías como una plataforma local de estudio.
 
 ## Requisitos
 
@@ -13,6 +13,7 @@ La app lee los archivos Markdown del directorio padre, genera rutas estaticas y 
 ## Desarrollo
 
 ```bash
+npm ci
 npm run dev
 ```
 
@@ -35,24 +36,28 @@ npm run dev
 npm run build
 npm run start
 npm run lint
+npm run content:check
+npm run check
 ```
 
 ## Cómo Funciona
 
 - `lib/markdown.js` lee los Markdown del repositorio.
-- El indice público está curado: la web muestra guías de estudio, no documentos internos del repo.
-- `app/page.js` genera la portada con categorías y buscador.
+- El índice público está curado: la web muestra guías de estudio, no documentos internos del repo.
+- `app/page.js` genera la portada y el buscador que envía a `/guias`.
+- `app/guias/page.js` muestra el catálogo agrupado en 10 áreas.
+- `app/api/search/route.js` expone la búsqueda server-side.
 - `app/[...slug]/page.js` renderiza cada lectura.
 - `app/api/health/route.js` expone healthcheck para Docker/Easypanel.
 - `components/MarkdownRenderer.jsx` convierte Markdown a HTML.
 - `components/TableOfContents.jsx` genera la tabla de contenido.
-- `components/CategoryList.jsx` maneja busqueda, filtros y rutas por perfil.
+- `components/GuideExplorer.jsx` maneja búsqueda, filtros y agrupación por área.
 
 ## Convenciones de Contenido
 
 Para que una lectura funcione bien en la web:
 
-- Usa un solo `# Titulo` principal;
+- Usa un solo `# Título` principal;
 - Separa secciones con `##`;
 - Usa `###` para subsecciones;
 - Agrega bloques de código cuando haya comandos;
@@ -62,23 +67,22 @@ Para que una lectura funcione bien en la web:
 
 ## Contenido Visible
 
-La web debe mostrar recursos para alumnos en orden de estudio. La navegación principal debe estar centrada en guías, labs, playbooks, cheatsheets y recursos profesionales útiles.
+La web debe mostrar recursos para alumnos en orden de estudio. La navegación principal debe estar centrada en guías, rutas, playbooks, cheatsheets y recursos profesionales útiles.
 
 ## Navegación Actual
 
 La web incluye:
 
-- Busqueda por titulo y categoría;
-- Busqueda por contenido;
-- Filtros por nivel;
-- Rutas sugeridas por perfil;
+- Búsqueda por título y contenido con índice en el servidor;
+- Catálogo `/guias` con filtros por nivel, tipo y área;
+- Página `/rutas` con perfiles y secuencia lineal;
 - Navegación por rutas;
 - Tabla de contenido;
 - Enlaces anterior/siguiente entre guías.
 
 ## Nota
 
-La app asume que se ejecuta desde `web/` y que los contenidos Markdown viven en el directorio padre.
+La app asume que se ejecuta desde `web/` y que los contenidos Markdown viven en el directorio padre. La búsqueda usa un índice en memoria y no envía el corpus completo al navegador. El Dockerfile copia las categorías publicadas y `assets/`.
 
 ## Deploy con Docker en Easypanel
 
@@ -95,8 +99,8 @@ Configuración sugerida:
 Prueba local:
 
 ```bash
-docker build -t cibersecurity-web.
-docker run --rm -p 3000:3000 cibersecurity-web
+docker build -t cybersecurity-web .
+docker run --rm -p 3000:3000 cybersecurity-web
 ```
 
 Prueba con Docker Compose desde la raíz:
@@ -107,7 +111,11 @@ docker compose up --build
 
 ## Nota Sobre Build
 
-`next build` puede mostrar un warning de Turbopack/NFT porque la app lee Markdown e imágenes desde el directorio padre del proyecto `web/`. Es una decisión intencional para mantener el contenido como archivos Markdown normales en la raíz del repositorio. El build sigue generando las páginas correctamente.
+La app lee Markdown e imágenes desde el directorio padre de `web/`. Las llamadas de filesystem usan `turbopackIgnore` para evitar que el build trace todo el repositorio; por eso el Dockerfile copia explícitamente las categorías publicadas y `assets/`. Si despliegas fuera de Docker, asegúrate de incluir esos archivos en el runtime.
+
+## Contenido público
+
+Para que una carpeta nueva aparezca en la web, además del Markdown debe registrarse en `lib/markdown.js` (`PAGE_ORDER` y `STUDY_ORDER`), `lib/officialSources.mjs`, `lib/areas.js`, el `Dockerfile` y `INICIO-AQUI.md`. El CI valida la cobertura con `npm run content:check`.
 
 ## Criterio de Calidad
 

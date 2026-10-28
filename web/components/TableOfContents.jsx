@@ -33,9 +33,9 @@ export default function TableOfContents({ content }) {
       borderLeft: '1px solid var(--border-color)',
       minWidth: '250px'
     }}>
-      <h4 style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-dark)', marginBottom: '1rem' }}>
+      <p style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-dark)', margin: '0 0 1rem' }}>
         En esta página
-      </h4>
+      </p>
       <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
         {headings.map((h, i) => (
           <li key={i} style={{ 

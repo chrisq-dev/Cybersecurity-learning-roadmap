@@ -135,7 +135,7 @@ El cifrado de flujo moderno más importante es **ChaCha20**, diseñado por Danie
 
 La diferencia clave: los cifrados de bloque como AES son excelentes con aceleración hardware (presente en casi todos los CPUs modernos), mientras que ChaCha20 brilla en software puro, lo que lo hace ideal para dispositivos móviles más antiguos o sistemas embedded sin soporte AES-NI.
 
-### One-Time Pad: El Único Cifrado Perfecto (Pero Impractico)
+### One-Time Pad: El Único Cifrado Perfecto (Pero Impráctico)
 
 Existe un cifrado que ofrece **seguridad perfecta** en sentido matemático —el **One-Time Pad (OTP)**. La idea es simple: tomas un mensaje y lo combinas con una llave aleatoria de exactamente la misma longitud mediante XOR. Si la llave es verdaderamente aleatoria, se usa una sola vez, y se mantiene secreta, el cifrado resultante es matemáticamente inquebrantable —incluso con una computadora cuántica infinita.
 
@@ -330,7 +330,7 @@ Hoy RC4 está completamente prohibido en los estándares TLS. Pero su larga vida
 
 ## La Visión del Hacker
 
-Sabes cuál es el mejor truco de un hacker? No es romper el cifrado. Es hacer que el otro cambie al cifrado más choto que existe sin que se dé cuenta. aqui te cuento cómo.
+Sabes cuál es el mejor truco de un hacker? No es romper el cifrado. Es hacer que el otro cambie al cifrado más choto que existe sin que se dé cuenta. aquí te cuento cómo.
 
 ### Downgrade Attacks: No Necesitas Romper AES
 
@@ -410,7 +410,7 @@ Por eso hay un esfuerzo masivo del NIST, iniciado en 2016, para estandarizar **c
 
 6. En el handshake TLS, el servidor y el cliente acuerdan una llave simétrica usando ECDHE, y luego usan AES-GCM para el resto de la comunicación. Por qué no usan simplemente RSA para todo el tráfico? Explica el problema de rendimiento y la diferencia de escalabilidad.
 
-7. Una computadora cuantica con suficiente poder de cómputo podría romper RSA-2048 en horas usando el algoritmo de Shor. Por qué AES-256 no estaria igualmente vulnerable a la misma máquina? Describe la diferencia entre los algoritmos de Shor y Grover y sus respectivos impactos en cifrado simétrico y asimétrico.
+7. Una computadora cuántica con suficiente poder de cómputo podría romper RSA-2048 en horas usando el algoritmo de Shor. Por qué AES-256 no estaría igualmente vulnerable a la misma máquina? Describe la diferencia entre los algoritmos de Shor y Grover y sus respectivos impactos en cifrado simétrico y asimétrico.
 
 8. Una empresa implementa su propio sistema de cifrado combinando AES-256-CBC con SHA-256 para la integridad de los mensajes. Identifica al menos dos problemas de seguridad potenciales en esta implementación que un atacante podría explotar. Como se solucionan estos problemas en protocolos modernos?
 

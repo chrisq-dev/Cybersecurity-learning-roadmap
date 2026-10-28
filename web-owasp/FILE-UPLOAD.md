@@ -42,7 +42,7 @@ El hacker crea un archivo maligno llamado `shell.php` con el siguiente contenido
 <?php system($_GET['cmd']); ?>
 ```
 
-Esta línea le dice al servidor: "Toma lo que venga en el parámetro `cmd` de la URL y ejecutalo como un comando del sistema operativo."
+Esta línea le dice al servidor: "Toma lo que venga en el parámetro `cmd` de la URL y ejecútalo como un comando del sistema operativo."
 
 ### Paso 1: Evadir las Defensas del Frontend
 
@@ -85,7 +85,7 @@ Son archivos de script (PHP, ASP, JSP, Python, Perl) que permiten ejecutar coman
 Ejemplos famosos de Web Shells:
 - **b374k**: Web Shell PHP con editor de archivos, consola, y explorador de base de datos.
 - **c99shell**: Otra Web Shell PHP muy conocida.
-- **Weevely**: Herramienta de generación de Web Shells con capacidades de evasion.
+- **Weevely**: Herramienta de generación de Web Shells con capacidades de evasión.
 
 ### Archivos con Contenido Maligno
 
@@ -147,7 +147,7 @@ def es_imagen_valida(contenido):
     return False
 ```
 
-**Limitacion:** El atacante puede crear un archivo polyglot que tenga Magic Bytes de imagen pero también contenga código PHP. Por eso necesitas capas adicionales.
+**Limitación:** El atacante puede crear un archivo polyglot que tenga Magic Bytes de imagen pero también contenga código PHP. Por eso necesitas capas adicionales.
 
 ### Capa 2: Validación de Extensión
 
@@ -172,14 +172,14 @@ Esto previene:
 
 Los archivos subidos no deben estar en el mismo directorio que el código de la aplicación web.
 
-**Mal:** `/var/www/html/uploads/shell.php` (accesible via `https://sitio.com/uploads/shell.php`)
+**Mal:** `/var/www/html/uploads/shell.php` (accesible vía `https://sitio.com/uploads/shell.php`)
 **Bien:** `/var/data/uploads/a1b2c3d4.jpg` (no accesible directamente por URL)
 
 Si los archivos no están en el webroot, incluso si el atacante sube un PHP, no puede ejecutarlo visitando una URL.
 
 ### Capa 5: Servir Archivos a través de un Proxy (sin ejecución)
 
-Cuando el usuario necesita ver o descargar el archivo, sirvelo a través de un script intermediario que lee el archivo y lo entrega como descarga, sin ejecutar nada.
+Cuando el usuario necesita ver o descargar el archivo, sírvelo a través de un script intermediario que lee el archivo y lo entrega como descarga, sin ejecutar nada.
 
 ```python
 @app.route('/descargar/<id_archivo>')
@@ -239,9 +239,9 @@ Si el archivo contiene malware conocido, el antivirus lo detecta antes de que ll
 
 **Caso RapidShare (2012):** Un atacante subió un archivo PHP a RapidShare, un servicio de almacenamiento de archivos. El servidor no deshabilitaba la ejecución en el directorio de subida. El atacante ejecutó comandos en el servidor y robo la base de datos completa de usuarios.
 
-**Caso Webmin (2019):** Una vulnerabilidad de subida de archivos en Webmin (una herramienta de administración de servidores) permitió a atacantes ejecutar código remoto sin autenticación. La vulnerabilidad (CVE-2019-15107) permitia subir un archivo malicioso que se ejecutaba en el servidor.
+**Caso Webmin (2019):** Una vulnerabilidad de subida de archivos en Webmin (una herramienta de administración de servidores) permitió a atacantes ejecutar código remoto sin autenticación. La vulnerabilidad (CVE-2019-15107) permitía subir un archivo malicioso que se ejecutaba en el servidor.
 
-**Caso WordPress (multiple):** Los plugins de WordPress para subir archivos (contact forms, galerias, etc.) han sido vectores de ataque recurrentes. En 2020, un plugin de contacto popular tenía una vulnerabilidad que permitia subir archivos PHP sin restricciones.
+**Caso WordPress (múltiple):** Los plugins de WordPress para subir archivos (contact forms, galerías, etc.) han sido vectores de ataque recurrentes. En 2020, un plugin de contacto popular tenía una vulnerabilidad que permitía subir archivos PHP sin restricciones.
 
 ## Modos de Falla con Subida de Archivos
 
@@ -275,4 +275,4 @@ Si el archivo contiene malware conocido, el antivirus lo detecta antes de que ll
 
 7. Un equipo de desarrollo almacena los archivos subidos en un bucket S3 de AWS y usa URLs firmadas (pre-signed URLs) para servir los archivos. Que ventajas de seguridad tiene esta arquitectura comparada con almacenar los archivos en el servidor web?
 
-8. Durante una auditoría, encuentras que un sitio permite la subida de archivos pero no tiene límite de tamaño. Un atacante decide subir un archivo ZIP de 1KB que al descomprimirse ocupa 10GB. Como se llama este ataque y como lo mitigarias?
+8. Durante una auditoría, encuentras que un sitio permite la subida de archivos pero no tiene límite de tamaño. Un atacante decide subir un archivo ZIP de 1KB que al descomprimirse ocupa 10GB. Como se llama este ataque y como lo mitigarías?

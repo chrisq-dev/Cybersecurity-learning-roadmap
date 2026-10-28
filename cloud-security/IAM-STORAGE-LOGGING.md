@@ -36,7 +36,7 @@ Para esto existe el Almacenamiento en la Nube (AWS S3, Azure Blob, GCP Cloud Sto
 - No hay sistema operativo, no hay Linux, no hay Windows. Simplemente subes el archivo y el proveedor te da una URL.
 - Escalabilidad prácticamente infinita.
 - Datos replicados en múltiples zonas de disponibilidad.
-- Acceso via API REST (HTTP/HTTPS).
+- Acceso vía API REST (HTTP/HTTPS).
 
 ### El Modelo de Objetos
 
@@ -174,7 +174,7 @@ La regla de oro del Blue Team: el Principio del Menor Privilegio.
 
 4. **Eliminar Keys no Usadas:** Auditorías regulares para identificar y eliminar keys que no se usan.
 
-5. **Usar Roles en lugar de Keys para aplicaciones:** Las aplicaciones en EC2 deben usar Roles de Instancia (credenciales temporales) en lugar de Access Keys estaticas.
+5. **Usar Roles en lugar de Keys para aplicaciones:** Las aplicaciones en EC2 deben usar Roles de Instancia (credenciales temporales) en lugar de Access Keys estáticas.
 
 6. **Habilitar MFA:** Para todos los usuarios con permisos administrativos.
 
@@ -212,7 +212,7 @@ Cada evento contiene:
 
 En un servidor físico (On-Premise) con Linux, si un hacker se vuelve Administrador (Root), puede entrar a la carpeta de Logs (`/var/log`) y borrar el archivo de texto para limpiar sus huellas.
 
-En AWS, el hacker NO PUEDE borrar el registro de CloudTrail. CloudTrail esta protegido directamente por Amazon a un nivel tan profundo que incluso si el hacker roba la cuenta del CEO de tu empresa, la cámara ya grabó y envio el video a una bóveda blindada antes de que el hacker tenga tiempo de darse cuenta.
+En AWS, el hacker NO PUEDE borrar el registro de CloudTrail. CloudTrail esta protegido directamente por Amazon a un nivel tan profundo que incluso si el hacker roba la cuenta del CEO de tu empresa, la cámara ya grabó y envío el video a una bóveda blindada antes de que el hacker tenga tiempo de darse cuenta.
 
 Esto es posible porque:
 
@@ -225,11 +225,11 @@ Esto es posible porque:
 
 1. **Trail de Lectura/Escritura:** Registra todas las acciones de lectura y escritura. Genera muchos logs pero es más completo.
 
-2. **Trail de Solo Lectura:** Registra solo las acciones de lectura (Get, List, Describe). Utiles para auditoría.
+2. **Trail de Solo Lectura:** Registra solo las acciones de lectura (Get, List, Describe). Útiles para auditoría.
 
 3. **Trail de Solo Escritura:** Registra solo las acciones de escritura (Create, Delete, Update, Put). Es el mínimo recomendado para seguridad.
 
-4. **Trail por Region vs Global:** Los trails pueden cubrir todas las regiones o solo una.
+4. **Trail por Región vs Global:** Los trails pueden cubrir todas las regiones o solo una.
 
 ### Eventos de Seguridad Críticos en CloudTrail
 
@@ -262,13 +262,13 @@ La funcionalidad es la misma: registrar cada acción en la nube para permitir la
 
 3. **Latencia:** Los logs pueden tardar hasta 15 minutos en estar disponibles (tiempo de propagación).
 
-4. **Vacio de Cobertura:** CloudTrail no registra eventos de red (solo de API). Para logs de red se necesita VPC Flow Logs.
+4. **Vacío de Cobertura:** CloudTrail no registra eventos de red (solo de API). Para logs de red se necesita VPC Flow Logs.
 
 ## Casos Reales
 
 ### Capital One (2019)
 
-La atacante (Paige Thompson) exploto una vulnerabilidad en el WAF de Capital One para obtener credenciales temporales de una instancia EC2. Con esas credenciales, accedio a los buckets S3 de Capital One.
+La atacante (Paige Thompson) exploto una vulnerabilidad en el WAF de Capital One para obtener credenciales temporales de una instancia EC2. Con esas credenciales, accedió a los buckets S3 de Capital One.
 
 CloudTrail registro cada acción que realizo la atacante. El análisis forense posterior permitió reconstruir todo el ataque.
 
@@ -380,14 +380,14 @@ Amazon GuardDuty es un servicio de detección de amenazas que analiza los logs d
 
 **Hallazgos de Compromiso de Instancia:**
 
-- `Behavior:EC2/NetworkPortUnusual`: Instancia conectandose a puertos inusuales.
+- `Behavior:EC2/NetworkPortUnusual`: Instancia conectándose a puertos inusuales.
 - `CryptoCurrency:EC2/BitcoinTool.B`: Instancia minando criptomonedas.
-- `Backdoor:EC2/C&CActivity.B`: Instancia comunicandose con un servidor C2.
+- `Backdoor:EC2/C&CActivity.B`: Instancia comunicándose con un servidor C2.
 
 **Hallazgos de Compromiso de Cuenta:**
 
 - `Persistence:IAMUser/UserPermissions`: Modificación de políticas IAM.
-- `Stealth:IAMUser/CloudTrailLoggingDisabled`: Desactivacion de CloudTrail.
+- `Stealth:IAMUser/CloudTrailLoggingDisabled`: Desactivación de CloudTrail.
 - `UnauthorizedAccess:IAMUser/ConsoleLoginSuccess`: Inicio de sesión desde ubicación inusual.
 
 ### Automatización con GuardDuty + Lambda
@@ -443,7 +443,7 @@ Tanto AWS como Azure ofrecen servicios de evaluación continua de configuracione
 
 ### AWS Config
 
-AWS Config evalua los recursos de AWS contra reglas predefinidas o personalizadas:
+AWS Config evalúa los recursos de AWS contra reglas predefinidas o personalizadas:
 
 - `s3-bucket-public-read-prohibited`: Detecta buckets con lectura pública.
 - `ec2-volume-inuse-check`: Detecta discos EBS no utilizados.

@@ -21,7 +21,7 @@ La regla más importante de HTTP es que es un protocolo "Stateless" (Sin Memoria
 
 Le pides al mensajero una hamburguesa. El mensajero va, pide la hamburguesa y te la trae. Dos segundos después, le pides salsa de tomate. El mensajero te mirará confundido y te dirá: "Salsa para que? Quien eres tu? No recuerdo haberte traído nada".
 
-Para solucionar esta amnesia, los programadores inventaron las **Cookies**. Cada vez que inicias sesión, el servidor le pega un post-it (Cookie) al navegador que dice "Cliente Válido #845". De ahora en adelante, cada vez que el navegador le pida algo al servidor, reenviara el post-it. El servidor leerá el post-it y dirá: "Ah, tu eres el #845, aqui esta tu salsa".
+Para solucionar esta amnesia, los programadores inventaron las **Cookies**. Cada vez que inicias sesión, el servidor le pega un post-it (Cookie) al navegador que dice "Cliente Válido #845". De ahora en adelante, cada vez que el navegador le pida algo al servidor, reenviara el post-it. El servidor leerá el post-it y dirá: "Ah, tu eres el #845, aquí esta tu salsa".
 
 Este mecanismo parece simple pero tiene implicaciones profundas de seguridad. La Cookie es literalmente la única prueba de identidad que el servidor tiene. Si alguien más obtiene esa Cookie, el servidor no tiene forma de distinguir entre el legítimo usuario y el atacante.
 
@@ -39,7 +39,7 @@ Las formas en que un hacker puede robar tu Cookie incluyen:
 
 **Ingeniería Social:** Llamarte y hacerte instalar un "plugin de seguridad" que en realidad es un troyano que roba cookies.
 
-La defensa contra el robo de sesión es una combinación de: HTTPS obligatorio, bandera `HttpOnly` en las cookies, bandera `Secure`, bandera `SameSite`, y regeneracion del ID de sesión después del login.
+La defensa contra el robo de sesión es una combinación de: HTTPS obligatorio, bandera `HttpOnly` en las cookies, bandera `Secure`, bandera `SameSite`, y regeneración del ID de sesión después del login.
 
 ## La Anatomía de una Petición HTTP
 
@@ -77,7 +77,7 @@ Los headers de respuesta HTTP son la primera línea de defensa que un servidor p
 
 `Strict-Transport-Security: max-age=31536000; includeSubDomains` -- Obliga al navegador a usar siempre HTTPS para ese dominio. Previene ataques de downgrade a HTTP.
 
-`Content-Security-Policy: default-src 'self'` -- Define que fuentes de contenido están permitidas. Previene XSS al bloquear la ejecución de scripts inline o de origenes no autorizados.
+`Content-Security-Policy: default-src 'self'` -- Define que fuentes de contenido están permitidas. Previene XSS al bloquear la ejecución de scripts inline o de orígenes no autorizados.
 
 `X-Content-Type-Options: nosniff` -- Evita que el navegador adivine el tipo MIME de un recurso, previniendo ataques de MIME sniffing.
 
@@ -138,7 +138,7 @@ Pregunta al servidor que métodos HTTP acepta para una ruta específica. Los ata
 
 GET, PUT, DELETE, HEAD y OPTIONS son **idempotentes**: hacer la misma petición 1 vez o 100 veces produce el mismo resultado en el servidor. POST, PATCH y CONNECT no lo son.
 
-Esta distinción importa para la seguridad porque los ataques de retransmision (replay attacks) pueden repetir peticiones idempotentes sin cambios, mientras que las no-idempotentes son más difíciles de retransmitir sin causar efectos visibles.
+Esta distinción importa para la seguridad porque los ataques de retransmisión (replay attacks) pueden repetir peticiones idempotentes sin cambios, mientras que las no-idempotentes son más difíciles de retransmitir sin causar efectos visibles.
 
 ## Los Códigos de Estado
 
@@ -146,7 +146,7 @@ Cuando el mensajero regresa del servidor, siempre regresa con un número de 3 d�
 
 ### 1xx: Informativo
 
-El servidor recibio la petición y continua procesandola. Raramente visto en la práctica.
+El servidor recibió la petición y continua procesandola. Raramente visto en la práctica.
 
 ### 2xx: Éxito
 
@@ -158,7 +158,7 @@ El servidor recibio la petición y continua procesandola. Raramente visto en la 
 
 ### 3xx: Redirección
 
-**301 (Moved Permanently):** El recurso se movio permanentemente a una nueva URL. Los navegadores y buscadores actualizan automáticamente la dirección.
+**301 (Moved Permanently):** El recurso se movió permanentemente a una nueva URL. Los navegadores y buscadores actualizan automáticamente la dirección.
 
 **302 (Found):** Redirección temporal. El recurso esta temporalmente en otra URL.
 
@@ -172,7 +172,7 @@ El servidor recibio la petición y continua procesandola. Raramente visto en la 
 
 **401 (Unauthorized):** No tienes credenciales para acceder a este recurso. No has iniciado sesión o tu sesión expiró.
 
-**403 (Forbidden):** El servidor te reconocio pero no tienes permiso para acceder al recurso. Diferencia clave con 401: en 403 el servidor sabe quien eres pero tu rol no tiene privilegios suficientes.
+**403 (Forbidden):** El servidor te reconoció pero no tienes permiso para acceder al recurso. Diferencia clave con 401: en 403 el servidor sabe quien eres pero tu rol no tiene privilegios suficientes.
 
 **404 (Not Found):** El recurso solicitado no existe. Pero ojo: muchos servidores devuelven 404 en lugar de 403 cuando no quieren revelar la existencia de un recurso. Esto se llama "Security by Obscurity" y es debatible si es efectivo.
 
@@ -186,7 +186,7 @@ El servidor recibio la petición y continua procesandola. Raramente visto en la 
 
 **500 (Internal Server Error):** El servidor fallo miserablemente al procesar la petición. Esto puede revelar información valiosa si el servidor incluye detalles del error en la respuesta.
 
-**502 (Bad Gateway):** El servidor estaba actuando como proxy o gateway y recibio una respuesta inválida del servidor upstream.
+**502 (Bad Gateway):** El servidor estaba actuando como proxy o gateway y recibió una respuesta inválida del servidor upstream.
 
 **503 (Service Unavailable):** El servidor no puede manejar la petición temporalmente, usualmente por sobrecarga o mantenimiento.
 
@@ -200,7 +200,7 @@ Hasta ahora hemos hablado de HTTP en texto plano. Pero el internet moderno usa H
 
 1. Tu navegador se conecta al servidor en el puerto 443 y dice: "Hola, quiero una conexión segura. Estos son los algoritmos criptográficos que soporto."
 
-2. El servidor responde: "Hola, usa este algoritmo. Y aqui esta mi Certificado Digital, que contiene mi clave pública y esta firmado por una Autoridad Certificadora (CA) de confianza."
+2. El servidor responde: "Hola, usa este algoritmo. Y aquí esta mi Certificado Digital, que contiene mi clave pública y esta firmado por una Autoridad Certificadora (CA) de confianza."
 
 3. Tu navegador verifica que el certificado sea válido: que no haya expirado, que el nombre del dominio coincida, que este firmado por una CA confiable.
 
@@ -216,7 +216,7 @@ Hasta ahora hemos hablado de HTTP en texto plano. Pero el internet moderno usa H
 
 **Certificados auto-firmados:** Sin una CA de confianza, la conexión puede ser interceptada por un atacante (Man-in-the-Middle) sin que el navegador pueda detectarlo.
 
-**HTTPS pero con recursos HTTP:** Una página servida via HTTPS que carga imágenes, scripts o estilos via HTTP. Esto se llama "Mixed Content" y permite que un atacante modifique esos recursos inyectando código malicioso.
+**HTTPS pero con recursos HTTP:** Una página servida vía HTTPS que carga imágenes, scripts o estilos vía HTTP. Esto se llama "Mixed Content" y permite que un atacante modifique esos recursos inyectando código malicioso.
 
 **TLS viejo o mal configurado:** Usar TLS 1.0 o 1.1, o permitir cifrados débiles como RC4 o DES. Herramientas como SSL Labs verifican la calidad de tu configuración TLS.
 
@@ -232,11 +232,11 @@ Los atacantes no rompen la criptografía de TLS directamente (esencialmente impo
 
 ## HTTP/2 y HTTP/3: Evolución del Protocolo
 
-HTTP/2 (lanzado en 2015) mejoro el rendimiento permitiendo múltiples peticiones simultaneas sobre la misma conexión TCP (multiplexing), compresion de headers, y push de recursos desde el servidor.
+HTTP/2 (lanzado en 2015) mejoro el rendimiento permitiendo múltiples peticiones simultáneas sobre la misma conexión TCP (multiplexing), compresión de headers, y push de recursos desde el servidor.
 
 HTTP/3 (lanzado en 2022) va más allá: usa QUIC en lugar de TCP, que corre sobre UDP. QUIC reduce la latencia de conexión y maneja mejor la pérdida de paquetes.
 
-**Implicaciones de seguridad:** HTTP/2 y HTTP/3 introducen nuevas superficies de ataque. La compresion de headers en HTTP/2 puede ser explotada para ataques de oráculo (CRIME, BREACH). La implementación defectuosa de multiplexing puede llevar a problemas de seguridad. Los firewalls y sistemas de detección de intrusiones tuvieron que actualizarse para inspeccionar el tráfico HTTP/2 y QUIC.
+**Implicaciones de seguridad:** HTTP/2 y HTTP/3 introducen nuevas superficies de ataque. La compresión de headers en HTTP/2 puede ser explotada para ataques de oráculo (CRIME, BREACH). La implementación defectuosa de multiplexing puede llevar a problemas de seguridad. Los firewalls y sistemas de detección de intrusiones tuvieron que actualizarse para inspeccionar el tráfico HTTP/2 y QUIC.
 
 ## La Caché Web y sus Riesgos
 
@@ -244,7 +244,7 @@ Cuando no configuras bien la caché? Le regalas los datos de un usuario a otro s
 
 La caché HTTP permite almacenar respuestas para reutilizarlas sin tener que consultar al servidor original. Acelera la web pero introduce riesgos.
 
-**Caché poisoning (Envenenamiento de caché):** Un atacante engaña al servidor de caché para que almacene una respuesta maliciosa. Cuando otros usuarios soliciten el mismo recurso, recibiran la respuesta envenenada. Ejemplo: si la caché almacena una página HTML con un script inyectado por el atacante, todos los usuarios que accedan a esa página recibiran el script malicioso.
+**Caché poisoning (Envenenamiento de caché):** Un atacante engaña al servidor de caché para que almacene una respuesta maliciosa. Cuando otros usuarios soliciten el mismo recurso, recibirán la respuesta envenenada. Ejemplo: si la caché almacena una página HTML con un script inyectado por el atacante, todos los usuarios que accedan a esa página recibirán el script malicioso.
 
 **Información sensible en caché:** Si una respuesta contiene datos personales y el servidor permite su almacenamiento en caché, otro usuario podría recibir esa información accidentalmente. Esto es especialmente peligroso en proxies compartidos o computadoras públicas.
 
@@ -302,6 +302,6 @@ Cada paso de este viaje es un punto donde un atacante puede interceptar, modific
 
 6. Encuentras que tu sitio devuelve error 500 con el siguiente mensaje: `SQLSTATE[42000]: Syntax error near '1=1' at line 1`. Por qué esto es información valiosa para un atacante y que debería hacer el equipo de desarrollo para evitar que estos mensajes se muestren al usuario?
 
-7. Implementas HSTS con `max-age=0`. Que efecto tiene esto en la seguridad de los usuarios que ya habian visitado tu sitio?
+7. Implementas HSTS con `max-age=0`. Que efecto tiene esto en la seguridad de los usuarios que ya habían visitado tu sitio?
 
 8. Un atacante realiza un ataque de caché poisoning contra el servidor de tu empresa. Explica como funciona el ataque y que headers de respuesta HTTP deberías configurar para mitigarlo.

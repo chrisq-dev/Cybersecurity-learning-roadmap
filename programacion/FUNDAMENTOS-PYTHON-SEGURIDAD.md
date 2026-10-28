@@ -8,17 +8,17 @@ updated: "2026-06-29"
 
 ## Objetivo de esta Guía
 
-aqui vamos a entender por qué nadie en Ciberseguridad pierde el tiempo escribiendo programas de 1,000 líneas en C++ o Java cuando están en medio de una respuesta a incidentes.
+aquí vamos a entender por qué nadie en Ciberseguridad pierde el tiempo escribiendo programas de 1,000 líneas en C++ o Java cuando están en medio de una respuesta a incidentes.
 
 Cuando un servidor está bajo ataque, cada segundo cuenta. Necesitas una herramienta que te permita escribir un script en 3 minutos, correrlo y apagar el incendio. Python es famoso por ser un lenguaje de "pegamento": te permite conectar el Sistema Operativo, Internet y bases de datos usando un par de comandos simples gracias a sus **Librerías**.
 
-**Por qué esto importa:** En ciberseguridad no importa que el código sea bonito. Importa que FUNCIONE y rápido. Python es el martillo más versatil que puedes tener en tu caja de herramientas.
+**Por qué esto importa:** En ciberseguridad no importa que el código sea bonito. Importa que FUNCIONE y rápido. Python es el martillo más versátil que puedes tener en tu caja de herramientas.
 
 ---
 
 ## 1. La Analogía: El Taller y las Librerías
 
-cuando empece, no entendia para que servian las librerías hasta que alguien me lo explico con esta analogía:
+cuando empece, no entendía para que servían las librerías hasta que alguien me lo explico con esta analogía:
 Imagina que Python es un Taller de Herramientas vacío. Tienes la mesa de trabajo (Variables) y el motor eléctrico (Bucles), pero no tienes destornilladores ni martillos.
 
 Para no tener que inventar el martillo desde cero, Python te permite **Importar Librerías**. Una librería es una caja de herramientas pre-fabricada que alguien más inteligente que tú ya programó, y que tú puedes descargar gratis.

@@ -51,7 +51,7 @@ Sabes cual es el problema de una empresa que confía en todos adentro? Que un em
 
 Históricamente, las empresas diseñaban sus redes como un dulce M&M: duro por fuera, suave por dentro.
 
-La Capa Dura: Compraban el firewall más caro del mundo y lo ponían en la entrada del internet corporativo. Creían que eso era suficiente para detener a los hackers. Invertian millones en protección perimetral.
+La Capa Dura: Compraban el firewall más caro del mundo y lo ponían en la entrada del internet corporativo. Creían que eso era suficiente para detener a los hackers. Invertían millones en protección perimetral.
 
 El Interior Suave: Si el hacker lograba cruzar el firewall (por ejemplo, enviándole un phishing a una secretaria), se encontraba con una red interna completamente plana y sin seguridad. El hacker podía saltar de la computadora de la secretaria directamente al Servidor de Tarjetas de Crédito sin que nadie se lo impidiera.
 
@@ -59,7 +59,7 @@ El Interior Suave: Si el hacker lograba cruzar el firewall (por ejemplo, envián
 
 El modelo M&M fracaso por varias razones:
 
-Movilidad: Los empleados ya no trabajan solo desde la oficina. Llevan sus laptops a cafes, hogares, hoteles. Se conectan a redes inseguras y traen malware de vuelta a la oficina.
+Movilidad: Los empleados ya no trabajan solo desde la oficina. Llevan sus laptops a cafés, hogares, hoteles. Se conectan a redes inseguras y traen malware de vuelta a la oficina.
 
 Nube: Los datos y aplicaciones ya no están solo en el datacenter de la empresa. Están en AWS, Azure, Google Cloud, Salesforce, Microsoft 365. El perímetro de la red ya no existe.
 
@@ -125,7 +125,7 @@ Defensa Proactiva y Reactiva: Combina controles preventivos (firewalls, parches)
 
 ## Segmentación de Red
 
-Otra regla crítica de la Defensa en Profundidad es la Segmentación. Es quizas el control más efectivo para limitar el daño de un compromiso.
+Otra regla crítica de la Defensa en Profundidad es la Segmentación. Es quizás el control más efectivo para limitar el daño de un compromiso.
 
 ### La Analogía del Submarino
 
@@ -159,7 +159,7 @@ Sistemas por Función:
 
 Dispositivos por Tipo:
 - VLAN de Dispositivos IoT (cámaras, sensores)
-- VLAN de Telefonia IP
+- VLAN de Telefonía IP
 - VLAN de Invitados (Wi-Fi para visitantes)
 
 Entornos:
@@ -181,13 +181,13 @@ El principio es simple: el tráfico entre segmentos debe ser la excepción, no l
 
 ### Beneficios de la Segmentación
 
-Limitacion de Daños: Un compromiso en un segmento no se propaga automáticamente a otros.
+Limitación de Daños: Un compromiso en un segmento no se propaga automáticamente a otros.
 
 Cumplimiento: Muchos reguladores (PCI DSS, HIPAA, SOX) exigen segmentación para proteger datos sensibles.
 
-Detección de Movimiento Lateral: El tráfico entre segmentos que no debería ocurrir (ej. un servidor web conectandose a RRHH) es una señal de alerta.
+Detección de Movimiento Lateral: El tráfico entre segmentos que no debería ocurrir (ej. un servidor web conectándose a RRHH) es una señal de alerta.
 
-Reduccion de la Superficie de Ataque: Los sistemas internos no necesitan estar expuestos a toda la red.
+Reducción de la Superficie de Ataque: Los sistemas internos no necesitan estar expuestos a toda la red.
 
 ### Escenario Ilustrativo: Contención Mediante Segmentación
 
@@ -199,7 +199,7 @@ La empresa pudo restaurar las computadoras de Marketing desde backups en menos d
 
 ## Principo de Menor Privilegio
 
-El principio de menor privilegio (Least Privilege) dicta que un usuario, proceso, o sistema debe tener solo los permisos minimos necesarios para realizar su función.
+El principio de menor privilegio (Least Privilege) dicta que un usuario, proceso, o sistema debe tener solo los permisos mínimos necesarios para realizar su función.
 
 ### Implementación del Menor Privilegio
 
@@ -224,14 +224,14 @@ El menor privilegio también implica tiempo limitado. Un administrador no necesi
 
 - Los privilegios se conceden solo cuando se necesitan
 - Por un tiempo limitado (ej. 4 horas)
-- Con justificacion (ej. ticket de cambio)
+- Con justificación (ej. ticket de cambio)
 - Con auditoría (todo queda registrado)
 
 Plataformas como AWS IAM, Azure PIM, CyberArk, o BeyondTrust implementan JIT. Reducen la ventana de exposición cuando las credenciales de administrador son robadas.
 
 ### Privilege Escalation (Escalada de Privilegios)
 
-El atacante que compromete una cuenta de usuario normal buscará escalar a privilegios de administrador. Si la cuenta ya tiene privilegios minimos, el daño que puede hacer es limitado.
+El atacante que compromete una cuenta de usuario normal buscará escalar a privilegios de administrador. Si la cuenta ya tiene privilegios mínimos, el daño que puede hacer es limitado.
 
 Las técnicas comunes de escalada de privilegios:
 - Explotar vulnerabilidades del sistema operativo
@@ -245,7 +245,7 @@ Un buen diseño de menor privilegio dificulta o imposibilita estas técnicas.
 
 Un concepto importante en arquitectura de seguridad es que la seguridad no debe depender del secreto. El diseño de la arquitectura debe ser público sin que esto la debilite.
 
-Seguridad por Oscuridad: Confiar en que el atacante no conoce tu arquitectura. Es fragil: si el atacante descubre la configuración, la defensa colapsa.
+Seguridad por Oscuridad: Confiar en que el atacante no conoce tu arquitectura. Es frágil: si el atacante descubre la configuración, la defensa colapsa.
 
 Seguridad por Capas: La arquitectura es segura incluso si el atacante conoce todos los detalles de su diseño. Cada capa asume que la capa anterior puede ser comprometida.
 
@@ -257,9 +257,9 @@ El hardening es el proceso de configurar un sistema para reducir su superficie d
 
 ### Principios de Hardening
 
-Eliminar servicios innecesarios: Cada servicio es una superficie de ataque. Si un servidor solo necesita ser un servidor web, desactiva el servicio de correo, el servicio de impresion, el servicio de archivos.
+Eliminar servicios innecesarios: Cada servicio es una superficie de ataque. Si un servidor solo necesita ser un servidor web, desactiva el servicio de correo, el servicio de impresión, el servicio de archivos.
 
-Configurar permisos minimos: Archivos, directorios, y recursos deben tener los permisos minimos necesarios.
+Configurar permisos mínimos: Archivos, directorios, y recursos deben tener los permisos mínimos necesarios.
 
 Parchear: Todas las vulnerabilidades conocidas deben estar corregidas.
 
@@ -275,7 +275,7 @@ CIS Benchmarks: Guías detalladas para cientos de sistemas operativos y aplicaci
 
 NIST SP 800-53: Controles de seguridad detallados para sistemas federales de EE.UU.
 
-BSI (Alemania): Guías de hardening del gobierno aleman.
+BSI (Alemania): Guías de hardening del gobierno alemán.
 
 SCAP (Security Content Automation Protocol): Estándar para automatizar la verificación de hardening.
 
@@ -299,7 +299,7 @@ Cada flecha es un firewall con reglas restrictivas. El tráfico solo fluye en la
 
 ## Cloud Security Architecture
 
-La nube introduce desafios arquitectonicos adicionales.
+La nube introduce desafíos arquitectónicos adicionales.
 
 ### Responsabilidad Compartida
 
@@ -315,7 +315,7 @@ Infraestructura como Código (IaC): La infraestructura se define en archivos (Te
 
 Políticas de Red: Usar Security Groups y Network ACLs para microsegmentacion.
 
-IAM: Identidades y accesos estrictos, roles en lugar de usuarios, permisos minimos.
+IAM: Identidades y accesos estrictos, roles en lugar de usuarios, permisos mínimos.
 
 Encriptación: Datos en reposo (KMS, Cloud HSM) y en tránsito (TLS).
 
@@ -361,9 +361,9 @@ Credenciales por defecto en dispositivos de red: Routers, switches, firewalls co
 
 Un atacante que compromete un sistema no se detiene ahí. Busca moverse lateralmente hacia sistemas de mayor valor.
 
-Cada capa de segmentación es un obstaculo para el movimiento lateral. Sin segmentación, el atacante se mueve de una máquina a otra sin impedimentos. Con segmentación, cada salto requiere:
+Cada capa de segmentación es un obstáculo para el movimiento lateral. Sin segmentación, el atacante se mueve de una máquina a otra sin impedimentos. Con segmentación, cada salto requiere:
 - Descubrir la siguiente red
-- Encontrar una via de acceso
+- Encontrar una vía de acceso
 - Obtener credenciales válidas
 - Evadir los controles de seguridad en el camino
 

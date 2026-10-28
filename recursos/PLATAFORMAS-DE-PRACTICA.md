@@ -27,7 +27,7 @@ Elegir bien evita frustración.
 
 ## TryHackMe
 
-TryHackMe es una de las mejores plataformas para empezar. Si nunca hiciste nada de ciberseguridad, empieza aqui. No hay verguenza en usar las rueditas antes de andar en bici.
+TryHackMe es una de las mejores plataformas para empezar. Si nunca hiciste nada de ciberseguridad, empieza aquí. No hay vergüenza en usar las rueditas antes de andar en bici.
 
 Tiene rutas guiadas, salas introductorias y explicaciones paso a paso. Es útil si todavía estás aprendiendo Linux, redes, web, Blue Team, herramientas básicas o metodología.
 
@@ -82,7 +82,7 @@ Es de las mejores formas de aprender web de manera legal y ordenada.
 
 ## OverTheWire
 
-OverTheWire es una plataforma clásica para aprender desde terminal. Si le tienes miedo a la terminal, empieza aqui. No hay forma más directa de agarrarle la mano.
+OverTheWire es una plataforma clásica para aprender desde terminal. Si le tienes miedo a la terminal, empieza aquí. No hay forma más directa de agarrarle la mano.
 
 Bandit, uno de sus retos más conocidos, ayuda a practicar Linux, archivos, permisos, comandos, conexiones SSH y pensamiento básico de CTF.
 
@@ -187,7 +187,7 @@ Esto es útil para entender cómo se despliegan apps, bases de datos, APIs y ser
 
 ## Recomendación Por Ruta
 
-Si no sabes por donde arrancar, aqui va un resumen rápido para que no te pierdas:
+Si no sabes por donde arrancar, aquí va un resumen rápido para que no te pierdas:
 
 Si estas empezando:
 

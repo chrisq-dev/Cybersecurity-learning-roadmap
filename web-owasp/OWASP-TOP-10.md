@@ -24,7 +24,7 @@ Entender qué representa OWASP Top 10:2025, cómo usar su vocabulario y cuáles 
 
 Las aplicaciones pueden fallar de muchas maneras. OWASP Top 10 agrupa riesgos frecuentes y relevantes en diez categorías para facilitar comunicación, formación y mejora de prácticas de desarrollo.
 
-Esta guía no pretende ser un sustituto del documento oficial de OWASP (que deberías leer si trabajas en seguridad). Es una introducción pragmatica desde la experiencia de alguien que ha visto como las empresas ignoran estas advertencias y pagan las consecuencias.
+Esta guía no pretende ser un sustituto del documento oficial de OWASP (que deberías leer si trabajas en seguridad). Es una introducción pragmática desde la experiencia de alguien que ha visto como las empresas ignoran estas advertencias y pagan las consecuencias.
 
 ## Que es OWASP?
 
@@ -70,9 +70,9 @@ La conclusión operativa es simple: mapear una vulnerabilidad a OWASP ayuda a co
 
 ### El Costo Real de No Cumplir
 
-Caso real: British Airways fue multada con 20 millones de libras (reducida de 183 millones por COVID) por una breach en 2018 donde un atacante inyecto código JavaScript en el sitio de pagos (un XSS que OWASP clasifica). Los datos de 500,000 clientes fueron robados. La vulnerabilidad era conocida y evitable.
+Caso real: British Airways fue multada con 20 millones de libras (reducida de 183 millones por COVID) por una brecha en 2018 en la que un atacante inyectó código JavaScript en el sitio de pagos (un XSS que OWASP clasifica). Los datos de 429,612 clientes y empleados se vieron comprometidos. La vulnerabilidad era conocida y evitable.
 
-Caso real: Marriott fue multada con 18.4 millones de libras (reducida de 99 millones) por una breach que expuso datos de 339 millones de huespedes. La vulnerabilidad inicial fue un acceso no autorizado a través de herramientas mal configuradas (A01: Broken Access Control).
+Caso real: Marriott fue multada con 18.4 millones de libras (reducida de 99 millones) por una brecha que expuso datos de 339 millones de huéspedes. La vulnerabilidad inicial fue un acceso no autorizado a través de herramientas mal configuradas (A01: Broken Access Control).
 
 ## Por qué la Lista Cambia
 
@@ -186,8 +186,8 @@ OWASP también pública un "OWASP API Security Top 10" que es diferente del Top 
 
 5. Tu empresa usa una librería Open Source con una vulnerabilidad de severidad crítica (CVE conocida). El equipo de desarrollo dice que "no es prioridad" porque la librería solo se usa en un módulo secundario. Usando la categoría A03 (Software Supply Chain Failures) como marco, por qué esta decisión es peligrosa?
 
-6. Encuentras que tu aplicación no registra los intentos de login fallidos. Bajo la categoría A09 (Security Logging and Monitoring Failures), explica como esta omision podría permitir que un ataque de fuerza bruta pase desapercibido por meses.
+6. Encuentras que tu aplicación no registra los intentos de login fallidos. Bajo la categoría A09 (Security Logging and Alerting Failures), explica cómo esta omisión podría permitir que un ataque de fuerza bruta pase desapercibido por meses.
 
-7. Un cliente te pide que priorities las vulnerabilidades de su aplicación. Tiene SQL Injection (A03), IDOR (A01), y falta de HSTS (A02). Todas son reales. Cual arreglarias primero y por qué?
+7. Un cliente te pide que priorices las vulnerabilidades de su aplicación. Tiene SQL Injection (A05), IDOR (A01) y falta de HSTS (A02). Todas son reales. ¿Cuál arreglarías primero y por qué?
 
 8. Explica por qué el OWASP Top 10 no es suficiente como único estándar de seguridad para una aplicación que maneja datos financieros. Que otros estándares o guías complementarias debería usar la empresa?

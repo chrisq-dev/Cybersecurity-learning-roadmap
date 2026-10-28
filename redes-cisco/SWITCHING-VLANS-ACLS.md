@@ -25,9 +25,9 @@ Cuando un switch se enciende, su tabla MAC esta vacía. A medida que los disposi
 
 1. Lee la dirección MAC de origen de cada trama que llega a un puerto.
 2. Asocia esa MAC al puerto por donde llegó.
-3. Almacena la asociacion en su tabla MAC con un timestamp.
+3. Almacena la asociación en su tabla MAC con un timestamp.
 
-Cuando llega una trama destinada a una MAC conocida, el switch la reenvia solo por el puerto correspondiente. Cuando la MAC es desconocida, inunda la trama por todos los puertos excepto el de origen.
+Cuando llega una trama destinada a una MAC conocida, el switch la reenvía solo por el puerto correspondiente. Cuando la MAC es desconocida, inunda la trama por todos los puertos excepto el de origen.
 
 ### La tabla MAC en detalle
 
@@ -45,9 +45,9 @@ El tamaño de la tabla MAC varia según el modelo del switch. Los switches empre
 ### Métodos de switching
 
 **Store-and-forward:**
-El switch recibe la trama completa, verifica el CRC (integrity check), y la reenvia. Si el CRC es incorrecto, descarta la trama.
+El switch recibe la trama completa, verifica el CRC (integrity check), y la reenvía. Si el CRC es incorrecto, descarta la trama.
 
-Ventaja: no reenvia tramas corruptas.
+Ventaja: no reenvía tramas corruptas.
 Desventaja: mayor latencia (el tiempo de recibir la trama completa).
 
 **Cut-through:**
@@ -57,7 +57,7 @@ Ventaja: latencia mínima.
 Desventaja: puede reenviar tramas corruptas (no verifica CRC).
 
 **Fragment-free:**
-Compromiso entre los dos. Lee los primeros 64 bytes (tamaño mínimo de una trama Ethernet valida) y luego reenvia. Evita reenviar fragmentos de colision (runt frames).
+Compromiso entre los dos. Lee los primeros 64 bytes (tamaño mínimo de una trama Ethernet valida) y luego reenvía. Evita reenviar fragmentos de colisión (runt frames).
 
 ### Duplex
 
@@ -83,19 +83,19 @@ En una red con redundancia (dos switches conectados por dos cables), se forman b
 
 **Como funciona STP:**
 
-1. Eleccion del switch raíz: todos los switches intercambian mensajes BPDU (Bridge Protocol Data Units). El switch con la prioridad más baja (o la MAC más baja) se convierte en la raíz.
+1. Elección del switch raíz: todos los switches intercambian mensajes BPDU (Bridge Protocol Data Units). El switch con la prioridad más baja (o la MAC más baja) se convierte en la raíz.
 
-2. Eleccion del puerto raíz: cada switch no raíz elige el puerto con el costo más bajo hacia la raíz.
+2. Elección del puerto raíz: cada switch no raíz elige el puerto con el costo más bajo hacia la raíz.
 
-3. Eleccion del puerto designado: en cada segmento de red, el puerto con el costo más bajo hacia la raíz es el designado.
+3. Elección del puerto designado: en cada segmento de red, el puerto con el costo más bajo hacia la raíz es el designado.
 
 4. Los puertos que no son raíz ni designados se bloquean.
 
 **Estados de los puertos STP:**
-- Blocking: no reenvia tramas, no aprende MACs.
-- Listening: no reenvia, no aprende, pero escucha BPDUs.
-- Learning: no reenvia, pero aprende MACs.
-- Forwarding: reenvia tramas y aprende MACs.
+- Blocking: no reenvía tramas, no aprende MACs.
+- Listening: no reenvía, no aprende, pero escucha BPDUs.
+- Learning: no reenvía, pero aprende MACs.
+- Forwarding: reenvía tramas y aprende MACs.
 - Disabled: administrativamente deshabilitado.
 
 La convergencia de STP clásico tarda de 30 a 50 segundos.
@@ -104,7 +104,7 @@ La convergencia de STP clásico tarda de 30 a 50 segundos.
 Converge en 2-3 segundos. Introduce roles alternativos: alternate port (respaldo del puerto raíz) y backup port (respaldo del puerto designado).
 
 **MSTP (Multiple STP, 802.1s):**
-Permite diferentes arboles de expansion para diferentes grupos de VLANs. Mejor distribución de carga en redes con múltiples VLANs.
+Permite diferentes arboles de expansión para diferentes grupos de VLANs. Mejor distribución de carga en redes con múltiples VLANs.
 
 ### Problemas de seguridad con STP
 
@@ -115,7 +115,7 @@ Cualquier switch que conectes a la red puede convertirse en el switch raíz si t
 Protege contra esto. Si un puerto con BPDU Guard habilitado recibe un BPDU, se deshabilita automáticamente (errdisable).
 
 **Root Guard:**
-Fuerza a un puerto a ser no designado. Si recibe BPDUs superiores (que indicarian que otro switch debería ser la raíz), el puerto se bloquea.
+Fuerza a un puerto a ser no designado. Si recibe BPDUs superiores (que indicarían que otro switch debería ser la raíz), el puerto se bloquea.
 
 ## VLANs: paredes virtuales
 
@@ -173,7 +173,7 @@ El tag 802.1Q contiene:
 - TPID (Tag Protocol Identifier): 2 bytes. Valor 0x8100. Identifica la trama como 802.1Q.
 - TCI (Tag Control Information): 2 bytes.
   - PCP (Priority Code Point): 3 bits. Prioridad (0-7).
-  - DEI (Drop Eligible Indicator): 1 bit. Indica si la trama puede descartarse en congestion.
+  - DEI (Drop Eligible Indicator): 1 bit. Indica si la trama puede descartarse en congestión.
   - VID (VLAN ID): 12 bits. Identifica la VLAN (0-4095).
 
 El FCS (CRC) se recalcula después de insertar el tag. El tamaño máximo de la trama aumenta de 1518 a 1522 bytes.
@@ -188,7 +188,7 @@ Práctica recomendada: cambiar la VLAN nativa a un número no utilizado y no pon
 
 ### VLAN autovoice
 
-Los switches Cisco pueden detectar automáticamente teléfonos IP y colocarlos en una VLAN de voz. El teléfono se configura via CDP (Cisco Discovery Protocol) para usar la VLAN de voz.
+Los switches Cisco pueden detectar automáticamente teléfonos IP y colocarlos en una VLAN de voz. El teléfono se configura vía CDP (Cisco Discovery Protocol) para usar la VLAN de voz.
 
 ### VTP (VLAN Trunking Protocol)
 
@@ -197,7 +197,7 @@ VTP permite que los switches compartan la configuración de VLANs. Un switch ser
 Modos VTP:
 - Server: puede crear, modificar y eliminar VLANs. Propaga los cambios.
 - Client: recibe los cambios del servidor. No puede crear VLANs localmente.
-- Transparent: no participa en VTP. Reenvia los anuncios pero no los procesa.
+- Transparent: no participa en VTP. Reenvía los anuncios pero no los procesa.
 
 VTP es peligroso. Si conectas un switch con una revisión más alta de VTP, puede sobreescribir la configuración de VLANs de toda la red.
 
@@ -263,7 +263,7 @@ interface GigabitEthernet0/2
 
 ## Dynamic ARP Inspection (DAI)
 
-DAI verifica las respuestas ARP interceptandolas y verificando que la IP y MAC coinciden con la base de datos de DHCP Snooping.
+DAI verifica las respuestas ARP interceptándolas y verificando que la IP y MAC coinciden con la base de datos de DHCP Snooping.
 
 Configuración básica:
 ```
@@ -291,7 +291,7 @@ Esto protege contra IP spoofing. Un atacante no puede enviar paquetes con IPs fa
 
 Una ACL es una lista secuencial de reglas aplicada a un router o switch. Cada regla específica un criterio y una acción (permitir o denegar).
 
-Las ACLs se evaluan en orden. La primera regla que coincida determina el resultado. Si ninguna coincide, hay una denegación implicita al final.
+Las ACLs se evalúan en orden. La primera regla que coincida determina el resultado. Si ninguna coincide, hay una denegación implícita al final.
 
 ### Tipos de ACL
 
@@ -339,7 +339,7 @@ access-list 10 permit 192.168.1.0 0.0.0.255
 ### Dónde aplicar las ACLs
 
 **Inbound:**
-El paquete se evalua antes de ser enrutado. Es más eficiente porque descarta paquetes antes de procesarlos.
+El paquete se evalúa antes de ser enrutado. Es más eficiente porque descarta paquetes antes de procesarlos.
 
 ```
 interface GigabitEthernet0/1
@@ -347,22 +347,22 @@ interface GigabitEthernet0/1
 ```
 
 **Outbound:**
-El paquete se evalua antes de salir del router.
+El paquete se evalúa antes de salir del router.
 
 ```
 interface GigabitEthernet0/2
  ip access-group 100 out
 ```
 
-### La denegación implicita
+### La denegación implícita
 
-Toda ACL tiene una regla implicita al final: `deny any any`. Si creas una ACL con una sola regla que permite SSH, el resto del tráfico es implicitamente denegado.
+Toda ACL tiene una regla implícita al final: `deny any any`. Si creas una ACL con una sola regla que permite SSH, el resto del tráfico es implícitamente denegado.
 
-Siempre debes considerar la denegación implicita. Es la causa más común de errores con ACLs.
+Siempre debes considerar la denegación implícita. Es la causa más común de errores con ACLs.
 
 ### Orden de las reglas
 
-El orden es crítico. La ACL se evalua de arriba a abajo. La primera coincidencia se aplica.
+El orden es crítico. La ACL se evalúa de arriba a abajo. La primera coincidencia se aplica.
 
 **Bien:**
 1. Permitir al administrador acceso SSH
@@ -371,7 +371,7 @@ El orden es crítico. La ACL se evalua de arriba a abajo. La primera coincidenci
 
 **Mal:**
 1. Denegar todo el tráfico TCP
-2. Permitir al administrador acceso SSH (nunca se evalua porque la regla 1 deniega todo antes)
+2. Permitir al administrador acceso SSH (nunca se evalúa porque la regla 1 deniega todo antes)
 
 ### ACLs reflexivas
 
@@ -385,7 +385,7 @@ ip access-list extended ENTRADA
  deny ip any any
 ```
 
-### ACLs dinamicas (lock-and-key)
+### ACLs dinámicas (lock-and-key)
 
 Permiten que un usuario se autentique y luego se le aplique una ACL temporal.
 
@@ -496,9 +496,9 @@ La regla 1 denegaba todo el tráfico. La regla 2 nunca se evaluaba. Toda la empr
 
 ### ARP spoofing mitigado por DAI
 
-Una universidad implementó DAI en todos sus switches de campus. Un estudiante intento ARP spoofing contra el gateway de su VLAN. DAI detecto que la MAC en la respuesta ARP no coincidia con la MAC registrada por DHCP Snooping. El switch descarto la respuesta ARP falsa.
+Una universidad implementó DAI en todos sus switches de campus. Un estudiante intento ARP spoofing contra el gateway de su VLAN. DAI detecto que la MAC en la respuesta ARP no coincidía con la MAC registrada por DHCP Snooping. El switch descarto la respuesta ARP falsa.
 
-El estudiante no pudo interceptar el tráfico de sus companeros. DAI bloqueo el ataque sin intervención humana.
+El estudiante no pudo interceptar el tráfico de sus compañeros. DAI bloqueo el ataque sin intervención humana.
 
 ## Autoevaluación
 
@@ -513,7 +513,7 @@ El estudiante no pudo interceptar el tráfico de sus companeros. DAI bloqueo el 
    - Regla 2: Permitir tráfico TCP desde 10.0.0.10 al puerto 443
    - Regla 3: Denegar todo
 
-   Que tráfico será permitido y por qué? Que tráfico adicional esperarias que pasará si la regla 1 no existiera?
+   Que tráfico será permitido y por qué? Que tráfico adicional esperarías que pasará si la regla 1 no existiera?
 
 5. Que función cumple STP en una red con switches redundantes? Si un atacante conecta un switch con prioridad 0 a la red, que ocurre y como se protege el administrador contra esto?
 
@@ -521,8 +521,8 @@ El estudiante no pudo interceptar el tráfico de sus companeros. DAI bloqueo el 
 
 7. Un switch tiene su tabla MAC llena por un ataque de MAC flooding. Como cambia el comportamiento del switch? Por qué esto permite al atacante ver tráfico que no le esta dirigido? Que mitigación usarías?
 
-8. Que es la denegación implicita en una ACL? Explica por qué el orden de las reglas es crítico y que error común cometen los administradores al configurar ACLs por primera vez.
+8. Que es la denegación implícita en una ACL? Explica por qué el orden de las reglas es crítico y que error común cometen los administradores al configurar ACLs por primera vez.
 
 9. Explica la diferencia entre DHCP Snooping y Dynamic ARP Inspection. Como se complementan para proteger la red contra ataques de capa 2?
 
-10. Diseña la segmentación para un edificio de 10 pisos con 100 empleados por piso, donde hay servidores críticos en el piso 1, equipos de IT en el piso 2, y el resto son usuarios de diferentes departamentos. Que VLANs crearias, que IPs asignarias, y que ACLs configurarias?
+10. Diseña la segmentación para un edificio de 10 pisos con 100 empleados por piso, donde hay servidores críticos en el piso 1, equipos de IT en el piso 2, y el resto son usuarios de diferentes departamentos. Que VLANs crearías, que IPs asignarías, y que ACLs configurarías?

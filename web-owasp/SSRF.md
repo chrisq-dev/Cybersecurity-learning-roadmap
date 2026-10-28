@@ -42,7 +42,7 @@ Donde buscar SSRF: en cualquier funcionalidad que le pida al servidor ir a busca
 - Cargar imágenes desde una URL externa (avatares, fotos de perfil)
 - Descargar documentos desde enlaces (procesamiento de facturas, PDFs)
 - Webhooks: el servidor envía una petición a una URL cuando ocurre un evento
-- Importacion/exportacion de datos desde URLs
+- Importación/exportación de datos desde URLs
 - Integraciones con servicios de terceros usando URLs
 - Funcionalidades de "previsualizar enlace" que generan thumbnails
 - Gateways de pago que procesan URLs de retorno
@@ -130,11 +130,11 @@ Es el caso más famoso de SSRF. Paige Thompson, una exingeniera de Amazon, explo
 
 **Como ocurrió:**
 
-1. Capital One tenía una aplicación web que permitia a los usuarios consultar su saldo. La aplicación tenía una funcionalidad que hacia peticiones a servicios internos de AWS.
+1. Capital One tenía una aplicación web que permitía a los usuarios consultar su saldo. La aplicación tenía una funcionalidad que hacia peticiones a servicios internos de AWS.
 
 2. Thompson descubrió que podía manipular los parámetros de la petición para que el servidor web hiciera una petición al metadata endpoint de AWS (`169.254.169.254`).
 
-3. El servidor devolvio las credenciales IAM (AWS keys) del rol asociado al servidor.
+3. El servidor devolvió las credenciales IAM (AWS keys) del rol asociado al servidor.
 
 4. Con esas credenciales, Thompson listo los buckets S3 de Capital One y descargó los datos de 100 millones de personas: nombres, direcciones, puntajes de crédito, números de seguro social, y datos de cuentas bancarias.
 
@@ -143,13 +143,13 @@ Es el caso más famoso de SSRF. Paige Thompson, una exingeniera de Amazon, explo
 **Consecuencias:**
 - Capital One pago $190 millones en multas.
 - Thompson fue condenada a prisión.
-- El incidente reforzo la necesidad de proteger los metadata endpoints y de implementar controles de red estrictos.
+- El incidente reforzó la necesidad de proteger los metadata endpoints y de implementar controles de red estrictos.
 
 ## Superficie de ataque interna
 
 Un SSRF no solo expone el metadata endpoint. El atacante puede explorar toda la red interna del servidor.
 
-**Recursos tipicos que un SSRF puede alcanzar:**
+**Recursos típicos que un SSRF puede alcanzar:**
 
 - `http://localhost:8080/` -- Otro servicio web corriendo en el mismo servidor
 - `http://127.0.0.1:9200/` -- Elasticsearch (sin autenticación frecuentemente)
@@ -186,7 +186,7 @@ El atacante usa:
 - Representación decimal: `http://2852039166/` (169*256^3 + 254*256^2 + 169*256 + 254)
 - Representación hexadecimal: `http://0xA9FEA9FE/`
 - Representación octal: `http://0251.0376.0251.0376/`
-- Notacion mixta: `http://169.254.0xA9FE/`
+- Notación mixta: `http://169.254.0xA9FE/`
 - IPv6: `http://[::ffff:a9fe:a9fe]/`
 - Redirección: Un dominio propio que redirige a 169.254.169.254
 - DNS rebinding: Un dominio que resuelve a la IP maliciosa solo después de la primera resolución
@@ -236,7 +236,7 @@ def descargar_url(url):
     # Solo entonces hacer la peticion
 ```
 
-**Limitacion:** No siempre es posible si la aplicación necesita acceder a dominios dinamicos.
+**Limitación:** No siempre es posible si la aplicación necesita acceder a dominios dinámicos.
 
 ### Validación del Hostname Resuelto
 
@@ -314,10 +314,10 @@ Si la librería de red de tu lenguaje sigue redirecciones automáticamente, un a
 
 4. Durante una entrevista de trabajo para Defensor (Blue Team), te preguntan cual es la arquitectura de red ideal para mitigar el impacto de un SSRF. Por qué sugerirías "Segmentación de Red" en la cocina interna del servidor?
 
-5. Explica la diferencia entre SSRF básico (con respuesta visible) y Blind SSRF. Como detectarias un Blind SSRF si el servidor no devuelve la respuesta?
+5. Explica la diferencia entre SSRF básico (con respuesta visible) y Blind SSRF. Como detectarías un Blind SSRF si el servidor no devuelve la respuesta?
 
-6. Tu aplicación necesita cargar imágenes desde URLs que los usuarios proporcionan. Diseña una estrategia de defensa contra SSRF considerando whitelisting, validación de IP, y limitacion de protocolos.
+6. Tu aplicación necesita cargar imágenes desde URLs que los usuarios proporcionan. Diseña una estrategia de defensa contra SSRF considerando whitelisting, validación de IP, y limitación de protocolos.
 
 7. Un atacante descubre un SSRF en un servidor que corre en AWS. Que pasos seguiría para escalar desde el SSRF a un compromiso total de la cuenta de AWS? Describe el camino de ataque.
 
-8. Explica que es el DNS rebinding y como un atacante lo usaria para evadir un filtro que verifica la IP de una URL antes de permitir la conexión.
+8. Explica que es el DNS rebinding y como un atacante lo usaría para evadir un filtro que verifica la IP de una URL antes de permitir la conexión.

@@ -15,7 +15,7 @@ Hackear una aplicación móvil requiere un conjunto de habilidades totalmente di
 
 ## 1. El Mito de la "Mini-Web"
 
-aqui está uno de los errores más grandes que comete la gente. Mucha gente asume que una aplicación móvil (como la app del banco) es simplemente una página web disfrazada con botones más grandes. Esto es un error GRAVE.
+aquí está uno de los errores más grandes que comete la gente. Mucha gente asume que una aplicación móvil (como la app del banco) es simplemente una página web disfrazada con botones más grandes. Esto es un error GRAVE.
 
 * **En la Web:** Tu navegador web (Google Chrome) es un intermediario ciego. Descarga el código HTML/JavaScript del servidor en tiempo real, lo muestra, y cuando cierras la pestaña, lo destruye. Tú no posees el código del servidor del banco.
 * **En Móvil:** Cuando descargas la App del banco de la Play Store, **estás descargando todo el código fuente del cliente directamente a tu disco duro físico**. Tú eres el dueño de ese código. Puedes abrirlo, desarmarlo, leerlo y modificarlo antes de ejecutarlo.
@@ -100,7 +100,7 @@ iOS implementa una arquitectura de seguridad en múltiples capas:
 
 1. **Secure Enclave:** Coprocesador de hardware aislado del procesador principal (Apple A7 en adelante). Maneja operaciones criptográficas sensibles: Touch ID, Face ID, claves de cifrado de dispositivo. No es accesible desde el kernel principal. Su firmware está firmado y verificado en cada arranque.
 
-2. **Kernel Integrity Protection (KPP) / Kernel Text Readonly Region (KTRR):** Protege la memoria del kernel contra modificaciones en caliente. Impide que incluso el kernel se modifique a sí mismo una vez arrancado.
+2. **Kernel Integrity Protection (KPP) / Kernel Text Readonly Región (KTRR):** Protege la memoria del kernel contra modificaciones en caliente. Impide que incluso el kernel se modifique a sí mismo una vez arrancado.
 
 3. **Pointer Authentication Codes (PAC):** Desde el chip A12, iOS implementa PAC (ARMv8.3). Cada puntero de retorno de función lleva una firma criptográfica de 16 bits. Si un atacante modifica la dirección de retorno (técnica clásica de ROP/JOP), la firma se inválida y el procesador crashea intencionalmente.
 

@@ -1,104 +1,112 @@
 ---
-title: "Python Básico: Escribiéndole al Robot"
+title: "Python Básico: primeros scripts para seguridad"
 level: "inicial"
 content_type: "guia"
 updated: "2026-06-29"
----
-# Python Básico: Escribiéndole al Robot
-
-## Objetivo de esta Guía
-
-el objetivo aqui es perderle el terror a la palabra "Programación". no necesitas ser un ingeniero de software para escribir código útil.
-A diferencia de los Ingenieros de Software, que construyen aplicaciones gigantescas de millones de líneas de código durante meses (como WhatsApp o Excel), en Ciberseguridad usamos la programación para crear **Scripts Tácticos**.
-
-Un script es simplemente un programa pequeñito, feo (sin botones ni ventanas bonitas), que resuelve un problema crítico en menos de 5 segundos, como escanear si 1,000 puertos están abiertos. Y para eso, Python es el rey absoluto.
-
-**Por qué esto importa:** No necesitas construir un rascacielos para ser útil en seguridad. A veces solo necesitas un martillo bien afilado. Eso es Python.
-
+reviewed: "2026-10-27"
+reviewed_against: "Python 3 documentation, OWASP Secure Coding Practices, NIST SP 800-53"
+official_sources:
+  - title: "Python 3 documentation"
+    url: "https://docs.python.org/3/"
+  - title: "OWASP Secure Coding Practices"
+    url: "https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/"
+  - title: "NIST SP 800-53"
+    url: "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final"
 ---
 
-## 1. La Analogía: La Receta de Cocina y el Robot Idiota
+# Python Básico: primeros scripts para seguridad
 
-Mucha gente cree que programar requiere ser un genio de las matemáticas. Falso. **Programar es saber dar instrucciones.**
+## Objetivo de esta guía
 
-Imagina que te regalo un Robot Cocinero de 10 millones de dólares. El problema es que el Robot es literalmente idiota. No sabe qué es un "Huevo" o una "Sartén" a menos que tú se lo definas. Si le dices *"Hazme un huevo frito"*, el robot explotará por confusión. Tienes que darle una **Receta exacta paso a paso**.
+El objetivo es perder el miedo a la programación. No necesitas ser ingeniero de software para escribir código útil en seguridad. La programación permite automatizar tareas repetitivas: leer registros, validar configuraciones, procesar listas de direcciones y ordenar evidencia.
 
-Aprender Python es simplemente aprender el vocabulario para escribirle esa receta al robot.
+En ciberseguridad, muchos scripts son pequeños y específicos. No necesitan interfaz gráfica ni miles de líneas. Un script puede resolver un problema concreto en pocos segundos, siempre que se ejecute sobre sistemas propios o con autorización explícita.
+
+**Por qué importa:** no necesitas construir una aplicación completa para aportar valor. A veces basta con una herramienta pequeña, clara y bien probada.
 
 ---
 
-## 2. Variables (Las Cajas de Cartón)
+## 1. La analogía: una receta para un asistente literal
 
-Cuando le quieres explicar a un robot como funciona el mundo? Necesitas cajitas. Antes de cocinar, el robot necesita ingredientes. En programación, a los ingredientes los guardamos en Cajas con etiquetas. Estas cajas se llaman **Variables**.
+Programar no exige ser experto en matemáticas. Exige dar instrucciones claras y comprobar que se ejecutan como esperas.
 
-Si quieres decirle al robot que la edad del objetivo a hackear es 25, creas una caja llamada `edad` y le metes el número 25.
+Imagina un asistente de cocina que sigue instrucciones al pie de la letra. Si le dices “prepara la cena” sin detallar ingredientes, cantidades y pasos, el resultado será impredecible. Si le das una receta precisa, el resultado será reproducible.
+
+Aprender Python consiste en aprender el vocabulario y la estructura para escribir esas instrucciones.
+
+---
+
+## 2. Variables: guardar valores con un nombre
+
+Una variable es un nombre asociado a un valor. Sirve para reutilizar datos sin repetirlos y para que el código sea más legible.
 
 ```python
-# Así se crea una variable en Python:
-edad_victima = 25
-nombre_victima = "Juan Perez"
-ip_victima = "192.168.1.55"
+# Variables de ejemplo en un entorno de laboratorio
+host_autorizado = "192.0.2.10"
+puerto_http = 443
+servicio = "https"
 
-# Nota: El texto (como el nombre o la IP) siempre va entre comillas. Los números van desnudos.
+print(host_autorizado)
 ```
 
-> **Importante:**
-> En Python, el símbolo `=` no significa "igual matemático". Significa **Asignación** (Toma lo de la derecha y mételo en la caja de la izquierda).
+El símbolo `=` no significa “igual matemático”. Significa **asignación**: toma el valor de la derecha y asígnalo al nombre de la izquierda. La comparación se hace con `==`.
+
+Los textos van entre comillas. Los números pueden escribirse sin comillas. Si necesitas operar matemáticamente con un valor, guárdalo como número; si necesitas conservar ceros a la izquierda o un formato, probablemente convenga tratarlo como texto.
 
 ---
 
-## 3. Condicionales If/Else (El Poder de Decisión)
+## 3. Condicionales `if` / `else`: tomar decisiones
 
-un script que solo avanza en línea recta es inútil. el robot necesita tomar decisiones basado en lo que está viendo en tiempo real. Para eso usamos `if` (Si pasa esto) y `else` (De lo contrario, haz esto otro).
-
-**Por qué esto importa:** Si no sabes tomar decisiones en código, tu script es un robot que solo sabe ir derecho y chocar contra la pared. Los if/else son el volante.
-
-**Escenario Hacker:** Estás escaneando un puerto. Quieres que el robot decida qué hacer dependiendo de si la puerta está abierta o cerrada.
+Un script suele necesitar decisiones. Con `if` ejecutas un bloque cuando se cumple una condición; con `else` ejecutas la alternativa.
 
 ```python
-puerto = "abierto"
+estado_puerto = "abierto"
 
-if puerto == "abierto":
- print("¡Bingo! Lanza el ataque.")
+if estado_puerto == "abierto":
+    print("El servicio está disponible. Registrar el hallazgo.")
 else:
- print("Maldición, está cerrado. Abortar misión.")
+    print("El servicio no está disponible. No hay nada que revisar.")
 ```
 
-**La Magia de los Dos Puntos y los Espacios:**
-A diferencia de lenguajes viejos y horribles como C o Java que usan docenas de llaves `{ }` para confundirte, Python obliga a usar el "Indented" (Sangría o espacios).
-Nota que después del `if`, puse dos puntos `:`, y la siguiente línea está **metida hacia la derecha**. Así es como Python sabe que la orden de "lanzar el ataque" solo le pertenece al `if`. Si no dejas el espacio, Python lanzará un error y no arrancará.
+Python usa la indentación para delimitar bloques. Después de `if` o `else` se escriben dos puntos `:` y el bloque interior va indentado. Si la indentación es incorrecta, el programa no se ejecuta.
+
+A diferencia de lenguajes como C o Java, que usan llaves `{ }`, Python depende de los espacios al inicio de cada línea. Es una regla sintáctica, no un detalle estético.
 
 ---
 
-## 4. Bucles For / While (La Máquina Infinita)
+## 4. Bucles `for` y `while`: repetir tareas
 
-Si quieres intentar adivinar 3 contraseñas, puedes escribirlas a mano. Si quieres intentar adivinar **50,000 contraseñas**, usarás un Bucle (Loop).
-
-Un Bucle es decirle al Robot: *"Repite esta acción hasta que se acaben los ingredientes, o hasta que yo te diga que pares"*.
-
-Es como tener un esclavo digital que no se cansa, no se aburre, y no pide aumento de sueldo.
-
-### Bucle FOR (Para listas finitas)
-Cuando tienes 1,000 IPs para analizar? No las vas a revisar una por una como un humano. Usas un FOR.
-Imagina que tienes una lista de IPs sospechosas y quieres analizarlas una por una.
+Un bucle permite repetir una acción sobre varios elementos. Úsalo cuando la tarea sea mecánica y el conjunto de datos sea conocido.
 
 ```python
-# Esto es una Lista (una caja que adentro tiene muchas cosas separadas por comas)
-lista_ips = ["192.168.1.5", "10.0.0.8", "8.8.8.8"]
+hosts_autorizados = ["192.0.2.10", "192.0.2.11", "192.0.2.12"]
 
-# El bucle FOR: Por cada 'ip' dentro de la 'lista_ips', haz esto:
-for ip in lista_ips:
- print("Escaneando la IP número: " + ip)
+for host in hosts_autorizados:
+    print("Revisando configuración de " + host)
 ```
-El robot tomará la primera IP, la analizará, volverá arriba, tomará la segunda IP, la analizará, y así hasta que la lista se quede vacía.
+
+El bucle `for` recorre la lista y ejecuta el bloque una vez por elemento. Un bucle `while` repite mientras se cumpla una condición; requiere especial cuidado para evitar bucles infinitos.
+
+Antes de automatizar una comprobación, confirma que tienes autorización para ejecutarla. La comodidad de un script no elimina las obligaciones legales ni éticas.
 
 ---
 
-## 5. Criterio de Dominio (Autoevaluación)
+## 5. Buenas prácticas iniciales
 
-¿Tu cerebro ya entiende la lógica del Robot?
+- Escribe nombres de variables descriptivos: `host_autorizado` es mejor que `x`.
+- Mantén los scripts pequeños y con una responsabilidad clara.
+- Valida las entradas antes de usarlas.
+- No guardes contraseñas, tokens ni claves en el código.
+- Prueba primero en un entorno de laboratorio.
+- Documenta el propósito y el alcance del script.
+- Revisa los registros para detectar errores de forma temprana.
 
-1. Lees el código de un colega y ves esto: `if temperatura = 100:`. ¿Por qué Python explotará arrojando un error de sintaxis en esa línea? *(Pista: Piensa en la diferencia entre el `=` de asignación y el `==` matemático)*.
-2. Escribes un bucle `for` pero tu código no corre porque te marca un error de *Indentation*. ¿Qué olvidaste poner en la línea de abajo después de los dos puntos `:`?
-3. En la receta de cocina, tienes que guardar el puerto de ataque `443` en una caja. ¿Deberías guardar ese valor entre comillas (`"443"`) o desnudo (`443`) si más adelante planeas hacer una suma matemática con ese valor?
-4. ¿Por qué el Blue Team (Defensores) prefiere usar listas (cajas grandes con muchos elementos adentro) y bucles `for` en lugar de crear 50 variables diferentes para guardar 50 correos electrónicos sospechosos?
+---
+
+## 6. Criterio de dominio
+
+1. Lees `if temperatura = 100:` en el código de un colega. ¿Por qué Python devuelve un error de sintaxis? *(Pista: diferencia entre asignación y comparación).*
+2. Escribes un bucle `for` y recibes un error de indentación. ¿Qué debes revisar en el bloque que sigue a los dos puntos `:`?
+3. Necesitas guardar el puerto `443` para sumarlo después. ¿Conviene guardarlo como `"443"` o como `443`? Justifica.
+4. ¿Por qué un equipo defensivo prefiere una lista y un bucle `for` para revisar 50 correos sospechosos en lugar de crear 50 variables?
+5. ¿Qué controles aplicarías antes de ejecutar un script de reconocimiento en una red?

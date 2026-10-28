@@ -21,8 +21,8 @@ Para entender la seguridad en la nube, debes entender los 3 modelos de servicio.
 
 ### Infraestructura como Servicio (IaaS)
 
-- La Analogía: Rentas un terreno vacio con paredes y techo.
-- Tecnología: Amazon te presta un Servidor Linux completamente vacio (EC2). Tu tienes que instalarle la puerta, los muebles (Base de datos), la plomería (Redes) y pintarlo (El código).
+- La Analogía: Rentas un terreno vacío con paredes y techo.
+- Tecnología: Amazon te presta un Servidor Linux completamente vacío (EC2). Tu tienes que instalarle la puerta, los muebles (Base de datos), la plomería (Redes) y pintarlo (El código).
 - Seguridad: El cliente administra el sistema operativo, las aplicaciones, identidades, configuración y datos; el proveedor administra la infraestructura subyacente. El contrato define los límites exactos.
 
 ### Plataforma como Servicio (PaaS)
@@ -123,7 +123,7 @@ Características:
 
 - Stateless: debes configurar explícitamente reglas de entrada y salida.
 - Permiten reglas de Allow y Deny.
-- Se evaluan en orden numérico (de menor a mayor número de regla).
+- Se evalúan en orden numérico (de menor a mayor número de regla).
 
 ### Diferencias Clave
 
@@ -172,7 +172,7 @@ La atacante robo datos de 106 millones de clientes de Capital One, incluyendo:
 - Números de cuentas bancarias.
 - Nombres y direcciones.
 
-La causa: una configuración incorrecta de IAM que permitia al WAF asumir un rol con permisos excesivos. No fue un hackeo de la infraestructura de AWS, fue un error de configuración del cliente.
+La causa: una configuración incorrecta de IAM que permitía al WAF asumir un rol con permisos excesivos. No fue un hackeo de la infraestructura de AWS, fue un error de configuración del cliente.
 
 ### Verizon (2017)
 
@@ -219,7 +219,7 @@ Asignar permisos de Administrador a todos los empleados para evitar configuracio
 
 ### Falla 4: Falta de Monitoreo
 
-No configurar alertas de CloudTrail para detectar actividades anomalas como:
+No configurar alertas de CloudTrail para detectar actividades anómalas como:
 
 - Inicios de sesión desde ubicaciones inusuales.
 - Creación de recursos costosos (instancias grandes).
@@ -302,7 +302,7 @@ La infraestructura pertenece a la empresa y esta dedicada exclusivamente a ella.
 - Riesgos: Costo elevado, requiere equipo especializado.
 - Uso típico: Bancos, gobierno, datos clasificados.
 
-### Nube Hibrida
+### Nube Híbrida
 
 Combina nube pública y privada, con datos y aplicaciones compartidos entre ambos.
 
@@ -358,7 +358,7 @@ En empresas grandes, la nube se organiza en "landing zones": configuraciones pre
 
 2. **Red base:** VPC/VNet con subredes públicas y privadas, conectividad VPN/ExpressRoute.
 
-3. **IAM base:** Roles predefinidos con permisos minimos, federacion con AD.
+3. **IAM base:** Roles predefinidos con permisos mínimos, federación con AD.
 
 4. **Logging centralizado:** CloudTrail/Activity Log habilitado para todas las cuentas, enviado a un SIEM central.
 

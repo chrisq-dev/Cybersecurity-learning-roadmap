@@ -27,7 +27,7 @@ El primer paso es investigar al objetivo.
 
 ### Que Información Busca el Atacante
 
-Personal: Nombre, cargo, hobbies, familiares, educacion, eventos recientes, afiliaciones.
+Personal: Nombre, cargo, hobbies, familiares, educación, eventos recientes, afiliaciones.
 Organizacional: Jerarquía, colegas, jefes, proyectos, proveedores, políticas internas.
 Infraestructura: Tecnologías, proveedores, dispositivos, sistema de tickets.
 
@@ -43,7 +43,7 @@ Glassdoor: Cultura interna, salarios, quejas.
 Google: Noticias, registros públicos.
 WHOIS: Información de dominios.
 Shodan: Dispositivos expuestos.
-Breach databases: Contraseñas historicas.
+Breach databases: Contraseñas históricas.
 
 ### El Poder de la Información Pública
 
@@ -52,7 +52,7 @@ La gente publica voluntariamente las respuestas a sus preguntas de seguridad:
 - "Ciudad de nacimiento" -> Facebook
 - "Equipo favorito" -> Twitter
 
-Un estudio de Cambridge mostro que se pueden adivinar preguntas de seguridad con 75% de precisión solo con redes sociales.
+Un estudio de Cambridge mostró que se pueden adivinar preguntas de seguridad con 75% de precisión solo con redes sociales.
 
 ## Pretexting en Acción
 
@@ -68,7 +68,7 @@ El empleado, obedeciendo a la autoridad, dicta una nueva contraseña. El hacker 
 
 ### Pretexting Presencial
 
-El atacante se viste de empresa de limpieza, se presenta en la oficina diciendo que viene a revisar el sistema de ventilacion. Usa OSINT para saber el nombre del jefe de mantenimiento.
+El atacante se viste de empresa de limpieza, se presenta en la oficina diciendo que viene a revisar el sistema de ventilación. Usa OSINT para saber el nombre del jefe de mantenimiento.
 
 Una vez dentro:
 - Conecta un USB malicioso
@@ -78,7 +78,7 @@ Una vez dentro:
 
 ### Pretexting por Correo a RRHH
 
-"Hola, soy Juan Perez de Finanzas. Olvide mi contraseña del sistema de nominas y necesito acceder para procesar la nómina. Mi jefe Carlos Lopez me pidio que escriba. Mi empleado es 12345."
+"Hola, soy Juan Perez de Finanzas. Olvide mi contraseña del sistema de nominas y necesito acceder para procesar la nómina. Mi jefe Carlos Lopez me pidió que escriba. Mi empleado es 12345."
 
 El atacante obtuvo el número de empleado de una foto de gafete en LinkedIn.
 
@@ -95,7 +95,7 @@ Paso 6: El CEO, esperando los documentos, abre el adjunto.
 
 ### El Fraude a Google y Facebook (2013-2015)
 
-Evaldas Rimasauskas registro una empresa fantasma con el mismo nombre que Quanta Computer, legítimo proveedor. Investigó el formato exacto de facturas, montos y contactos. Envio facturas falsas desde correos similares. Google y Facebook pagaron más de 100 millones de dólares. No hubo hacking: puro pretexting.
+Evaldas Rimasauskas registro una empresa fantasma con el mismo nombre que Quanta Computer, legítimo proveedor. Investigó el formato exacto de facturas, montos y contactos. Envío facturas falsas desde correos similares. Google y Facebook pagaron más de 100 millones de dólares. No hubo hacking: puro pretexting.
 
 ### Kevin Mitnick y Nokia
 
@@ -107,7 +107,7 @@ Scattered Spider investigo empleados de MGM en LinkedIn, identifico personal de 
 
 ## Formas de Falla
 
-Confiar en identificación por voz: "Reconocio su voz" no es validación suficiente.
+Confiar en identificación por voz: "Reconoció su voz" no es validación suficiente.
 
 No verificar fuera de banda: El empleado debe colgar, buscar el número oficial, y llamar de vuelta.
 
@@ -151,7 +151,7 @@ Prueba social: "Tu jefe Roberto me dijo que llamara."
 ### Automatización con IA
 
 Los atacantes están automatizando:
-- Voz sintetica que imita a la persona suplantada.
+- Voz sintética que imita a la persona suplantada.
 - Correos generados por IA que imitan el estilo de escritura.
 - Deepfake para videollamadas.
 
@@ -167,13 +167,13 @@ Preparar respuestas a preguntas comunes. Tener excusa para cualquier contratiemp
 
 ### Paso 3: Elegir el Canal
 
-Teléfono, correo, mensajeria, presencial. Cada canal tiene ventajas: el teléfono permite tono de voz persuasivo, el correo deja registro escrito que parece formal.
+Teléfono, correo, mensajería, presencial. Cada canal tiene ventajas: el teléfono permite tono de voz persuasivo, el correo deja registro escrito que parece formal.
 
 ### Paso 4: Ejecutar con Confianza
 
 El que duda pierde. Confianza y seguridad en cada palabra.
 
-## Senales de Alarma para el Defensor
+## Señales de Alarma para el Defensor
 
 Pistas que delatan un pretexting:
 - La persona no puede proporcionar un número de vuelta directo.
@@ -192,11 +192,11 @@ Paso 4: Si dice "no llame", escalar a seguridad.
 
 ## Automatización del Pretexting con IA
 
-Los atacantes usan modelos de voz para clonar voces. Ejemplo: llamada del "CEO" usando voz sintetica entrenada con videos de YouTube.
+Los atacantes usan modelos de voz para clonar voces. Ejemplo: llamada del "CEO" usando voz sintética entrenada con videos de YouTube.
 
 Deepfake en tiempo real para videollamadas. La víctima ve y escucha a la persona suplantada.
 
-Defensa: Código de verificación fuera de banda. Pregunta que solo la persona real sabria. Palabra clave pre-acordada.
+Defensa: Código de verificación fuera de banda. Pregunta que solo la persona real sabría. Palabra clave pre-acordada.
 
 ## Pretexting en la Era Remota
 
@@ -208,7 +208,7 @@ Protocolo: Verificación visual (videollamada). Directorio de empleados con foto
 
 ## El Costo del Pretexting Exitoso
 
-El ataque a MGM Resorts 2023: un atacante llamó al helpdesk, fingio ser un empleado, obtuvo reset de contraseña, entró a la red, cifró servidores. Costo: $100 millones.
+El ataque a MGM Resorts 2023: un atacante llamó al helpdesk, fingió ser un empleado, obtuvo reset de contraseña, entró a la red, cifró servidores. Costo: $100 millones.
 
 No es solo pérdida económica: reputación, clientes, reguladores.
 
@@ -258,7 +258,7 @@ Dejar un USB infectado en el estacionamiento. El empleado lo encuentra, lo conec
 
 ### Tailgating
 
-Seguir a un empleado a través de una puerta con control de acceso. El empleado sujeta la puerta por cortesia sin verificar.
+Seguir a un empleado a través de una puerta con control de acceso. El empleado sujeta la puerta por cortesía sin verificar.
 
 ### Shoulder Surfing
 
@@ -276,21 +276,21 @@ Simulaciones de pretexting: llamadas de prueba al helpdesk, visitas de prueba a 
 
 ### Procedimientos
 
-Checklist de verificación de identidad obligatoria. Reset de contraseña requiere: nombre, fecha de nacimiento, último digito de empleado, código de verificación.
+Checklist de verificación de identidad obligatoria. Reset de contraseña requiere: nombre, fecha de nacimiento, último dígito de empleado, código de verificación.
 
 ### Cultura
 
 No castigar al empleado que cae en simulacro. Reportar errores es seguro.
 
-## Casos Historicos
+## Casos Históricos
 
 ### Kevin Mitnick (1990s)
 
-El hacker más famoso uso pretexting constantemente. Llamaba a operadores de telefónica, fingia ser técnico, obtenia acceso a sistemas.
+El hacker más famoso uso pretexting constantemente. Llamaba a operadores de telefónica, fingía ser técnico, obtenía acceso a sistemas.
 
 ### Frank Abagnale (1960s)
 
-El protagonista de "Agarrame si puedes" uso pretexting para hacerse pasar por piloto, médico, abogado. Todos los pretextos tenían nombre, historia, y lenguaje técnico.
+El protagonista de "Agárrame si puedes" uso pretexting para hacerse pasar por piloto, médico, abogado. Todos los pretextos tenían nombre, historia, y lenguaje técnico.
 
 ## Defensa Organizacional Contra Pretexting
 
@@ -320,9 +320,9 @@ Script de verificación obligatorio. Si la persona no responde correctamente, es
 
 ## Pretexting en el Sector Salud
 
-Hospitales son objetivos frecuentes. Atacante llama a enfermeria: "Soy el Dr. Perez, necesito las contraseñas del sistema de pacientes para una emergencia."
+Hospitales son objetivos frecuentes. Atacante llama a enfermería: "Soy el Dr. Perez, necesito las contraseñas del sistema de pacientes para una emergencia."
 
-El personal de salud prioriza la atención al paciente sobre la seguridad. Protocolos de verificación deben ser simples y rapidos.
+El personal de salud prioriza la atención al paciente sobre la seguridad. Protocolos de verificación deben ser simples y rápidos.
 
 ## El Pretexting como Primer Paso
 
@@ -330,9 +330,9 @@ El pretexting rara vez es el único ataque. Es la puerta de entrada. Una vez den
 
 ## Pretexting en la Era de la IA Generativa
 
-ChatGPT puede generar guiones de pretexting. Voz sintetica clonada. Deepfake en videollamadas. La defensa requiere verificación fuera de banda obligatoria.
+ChatGPT puede generar guiones de pretexting. Voz sintética clonada. Deepfake en videollamadas. La defensa requiere verificación fuera de banda obligatoria.
 
-## Senales de Alarma Técnicas
+## Señales de Alarma Técnicas
 
 La llamada de la persona suplantada NO se hizo desde el número registrado. La persona pide algo que no coincide con su rol. Hay urgencia inusual.
 
@@ -356,7 +356,7 @@ Nombre completo. Número de empleado. Departamento. Jefe directo. Motivo de la s
 
 Pérdida financiera directa (transferencias), robo de datos, acceso a sistemas críticos, daño reputacional.
 
-## Medicion de la Vulnerabilidad
+## Medición de la Vulnerabilidad
 
 Simulaciones de pretexting: llamadas de prueba, visitas de prueba. Medir cuántos empleados verifican y cuántos ceden.
 

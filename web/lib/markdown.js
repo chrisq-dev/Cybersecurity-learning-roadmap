@@ -30,8 +30,17 @@ const INTERNAL_ROOT_FILES = [
   'SECURITY.md',
 ];
 
-const PAGE_ORDER = {
+export const PAGE_ORDER = {
   '': ['INICIO-AQUI'],
+  'seguridad-personal': [
+    'PROTEGETE-EN-INTERNET',
+    'CUENTAS-Y-CONTRASENAS',
+    'PRIVACIDAD-DIARIA',
+    'CELULAR-Y-DISPOSITIVOS',
+    'ESTAFAS-CON-IA',
+    'SI-TE-HACKEARON',
+    'FAMILIA-Y-USUARIOS-NO-TECNICOS',
+  ],
   glosario: ['GLOSARIO'],
   fundamentos: ['COMPUTACION-BASICA', 'SISTEMAS-OPERATIVOS', 'IDENTIDAD-PERMISOS', 'BASE-DE-SEGURIDAD'],
   'redes-cisco': ['FUNDAMENTOS-REDES', 'MODELO-OSI-TCPIP', 'IP-SUBNETTING', 'DNS-DHCP-NAT', 'SWITCHING-VLANS-ACLS'],
@@ -77,7 +86,50 @@ const PAGE_ORDER = {
   'cultura-geek': ['INSPIRACION-MR-ROBOT', 'COMO-VER-MR-ROBOT', 'CULTURA-TECH-Y-CIBERSEGURIDAD', 'ETICA-HACKER-Y-OPEN-SOURCE'],
 };
 
-const CONTENT_FOLDERS = Object.freeze(Object.keys(PAGE_ORDER).filter(Boolean));
+export const CONTENT_FOLDERS = Object.freeze(Object.keys(PAGE_ORDER).filter(Boolean));
+
+export const STUDY_ORDER = [
+  'Inicio',
+  'Seguridad Personal',
+  'Glosario',
+  'Fundamentos',
+  'Redes Cisco',
+  'Linux',
+  'Windows Active Directory',
+  'Programación',
+  'Web OWASP',
+  'Blue Team',
+  'Security Teams',
+  'Cloud Security',
+  'IoT y Seguridad Industrial',
+  'Seguridad en IA y LLMs',
+  'OSINT y CTI',
+  'Seguridad Móvil',
+  'Criptografía',
+  'AppSec y DevSecOps',
+  'Forense',
+  'Malware Básico',
+  'Ingeniería Social',
+  'Scripts',
+  'Vulnerability Management',
+  'GRC',
+  'API Security',
+  'Containers Kubernetes',
+  'Privacy',
+  'Email Security',
+  'Wireless Security',
+  'Security Architecture',
+  'Identity Access',
+  'Business Continuity',
+  'Network Security',
+  'Endpoint Security',
+  'Database Security',
+  'Red Team',
+  'Playbooks',
+  'Empleabilidad',
+  'Recursos',
+  'Cultura Geek',
+];
 
 function slugifyPart(value) {
   return value.replace(/\.md$/i, '').toLowerCase();
@@ -232,16 +284,17 @@ function inferLevel({ folder = '', fileName = '', title = '', isRoot = false }) 
 
 function createSearchText(content) {
   return content
-    .replace(/```[\s\S]*?```/g, ' ')
-    .replace(/`[^`\n]+`/g, ' ')
+    .replace(/```[\s\S]*?```/g, (block) => ` ${block.replace(/```[a-zA-Z0-9-]*\n?/g, ' ')} `)
+    .replace(/`([^`\n]+)`/g, ' $1 ')
     .replace(/[#>*_[\]()`|:-]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim()
-    .slice(0, 4000);
+    .slice(0, 20000);
 }
 
 function createExcerpt(content) {
-  return createSearchText(content).slice(0, 180);
+  const body = content.replace(/^\s*#\s+[^\n]+\n+/, '');
+  return createSearchText(body).slice(0, 180);
 }
 
 function getEditorialMeta(data, inferredLevel) {
@@ -260,12 +313,12 @@ export function getContentStructure() {
   const rootFiles = [];
 
   for (const fileName of PUBLIC_ROOT_FILES) {
-    const filePath = path.join(ROOT_DIR, fileName);
-    if (!fs.existsSync(filePath)) continue;
+    const filePath = path.join(/*turbopackIgnore: true*/ ROOT_DIR, fileName);
+    if (!fs.existsSync(/*turbopackIgnore: true*/ filePath)) continue;
 
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    const { data } = parseFrontmatter(fileContent);
-    const title = data.title || fileContent.match(/^#\s+(.+)$/m)?.[1] || fileName.replace('.md', '');
+    const fileContent = fs.readFileSync(/*turbopackIgnore: true*/ filePath, 'utf8');
+    const { data, content } = parseFrontmatter(fileContent);
+    const title = data.title || content.match(/^#\s+(.+)$/m)?.[1] || fileName.replace('.md', '');
     const inferredLevel = inferLevel({ fileName, title, isRoot: true });
 
     rootFiles.push({
@@ -274,8 +327,8 @@ export function getContentStructure() {
       fileName,
       isRoot: true,
       ...getEditorialMeta(data, inferredLevel),
-      searchText: createSearchText(fileContent),
-      excerpt: createExcerpt(fileContent),
+      searchText: createSearchText(content),
+      excerpt: createExcerpt(content),
     });
   }
 
@@ -290,8 +343,8 @@ export function getContentStructure() {
 
     const pages = getMarkdownFilesRecursive(folderPath, [folder]).map((file) => {
       const fileContent = fs.readFileSync(file.filePath, 'utf8');
-      const { data } = parseFrontmatter(fileContent);
-      const title = data.title || fileContent.match(/^#\s+(.+)$/m)?.[1] || file.fileName.replace('.md', '');
+      const { data, content } = parseFrontmatter(fileContent);
+      const title = data.title || content.match(/^#\s+(.+)$/m)?.[1] || file.fileName.replace('.md', '');
       const inferredLevel = inferLevel({ folder, fileName: file.fileName, title });
 
       return {
@@ -300,8 +353,8 @@ export function getContentStructure() {
         fileName: file.fileName,
         isRoot: false,
         ...getEditorialMeta(data, inferredLevel),
-        searchText: createSearchText(fileContent),
-        excerpt: createExcerpt(fileContent),
+        searchText: createSearchText(content),
+        excerpt: createExcerpt(content),
       };
     });
 
@@ -310,48 +363,6 @@ export function getContentStructure() {
       structure.push({ category: formatFolderName(folder), folder, pages });
     }
   }
-
-  const STUDY_ORDER = [
-    'Inicio',
-    'Glosario',
-    'Fundamentos',
-    'Redes Cisco',
-    'Linux',
-    'Windows Active Directory',
-    'Programación',
-    'Web OWASP',
-    'Blue Team',
-    'Security Teams',
-    'Cloud Security',
-    'IoT y Seguridad Industrial',
-    'Seguridad en IA y LLMs',
-    'OSINT y CTI',
-    'Seguridad Móvil',
-    'Criptografía',
-    'AppSec y DevSecOps',
-    'Forense',
-    'Malware Básico',
-    'Ingeniería Social',
-    'Scripts',
-    'Vulnerability Management',
-    'GRC',
-    'API Security',
-    'Containers Kubernetes',
-    'Privacy',
-    'Email Security',
-    'Wireless Security',
-    'Security Architecture',
-    'Identity Access',
-    'Business Continuity',
-    'Network Security',
-    'Endpoint Security',
-    'Database Security',
-    'Red Team',
-    'Playbooks',
-    'Empleabilidad',
-    'Recursos',
-    'Cultura Geek'
-  ];
 
   // Sort structure according to didactical study order
   structure.sort((a, b) => {
@@ -371,11 +382,11 @@ export function getContentStructure() {
 export function getMarkdownContent(slug) {
   const filePath = resolveMarkdownFilePath(slug);
 
-  if (!filePath || !fs.existsSync(filePath)) {
+  if (!filePath || !fs.existsSync(/*turbopackIgnore: true*/ filePath)) {
     return null;
   }
 
-  const fileContent = fs.readFileSync(filePath, 'utf8');
+  const fileContent = fs.readFileSync(/*turbopackIgnore: true*/ filePath, 'utf8');
   const { data, content } = parseFrontmatter(fileContent);
 
   // Extract title if not in frontmatter

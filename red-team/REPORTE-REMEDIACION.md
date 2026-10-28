@@ -15,16 +15,16 @@ Traducir el código a riesgo de negocio para la junta directiva es la habilidad 
 
 ## El Entregable Único
 
-Contratas un inspector de viviendas. Pasa 3 horas revisando la casa. Al final te dice: "Encontré vigas podridas. Aqui esta mi factura." Y se va. Que haces? Nada. No sabes donde están las vigas ni como arreglarlas.
+Contratas un inspector de viviendas. Pasa 3 horas revisando la casa. Al final te dice: "Encontré vigas podridas. Aquí esta mi factura." Y se va. Que haces? Nada. No sabes donde están las vigas ni como arreglarlas.
 
 Un pentest sin reporte útil es lo mismo. El cliente necesita: que esta roto, donde esta roto, que tan urgente es, y como arreglarlo.
 
 ### El Ciclo de Vida del Reporte
 
-1. **Planificacion:** Antes del pentest, defines la estructura basado en el alcance y objetivos del cliente.
-2. **Recolección:** Durante el pentest, documentas cada hallazgo: capturas de pantalla, comandos, evidencias, pasos de reproduccion.
+1. **Planificación:** Antes del pentest, defines la estructura basado en el alcance y objetivos del cliente.
+2. **Recolección:** Durante el pentest, documentas cada hallazgo: capturas de pantalla, comandos, evidencias, pasos de reproducción.
 3. **Análisis y priorización:** Después, clasificas hallazgos por severidad usando CVSS y riesgo de negocio.
-4. **Redaccion:** Escribes el reporte en dos partes: ejecutiva y técnica.
+4. **Redacción:** Escribes el reporte en dos partes: ejecutiva y técnica.
 5. **Revisión:** Revisas errores, claridad, y que cada hallazgo tenga su remediación.
 6. **Entrega:** Presentas al cliente, usualmente en reunión para explicar los hallazgos principales.
 7. **Seguimiento:** Verificas que las remediaciones se implementaron (re-test).
@@ -63,7 +63,7 @@ Sección detallada para quienes implementaran las correcciones.
 - **Ubicación:** URL exacta, parámetro, IP, archivo, configuración.
 - **Descripción:** Explicación de la vulnerabilidad y como funciona.
 - **Evidencia:** Captura de pantalla, request/response HTTP, comando ejecutado, log.
-- **Pasos de reproduccion:** Instrucciones paso a paso para replicar.
+- **Pasos de reproducción:** Instrucciones paso a paso para replicar.
 - **Impacto:** Que puede lograr un atacante al explotarla.
 - **Remediación:** Solución específica, con código si aplica.
 - **Referencias:** Enlaces a documentación oficial, CVE, buenas prácticas.
@@ -86,7 +86,7 @@ Cuando entregas 50 hallazgos, el equipo no puede arreglar todo en un día. Neces
 - Integridad: Alta/Media/Baja (datos modificables).
 - Disponibilidad: Alta/Media/Baja (servicio interrumpido).
 
-### Interpretacion de Scores
+### Interpretación de Scores
 
 | Score | Severidad | Acción recomendada |
 |-------|-----------|-------------------|
@@ -121,9 +121,9 @@ Ejemplo: Una vulnerabilidad en el servidor de pruebas interno (CVSS 9.0) vs. una
 
 Un equipo completo un pentest para una empresa de salud. Encontraron vulnerabilidades críticas en el sistema de expedientes. El consultor se retraso en escribir el reporte. Cuando lo entregó, 4 meses después, la empresa ya había sufrido un ataque que exploto exactamente esas vulnerabilidades. Demanda millonaria contra el consultor.
 
-### El Resumen Ejecutivo que Movio Montanas (2020)
+### El Resumen Ejecutivo que Movió Montanas (2020)
 
-Un pentest encontró vulnerabilidades en los sistemas de control de producción de una fábrica. El resumen ejecutivo dijo: "Un atacante podría detener la línea de producción principal durante 3 semanas, causando perdidas estimadas en 5 millones de dólares." Consiguio aprobación inmediata de $500,000 para correcciones.
+Un pentest encontró vulnerabilidades en los sistemas de control de producción de una fábrica. El resumen ejecutivo dijo: "Un atacante podría detener la línea de producción principal durante 3 semanas, causando perdidas estimadas en 5 millones de dólares." Consiguió aprobación inmediata de $500,000 para correcciones.
 
 ### El Falso Positivo en el Reporte (2021)
 
@@ -148,14 +148,14 @@ Un cliente satisfecho contrata de nuevo. Uno insatisfecho no, sin importar la ca
 4. "Hackear y escribir el reporte son habilidades idénticas." Por qué es falso? Que habilidades de comunicación son necesarias?
 5. Encuentras 30 vulnerabilidades, 25 son "Altas" o "Críticas" según CVSS. El equipo no puede arreglar todo. Como priorizas? Que criterio adicional usas?
 6. Un hallazgo crítico que reportaste resulta ser falso positivo. Como recuperas la confianza del cliente? Que cambios haces en tu proceso?
-7. El equipo de desarrollo dice que tu reporte de 100 páginas es muy extenso. Como lo reestructuras? Que secciones son esenciales y cuáles van en apendices?
+7. El equipo de desarrollo dice que tu reporte de 100 páginas es muy extenso. Como lo reestructuras? Que secciones son esenciales y cuáles van en apéndices?
 8. Un cliente te pide omitir del reporte una vulnerabilidad crítica en un sistema legacy que descontinuaran pronto. Cual es tu respuesta ética?
 
 ## Técnicas Avanzadas de Reporte
 
-### Personalizacion por Industria
+### Personalización por Industria
 
-Un reporte para una institucion financiera debe enfatizar riesgos de fraude, cumplimiento regulatorio (PCI DSS, SOX), y protección de datos de clientes. Un reporte para una empresa de salud debe enfocarse en HIPAA, datos de pacientes, y disponibilidad de sistemas críticos. Un reporte para una empresa de tecnología debe priorizar protección de propiedad intelectual y continuidad del negocio.
+Un reporte para una institución financiera debe enfatizar riesgos de fraude, cumplimiento regulatorio (PCI DSS, SOX), y protección de datos de clientes. Un reporte para una empresa de salud debe enfocarse en HIPAA, datos de pacientes, y disponibilidad de sistemas críticos. Un reporte para una empresa de tecnología debe priorizar protección de propiedad intelectual y continuidad del negocio.
 
 La estructura básica es la misma, pero el lenguaje, los ejemplos, y las recomendaciones deben adaptarse a la industria del cliente.
 
@@ -176,8 +176,8 @@ Herramientas como Serpico, PwnDoc, o Ghostwriter ayudan a generar reportes semi-
 
 Beneficios:
 - Consistencia entre reportes.
-- Ahorro de tiempo en formato y maquetacion.
-- Repositorio central de hallazgos para reutilizacion.
+- Ahorro de tiempo en formato y maquetación.
+- Repositorio central de hallazgos para reutilización.
 - Plantillas personalizables por cliente.
 
 Riesgos:
@@ -204,12 +204,12 @@ Como medir si tu reporte es bueno:
 
 - **Tasa de remediación:** Que porcentaje de los hallazgos fueron corregidos en el re-test? Una alta tasa indica que el reporte fue accionable.
 - **Tiempo de remediación:** Cuanto tardo el cliente en corregir los hallazgos? Reportes claros reducen este tiempo.
-- **Satisfaccion del cliente:** Encuestas post-entrega. El cliente entendio los hallazgos? Pudo actuar sobre ellos?
+- **Satisfacción del cliente:** Encuestas post-entrega. El cliente entendió los hallazgos? Pudo actuar sobre ellos?
 - **Re-engagement:** El cliente contrata de nuevo? Es la métrica más importante.
 
 ## Errores de Formato y Presentación
 
-**Reportes sin numeracion de páginas:** Difícil de referenciar en reuniones.
+**Reportes sin numeración de páginas:** Difícil de referenciar en reuniones.
 **Sin tabla de contenidos:** El lector no encuentra lo que busca.
 **Fuente ilegible:** Tamaño muy pequeño o color de texto sobre fondo oscuro.
 **Sin encabezados claros:** No se distingue entre secciones.
@@ -233,11 +233,11 @@ Por lo tanto:
 ## Preguntas Adicionales de Autoevaluación
 
 9. Un cliente te pide que "suavices" el lenguaje del reporte para que la junta directiva no se alarme. Cual es tu respuesta profesional?
-10. Durante el re-test, descubres que el cliente "corrigio" una vulnerabilidad de una forma que introduce una vulnerabilidad peor. Como lo documentas?
+10. Durante el re-test, descubres que el cliente "corrigió" una vulnerabilidad de una forma que introduce una vulnerabilidad peor. Como lo documentas?
 11. Tu reporte tiene 80 páginas. El CISO del cliente te dice que solo leyó el resumen ejecutivo. Como aseguras que los hallazgos críticos sean visibles incluso para quien solo lee una página?
 12. Un hallazgo que reportaste como "Alto" fue reclasificado por el cliente como "Bajo" porque "ese sistema no es crítico." Debes aceptar su reclasificación? Como manejas esta situación?
 13. El equipo de desarrollo del cliente argumenta que una vulnerabilidad no es explotable "en la práctica." Como respondes sin entrar en una discusión técnica interminable?
-14. Tu reporte incluye un hallazgo que requiere cambios arquitectonicos profundos. El cliente dice que es demasiado costoso. Ofreces una mitigación parcial o insistes en la solución completa?
+14. Tu reporte incluye un hallazgo que requiere cambios arquitectónicos profundos. El cliente dice que es demasiado costoso. Ofreces una mitigación parcial o insistes en la solución completa?
 
 ## Estructura Detallada de un Reporte
 
@@ -246,7 +246,7 @@ Por lo tanto:
 Sección más importante del reporte. La lee la alta dirección que toma decisiones de presupuesto y prioridades.
 
 **Debe incluir:**
-- Que se evaluo y por qué.
+- Que se evaluó y por qué.
 - Número total de hallazgos, categorizados por severidad.
 - Riesgo general de la organización (bajo, medio, alto, crítico).
 - Que es lo más crítico que debe remediarse primero.
@@ -254,7 +254,7 @@ Sección más importante del reporte. La lee la alta dirección que toma decisio
 
 **Tono:** Profesional pero accesible. Sin jerga técnica excesiva.
 
-**Ejemplo de fraseologia:**
+**Ejemplo de fraseología:**
 "Se identificaron 12 hallazgos de seguridad: 2 críticos, 4 altos, 3 medios, y 3 bajos. El hallazgo más crítico permite a un atacante obtener acceso administrativo al Active Directory sin autenticación. Se recomienda parchear los controladores de dominio de forma inmediata."
 
 ### Metodología y Alcance
@@ -282,7 +282,7 @@ Cada hallazgo debe ser autónomo (puede entenderse sin leer todo el reporte).
 3. **CWE/CVE:** Referencia estándar si aplica.
 4. **Descripción:** Que es la vulnerabilidad en lenguaje no técnico.
 5. **Impacto:** Que puede hacer un atacante si explota la vulnerabilidad.
-6. **Pasos de reproduccion:** Instrucciones detalladas para replicar el hallazgo.
+6. **Pasos de reproducción:** Instrucciones detalladas para replicar el hallazgo.
 7. **Evidencia:** Capturas de pantalla, logs, salida de comandos.
 8. **Recomendación de remediación:** Pasos concretos para corregir la vulnerabilidad.
 9. **Referencias:** Enlaces a documentación externa relevante.
@@ -294,14 +294,14 @@ Cada hallazgo debe ser autónomo (puede entenderse sin leer todo el reporte).
 **CWE:** CWE-89
 **Descripción:** La aplicación web no sanitiza correctamente el parámetro "search" en /products/search. Un atacante puede inyectar comandos SQL y acceder a la base de datos subyacente.
 **Impacto:** El atacante puede extraer, modificar, o eliminar toda la base de datos de productos y clientes (incluyendo datos personales, direcciones, e historial de compras). Potencial violación de GDPR.
-**Pasos de reproduccion:** [detalle técnico]
-**Evidencia:** [captura de pantalla mostrando la inyección exitosa, comando SQL utilizado, datos extraidos]
-**Recomendación:** Usar consultas parametrizadas (prepared statements) en vez de concatenacion de strings para todas las consultas SQL. Validar y sanitizar todos los inputs de usuario.
+**Pasos de reproducción:** [detalle técnico]
+**Evidencia:** [captura de pantalla mostrando la inyección exitosa, comando SQL utilizado, datos extraídos]
+**Recomendación:** Usar consultas parametrizadas (prepared statements) en vez de concatenación de strings para todas las consultas SQL. Validar y sanitizar todos los inputs de usuario.
 **Referencias:** OWASP SQL Injection Prevention Cheat Sheet.
 
 ### Recomendaciones Estratégicas
 
-Van más allá de parchar vulnerabilidades específicas. Guian la mejora a largo plazo.
+Van más allá de parchar vulnerabilidades específicas. Guían la mejora a largo plazo.
 
 **Ejemplos:**
 - "Implementar un programa de bug bounty para recibir reportes de la comunidad de seguridad."
@@ -366,7 +366,7 @@ Por eso es importante:
 
 **Compensatoria:** Mitiga el riesgo sin corregir la vulnerabilidad de raíz. Ejemplo: Implementar un WAF para bloquear SQLi mientras se reescribe el código de la aplicación.
 
-**Aceptación del Riesgo:** El cliente acepta el riesgo y no implementa ninguna corrección. Debe haber una justificacion formal y aprobación de la alta dirección.
+**Aceptación del Riesgo:** El cliente acepta el riesgo y no implementa ninguna corrección. Debe haber una justificación formal y aprobación de la alta dirección.
 
 ### Plazos de Remediación Sugeridos
 
@@ -380,7 +380,7 @@ Por eso es importante:
 
 ### Reporte Técnico (Audiencia: Ingenieros, Administradores)
 - Detalle técnico completo.
-- Pasos de reproduccion exactos.
+- Pasos de reproducción exactos.
 - Comandos, herramientas, y configuraciones.
 - Logs y capturas de pantalla.
 - Recomendaciones de configuración específicas.
@@ -409,10 +409,10 @@ Procedimiento: Pedir evidencia de que esta remediado. Verificar con una prueba a
 Procedimiento: Documentar el desacuerdo en el reporte. El cliente puede firmar una aceptación de riesgo. Mantener la severidad original según el criterio del tester.
 
 **Caso 3: El cliente dice que "es así por diseño."**
-Procedimiento: Evaluar si realmente es intencional o es una excusa. Si es intencional, documentar como "Riesgo Aceptado" con la justificacion del cliente.
+Procedimiento: Evaluar si realmente es intencional o es una excusa. Si es intencional, documentar como "Riesgo Aceptado" con la justificación del cliente.
 
 ## Preguntas Adicionales
 
 13. El cliente te pide modificar la severidad de un hallazgo de "Alto" a "Bajo" porque el equipo de IT no tiene capacidad de remediarlo este trimestre y quieren evitar que la alta dirección se entere. Cual es tu respuesta como profesional de seguridad?
-14. Verificas una remediación 6 meses después del pentest original. La vulnerabilidad crítica sigue presente, pero el cliente dice que "implementaron controles compensatorios." Como evaluas si los controles compensatorios son adecuados?
+14. Verificas una remediación 6 meses después del pentest original. La vulnerabilidad crítica sigue presente, pero el cliente dice que "implementaron controles compensatorios." Como evalúas si los controles compensatorios son adecuados?
 15. Un hallazgo del reporte de hace 2 años sigue sin remediarse. El cliente lo sabe pero no ha priorizado la corrección. Que implicaciones tiene esto para el riesgo general de la organización? Como lo documentas en el nuevo reporte?

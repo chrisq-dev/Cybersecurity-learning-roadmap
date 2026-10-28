@@ -49,7 +49,7 @@ No las uses así:
 
 ## Si Estás Empezando
 
-Si estas en cero, no te asustes. Todos empezaron ahí. aqui van opciones para agarrar el ritmo sin morir en el intento.
+Si estas en cero, no te asustes. Todos empezaron ahí. aquí van opciones para agarrar el ritmo sin morir en el intento.
 
 ### Cisco Introduction to Cybersecurity
 
@@ -243,7 +243,7 @@ Fuente oficial: [Microsoft SC-900](https://learn.microsoft.com/en-us/credentials
 
 ## Red Team Ético
 
-aqui es donde muchos quieren llegar. Pero ojo: saltarse la base para llegar a pentesting es como querer correr una maratón sin haber caminado nunca.
+aquí es donde muchos quieren llegar. Pero ojo: saltarse la base para llegar a pentesting es como querer correr una maratón sin haber caminado nunca.
 
 ### eJPT
 

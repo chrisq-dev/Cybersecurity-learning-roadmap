@@ -41,7 +41,7 @@ Un clúster de Kubernetes tiene dos tipos de nodos:
 - **Service:** Expone los pods al exterior (balanceo de carga).
 - **ConfigMap / Secret:** Configuración y datos sensibles.
 - **Ingress:** Enrutamiento HTTP/HTTPS hacia servicios.
-- **Namespace:** Particion lógica del clúster (entornos de trabajo aislados).
+- **Namespace:** Partición lógica del clúster (entornos de trabajo aislados).
 
 ## La Arquitectura de Seguridad de Kubernetes
 
@@ -162,7 +162,7 @@ Esta política solo permite tráfico desde pods con la etiqueta `app: web` hacia
 Antes llamado Pod Security Policies (PSP), ahora es Pod Security Admission (PSA). Define niveles de seguridad para pods:
 
 1. **Privileged:** Sin restricciones. Solo para pods de sistema.
-2. **Baseline:** Restricciones minimas. Evita escaladas de privilegios.
+2. **Baseline:** Restricciones mínimas. Evita escaladas de privilegios.
 3. **Restricted:** Restricciones estrictas. Sigue las mejores prácticas.
 
 Ejemplo de etiqueta de namespace para aplicar Restricted:
@@ -188,7 +188,7 @@ Kubernetes tiene un objeto llamado Secret para almacenar datos sensibles (contra
 1. Usar encriptación en reposo para Secrets (encryption at rest).
 2. Usar un proveedor externo como HashiCorp Vault, AWS Secrets Manager o Azure Key Vault.
 3. No incluir Secrets en imágenes de contenedor.
-4. Rotar Secrets periodicamente.
+4. Rotar Secrets periódicamente.
 
 Ejemplo de Secret:
 
@@ -244,7 +244,7 @@ Los Admission Controllers son plugins que interceptan las solicitudes al API Ser
 
 ## Escaneo de Vulnerabilidades en K8s
 
-### Escaneo de Imagenes
+### Escaneo de Imágenes
 
 Usar herramientas como Trivy, Snyk o Aqua Security para escanear imágenes de contenedor en busca de vulnerabilidades conocidas.
 
@@ -293,10 +293,10 @@ Ejemplo de regla de Falco:
 
 Tesla tenía un dashboard de Kubernetes expuesto a internet sin autenticación. Atacantes:
 
-1. Encontraron el dashboard via Shodan (buscador de dispositivos conectados).
+1. Encontraron el dashboard vía Shodan (buscador de dispositivos conectados).
 2. Crearon un deployment con contenedores de minería de criptomonedas.
 3. Usaron los recursos GPU de Tesla para minar.
-4. Tesla recibio la factura de cómputo.
+4. Tesla recibió la factura de cómputo.
 
 El ataque fue detectado por un equipo de seguridad externo (RedLock) que encontró el dashboard expuesto.
 
@@ -359,7 +359,7 @@ kubectl get clusterroles
 kubectl describe node
 ```
 
-Cada comando me da información sobre la topologia del clúster y posibles vectores de ataque.
+Cada comando me da información sobre la topología del clúster y posibles vectores de ataque.
 
 ### Escalada de Privilegios en K8s
 
@@ -381,7 +381,7 @@ docker run -v /:/host -it alpine chroot /host
 
 **Técnica 3: Service Account con Permisos Excesivos**
 
-Si la Service Account del pod que comprometi tiene permisos de administrador, puedo crear nuevos pods, deployments o incluso modificar la configuración del clúster.
+Si la Service Account del pod que comprometí tiene permisos de administrador, puedo crear nuevos pods, deployments o incluso modificar la configuración del clúster.
 
 **Técnica 4: Acceso a etcd**
 
@@ -422,7 +422,7 @@ Responde estas preguntas para verificar si comprendes los conceptos:
 
 5. Cual es la diferencia entre un Role y un ClusterRole en Kubernetes RBAC? Cuando usarías cada uno?
 
-6. Un atacante compromete un pod en Kubernetes. Que información buscaría en los Secrets del namespace y como la usaria para escalar el ataque?
+6. Un atacante compromete un pod en Kubernetes. Que información buscaría en los Secrets del namespace y como la usaría para escalar el ataque?
 
 7. Explica el problema de seguridad de los Secrets de Kubernetes (almacenados en Base64) y como se pueden proteger usando encriptación en reposo o un proveedor externo como Vault.
 

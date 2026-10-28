@@ -33,7 +33,7 @@ En la web, el Banco es `banco.com`, y la foto del gatito es una página trampa c
 1. Entras a `banco.com` y pones tu contraseña. El banco te da tu Cookie de sesión.
 2. Sin cerrar la pestaña del banco, abres otra pestaña y entras a `gatos-graciosos.com`.
 3. La página de los gatos tiene un código HTML invisible que le dice a tu navegador: "Oye Chrome, manda una petición POST a banco.com/transferir con el monto de $1,000 a la cuenta del atacante."
-4. El error de diseño de la Web clásica: Por defecto, los navegadores antiguos decían: "Ah, me están pidiendo ir a banco.com. Dejame buscar la Cookie que tengo guardada para el banco y pegársela a esta petición automáticamente."
+4. El error de diseño de la Web clásica: Por defecto, los navegadores antiguos decían: "Ah, me están pidiendo ir a banco.com. Déjame buscar la Cookie que tengo guardada para el banco y pegársela a esta petición automáticamente."
 5. El servidor del banco recibe la petición, ve que trae tu Cookie valida, y ejecuta la transferencia.
 
 El hacker "forjó" (falsificó) la petición desde un "sitio cruzado" (Cross-Site).
@@ -124,7 +124,7 @@ Si un atacante intenta crear un formulario falso desde `gatos-graciosos.com`, no
 **Implementación correcta:**
 - El token debe ser único por sesión o por formulario.
 - El token debe ser criptográficamente aleatorio (no secuencial ni predecible).
-- El token debe ser invalidado después de su uso (o tener expiracion corta).
+- El token debe ser invalidado después de su uso (o tener expiración corta).
 - El token debe verificarse en el servidor para cada acción sensible.
 
 **Implementación incorrecta:**
@@ -143,7 +143,7 @@ Es una defensa moderna implementada a nivel de navegador. La bandera `SameSite` 
 
 **SameSite=None; Secure:** La cookie se envía en todas las peticiones, incluso entre sitios. Se usa para casos donde la autenticación necesita funcionar a través de sitios. Requiere la bandera `Secure` (solo HTTPS).
 
-**Impacto:** Con `SameSite=Strict` o `Lax`, la mayoría de los ataques CSRF clasicos son bloqueados automáticamente por el navegador. Sin embargo, ataques que usan navegación top-level (como enlaces) aún pueden funcionar con `Lax`.
+**Impacto:** Con `SameSite=Strict` o `Lax`, la mayoría de los ataques CSRF clásicos son bloqueados automáticamente por el navegador. Sin embargo, ataques que usan navegación top-level (como enlaces) aún pueden funcionar con `Lax`.
 
 ### Verificación del Header Referer/Origin
 
@@ -156,7 +156,7 @@ Si el header `Origin` no coincide con el dominio esperado, el servidor rechaza l
 - El header `Referer` puede ser manipulado en algunos contextos.
 - El header `Origin` es más confiable pero no siempre esta presente.
 
-### Doble Envio de Cookie (Double Submit Cookie)
+### Doble Envío de Cookie (Double Submit Cookie)
 
 El servidor envía un token en una cookie (no HttpOnly) y el cliente debe enviar el mismo token como un header o parámetro en la petición. Como el atacante no puede leer ni modificar la cookie del dominio del banco desde `gatos-graciosos.com`, no puede enviar el token correcto.
 
@@ -166,7 +166,7 @@ El servidor envía un token en una cookie (no HttpOnly) y el cliente debe enviar
 
 El servidor requiere un header personalizado (como `X-Requested-With: XMLHttpRequest`) en las peticiones sensibles. Los navegadores no permiten enviar headers personalizados en peticiones entre sitios sin usar CORS.
 
-**Limitacion:** Funciona para peticiones AJAX pero no para formularios HTML tradicionales.
+**Limitación:** Funciona para peticiones AJAX pero no para formularios HTML tradicionales.
 
 ## La Evolución de CSRF: Por qué es Cada Vez Más Raro
 
@@ -178,9 +178,9 @@ En 2025, encontrar un CSRF vulnerable en una aplicación moderna es relativament
 
 2. **Frameworks con protección incluida:** Laravel, Django, Spring, ASP.NET Core, Ruby on Rails y otros frameworks incluyen protección CSRF activada por defecto.
 
-3. **APIs REST con tokens Bearer:** Las aplicaciones modernas tienden a usar autenticación via tokens JWT en headers `Authorization`, que no se envían automáticamente entre sitios.
+3. **APIs REST con tokens Bearer:** Las aplicaciones modernas tienden a usar autenticación vía tokens JWT en headers `Authorization`, que no se envían automáticamente entre sitios.
 
-4. **CORS restrictivo:** Las políticas CORS (Cross-Origin Resource Sharing) en las APIs modernas limitan que origenes pueden hacer peticiones.
+4. **CORS restrictivo:** Las políticas CORS (Cross-Origin Resource Sharing) en las APIs modernas limitan que orígenes pueden hacer peticiones.
 
 Sin embargo, CSRF sigue siendo relevante en:
 - Aplicaciones legacy (mantenidas pero no actualizadas)
@@ -192,7 +192,7 @@ Sin embargo, CSRF sigue siendo relevante en:
 
 Un investigador descubrió que YouTube era vulnerable a CSRF. Creo una página que, cuando un usuario autenticado en YouTube la visitaba, realizaba acciones como agregar videos, suscribirse a canales, y cambiar la configuración del perfil. Todo sin que el usuario hiciera clic en nada.
 
-Google pago una recompensa por el hallazgo y corrigio la vulnerabilidad agregando tokens CSRF a todas las acciones sensibles.
+Google pago una recompensa por el hallazgo y corrigió la vulnerabilidad agregando tokens CSRF a todas las acciones sensibles.
 
 ## CSRF en Combinación con Otros Ataques
 
@@ -230,8 +230,8 @@ Si las cookies no tienen `SameSite`, el atacante puede hacer peticiones que llev
 
 5. Explica por qué un ataque XSS en el mismo sitio vuelve inútil cualquier protección CSRF, incluso los tokens anti-CSRF más seguros.
 
-6. Tu aplicación web moderna usa autenticación via tokens JWT almacenados en `localStorage` (no en cookies). El token se envía en el header `Authorization: Bearer <token>`. Eres vulnerable a CSRF? Por qué?
+6. Tu aplicación web moderna usa autenticación vía tokens JWT almacenados en `localStorage` (no en cookies). El token se envía en el header `Authorization: Bearer <token>`. Eres vulnerable a CSRF? Por qué?
 
 7. Un desarrollador argumenta: "Mi API no necesita protección CSRF porque solo acepta peticiones con el header `Content-Type: application/json` y los formularios HTML tradicionales no pueden enviar JSON." Por qué esta confianza puede ser peligrosa? (Pista: Piensa en JavaScript y CORS.)
 
-8. Durante una auditoría, encuentras que la aplicación tiene `SameSite=Lax` configurado. El atacante necesita ejecutar una acción destructiva (cambiar contraseña) usando un enlace que la víctima debe hacer clic. Según el comportamiento de `SameSite=Lax`, el ataque CSRF via enlace (navegación top-level) funciona o no? Explica.
+8. Durante una auditoría, encuentras que la aplicación tiene `SameSite=Lax` configurado. El atacante necesita ejecutar una acción destructiva (cambiar contraseña) usando un enlace que la víctima debe hacer clic. Según el comportamiento de `SameSite=Lax`, el ataque CSRF vía enlace (navegación top-level) funciona o no? Explica.

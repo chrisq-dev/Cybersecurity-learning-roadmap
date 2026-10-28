@@ -21,11 +21,11 @@ Esta guía explora la anatomía del phishing, variantes, técnicas psicológicas
 
 Phishing es lanzar un anzuelo al océano digital. El pescador prepara el equipo, escoge el lugar, prepara el cebo, lanza la línea, y espera.
 
-El phishing moderno no es arrojar una red al azar. Es estudiar al pez, preparar el anzuelo perfecto, y lanzarlo cuando el pez esta distraido.
+El phishing moderno no es arrojar una red al azar. Es estudiar al pez, preparar el anzuelo perfecto, y lanzarlo cuando el pez esta distraído.
 
 ## La Anatomía del Espejismo
 
-es lo más loco? La víctima no necesita ser una experta en seguridad. Solo necesita saber que mirar. La técnica ayuda, pero la intuicion es la primera línea de defensa.
+es lo más loco? La víctima no necesita ser una experta en seguridad. Solo necesita saber que mirar. La técnica ayuda, pero la intuición es la primera línea de defensa.
 
 ### El Remitente Falsificado
 
@@ -70,7 +70,7 @@ Ejemplo: "Hola, soy del departamento de fraude de tu banco. Detectamos una compr
 
 ### Smishing (SMS Phishing)
 
-Phishing via SMS. Efectivo porque:
+Phishing vía SMS. Efectivo porque:
 - Los SMS tienen 90%+ de tasa de apertura
 - La gente confía más en SMS que en correo
 - Es más fácil falsificar SMS (no hay SPF, DKIM, DMARC)
@@ -80,13 +80,13 @@ Ejemplo: "Su paquete DHL esta retenido. Pague $5 USD: https://bit.ly/3x..."
 
 ### Clone Phishing
 
-Clona un correo legítimo que la víctima recibio antes, reemplazando enlaces o adjuntos con versiones maliciosas.
+Clona un correo legítimo que la víctima recibió antes, reemplazando enlaces o adjuntos con versiones maliciosas.
 
 ### Angler Phishing
 
 Crea cuentas falsas de soporte en redes sociales y responde a quejas reales con enlaces de phishing.
 
-Ejemplo: Un usuario tuitea "No puedo acceder a Netflix". El atacante responde con cuenta falsa: "Verifica tu cuenta aqui: netflix-verificación.com".
+Ejemplo: Un usuario tuitea "No puedo acceder a Netflix". El atacante responde con cuenta falsa: "Verifica tu cuenta aquí: netflix-verificación.com".
 
 ### Phishing en Redes Sociales
 
@@ -102,11 +102,11 @@ El atacante tiene la contraseña (por phishing o breach). A las 3 AM, intenta in
 
 ### Caso Real: Uber 2022
 
-En septiembre de 2022, un atacante de 18 años comprometio Uber usando MFA Fatigue:
+En septiembre de 2022, un atacante de 18 años comprometió Uber usando MFA Fatigue:
 1. Obtuvo credenciales de un contratista de Uber.
 2. Genero decenas de notificaciones MFA.
 3. El contratista acepto una por frustración.
-4. El atacante entró a la red interna, accedio a AWS, GSuite, HackerOne.
+4. El atacante entró a la red interna, accedió a AWS, GSuite, HackerOne.
 
 ### Defensa Contra MFA Fatigue
 
@@ -120,7 +120,7 @@ En septiembre de 2022, un atacante de 18 años comprometio Uber usando MFA Fatig
 
 ### Homograph Attacks
 
-Usan caracteres de diferentes alfabetos idénticos visualmente: `аpple.com` (а cirilica) se ve idéntico a `apple.com` (a latina). El navegador muestra el dominio, pero es otro sitio.
+Usan caracteres de diferentes alfabetos idénticos visualmente: `аpple.com` (а cirílica) se ve idéntico a `apple.com` (a latina). El navegador muestra el dominio, pero es otro sitio.
 
 ### Tabnabbing
 
@@ -148,7 +148,7 @@ No tener canal de reporte fácil: El empleado debe reportar con un clic.
 
 ### Caso Real: Facebook y Google (2013-2015)
 
-Un atacante lituano envio facturas falsas a Facebook y Google haciéndose pasar por un proveedor taiwanes. Investigó el formato de facturas, montos, contactos. Ambas empresas pagaron más de 100 millones de dólares antes de descubrir el fraude. No hubo hacking, solo ingeniería social.
+Un atacante lituano envío facturas falsas a Facebook y Google haciéndose pasar por un proveedor taiwanés. Investigó el formato de facturas, montos, contactos. Ambas empresas pagaron más de 100 millones de dólares antes de descubrir el fraude. No hubo hacking, solo ingeniería social.
 
 ## El Ángulo del Hacker
 
@@ -184,7 +184,7 @@ Entrenamiento continuo con simulaciones frecuentes, no cursos anuales. Cultura d
 
 ### Capa de Procesos
 
-Transferencias grandes requieren verificación fuera de banda (telefónica o presencial). Límites de autorización con aprobación multiple. Principio de mínimo privilegio.
+Transferencias grandes requieren verificación fuera de banda (telefónica o presencial). Límites de autorización con aprobación múltiple. Principio de mínimo privilegio.
 
 ## Phishing en Campañas Masivas
 
@@ -198,17 +198,17 @@ Ejemplo: Caffeine (2023) operaba servicio de phishing con paneles en la nube. Mi
 
 1. Compra de lista de correos (filtrada de breaches).
 2. Configuración de dominio y página.
-3. Envio masivo (50,000+ correos).
+3. Envío masivo (50,000+ correos).
 4. Monitoreo de credenciales capturadas.
 5. Venta de credenciales o uso para más ataques.
 
 ## Filtrado de Correo y Evasiones
 
-### Técnicas de Evasion que Usan los Atacantes
+### Técnicas de Evasión que Usan los Atacantes
 
 HTML rendering: El correo parece texto plano pero contiene HTML que renderiza la página falsa.
 
-Imagenes incrustadas: La página de phishing es una imagen. El usuario no puede distinguir.
+Imágenes incrustadas: La página de phishing es una imagen. El usuario no puede distinguir.
 
 URL shorteners: Bit.ly, TinyURL ocultan la URL real.
 
@@ -256,7 +256,7 @@ El atacante prueba las mismas credenciales en otros servicios. Si usas la misma 
 
 Los errores ortográficos ya no son un indicador suficiente. La IA generativa puede producir mensajes más fluidos y adaptados, aunque también comete errores y no vuelve creíble una solicitud por sí sola.
 
-### Personalizacion Masiva
+### Personalización Masiva
 
 IA analiza redes sociales de miles de personas y genera correos personalizados para cada una. Escala el spear phishing a miles de objetivos.
 
@@ -268,7 +268,7 @@ Vishing con voz clonada del CEO. Deepfake en videollamada. La víctima ve y escu
 
 ### Ataques en Android
 
-Apps maliciosas en tiendas no oficiales. Permisos abusivos: acceso a SMS, contactos, cámara. Phishing via notificaciones push falsas.
+Apps maliciosas en tiendas no oficiales. Permisos abusivos: acceso a SMS, contactos, cámara. Phishing vía notificaciones push falsas.
 
 ### Ataques en iOS
 
@@ -288,7 +288,7 @@ El empleado debe reportar con un clic. Integración con SIEM/SOAR para respuesta
 
 El equipo de seguridad analiza: remitente, enlaces, adjuntos. Decide si es phishing o legítimo. Actualiza filtros si es necesario.
 
-### Retroalimentacion al Empleado
+### Retroalimentación al Empleado
 
 "Gracias por reportar. Era phishing. No hiciste clic. Bien hecho." Refuerza comportamiento positivo.
 
@@ -310,14 +310,14 @@ Cortar el ciclo en cualquier paso detiene el ataque. La detección temprana (pas
 Indicadores clave:
 - Tasa de clics: % de empleados que hacen clic en enlaces de phishing simulado.
 - Tasa de reporte: % de empleados que reportan phishing simulado.
-- Tiempo medio de reporte: minutos entre envio y reporte.
+- Tiempo medio de reporte: minutos entre envío y reporte.
 - Tasa de credenciales: % que ingresan credenciales en página falsa.
 
 Objetivo: tasa de clics < 5%, tasa de reporte > 50%.
 
 ## Phishing en la Cadena de Suministro
 
-Atacante compromete a un proveedor y usa su identidad para atacar a los clientes del proveedor. Ejemplo: ataque a SolarWinds (2020) donde actualización legítima contenia backdoor.
+Atacante compromete a un proveedor y usa su identidad para atacar a los clientes del proveedor. Ejemplo: ataque a SolarWinds (2020) donde actualización legítima contenía backdoor.
 
 ## El Futuro del Phishing
 
@@ -343,7 +343,7 @@ Plataformas que venden kits de phishing completos. Incluyen página falsa, panel
 
 Financiero: bancos, fintech, cripto. Salud: hospitals, aseguradoras. Gobierno: agencias, impuestos. Retail: tiendas online.
 
-Cada sector tiene tácticas específicas. El sector financiero recibe spear phishing dirigido a tesoreria.
+Cada sector tiene tácticas específicas. El sector financiero recibe spear phishing dirigido a tesorería.
 
 ## Respuesta a Phishing
 
@@ -351,7 +351,7 @@ Si un empleado reporta: analizar rápido, bloquear si es malicioso, agradecer re
 
 ## Reporte a Autoridades
 
-INCIBE (Espana), CISA (USA), NCSC (UK). Reportar phishing ayuda a proteger a otros.
+INCIBE (España), CISA (USA), NCSC (UK). Reportar phishing ayuda a proteger a otros.
 
 ## Indicadores de Phishing
 
@@ -367,7 +367,7 @@ Si un correo pide acción urgente con consecuencias graves, es phishing hasta qu
 
 ## Phishing en la Era Post-IA
 
-Con IA, los correos son perfectos. No hay errores ortograficos. El tono es natural. La personalizacion es exacta. La única defensa es la verificación fuera de banda.
+Con IA, los correos son perfectos. No hay errores ortográficos. El tono es natural. La personalización es exacta. La única defensa es la verificación fuera de banda.
 
 ## Resumen para el Líder
 
@@ -387,7 +387,7 @@ El phishing evoluciona más rápido que la tecnología de defensa. La inversión
 
 6. Un atacante uso Evilginx. Explica como evita el MFA.
 
-7. Tu empresa sufrio phishing: un empleado reporto, otro hizo clic sin ingresar datos, un tercero ingreso credenciales. Como maneja cada caso?
+7. Tu empresa sufrió phishing: un empleado reporto, otro hizo clic sin ingresar datos, un tercero ingreso credenciales. Como maneja cada caso?
 
 8. El CEO recibe un correo urgente de su asistente pidiendo transferencia. Que procesos deben evitar la transferencia sin verificación?
 

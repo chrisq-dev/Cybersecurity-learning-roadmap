@@ -15,9 +15,9 @@ Esta guía cubre el ciclo de vida completo de una detección: investigación de 
 
 ## El Problema: Comprar una Caja Mágica
 
-Hace una década, los bancos compraban un SIEM costoso y decían: "Listo, estamos seguros." La realidad es que un SIEM vacio es solo un disco duro caro. No atrapa a nadie si nadie le enseña que buscar.
+Hace una década, los bancos compraban un SIEM costoso y decían: "Listo, estamos seguros." La realidad es que un SIEM vacío es solo un disco duro caro. No atrapa a nadie si nadie le enseña que buscar.
 
-Los fabricantes incluyen reglas por defecto. Son genéricas y horribles para entornos específicos. Una regla tipica: "Alertar si un usuario inicia sesión desde un país distinto al habitual." Si tu empresa es una aerolínea internacional, esta regla genera 20,000 falsos positivos diarios.
+Los fabricantes incluyen reglas por defecto. Son genéricas y horribles para entornos específicos. Una regla típica: "Alertar si un usuario inicia sesión desde un país distinto al habitual." Si tu empresa es una aerolínea internacional, esta regla genera 20,000 falsos positivos diarios.
 
 La industria aprendió esta lección por las malas. Hoy, el Detection Engineering es una disciplina reconocida con profesionales escasos y bien remunerados. No basta con instalar seguridad; hay que programar la inteligencia que la hace funcionar.
 
@@ -51,7 +51,7 @@ index=windows EventCode=4688 Process_Name=*vssadmin.exe CommandLine=*delete*shad
 
 **Fase 4: Prueba Inicial (Baseline)**
 
-Ejecuta la regla contra datos historicos (semanas o meses de logs). Esto revela:
+Ejecuta la regla contra datos históricos (semanas o meses de logs). Esto revela:
 - Cuántas alertas generaría la regla si estuviera activa.
 - Si hay falsos positivos obvios.
 - Si la regla tiene errores de sintaxis o lógica.
@@ -76,14 +76,14 @@ Activa la regla en modo producción. Las alertas comienzan a llegar al SOC. El i
 
 **Fase 7: Monitoreo Continuo y Ajuste**
 
-La regla se revisa periodicamente:
+La regla se revisa periódicamente:
 - Nuevas variantes de la técnica de ataque requieren actualizar la regla.
 - Cambios en la infraestructura de la empresa (nuevo software, nuevas configuraciones) pueden introducir falsos positivos.
 - La regla puede volverse obsoleta si la técnica de ataque ya no se usa.
 
 **Fase 8: Retiro**
 
-Cuando una regla ya no es útil (porque la técnica desaparecio, porque fue reemplazada por una regla mejor, o porque genera más ruido que valor), se desactiva. Mantener reglas obsoletas solo genera ruido en el SOC.
+Cuando una regla ya no es útil (porque la técnica desapareció, porque fue reemplazada por una regla mejor, o porque genera más ruido que valor), se desactiva. Mantener reglas obsoletas solo genera ruido en el SOC.
 
 ### Lenguajes de Detección
 
@@ -152,9 +152,9 @@ El punto optimo depende del contexto:
 
 Una empresa escribió: "Alertar si se ejecuta cmd.exe o powershell.exe." Miles de alertas diarias de desarrolladores y administradores. Los analistas empezaron a cerrar todas las alertas de PowerShell. Cuando un atacante real ejecutó PowerShell, la alerta se cerró sin investigar.
 
-### La Exclusion que Cego al SOC (2021)
+### La Exclusión que Cegó al SOC (2021)
 
-Un ingeniero agregó una exclusion a la regla para ignorar tráfico de la IP 10.0.0.50 (el escáner de vulnerabilidades). Un atacante dentro de la red descubrió la exclusion y uso esa IP para operar sin ser detectado.
+Un ingeniero agregó una exclusión a la regla para ignorar tráfico de la IP 10.0.0.50 (el escáner de vulnerabilidades). Un atacante dentro de la red descubrió la exclusión y uso esa IP para operar sin ser detectado.
 
 ### La Regla que Detecto su Ausencia (2023)
 
@@ -162,15 +162,15 @@ Un equipo implementó una regla que monitoreaba si los EDRs enviaban telemetría
 
 ## Modos de Falla
 
-Reglas sin contexto de negocio: detectan transferencias de 100MB sin saber que diseño sube videos. No probar con datos historicos: errores de sintaxis o falsos positivos masivos. Excluir por conveniencia: ignorar departamentos enteros crea puntos ciegos. Reglas estaticas en entornos dinamicos: lo que funcionaba hace 6 meses puede estar obsoleto. Ignorar la evasion: los atacantes estudian las reglas y las evaden.
+Reglas sin contexto de negocio: detectan transferencias de 100MB sin saber que diseño sube videos. No probar con datos históricos: errores de sintaxis o falsos positivos masivos. Excluir por conveniencia: ignorar departamentos enteros crea puntos ciegos. Reglas estáticas en entornos dinámicos: lo que funcionaba hace 6 meses puede estar obsoleto. Ignorar la evasión: los atacantes estudian las reglas y las evaden.
 
 ### El Problema de las Excepciones Acumuladas
 
-Cada vez que una regla genera un falso positivo, la tentacion es agregar una excepción. Con el tiempo, la regla original queda irreconocible, llena de parches que la hacen ineficaz. La mejor práctica es en lugar de acumular excepciones, redisenar la regla para que sea más específica desde el inicio.
+Cada vez que una regla genera un falso positivo, la tentación es agregar una excepción. Con el tiempo, la regla original queda irreconocible, llena de parches que la hacen ineficaz. La mejor práctica es en lugar de acumular excepciones, redisenar la regla para que sea más específica desde el inicio.
 
 ## La Perspectiva del Atacante
 
-Un atacante que enfrenta Detection Engineering sólido sabe que no puede confiar en técnicas conocidas. Prueba sus herramientas contra EDRs, modifica firmas, usa herramientas nativas (LOLBins), distribuye actividades en el tiempo, y estudia las políticas de exclusion si puede acceder a documentación interna.
+Un atacante que enfrenta Detection Engineering sólido sabe que no puede confiar en técnicas conocidas. Prueba sus herramientas contra EDRs, modifica firmas, usa herramientas nativas (LOLBins), distribuye actividades en el tiempo, y estudia las políticas de exclusión si puede acceder a documentación interna.
 
 El atacante más peligroso sabe exactamente que reglas existen y diseña su ataque para evadirlas todas.
 
@@ -178,7 +178,7 @@ El atacante más peligroso sabe exactamente que reglas existen y diseña su ataq
 
 1. Compras un SIEM sin contratar Detection Engineer. Por qué las reglas por defecto serán inútiles?
 2. Regla para detectar whoami. En empresa de desarrollo, genera problema de recall o precisión?
-3. Agregas exclusion para IP 10.0.0.50. Por qué las exclusiones fijas son peligrosas?
+3. Agregas exclusión para IP 10.0.0.50. Por qué las exclusiones fijas son peligrosas?
 4. Regla busca "ransomware.exe". Que problemas tiene? Como la mejoras?
 5. Un empleado de IT usa PowerShell. Un atacante también. Como distingues entre ambos?
 6. Nueva regla genera 100 alertas en la primera hora. Opciones: desactivar, ajustar, ignorar. Cual es correcta?
@@ -211,7 +211,7 @@ Los atacantes usan herramientas nativas del sistema (LOLBins) para evitar ser de
 - Anómalo: Regsvr32 ejecutando scripts desde URLs remotas (Squiblydoo).
 - Regla: Alertar cuando regsvr32.exe se conecte a internet.
 
-### Estrategias de Evasion que los Atacantes Usan
+### Estrategias de Evasión que los Atacantes Usan
 
 **Living off the Land:** Usar herramientas nativas del sistema (PowerShell, WMI, MSHTA, certutil) para evitar que herramientas externas generen alertas.
 
@@ -269,4 +269,4 @@ Un Detection Engineer efectivo construye relaciones con IT, desarrollo, y operac
 11. El equipo de Red Team prueba tus reglas durante un ejercicio y las evade todas. Como conviertes este resultado en una mejora concreta de tus reglas?
 12. Una regla bien afinada tiene 0 falsos positivos pero solo detecta el 10% de los ataques. Otra regla detecta el 90% pero genera 1000 falsos positivos al día. Cual prefieres y por qué?
 
-17. Que métricas usarías para medir la efectividad de tu programa de Detection Engineering? Como las presentarias a la dirección para justificar el presupuesto?
+17. Que métricas usarías para medir la efectividad de tu programa de Detection Engineering? Como las presentarías a la dirección para justificar el presupuesto?

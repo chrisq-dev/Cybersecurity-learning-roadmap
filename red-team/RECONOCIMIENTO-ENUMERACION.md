@@ -11,7 +11,7 @@ updated: "2026-06-29"
 
 Aprender la habilidad más importante del hacking: recolectar información del objetivo sin ser detectado. El novato lanza exploits ciegamente esperando que funcionen. El profesional pasa semanas estudiando el objetivo antes de ejecutar un solo ataque.
 
-El reconocimiento es la diferencia entre un ataque ruidoso que fracasa y un ataque quirúrgico que tiene éxito. Esta guía cubre OSINT (reconocimiento pasivo), enumeración activa con Nmap, evasion de firewalls, y como los atacantes convierten información pública en acceso no autorizado. El 90% del éxito de un ataque se juega en estas fases iniciales.
+El reconocimiento es la diferencia entre un ataque ruidoso que fracasa y un ataque quirúrgico que tiene éxito. Esta guía cubre OSINT (reconocimiento pasivo), enumeración activa con Nmap, evasión de firewalls, y como los atacantes convierten información pública en acceso no autorizado. El 90% del éxito de un ataque se juega en estas fases iniciales.
 
 ## La Analogía: Estudiando el Castillo
 
@@ -55,7 +55,7 @@ Motor de búsqueda de dispositivos conectados a internet. Busca tu IP objetivo y
 - Certificados SSL.
 
 **Wayback Machine (archive.org):**
-Muestra versiones historicas del sitio web. Puedes encontrar:
+Muestra versiones históricas del sitio web. Puedes encontrar:
 - Versiones antiguas con vulnerabilidades.
 - Información que ya no esta pública.
 - Comentarios en HTML que revelan detalles internos.
@@ -86,7 +86,7 @@ Bases de datos de credenciales filtradas en breaches anteriores. Si encuentras c
 theHarvester -d empresa.com -b google,linkedin,bing
 ```
 
-**Recon-ng:** Framework modular con docenas de modulos para diferentes fuentes OSINT. Interfaz similar a Metasploit.
+**Recon-ng:** Framework modular con docenas de módulos para diferentes fuentes OSINT. Interfaz similar a Metasploit.
 
 **Maltego:** Herramienta gráfica que visualiza relaciones entre entidades (personas, empresas, dominios, IPs, correos). Excelente para encontrar conexiones no obvias.
 
@@ -143,7 +143,7 @@ La opción `-sS` realiza un escaneo SYN, también llamado "stealth" o sigiloso:
 3. En lugar de completar la conexión con ACK, Nmap envía RST (reset).
 4. Como nunca se completo el handshake TCP, la aplicación de destino no registra la conexión en sus logs.
 
-Limitacion: Aunque evade logs de aplicaciones, los firewalls y sistemas de detección de intrusiones pueden detectar escaneos SYN.
+Limitación: Aunque evade logs de aplicaciones, los firewalls y sistemas de detección de intrusiones pueden detectar escaneos SYN.
 
 ### Tipos de Escaneo en Nmap
 
@@ -169,19 +169,19 @@ PORT     STATE SERVICE     VERSION
 
 Con esta información, buscas en Exploit-DB o CVE si existen vulnerabilidades conocidas para esas versiones específicas.
 
-`nmap -O 10.0.0.5` intenta detectar el sistema operativo basándose en las respuestas TCP/IP. No es 100% confiable pero da una buena orientacion.
+`nmap -O 10.0.0.5` intenta detectar el sistema operativo basándose en las respuestas TCP/IP. No es 100% confiable pero da una buena orientación.
 
-### Evasion de Firewalls con Nmap
+### Evasión de Firewalls con Nmap
 
 Los firewalls modernos detectan escaneos de Nmap. Para evadirlos:
 
-**Fragmentacion (`-f`):**
+**Fragmentación (`-f`):**
 Divide los paquetes en fragmentos más pequeños. El firewall puede no reensamblarlos para inspeccionar el contenido.
 
 `nmap -sS -f 10.0.0.5`
 
 **Decoys (`-D`):**
-Agrega IPs falsas como origen. Confunde al firewall haciendole creer que múltiples hosts están escaneando.
+Agrega IPs falsas como origen. Confunde al firewall haciéndole creer que múltiples hosts están escaneando.
 
 `nmap -sS -D RND:10 10.0.0.5`
 
@@ -250,11 +250,11 @@ Un Red Team encontró en LinkedIn que el CTO público: "Implementé infraestruct
 
 ### GitHub (2020)
 
-Un atacante encontró un repositorio público de un empleado con configuraciones de producción que contenian credenciales de base de datos. Accedio y extrajo datos de clientes.
+Un atacante encontró un repositorio público de un empleado con configuraciones de producción que contenían credenciales de base de datos. Accedió y extrajo datos de clientes.
 
 ### Shodan y SCADA (2021)
 
-Un investigador uso Shodan para encontrar una planta de tratamiento de agua con paneles SCADA accesibles sin contraseña. El operador no sabia que estaba expuesto a internet.
+Un investigador uso Shodan para encontrar una planta de tratamiento de agua con paneles SCADA accesibles sin contraseña. El operador no sabía que estaba expuesto a internet.
 
 ### Escaneo que se Escaló (2022)
 
@@ -262,7 +262,7 @@ Un tester escaneo un objetivo sin coordinar con el Blue Team. El IDS bloqueo aut
 
 ## Modos de Falla
 
-Apresurar el reconocimiento. Depender de una sola fuente. Ignorar la evasion (escaneos ruidosos). No documentar hallazgos. Confiar ciegamente en herramientas automáticas (el banner puede ser falso).
+Apresurar el reconocimiento. Depender de una sola fuente. Ignorar la evasión (escaneos ruidosos). No documentar hallazgos. Confiar ciegamente en herramientas automáticas (el banner puede ser falso).
 
 ## Autoevaluación
 
@@ -307,14 +307,14 @@ Tipos de escaneo:
 - SYN Scan (-sS): Escaneo sigiloso (no completa el handshake TCP). Rápido y menos detectable.
 - Connect Scan (-sT): Completa el handshake TCP. Más detectable pero no requiere privilegios.
 - UDP Scan (-sU): Escaneo de puertos UDP (lento pero necesario para DNS, SNMP, DHCP).
-- FIN/Null/Xmas Scan: Técnicas de evasion para firewalls.
+- FIN/Null/Xmas Scan: Técnicas de evasión para firewalls.
 - Idle Scan (-sI): Escaneo usando un "zombie" para ocultar la IP real.
 
 Scripts NSE (Nmap Scripting Engine):
 - http-enum: Enumeración de directorios y archivos en servidores web.
 - http-title: Obtiene el título de la página web.
 - smb-enum-shares: Enumeración de recursos compartidos SMB.
-- smb-os-discovery: Identifica sistema operativo via SMB.
+- smb-os-discovery: Identifica sistema operativo vía SMB.
 - dns-zone-transfer: Intenta transferencia de zona DNS.
 - ssl-cert: Obtiene información del certificado SSL.
 
@@ -331,7 +331,7 @@ Herramientas y técnicas:
 Información a enumerar:
 - Usuarios del dominio (incluyendo administradores y cuentas de servicio).
 - Grupos de seguridad (Domain Admins, Enterprise Admins, grupos anidados).
-- Políticas de contraseñas (longitud mínima, expiracion, historial).
+- Políticas de contraseñas (longitud mínima, expiración, historial).
 - Unidades Organizativas (OU) para entender la estructura organizativa.
 - Equipos unidos al dominio.
 - Relaciones de confianza con otros dominios/forests.
@@ -349,15 +349,15 @@ Información a enumerar:
 **robots.txt y sitemap.xml:**
 Archivos que los administradores usan para guiar a los crawlers pero que a menudo revelan rutas sensibles.
 
-## Técnicas de Evasion de WAF/Firewalls
+## Técnicas de Evasión de WAF/Firewalls
 
-**Fragmentacion:** Dividir el payload en varios paquetes TCP para evitar la inspeccion completa del paquete.
+**Fragmentación:** Dividir el payload en varios paquetes TCP para evitar la inspección completa del paquete.
 
 **Codificación URL:** Codificar caracteres especiales del payload en formato URL (%27 para ', %3C para <, %3E para >).
 
-**HTTP Parameter Pollution:** Enviar el mismo parámetro multiple veces para confundir los filtros.
+**HTTP Parameter Pollution:** Enviar el mismo parámetro múltiple veces para confundir los filtros.
 
-**Case Swapping:** Alternar mayúsculas/minusculas en el payload (ej: SeLeCt * FrOm UsErS).
+**Case Swapping:** Alternar mayúsculas/minúsculas en el payload (ej: SeLeCt * FrOm UsErS).
 
 **Usar métodos HTTP alternativos:** PUT, DELETE, OPTIONS en lugar de GET/POST para evadir reglas que solo inspeccionan estos métodos.
 
@@ -374,9 +374,9 @@ Archivos que los administradores usan para guiar a los crawlers pero que a menud
 
 ### Motores de Búsqueda Especializados
 
-**Shodan:** Busca dispositivos conectados a internet. Filtros utiles: port, country, city, org, product, vuln. Ejemplo: `port:3389 country:MX` para encontrar servidores RDP en México.
+**Shodan:** Busca dispositivos conectados a internet. Filtros útiles: port, country, city, org, product, vuln. Ejemplo: `port:3389 country:MX` para encontrar servidores RDP en México.
 
-**Censys:** Similar a Shodan pero con enfoque en certificados SSL. Ideal para encontrar subdominios via certificate transparency. Ejemplo: Buscar todos los certificados emitidos para `*.example.com`.
+**Censys:** Similar a Shodan pero con enfoque en certificados SSL. Ideal para encontrar subdominios vía certificate transparency. Ejemplo: Buscar todos los certificados emitidos para `*.example.com`.
 
 **GreyNoise:** Identifica si una IP es parte de escaneo masivo de internet o es un ataque dirigido. Ayuda a filtrar ruido en los logs de SIEM.
 
@@ -434,7 +434,7 @@ Extensiones a probar: .php, .asp, .aspx, .jsp, .do, .action, .html, .htm, .txt, 
 
 Herramientas: Arjun, ParamSpider, ffuf.
 
-Buscar parámetros ocultos en endpoints web. Los desarrolladores a menudo anaden parámetros de depuracion o funcionalidades ocultas que no están documentadas.
+Buscar parámetros ocultos en endpoints web. Los desarrolladores a menudo añaden parámetros de depuración o funcionalidades ocultas que no están documentadas.
 
 ## Preguntas Adicionales
 

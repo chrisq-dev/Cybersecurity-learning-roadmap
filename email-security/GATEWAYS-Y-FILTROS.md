@@ -13,7 +13,7 @@ Aprender como la empresa detiene los misiles balísticos (Ransomware adjunto) an
 
 El protocolo DMARC (visto en la guía anterior) detiene las falsificaciones de identidad. Pero que pasa si un atacante envía un correo desde una cuenta de Gmail 100% real, y le adjunta un archivo PDF con un virus adentro? DMARC dejará pasar el correo porque técnicamente es un correo válido de Gmail. Necesitamos un sistema de Aduanas.
 
-Aqui entra el Secure Email Gateway (SEG), el equivalente al control de aduanas en un aeropuerto. Todo correo que entra o sale de la empresa pasa por este sistema que inspecciona, analiza y decide si el contenido es seguro.
+Aquí entra el Secure Email Gateway (SEG), el equivalente al control de aduanas en un aeropuerto. Todo correo que entra o sale de la empresa pasa por este sistema que inspecciona, analiza y decide si el contenido es seguro.
 
 ## La Analogía
 
@@ -23,7 +23,7 @@ El Secure Email Gateway (SEG) es ese agente de aduanas. Se pone literalmente en 
 
 Pero la aduana no es un solo proceso. Tiene múltiples capas:
 
-1. Inspeccion visual (Filtrado básico): El agente mira el paquete, ve de donde viene, y decide si es sospechoso por el origen.
+1. Inspección visual (Filtrado básico): El agente mira el paquete, ve de donde viene, y decide si es sospechoso por el origen.
 2. Rayos X (Escaneo de contenido): El agente pasa el paquete por una máquina para ver que hay adentro sin abrirlo.
 3. Perros entrenados (Detección por firmas): El perro huele sustancias conocidas (firmas de malware).
 4. Cuarto de cuarentena (Sandbox): Si el agente no esta seguro, mete el paquete en un cuarto blindado y lo abre con un robot para ver que pasa.
@@ -38,9 +38,9 @@ El SEG es un servidor (físico o en la nube) que se coloca como proxy de correo.
 
 Hay dos modos de despliegue:
 
-1. Gateway Inbound: El registro MX del dominio apunta al SEG en lugar de apuntar directamente al servidor de correo. El SEG recibe el correo, lo analiza, y si es seguro, lo reenvia al servidor interno.
+1. Gateway Inbound: El registro MX del dominio apunta al SEG en lugar de apuntar directamente al servidor de correo. El SEG recibe el correo, lo analiza, y si es seguro, lo reenvía al servidor interno.
 
-2. Gateway Outbound: Todo el correo que envían los empleados sale primero al SEG, que lo analiza para evitar fuga de datos (DLP) y luego lo reenvia a internet.
+2. Gateway Outbound: Todo el correo que envían los empleados sale primero al SEG, que lo analiza para evitar fuga de datos (DLP) y luego lo reenvía a internet.
 
 En empresas grandes, el SEG inbound y outbound son servidores diferentes para balancear la carga.
 
@@ -53,7 +53,7 @@ el SEG hace de todo, no solo una cosa. Vamos por partes.
 El SEG utiliza múltiples técnicas para identificar spam:
 
 - Filtrado por reputación de IP: Mantiene listas de IPs conocidas por enviar spam (DNSBL - DNS-based Blackhole Lists).
-- Filtrado por contenido: Analiza el texto del correo en busca de patrones tipicos de spam.
+- Filtrado por contenido: Analiza el texto del correo en busca de patrones típicos de spam.
 - Filtrado por heuristicas: Combina múltiples señales (puntuación) para determinar si un correo es spam.
 - Filtrado por autenticación: Verifica SPF, DKIM y DMARC antes de cualquier otro análisis.
 
@@ -115,7 +115,7 @@ El problema del escaneo por firmas es que solo detecta malware conocido. Para lo
 6. Si el comportamiento es malicioso, el SEG destruye la VM, elimina el correo y registra los IoCs.
 7. Si el comportamiento es benigno, el SEG entrega el correo al usuario.
 
-### Técnicas de Evasion que Combate el Sandbox
+### Técnicas de Evasión que Combate el Sandbox
 
 Los creadores de malware saben que los sandboxes existen y han desarrollado técnicas para evadirlos.
 
@@ -148,7 +148,7 @@ El malware solo se activa si se cumplen condiciones específicas:
 
 El malware usa llamadas al sistema que los sandboxes tienen problemas para emular:
 
-- Sleep de larga duracion.
+- Sleep de larga duración.
 - Esperar a que el usuario mueva el mouse.
 - Esperar a que haya actividad de red.
 
@@ -159,13 +159,13 @@ Los SEGs modernos han mejorado sus sandboxes:
 1. Perfiles de VM Personalizados: Usan configuraciones diferentes para parecer máquinas reales.
 2. Análisis en Tiempo Real en el Endpoint: Algunos EDRs tienen sandboxes locales.
 3. Golden Images con Datos Reales: Las VMs tienen datos de usuario reales.
-4. Detección de Evasion: El sandbox detecta cuando un archivo intenta detectar la VM.
+4. Detección de Evasión: El sandbox detecta cuando un archivo intenta detectar la VM.
 
 ### Limitaciones del Sandbox
 
 - Rendimiento: Analizar cada archivo en una VM es costoso.
 - Falsos Positivos: Archivos legítimos pueden comportarse como malware.
-- Ventana de Evasion: Malware que espera horas o días evade el análisis.
+- Ventana de Evasión: Malware que espera horas o días evade el análisis.
 - Cobertura: No todos los adjuntos se analizan en sandbox (solo los sospechosos).
 
 ## Casos Reales
@@ -174,7 +174,7 @@ Los SEGs modernos han mejorado sus sandboxes:
 
 En 2017, el ransomware NotPetya se propago a través del software de contabilidad ucraniano M.E.Doc. Los atacantes comprometieron el servidor de actualizaciones de M.E.Doc y enviaron una actualización maliciosa a todos los clientes.
 
-El correo que anunciaba la actualización no contenia malware visible. Era un correo legítimo desde la dirección real de M.E.Doc pidiendo a los usuarios descargar una actualización. El SEG no podía bloquearlo porque:
+El correo que anunciaba la actualización no contenía malware visible. Era un correo legítimo desde la dirección real de M.E.Doc pidiendo a los usuarios descargar una actualización. El SEG no podía bloquearlo porque:
 
 - El correo era genuino (SPF, DKIM, DMARC pasaban).
 - No tenía adjuntos maliciosos.
@@ -182,7 +182,7 @@ El correo que anunciaba la actualización no contenia malware visible. Era un co
 
 La lección: el SEG no protege contra ataques a la cadena de suministro donde el software legítimo se vuelve malicioso.
 
-### El Phishing que Evadio el Sandbox (2020)
+### El Phishing que Evadió el Sandbox (2020)
 
 Un grupo de atacantes creo un PDF malicioso que:
 
@@ -194,7 +194,7 @@ El sandbox del SEG lo clasifico como benigno y entregó el correo. El usuario ab
 
 ### Business Email Compromise con Adjunto Malicioso (2019)
 
-Una empresa de logística perdió 2 millones de dólares cuando un empleado de Finanzas abrió un archivo Excel adjunto a un correo. El correo parecia venir de un proveedor legítimo (dominio real, SPF/DKIM correctos). El Excel contenia una macro que descargaba un ladrón de credenciales.
+Una empresa de logística perdió 2 millones de dólares cuando un empleado de Finanzas abrió un archivo Excel adjunto a un correo. El correo parecía venir de un proveedor legítimo (dominio real, SPF/DKIM correctos). El Excel contenía una macro que descargaba un ladrón de credenciales.
 
 El SEG tenía sandbox habilitado, pero el Excel estaba protegido con contraseña (el sandbox no podía abrirlo sin la contraseña). La contraseña estaba en el cuerpo del correo.
 
@@ -216,7 +216,7 @@ El SEG saliente es igual de importante que el entrante. Un empleado comprometido
 
 ### Falla 4: Tiempo de Análisis Insuficiente
 
-Si el sandbox analiza por 2 minutos pero el malware espera 5, la evasion funciona. Los SEGs deben configurarse con tiempos de análisis largos.
+Si el sandbox analiza por 2 minutos pero el malware espera 5, la evasión funciona. Los SEGs deben configurarse con tiempos de análisis largos.
 
 ### Falla 5: No Actualizar las Reglas
 
@@ -224,11 +224,11 @@ Las firmas de spam y malware cambian cada hora. Un SEG sin actualizaciones frecu
 
 ## La Mirada del Hacker
 
-Como atacante, el SEG es un obstaculo molesto pero no insuperable.
+Como atacante, el SEG es un obstáculo molesto pero no insuperable.
 
 ### Evadir el SEG con Archivos Protegidos
 
-Envio un archivo ZIP protegido con contraseña. El SEG no puede abrirlo para analizar el contenido. La contraseña la pongo en el cuerpo del correo, que el SEG si puede leer.
+Envío un archivo ZIP protegido con contraseña. El SEG no puede abrirlo para analizar el contenido. La contraseña la pongo en el cuerpo del correo, que el SEG si puede leer.
 
 Variante: el archivo legítimo (una factura real) tiene un exploit oculto en los metadatos. El SEG analiza el PDF, ve una factura real, y lo deja pasar.
 
@@ -236,13 +236,13 @@ Variante: el archivo legítimo (una factura real) tiene un exploit oculto en los
 
 No necesito mi propio servidor SMTP. Uso una cuenta de Gmail, Outlook o ProtonMail real. El correo pasa SPF, DKIM y DMARC porque viene de un servidor legítimo. El SEG lo trata como correo confiable.
 
-### Fragmentacion de Contenido
+### Fragmentación de Contenido
 
 Distribuyo el payload en múltiples correos. Cada correo individual es benigno. Cuando el usuario los abre todos, el malware se reconstruye.
 
-### Timing del Envio
+### Timing del Envío
 
-Envio correos sospechosos en fines de semana o feriados, cuando el SOC tiene menos personal. El SEG automático puede detectar, pero la revisión humana se retrasa.
+Envío correos sospechosos en fines de semana o feriados, cuando el SOC tiene menos personal. El SEG automático puede detectar, pero la revisión humana se retrasa.
 
 ### Ataque al Propio SEG
 
@@ -258,7 +258,7 @@ Los SEGs son objetivos de alto valor para APTs.
 
 ### Falla 6: No Revisar la Cuarentena
 
-Los correos bloqueados por el SEG van a cuarentena. Si nadie revisa la cuarentena periodicamente, correos legítimos de clientes pueden perderse para siempre.
+Los correos bloqueados por el SEG van a cuarentena. Si nadie revisa la cuarentena periódicamente, correos legítimos de clientes pueden perderse para siempre.
 
 Buena práctica: tener un equipo que revise la cuarentena diariamente y libere falsos positivos.
 
@@ -268,7 +268,7 @@ Si el SEG usa un solo motor antivirus (ej. solo ClamAV), un malware que evada es
 
 ### Falla 8: No Configurar Reglas de Fisgoneo (Outbound)
 
-El SEG saliente es igual de importante que el entrante. Sin reglas DLP salientes, los empleados pueden enviar datos sensibles por correo sin restriccion.
+El SEG saliente es igual de importante que el entrante. Sin reglas DLP salientes, los empleados pueden enviar datos sensibles por correo sin restricción.
 
 ### Falla 9: Ignorar el Cifrado de Correo
 
@@ -282,7 +282,7 @@ Las firmas de spam y malware se actualizan cada pocos minutos. Si el SEG no se a
 
 Al implementar un SEG, estos son los pasos recomendados:
 
-### Fase 1: Monitorizacion (1-2 semanas)
+### Fase 1: Monitorización (1-2 semanas)
 
 1. Configurar el SEG en modo "solo monitoreo" (no bloquea nada).
 2. Analizar el tráfico de correo normal.
@@ -311,7 +311,7 @@ Al implementar un SEG, estos son los pasos recomendados:
 
 ### SEG + SIEM
 
-El SEG debe enviar logs al SIEM para correlacion con otros eventos:
+El SEG debe enviar logs al SIEM para correlación con otros eventos:
 
 - Un usuario recibe un correo de phishing y minutos después hay un intento de inicio de sesión anómalo.
 - Un usuario descarga un adjunto y el EDR detecta actividad sospechosa.
@@ -321,7 +321,7 @@ El SEG debe enviar logs al SIEM para correlacion con otros eventos:
 Cuando el SEG detecta un enlace malicioso, debe informar al EDR para que:
 
 - Bloquee el dominio en todos los endpoints.
-- Aisle el endpoint si el usuario hizo clic.
+- Aísle el endpoint si el usuario hizo clic.
 - Busque indicadores de compromiso (IoCs) en toda la flota.
 
 ### SEG + SOAR
@@ -339,7 +339,7 @@ Los atacantes constantemente buscan formas de evadir el SEG. Algunas técnicas:
 
 En lugar de adjuntar un archivo malicioso, el correo contiene un enlace a Google Drive, Dropbox o OneDrive donde esta alojado el malware. El SEG no puede analizar el archivo porque esta en un servicio externo.
 
-### Imagenes con Texto
+### Imágenes con Texto
 
 En lugar de escribir el mensaje de phishing en texto (que el SEG puede analizar), el atacante incluye una imagen con el texto. Los OCRs de los SEGs modernos pueden detectar texto en imágenes, pero no siempre.
 
@@ -367,6 +367,6 @@ Responde estas preguntas para verificar si comprendes los conceptos:
 
 6. Explica la diferencia entre la protección que ofrece DMARC y la protección que ofrece un SEG. En que escenarios uno es suficiente y el otro no?
 
-7. Un correo de un proveedor legítimo pero comprometido llega al SEG. El proveedor tiene SPF, DKIM y DMARC configurados correctamente. El correo es genuino desde el punto de vista técnico, pero contiene un enlace a un sitio de phishing. Como detectaria el SEG este ataque?
+7. Un correo de un proveedor legítimo pero comprometido llega al SEG. El proveedor tiene SPF, DKIM y DMARC configurados correctamente. El correo es genuino desde el punto de vista técnico, pero contiene un enlace a un sitio de phishing. Como detectaría el SEG este ataque?
 
 8. Por qué la configuración del SEG Outbound (correo saliente) es importante para prevenir la fuga de datos (DLP)?

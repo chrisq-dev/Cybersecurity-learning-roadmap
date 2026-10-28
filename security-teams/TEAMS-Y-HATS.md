@@ -140,7 +140,7 @@ La terminología de "sombreros" proviene de las películas del viejo oeste, dond
 
 | Rol | Certificaciones Recomendadas |
 |-----|------------------------------|
-| Red Team / Pentester | OSCP (Offensive Security Certified Professional), PNPT, GPEN, eCPPT, OSWE (Web), OSEP (Evasion) |
+| Red Team / Pentester | OSCP (Offensive Security Certified Professional), PNPT, GPEN, eCPPT, OSWE (Web), OSEP (Evasión) |
 | Blue Team / SOC | Security+, CySA+, GCIA, GCIH, BTL1 (Blue Team Level 1) |
 | Purple Team | No hay certificación específica; se recomienda experiencia combinada Red+Blue |
 | DFIR | GCFA, GCFE, CHFI, FOR500/508 (SANS) |
@@ -166,7 +166,7 @@ Un SOC 24/7 requiere personal suficiente para cubrir turnos rotativos:
 - **Cobertura mínima:** 2 analistas por turno para evitar el punto único de falla humana.
 - **Personal total:** Para cubrir 3 turnos × 2 analistas considerando vacaciones (15 días/año), enfermedad (10 días/año), y capacitación (10 días/año), se necesitan 9-12 analistas.
 - **Estructura típica de un SOC corporativo:**
-  - 1 SOC Manager
+  - 1 gerente de SOC
   - 2-3 Tier 3 (Threat Hunters)
   - 4-6 Tier 2 (Responders)
   - 6-8 Tier 1 (Monitors)
@@ -185,7 +185,7 @@ Un empleado de finanzas recibe un correo de phishing que evade el gateway de ema
 **Escenario 2: Ataque de ransomware contenido**
 Un ransomware comienza a cifrar archivos en un servidor de archivos.
 1. **EDR (SentinelOne):** Detecta comportamiento de ransomware (escritura masiva de archivos con extensión .locked). Revierte automáticamente los cambios.
-2. **SOC Tier 3:** Investiga el vector de entrada. Descubre que el ransomware entró via RDP expuesto (puerto 3389 abierto a internet).
+2. **SOC Tier 3:** Investiga el vector de entrada. Descubre que el ransomware entró vía RDP expuesto (puerto 3389 abierto a internet).
 3. **Red Team:** Confirma que hay otros sistemas con RDP expuesto en el mismo segmento de red.
 4. **DevSecOps:** Implementa regla de firewall bloqueando RDP desde internet. Configura VPN como único método de acceso remoto.
 5. **GRC:** Actualiza el registro de riesgos. El tratamiento cambia de "riesgo aceptado" a "riesgo mitigado".

@@ -9,7 +9,7 @@ updated: "2026-06-29"
 
 ## Objetivo de esta Guía
 
-aqui vamos a conectar los puntos. ninguna herramienta de ciberseguridad vive aislada. Todo se conecta.
+aquí vamos a conectar los puntos. ninguna herramienta de ciberseguridad vive aislada. Todo se conecta.
 
 En un videojuego, tienes un "Árbol de Habilidades" (Skill Tree). No puedes desbloquear la habilidad de "Lanzar Fuego" Nivel 3 si no aprendiste primero a "Encender una chispa" Nivel 1.
 Sabes qué hacen los novatos? Querer aprender Kubernetes sin saber cómo funciona una Dirección IP. Eso crea "Agujeros de Conocimiento" que los destruirán en las entrevistas de trabajo.
@@ -76,7 +76,7 @@ Dominio fundamental sin excepción. Todo ataque y toda defensa ocurre sobre una 
 
 ## 2. El Árbol de la Defensa (La Muralla)
 
-Este es el núcleo del Blue Team. aqui es donde realmente empieza la acción.
+Este es el núcleo del Blue Team. aquí es donde realmente empieza la acción.
 
 ### Nivel 1: Visibilidad
 
@@ -134,7 +134,7 @@ El atacante está contenido. Ahora debes diseccionar el cadáver.
 
 ## 3. El Árbol del Negocio (La Cúspide Ejecutiva)
 
-aqui está el verdadero diferenciador. Aquí es donde la tecnología se traduce en Dinero y Leyes. Es la habilidad que separa a un Analista Junior de un Director (CISO).
+aquí está el verdadero diferenciador. Aquí es donde la tecnología se traduce en Dinero y Leyes. Es la habilidad que separa a un Analista Junior de un Director (CISO).
 
 ### Nivel Único: GRC — Gobierno, Riesgo y Cumplimiento
 

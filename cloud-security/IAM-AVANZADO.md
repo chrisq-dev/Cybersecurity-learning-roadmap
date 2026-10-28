@@ -65,7 +65,7 @@ Las llaves del Conserje en la nube no son de metal. Son un documento de texto es
 }
 ```
 
-**Notacion ARN (Amazon Resource Name):**
+**Notación ARN (Amazon Resource Name):**
 
 ```
 arn:partition:service:region:account-id:resource
@@ -182,7 +182,7 @@ Otra técnica de escalada de privilegios es `iam:PassRole`. Esta acción permite
 2. El atacante también puede lanzar instancias EC2 (`ec2:RunInstances`).
 3. El atacante encuentra un rol existente con permisos de administrador (ej. `AdminRole`).
 4. El atacante lanza una nueva instancia EC2 y le asigna el rol `AdminRole`.
-5. El atacante se conecta a la instancia (via SSH).
+5. El atacante se conecta a la instancia (vía SSH).
 6. Dentro de la instancia, el atacante accede al endpoint de metadatos de AWS y obtiene las credenciales temporales del rol `AdminRole`.
 7. El atacante ahora tiene permisos de administrador.
 
@@ -308,7 +308,7 @@ Si un atacante roba este archivo JSON, puede autenticarse como la service accoun
 
 ### El Ataque a Coinbase con AssumeRole (2021)
 
-Un atacante comprometio una cuenta IAM con permisos limitados en Coinbase. La cuenta tenía `iam:PassRole` combinado con `ec2:RunInstances`. El atacante lanzo una instancia EC2 con un rol de administrador y obtuvo acceso total a la cuenta de AWS.
+Un atacante comprometió una cuenta IAM con permisos limitados en Coinbase. La cuenta tenía `iam:PassRole` combinado con `ec2:RunInstances`. El atacante lanzo una instancia EC2 con un rol de administrador y obtuvo acceso total a la cuenta de AWS.
 
 Coinbase detecto el ataque gracias a CloudTrail, que registro la creación inusual de una instancia EC2 con un rol administrativo.
 
@@ -316,9 +316,9 @@ Coinbase detecto el ataque gracias a CloudTrail, que registro la creación inusu
 
 La atacante de Capital One exploto una vulnerabilidad de SSRF (Server Side Request Forgery) en el WAF. El SSRF le permitió acceder al endpoint de metadatos de la instancia EC2 y obtener las credenciales temporales de un rol IAM.
 
-El rol IAM tenía permisos excesivos: permitia leer y escribir en todos los buckets S3 de la cuenta. Con esas credenciales, la atacante pudo exfiltrar 106 millones de registros de clientes.
+El rol IAM tenía permisos excesivos: permitía leer y escribir en todos los buckets S3 de la cuenta. Con esas credenciales, la atacante pudo exfiltrar 106 millones de registros de clientes.
 
-La lección: el rol IAM de la instancia EC2 debería haber tenido permisos minimos para solo leer los buckets necesarios.
+La lección: el rol IAM de la instancia EC2 debería haber tenido permisos mínimos para solo leer los buckets necesarios.
 
 ## Modos de Falla
 
@@ -392,7 +392,7 @@ La función Lambda se ejecuta con permisos de administrador.
 
 Los atacantes también usan herramientas para auditar políticas IAM:
 
-- **Pacu:** Framework de ataque para AWS que incluye modulos de escalada de IAM.
+- **Pacu:** Framework de ataque para AWS que incluye módulos de escalada de IAM.
 - **ScoutSuite:** Herramienta de auditoría multi-nube.
 - **CloudSploit:** Escaneo de configuración de seguridad en la nube.
 

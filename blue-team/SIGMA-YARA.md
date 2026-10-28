@@ -9,7 +9,7 @@ updated: "2026-06-29"
 
 ## Objetivo de esta Guía
 
-Aprender como los defensores comparten información sobre ataques para que cuando un banco es comprometido en Europa, los bancos en America estén protegidos al día siguiente. YARA y SIGMA son los formatos universales que permiten esa colaboración global sin importar que tecnología use cada organización.
+Aprender como los defensores comparten información sobre ataques para que cuando un banco es comprometido en Europa, los bancos en América estén protegidos al día siguiente. YARA y SIGMA son los formatos universales que permiten esa colaboración global sin importar que tecnología use cada organización.
 
 Cuando el FBI descubre a un nuevo criminal, no asume que todos los policías del país conocen su cara. Imprime un cartel de "Se Busca" con foto, altura, y tatuajes, y lo distribuye a todas las comisarías. En ciberseguridad, esos carteles se llaman YARA (para buscar dentro de archivos) y SIGMA (para buscar dentro de logs). Sin estos formatos, cada empresa tendría que descubrir los mismos ataques por su cuenta, una y otra vez.
 
@@ -39,7 +39,7 @@ rule Detect_Malicious_Document {
 ```
 
 **Sección meta:**
-Metadatos que no afectan la detección pero son utiles para mantener el repositorio de reglas: autor, descripción, fecha, referencias a CVEs o reportes. Permite a otros analistas entender el contexto de la regla.
+Metadatos que no afectan la detección pero son útiles para mantener el repositorio de reglas: autor, descripción, fecha, referencias a CVEs o reportes. Permite a otros analistas entender el contexto de la regla.
 
 **Sección strings:**
 Define los patrones a buscar dentro del archivo:
@@ -61,7 +61,7 @@ Cuando el equipo de seguridad de Microsoft descubre un nuevo malware en sus sist
 
 El proceso es:
 1. Investigador encuentra muestra de malware.
-2. Analiza la muestra: extrae strings, estudia su comportamiento, identifica patrones unicos.
+2. Analiza la muestra: extrae strings, estudia su comportamiento, identifica patrones únicos.
 3. Escribe regla YARA que capture esos patrones.
 4. Publica la regla (usualmente bajo licencia abierta).
 5. Empresas de todo el mundo importan la regla a sus sistemas.
@@ -202,15 +202,15 @@ Si cualquiera de estas capas falla, la otra puede atrapar al atacante.
 
 ### La Regla YARA que Detuvo una Campana Global (2020)
 
-Un investigador público una regla YARA para un malware bancario en America Latina. En 24 horas, EDRs de toda la region estaban bloqueando el malware. Sin YARA, cada banco habría tenido que analizar el malware individualmente.
+Un investigador público una regla YARA para un malware bancario en América Latina. En 24 horas, EDRs de toda la región estaban bloqueando el malware. Sin YARA, cada banco habría tenido que analizar el malware individualmente.
 
 ### Ransomware y SIGMA (2021)
 
-Cuando se descubrió una nueva técnica de ransomware para eliminar backups via WMI, la comunidad SIGMA público una regla específica en horas. Empresas que actualizaron sus reglas pudieron detectar el comportamiento antes de que el ransomware se activara.
+Cuando se descubrió una nueva técnica de ransomware para eliminar backups vía WMI, la comunidad SIGMA público una regla específica en horas. Empresas que actualizaron sus reglas pudieron detectar el comportamiento antes de que el ransomware se activara.
 
 ### Colaboración Bancaria (2022)
 
-Un consorcio de bancos latinoamericanos creo un canal compartido de reglas SIGMA. Cuando un banco detectaba un nuevo patrón, compartia la regla en horas. Los 12 bancos del grupo estaban protegidos contra nuevas amenazas en el mismo día.
+Un consorcio de bancos latinoamericanos creo un canal compartido de reglas SIGMA. Cuando un banco detectaba un nuevo patrón, compartía la regla en horas. Los 12 bancos del grupo estaban protegidos contra nuevas amenazas en el mismo día.
 
 ## Modos de Falla
 
@@ -224,7 +224,7 @@ El atacante más sofisticado sabe que YARA y SIGMA son solo el primer nivel. Si 
 
 ## Autoevaluación
 
-1. Un atacante ofusca su .exe cifrando el código interno. Por qué esto evita las reglas YARA? Que enfoque alternativo detectaria el comportamiento malicioso?
+1. Un atacante ofusca su .exe cifrando el código interno. Por qué esto evita las reglas YARA? Que enfoque alternativo detectaría el comportamiento malicioso?
 2. Por qué una regla SIGMA que detecta "borrar logs del sistema" es más robusta que una regla YARA que busca "borrador.exe"?
 3. Eres jefe de seguridad en Colombia. Recibes reglas SIGMA de un ataque bancario en Europa. Que ordenas a tu equipo en las próximas horas?
 4. YARA analiza _____ mientras SIGMA analiza _____. Proporciona un ejemplo concreto de cada uno.
@@ -235,9 +235,9 @@ El atacante más sofisticado sabe que YARA y SIGMA son solo el primer nivel. Si 
 
 ## Sigma - Sintaxis Avanzada
 
-### Tipos de Seleccion
+### Tipos de Selección
 
-**Seleccion por campos específicos:**
+**Selección por campos específicos:**
 ```yaml
 detection:
   selection:
@@ -245,7 +245,7 @@ detection:
     NewProcessName|endswith: '
 eg.exe'
 ```
-**Seleccion con modificadores:**
+**Selección con modificadores:**
 - `|contains`: El campo contiene el valor (parcial).
 - `|startswith`: El campo comienza con el valor.
 - `|endswith`: El campo termina con el valor.
@@ -331,7 +331,7 @@ rule Advanced_Malware {
 - `fullword`: La coincidencia debe ser una palabra completa.
 - `xor`: Busca la string con XOR simple (para ofuscación básica).
 
-### Modulos de YARA
+### Módulos de YARA
 
 **PE Module:** Analiza archivos PE (Portable Executable).
 ```yara
@@ -388,6 +388,6 @@ rule Known_Good_File {
 ## Preguntas Adicionales
 
 9. Creas una regla YARA que detecta el C2 de un grupo APT. La regla funciona perfectamente en tu laboratorio. Al desplegarla en producción, detecta un antivirus legítimo en 10,000 endpoints. Como ajustas la regla sin perder la detección del APT?
-10. Tu equipo quiere implementar un pipeline CI/CD para reglas Sigma. Que etapas incluirias? Que herramientas usarías para validar y probar las reglas antes de desplegarlas?
+10. Tu equipo quiere implementar un pipeline CI/CD para reglas Sigma. Que etapas incluirías? Que herramientas usarías para validar y probar las reglas antes de desplegarlas?
 11. Un analista crea una regla Sigma con una condición compleja que solo el entiende. Como documentas la lógica de la regla para que otros miembros del equipo puedan mantenerla cuando el analista se vaya?
 12. Tienes una regla YARA que detecta malware correctamente pero tarda 30 segundos en escanear cada archivo. La regla se ejecuta en el EDR de todos los endpoints. El rendimiento se degrada significativamente. Como optimizas la regla para reducir el tiempo de escaneo?

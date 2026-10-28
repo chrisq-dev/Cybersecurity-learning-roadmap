@@ -116,7 +116,7 @@ Cuando aplicas a 50 lugares y no llevas registro? Que después no sabes ni quié
 ## 3. La Resiliencia al Rechazo (Assume Breach)
 
 te van a rechazar. Y está bien. Anteriormente aprendimos la arquitectura Zero Trust: **Assume Breach** (Asume que ya fuiste hackeado).
-En la búsqueda de empleo, la regla es: **Asume el Rechazo**. Preparate mentalmente para eso.
+En la búsqueda de empleo, la regla es: **Asume el Rechazo**. Prepárate mentalmente para eso.
 
 * Recibirás decenas de correos automatizados diciendo: *"Hemos decidido avanzar con otros candidatos"*. duele, pero es parte del juego.
 * No es un fracaso técnico, es una falta de coincidencia (Mismatch) temporal de necesidades.

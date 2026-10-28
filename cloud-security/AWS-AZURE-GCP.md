@@ -50,7 +50,7 @@ Si una empresa es una Startup tecnológica (Netflix, Airbnb, Uber), casi seguro 
 Ventajas:
 - Más de 200 servicios diferentes (elige lo que necesites).
 - Madurez y comunidad enorme.
-- Facturacion granular por hora/segundo.
+- Facturación granular por hora/segundo.
 - Certificaciones y documentación extensa.
 
 Desventajas:
@@ -61,7 +61,7 @@ Desventajas:
 
 ### El Diccionario de AWS
 
-Aprende estos nombres, aparecen en todos los reportes de seguridad y examenes:
+Aprende estos nombres, aparecen en todos los reportes de seguridad y exámenes:
 
 - **EC2 (Elastic Compute Cloud):** Una simple Computadora Virtual (un servidor Linux o Windows).
 - **S3 (Simple Storage Service):** Un disco duro gigante donde guardas fotos o backups.
@@ -113,7 +113,7 @@ Desventajas:
 
 Azure tiene un modelo de permisos particularmente complejo que incluye:
 
-1. **RBAC (Role-Based Access Control):** Roles clasicos como Owner, Contributor, Reader.
+1. **RBAC (Role-Based Access Control):** Roles clásicos como Owner, Contributor, Reader.
 2. **Azure Policy:** Reglas de gobierno que se aplican automáticamente (ej. "bloquear la creación de VMs sin encriptación").
 3. **Management Groups:** Jerarquía de grupos que heredan políticas.
 4. **Template Specs y Deployment Stacks:** Versionado y despliegue gobernado de infraestructura. Azure Blueprints está en retirada progresiva desde julio de 2026 y debe migrarse antes de su eliminación.
@@ -166,7 +166,7 @@ GCP tiene un enfoque más "global" desde el inicio:
 
 - Los recursos no están en "regiones" específicas por defecto (se asignan globalmente).
 - Los buckets de Cloud Storage tienen nombres globales (no por cuenta).
-- La red VPC es global (no por region como AWS).
+- La red VPC es global (no por región como AWS).
 
 Esto simplifica la administración pero puede complicar el aislamiento.
 
@@ -214,9 +214,9 @@ Tres comandos diferentes para la misma acción: listar almacenamiento.
 
 ## Seguridad Multi-Nube
 
-Cada vez más empresas usan varios proveedores de nube simultáneamente (multi-cloud). Esto presenta desafios de seguridad unicos:
+Cada vez más empresas usan varios proveedores de nube simultáneamente (multi-cloud). Esto presenta desafíos de seguridad únicos:
 
-1. **Gestión de Identidades Unificada:** Usar Entra ID (Azure) para autenticar usuarios en AWS (via SAML federation).
+1. **Gestión de Identidades Unificada:** Usar Entra ID (Azure) para autenticar usuarios en AWS (vía SAML federation).
 
 2. **Monitoreo Centralizado:** Enviar logs de AWS, Azure y GCP a un SIEM único.
 
@@ -241,9 +241,9 @@ El ataque no fue contra AWS, fue contra una configuración errónea de Kubernete
 
 ### La Brecha de Microsoft Azure Active Directory (2021)
 
-Un investigador descubrió que Microsoft Entra ID tenía una vulnerabilidad que permitia a un atacante elevar privilegios de un usuario invitado a administrador global.
+Un investigador descubrió que Microsoft Entra ID tenía una vulnerabilidad que permitía a un atacante elevar privilegios de un usuario invitado a administrador global.
 
-Microsoft corrigio la vulnerabilidad, pero el caso muestra que incluso los servicios PaaS pueden tener fallos de seguridad. La responsabilidad es compartida: Microsoft corrige el servicio, el cliente debe monitorear los logs de actividad.
+Microsoft corrigió la vulnerabilidad, pero el caso muestra que incluso los servicios PaaS pueden tener fallos de seguridad. La responsabilidad es compartida: Microsoft corrige el servicio, el cliente debe monitorear los logs de actividad.
 
 ### Coinbase en GCP (2021)
 
@@ -257,7 +257,7 @@ La lección: en PaaS, el proveedor asegura la plataforma, pero el cliente asegur
 
 El error más común: "Como estamos en Azure, Microsoft nos protege del SQL Injection". Falso. La seguridad de la aplicación es responsabilidad del cliente.
 
-### Falla 2: No Entender la Facturacion Compartida
+### Falla 2: No Entender la Facturación Compartida
 
 Cada nube tiene un modelo de responsabilidad diferente según el servicio. IaaS requiere más responsabilidad del cliente que PaaS o SaaS.
 
@@ -391,7 +391,7 @@ Para los que quieren probar la seguridad de la nube desde el lado ofensivo:
 ### Herramientas de Auditoría Cloud
 
 - **ScoutSuite:** Herramienta open-source de auditoría multi-nube. Escanea configuraciones y reporta fallos.
-- **Pacu:** Framework de ataque para AWS. Incluye modulos para escalada de privilegios, exfiltración de datos, y persistencia.
+- **Pacu:** Framework de ataque para AWS. Incluye módulos para escalada de privilegios, exfiltración de datos, y persistencia.
 - **CloudSploit:** Escaneo de configuración de seguridad (código abierto).
 - **Stratus Red Team:** Simulación de técnicas MITRE ATT&CK en la nube.
 
@@ -436,6 +436,6 @@ Responde estas preguntas para verificar si comprendes los conceptos:
 
 6. Cual es la diferencia fundamental entre un Security Group (AWS) y una Network Security Group (Azure) en términos de stateful vs stateless?
 
-7. Un equipo de seguridad multi-nube necesita centralizar logs de AWS, Azure y GCP. Que desafios enfrenta y como podría resolverlos?
+7. Un equipo de seguridad multi-nube necesita centralizar logs de AWS, Azure y GCP. Que desafíos enfrenta y como podría resolverlos?
 
 8. Por qué se considera que el vendor lock-in (dependencia excesiva de un proveedor) es un riesgo de seguridad?

@@ -205,7 +205,7 @@ Un atacante de ransomware conoce la importancia de los backups y los ataca direc
 
 2. **Desconexión de servicios de backup:** Mata procesos de backup: `taskkill /f /im veeam.exe`, `systemctl stop veeamservice`.
 
-3. **Eliminación de snapshots:** En VMware, el atacante ejecuta `Get-VM | Get-Snapshot | Remove-Snapshot` via PowerShell si tiene acceso a vCenter.
+3. **Eliminación de snapshots:** En VMware, el atacante ejecuta `Get-VM | Get-Snapshot | Remove-Snapshot` vía PowerShell si tiene acceso a vCenter.
 
 4. **Borrado de backups en cloud:** Si encuentra credenciales de AWS/Azure en los servidores, las usa para borrar buckets S3 (aws s3 rm s3://backup-bucket --recursive) o contenedores Azure.
 

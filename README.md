@@ -1,12 +1,16 @@
 # Cybersecurity Learning Roadmap
 
-Tu hoja de ruta para aprender ciberseguridad en español sin perderte.
+[![CI](https://github.com/chrisq-dev/Cybersecurity-learning-roadmap/actions/workflows/ci.yml/badge.svg)](https://github.com/chrisq-dev/Cybersecurity-learning-roadmap/actions/workflows/ci.yml)
+
+Tu hoja de ruta para aprender ciberseguridad en español sin perderte. **125 guías · 10 áreas · 100% en español.**
 
 ## La filosofía de esta guía
 
 Esto no es un mapa cerrado que promete enseñarte todo. La ciberseguridad es infinita. Esto es un mapa vivo y estructurado para que no te pierdas, vayas a tu propio ritmo y lo uses como brújula de consulta constante.
 
 **→ [cbsdev.lat](https://cbsdev.lat)**
+
+**→ [Explorar todas las guías](https://cbsdev.lat/guias)**
 
 **→ [Explorar rutas temáticas](https://cbsdev.lat/rutas)**
 
@@ -38,7 +42,7 @@ El contenido está organizado como un mapa vivo de conocimientos técnicos, defe
 - **Empleabilidad:** rutas por rol, CV, LinkedIn, entrevistas, portafolio y criterios para aplicar.
 - **Recursos y cultura tech:** cómo usar la guía, roadmap inicial, plataformas de práctica, glosario hacker, certificaciones y referencias geek.
 
-Cada guía vive como un archivo Markdown dentro del repositorio. La web descubre esos archivos, los ordena por área y los convierte en páginas navegables. Cada página muestra su nivel, tipo, fecha editorial y fuentes oficiales para ampliar o verificar la información.
+Cada guía vive como un archivo Markdown dentro del repositorio. La web indexa las guías registradas en `web/lib/markdown.js`, las agrupa en 10 áreas y las convierte en páginas navegables. Cada página muestra su nivel, tipo, fecha editorial y fuentes oficiales para ampliar o verificar la información.
 
 ## Por dónde empezar
 
@@ -46,8 +50,8 @@ Entra a la web y sigue la ruta recomendada:
 
 1. [cbsdev.lat/inicio-aqui](https://cbsdev.lat/inicio-aqui)
 2. [cbsdev.lat/recursos/como-usar-esta-guia](https://cbsdev.lat/recursos/como-usar-esta-guia)
-3. [cbsdev.lat/recursos/roadmap-90-días](https://cbsdev.lat/recursos/roadmap-90-dias)
-4. [cbsdev.lat/fundamentos/computación-basica](https://cbsdev.lat/fundamentos/computacion-basica)
+3. [cbsdev.lat/recursos/roadmap-90-dias](https://cbsdev.lat/recursos/roadmap-90-dias)
+4. [cbsdev.lat/fundamentos/computacion-basica](https://cbsdev.lat/fundamentos/computacion-basica)
 5. [cbsdev.lat/redes-cisco/fundamentos-redes](https://cbsdev.lat/redes-cisco/fundamentos-redes)
 
 Ruta general:
@@ -75,8 +79,14 @@ Las contribuciones son bienvenidas si respetan el enfoque educativo, defensivo y
 
 Antes de proponer cambios, revisa [CONTRIBUTING.md](CONTRIBUTING.md) y [STYLE-GUIDE.md](STYLE-GUIDE.md).
 
-La validación automática comprueba metadatos, enlaces internos, lint y build mediante `cd web && npm run check`.
+El comando `npm run check` comprueba metadatos, enlaces internos, lint y build. El flujo de GitHub Actions ejecuta la misma validación en cada push y pull request.
 
 ## Apoya la guía
 
 Si esta colección te resulta útil, considera dejar una estrella en GitHub. Ayuda a que más personas encuentren el proyecto y a seguir mejorándolo poco a poco.
+
+## Licencia
+
+- Código y configuración: [MIT](LICENSE).
+- Contenido editorial: [CC BY-SA 4.0](LICENSE-CONTENT).
+- Para reportar problemas de seguridad, consulta [SECURITY.md](SECURITY.md).

@@ -9,6 +9,20 @@ export const OFFICIAL_SOURCES = {
       "url": "https://www.cisa.gov/topics/cybersecurity-best-practices"
     }
   ],
+  "seguridad-personal": [
+    {
+      "title": "CISA Secure Our World",
+      "url": "https://www.cisa.gov/secure-our-world"
+    },
+    {
+      "title": "FTC Consumer Advice",
+      "url": "https://consumer.ftc.gov/"
+    },
+    {
+      "title": "NIST Digital Identity Guidelines",
+      "url": "https://pages.nist.gov/800-63-4/"
+    }
+  ],
   "fundamentos": [
     {
       "title": "NIST Computer Security Resource Center Glossary",

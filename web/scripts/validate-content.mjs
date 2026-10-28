@@ -2,9 +2,11 @@ import fs from "node:fs";
 import path from "node:path";
 import { parseFrontmatter } from "../lib/frontmatter.mjs";
 import { OFFICIAL_SOURCES } from "../lib/officialSources.mjs";
+import { AREAS } from "../lib/areas.js";
+import { CONTENT_FOLDERS, PAGE_ORDER, STUDY_ORDER, formatFolderName } from "../lib/markdown.js";
 
 const ROOT = path.resolve(process.cwd(), "..");
-const IGNORED_FOLDERS = new Set([".git", "node_modules", "web"]);
+const IGNORED_FOLDERS = new Set([".git", "node_modules", "web", "assets"]);
 const ALLOWED_LEVELS = new Set(["inicial", "intermedio", "avanzado", "referencia"]);
 const ALLOWED_TYPES = new Set(["articulo", "glosario", "guia", "playbook", "recurso", "ruta"]);
 const ROOT_CONTENT = new Set(["INICIO-AQUI.md"]);
@@ -33,11 +35,23 @@ function walk(directory) {
 }
 
 const files = walk(ROOT);
+const registeredFiles = new Set(
+  Object.entries(PAGE_ORDER).flatMap(([folder, names]) => names.map((name) => `${folder}/${name}.md`))
+);
+const inicioContent = fs.readFileSync(path.join(ROOT, "INICIO-AQUI.md"), "utf8");
 const seenTitles = new Map();
 const seenSlugs = new Map();
 
 for (const file of files) {
   const relative = path.relative(ROOT, file);
+  if (relative.includes(path.sep)) {
+    const folder = relative.split(path.sep)[0];
+    if (!CONTENT_FOLDERS.includes(folder)) {
+      errors.push(`${relative}: la carpeta no está registrada en PAGE_ORDER`);
+    } else if (!registeredFiles.has(relative)) {
+      errors.push(`${relative}: el archivo no está registrado en PAGE_ORDER`);
+    }
+  }
   const raw = fs.readFileSync(file, "utf8");
   const { data, content } = parseFrontmatter(raw);
   const slug = relative.replace(/\.md$/i, "").toLowerCase();
@@ -80,6 +94,30 @@ for (const file of files) {
   if (/CVE-20\d{2}-XXXX/i.test(content)) warnings.push(`${relative}: contiene un CVE de ejemplo sin identificador real`);
 }
 
+const mappedFolders = new Set(AREAS.flatMap((area) => area.folders));
+for (const folder of CONTENT_FOLDERS) {
+  if (!fs.existsSync(path.join(ROOT, folder))) {
+    errors.push(`PAGE_ORDER: la carpeta ${folder} no existe`);
+    continue;
+  }
+
+  if (!mappedFolders.has(folder)) errors.push(`areas.js: falta mapear la carpeta ${folder}`);
+  if (!STUDY_ORDER.includes(formatFolderName(folder))) errors.push(`STUDY_ORDER: falta ${formatFolderName(folder)}`);
+  if (!inicioContent.includes(`](${folder}/`)) errors.push(`INICIO-AQUI.md: falta un enlace a ${folder}/`);
+
+  for (const name of PAGE_ORDER[folder]) {
+    if (!fs.existsSync(path.join(ROOT, folder, `${name}.md`))) {
+      errors.push(`PAGE_ORDER: falta ${folder}/${name}.md`);
+    }
+  }
+}
+
+for (const folder of mappedFolders) {
+  if (folder !== "" && !CONTENT_FOLDERS.includes(folder)) {
+    errors.push(`areas.js: la carpeta ${folder} no está registrada en PAGE_ORDER`);
+  }
+}
+
 for (const [collection, sources] of Object.entries(OFFICIAL_SOURCES)) {
   if (!Array.isArray(sources) || sources.length < 2) errors.push(`fuentes ${collection}: se requieren al menos dos referencias`);
   for (const source of sources || []) {
@@ -92,6 +130,7 @@ const publishedFolders = new Set(files.map((file) => path.relative(ROOT, file)).
 for (const folder of publishedFolders) {
   if (!dockerfile.includes(`/app/${folder} /app/${folder}`)) errors.push(`Dockerfile: falta copiar la categoría ${folder}`);
 }
+if (!dockerfile.includes("/app/assets /app/assets")) errors.push("Dockerfile: falta copiar assets");
 
 for (const warning of warnings) console.warn(`ADVERTENCIA: ${warning}`);
 for (const error of errors) console.error(`ERROR: ${error}`);

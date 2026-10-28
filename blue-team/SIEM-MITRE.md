@@ -25,9 +25,9 @@ El SIEM (Security Information and Event Management) resuelve este problema. Es u
 5. Genera alertas cuando se cumplen condiciones predefinidas.
 6. Proporciona dashboards y visualizaciones para monitoreo en tiempo real.
 
-Si buscas la IP `10.0.0.5` en el SIEM, el SIEM te dirá instantáneamente: "Esa IP fue vista por el firewall hace 2 horas conectandose al puerto 443, fue detectada por el EDR hace 1 hora ejecutando un proceso desconocido, acaba de iniciar sesión en Windows Server 01 hace 5 minutos como administrador, y esta transfiriendo datos a un servidor en Rusia."
+Si buscas la IP `10.0.0.5` en el SIEM, el SIEM te dirá instantáneamente: "Esa IP fue vista por el firewall hace 2 horas conectándose al puerto 443, fue detectada por el EDR hace 1 hora ejecutando un proceso desconocido, acaba de iniciar sesión en Windows Server 01 hace 5 minutos como administrador, y esta transfiriendo datos a un servidor en Rusia."
 
-### Componentes Arquitectonicos de un SIEM
+### Componentes Arquitectónicos de un SIEM
 
 **Recolectores (Forwarders / Agents):**
 Software instalado en los sistemas que envía logs al SIEM. Ejemplos: Splunk Universal Forwarder, Winlogbeat, syslog-ng, Fluentd. Los recolectores deben ser ligeros para no afectar el rendimiento del sistema que monitorean.
@@ -38,13 +38,13 @@ Buffer temporal que absorbe picos de tráfico. Si el SIEM se cae o se satura, lo
 **Motor de parsing y normalización:**
 Convierte logs de diferentes formatos a un esquema común. Por ejemplo, el campo "src_ip" en un log de firewall, "SourceAddress" en Windows, y "origen" en un log customizado se normalizan a un solo campo "source.ip".
 
-**Motor de correlacion:**
-Aplica reglas que cruzan eventos de diferentes fuentes. Ejemplo: "Si un usuario falla autenticación 3 veces en Windows + luego inicia sesión exitosamente desde una IP nueva + luego ejecuta un comando de elevacion de privilegios, genera alerta de posible compromiso de cuenta."
+**Motor de correlación:**
+Aplica reglas que cruzan eventos de diferentes fuentes. Ejemplo: "Si un usuario falla autenticación 3 veces en Windows + luego inicia sesión exitosamente desde una IP nueva + luego ejecuta un comando de elevación de privilegios, genera alerta de posible compromiso de cuenta."
 
 **Almacenamiento:**
-Los logs se guardan en indices o bases de datos. La capacidad de almacenamiento determina cuanto tiempo histórico puedes consultar. Las regulaciones como PCI DSS exigen 1 año de retencion. La mayoría de las empresas mantienen 30-90 días de datos en almacenamiento de alto rendimiento y hasta 1-2 años en almacenamiento de bajo costo.
+Los logs se guardan en indices o bases de datos. La capacidad de almacenamiento determina cuanto tiempo histórico puedes consultar. Las regulaciones como PCI DSS exigen 1 año de retención. La mayoría de las empresas mantienen 30-90 días de datos en almacenamiento de alto rendimiento y hasta 1-2 años en almacenamiento de bajo costo.
 
-**Dashboards y visualizacion:**
+**Dashboards y visualización:**
 Paneles que muestran el estado de seguridad en tiempo real. Buenos dashboards muestran: alertas activas por severidad, fuentes de datos con problemas, tendencias de amenazas, y tiempo de respuesta promedio.
 
 ### SIEM vs. EDR vs. XDR
@@ -66,11 +66,11 @@ La relación es de complemento. El EDR es una fuente de datos para el SIEM. El X
 3. **Diseñar arquitectura:** Donde se alojara? En premisas o en la nube? Cuanta capacidad de procesamiento y almacenamiento?
 4. **Configurar recolección:** Instalar forwarders en todas las fuentes críticas. Probar que los logs llegan correctamente.
 5. **Normalizar datos:** Configurar el parsing para cada tipo de log. Este paso es tedioso pero crítico.
-6. **Crear reglas de correlacion:** Implementar detecciones basadas en MITRE y casos de uso del negocio.
+6. **Crear reglas de correlación:** Implementar detecciones basadas en MITRE y casos de uso del negocio.
 7. **Configurar alertas y notificaciones:** Definir canales de alerta (correo, SMS, chat, tickets).
 8. **Crear dashboards:** Diseñar paneles para el SOC y para la gerencia.
-9. **Probar y ajustar:** Verificar que las reglas funcionan con datos historicos y en vivo.
-10. **Mantener:** Revisar periodicamente reglas, fuentes de datos, y rendimiento.
+9. **Probar y ajustar:** Verificar que las reglas funcionan con datos históricos y en vivo.
+10. **Mantener:** Revisar periódicamente reglas, fuentes de datos, y rendimiento.
 
 ### El Error Común: Comprar el SIEM y Esperar Milagros
 
@@ -96,8 +96,8 @@ En lugar de decir "leyó contraseñas de la RAM," la industria entera acorda lla
 - Acceso Inicial (TA0001): Entrar a la red.
 - Ejecución (TA0002): Ejecutar código malicioso.
 - Persistencia (TA0003): Mantener el acceso.
-- Elevacion de Privilegios (TA0004): Obtener más permisos.
-- Evasion de Defensas (TA0005): Evitar ser detectado.
+- Elevación de Privilegios (TA0004): Obtener más permisos.
+- Evasión de Defensas (TA0005): Evitar ser detectado.
 - Acceso a Credenciales (TA0006): Robar nombres de usuario y contraseñas.
 - Descubrimiento (TA0007): Explorar el entorno.
 - Movimiento Lateral (TA0008): Moverse a otros sistemas.
@@ -138,7 +138,7 @@ Para el equipo de arquitectura: Usa MITRE para identificar puntos ciegos en las 
 El trabajo moderno del defensor es mapear las reglas del SIEM a la matriz de MITRE. Cada regla de detección debería estar etiquetada con una o más técnicas de MITRE.
 
 Beneficios:
-- **Contexto inmediato:** Cuando la alerta llega al analista, ve T1059 y sabe que el atacante esta ejecutando código via scripting.
+- **Contexto inmediato:** Cuando la alerta llega al analista, ve T1059 y sabe que el atacante esta ejecutando código vía scripting.
 - **Cobertura medible:** Puedes crear un dashboard que muestre cuántas técnicas de MITRE tienes cubiertas con reglas de detección.
 - **Detección de brechas:** Si no tienes reglas para T1003 (robo de credenciales), los atacantes pueden robar contraseñas sin ser detectados.
 - **Lenguaje común:** Todos los equipos (SOC, IR, Threat Intel) hablan el mismo idioma.
@@ -153,11 +153,11 @@ La matriz revela patrones preocupantes. Por ejemplo, si tu matriz muestra buena 
 
 ### Implementación Fallida (2019)
 
-Escenario ilustrativo: una empresa contrata un SIEM, pero dos años después solo una parte de las fuentes de datos está conectada. Las reglas nunca se habian actualizado. El SIEM recibia logs de 3 de 15 firewalls, de ningún EDR, y de la mitad de los servidores.
+Escenario ilustrativo: una empresa contrata un SIEM, pero dos años después solo una parte de las fuentes de datos está conectada. Las reglas nunca se habían actualizado. El SIEM recibía logs de 3 de 15 firewalls, de ningún EDR, y de la mitad de los servidores.
 
 ### Mapeo MITRE que Salvo la Investigación (2021)
 
-Un analista etiqueto un evento con T1003. Cuando el atacante se movio lateralmente, el SIEM correlaciono los nuevos eventos con la etiqueta inicial, revelando el alcance completo del ataque en minutos.
+Un analista etiqueto un evento con T1003. Cuando el atacante se movió lateralmente, el SIEM correlaciono los nuevos eventos con la etiqueta inicial, revelando el alcance completo del ataque en minutos.
 
 ### Grupo Financiero (2022)
 
@@ -165,11 +165,11 @@ Un grupo financiero implementó SIEM con mapeo MITRE completo. Durante un ataque
 
 ## Modos de Falla
 
-SIEM como sumidero sin proceso: los logs llegan pero nadie los revisa. MITRE como ejercicio academico: el mapeo existe en un PDF pero nadie lo usa. Dependencia excesiva de MITRE: cubre técnicas conocidas, no las nuevas. SIEM como cuello de botella: superado por el volumen de datos. Confundir MITRE con checklist: marcar técnicas no significa estar protegido.
+SIEM como sumidero sin proceso: los logs llegan pero nadie los revisa. MITRE como ejercicio académico: el mapeo existe en un PDF pero nadie lo usa. Dependencia excesiva de MITRE: cubre técnicas conocidas, no las nuevas. SIEM como cuello de botella: superado por el volumen de datos. Confundir MITRE con checklist: marcar técnicas no significa estar protegido.
 
 ### El Problema de la Escalabilidad del SIEM
 
-Cuando el volumen de logs crece más rápido que la capacidad del SIEM, empiezan los problemas: retraso en el procesamiento, pérdida de eventos, alertas tardias. Las causas del crecimiento son naturales: más servidores, más aplicaciones, más requisitos de compliance, más fuentes de datos cloud.
+Cuando el volumen de logs crece más rápido que la capacidad del SIEM, empiezan los problemas: retraso en el procesamiento, pérdida de eventos, alertas tardías. Las causas del crecimiento son naturales: más servidores, más aplicaciones, más requisitos de compliance, más fuentes de datos cloud.
 
 Las soluciones incluyen: filtrado de logs irrelevantes en el origen, almacenamiento en caliente y frío, particionamiento de indices, y escalamiento horizontal de la infraestructura.
 
@@ -197,13 +197,13 @@ El atacante también sabe que el analista humano es el eslabón débil. Si puede
 7. Creas un dashboard que muestra cobertura MITRE del 90%. Es esto una medida real de seguridad? Que más necesitas?
 8. Un atacante usa una técnica no catalogada en MITRE. Tu SIEM no la detecta. Pasas meses sin saber de la brecha. Que lección aprendes sobre dependencia de frameworks?
 
-## Casos Prácticos de Correlacion en SIEM
+## Casos Prácticos de Correlación en SIEM
 
 ### Caso 1: Detección de Pass-the-Hash en Active Directory
 
 **Fuentes de datos:** Logs de Windows Security (Event ID 4624), logs de autenticación de DC.
 
-**Regla de correlacion:**
+**Regla de correlación:**
 1. Detectar múltiples inicios de sesión exitosos (4624) desde una misma cuenta en diferentes sistemas en menos de 5 minutos.
 2. Filtrar por Logon Type 3 (acceso a recurso de red).
 3. Verificar que la autenticación uso NTLM (no Kerberos).
@@ -215,10 +215,10 @@ El atacante también sabe que el analista humano es el eslabón débil. Si puede
 
 **Fuentes de datos:** Logs de DNS (servidor DNS corporativo), logs de firewall.
 
-**Regla de correlacion:**
+**Regla de correlación:**
 1. Identificar dominios con subdominios largos y aleatorios (ej: asdf1234.malware.dom).
-2. Contar consultas DNS unicas por dominio por hora.
-3. Si un dominio recibe más de 100 consultas unicas en una hora con subdominios generados: alerta.
+2. Contar consultas DNS únicas por dominio por hora.
+3. Si un dominio recibe más de 100 consultas únicas en una hora con subdominios generados: alerta.
 4. Verificar que el tráfico no corresponde a servicios legítimos como CDN.
 
 **Falsos positivos:** Servicios de CDN como Akamai o Cloudflare que usan subdominios generados.
@@ -227,7 +227,7 @@ El atacante también sabe que el analista humano es el eslabón débil. Si puede
 
 **Fuentes de datos:** Logs de sistema de archivos, logs de procesos, logs de red.
 
-**Regla de correlacion:**
+**Regla de correlación:**
 1. Detectar alta tasa de modificaciones de archivos (especialmente con extensiones de oficina: .docx, .xlsx, .pdf).
 2. Correlacionar con procesos no habituales (nuevos ejecutables, procesos renombrados).
 3. Identificar archivos README o notas de rescate creados en múltiples directorios.
@@ -237,7 +237,7 @@ El atacante también sabe que el analista humano es el eslabón débil. Si puede
 
 **SIEM Empresariales:**
 - Splunk Enterprise Security (ES): Líder del mercado. Lenguaje de búsqueda SPL. Amplia gama de aplicaciones. Costo elevado.
-- IBM QRadar: Fuerte en correlacion de eventos y análisis de flujo. Interfaz menos intuitiva pero potente.
+- IBM QRadar: Fuerte en correlación de eventos y análisis de flujo. Interfaz menos intuitiva pero potente.
 - LogRhythm: Bueno para cumplimiento normativo. Análisis automático de eventos.
 - McAfee ESM: Integrado con el ecosistema de McAfee. Bueno para organizaciones que ya usan productos McAfee.
 - ArcSight (Micro Focus): Potente pero complejo. Curva de aprendizaje pronunciada.
@@ -263,8 +263,8 @@ El atacante también sabe que el analista humano es el eslabón débil. Si puede
 
 ## Preguntas Adicionales
 
-9. Tu SIEM recibe 100,000 EPS (eventos por segundo) de 10,000 endpoints. El 99.9% de estos eventos son de parches de Windows que no son utiles para detección. Que estrategia usas para reducir el ruido sin perder eventos de seguridad importantes?
-10. Splunk Enterprise cuesta $200,000 al año. Wazuh es gratuito. Que factores además del costo considerarias para decidir cual implementar en una empresa de 500 empleados?
+9. Tu SIEM recibe 100,000 EPS (eventos por segundo) de 10,000 endpoints. El 99.9% de estos eventos son de parches de Windows que no son útiles para detección. Que estrategia usas para reducir el ruido sin perder eventos de seguridad importantes?
+10. Splunk Enterprise cuesta $200,000 al año. Wazuh es gratuito. Que factores además del costo considerarías para decidir cual implementar en una empresa de 500 empleados?
 11. El equipo de seguridad implementa una regla de SIEM que detecta acceso a un servidor crítico fuera del horario laboral. El CEO accede al servidor un domingo a las 2 AM para revisar un informe. Que haces con la alerta y con la regla?
 12. Configuras MITRE ATT&CK en tu SIEM. En una semana, tienes 50 alertas de T1059 (PowerShell). Solo 1 es un ataque real. Como priorizas la investigación sin que el equipo se canse de falsos positivos?
 
@@ -275,17 +275,17 @@ El atacante también sabe que el analista humano es el eslabón débil. Si puede
 **Recolectores (Collectors/Forwarders):**
 Agentes instalados en los sistemas origen que recolectan logs y los envían al SIEM. Ejemplos: Universal Forwarder (Splunk), Winlogbeat (Elastic), rsyslog (Linux).
 
-**Mensajeria/Cola (Queue/Buffer):**
+**Mensajería/Cola (Queue/Buffer):**
 Sistema de encolado que recibe los logs de los recolectores y los almacena temporalmente antes de procesarlos. Ejemplos: Kafka, RabbitMQ, Redis. Permite absorber picos de tráfico sin perder eventos.
 
 **Motor de Procesamiento (Processing Engine):**
 Normaliza, parsea, y enriquece los logs. Convierte logs de diferentes formatos (Windows Event Log, syslog, JSON, CEF) a un formato común. Añade contexto (geo-IP, información de activos, reputación de IPs).
 
-**Motor de Correlacion (Correlation Engine):**
-Aplica las reglas de correlacion a los eventos procesados. Evalua condiciones temporales (5 intentos de login fallidos en 1 minuto), condiciones lógicas (firewall bloquea conexión Y usuario reporta lentitud), y condiciones de umbral.
+**Motor de Correlación (Correlation Engine):**
+Aplica las reglas de correlación a los eventos procesados. Evalúa condiciones temporales (5 intentos de login fallidos en 1 minuto), condiciones lógicas (firewall bloquea conexión Y usuario reporta lentitud), y condiciones de umbral.
 
 **Almacenamiento (Storage):**
-Base de datos optimizada para búsquedas de texto completo y consultas analíticas. Ejemplos: Elasticsearch, Splunk Indexes. Los datos se almacenan por periodos definidos (30 días, 90 días, 1 año) según políticas de retencion.
+Base de datos optimizada para búsquedas de texto completo y consultas analíticas. Ejemplos: Elasticsearch, Splunk Indexes. Los datos se almacenan por periodos definidos (30 días, 90 días, 1 año) según políticas de retención.
 
 **Interfaz de Búsqueda (Search Interface):**
 Interfaz de usuario para consultar datos. Permite búsquedas ad-hoc, dashboards, y reportes programados. Ejemplos: Kibana (Elastic), Splunk Web, QRadar Console.
@@ -294,7 +294,7 @@ Interfaz de usuario para consultar datos. Permite búsquedas ad-hoc, dashboards,
 
 **Horizontal vs. Vertical:**
 - Escalado vertical: Más CPU, RAM, disco en el mismo servidor. Limitado por hardware máximo.
-- Escalado horizontal: Más servidores trabajando en clúster. Ilimitado teoricamente.
+- Escalado horizontal: Más servidores trabajando en clúster. Ilimitado teóricamente.
 
 **Indexers vs. Search Heads:**
 En Splunk (y arquitecturas similares), los Indexers almacenan y procesan datos, mientras que los Search Heads coordinan búsquedas entre Indexers. Separar estas funciones permite escalar independientemente.
@@ -306,6 +306,6 @@ En Splunk (y arquitecturas similares), los Indexers almacenan y procesan datos, 
 
 ## Preguntas Adicionales
 
-13. Configuras una regla de correlacion que detecta 5 intentos de inicio de sesión fallidos en 1 minuto desde la misma IP. La regla genera 10,000 alertas en una hora. Que esta mal y como lo corriges?
+13. Configuras una regla de correlación que detecta 5 intentos de inicio de sesión fallidos en 1 minuto desde la misma IP. La regla genera 10,000 alertas en una hora. Que esta mal y como lo corriges?
 14. El SIEM recibe logs de 100 firewalls, 500 servidores, y 10,000 endpoints. El almacenamiento se llena en 3 días en vez de los 30 días planificados. Que estrategias usas para priorizar que logs conservar?
 15. Un administrador de SIEM configura un dashboard de cumplimiento PCI-DSS. Que eventos debe monitorear el dashboard? Como los controles están funcionando correctamente?

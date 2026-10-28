@@ -30,7 +30,7 @@ Estos cuatro principios son el piso. Si falla uno, la defensa te destruye en el 
 La evidencia no debe modificarse. En lo digital, esto significa:
 - Hash criptográfico (SHA-256) de la evidencia original.
 - Verificar el hash antes y después de cada operación.
-- Cualquier cambio en el hash indica alteracion.
+- Cualquier cambio en el hash indica alteración.
 
 ### Autenticidad
 
@@ -42,7 +42,7 @@ Cada paso debe ser documentado para que otro perito pueda repetir exactamente el
 
 ### Preservación
 
-La evidencia debe mantenerse en un estado que evite deterioro o alteracion accidental.
+La evidencia debe mantenerse en un estado que evite deterioro o alteración accidental.
 
 ## El Registro de Cadena de Custodia
 
@@ -87,7 +87,7 @@ Decisiones en esta fase:
 
 ### Recolección
 
-aqui hay un error que se ve todo el tiempo: alguien hace "copiar y pegar" los archivos y cree que ya tiene la evidencia. No.
+aquí hay un error que se ve todo el tiempo: alguien hace "copiar y pegar" los archivos y cree que ya tiene la evidencia. No.
 
 Crear una imagen forense bit a bit del dispositivo. No copiar archivos: la copia de archivos no preserva metadatos, espacio no asignado, ni archivos eliminados.
 
@@ -143,7 +143,7 @@ Registros en memoria RAM, caché CPU, tabla de procesos. Desaparece al apagar. D
 
 ### No Volátil
 
-Discos duros, SSD, USB, SD cards, discos opticos. Persiste sin energía.
+Discos duros, SSD, USB, SD cards, discos ópticos. Persiste sin energía.
 
 ### Semi-Volátil
 
@@ -199,7 +199,7 @@ Evidencia abierta "solo para ver": Cada apertura cuenta. Siempre trabajar sobre 
 
 No preparar al testigo perito: El perito debe explicar la cadena en términos simples al juez.
 
-aqui va un caso real para que veas que no es joda.
+aquí va un caso real para que veas que no es joda.
 
 ### Caso Real: Casey Anthony (2011)
 
@@ -207,19 +207,19 @@ La defensa impugno exitosamente evidencia digital porque los oficiales no docume
 
 ### Caso Real: Silk Road (2013-2015)
 
-El FBI clono el servidor de Silk Road en Islandia sin orden judicial. Aunque tenían evidencia sólida, la defensa impugno la cadena de custodia de los discos. El caso dependio de testimonios de peritos sobre la integridad de las imágenes forenses.
+El FBI clono el servidor de Silk Road en Islandia sin orden judicial. Aunque tenían evidencia sólida, la defensa impugno la cadena de custodia de los discos. El caso dependió de testimonios de peritos sobre la integridad de las imágenes forenses.
 
 ## El Ángulo del Hacker
 
-aqui cambia la perspectiva. No solo tienes que proteger la evidencia, tienes que anticipar como te la van a atacar.
+aquí cambia la perspectiva. No solo tienes que proteger la evidencia, tienes que anticipar como te la van a atacar.
 
 ### Como se Impugna una Cadena de Custodia
 
-Demostrar que la evidencia pudo haber sido alterada. No se necesita probar alteracion, solo posibilidad.
+Demostrar que la evidencia pudo haber sido alterada. No se necesita probar alteración, solo posibilidad.
 
 Errores comunes que los abogados buscaran:
 - Periodo sin documentación.
-- Persona no autorizada accedio al repositorio.
+- Persona no autorizada accedió al repositorio.
 - Hash no coincide.
 - Almacenamiento incorrecto.
 
@@ -257,7 +257,7 @@ El informe pericial debe ser:
 3. Metodología: Herramientas, procedimientos.
 4. Cadena de custodia: Cada transferencia, cada acceso.
 5. Hallazgos: Que se encontró, en orden cronológico.
-6. Conclusión: Opinion del perito.
+6. Conclusión: Opinión del perito.
 7. Anexos: Hashes, capturas, logs.
 
 ### Declaración como Perito
@@ -270,7 +270,7 @@ El perito debe:
 
 ## Almacenamiento a Largo Plazo
 
-La evidencia digital debe preservarse años. Discos duros se degradan. Migrar a nuevos medios periodicamente.
+La evidencia digital debe preservarse años. Discos duros se degradan. Migrar a nuevos medios periódicamente.
 
 Formato de almacenamiento: EWF (Expert Witness Format), AFF (Advanced Forensic Format), o raw (.dd).
 
@@ -278,9 +278,9 @@ Verificar integridad anualmente con hash.
 
 ## Cadena de Custodia en la Nube
 
-Esto se pone complicado. Ya no controlas el hardware. Dependes de que el proveedor no haya modificado nada. pasa si el servidor esta en otro país? Ahora tienes problemas de jurisdiccion también.
+Esto se pone complicado. Ya no controlas el hardware. Dependes de que el proveedor no haya modificado nada. pasa si el servidor esta en otro país? Ahora tienes problemas de jurisdicción también.
 
-### Desafios
+### Desafíos
 
 - No hay acceso físico a discos.
 - Proveedor puede modificar datos.
@@ -290,12 +290,12 @@ Esto se pone complicado. Ya no controlas el hardware. Dependes de que el proveed
 ### Soluciones
 
 - Orden judicial al proveedor.
-- Preservación forense via API (snapshots).
+- Preservación forense vía API (snapshots).
 - Documentación del proveedor sobre su propia cadena.
 
 ### Ejemplo: Google Takeout vs Forense
 
-Takeout da acceso a datos pero no preserva metadatos forenses. Solicitar datos via orden legal que incluya preservación de metadatos.
+Takeout da acceso a datos pero no preserva metadatos forenses. Solicitar datos vía orden legal que incluya preservación de metadatos.
 
 ## Control de Acceso a Evidencia
 
@@ -322,13 +322,13 @@ No tener notas: El perito testifica de memoria. Se contradice.
 
 Confundir roles: El perito no es fiscal. No debe opinar sobre culpabilidad.
 
-## Formacion del Perito
+## Formación del Perito
 
 Certificaciones reconocidas: GCFA (GIAC Certified Forensic Analyst), GCFE (GIAC Certified Forensic Examiner), CHFI (Computer Hacking Forensic Investigator), CCFP (Certified Cyber Forensic Professional).
 
 Experiencia práctica: Laboratorios, casos reales, testimonio en corte.
 
-## Evidencia en la Nube: Desafios Adicionales
+## Evidencia en la Nube: Desafíos Adicionales
 
 ### Falta de Control Físico
 
@@ -336,11 +336,11 @@ No puedes asegurar que el disco no fue modificado por el proveedor. Dependes de 
 
 ### Soluciones
 
-Orders judiciales específicas. Preservación forense via snapshot. Cadena de custodia documentada por el proveedor.
+Orders judiciales específicas. Preservación forense vía snapshot. Cadena de custodia documentada por el proveedor.
 
 ### Ejemplo: AWS
 
-AWS permite tomar snapshots de volumenes EBS para preservación. Los logs de CloudTrail documentan acceso a recursos.
+AWS permite tomar snapshots de volúmenes EBS para preservación. Los logs de CloudTrail documentan acceso a recursos.
 
 ## Checklist de Cadena de Custodia
 
@@ -372,7 +372,7 @@ Timestamp sincronizado con NTP. Formato PCAP estándar. Hash del archivo de capt
 
 ### Logs
 
-Preservar logs originales. Copia firmada. Documentar periodo de retencion.
+Preservar logs originales. Copia firmada. Documentar periodo de retención.
 
 ## Estándares y Certificaciones
 
@@ -394,7 +394,7 @@ Fotografiar la escena antes de tocar nada. Video del proceso de recolección.
 
 ### Notas del Perito
 
-Notas contemporaneas al evento. Manuscritas o digitales con timestamp. No modificar después.
+Notas contemporáneas al evento. Manuscritas o digitales con timestamp. No modificar después.
 
 ## Autoevaluación
 

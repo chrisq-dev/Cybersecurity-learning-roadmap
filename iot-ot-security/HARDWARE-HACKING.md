@@ -15,7 +15,7 @@ El Hardware Hacking es el arte de vulnerar sistemas físicos interactuando direc
 
 ## 1. El Peligro del Acceso Físico
 
-aqui hay una ley universal en ciberseguridad que pocos entienden al principio: **Si un atacante tiene acceso físico sin restricciones a tu computadora, ya no es tu computadora**.
+aquí hay una ley universal en ciberseguridad que pocos entienden al principio: **Si un atacante tiene acceso físico sin restricciones a tu computadora, ya no es tu computadora**.
 
 los desarrolladores asumen que los atacantes están a 5,000 kilómetros de distancia atacando por Wi-Fi. Pero Cuando compraste una caja fuerte electrónica china, el atacante la desenrosca, le saca la placa verde (Motherboard), y conecta un cable directamente al chip de memoria para leer el PIN maestro? Las barreras de software caen cuando manipulas la electricidad.
 
@@ -81,17 +81,17 @@ JTAG es un estándar IEEE 1149.1 para probar PCBs y depurar microcontroladores. 
 SWD es la alternativa de ARM (2 pines): SWDIO (data) y SWCLK (clock).
 
 **Herramientas para JTAG/SWD:**
-* **OpenOCD:** Software open-source para debugging y programación via JTAG/SWD.
+* **OpenOCD:** Software open-source para debugging y programación vía JTAG/SWD.
   ```bash
   openocd -f interface/jlink.cfg -f target/stm32f4x.cfg
-  # Conectarse via telnet a localhost:4444
+  # Conectarse vía telnet a localhost:4444
   # halt, flash read_bank 0 firmware.bin 0 0x100000
   ```
 * **J-Link (Segger):** Depurador comercial standard de la industria ARM.
 * **Bus Blaster:** Alternativa open-source económica.
 * **STM32 ST-Link:** Depurador integrado en placas de desarrollo STM32.
 
-**Ataques via JTAG:**
+**Ataques vía JTAG:**
 * Lectura completa de firmware (dumping de flash).
 * Lectura de OTP (One-Time Programmable) memory.
 * Bybass de Read-Out Protection (RDP) en microcontroladores ARM.

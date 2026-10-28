@@ -295,7 +295,7 @@ Todavía en 2023, Maven Media expuso un archivo JSON con 3 millones de contrase�
 
 ## La Visión del Hacker: Como se Rompen las Contraseñas
 
-Sabes cuál es el secreto peor guardado de la seguridad informática? Que la mayoría de las contraseñas se rompen en minutos, no porque el hash sea débil, sino porque los humanos somos predecibles. aqui te cuento cómo lo hacen.
+Sabes cuál es el secreto peor guardado de la seguridad informática? Que la mayoría de las contraseñas se rompen en minutos, no porque el hash sea débil, sino porque los humanos somos predecibles. aquí te cuento cómo lo hacen.
 
 ### Ataques de Diccionario
 
@@ -403,7 +403,7 @@ Pero hasta que eso sea universal, el hashing de contraseñas sigue siendo una ha
 
 3. En la analogía de la licuadora, explica por qué una función hash siempre produce una salida de longitud fija sin importar el tamaño de la entrada. Por qué esta propiedad es útil en sistemas de almacenamiento?
 
-4. La función SHA-256 se considera segura para integridad de archivos pero insegura para almacenar contraseñas. Explica la contradiccion aparente: como puede un algoritmo ser seguro para un propósito e inseguro para otro?
+4. La función SHA-256 se considera segura para integridad de archivos pero insegura para almacenar contraseñas. Explica la contradicción aparente: como puede un algoritmo ser seguro para un propósito e inseguro para otro?
 
 5. LinkedIn en 2012 almacenaba hashes SHA-1 sin sal. Adobe en 2013 cifraba contraseñas con 3DES-ECB. Explica cual de los dos enfoques es menos inseguro y por qué, analizando las debilidades específicas de cada uno.
 
@@ -411,6 +411,6 @@ Pero hasta que eso sea universal, el hashing de contraseñas sigue siendo una ha
 
 7. Un sistema implementa bloqueo de cuenta después de 3 intentos fallidos durante 30 minutos. Sin embargo, un atacante logra evadir esta protección atacando 100,000 cuentas simultáneamente. Explica la lógica del ataque y como mitigarlo.
 
-8. Las funciones hash criptográficas deben ser resistentes a colisiones. Por qué es importante que nadie pueda encontrar dos mensajes diferentes que produzcan el mismo hash? Da un ejemplo de un ataque del mundo real que explotaria una debilidad de colisiones.
+8. Las funciones hash criptográficas deben ser resistentes a colisiones. Por qué es importante que nadie pueda encontrar dos mensajes diferentes que produzcan el mismo hash? Da un ejemplo de un ataque del mundo real que explotaría una debilidad de colisiones.
 
 ---

@@ -42,7 +42,7 @@ Cuando escribes un documento en Microsoft Word y escribes mal una palabra, Word 
 SAST es un robot que lee el código fuente que el programador acaba de escribir en su computadora sin ejecutarlo. Examina el código en busca de patrones conocidos de vulnerabilidades.
 
 **Lo que Atrapa:**
-- Concatenacion de strings en consultas SQL (SQL Injection potencial)
+- Concatenación de strings en consultas SQL (SQL Injection potencial)
 - Uso de funciones peligrosas (`eval`, `exec`, `system`, `innerHTML`)
 - Contraseñas o claves hardcodeadas en el código
  - Desbordamiento de buffer en lenguajes como C/C++
@@ -86,7 +86,7 @@ SAST detecta que el dato de entrada del usuario llega a una función de base de 
 
 ## DAST: El Muñeco de Pruebas de Choque (Análisis Dinámico)
 
-SAST es muy bueno leyendo texto, pero a veces, los errores de seguridad solo aparecen cuando las piezas del programa se conectan entre si y el motor arranca. Aqui entra DAST (Dynamic Application Security Testing).
+SAST es muy bueno leyendo texto, pero a veces, los errores de seguridad solo aparecen cuando las piezas del programa se conectan entre si y el motor arranca. Aquí entra DAST (Dynamic Application Security Testing).
 
 ### La Analogía
 
@@ -125,7 +125,7 @@ SAST se usa temprano (en el IDE del programador o en el commit). DAST se usa má
 
 **No es uno u otro. Son complementarios.** Necesitas ambos para tener una cobertura completa.
 
-## SCA: Análisis de Composicion de Software
+## SCA: Análisis de Composición de Software
 
 SCA (Software Composition Analysis) es el tercer pilar de AppSec. Analiza las dependencias de código abierto que usa tu aplicación en busca de vulnerabilidades conocidas.
 
@@ -133,7 +133,7 @@ SCA (Software Composition Analysis) es el tercer pilar de AppSec. Analiza las de
 
 Las aplicaciones modernas usan cientos de dependencias. Un programador puede escribir 1,000 líneas de código seguro, pero si incluye una librería vulnerable (como Log4j en 2021), toda la aplicación es vulnerable.
 
-Se estima que el 90% del código de una aplicación moderna es código de terceros (librerías, frameworks, modulos npm, paquetes pip, gemas de Ruby, etc.).
+Se estima que el 90% del código de una aplicación moderna es código de terceros (librerías, frameworks, módulos npm, paquetes pip, gemas de Ruby, etc.).
 
 ### Lo que Atrapa SCA
 
@@ -155,11 +155,11 @@ Se estima que el 90% del código de una aplicación moderna es código de tercer
 
 Por qué esto importa: Log4j nos enseñó que tu aplicación puede ser segura, pero una librería que ni sabias que tenías te puede tumbar la empresa.
 
-Log4j es una librería de logging para Java. En diciembre de 2021, se descubrió una vulnerabilidad (CVE-2021-44228) que permitia ejecución remota de código. La librería estaba en millones de servidores.
+Log4j es una librería de logging para Java. En diciembre de 2021, se descubrió una vulnerabilidad (CVE-2021-44228) que permitía ejecución remota de código. La librería estaba en millones de servidores.
 
-Una herramienta SCA detectaria que tu aplicación usa Log4j versión 2.14.1 y que hay una vulnerabilidad crítica. Te diria que actualices a 2.17.0 (la versión parcheada).
+Una herramienta SCA detectaría que tu aplicación usa Log4j versión 2.14.1 y que hay una vulnerabilidad crítica. Te diría que actualices a 2.17.0 (la versión parcheada).
 
-Sin SCA, el equipo de seguridad no sabria que tiene Log4j en su stack, porque los programadores no siempre documentan las dependencias que agregan.
+Sin SCA, el equipo de seguridad no sabría que tiene Log4j en su stack, porque los programadores no siempre documentan las dependencias que agregan.
 
 ## IAST y RASP: Las Generaciones Siguientes
 
@@ -193,7 +193,7 @@ Los desarrolladores deben entender las vulnerabilidades básicas (OWASP Top 10) 
 
 Integrar SAST en el IDE del desarrollador (como plugin) y en el pipeline CI/CD. El commit que introduzca una vulnerabilidad crítica debe fallar automáticamente.
 
-### Fase 3: Escaneo Periodico con DAST
+### Fase 3: Escaneo Periódico con DAST
 
 El DAST se ejecuta semanalmente o diariamente contra el ambiente de staging. Los hallazgos se reportan al equipo de desarrollo.
 
@@ -203,7 +203,7 @@ SCA se ejecuta en cada build para detectar vulnerabilidades en dependencias. Las
 
 ### Fase 5: Revisión Manual
 
-Ninguna herramienta automática encuentra todas las vulnerabilidades. Las revisiones manuales de código (code review) y las pruebas de penetracion (pentest) son necesarias para encontrar problemas de lógica de negocio y vulnerabilidades complejas.
+Ninguna herramienta automática encuentra todas las vulnerabilidades. Las revisiones manuales de código (code review) y las pruebas de penetración (pentest) son necesarias para encontrar problemas de lógica de negocio y vulnerabilidades complejas.
 
 ### Fase 6: Gestión de Hallazgos
 
@@ -219,11 +219,11 @@ El problema más grande de AppSec no es técnico, es humano. Las herramientas ge
 
 ### Como Reducir Falsos Positivos
 
-1. **Configurar las herramientas correctamente.** No uses las reglas por defecto; ajustalas a tu stack tecnológico.
+1. **Configurar las herramientas correctamente.** No uses las reglas por defecto; ajústalas a tu stack tecnológico.
 2. **Suprimir falsos positivos conocidos.** Si una regla siempre marca un falso positivo en un contexto específico, suprímela.
 3. **Establecer una línea base.** Primero escanea el código existente y clasifica los hallazgos. Luego solo revisa los nuevos hallazgos en los commits nuevos.
 4. **Formar a los desarrolladores.** Que entiendan que es un falso positivo y que no. Que sepan interpretar los reportes.
-5. **Tener un equipo AppSec dedicado.** Los desarrolladores no deberían ser los unicos responsables de interpretar los escaneos de seguridad.
+5. **Tener un equipo AppSec dedicado.** Los desarrolladores no deberían ser los únicos responsables de interpretar los escaneos de seguridad.
 
 ## Modos de Falla en AppSec
 
@@ -249,8 +249,8 @@ El problema más grande de AppSec no es técnico, es humano. Las herramientas ge
 
 5. Explica la diferencia entre SAST, DAST y SCA. En que fase del ciclo de desarrollo debería usarse cada uno y que tipo de vulnerabilidades detecta cada uno?
 
-6. Tu empresa usa una librería Open Source llamada "FastXML" que tiene una vulnerabilidad conocida CVE-2024-1234. El equipo de desarrollo no sabe que usa esa librería. Que herramienta de AppSec revelaria esta dependencia oculta?
+6. Tu empresa usa una librería Open Source llamada "FastXML" que tiene una vulnerabilidad conocida CVE-2024-1234. El equipo de desarrollo no sabe que usa esa librería. Que herramienta de AppSec revelaría esta dependencia oculta?
 
-7. Un desarrollador argumenta: "Hacemos escaneo SAST en cada commit, no necesitamos DAST." Por qué esta afirmación es incorrecta? Da un ejemplo de vulnerabilidad que DAST encontraria pero SAST no.
+7. Un desarrollador argumenta: "Hacemos escaneo SAST en cada commit, no necesitamos DAST." Por qué esta afirmación es incorrecta? Da un ejemplo de vulnerabilidad que DAST encontraría pero SAST no.
 
 8. Durante una auditoría, el equipo AppSec descubre que el pipeline CI/CD no bloquea los builds cuando SCA encuentra una vulnerabilidad crítica en una dependencia. Que riesgos introduce esta falta de bloqueo y como debería configurarse el pipeline correctamente?

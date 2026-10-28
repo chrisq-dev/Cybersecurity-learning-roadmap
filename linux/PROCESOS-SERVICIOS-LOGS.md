@@ -43,7 +43,7 @@ Cada proceso tiene:
 
 ### El Árbol de Procesos
 
-los procesos no existen en el vacio. Tienen padres, hijos, hermanos. Como una familia, pero con PIDs.
+los procesos no existen en el vacío. Tienen padres, hijos, hermanos. Como una familia, pero con PIDs.
 
 Los procesos en Linux tienen una relación jerárquica. El primer proceso que arranca el kernel (tradicionalmente `init`, hoy `systemd`) tiene PID 1. Todos los demás procesos descienden de el.
 
@@ -107,7 +107,7 @@ Un proceso en estado D por mucho tiempo puede indicar problemas con el almacenam
 - TIME+: Tiempo total de CPU usado.
 - COMMAND: Nombre del comando.
 
-### Teclas utiles en top
+### Teclas útiles en top
 
 - `1`: Muestra uso de CPU por núcleo.
 - `M`: Ordena por uso de memoria.
@@ -125,11 +125,11 @@ Diferencias con top:
 - Puedes hacer scroll vertical y horizontal.
 - Puedes matar procesos con la tecla F9 sin recordar el PID.
 - Muestra el árbol de procesos con F5.
-- Soporta seleccion multiple de procesos.
+- Soporta selección múltiple de procesos.
 
 En htop, presta atención a los procesos que aparecen con colores rojos en la barra de CPU. Eso indica alto consumo, y en un servidor que debería estar mayormente inactivo, es una señal de alarma.
 
-## ps: La Fotografía Instantanea
+## ps: La Fotografía Instantánea
 
 Mientras que `top` te muestra el estado actual en tiempo real, `ps` te da una foto estática de los procesos en un momento específico. Es útil para scripting y para búsquedas específicas.
 
@@ -153,7 +153,7 @@ Un atacante avanzado puede ocultar procesos mediante:
 - **Process name masquerading:** Ejecutan el malware con un nombre que imita a un proceso legítimo. Por ejemplo, ejecutar un minero de criptomonedas con el nombre `httpd` o `syslogd`.
 
 Para detectar procesos ocultos:
-- Comparar la salida de `ps` con la de `ls /proc/` (cada PID tiene una entrada en `/proc`). Si `ps` muestra menos procesos que `/proc`, hay ocultacion.
+- Comparar la salida de `ps` con la de `ls /proc/` (cada PID tiene una entrada en `/proc`). Si `ps` muestra menos procesos que `/proc`, hay ocultación.
 - Usar herramientas forenses como `unhide` o `chkrootkit`.
 
 ## Kill: Señales a los Procesos
@@ -163,7 +163,7 @@ Para detectar procesos ocultos:
 ### Tipos de Señales
 
 - `SIGTERM` (15): Pide al proceso que termine graciosamente. El proceso puede ignorarla o hacer limpieza antes de salir.
-- `SIGKILL` (9): Fuerza la terminacion inmediata. El proceso no puede ignorarla ni hacer limpieza. Puede dejar archivos temporales o datos corruptos.
+- `SIGKILL` (9): Fuerza la terminación inmediata. El proceso no puede ignorarla ni hacer limpieza. Puede dejar archivos temporales o datos corruptos.
 - `SIGHUP` (1): Originalmente para colgar la línea telefónica. Hoy muchos procesos la interpretan como recargar configuración.
 - `SIGINT` (2): Interrupción (Ctrl+C).
 - `SIGSTOP` (19): Detiene el proceso (como Ctrl+Z).
@@ -221,7 +221,7 @@ La mayoría de las distribuciones Linux modernas usan systemd como su sistema de
 `systemctl list-units --type=service --state=running`: Lista todos los servicios en ejecución.
 `systemctl list-unit-files --state=enabled`: Lista todos los servicios configurados para arrancar automáticamente.
 
-#### Ángulo Hacker: Persistencia via systemd
+#### Ángulo Hacker: Persistencia vía systemd
 
 Un atacante que ha comprometido un servidor y quiere asegurarse de que su malware siga funcionando después de un reinicio crea un servicio systemd.
 
@@ -245,7 +245,7 @@ Paso 3: Inicia el servicio: `systemctl start actualizacion.service`
 
 Ahora el script malicioso se ejecutará automáticamente al arrancar el sistema. La directiva `Restart=always` asegura que si el administrador mata el proceso, systemd lo reiniciara automáticamente.
 
-Para detectar estos servicios maliciosos, los administradores revisan periodicamente `systemctl list-unit-files --state=enabled` y comparan los servicios listados con una línea base de servicios conocidos.
+Para detectar estos servicios maliciosos, los administradores revisan periódicamente `systemctl list-unit-files --state=enabled` y comparan los servicios listados con una línea base de servicios conocidos.
 
 Las herramientas de monitoreo de integridad de archivos (como AIDE, Tripwire, o Osquery) pueden alertar cuando se crea un nuevo archivo en `/etc/systemd/system/`.
 
@@ -264,7 +264,7 @@ journald tiene una ventaja para la investigación forense: los logs se almacenan
 
 #### Tiempos de Arranque y Apagado
 
-`journalctl --list-boots` es útil en investigaciones forenses. Si ves arranques del sistema que no corresponden a mantenimientos programados, puede indicar que un atacante reinicio el sistema (quizas para activar un kernel comprometido o para borrar evidencia en memoria).
+`journalctl --list-boots` es útil en investigaciones forenses. Si ves arranques del sistema que no corresponden a mantenimientos programados, puede indicar que un atacante reinicio el sistema (quizás para activar un kernel comprometido o para borrar evidencia en memoria).
 
 ### SysV init: El Sistema Antiguo
 
@@ -303,11 +303,11 @@ En ciberseguridad hay un dicho: "si no hay logs, el crimen no ocurrió". Los log
 
 Este es el directorio más importante del sistema para un analista de seguridad. Aprende a navegarlo.
 
-**`/var/log/syslog` o `/var/log/messages`:** El log general del sistema. Casi todo lo que no tiene un log dedicado termina aqui. En Debian/Ubuntu es `syslog`. En Red Hat es `messages`.
+**`/var/log/syslog` o `/var/log/messages`:** El log general del sistema. Casi todo lo que no tiene un log dedicado termina aquí. En Debian/Ubuntu es `syslog`. En Red Hat es `messages`.
 
-**`/var/log/auth.log` o `/var/log/secure`:** El log de autenticación. Cada inicio de sesión, cada intento de sudo, cada fallo de autenticación se registra aqui. Es el primer archivo que revisas cuando sospechas de un acceso no autorizado.
+**`/var/log/auth.log` o `/var/log/secure`:** El log de autenticación. Cada inicio de sesión, cada intento de sudo, cada fallo de autenticación se registra aquí. Es el primer archivo que revisas cuando sospechas de un acceso no autorizado.
 
-Línea tipica de intento fallido:
+Línea típica de intento fallido:
 `Jun 26 03:15:22 servidor sshd[12345]: Failed password for root from 192.168.1.100 port 54321 ssh2`
 
 Esto te dice: fecha, hora, servicio que registro (sshd), PID del proceso (12345), evento (Failed password), usuario (root), IP origen (192.168.1.100), puerto (54321), y protocolo (ssh2).
@@ -331,7 +331,7 @@ Esto te dice: fecha, hora, servicio que registro (sshd), PID del proceso (12345)
 Nunca abras un log de 2GB en un editor de texto. Usa las herramientas de línea de comandos:
 
 `grep "Failed password" /var/log/auth.log`: Encuentra intentos de conexión fallidos.
-`grep "Accepted" /var/log/auth.log`: Encuentra inicios de sesión exitosos (utiles para detectar accesos no autorizados).
+`grep "Accepted" /var/log/auth.log`: Encuentra inicios de sesión exitosos (útiles para detectar accesos no autorizados).
 `tail -f /var/log/auth.log`: Monitorea en tiempo real los intentos de conexión.
 `grep "error" /var/log/apache2/error.log`: Encuentra errores del servidor web.
 `journalctl -u sshd.service --since yesterday`: Logs de SSH desde ayer (con sistema de logs de systemd).
@@ -352,9 +352,9 @@ Te muestra las 20 IPs que más peticiones hicieron a tu servidor web. Una IP con
 
 ### Rotación de Logs con logrotate
 
-`logrotate` gestiona la rotación, compresion y eliminación de logs. Se configura en `/etc/logrotate.conf` y `/etc/logrotate.d/`.
+`logrotate` gestiona la rotación, compresión y eliminación de logs. Se configura en `/etc/logrotate.conf` y `/etc/logrotate.d/`.
 
-Una configuración tipica:
+Una configuración típica:
 
 ```
 /var/log/auth.log {
@@ -372,7 +372,7 @@ Una configuración tipica:
 Esto rota el log semanalmente, mantiene 4 rotaciones (4 semanas), comprime los rotados, y recarga rsyslog después de rotar.
 
 Errores comunes de logrotate:
-- Rotación demasiado frecuente: pierdes datos historicos.
+- Rotación demasiado frecuente: pierdes datos históricos.
 - Rotación demasiado infrecuente: los logs crecen sin control.
 - Permisos incorrectos en logs rotados: después de rotar, los archivos pueden quedar con permisos más abiertos que el original.
 - No recargar el servicio que escribe el log: el servicio sigue escribiendo en el archivo que ahora esta comprimido.
@@ -383,8 +383,8 @@ Cuando investigas un incidente y encuentras logs faltantes o con lagunas, esto p
 
 - **Borrado selectivo:** El atacante eliminó entradas específicas que lo mencionaban.
 - **Rotación forzada:** El atacante ejecutó `logrotate -f` para forzar la rotación antes de tiempo.
-- **Escritura directa:** El atacante sobrescribio el archivo de log con datos falsos.
-- **Desactivacion del servicio de logs:** El atacante detuvo rsyslog o syslog-ng antes de realizar sus actividades.
+- **Escritura directa:** El atacante sobrescribió el archivo de log con datos falsos.
+- **Desactivación del servicio de logs:** El atacante detuvo rsyslog o syslog-ng antes de realizar sus actividades.
 
 Para mitigar esto, los logs deben enviarse a un servidor centralizado (SIEM) tan pronto como se generen. Un atacante puede borrar logs locales, pero no puede borrar logs que ya fueron transmitidos a un sistema externo.
 
@@ -400,7 +400,7 @@ Siempre verifica y documenta la zona horaria del servidor antes de hacer anális
 
 **El Ataque a Code Spaces (2014):** Un atacante obtuvo acceso a la consola de administración de AWS de Code Spaces. Desde ahí, ejecutó `kill` masivamente en los servidores Linux, matando procesos críticos. Cuando los administradores intentaron recuperar el acceso, el atacante uso los mismos permisos para eliminar logs y backups. La empresa na pudo recuperarse y cerró operaciones.
 
-**El Incidente de SolarWinds (2020):** Los atacantes crearon un servicio systemd malicioso llamado `solarwinds-orion-agent.service` que imitaba al servicio legítimo de Orion. El servicio se ejecutaba con altos privilegios y establecia persistencia. Los logs del sistema no mostraban anomalías porque el servicio tenía un nombre y unas características que pasaban las revisiones rutinarias.
+**El Incidente de SolarWinds (2020):** Los atacantes crearon un servicio systemd malicioso llamado `solarwinds-orion-agent.service` que imitaba al servicio legítimo de Orion. El servicio se ejecutaba con altos privilegios y establecía persistencia. Los logs del sistema no mostraban anomalías porque el servicio tenía un nombre y unas características que pasaban las revisiones rutinarias.
 
 **El Gusano Stuxnet (2010):** Aunque es más conocido por atacar sistemas SCADA, Stuxnet también infectaba sistemas Linux usados como estaciones de trabajo de ingeniería. El malware ocultaba sus procesos usando rootkits a nivel de kernel que interceptaban las llamadas a `/proc` para que `ps` y `top` no mostraran los procesos maliciosos.
 
@@ -408,7 +408,7 @@ Siempre verifica y documenta la zona horaria del servidor antes de hacer anális
 
 **Ocultamiento de procesos:** El atacante puede:
 - Usar rootkits a nivel de kernel que interceptan syscalls como `getdents()` para ocultar entradas en `/proc`.
-- Modificar el nombre del proceso via `prctl(PR_SET_NAME, ...)` para que aparezca como un proceso legítimo.
+- Modificar el nombre del proceso vía `prctl(PR_SET_NAME, ...)` para que aparezca como un proceso legítimo.
 - Ejecutar payloads que se "inyectan" en procesos legítimos existentes (process injection usando `ptrace()` o `process_vm_writev()`).
 
 **Persistencia mediante servicios:** El atacante crea servicios systemd que parecen legítimos. Usan nombres como `systemd-essentials.service` o `network-manager-reload.service`. La descripción del servicio suele ser vaga.
@@ -443,16 +443,16 @@ Siempre verifica y documenta la zona horaria del servidor antes de hacer anális
 
 1. Tu servidor web se siente lento. Los usuarios reportan tiempos de carga de 30 segundos. Que comandos ejecutas para determinar que esta consumiendo los recursos del sistema? Describe los pasos exactos y que información buscas en cada uno.
 
-2. Descubres un proceso sospechoso llamado `crond` (con una 'd' al final, diferente del legítimo `cron`) consumiendo 95% de CPU. El PID es 4099. Describe paso a paso como investigarias este proceso: que información extraes de `/proc/4099/`, como determinas si tiene persistencia, y que haces con el proceso.
+2. Descubres un proceso sospechoso llamado `crond` (con una 'd' al final, diferente del legítimo `cron`) consumiendo 95% de CPU. El PID es 4099. Describe paso a paso como investigarías este proceso: que información extraes de `/proc/4099/`, como determinas si tiene persistencia, y que haces con el proceso.
 
-3. Durante un análisis forense, encuentras que `/var/log/auth.log` tiene exactamente 0 líneas para el periodo de 2:00 AM a 3:00 AM del día del incidente. El resto del log esta intacto. Explica dos posibles causas de esta anomalía y como determinarias cual de las dos ocurrió realmente.
+3. Durante un análisis forense, encuentras que `/var/log/auth.log` tiene exactamente 0 líneas para el periodo de 2:00 AM a 3:00 AM del día del incidente. El resto del log esta intacto. Explica dos posibles causas de esta anomalía y como determinarías cual de las dos ocurrió realmente.
 
-4. Un administrador te dice: "Reinicie el servidor por mantenimiento, pero el servicio malicioso volvió a aparecer después del reinicio." Explica como establecio persistencia el atacante y que comandos usarías para encontrar y eliminar esa persistencia.
+4. Un administrador te dice: "Reinicie el servidor por mantenimiento, pero el servicio malicioso volvió a aparecer después del reinicio." Explica como estableció persistencia el atacante y que comandos usarías para encontrar y eliminar esa persistencia.
 
 5. En tu servidor, el comando `ps aux` muestra 50 procesos. Pero listas `/proc/` y ves 52 entradas. Cual es la discrepancia? Que herramienta o técnica usarías para investigar los dos procesos adicionales que `ps` no muestra?
 
-6. Configuras un servidor de aplicaciones y creas un servicio systemd para ella. El servicio no arranca al iniciar el sistema a pesar de que usaste `systemctl enable`. Que revisarias primero? Menciona al menos tres posibles causas.
+6. Configuras un servidor de aplicaciones y creas un servicio systemd para ella. El servicio no arranca al iniciar el sistema a pesar de que usaste `systemctl enable`. Que revisarías primero? Menciona al menos tres posibles causas.
 
-7. Durante una auditoría, encuentras un servicio llamado `system-update.service` en `/etc/systemd/system/`. El `ExecStart` apunta a `/usr/local/bin/system-updater`. No recuerdas haber instalado este servicio. Describe los pasos exactos que seguiras para investigar si es legítimo o malicioso.
+7. Durante una auditoría, encuentras un servicio llamado `system-update.service` en `/etc/systemd/system/`. El `ExecStart` apunta a `/usr/local/bin/system-updater`. No recuerdas haber instalado este servicio. Describe los pasos exactos que seguirás para investigar si es legítimo o malicioso.
 
-8. Un atacante comprometio un servidor y ejecutó `kill -9` en el proceso de rsyslog. Explica el impacto de esta acción (que logs se pierden y cuáles no) y como podrías detectar que rsyslog fue detenido intencionalmente.
+8. Un atacante comprometió un servidor y ejecutó `kill -9` en el proceso de rsyslog. Explica el impacto de esta acción (que logs se pierden y cuáles no) y como podrías detectar que rsyslog fue detenido intencionalmente.

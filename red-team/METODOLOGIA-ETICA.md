@@ -94,7 +94,7 @@ Si el servidor se reinicia, pierdes el acceso. Necesitas asegurar que puedas vol
 - Crear usuario administrador falso (con nombre que pase desapercibido, como "backup_svc").
 - Instalar servicio que se inicie automáticamente con el sistema.
 - Agregar entrada en registro de Windows (Run, RunOnce).
-- Programar tarea (scheduled task) que ejecute tu payload periodicamente.
+- Programar tarea (scheduled task) que ejecute tu payload periódicamente.
 - Modificar archivos de configuración del sistema.
 - Instalar web shell en el servidor web.
 
@@ -115,7 +115,7 @@ El ladrón limpia sus huellas y borra las cintas de seguridad.
 
 **PTES (Penetration Testing Execution Standard):** 7 fases (agrega Post-Exploitation y Reporting).
 
-**OWASP Testing Guide:** Enfocado en aplicaciones web, con su propia taxonomia de pruebas.
+**OWASP Testing Guide:** Enfocado en aplicaciones web, con su propia taxonomía de pruebas.
 
 Cualquier modelo es válido. Lo importante es cubrir todo el ciclo: desde la investigación inicial hasta la entrega del reporte.
 
@@ -139,7 +139,7 @@ Cualquier modelo es válido. Lo importante es cubrir todo el ciclo: desde la inv
 
 **El hallazgo fuera de alcance:** Encuentras una vulnerabilidad crítica en un sistema que no estaba en el alcance pero que compromete toda la red. La explotas para demostrar el riesgo? O solo la mencionas en el reporte? La respuesta correcta es mencionarla sin explotarla, a menos que el cliente autorice expandir el alcance.
 
-**El dato personal expuesto:** Encuentras una base de datos con datos de clientes accesible sin contraseña. Accedes para confirmar? Te detienes en el primer registro? La respuesta depende del ROE. Algunos contratos permiten acceso mínimo para demostrar la vulnerabilidad. Otros lo prohiben explícitamente.
+**El dato personal expuesto:** Encuentras una base de datos con datos de clientes accesible sin contraseña. Accedes para confirmar? Te detienes en el primer registro? La respuesta depende del ROE. Algunos contratos permiten acceso mínimo para demostrar la vulnerabilidad. Otros lo prohíben explícitamente.
 
 ### El Problema del Hacking "Gris"
 
@@ -155,7 +155,7 @@ La regla de oro: si no tienes autorización escrita clara, no lo hagas. No impor
 
 ### Contrato Mal Redactado (2018)
 
-Un tester recibio un contrato que autorizaba atacar "todos los sistemas del cliente." Accedio a un sistema cloud de un proveedor externo. El proveedordetecto el ataque y lo reporto a la policía. El contrato no especificaba los sistemas del proveedor. El tester enfrento cargos penales.
+Un tester recibió un contrato que autorizaba atacar "todos los sistemas del cliente." Accedió a un sistema cloud de un proveedor externo. El proveedordetecto el ataque y lo reporto a la policía. El contrato no especificaba los sistemas del proveedor. El tester enfrento cargos penales.
 
 ### Exceso de Confianza (2020)
 
@@ -172,7 +172,7 @@ No leer el contrato. Asumir permisos que no están escritos. No reportar hallazg
 ## Autoevaluación
 
 1. Un amigo aprendió Kali Linux y quiere escanear la IP de la universidad "sin hacer daño." Por qué te niegas? Que riesgos legales existen?
-2. En que fase de las 5 usarías SQL Injection? En que fase la persistencia via registro de Windows?
+2. En que fase de las 5 usarías SQL Injection? En que fase la persistencia vía registro de Windows?
 3. Durante un pentest, descubres que la base de datos no esta en el cliente sino en AWS no listado en el contrato. La atacas? Explica legalmente.
 4. Por qué el reconocimiento es la fase más importante del ataque? Que información obtienes que hace la explotación trivial?
 5. En un bug bounty, lees archivos de configuración del servidor y ves credenciales. Reportas. La empresa dice que violaste los términos. Tenían razón? Como demostrabas la vulnerabilidad sin violarlos?
@@ -185,7 +185,7 @@ No leer el contrato. Asumir permisos que no están escritos. No reportar hallazg
 ### OWASP Testing Guide (Aplicaciones Web)
 
 El estándar más utilizado para pentest de aplicaciones web. Cubre:
-- Recopilacion de información (OSINT, huellas dactilares).
+- Recopilación de información (OSINT, huellas dactilares).
 - Pruebas de configuración y gestión (puertos, métodos HTTP, banners).
 - Pruebas de autenticación (credenciales débiles, bypass de login, session fixation).
 - Pruebas de autorización (escalacion de privilegios, IDOR, path traversal).
@@ -199,7 +199,7 @@ Cada categoría tiene sub-pruebas detalladas con pasos específicos y herramient
 
 Cubre todo el ciclo del pentest:
 1. **Interacción previa:** Definir alcance, ROE, contactos, objetivos de negocio.
-2. **Recopilacion de inteligencia:** OSINT, escaneo de red, enumeración de servicios.
+2. **Recopilación de inteligencia:** OSINT, escaneo de red, enumeración de servicios.
 3. **Modelado de amenazas:** Identificar activos críticos, vectores de ataque, impacto potencial.
 4. **Análisis de vulnerabilidades:** Escaneo automático y manual, verificación de falsos positivos.
 5. **Explotación:** Confirmar vulnerabilidades, obtener acceso, escalar privilegios.
@@ -208,7 +208,7 @@ Cubre todo el ciclo del pentest:
 
 ### OSSTMM (Open Source Security Testing Methodology Manual)
 
-Enfoque más academico y científico. Define métricas para medir la seguridad:
+Enfoque más académico y científico. Define métricas para medir la seguridad:
 - Resistencia a ataques.
 - Capacidad de detección.
 - Tiempo de respuesta.
@@ -253,7 +253,7 @@ Detección: Monitorear inicios de sesión con NTLM (Event ID 4624, Logon Type 3 
 **Herramientas de Post-Explotación:**
 - Mimikatz: Robo de credenciales de memoria.
 - BloodHound: Mapeo de relaciones en Active Directory para encontrar rutas de escalacion.
-- PowerSploit: Scripts PowerShell para evasion, persistencia, y recolección.
+- PowerSploit: Scripts PowerShell para evasión, persistencia, y recolección.
 
 **Web Application Testing:**
 - Burp Suite: Proxy de intercepción, scanner automático, herramientas de manipulación de requests.
@@ -282,27 +282,27 @@ Habilidades blandas necesarias:
 
 ### Pentest de Caja Negra (Black Box)
 El tester no tiene información previa del objetivo.
-- Ventajas: Simula un atacante externo real. Evalua la información que se filtra sin querer.
-- Desventajas: Puede perder tiempo en reconocimiento básico que no aporta valor. No evalua profundamente.
-- Duracion tipica: 2-4 semanas.
+- Ventajas: Simula un atacante externo real. Evalúa la información que se filtra sin querer.
+- Desventajas: Puede perder tiempo en reconocimiento básico que no aporta valor. No evalúa profundamente.
+- Duración típica: 2-4 semanas.
 
 ### Pentest de Caja Blanca (White Box)
 El tester tiene acceso completo a la información (código fuente, diagramas de red, credenciales).
-- Ventajas: Evaluación más profunda. Encuentra vulnerabilidades que un atacante externo no encontraria fácilmente. Mayor cobertura.
-- Desventajas: No evalua la capacidad de detección del equipo defensor. Puede dar una falsa sensación de seguridad.
-- Duracion tipica: 3-6 semanas.
+- Ventajas: Evaluación más profunda. Encuentra vulnerabilidades que un atacante externo no encontraría fácilmente. Mayor cobertura.
+- Desventajas: No evalúa la capacidad de detección del equipo defensor. Puede dar una falsa sensación de seguridad.
+- Duración típica: 3-6 semanas.
 
 ### Pentest de Caja Gris (Gray Box)
 El tester tiene información parcial (credenciales de usuario estándar, diagramas de red básicos).
 - Ventajas: Balance entre profundidad y realismo. Simula un atacante con acceso inicial (insider threat, credenciales comprometidas).
 - Desventajas: Requiere definir cuidadosamente el alcance de la información proporcionada.
-- Duracion tipica: 2-4 semanas.
+- Duración típica: 2-4 semanas.
 
 ### Red Team Exercise
 Ejercicio completo que simula un ataque real con objetivos definidos (robar datos de clientes, comprometer AD, etc.).
-- Ventajas: Evalua capacidades de detección y respuesta del Blue Team. Mide el tiempo de detección y contención.
-- Desventajas: Costoso y requiere mucha coordinacion. Puede causar estrés en el equipo defensor.
-- Duracion tipica: 4-12 semanas.
+- Ventajas: Evalúa capacidades de detección y respuesta del Blue Team. Mide el tiempo de detección y contención.
+- Desventajas: Costoso y requiere mucha coordinación. Puede causar estrés en el equipo defensor.
+- Duración típica: 4-12 semanas.
 
 ## Ética y Límites
 
@@ -323,7 +323,7 @@ Documento firmado por ambas partes antes de comenzar cualquier prueba. Debe incl
 
 **Manejo de datos:**
 - Que datos se recolectaran durante la prueba.
-- Como se almacenaran y transmitiran los datos sensibles.
+- Como se almacenaran y transmitirán los datos sensibles.
 - Cuando y como se eliminaran los datos después del reporte.
 
 **Límites y exclusiones:**

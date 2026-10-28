@@ -11,7 +11,7 @@ updated: "2026-06-29"
 
 Aprender a recuperar, analizar y presentar evidencia de dispositivos de almacenamiento.
 
-el disco duro es como la escena del crimen digital. Todo lo que el usuario hizo, abrió, escribió, borró y descargó queda registrado ahí. El perito forense extrae ese registro y reconstruye la historia. Y aqui va lo mejor: no importa si el disco esta formateado, dañado o parcialmente sobrescrito. Siempre hay información recuperable. El espacio nunca se borra realmente, solo se marca como disponible. Como cuando tiras algo a la basura pero sigue ahí hasta que pasa el camión.
+el disco duro es como la escena del crimen digital. Todo lo que el usuario hizo, abrió, escribió, borró y descargó queda registrado ahí. El perito forense extrae ese registro y reconstruye la historia. Y aquí va lo mejor: no importa si el disco esta formateado, dañado o parcialmente sobrescrito. Siempre hay información recuperable. El espacio nunca se borra realmente, solo se marca como disponible. Como cuando tiras algo a la basura pero sigue ahí hasta que pasa el camión.
 
 ## La Anatomía de un Disco
 
@@ -23,11 +23,11 @@ El disco se organiza en sectores. Los primeros sectores contienen la tabla de pa
 - MBR (Master Boot Record): Estructura clásica, soporta hasta 2TB, máximo 4 particiones primarias.
 - GPT (GUID Partition Table): Estructura moderna, soporta discos mayores a 2TB, particiones ilimitadas, backup de tabla al final.
 
-Ambos contienen información sobre el tamaño, tipo y ubicación de cada particion.
+Ambos contienen información sobre el tamaño, tipo y ubicación de cada partición.
 
 ### El Sistema de Archivos
 
-Dentro de cada particion, el sistema de archivos organiza los datos:
+Dentro de cada partición, el sistema de archivos organiza los datos:
 - ext4 (Linux): Sistema con journaling, inodos, bloques.
 - NTFS (Windows): Master File Table ($MFT), clusters, atributos.
 - APFS (Mac): Copy-on-write, snapshots, cifrado nativo.
@@ -35,7 +35,7 @@ Dentro de cada particion, el sistema de archivos organiza los datos:
 
 Cada sistema de archivos tiene sus propias estructuras y técnicas de recuperación.
 
-### El Area de Datos
+### El Área de Datos
 
 Donde viven los archivos. Incluye espacio asignado y espacio no asignado.
 
@@ -49,7 +49,7 @@ Copia bit a bit del dispositivo completo. `dd if=/dev/sda of=/evidencia/imagen.d
 
 `dcfldd` agrega hashing en tiempo real. `guymager` ofrece interfaz gráfica. Y si, es fácil, pero igual tienes que entender que estas haciendo.
 
-La imagen incluye sectores asignados, no asignados, slack space, y area de sistema.
+La imagen incluye sectores asignados, no asignados, slack space, y área de sistema.
 
 ### Imagen Lógica
 
@@ -67,7 +67,7 @@ Recolección rápida de los archivos más relevantes para decidir si continuar c
 
 ## Recuperación de Datos Eliminados
 
-Cuando el usuario "borra" un archivo, el sistema operativo solo marca el espacio como disponible. Los datos siguen ahí. Como cuando sacas un libro de un estante pero el espacio vacio sigue teniendo la forma del libro.
+Cuando el usuario "borra" un archivo, el sistema operativo solo marca el espacio como disponible. Los datos siguen ahí. Como cuando sacas un libro de un estante pero el espacio vacío sigue teniendo la forma del libro.
 
 ### Tablas de Archivos
 
@@ -81,13 +81,13 @@ ext4: Eliminar inodo, liberar bloques.
 
 Estas herramientas buscan cabeceras de archivos (JPEG empieza con FFD8, PDF con 25504446) y recuperan aunque la tabla de archivos este corrupta.
 
-### Fragmentacion
+### Fragmentación
 
 Archivos fragmentados en varios sectores no contiguos. La recuperación requiere reconstrucción manual.
 
 ## Análisis de Archivos y Carpetas
 
-Por qué esto importa: no es solo lo que dice el archivo, es lo que el archivo dice sin querer. Los metadatos te cuentan una historia que el usuario no sabia que estaba contando.
+Por qué esto importa: no es solo lo que dice el archivo, es lo que el archivo dice sin querer. Los metadatos te cuentan una historia que el usuario no sabía que estaba contando.
 
 ### Metadatos del Sistema de Archivos
 
@@ -102,7 +102,7 @@ Por qué esto importa: no es solo lo que dice el archivo, es lo que el archivo d
 Timestamps críticos que el perito examina:
 - MFT: Modified (contenido), Access (lectura), Creation (creación), Entry Modified (metadatos).
 - ext4: ctime (cambio de metadatos o contenido), mtime (contenido), atime (acceso).
-- MAC times: la discrepancia entre fechas puede indicar alteracion deliberada.
+- MAC times: la discrepancia entre fechas puede indicar alteración deliberada.
 
 ### Archivos Ocultos y de Sistema
 
@@ -112,7 +112,7 @@ Archivos ocultos por el SO o por el usuario. Directorios de sistema (System Volu
 
 Este es uno de esos conceptos que cuando lo entiendes cambia todo. El slack space es basura para el usuario pero tesoro para el perito.
 
-Espacio entre el final del archivo y el final del clúster. Contiene fragmentos de archivos anteriores o datos de memoria RAM. Area muy valiosa para recuperación de datos.
+Espacio entre el final del archivo y el final del clúster. Contiene fragmentos de archivos anteriores o datos de memoria RAM. Área muy valiosa para recuperación de datos.
 
 ### RAM Slack
 
@@ -174,20 +174,20 @@ Los SSD tienen desgaste de celdas y implementan TRIM. Al borrar o formatear, el 
 
 ## Evidencia en la Nube
 
-### Desafios
+### Desafíos
 
 - Datos distribuidos en múltiples servidores.
 - Cifrado del lado del proveedor.
-- Jurisdiccion internacional.
+- Jurisdicción internacional.
 - Logs de acceso compartidos.
 
 ### Recolección Cloud
 
-Solicitar al proveedor via orden judicial. Obtener snapshots de datos y logs. Cadena de custodia del proveedor.
+Solicitar al proveedor vía orden judicial. Obtener snapshots de datos y logs. Cadena de custodia del proveedor.
 
 ## Caso Real: Enron (2001)
 
-La investigación de Enron requirio análisis forense de miles de discos duros de empleados. Los peritos recuperaron correos electrónicos eliminados, documentos financieros, y bases de datos contables. La evidencia de disco fue central para las condenas por fraude. El caso establecio precedentes sobre la admisibilidad de evidencia digital en volumen masivo.
+La investigación de Enron requirió análisis forense de miles de discos duros de empleados. Los peritos recuperaron correos electrónicos eliminados, documentos financieros, y bases de datos contables. La evidencia de disco fue central para las condenas por fraude. El caso estableció precedentes sobre la admisibilidad de evidencia digital en volumen masivo.
 
 ## Formas de Falla
 
@@ -207,20 +207,20 @@ Siempre trabajar sobre imagen forense. Usar write-blocker hardware. Documentar c
 
 ## El Ángulo del Hacker
 
-aqui cambia el juego. El atacante no se queda quieto mientras tu investigas. Sabe lo que buscas y va a tratar de ocultarlo.
+aquí cambia el juego. El atacante no se queda quieto mientras tu investigas. Sabe lo que buscas y va a tratar de ocultarlo.
 
 ### Anti-Forense
 
 El atacante conoce técnicas forenses y las evade:
 - Cifrado completo del disco (LUKS, BitLocker, FileVault).
 - Borrado seguro con shred o sdelete.
-- Sobrescritura multiple de espacio libre.
+- Sobrescritura múltiple de espacio libre.
 - Esteganografia en archivos multimedia.
-- Uso de discos efimeros (live USB).
+- Uso de discos efímeros (live USB).
 
-### Evasion de Logs
+### Evasión de Logs
 
-El atacante puede modificar o borrar logs del sistema si tiene privilegios de root/administrador. Apagar logging antes de actividades ilicitas.
+El atacante puede modificar o borrar logs del sistema si tiene privilegios de root/administrador. Apagar logging antes de actividades ilícitas.
 
 ### Timestomping
 
@@ -261,7 +261,7 @@ Recuperación en ext4: `debugfs`, `extundelete`, `scalpel`.
 
 ### Android
 
-Particiones tipicas:
+Particiones típicas:
 - `/boot`: Kernel y ramdisk.
 - `/system`: SO (montado solo lectura).
 - `/data`: Datos de usuario (cifrado).
@@ -272,7 +272,7 @@ La herramienta `dd` extrae imagen física. `JTAG` y `chip-off` para forense avan
 
 ### iOS
 
-Cifrado fuerte por hardware. Extracción via iTunes backup, checkra1n/palera1n, o Cellebrite/GrayKey para forensic comercial.
+Cifrado fuerte por hardware. Extracción vía iTunes backup, checkra1n/palera1n, o Cellebrite/GrayKey para forensic comercial.
 
 ## Metadatos de Archivos
 
@@ -362,7 +362,7 @@ SQLite, MySQL, MSSQL. Tablas con datos de aplicación. Logs de transacciones.
 
 Logs de eventos de Windows (.evtx). Logs de servidor web (access.log, error.log). Logs de firewall. Logs de aplicaciones.
 
-## Recuperación de Particiones Danadas
+## Recuperación de Particiones Dañadas
 
 ### Tabla de Particiones Corrupta
 
@@ -376,7 +376,7 @@ Si el disco era parte de un RAID, reconstruir primero la configuración del RAID
 
 El análisis forense requiere reconstruir la secuencia de eventos.
 
-Herramientas: Plaso (log2timeline) para crear súper timelines. Timesketch para visualizacion.
+Herramientas: Plaso (log2timeline) para crear súper timelines. Timesketch para visualización.
 
 ### Eventos Clave
 
@@ -392,7 +392,7 @@ Torrents, descargas P2P. Logs de clientes torrent. Archivos .torrent.
 
 ## Autoevaluación
 
-1. Un usuario "borró" un documento. Que pasa en el disco a nivel de MFT/clusters? Como lo recuperarias?
+1. Un usuario "borró" un documento. Que pasa en el disco a nivel de MFT/clusters? Como lo recuperarías?
 
 2. Un abogado pregunta: "Por qué el formateo rápido no borró los datos?" Explica.
 

@@ -11,9 +11,9 @@ La investigación de fuentes abiertas requiere protección del investigador. No 
 
 Por lo tanto, antes de utilizar herramientas de OSINT, es fundamental comprender que la protección del investigador no es opcional. Cualquier búsqueda de información deja rastro, y ese rastro puede ser detectado.
 
-## La Analogía: El Detective de Incognito
+## La Analogía: El Detective de Incógnito
 
-Un detective no entra a un bar peligroso con su placa puesta. Usa ropa de civil, nombre falso, y no llama la atención. Que pasaría si entrara con uniforme? Todos lo verian venir.
+Un detective no entra a un bar peligroso con su placa puesta. Usa ropa de civil, nombre falso, y no llama la atención. Que pasaría si entrara con uniforme? Todos lo verían venir.
 
 En OSINT, entras a foros de hackers, páginas de phishing, sitios onion. Sin protección, dejas huella. El atacante sabe que lo investigas. Y a veces, al atacante no le gusta que lo investiguen.
 
@@ -21,13 +21,13 @@ En OSINT, entras a foros de hackers, páginas de phishing, sitios onion. Sin pro
 
 ### Frameworks de OSINT
 
-Recon-ng: Framework modular con workspaces, cientos de modulos. Automatiza búsquedas DNS, WHOIS, redes sociales, Shodan. Es altamente útil para automatizar tareas repetitivas.
+Recon-ng: Framework modular con workspaces, cientos de módulos. Automatiza búsquedas DNS, WHOIS, redes sociales, Shodan. Es altamente útil para automatizar tareas repetitivas.
 
 theHarvester: Recolecta emails, subdominios, IPs, nombres. Fuentes: Google, Bing, LinkedIn, PGP keys, Shodan, DNS. Es como preguntarle a todo el mundo a la vez.
 
 SpiderFoot: Automatiza consultas a más de 200 fuentes. Escaneo pasivo sin tocar el objetivo. Se lo deja ejecutando y se obtienen resultados en pocos minutos.
 
-Maltego: Visualizacion de relaciones. Transforma datos de OSINT en grafos de conexiones entre personas, empresas, dominios, IPs. Ver las conexiones graficamente facilita la comprensión de relaciones complejas.
+Maltego: Visualización de relaciones. Transforma datos de OSINT en grafos de conexiones entre personas, empresas, dominios, IPs. Ver las conexiones gráficamente facilita la comprensión de relaciones complejas.
 
 ### Búsqueda de Personas
 
@@ -53,7 +53,7 @@ whois: Información de registro de dominio. `whois example.com`. Simple pero rev
 
 dnsrecon: Enumera registros DNS (A, AAAA, MX, TXT, CNAME, NS).
 
-crt.sh: Certificate Transparency. Muestra todos los certificados SSL emitidos para un dominio. Revela subdominios ocultos. Muchas veces encuentras subdominios de desarrollo que nadie sabia que existian.
+crt.sh: Certificate Transparency. Muestra todos los certificados SSL emitidos para un dominio. Revela subdominios ocultos. Muchas veces encuentras subdominios de desarrollo que nadie sabía que existían.
 
 theHarvester -d example.com: Recolecta subdominios y emails asociados.
 
@@ -73,7 +73,7 @@ Metagoofil: Extrae metadatos de documentos públicos (PDF, DOC, XLS). Muestra au
 
 FOCA: Análisis de metadatos en documentos. Versión Windows, más completa. Si tienes Windows, es tu mejor opción.
 
-### Búsqueda de Imagenes
+### Búsqueda de Imágenes
 
 Google Images: Búsqueda inversa de imágenes. TinEye: Búsqueda inversa de imágenes, indexa la web. Yandex Images: Búsqueda inversa, mejor para caras. ExifTool: Extrae metadatos EXIF de imágenes (GPS, cámara, fecha, software). Cada foto que subis puede tener tu ubicación exacta.
 
@@ -96,7 +96,7 @@ No es paranoia. Es una posibilidad real que debe considerarse.
 
 ### Principios de OPSEC
 
-#### Separacion de Identidades
+#### Separación de Identidades
 
 Nunca usar cuentas personales para OSINT ofensivo. Crear identidades separadas: correos desechables, cuentas de redes sociales alternativas, navegador dedicado.
 
@@ -134,7 +134,7 @@ Scrapy: Framework de scraping. Para proyectos grandes.
 
 ### APIs
 
-Shodan API: Búsqueda programatica. VirusTotal API: Escaneo de archivos/URLs. Have I Been Pwned API: Verificación de emails. Hunter API: Búsqueda de emails corporativos.
+Shodan API: Búsqueda programática. VirusTotal API: Escaneo de archivos/URLs. Have I Been Pwned API: Verificación de emails. Hunter API: Búsqueda de emails corporativos.
 
 ### Automatizar con Cuidado
 
@@ -154,7 +154,7 @@ Además de lo personal, mantener separación completa entre identidad real y ide
 
 ### Pasivo
 
-No interactúa con el objetivo. Usa fuentes públicas, archivos historicos, datos ya recolectados. No deja rastro detectable por el objetivo. Es la forma segura.
+No interactúa con el objetivo. Usa fuentes públicas, archivos históricos, datos ya recolectados. No deja rastro detectable por el objetivo. Es la forma segura.
 
 ### Activo
 
@@ -168,7 +168,7 @@ El OSINT pasivo es seguro. El activo puede alertar al objetivo. **Regla de oro:*
 
 Alertas de Google para nombre/empresa. Monitoreo de breaches. Verificación periódica de credenciales.
 
-### Minimizacion de Superficie
+### Minimización de Superficie
 
 Borrar cuentas no usadas. Revisar permisos de aplicaciones. Desactivar geolocalizacion en fotos. Revisar configuración de privacidad en redes sociales.
 
@@ -224,7 +224,7 @@ Herramientas básicas: Python, curl, wget, git. Navegador aislado: Firefox con c
 
 ### Contenedores para Herramientas
 
-Docker para herramientas específicas: recon-ng, theHarvester, SpiderFoot. Evita contaminacion entre herramientas.
+Docker para herramientas específicas: recon-ng, theHarvester, SpiderFoot. Evita contaminación entre herramientas.
 
 ### Workspaces
 
@@ -232,7 +232,7 @@ Organizar investigaciones en directorios separados. Cada cliente o caso en su wo
 
 ## Automatización de Investigaciones
 
-### Workflows Tipicos
+### Workflows Típicos
 
 1. Dominio -> whois, dnsrecon, crt.sh, theHarvester.
 2. Email -> Hunter, HaveIBeenPwned, Dehashed.
@@ -247,7 +247,7 @@ Python con requests + BeautifulSoup. Bash con curl + jq. Makefiles para ejecutar
 
 ### Sistema Operativo
 
-Tails OS: Sistema en vivo que no deja rastro. Qubes OS: Aislamiento por máquinas virtuales. Whonix: Tráfico siempre via Tor.
+Tails OS: Sistema en vivo que no deja rastro. Qubes OS: Aislamiento por máquinas virtuales. Whonix: Tráfico siempre vía Tor.
 
 ### Navegador
 
@@ -255,7 +255,7 @@ Firefox con arkenfox/user.js. uBlock Origin, NoScript, Cookie AutoDelete. Conten
 
 ### Comunicaciones
 
-ProtonMail o Tutanota para correo cifrado. Signal o Matrix para mensajeria. VPN + Tor para capas de anonimato.
+ProtonMail o Tutanota para correo cifrado. Signal o Matrix para mensajería. VPN + Tor para capas de anonimato.
 
 ## Counter-OSINT
 
@@ -281,7 +281,7 @@ Buscar sin tocar al objetivo. Google Dorks, whois, crt.sh, Archive.org, redes so
 
 Consultar directamente: Shodan, Censys, escaneo de puertos (con permiso).
 
-### Fase 3: Correlacion
+### Fase 3: Correlación
 
 Conectar datos: el dominio X usa hosting Y, el admin es Z, Z usa email en breach.
 
@@ -305,7 +305,7 @@ Identificar identidades falsas, empresas fantasma, conexiones entre personas.
 
 ### Pentesting
 
-Recolectar información del objetivo antes del test de penetracion. Emails, empleados, tecnologías, infraestructura.
+Recolectar información del objetivo antes del test de penetración. Emails, empleados, tecnologías, infraestructura.
 
 ### Defensa Personal
 
@@ -313,7 +313,7 @@ Buscar tu propia información pública. Saber que sabe un atacante sobre ti.
 
 ## Automatización con Bash
 
-Comandos utiles:
+Comandos útiles:
 
 `whois example.com` -> Información de dominio.
 `dig example.com ANY` -> Todos los registros DNS.
@@ -339,7 +339,7 @@ Nunca depender de una sola herramienta. Combinar varias para obtener mejor cober
 
 ## OSINT para Pentesters
 
-Fase de reconocimiento: recolección de información antes del test de penetracion. Objetivos: empleados, tecnologías, infraestructura, credenciales filtradas.
+Fase de reconocimiento: recolección de información antes del test de penetración. Objetivos: empleados, tecnologías, infraestructura, credenciales filtradas.
 
 ## Automatización de Reportes
 
@@ -355,7 +355,7 @@ Apps de OSINT en móvil: no instalar en teléfono personal. Usar dispositivo ded
 
 ## Herramientas Específicas por Tipo
 
-Redes: Shodan, Censys, ZoomEye. Personas: Sherlock, WhatsMyName, Social-analyzer. Documentos: Metagoofil, FOCA. Imagenes: ExifTool, Google Images, TinEye.
+Redes: Shodan, Censys, ZoomEye. Personas: Sherlock, WhatsMyName, Social-analyzer. Documentos: Metagoofil, FOCA. Imágenes: ExifTool, Google Images, TinEye.
 
 ## Manejo de Resultados
 
@@ -369,7 +369,7 @@ Cada país tiene leyes sobre recolección de información pública. GDPR restrin
 
 Proxy chains, Tor sobre VPN, bridges de Tor, sistemas operativos amnesicos (Tails).
 
-## Separacion de Casos
+## Separación de Casos
 
 Cada investigación en su workspace. No mezclar datos de diferentes casos. Destruir datos al finalizar caso.
 

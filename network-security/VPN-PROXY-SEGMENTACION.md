@@ -24,7 +24,7 @@ La VPN (Virtual Private Network) crea un túnel cifrado desde la computadora del
 1. El empleado activa el cliente VPN en su computadora.
 2. El cliente establece una conexión cifrada (usualmente TLS o IPsec) con el servidor VPN de la empresa.
 3. Todo el tráfico de red del empleado se encapsula dentro de paquetes cifrados.
-4. El servidor VPN descifra y reenvia a la red interna.
+4. El servidor VPN descifra y reenvía a la red interna.
 5. Para el resto de internet, el empleado parece estar en la oficina.
 
 ### Tipos de VPN
@@ -79,8 +79,8 @@ Analogía: Eres un oficinista. En lugar de ir a la tienda, le das dinero a la se
 **Limitaciones:**
 - Punto único de fallo: Si el proxy cae, los empleados pierden acceso a internet.
 - Saturable: Si no esta dimensionado correctamente, se convierte en cuello de botella.
-- Tráfico cifrado: La inspeccion de HTTPS requiere configurar el proxy como "man in the middle" con certificados.
-- Evasion: Los empleados pueden usar VPNs personales o Tor para evadir el proxy.
+- Tráfico cifrado: La inspección de HTTPS requiere configurar el proxy como "man in the middle" con certificados.
+- Evasión: Los empleados pueden usar VPNs personales o Tor para evadir el proxy.
 
 ### Implementación de Proxy Forward
 
@@ -91,13 +91,13 @@ Analogía: Eres un oficinista. En lugar de ir a la tienda, le das dinero a la se
 
 ## El Reverse Proxy: El Guardaespaldas del Servidor
 
-Se coloca delante de los servidores web. Los clientes de internet se conectan al proxy, que reenvia las solicitudes al servidor interno.
+Se coloca delante de los servidores web. Los clientes de internet se conectan al proxy, que reenvía las solicitudes al servidor interno.
 
 Analogía: Eres el CEO. Pones un guardaespaldas en la puerta. Los clientes le dan la carta, el la revisa buscando cuchillos, y si esta limpia, te la pasa.
 
 **Ventajas:**
 - Ocultamiento: El servidor real nunca toca internet. Solo el proxy es visible.
-- Terminacion TLS: El proxy maneja el cifrado, liberando al servidor backend.
+- Terminación TLS: El proxy maneja el cifrado, liberando al servidor backend.
 - Balanceo de carga: Distribuye tráfico entre múltiples servidores backend.
 - Protección DDoS: El proxy puede absorber ataques antes de que lleguen al servidor.
 - Caché: Contenido estático se almacena en el proxy, reduciendo carga del servidor.
@@ -123,7 +123,7 @@ El concepto más importante para detener el movimiento lateral de atacantes.
 **VLANs (Virtual LANs):**
 Segmentan la red a nivel de capa 2 (switch). Dispositivos en diferentes VLANs no pueden comunicarse directamente. Requieren un router o firewall para hacerlo.
 
-Segmentación tipica:
+Segmentación típica:
 - VLAN 10: Servidores web (DMZ)
 - VLAN 20: Servidores de aplicaciones
 - VLAN 30: Base de datos
@@ -143,7 +143,7 @@ La forma más granular. Cada servidor (o incluso cada aplicación) tiene su prop
 
 ### Ejemplo de Políticas de Segmentación
 
-- Empleados -> Internet: Permitido via proxy.
+- Empleados -> Internet: Permitido vía proxy.
 - Empleados -> Servidores web: Permitido solo puerto 443.
 - Empleados -> Base de datos: Denegado.
 - Servidores web -> Servidores aplicación: Permitido solo puerto 8080.
@@ -157,7 +157,7 @@ Zero Trust es la evolución. Ningún dispositivo es confiable por defecto, inclu
 
 Principios:
 - Nunca confiar, siempre verificar.
-- Acceso con minimos privilegios.
+- Acceso con mínimos privilegios.
 - Asumir que la red esta comprometida.
 - Microsegmentacion por aplicación, no por red.
 - Autenticación y autorización continua (no solo al inicio de la sesión).
@@ -166,15 +166,15 @@ Principios:
 
 ### VPN sin 2FA (2020)
 
-Una empresa financiera sufrio ransomware que comenzó con credenciales de VPN robadas por phishing. La VPN no tenía 2FA. La red era plana. El atacante se movio lateralmente a los backups y los encripto.
+Una empresa financiera sufrió ransomware que comenzó con credenciales de VPN robadas por phishing. La VPN no tenía 2FA. La red era plana. El atacante se movió lateralmente a los backups y los encripto.
 
-### Reverse Proxy que Absorbio DDoS (2021)
+### Reverse Proxy que Absorbió DDoS (2021)
 
-Un ecommerce detrás de Cloudflare sufrio un ataque DDoS masivo. Cloudflare absorvio el ataque en sus servidores perimetrales. El servidor web nunca sintio el impacto.
+Un ecommerce detrás de Cloudflare sufrió un ataque DDoS masivo. Cloudflare absorvio el ataque en sus servidores perimetrales. El servidor web nunca sintió el impacto.
 
 ### Segmentación que Contuvo Ransomware (2022)
 
-Una empresa con segmentación VLAN sufrio un phishing. El ransomware infectó una PC de marketing pero no pudo propagarse a los servidores de archivos porque la segmentación lo impidio. Perdieron una PC, no toda la red.
+Una empresa con segmentación VLAN sufrió un phishing. El ransomware infectó una PC de marketing pero no pudo propagarse a los servidores de archivos porque la segmentación lo impidió. Perdieron una PC, no toda la red.
 
 ### Proxy Evadido (2023)
 
@@ -240,14 +240,14 @@ Las VPNs sin 2FA y los proxies mal configurados son puertas de entrada preferida
 **Autenticación:** Claves públicas/privadas (pre-shared opcional).
 
 **Fortalezas:** Extremadamente rápido, código simple (4000 líneas vs 400,000+ de OpenVPN/OpenSSL), menor latencia, configuración simple.
-**Debilidades:** Las IPs son estaticas (asociadas a claves), no tiene autenticación de usuario nativa sin herramientas adicionales.
+**Debilidades:** Las IPs son estáticas (asociadas a claves), no tiene autenticación de usuario nativa sin herramientas adicionales.
 **Mejor para:** Site-to-site, mobile, IoT, cualquier escenario que priorice rendimiento.
 
 ### SSL/TLS VPN
 
-**Funcionamiento:** El cliente se conecta via HTTPS (puerto 443) a un portal web.
+**Funcionamiento:** El cliente se conecta vía HTTPS (puerto 443) a un portal web.
 **Tipos:**
-- Clientless: Solo acceso a aplicaciones web via proxy.
+- Clientless: Solo acceso a aplicaciones web vía proxy.
 - Full Tunnel: El navegador descarga un cliente ligero que crea un túnel completo.
 
 **Fortalezas:** No requiere software cliente (para clientless), funciona detrás de cualquier firewall (puerto 443), fácil de usar.
@@ -278,7 +278,7 @@ Reglas de filtrado en switches y routers que complementan los firewalls.
 **Principios de ACLs:**
 - Denegar todo por defecto, permitir lo necesario.
 - Orden de las reglas: más específicas primero, más generales al final.
-- Documentar cada regla con justificacion y responsable.
+- Documentar cada regla con justificación y responsable.
 
 **Ejemplo práctico de ACL en router de borde:**
 
@@ -293,7 +293,7 @@ access-list 101 permit ip any any (trafico legitimo)
 ### VLANs vs. VXLANs
 
 **VLANs (802.1Q):**
-- Separacion a nivel 2.
+- Separación a nivel 2.
 - Máximo 4094 VLANs.
 - Limitado a un solo centro de datos.
 - Fácil de configurar con switches gestionados.
@@ -316,7 +316,7 @@ access-list 101 permit ip any any (trafico legitimo)
 
 **Accesos:**
 - Usuarios conectados actualmente.
-- Duracion de las sesiones.
+- Duración de las sesiones.
 - Horarios de conexión.
 - Ubicación geográfica de origen.
 - Dispositivos utilizados.
@@ -324,7 +324,7 @@ access-list 101 permit ip any any (trafico legitimo)
 **Seguridad:**
 - Fallos de autenticación.
 - Conexiones desde IPs sospechosas.
-- Intentos de conexión simultaneos desde múltiples ubicaciones.
+- Intentos de conexión simultáneos desde múltiples ubicaciones.
 
 ## Preguntas Adicionales
 

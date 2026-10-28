@@ -128,8 +128,8 @@ Las APIs tienen mecanismos de autenticación diferentes a las aplicaciones web. 
 **Debilidades en JWT:**
 - Algoritmo "none" en JWT (el atacante cambia el algoritmo a "none" y elimina la firma)
 - Clave secreta débil en JWT (el atacante fuerza bruta la clave)
-- JWT sin expiracion (el token es válido para siempre)
-- JWT sin revocacion (no se puede invalidar un token robado)
+- JWT sin expiración (el token es válido para siempre)
+- JWT sin revocación (no se puede invalidar un token robado)
 
 **Debilidades en API Keys:**
 - API Keys fijas que nunca expiran
@@ -159,8 +159,8 @@ Si la librería de JWT del servidor no verifica que el algoritmo "none" no esta 
 
 1. **JWT con algoritmos seguros:** Usa RS256 o ES256 en lugar de HS256. Nunca permitas "none".
 2. **Claves de firma fuertes:** Claves de al menos 256 bits para HMAC.
-3. **Expiracion de tokens:** Tokens de corta duracion (15-30 minutos) con refresh tokens.
-4. **Revocacion de tokens:** Mantén una blacklist de tokens revocados o usa tokens de corta duracion.
+3. **Expiración de tokens:** Tokens de corta duración (15-30 minutos) con refresh tokens.
+4. **Revocación de tokens:** Mantén una blacklist de tokens revocados o usa tokens de corta duración.
 5. **Rate limiting en login:** Limita los intentos de autenticación.
 
 ## API3:2023 Broken Object Property Level Authorization
@@ -307,7 +307,7 @@ Las APIs exponen flujos de negocio que los atacantes pueden explotar de formas n
 
 **Ejemplos:**
 - Una API de reservas de vuelos que permite reservar y cancelar sin límite, permitiendo "acaparar" asientos.
-- Una API de votacion que permite votar múltiples veces.
+- Una API de votación que permite votar múltiples veces.
 - Una API de descuentos que permite aplicar cupones repetidamente.
 
 **Defensa:** Implementar controles de estado en los flujos de negocio, limits por usuario, y detección de anomalías.
@@ -361,7 +361,7 @@ Las APIs gestionan mal su inventario de servicios y versiones. Los problemas com
 - Endpoints deprecados que no se eliminan.
 - Documentación desactualizada.
 
-**El caso ClassPass (2021):** Un investigador encontró que ClassPass tenía una versión antigua de su API (v1) que no requería autenticación para acceder a datos de usuarios. La versión v2 tenía autenticación pero la v1 seguia activa.
+**El caso ClassPass (2021):** Un investigador encontró que ClassPass tenía una versión antigua de su API (v1) que no requería autenticación para acceder a datos de usuarios. La versión v2 tenía autenticación pero la v1 seguía activa.
 
 **Defensa:** Mantener un inventario actualizado de endpoints y versiones. Deprecar y eliminar versiones antiguas. No exponer ambientes internos.
 
@@ -393,7 +393,7 @@ todas estas defensas son inútiles si no verificas que el usuario es dueño del 
 
 ### Caso Real: Optus (2022)
 
-La operadora australiana Optus sufrio una breach que expuso datos de 9.8 millones de clientes. La vulnerabilidad era una API expuesta sin autenticación adecuada que permitia consultar datos de cualquier cliente. La API estaba en un endpoint no documentado que un atacante descubrió mediante enumeración.
+La operadora australiana Optus sufrió una breach que expuso datos de 9.8 millones de clientes. La vulnerabilidad era una API expuesta sin autenticación adecuada que permitía consultar datos de cualquier cliente. La API estaba en un endpoint no documentado que un atacante descubrió mediante enumeración.
 
 La lección: no solo las APIs documentadas necesitan seguridad. Cualquier endpoint expuesto a internet, conocido o no, debe tener autenticación y autorización.
 
@@ -427,4 +427,4 @@ La lección: no solo las APIs documentadas necesitan seguridad. Cualquier endpoi
 
 7. Tu empresa descubre que una versión antigua de la API (v1) sigue activa en producción y no tiene autenticación. La versión v2 tiene autenticación. A que categoría del OWASP API Security Top 10 pertenece este problema y por qué es peligroso mantener versiones antiguas?
 
-8. Un atacante consulta tu API GraphQL con una query que tiene 10 niveles de anidamiento. El servidor tarda 30 segundos en responder y termina en timeout. Que tipo de ataque es este (usa la terminología de OWASP API) y como lo mitigarias?
+8. Un atacante consulta tu API GraphQL con una query que tiene 10 niveles de anidamiento. El servidor tarda 30 segundos en responder y termina en timeout. Que tipo de ataque es este (usa la terminología de OWASP API) y como lo mitigarías?

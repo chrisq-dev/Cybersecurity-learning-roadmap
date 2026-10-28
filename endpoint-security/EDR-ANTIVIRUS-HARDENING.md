@@ -23,7 +23,7 @@ Para entender las diferencias entre Antivirus, EDR y Hardening, imagina que la c
 
 - **EDR:** Es un detective vestido de civil caminando dentro de la discoteca. No le importa tu cara ni tu nombre. Le importa tu comportamiento. Si entras vestido de traje pero sacas un cuchillo, te neutraliza al instante sin importar si tu cara esta en su lista.
 
-- **Hardening:** Es la arquitectura del edificio: las puertas reforzadas, las salidas de emergencia selladas, la prohibicion de meter botellas de vidrio. No importa quien seas ni como te comportes: las reglas físicas del edificio te limitan.
+- **Hardening:** Es la arquitectura del edificio: las puertas reforzadas, las salidas de emergencia selladas, la prohibición de meter botellas de vidrio. No importa quien seas ni como te comportes: las reglas físicas del edificio te limitan.
 
 Ninguna de las tres capas funciona sola. Las empresas más seguras usan las tres en conjunto.
 
@@ -42,7 +42,7 @@ el hash cambia al modificar un solo bit. Es como si el antivirus buscará a un l
 El problema es que modificar el Hash de un archivo es trivial para un atacante. Cambiar un solo bit del archivo produce un Hash completamente diferente. Los hackers tienen herramientas automáticas llamadas "crypter" o "packer" que ofuscan el malware:
 
 1. Toman el virus original (ej. `ransomware.exe` con Hash `A123`).
-2. Le anaden una capa de compresion o encriptación (packing).
+2. Le añaden una capa de compresión o encriptación (packing).
 3. El resultado es un archivo nuevo con Hash `B456`.
 4. La base de datos del antivirus no contiene `B456`.
 5. El antivirus deja pasar el archivo sin problemas.
@@ -69,9 +69,9 @@ El EDR no se para en la puerta. Se instala dentro del sistema operativo y monito
 
 ### Como Detecta el EDR
 
-El EDR utiliza múltiples técnicas simultaneas:
+El EDR utiliza múltiples técnicas simultáneas:
 
-1. **Análisis de Comportamiento (Behavioral Analysis):** Observa secuencias de acciones que son anomalas. Por ejemplo, un proceso `word.exe` que de repente ejecuta `powershell.exe` es una señal de alerta clásica.
+1. **Análisis de Comportamiento (Behavioral Analysis):** Observa secuencias de acciones que son anómalas. Por ejemplo, un proceso `word.exe` que de repente ejecuta `powershell.exe` es una señal de alerta clásica.
 
 2. **Machine Learning:** Modelos entrenados con millones de muestras de malware que pueden identificar patrones maliciosos incluso en variantes nunca antes vistas.
 
@@ -121,7 +121,7 @@ El mínimo privilegio reduce el impacto de gran parte del malware porque limita 
 
 Si el usuario opera como usuario estándar (sin permisos de Admin), el ransomware solo puede encriptar los archivos del perfil del usuario. Los archivos del sistema y del resto de la red permanecen intactos.
 
-### Políticas de Restriccion de Software (AppLocker)
+### Políticas de Restricción de Software (AppLocker)
 
 AppLocker permite definir exactamente que ejecutables pueden correr en las computadoras corporativas. Se configura por GPO (Group Policy Object):
 
@@ -133,7 +133,7 @@ Si un empleado descarga `factura.pdf.exe` y le da doble clic, AppLocker lo bloqu
 
 ### Deshabilitacion de Puertos USB
 
-Los ataques de "USB Drop" son clasicos del Red Team: dejar memorias USB infectadas en el estacionamiento. Cuando un empleado curioso las conecta, el sistema ejecuta automáticamente el malware.
+Los ataques de "USB Drop" son clásicos del Red Team: dejar memorias USB infectadas en el estacionamiento. Cuando un empleado curioso las conecta, el sistema ejecuta automáticamente el malware.
 
 Las políticas de Hardening incluyen:
 
@@ -141,7 +141,7 @@ Las políticas de Hardening incluyen:
 - Permitir solo dispositivos USB autorizados (whitelisting por hardware ID).
 - Cifrar todas las unidades USB corporativas con BitLocker To Go.
 
-### Reduccion de la Superficie de Ataque
+### Reducción de la Superficie de Ataque
 
 Cada programa instalado es un potencial agujero de seguridad. Microsoft publica recomendaciones de Attack Surface Reduction (ASR) que incluyen:
 
@@ -153,7 +153,7 @@ Cada programa instalado es un potencial agujero de seguridad. Microsoft publica 
 
 ### El Ataque que CrowdStrike Detuvo en Tiempo Real (2016)
 
-Durante las elecciones de Estados Unidos en 2016, el equipo de seguridad del Comité Nacional Democratico (DNC) tenía CrowdStrike instalado. CrowdStrike detecto actividad anómala: procesos de Windows que establecian conexiones salientes hacia servidores en Rusia.
+Durante las elecciones de Estados Unidos en 2016, el equipo de seguridad del Comité Nacional Democrático (DNC) tenía CrowdStrike instalado. CrowdStrike detecto actividad anómala: procesos de Windows que establecían conexiones salientes hacia servidores en Rusia.
 
 El EDR pudo rastrear la cadena completa del ataque:
 
@@ -171,12 +171,12 @@ En junio de 2017, el ransomware NotPetya se propago globalmente usando una vulne
 Las empresas afectadas (Maersk, Merck, FedEx) tenían antivirus actualizados. Ninguno detuvo la propagación porque:
 
 - NotPetya usaba técnicas de Living-off-the-Land (LotL): herramientas nativas de Windows.
-- Se movia lateralmente usando WMI y PsExec en lugar de escribir archivos maliciosos en disco.
-- No había una firma que detectar porque el malware se escondia en procesos legítimos.
+- Se movía lateralmente usando WMI y PsExec en lugar de escribir archivos maliciosos en disco.
+- No había una firma que detectar porque el malware se escondía en procesos legítimos.
 
-Las empresas que sobrevivieron mejor fueron las que tenían EDR y políticas de Hardening (AppLocker, restriccion de ejecución remota).
+Las empresas que sobrevivieron mejor fueron las que tenían EDR y políticas de Hardening (AppLocker, restricción de ejecución remota).
 
-### SolarWinds y la Evasion de EDR (2020)
+### SolarWinds y la Evasión de EDR (2020)
 
 El ataque SolarWinds fue particularmente sofisticado porque el malware (Sunburst) fue firmado digitalmente con certificados robados de SolarWinds.
 
@@ -208,17 +208,17 @@ Aplicar políticas de Hardening agresivas sin probarlas puede romper aplicacione
 
 ### Falla 3: Logs Sin Acción
 
-El EDR genera miles de eventos por hora. Sin reglas de correlacion y filtrado, el equipo de seguridad se ahoga en falsos positivos. Es mejor tener 10 alertas reales que 1,000 alertas ignoradas.
+El EDR genera miles de eventos por hora. Sin reglas de correlación y filtrado, el equipo de seguridad se ahoga en falsos positivos. Es mejor tener 10 alertas reales que 1,000 alertas ignoradas.
 
 ### Falla 4: Ignorar el Componente Humano
 
-La mejor tecnología no detiene a un empleado que hace clic en todo. La concienciacion y la simulación de phishing son tan importantes como el EDR.
+La mejor tecnología no detiene a un empleado que hace clic en todo. La concienciación y la simulación de phishing son tan importantes como el EDR.
 
 ## La Mirada del Hacker
 
 Como atacante, mi objetivo no es enfrentarme al EDR. Mi objetivo es evadirlo.
 
-### Evasion de EDR: EDR Telemetry Bypass
+### Evasión de EDR: EDR Telemetry Bypass
 
 Los EDR dependen de fuentes de telemetría como:
 
@@ -296,12 +296,12 @@ Cada alerta del EDR incluye la referencia MITRE, lo que ayuda al analista a ente
 
 El EDR tradicional protege laptops y servidores físicos. Pero los servidores en la nube (EC2, VM, Compute Engine) también necesitan protección. A esto se le llama CWPP (Cloud Workload Protection Platform).
 
-### Desafios del EDR en la Nube
+### Desafíos del EDR en la Nube
 
-Los servidores en la nube son efimeros: se crean y destruyen constantemente (auto-scaling). El EDR debe:
+Los servidores en la nube son efímeros: se crean y destruyen constantemente (auto-scaling). El EDR debe:
 
 1. Instalarse automáticamente en nuevas instancias (bootstrapping).
-2. Reportar a un tenant central independientemente de la region.
+2. Reportar a un tenant central independientemente de la región.
 3. Manejar la rotación de IPs y nombres de host.
 4. No interferir con el escalado automático.
 
@@ -322,11 +322,11 @@ Técnicas usadas:
 - Phishing para entrada inicial.
 - PowerShell para movimiento lateral.
 - PsExec para ejecución remota.
-- Deshabilitacion de Windows Defender via GPO.
+- Deshabilitacion de Windows Defender vía GPO.
 
 Las empresas que sobrevivieron tenían:
 - AppLocker bloqueando PowerShell para usuarios no administradores.
-- EDR detectando movimiento lateral via PsExec.
+- EDR detectando movimiento lateral vía PsExec.
 - Principio del Menor Privilegio aplicado a todas las cuentas.
 
 ### El Ataque a la Cadena de Suministro de Kaseya (2021)
@@ -385,15 +385,15 @@ acciones:
 
 ## Integración EDR + SIEM + SOAR
 
-El EDR no opera en el vacio. Se integra con otras herramientas del SOC:
+El EDR no opera en el vacío. Se integra con otras herramientas del SOC:
 
 ### EDR + SIEM
 
 El EDR envía alertas al SIEM (Splunk, Elastic, Microsoft Sentinel) para:
 
-- Correlacion con otros eventos (firewall, DNS, VPN).
+- Correlación con otros eventos (firewall, DNS, VPN).
 - Enriquecimiento con threat intelligence.
-- Retencion a largo plazo.
+- Retención a largo plazo.
 - Dashboards y reportes.
 
 ### EDR + SOAR
@@ -449,11 +449,11 @@ Como el usuario no tiene permisos de administrador local, el ransomware no puede
 - Encriptar archivos del sistema.
 - Deshabilitar el antivirus.
 - Borrar los Shadow Copies.
-- Propagarse a otros equipos via SMB.
+- Propagarse a otros equipos vía SMB.
 
 **Resultado:** El ataque fue detenido en menos de 1 segundo. Cero archivos encriptados. Cero downtime.
 
-## Taxonomia de EDR: Que Mirar al Comprar
+## Taxonomía de EDR: Que Mirar al Comprar
 
 Si tu empresa va a comprar un EDR, estos son los criterios técnicos:
 
@@ -476,10 +476,10 @@ Responde estas preguntas para verificar si comprendes los conceptos:
 
 4. El proceso de Hardening corporativo exige quitarle los privilegios de Administrador local a todos los empleados sobre sus propias laptops. El equipo de Ventas se queja de que ahora tienen que llamar a Sistemas para poder instalar Spotify. Como justificas matemáticamente que esta medida drásticamente previene un ataque de Ransomware masivo?
 
-5. Un atacante utiliza técnicas de Living-off-the-Land (usar herramientas nativas del sistema como PowerShell). Por qué el Antivirus tradicional no detecta esto, y como lo detectaria un EDR?
+5. Un atacante utiliza técnicas de Living-off-the-Land (usar herramientas nativas del sistema como PowerShell). Por qué el Antivirus tradicional no detecta esto, y como lo detectaría un EDR?
 
 6. Durante el ataque NotPetya de 2017, muchas empresas con antivirus actualizado fueron infectadas. Que falla técnica del antivirus basado en firmas quedó expuesta en este ataque?
 
-7. Un administrador aplica AppLocker para bloquear la ejecución desde carpetas temporales. Explica como esta política de Hardening detendria un ataque que descarga malware en `%TEMP%` y lo ejecuta.
+7. Un administrador aplica AppLocker para bloquear la ejecución desde carpetas temporales. Explica como esta política de Hardening detendría un ataque que descarga malware en `%TEMP%` y lo ejecuta.
 
 8. La empresa implementa un EDR pero no tiene un equipo SOC dedicado. Cuáles son las consecuencias probables de esta decisión?

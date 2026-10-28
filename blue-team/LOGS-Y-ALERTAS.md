@@ -73,16 +73,16 @@ Formato binario propietario de Microsoft. Se lee con herramientas como wevtutil,
 **Bases de Datos:**
 - MySQL general log: Todas las consultas SQL ejecutadas.
 - MySQL slow query log: Consultas lentas (configurable por tiempo).
-- PostgreSQL log: Consultas, errores, conexiones, configurado via postgresql.conf.
+- PostgreSQL log: Consultas, errores, conexiones, configurado vía postgresql.conf.
 
 **Dispositivos de Red:**
 - Firewalls: Conexiones permitidas y denegadas, con IP origen/destino, puertos, protocolo, acción.
-- Routers y switches: Cambios de configuración, caidas de enlace, errores de interfaz.
+- Routers y switches: Cambios de configuración, caídas de enlace, errores de interfaz.
 - IDS/IPS: Alertas de detección con firma, severidad, payload del ataque.
 
 **Aplicaciones Cloud:**
 - AWS CloudTrail: Llamadas a la API de AWS, incluyendo quien hizo que y desde donde.
-- Azure Monitor: Logs de recursos de Azure, actividad de suscripcion.
+- Azure Monitor: Logs de recursos de Azure, actividad de suscripción.
 - GCP Cloud Logging: Logs de servicios de Google Cloud.
 
 **Servicios de Directorio:**
@@ -103,7 +103,7 @@ Imagina a un analista Tier 1 viendo esta secuencia en tiempo real sin ningún fi
 9. La base de datos reporto lentitud por indexacion.
 10. Un empleado cambio su contraseña por políticas de caducidad.
 
-En esta secuencia, los eventos 5 y 6 son potencialmente graves. Pero están ahogados entre 8 eventos inocuos. El cerebro humano no puede sostener este nivel de discriminacion por 8 horas seguidas, 5 días a la semana. Por eso necesitamos alertas.
+En esta secuencia, los eventos 5 y 6 son potencialmente graves. Pero están ahogados entre 8 eventos inocuos. El cerebro humano no puede sostener este nivel de discriminación por 8 horas seguidas, 5 días a la semana. Por eso necesitamos alertas.
 
 ## La Alerta: El Grito del Sistema
 
@@ -138,7 +138,7 @@ Problema: Si el atacante modifica Mimikatz ligeramente (cambia strings, ofusca),
 
 Ejemplo: "El usuario juan.perez, que nunca trabaja fuera del horario laboral, inicio sesión a las 3:00 AM desde una IP en un país donde la empresa no tiene operaciones."
 
-**Alertas basadas en correlacion:** Combinan múltiples eventos de diferentes fuentes para identificar patrones de ataque complejos que eventos individuales no revelarian.
+**Alertas basadas en correlación:** Combinan múltiples eventos de diferentes fuentes para identificar patrones de ataque complejos que eventos individuales no revelarían.
 
 Ejemplo: "Un usuario recibe un correo con un enlace (fuente: email gateway) + hace clic en el enlace (fuente: proxy) + descarga un archivo (fuente: proxy) + ejecuta el archivo (fuente: EDR)."
 
@@ -146,7 +146,7 @@ Estas alertas son las más poderosas porque detectan la cadena completa del ataq
 
 ### Propiedades de una Alerta Bien Diseñada
 
-**Accionable:** El analista sabe exactamente que hacer cuando recibe la alerta. No hay ambiguedad sobre el siguiente paso.
+**Accionable:** El analista sabe exactamente que hacer cuando recibe la alerta. No hay ambigüedad sobre el siguiente paso.
 
 **Contextual:** Incluye suficiente información para que el analista entienda el escenario sin tener que buscar datos adicionales.
 
@@ -176,7 +176,7 @@ Si esto ocurre 500 veces al día, los analistas se cansan y empiezan a cerrar la
 
 ### Falsos Negativos: El Asesino Silencioso
 
-Los falsos negativos son igual de peligrosos pero invisibles. Ocurren cuando una regla NO se dispara pero DEBERIA. No hay alerta, no hay investigación, no hay respuesta. El atacante opera libremente.
+Los falsos negativos son igual de peligrosos pero invisibles. Ocurren cuando una regla NO se dispara pero DEBERÍA. No hay alerta, no hay investigación, no hay respuesta. El atacante opera libremente.
 
 Causas comunes:
 - Reglas demasiado específicas que solo detectan una variante del ataque.
@@ -188,19 +188,19 @@ Causas comunes:
 
 ### El caso del Beach No Lincoln (2017)
 
-Un atacante comprometio una empresa de apuestas en Reino Unido. Estuvo presente en la red durante meses moviéndose lateralmente. Los logs existian, las alertas también, pero el equipo de seguridad solo revisaba alertas de alto nivel. El atacante generaba alertas de nivel bajo y medio consistentemente, pero nadie las investigaba.
+Un atacante comprometió una empresa de apuestas en Reino Unido. Estuvo presente en la red durante meses moviéndose lateralmente. Los logs existían, las alertas también, pero el equipo de seguridad solo revisaba alertas de alto nivel. El atacante generaba alertas de nivel bajo y medio consistentemente, pero nadie las investigaba.
 
 ### El caso de la Alerta Ignorada (2014)
 
-Un analista SOC de una empresa de telecomunicaciones recibia diariamente una alerta de conexión saliente a una IP sospechosa. Siempre resultaba ser tráfico legítimo de un servidor de actualizaciones. Empezó a cerrarla sin mirar. Un día, la misma alerta correspondia a un malware exfiltrando datos.
+Un analista SOC de una empresa de telecomunicaciones recibía diariamente una alerta de conexión saliente a una IP sospechosa. Siempre resultaba ser tráfico legítimo de un servidor de actualizaciones. Empezó a cerrarla sin mirar. Un día, la misma alerta correspondía a un malware exfiltrando datos.
 
 ### El caso del Log Sin Contexto (2020)
 
-Un equipo de respuesta a incidentes encontró un log que decían: "El usuario admin ejecutó el comando rm -rf /." El log no incluia desde que terminal se ejecutó, si fue local o remota, ni que usuario de sistema ejecutó el comando real. Sin ese contexto, no pudieron determinar si fue un atacante o un administrador cometiendo un error.
+Un equipo de respuesta a incidentes encontró un log que decían: "El usuario admin ejecutó el comando rm -rf /." El log no incluía desde que terminal se ejecutó, si fue local o remota, ni que usuario de sistema ejecutó el comando real. Sin ese contexto, no pudieron determinar si fue un atacante o un administrador cometiendo un error.
 
 ## Modos de Falla
 
-Sin logs sincronizados temporalmente, la correlacion entre eventos es imposible. Sin contexto en los logs, no se puede investigar. Sin alertas bien diseñadas, los analistas se saturan. Sin procesos de tuning, las alertas se vuelven obsoletas. Cada eslabón de la cadena log-alerta-respuesta debe funcionar correctamente.
+Sin logs sincronizados temporalmente, la correlación entre eventos es imposible. Sin contexto en los logs, no se puede investigar. Sin alertas bien diseñadas, los analistas se saturan. Sin procesos de tuning, las alertas se vuelven obsoletas. Cada eslabón de la cadena log-alerta-respuesta debe funcionar correctamente.
 
 ## La Perspectiva del Atacante
 
@@ -208,9 +208,9 @@ El atacante sabe que los logs son su peor enemigo. Por eso los borra, los modifi
 
 ## Autoevaluación
 
-1. `{"ip": "10.0.0.1", "action": "GET /index.html", "status": 200}`. Es log o alerta? Que necesitaria para ser alerta?
+1. `{"ip": "10.0.0.1", "action": "GET /index.html", "status": 200}`. Es log o alerta? Que necesitaría para ser alerta?
 2. Regla: "Alertar si alguien ejecuta DROP TABLE." Recibes 500 alertas diarias del equipo de desarrollo. Es falso positivo o falso negativo? Como ajustas la regla?
-3. Por qué enviar logs crudos a la pantalla del analista sin reglas de alerta garantiza su saturacion?
+3. Por qué enviar logs crudos a la pantalla del analista sin reglas de alerta garantiza su saturación?
 4. Un atacante borra los Event Logs de Windows. Puede el SOC investigar? Que otras fuentes de datos podrían tener evidencia?
 5. Regla: "Alertar si usuario se conecta desde país diferente al habitual." Tu empresa es una aerolínea internacional. Como evitas 50,000 falsos positivos al día?
 6. Un analista recibe las mismas 100 alertas diarias y las cierra sin mirar. Un día una es diferente pero la cierra por inercia. Que falla queda expuesta?
@@ -225,7 +225,7 @@ El atacante sabe que los logs son su peor enemigo. Por eso los borra, los modifi
 - Security: Inicios de sesión exitosos/fallidos (4624, 4625), cambios en privilegios (4672), creación de usuarios (4720), cambios en políticas de seguridad (4719).
 - System: Eventos del sistema operativo, drivers, servicios (inicio, parada, fallo).
 - Application: Logs de aplicaciones instaladas.
-- PowerShell: Comandos ejecutados en PowerShell (4103, 4104) habilitado via Script Block Logging.
+- PowerShell: Comandos ejecutados en PowerShell (4103, 4104) habilitado vía Script Block Logging.
 
 **Sysmon (System Monitor - Sysinternals):**
 - Event ID 1: Creación de proceso (imagen, línea de comandos, hash).
@@ -241,7 +241,7 @@ El atacante sabe que los logs son su peor enemigo. Por eso los borra, los modifi
 - /var/log/syslog: Eventos del sistema.
 - /var/log/kern.log: Mensajes del kernel.
 - /var/log/audit/audit.log: Logs de auditd (Linux Audit Daemon).
-- journalctl: Logs del sistema via systemd-journald.
+- journalctl: Logs del sistema vía systemd-journald.
 
 ### Logs de Red
 
@@ -260,7 +260,7 @@ El atacante sabe que los logs son su peor enemigo. Por eso los borra, los modifi
 - URLs visitadas.
 - Método HTTP.
 - User-Agent.
-- Tamanos de contenido.
+- Tamaños de contenido.
 
 **DHCP Logs:**
 - Asignaciones de IP.
@@ -335,12 +335,12 @@ Formato moderno y más flexible:
 
 ### Fases de una Alerta
 
-1. **Generación:** El SIEM/SOAR crea la alerta basada en reglas de correlacion.
+1. **Generación:** El SIEM/SOAR crea la alerta basada en reglas de correlación.
 2. **Triage:** Un analista revisa la alerta y determina si requiere investigación inmediata o puede esperar.
 3. **Investigación:** Si es positiva, se investiga para determinar alcance, impacto, y origen del evento.
 4. **Contención:** Se toman acciones para detener la amenaza (bloquear IP, aislar sistema, deshabilitar cuenta, desplegar parche).
 5. **Cierre:** Se documenta el resultado final de la alerta: ataque confirmado, falso positivo, o comportamiento benigno.
-6. **Retroalimentacion:** La alerta y su resultado alimentan mejoras en reglas de detección, exclusiones, y procesos de respuesta.
+6. **Retroalimentación:** La alerta y su resultado alimentan mejoras en reglas de detección, exclusiones, y procesos de respuesta.
 
 ### Priorización de Alertas
 
@@ -369,7 +369,7 @@ Security Orchestration, Automation and Response (SOAR) automatiza tareas repetit
 3. Paso 1: Confirmar que el endpoint esta activo (ping).
 4. Paso 2: Aislar el endpoint de la red (API del EDR).
 5. Paso 3: Tomar una captura de memoria (API de la herramienta forense).
-6. Paso 4: Enviar notificación al equipo de IR via Slack/Teams.
+6. Paso 4: Enviar notificación al equipo de IR vía Slack/Teams.
 7. Paso 5: Crear un ticket en el sistema de gestión de incidentes.
 8. Paso 6: Esperar revisión humana.
 9. Todo esto ocurre en segundos, sin intervención humana.

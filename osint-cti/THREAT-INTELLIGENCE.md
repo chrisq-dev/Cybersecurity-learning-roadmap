@@ -7,7 +7,7 @@ updated: "2026-06-29"
 
 # Threat Intelligence: Conociendo al Enemigo
 
-Threat Intelligence es la disciplina de recopilacion y análisis de información sobre amenazas ciberneticas. Proporciona conocimiento sobre quien ataca, como lo hace, cuando y con que herramientas. No es adivinacion, sino análisis sistemático de datos para anticipar al atacante.
+Threat Intelligence es la disciplina de recopilación y análisis de información sobre amenazas cibernéticas. Proporciona conocimiento sobre quien ataca, como lo hace, cuando y con que herramientas. No es adivinación, sino análisis sistemático de datos para anticipar al atacante.
 
 La ciberseguridad reactiva espera el ataque y responde. Threat Intelligence busca anticiparlo mediante el estudio de patrones, tácticas y comportamientos de los actores de amenazas.
 
@@ -39,21 +39,21 @@ Los datos brutos se filtran, estructuran, enriquecen. Una IP sospechosa se enriq
 
 Convertir datos procesados en inteligencia accionable. "El grupo X esta atacando VPNs sin parchear en el sector Y. Tienes VPNs. Parchealas."
 
-### 5. Difusion
+### 5. Difusión
 
 Compartir con quien necesita saber: equipo SOC, CISO, administradores de sistemas. No le mandes un reporte de 50 páginas al que solo necesita una IP para bloquear.
 
-### 6. Retroalimentacion
+### 6. Retroalimentación
 
-La inteligencia se evalua: fue útil? Se actuó? Se previno el ataque? Si no sirvió, para que sirve?
+La inteligencia se evalúa: fue útil? Se actuó? Se previno el ataque? Si no sirvió, para que sirve?
 
 ## Niveles de Inteligencia
 
-### Estrategica
+### Estratégica
 
 Alta dirección. Tendencias, grupos, geo-política. Informes trimestrales sobre el panorama de amenazas.
 
-Ejemplo: "Ransomware-as-a-Service crecio 40% en 2024, con grupos rusoparlantes dominando el mercado."
+Ejemplo: "Ransomware-as-a-Service creció 40% en 2024, con grupos rusoparlantes dominando el mercado."
 
 Esto no le sirve al analista de SOC hoy, pero al CISO para planificar presupuesto, si.
 
@@ -112,7 +112,7 @@ Cada técnica tiene ID (T1566 para Phishing), descripción, ejemplos, detección
 2. Weaponizacion.
 3. Delivery.
 4. Explotación.
-5. Instalacion.
+5. Instalación.
 6. C2.
 7. Acción sobre objetivos.
 
@@ -120,7 +120,7 @@ Cada técnica tiene ID (T1566 para Phishing), descripción, ejemplos, detección
 
 ### Diamond Model
 
-4 vertices: Adversario, Capacidad, Infraestructura, Víctima. Relaciones entre ellos. Conectar los puntos te da la imagen completa.
+4 vértices: Adversario, Capacidad, Infraestructura, Víctima. Relaciones entre ellos. Conectar los puntos te da la imagen completa.
 
 ## Indicadores de Compromiso (IOC)
 
@@ -155,7 +155,7 @@ IOC accionable: "Bloquear IP 185.130.5.xxx en firewall." (Acción inmediata.)
 
 TTP accionable: "Implementar AMSI para detectar PowerShell malicioso." (Acción de configuración.)
 
-Inteligencia estrategica accionable: "Asignar presupuesto para segmentación de red." (Acción de inversión.)
+Inteligencia estratégica accionable: "Asignar presupuesto para segmentación de red." (Acción de inversión.)
 
 ## Compartir Inteligencia
 
@@ -191,11 +191,11 @@ No compartir: Cada organización ve solo su ángulo. Compartir beneficia a todos
 
 El atacante investiga a la víctima: tecnologías, empleados, horarios, procesos. OSINT del objetivo. Mientras tu lo investigas a el, el te investiga a ti.
 
-### Evasion de Inteligencia
+### Evasión de Inteligencia
 
 El atacante:
 - Cambia IOCs constantemente (DGA, fast-flux).
-- Usa infraestructura efimera.
+- Usa infraestructura efímera.
 - Mezcla tráfico malicioso con legítimo.
 - Estudia las defensas de la víctima antes de atacar.
 
@@ -215,7 +215,7 @@ TAXII (Trusted Automated Exchange of Intelligence Reasoning): Protocolo para int
 
 ### Feeds en SIEM
 
-AlienVault OTX, MISP, feeds comerciales. Correlacion de logs con IOCs.
+AlienVault OTX, MISP, feeds comerciales. Correlación de logs con IOCs.
 
 ### Automatización de Respuesta
 
@@ -229,13 +229,13 @@ No toda inteligencia es confiable.
 
 - Reputación de la fuente.
 - Antigüedad del IOC.
-- Número de falsos positivos historicos.
+- Número de falsos positivos históricos.
 - Corroboración con otras fuentes.
 - Contexto del IOC.
 
 ### Fuentes de Baja Confianza
 
-Feeds abiertos sin moderacion. IOCs de usuarios anonimos. Datos sin contexto.
+Feeds abiertos sin moderación. IOCs de usuarios anónimos. Datos sin contexto.
 
 ### Fuentes de Alta Confianza
 
@@ -247,7 +247,7 @@ CERTs nacionales, equipos de respuesta, vendors de seguridad reputados, ISACs se
 
 Informes ejecutivos: tendencias, riesgos, presupuesto, compliance.
 
-### SOC Manager
+### Gerente de SOC
 
 Alertas priorizadas: que mirar hoy, que grupos activos.
 
@@ -322,7 +322,7 @@ Habilidades: investigación, pensamiento crítico, comunicación. Capacidad de r
 
 ## Triangulo de Inteligencia
 
-Personas (quien ataca), Capacidades (como ataca), Oportunidades (que vulnerabilidades). El análisis conjunto de los tres vertices produce inteligencia accionable.
+Personas (quien ataca), Capacidades (como ataca), Oportunidades (que vulnerabilidades). El análisis conjunto de los tres vértices produce inteligencia accionable.
 
 ## Comparticion de Inteligencia
 
@@ -344,13 +344,13 @@ CVE, CVSS, EPSS, exploit availability, vendor patch status, threat actor interes
 
 Nivel 1: Sin inteligencia. Nivel 2: Feeds de IOCs. Nivel 3: Análisis de TTPs. Nivel 4: Inteligencia predictiva. Nivel 5: Inteligencia automática y compartida.
 
-## Obstaculos Comunes
+## Obstáculos Comunes
 
 Falta de presupuesto. Falta de personal capacitado. Sobrecarga de datos. Dificultad de compartir por confidencialidad.
 
 ## La Inteligencia como Proceso
 
-No es un producto, es un proceso continuo. Ciclo: requisitos -> recolección -> procesamiento -> análisis -> difusion -> retroalimentacion.
+No es un producto, es un proceso continuo. Ciclo: requisitos -> recolección -> procesamiento -> análisis -> difusión -> retroalimentación.
 
 ## Caso de Uso: M&A Due Diligence
 
@@ -358,11 +358,11 @@ Evaluar riesgos de ciberseguridad de empresa a adquirir. Inteligencia sobre brea
 
 ## Perfil del Analysta de Inteligencia
 
-Curiosidad, pensamiento crítico, capacidad de sintesis. Comunicación clara. Conocimiento de TTPs, frameworks, fuentes.
+Curiosidad, pensamiento crítico, capacidad de síntesis. Comunicación clara. Conocimiento de TTPs, frameworks, fuentes.
 
 ## Herramientas del Analysta
 
-MISP para gestión de IOCs. SIEM para correlacion. OSINT para recolección. Python para automatización.
+MISP para gestión de IOCs. SIEM para correlación. OSINT para recolección. Python para automatización.
 
 ## Fuentes de Inteligencia Gratuitas
 
@@ -398,6 +398,6 @@ Reportes ejecutivos: riesgo general, tendencias, impacto en negocio. Lenguaje no
 
 8. Explica el Diamond Model con un ejemplo real.
 
-9. Por qué la inteligencia estrategica no sirve al analista de SOC en tiempo real?
+9. Por qué la inteligencia estratégica no sirve al analista de SOC en tiempo real?
 
-10. Tu organización detecto un ataque. Que IOCs compartirias y cuáles no?
+10. Tu organización detecto un ataque. Que IOCs compartirías y cuáles no?

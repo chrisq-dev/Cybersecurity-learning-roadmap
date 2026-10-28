@@ -11,7 +11,7 @@ updated: "2026-06-29"
 
 Entender por qué el Sistema Operativo (OS) es la barrera más importante entre el hardware de la computadora y el mundo exterior, y como los atacantes abusan de sus reglas para tomar el control de una máquina.
 
-El hardware por si solo no entiende que es un usuario, que es una contraseña o que es un archivo. Toda esa "ilusión" la crea el Sistema Operativo. Sin un sistema operativo, tu computadora seria un monton de silicio y metal inerte. El sistema operativo es el que organiza el caos: decide que programa se ejecuta cuando, que parte de la memoria le toca a cada quien, como se guardan los archivos en el disco, y quien tiene permiso para hacer cada cosa.
+El hardware por si solo no entiende que es un usuario, que es una contraseña o que es un archivo. Toda esa "ilusión" la crea el Sistema Operativo. Sin un sistema operativo, tu computadora seria un montón de silicio y metal inerte. El sistema operativo es el que organiza el caos: decide que programa se ejecuta cuando, que parte de la memoria le toca a cada quien, como se guardan los archivos en el disco, y quien tiene permiso para hacer cada cosa.
 
 En esta guía vamos a abrir el capó de los dos sistemas operativos dominantes: Windows y Linux. No desde el punto de vista del usuario, sino desde el punto de vista del profesional de seguridad que necesita entender como se rompen y como se defienden.
 
@@ -23,7 +23,7 @@ Si instalas un programa malicioso, por qué este programa no puede simplemente d
 
 ### Kernel Space: El Núcleo
 
-El kernel es el corazón del sistema operativo. Es el único código que tiene acceso directo y sin restricciones al hardware (CPU, memoria, disco, perifericos). Gestiona:
+El kernel es el corazón del sistema operativo. Es el único código que tiene acceso directo y sin restricciones al hardware (CPU, memoria, disco, periféricos). Gestiona:
 
 - La memoria: que proceso ocupa que dirección de RAM.
 - Los procesos: que programa se ejecuta cuando, por cuanto tiempo.
@@ -34,7 +34,7 @@ El kernel es el corazón del sistema operativo. Es el único código que tiene a
 
 ### User Space: Los Procesos Normales
 
-Aqui viven los programas que usas a diario: el navegador web, el procesador de texto, el reproductor de musica, y también el malware. En user space, los programas no tienen acceso directo al hardware. No pueden escribir directamente en la memoria de otro proceso. No pueden enviar datos por la red sin pasar por el kernel.
+Aquí viven los programas que usas a diario: el navegador web, el procesador de texto, el reproductor de musica, y también el malware. En user space, los programas no tienen acceso directo al hardware. No pueden escribir directamente en la memoria de otro proceso. No pueden enviar datos por la red sin pasar por el kernel.
 
 **Para hacer algo que requiera acceso al hardware (leer un archivo, enviar un paquete de red, mostrar algo en pantalla), un proceso en user space debe hacer una "llamada al sistema" (syscall).** Es como enviar una carta formal al kernel pidiendo permiso. El kernel recibe la syscall, verifica si el proceso tiene los permisos necesarios, y si todo esta bien, ejecuta la operación en nombre del proceso.
 
@@ -73,27 +73,27 @@ Normalmente, el malware vive en user space. Un antivirus o un EDR (Endpoint Dete
 Pero existe una categoría de malware extremadamente peligroso: el rootkit. Un rootkit es un código malicioso que logra colarse dentro del kernel space. Cuando un atacante toma control del kernel:
 
 - El rootkit puede mentirle a cualquier proceso en user space, incluyendo el antivirus.
-- El rootkit puede interceptar syscalls. Cuando un programa pide "dame la lista de procesos," el rootkit responde "aqui tienes la lista, pero sin mi proceso" (ocultamiento).
+- El rootkit puede interceptar syscalls. Cuando un programa pide "dame la lista de procesos," el rootkit responde "aquí tienes la lista, pero sin mi proceso" (ocultamiento).
 - El rootkit puede acceder a cualquier dato en memoria, incluyendo claves de cifrado cargadas por otros programas.
 - El rootkit puede modificar el comportamiento del sistema operativo a su antojo.
 
 **Detectar un rootkit de kernel es extremadamente difícil** porque las herramientas que usarías para detectarlo (antivirus, comandos del sistema) ya están comprometidas. El rootkit les miente.
 
-**Caso real: El rootkit de Sony (2005).** Sony BMG distribuyo millones de CDs de musica con un rootkit instalado automáticamente cuando reproducias el CD en tu computadora. El rootkit se ocultaba en el kernel de Windows para evitar que copiaras los CDs (protección de derechos de autor). Cuando se descubrió, fue un escandalo masivo: Sony había instalado software malicioso en los kernels de millones de computadoras sin consentimiento de los usuarios. El rootkit abria una vulnerabilidad que podía ser explotada por cualquier otro malware.
+**Caso real: El rootkit de Sony (2005).** Sony BMG distribuyo millones de CDs de musica con un rootkit instalado automáticamente cuando reproducías el CD en tu computadora. El rootkit se ocultaba en el kernel de Windows para evitar que copiaras los CDs (protección de derechos de autor). Cuando se descubrió, fue un escándalo masivo: Sony había instalado software malicioso en los kernels de millones de computadoras sin consentimiento de los usuarios. El rootkit abría una vulnerabilidad que podía ser explotada por cualquier otro malware.
 
 ### Vulnerabilidades de Escalacion de Privilegios
 
 El objetivo más común del malware no es entrar al kernel directamente (es muy difícil), sino explotar una vulnerabilidad que le permita pasar de user space a kernel space. Esto se llama "escalacion de privilegios locales" (Local Privilege Escalation, LPE).
 
 **Como funciona:**
-1. El atacante compromete una cuenta de usuario normal (via phishing, contraseña débil, etc.).
+1. El atacante compromete una cuenta de usuario normal (vía phishing, contraseña débil, etc.).
 2. Desde esa cuenta, ejecuta un exploit que aprovecha una vulnerabilidad en el kernel o en un servicio que corre como SYSTEM/root.
 3. El exploit le da acceso al kernel o a una cuenta de alta integridad (SYSTEM en Windows, root en Linux).
 4. Ahora el atacante tiene control total de la máquina.
 
-**Ejemplos clasicos de LPE:**
-- CVE-2021-1732 (Windows): Vulnerabilidad en la función de ventanas de Windows que permitia a un usuario normal obtener privilegios de SYSTEM.
-- CVE-2022-0847 (Dirty Pipe, Linux): Vulnerabilidad en el kernel de Linux que permitia a cualquier usuario escribir en archivos a los que no debería tener acceso, incluyendo archivos del sistema.
+**Ejemplos clásicos de LPE:**
+- CVE-2021-1732 (Windows): Vulnerabilidad en la función de ventanas de Windows que permitía a un usuario normal obtener privilegios de SYSTEM.
+- CVE-2022-0847 (Dirty Pipe, Linux): Vulnerabilidad en el kernel de Linux que permitía a cualquier usuario escribir en archivos a los que no debería tener acceso, incluyendo archivos del sistema.
 
 ---
 
@@ -146,15 +146,15 @@ En Linux, no existe un Registro centralizado. Todo se maneja a través de archiv
 - En sistemas Linux mal administrados, archivos críticos como `/etc/shadow` (que contiene los hashes de las contraseñas) pueden tener permisos demasiado permisivos.
 
 **La clave `/etc/shadow` vs `/etc/passwd`:**
-- `/etc/passwd`: Archivo legible por todos los usuarios. Contiene nombres de usuario, pero las contraseñas historicas se reemplazaron con una "x" que indica que la contraseña esta en `/etc/shadow`.
-- `/etc/shadow`: Solo legible por root. Contiene los hashes de las contraseñas y las fechas de expiracion.
+- `/etc/passwd`: Archivo legible por todos los usuarios. Contiene nombres de usuario, pero las contraseñas históricas se reemplazaron con una "x" que indica que la contraseña esta en `/etc/shadow`.
+- `/etc/shadow`: Solo legible por root. Contiene los hashes de las contraseñas y las fechas de expiración.
 - Si un atacante logra leer `/etc/shadow`, puede intentar descifrar los hashes fuera de línea usando herramientas como John the Ripper o Hashcat.
 
 ---
 
 ## El Sistema de Archivos: NTFS vs ext4
 
-Un disco duro vacio es solo un bloque de almacenamiento. Para poder guardar archivos y carpetas, el sistema operativo tiene que dibujar un mapa lógico encima del disco físico. A ese mapa se le llama sistema de archivos.
+Un disco duro vacío es solo un bloque de almacenamiento. Para poder guardar archivos y carpetas, el sistema operativo tiene que dibujar un mapa lógico encima del disco físico. A ese mapa se le llama sistema de archivos.
 
 ### NTFS (New Technology File System): El Estándar de Windows
 
@@ -170,7 +170,7 @@ NTFS es el sistema de archivos moderno de Windows. Reemplazo a FAT16/FAT32, que 
 
 **Cifrado de archivos (EFS):** NTFS permite cifrar archivos individuales de forma transparente para el usuario. Solo el usuario que cifró el archivo puede leerlo.
 
-**Compresion:** NTFS permite comprimir archivos y carpetas de forma transparente.
+**Compresión:** NTFS permite comprimir archivos y carpetas de forma transparente.
 
 **Journaling:** NTFS mantiene un registro de cambios (journal) que permite recuperar el sistema de archivos si hay una falla eléctrica o un cuelgue del sistema.
 
@@ -247,7 +247,7 @@ Un analista de seguridad defensivo (blue team) conoce todos estos lugares de mem
 - Los archivos en la carpeta de inicio.
 - Los cronjobs (Linux).
 - Los servicios systemd.
-- Los modulos de kernel cargados.
+- Los módulos de kernel cargados.
 - Las conexiones de red activas (un proceso malicioso casi siempre se comunica con un servidor de comando y control).
 
 **Herramientas que usan:** Autoruns (Sysinternals), Sysmon, osquery, auditd.
@@ -261,13 +261,13 @@ Cada sistema operativo tiene directorios esenciales que todo profesional de segu
 ### En Windows
 
 **`C:\Windows\System32`:**
-El corazón del sistema operativo Windows. Aqui viven los ejecutables, DLLs y controladores que Windows necesita para funcionar.
+El corazón del sistema operativo Windows. Aquí viven los ejecutables, DLLs y controladores que Windows necesita para funcionar.
 - `cmd.exe`: El interprete de comandos.
 - `powershell.exe`: PowerShell.
 - `notepad.exe`: Bloc de notas.
 - `svchost.exe`: Host de servicios (un proceso que carga múltiples servicios de Windows).
 
-**Riesgo de seguridad:** Si un archivo ajeno logra escribirse en System32, tienes un problema grave. Cualquier archivo en System32 puede ser ejecutado por cualquier usuario (esta en el PATH del sistema). Un atacante que coloque `sethc.exe` malicioso aqui puede obtener acceso administrativo presionando Shift 5 veces en la pantalla de login (Sticky Keys attack).
+**Riesgo de seguridad:** Si un archivo ajeno logra escribirse en System32, tienes un problema grave. Cualquier archivo en System32 puede ser ejecutado por cualquier usuario (esta en el PATH del sistema). Un atacante que coloque `sethc.exe` malicioso aquí puede obtener acceso administrativo presionando Shift 5 veces en la pantalla de login (Sticky Keys attack).
 
 **El ataque de Sticky Keys:** En la pantalla de login de Windows, si presionas Shift 5 veces, se ejecuta `C:\Windows\System32\sethc.exe` (la herramienta de Sticky Keys). Un atacante con acceso físico puede arrancar la computadora, llegar a la pantalla de login, y reemplazar `sethc.exe` con `cmd.exe` usando herramientas de rescate. Luego, presionar Shift 5 veces abre una terminal con privilegios de SYSTEM.
 
@@ -279,15 +279,15 @@ Las carpetas de los usuarios.
 - `C:\Users\[nombre]\Downloads`: Descargas (origen común de infecciones).
 
 **`C:\Program Files` y `C:\Program Files (x86)`:**
-Donde se instalan las aplicaciones. Los usuarios normales no pueden escribir aqui (necesitan permisos de administrador).
+Donde se instalan las aplicaciones. Los usuarios normales no pueden escribir aquí (necesitan permisos de administrador).
 
 **`C:\Windows\Temp` y `C:\Users\[nombre]\AppData\Local\Temp`:**
-Directorios temporales. Cualquiera puede escribir aqui. Son usados constantemente por malware para descargar componentes adicionales o ejecutar scripts.
+Directorios temporales. Cualquiera puede escribir aquí. Son usados constantemente por malware para descargar componentes adicionales o ejecutar scripts.
 
 ### En Linux
 
 **`/etc/`:**
-El directorio de configuración del sistema. Aqui viven los archivos de configuración de servicios, de red, de usuarios, y del sistema.
+El directorio de configuración del sistema. Aquí viven los archivos de configuración de servicios, de red, de usuarios, y del sistema.
 - `/etc/passwd`: Usuarios del sistema.
 - `/etc/shadow`: Hashes de contraseñas (solo legible por root).
 - `/etc/ssh/sshd_config`: Configuración del servidor SSH.
@@ -304,10 +304,10 @@ El directorio de logs del sistema.
 - `/var/log/nginx/` o `/var/log/apache2/`: Logs del servidor web.
 - `/var/log/kern.log`: Log del kernel.
 
-**Riesgo de seguridad:** Un atacante intentará borrar o modificar estos archivos para cubrir sus huellas. Los comandos tipicos son `rm -rf /var/log/*` o `cat /dev/null > /var/log/auth.log`. Por eso los logs deben enviarse a un servidor centralizado de logs (syslog remoto).
+**Riesgo de seguridad:** Un atacante intentará borrar o modificar estos archivos para cubrir sus huellas. Los comandos típicos son `rm -rf /var/log/*` o `cat /dev/null > /var/log/auth.log`. Por eso los logs deben enviarse a un servidor centralizado de logs (syslog remoto).
 
 **`/tmp/`:**
-Directorio temporal. Todos los usuarios pueden escribir aqui. Es extremadamente común ver a atacantes descargar herramientas a `/tmp/` y ejecutarlas desde ahí, porque no requieren permisos especiales.
+Directorio temporal. Todos los usuarios pueden escribir aquí. Es extremadamente común ver a atacantes descargar herramientas a `/tmp/` y ejecutarlas desde ahí, porque no requieren permisos especiales.
 
 **Ejemplo típico de ataque:**
 ```
@@ -318,7 +318,7 @@ $ ./exploit.sh
 ```
 
 **`/bin/`, `/sbin/`, `/usr/bin/`, `/usr/sbin/`:**
-Directorios de ejecutables del sistema. Aqui viven los comandos básicos (ls, cp, mv, cat, ps, top, etc.).
+Directorios de ejecutables del sistema. Aquí viven los comandos básicos (ls, cp, mv, cat, ps, top, etc.).
 
 **Riesgo de seguridad:** Un atacante puede reemplazar un comando legítimo como `ls` con una versión maliciosa que oculte sus archivos. Esto se llama "trojanizar" un binario. La próxima vez que el administrador ejecute `ls -la` para buscar archivos sospechosos, el `ls` malicioso simplemente no mostrará los archivos del atacante.
 
@@ -338,11 +338,11 @@ Un proceso pasa por varios estados durante su vida:
 - **Bloqueado (Waiting):** El proceso espera un evento (que el disco lea datos, que llegue un paquete de red).
 - **Terminado (Terminated):** El proceso ha finalizado.
 
-### Planificacion (Scheduling)
+### Planificación (Scheduling)
 
 La CPU solo puede ejecutar un proceso a la vez por núcleo. El planificador del kernel decide que proceso se ejecuta y por cuanto tiempo. Alterna entre procesos tan rápido (cientos o miles de veces por segundo) que parece que todos corren simultáneamente.
 
-**Ángulo de seguridad:** Un atacante puede explotar la planificacion para realizar ataques de canal lateral. Midiendo cuanto tarda en ejecutar su proceso (debido a la contención por la caché de la CPU), puede inferir información sobre otros procesos que comparten la misma CPU.
+**Ángulo de seguridad:** Un atacante puede explotar la planificación para realizar ataques de canal lateral. Midiendo cuanto tarda en ejecutar su proceso (debido a la contención por la caché de la CPU), puede inferir información sobre otros procesos que comparten la misma CPU.
 
 ### Memoria Virtual
 
@@ -363,7 +363,7 @@ Los sistemas operativos modernos implementan varias protecciones de memoria que 
 
 **DEP/NX (Data Execution Prevention / No-Execute):** Las regiones de memoria están marcadas como ejecutables o no ejecutables. El stack y el heap (donde se almacenan datos) no son ejecutables. Si un atacante introduce código en el stack (buffer overflow), la CPU se niega a ejecutarlo.
 
-**Stack Canaries:** Valores centinela colocados en el stack antes de la dirección de retorno. Si un buffer overflow sobrescribe el canary, el sistema detecta la alteracion y termina el programa antes de que el atacante tome control.
+**Stack Canaries:** Valores centinela colocados en el stack antes de la dirección de retorno. Si un buffer overflow sobrescribe el canary, el sistema detecta la alteración y termina el programa antes de que el atacante tome control.
 
 **CFG (Control Flow Guard en Windows) / CFI (Control Flow Integrity):** El sistema verifica que las llamadas a funciones solo vayan a destinos validos, no a cualquier dirección de memoria que el atacante haya preparado.
 
@@ -371,8 +371,8 @@ Los sistemas operativos modernos implementan varias protecciones de memoria que 
 
 Ninguna protección es perfecta:
 
-- **Return-oriented programming (ROP):** El atacante no introduce código nuevo (eso lo bloquearia DEP). En lugar de eso, encadena fragmentos de código existente (gadgets) que terminan en instrucciones `ret` para construir la funcionalidad deseada.
-- **ASLR bypass via information leak:** El atacante primero explota una vulnerabilidad de divulgación de información (por ejemplo, un error que lea memoria no autorizada) para descubrir la disposicion de memoria, y luego usa esa información para dirigir su exploit ROP.
+- **Return-oriented programming (ROP):** El atacante no introduce código nuevo (eso lo bloquearía DEP). En lugar de eso, encadena fragmentos de código existente (gadgets) que terminan en instrucciones `ret` para construir la funcionalidad deseada.
+- **ASLR bypass vía information leak:** El atacante primero explota una vulnerabilidad de divulgación de información (por ejemplo, un error que lea memoria no autorizada) para descubrir la disposición de memoria, y luego usa esa información para dirigir su exploit ROP.
 
 ---
 
@@ -387,12 +387,12 @@ UEFI (Unified Extensible Firmware Interface) reemplazo al clásico BIOS. Secure 
 **La cadena de confianza de Secure Boot:**
 1. El firmware UEFI verifica la firma del bootloader.
 2. El bootloader (Windows Boot Manager, GRUB, shim) verifica la firma del kernel.
-3. El kernel verifica la firma de los modulos del kernel y los controladores.
+3. El kernel verifica la firma de los módulos del kernel y los controladores.
 
 Si algún eslabón de la cadena no tiene la firma correcta, el arranque se detiene.
 
 **Como se rompe Secure Boot:**
-- Vulnerabilidades en el bootloader (BootHole, CVE-2020-10713): Una vulnerabilidad en GRUB permitia a un atacante con acceso local eludir Secure Boot incluso con las firmas válidas.
+- Vulnerabilidades en el bootloader (BootHole, CVE-2020-10713): Una vulnerabilidad en GRUB permitía a un atacante con acceso local eludir Secure Boot incluso con las firmas válidas.
 - Deshabilitacion de Secure Boot: En muchas placas madre, Secure Boot se puede deshabilitar desde la configuración del firmware. Un atacante con acceso físico puede deshabilitarlo.
 - Enrollment de claves maliciosas: Si un atacante puede agregar su propia clave de firma a la base de datos de UEFI, puede arrancar código firmado por el mismo.
 
@@ -400,10 +400,10 @@ Si algún eslabón de la cadena no tiene la firma correcta, el arranque se detie
 
 Un bootkit es un tipo de rootkit que infecta el proceso de arranque. Se carga antes que el sistema operativo, lo que le permite:
 - Ocultarse del sistema operativo y de cualquier herramienta de seguridad que corra sobre el.
-- Mantener persistencia incluso si se reinstala el sistema operativo (porque el bootkit esta en el firmware o en el disco de arranque, no en la particion del sistema).
+- Mantener persistencia incluso si se reinstala el sistema operativo (porque el bootkit esta en el firmware o en el disco de arranque, no en la partición del sistema).
 - Interceptar la carga del kernel y modificar su comportamiento.
 
-**Ejemplos historicos de bootkits:**
+**Ejemplos históricos de bootkits:**
 - **TDL4 (Alureon):** Infectaba el Master Boot Record (MBR) de Windows. Cargaba su driver malicioso antes que Windows, dándole control total y capacidad de ocultarse.
 - **BlackLotus (2023):** El primer bootkit que lograba eludir Secure Boot en sistemas completamente actualizados. Usaba una vulnerabilidad en el binario de arranque firmado de Windows (CVE-2022-21894) para cargar su código sin firmar.
 
@@ -415,7 +415,7 @@ El hardening (endurecimiento) es el proceso de reducir la superficie de ataque d
 
 ### Principios Generales de Hardening
 
-**Eliminar lo que no se necesita:** Cada programa, servicio, puerto abierto y usuario en el sistema es un posible punto de entrada. Si no necesitas un servicio, desinstalalo o desactivalo. Si no necesitas un puerto abierto, cierralo.
+**Eliminar lo que no se necesita:** Cada programa, servicio, puerto abierto y usuario en el sistema es un posible punto de entrada. Si no necesitas un servicio, desinstálalo o desactivalo. Si no necesitas un puerto abierto, ciérralo.
 
 **Aplicar parches de seguridad:** Las vulnerabilidades se descubren constantemente. Los parches de seguridad son la defensa más efectiva contra exploits conocidos. Un sistema sin parchear es un sistema comprometido a corto o medio plazo.
 
@@ -430,7 +430,7 @@ El hardening (endurecimiento) es el proceso de reducir la superficie de ataque d
 - Deshabilitar servicios innecesarios (Server, Print Spooler si no se usa, SMBv1).
 - Configurar Windows Defender y mantenerlo actualizado.
 - Habilitar User Account Control (UAC) en su nivel máximo.
-- Configurar políticas de grupo (Group Policy) para restringir instalacion de software, acceso a USB, y ejecución de scripts.
+- Configurar políticas de grupo (Group Policy) para restringir instalación de software, acceso a USB, y ejecución de scripts.
 - Deshabilitar PowerShell scripting para usuarios no administradores (Language Mode Constrained).
 - Configurar Windows Firewall para bloquear todo el tráfico entrante excepto el necesario.
 
@@ -438,7 +438,7 @@ El hardening (endurecimiento) es el proceso de reducir la superficie de ataque d
 
 - Configurar el firewall (iptables, nftables, ufw) para bloquear todo excepto los puertos necesarios.
 - Deshabilitar login por contraseña para SSH y usar solo claves públicas.
-- Deshabilitar login como root via SSH (`PermitRootLogin no` en `/etc/ssh/sshd_config`).
+- Deshabilitar login como root vía SSH (`PermitRootLogin no` en `/etc/ssh/sshd_config`).
 - Configurar fail2ban para bloquear IPs con múltiples intentos de login fallidos.
 - Mantener el sistema actualizado (`apt update && apt upgrade` en Debian/Ubuntu, `yum update` en RHEL).
 - Configurar SELinux o AppArmor en modo enforcing (no permissive).
@@ -467,7 +467,7 @@ Puedes decir que entiendes los sistemas operativos desde el punto de vista de se
 
 8. En el contexto de sistemas de archivos, explica que son los Alternate Data Streams (ADS) de NTFS y como los atacantes los usan para ocultar malware. Existe un equivalente en ext4?
 
-9. Una empresa de comercio electrónico tiene su servidor web en Linux. El servidor de base de datos esta en Windows. Durante un ataque, el servidor web es comprometido via una vulnerabilidad en una aplicación PHP. Desde el servidor linux, el atacante intenta moverse lateralmente al servidor de base de datos Windows. Que servicios y puertos deberían estar bloqueados entre estos servidores para evitar este movimiento lateral?
+9. Una empresa de comercio electrónico tiene su servidor web en Linux. El servidor de base de datos esta en Windows. Durante un ataque, el servidor web es comprometido vía una vulnerabilidad en una aplicación PHP. Desde el servidor linux, el atacante intenta moverse lateralmente al servidor de base de datos Windows. Que servicios y puertos deberían estar bloqueados entre estos servidores para evitar este movimiento lateral?
 
 10. Explica la función de SELinux/AppArmor en Linux. Es DAC o MAC? Por qué un administrador novato tiende a deshabilitarlo y por qué eso es un error?
 

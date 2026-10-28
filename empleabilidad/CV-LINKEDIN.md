@@ -303,7 +303,7 @@ Proyecto AWS: Infraestructura Segura en la Nube | AWS, Terraform | Mar 2025 - Ma
 - Desplegué servidor web EC2 con balanceador de carga y certificado SSL, forzando HTTPS en todas las conexiones.
 - Configuré CloudTrail y CloudWatch Logs para auditoría de accesos y acciones de API, cumpliendo con requerimientos de logging.
 
-EDUCACIÓN
+EDUCACION
 [ Título ] | [ Institución ] | [ Año ]
 
 CERTIFICACIONES

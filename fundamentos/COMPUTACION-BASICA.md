@@ -32,8 +32,8 @@ La CPU (Unidad Central de Procesamiento) es el cerebro de la computadora. Ejecut
 **Como funciona realmente:** La CPU tiene tres unidades básicas:
 
 - La Unidad de Control (CU): Lee las instrucciones del programa en memoria y las descodifica. Decide que operación hay que hacer.
-- La Unidad Aritmetico-Lógica (ALU): Hace las operaciones matemáticas (suma, resta, multiplicacion) y lógicas (comparaciones: esto es mayor que aquello?).
-- Los Registros: Memoria ultra rápida dentro del propio procesador. Almacenan los datos que se están procesando en este instante. Son pequenisimos (unos pocos bytes cada uno) pero rapidisimos.
+- La Unidad Aritmético-Lógica (ALU): Hace las operaciones matemáticas (suma, resta, multiplicación) y lógicas (comparaciones: esto es mayor que aquello?).
+- Los Registros: Memoria ultra rápida dentro del propio procesador. Almacenan los datos que se están procesando en este instante. Son pequeñísimos (unos pocos bytes cada uno) pero rapidísimos.
 
 **El ciclo de vida de una instrucción (Fetch-Decode-Execute):**
 1. Fetch: La CPU obtiene la siguiente instrucción desde la RAM.
@@ -42,13 +42,13 @@ La CPU (Unidad Central de Procesamiento) es el cerebro de la computadora. Ejecut
 
 Este ciclo se repite miles de millones de veces por segundo.
 
-**Donde falla la analogía del cocinero:** Un cocinero puede hacer varias cosas a la vez (picar verduras mientras vigila una salsa). Una CPU clásica no. Ejecuta una instrucción a la vez, pero tan rápido que parece simultaneo. Las CPU modernas tienen varios nucleos (cores), que son como tener varios cocineros trabajando en paralelo en la misma cocina.
+**Donde falla la analogía del cocinero:** Un cocinero puede hacer varias cosas a la vez (picar verduras mientras vigila una salsa). Una CPU clásica no. Ejecuta una instrucción a la vez, pero tan rápido que parece simultáneo. Las CPU modernas tienen varios núcleos (cores), que son como tener varios cocineros trabajando en paralelo en la misma cocina.
 
 **Ángulo de ciberseguridad:** El malware también son instrucciones matemáticas. Necesitan a la CPU para ejecutarse. Sin CPU, un virus es solo texto inerte en un disco. Por eso los atacantes necesitan que su código se convierta en un proceso activo en RAM y use la CPU.
 
 Un tipo de malware llamado cryptojacker secuestra la CPU para minar criptomonedas para el atacante. No roba datos ni borra archivos; simplemente usa la CPU. La víctima nota que el equipo se vuelve lentísimo, los ventiladores giran al máximo, y la batería se agota en minutos. En 2018, el sitio web de la cadena de televisión Showtime fue infectado con un cryptojacker que usaba la CPU de los visitantes para minar Monero mientras navegaban. Los visitantes no sabían que su procesador estaba trabajando para un atacante.
 
-**Fallo crítico:** La CPU no tiene concepto de "malware" o "programa legítimo." Ejecuta instrucciones. Punto. Si las instrucciones llegan a través de un mecanismo válido (un proceso legado por el sistema operativo), la CPU las ejecuta sin cuestionar. El Spectre y Meltdown (dos vulnerabilidades masivas descubiertas en 2018) explotaban una característica de diseño de la CPU llamada "ejecución especulativa" para acceder a memoria que no deberían. La CPU, en su afan de ser rápida, ejecutaba instrucciones antes de verificar los permisos. No es un bug de software; es una característica del hardware que se convirtio en vulnerabilidad.
+**Fallo crítico:** La CPU no tiene concepto de "malware" o "programa legítimo." Ejecuta instrucciones. Punto. Si las instrucciones llegan a través de un mecanismo válido (un proceso legado por el sistema operativo), la CPU las ejecuta sin cuestionar. El Spectre y Meltdown (dos vulnerabilidades masivas descubiertas en 2018) explotaban una característica de diseño de la CPU llamada "ejecución especulativa" para acceder a memoria que no deberían. La CPU, en su afán de ser rápida, ejecutaba instrucciones antes de verificar los permisos. No es un bug de software; es una característica del hardware que se convirtió en vulnerabilidad.
 
 ### El Cuello de Botella: El Bus y la Jerarquía de Memoria
 
@@ -59,7 +59,7 @@ Entre la CPU y los demás componentes hay un sistema de comunicación llamado "b
 - **Registros de la CPU:** Acceso en 1 ciclo de reloj. Capacidad: unos pocos bytes.
 - **Caché L1:** Dentro del chip de la CPU. Acceso en 2-4 ciclos. Capacidad: 32-64 KB.
 - **Caché L2:** Cerca de la CPU. Acceso en 10-20 ciclos. Capacidad: 256-512 KB por núcleo.
-- **Caché L3:** Compartida entre nucleos. Acceso en 30-50 ciclos. Capacidad: 8-32 MB.
+- **Caché L3:** Compartida entre núcleos. Acceso en 30-50 ciclos. Capacidad: 8-32 MB.
 - **RAM:** Acceso en 100-300 ciclos. Capacidad: 8-64 GB.
 - **SSD:** Acceso en 10,000-50,000 ciclos. Capacidad: 256 GB - 4 TB.
 - **HDD:** Acceso en 1,000,000+ ciclos. Capacidad: 1-20 TB.
@@ -82,9 +82,9 @@ Cuando presionas el botón de encendido, la computadora pasa por varias etapas a
 
 5. **Login:** El sistema esta listo para recibir usuarios.
 
-**Ángulo de seguridad:** Un atacante que pueda comprometer el BIOS/UEFI (Rootkit de firmware) puede controlar la máquina antes de que el sistema operativo arranque. Es el tipo de persistencia más profundo y difícil de detectar. En 2021, el grupo de ataque Trickboot demostro como se podía deshabilitar Secure Boot (un mecanismo de UEFI que verifica la integridad del bootloader) desde un sistema Linux con permisos de root.
+**Ángulo de seguridad:** Un atacante que pueda comprometer el BIOS/UEFI (Rootkit de firmware) puede controlar la máquina antes de que el sistema operativo arranque. Es el tipo de persistencia más profundo y difícil de detectar. En 2021, el grupo de ataque Trickboot demostró como se podía deshabilitar Secure Boot (un mecanismo de UEFI que verifica la integridad del bootloader) desde un sistema Linux con permisos de root.
 
-También existe el Bootkit: un malware que infecta el Master Boot Record (MBR) o el EFI System Partition para cargarse antes que el sistema operativo. Ejemplos historicos: Stoned Bootkit y la familia de malware TDL4/Alureon.
+También existe el Bootkit: un malware que infecta el Master Boot Record (MBR) o el EFI System Partition para cargarse antes que el sistema operativo. Ejemplos históricos: Stoned Bootkit y la familia de malware TDL4/Alureon.
 
 ### La Memoria RAM: La Mesa de Trabajo
 
@@ -103,7 +103,7 @@ La RAM (Memoria de Acceso Aleatorio) guarda la información temporal que la CPU 
 - El sistema operativo moderno (Windows 11, macOS) ocupa entre 2 y 4 GB solo para funcionar.
 - Cada pestaña de navegador Chrome ocupa entre 100 MB y 1 GB dependiendo del contenido.
 - Cada programa abierto (Word, Spotify, Slack) ocupa su espacio.
-- Cuando la RAM se llena, el sistema operativo usa una parte del disco duro como "RAM falsa" (memoria virtual o swap). Esto es dramaticamente más lento. Es como obligar al cocinero a ir caminando a la despensa por cada ingrediente.
+- Cuando la RAM se llena, el sistema operativo usa una parte del disco duro como "RAM falsa" (memoria virtual o swap). Esto es dramáticamente más lento. Es como obligar al cocinero a ir caminando a la despensa por cada ingrediente.
 
 **Ángulo de ciberseguridad:** La RAM es el lugar donde las herramientas de seguridad más importantes hacen su trabajo. Los antivirus y los EDR (Endpoint Detection and Response) escanean la RAM en busca de patrones de código malicioso, no solo el disco duro.
 
@@ -111,33 +111,33 @@ La RAM (Memoria de Acceso Aleatorio) guarda la información temporal que la CPU 
 - Un atacante puede hacer un "volcado de memoria" (memory dump) si tiene acceso administrativo al sistema. Esto captura todo lo que esta en la RAM en un archivo. Desde ahí puede extraer contraseñas en texto plano, claves de cifrado, tokens de autenticación, y datos de sesiones activas.
 - Las herramientas como Mimikatz se especializan en extraer credenciales directamente de la RAM de una máquina Windows. No necesitan la contraseña del disco duro; la encuentran en la memoria del proceso de inicio de sesión.
 
-**Cold Boot Attack:** Un ataque físico avanzado. Los chips de RAM no se borran instantáneamente al apagar la computadora. Los datos persisten por segundos o incluso minutos, especialmente si se enfria el chip. Un atacante con acceso físico puede:
+**Cold Boot Attack:** Un ataque físico avanzado. Los chips de RAM no se borran instantáneamente al apagar la computadora. Los datos persisten por segundos o incluso minutos, especialmente si se enfría el chip. Un atacante con acceso físico puede:
 1. Enfriar el chip de RAM con nitrógeno líquido o aire comprimido en lata invertido.
 2. Arrancar la computadora desde un USB propio.
 3. Volcar el contenido de la RAM antes de que se borre.
 4. Extraer claves de cifrado de discos (como BitLocker o FileVault) de los datos recuperados.
 
-**Fallo típico:** Almacenar claves de cifrado en RAM durante sesiones largas. Es necesario para el funcionamiento, pero las hace vulnerables. Los sistemas de seguridad avanzados usan "memoria protegida" o "enclaves seguros" (como Intel SGX o ARM TrustZone) para mantener las claves en un area de RAM que ni siquiera el sistema operativo puede leer.
+**Fallo típico:** Almacenar claves de cifrado en RAM durante sesiones largas. Es necesario para el funcionamiento, pero las hace vulnerables. Los sistemas de seguridad avanzados usan "memoria protegida" o "enclaves seguros" (como Intel SGX o ARM TrustZone) para mantener las claves en un área de RAM que ni siquiera el sistema operativo puede leer.
 
 ### El Disco de Almacenamiento (HDD / SSD): La Despensa
 
 El disco es la memoria no volátil. Guarda información de forma permanente, incluso cuando la computadora esta apagada. Es mucho más lento que la RAM, pero tiene mucha más capacidad.
 
-**HDD (Disco Duro Mecánico):** Usa platos magneticos que giran a alta velocidad (5400, 7200, o 15000 RPM). Un brazo mecánico con una cabeza lectora se mueve sobre los platos para leer o escribir datos. Es tecnología de los 1950s, mejorada pero fundamentalmente igual.
+**HDD (Disco Duro Mecánico):** Usa platos magnéticos que giran a alta velocidad (5400, 7200, o 15000 RPM). Un brazo mecánico con una cabeza lectora se mueve sobre los platos para leer o escribir datos. Es tecnología de los 1950s, mejorada pero fundamentalmente igual.
 
 **SSD (Unidad de Estado Sólido):** Usa memoria flash (chips de silicio) sin partes móviles. Es mucho más rápido, silencioso y resistente a golpes que un HDD. Sin embargo, tiene un número limitado de ciclos de escritura (cada celda puede escribirse un número finito de veces).
 
 **En la analogía:** La cámara frigorífica del restaurante. Es inmensa. Caben toneladas de ingredientes. Pero el cocinero tiene que caminar hasta ella, buscar en los estantes, y traer los ingredientes a la mesa de trabajo (RAM) antes de poder cocinar. Si la despensa es lenta (HDD), el cocinero espera. Si es rápida (SSD), espera menos.
 
 **Organización del disco:**
-- El disco se divide en particiones. Una particion es como una sección separada de la despensa. Puedes tener Windows en una particion y Linux en otra en el mismo disco.
-- Cada particion tiene un sistema de archivos (NTFS en Windows, ext4 en Linux, APFS en macOS) que organiza los datos en archivos y carpetas.
-- El sistema operativo, los programas, los documentos, todo esta almacenado aqui en forma permanente.
+- El disco se divide en particiones. Una partición es como una sección separada de la despensa. Puedes tener Windows en una partición y Linux en otra en el mismo disco.
+- Cada partición tiene un sistema de archivos (NTFS en Windows, ext4 en Linux, APFS en macOS) que organiza los datos en archivos y carpetas.
+- El sistema operativo, los programas, los documentos, todo esta almacenado aquí en forma permanente.
 
 **Ángulo de ciberseguridad:** El disco es donde el ransomware hace su daño económico. Un ransomware es un programa malicioso que cifra los archivos del disco usando un algoritmo de cifrado fuerte (como AES), haciendo los datos inaccesibles. Luego exige un pago (generalmente en Bitcoin) a cambio de la clave de descifrado.
 
 **Ransomware no es solo cifrado.** El ransomware moderno (como LockBit, ALPHV/BlackCat) sigue estos pasos:
-1. Entra al sistema (via phishing, RDP expuesto, vulnerabilidad).
+1. Entra al sistema (vía phishing, RDP expuesto, vulnerabilidad).
 2. Se mueve lateralmente por la red buscando otros servidores y discos compartidos.
 3. Roba (exfiltra) una copia de los datos antes de cifrarlos.
 4. Cifra los archivos en todos los discos a los que tiene acceso.
@@ -156,10 +156,10 @@ Es el componente físico (chip de Wi-Fi o puerto Ethernet) que conecta la comput
 
 **Como funciona:**
 - Cada tarjeta de red tiene una dirección MAC (Media Access Control) única de fábrica. Es como un número de serie grabado en el hardware.
-- La tarjeta recibe señales electricas u ondas de radio y las convierte en datos binarios que la computadora puede procesar.
+- La tarjeta recibe señales eléctricas u ondas de radio y las convierte en datos binarios que la computadora puede procesar.
 - El sistema operativo asigna una dirección IP (lógica) a la interfaz de red para que otros dispositivos puedan encontrarla en la red.
 
-**Puertos: canales lógicos.** Una computadora puede tener muchas conexiones de red simultaneas. Los puertos (números del 0 al 65535) permiten distinguir entre ellas.
+**Puertos: canales lógicos.** Una computadora puede tener muchas conexiones de red simultáneas. Los puertos (números del 0 al 65535) permiten distinguir entre ellas.
 - Puerto 80: tráfico web HTTP.
 - Puerto 443: tráfico web HTTPS (cifrado).
 - Puerto 22: SSH (acceso remoto seguro).
@@ -201,7 +201,7 @@ Cuando analizas un sistema en busca de malware, no buscas "programas malos en el
 
 **Servicio o Demonio (El Trabajador Silencioso):**
 Es un proceso especial que arranca de forma automática cuando enciendes la computadora, sin que nadie haga clic en el. Corre en segundo plano (background), usualmente sin interfaz gráfica.
-- Ejemplos en Windows: el servicio de Windows Update, el servicio de impresion, el antivirus.
+- Ejemplos en Windows: el servicio de Windows Update, el servicio de impresión, el antivirus.
 - Ejemplos en Linux: el servidor web Apache (httpd), el servidor SSH (sshd), el sistema de logging (rsyslog).
 - Los servicios son el objetivo favorito de los atacantes porque están siempre encendidos y nadie los mira directamente.
 
@@ -298,7 +298,7 @@ Esta es la forma en que los analistas de malware estudian los virus más peligro
 
 La virtualización no es 100% segura. Ha habido vulnerabilidades que permiten que el código dentro de la máquina virtual "escape" y afecte al host físico. Se llaman "VM Escape" y son extremadamente raras pero peligrosas.
 
-**Caso real: CVE-2017-5715 (Meltdown) y CVE-2017-5753 (Spectre).** Aunque no son vulnerabilidades de virtualización puras, estas fallas en el diseño de la CPU permitian que un proceso dentro de una máquina virtual leyera memoria del host o de otras máquinas virtuales en el mismo hardware. Los proveedores de nube (AWS, Azure, Google Cloud) tuvieron que aplicar parches de emergencia que ralentizaban el rendimiento de las CPU entre un 5% y un 30%.
+**Caso real: CVE-2017-5715 (Meltdown) y CVE-2017-5753 (Spectre).** Aunque no son vulnerabilidades de virtualización puras, estas fallas en el diseño de la CPU permitían que un proceso dentro de una máquina virtual leyera memoria del host o de otras máquinas virtuales en el mismo hardware. Los proveedores de nube (AWS, Azure, Google Cloud) tuvieron que aplicar parches de emergencia que ralentizaban el rendimiento de las CPU entre un 5% y un 30%.
 
 ### Contenedores vs Máquinas Virtuales
 
@@ -307,7 +307,7 @@ Una confusión común. Los contenedores (Docker, Podman) no son lo mismo que las
 - Las máquinas virtuales virtualizan el hardware. Cada VM tiene su propio kernel y sistema operativo completo.
 - Los contenedores virtualizan el sistema operativo. Comparten el mismo kernel del host. Son más ligeros, arrancan en segundos, pero ofrecen menos aislamiento.
 
-**Implicacion de seguridad:** Los contenedores son más fáciles de atacar si el kernel del host esta comprometido. Una vulnerabilidad en el kernel del host puede comprometer todos los contenedores que se ejecutan sobre el. Las máquinas virtuales ofrecen una capa de aislamiento adicional porque cada una tiene su propio kernel.
+**Implicación de seguridad:** Los contenedores son más fáciles de atacar si el kernel del host esta comprometido. Una vulnerabilidad en el kernel del host puede comprometer todos los contenedores que se ejecutan sobre el. Las máquinas virtuales ofrecen una capa de aislamiento adicional porque cada una tiene su propio kernel.
 
 ---
 
@@ -332,7 +332,7 @@ Que nos dice esto?
 - La cuenta usada fue 'admin' (la cuenta de administrador, la más peligrosa).
 - La IP de origen es la misma en todos los intentos.
 
-Un analista de seguridad viendo esto sabria inmediatamente que la cuenta 'admin' fue comprometida por un ataque de fuerza bruta. Acción: deshabilitar la cuenta, revisar que hizo el atacante, cambiar contraseñas.
+Un analista de seguridad viendo esto sabría inmediatamente que la cuenta 'admin' fue comprometida por un ataque de fuerza bruta. Acción: deshabilitar la cuenta, revisar que hizo el atacante, cambiar contraseñas.
 
 ### Tipos de Logs Importantes
 
@@ -396,7 +396,7 @@ No necesitas instalar nada para empezar a ver estos conceptos en acción. Tu sis
 
 ## Autoevaluación: Criterio de Dominio
 
-Puedes decir que entiendes los fundamentos de computación si puedes responder estas preguntas con claridad y, lo más importante, si puedes explicarselas a alguien más.
+Puedes decir que entiendes los fundamentos de computación si puedes responder estas preguntas con claridad y, lo más importante, si puedes explicárselas a alguien más.
 
 1. Un amigo te dice: "Descargué el archivo hacker.exe en mi disco duro. Mi computadora ya esta infectada." Por qué esta equivocado técnicamente? Que tendría que pasar para que el archivo sea realmente peligroso?
 

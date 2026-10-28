@@ -1,0 +1,33 @@
+name: Error de contenido
+description: Reporta una inexactitud, enlace roto o problema editorial.
+title: "[Contenido] "
+labels: ["content"]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Página o archivo
+      placeholder: "ej. web-owasp/OWASP-TOP-10.md"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Qué está mal
+      description: Explica el error y, si es posible, la corrección propuesta.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Fuente de verificación
+      placeholder: "URL de una fuente primaria"
+    validations:
+      required: false
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmación
+      options:
+        - label: No estoy publicando datos personales ni instrucciones de abuso.
+          required: true

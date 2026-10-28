@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ROADMAP_STEPS } from "../../lib/roadmap";
 
 export const metadata = {
   title: "Rutas temáticas",
@@ -7,6 +8,20 @@ export const metadata = {
 };
 
 const routes = [
+  {
+    "title": "Seguridad personal y familia",
+    "description": "Protege cuentas, dispositivos y personas antes de profundizar en seguridad técnica.",
+    "audience": "Cualquier persona",
+    "items": [
+      ["Protégete en internet", "/seguridad-personal/protegete-en-internet"],
+      ["Cuentas y contraseñas", "/seguridad-personal/cuentas-y-contrasenas"],
+      ["Privacidad diaria", "/seguridad-personal/privacidad-diaria"],
+      ["Celular y dispositivos", "/seguridad-personal/celular-y-dispositivos"],
+      ["Estafas con IA", "/seguridad-personal/estafas-con-ia"],
+      ["Si te hackearon", "/seguridad-personal/si-te-hackearon"],
+      ["Familia y usuarios no técnicos", "/seguridad-personal/familia-y-usuarios-no-tecnicos"]
+    ]
+  },
   {
     "title": "Fundamentos desde cero",
     "description": "Base técnica para entender el resto del mapa sin asumir conocimientos previos.",
@@ -247,6 +262,28 @@ export default function RoutesPage() {
           </section>
         ))}
       </div>
+
+      <section className="linear-route" id="ruta-lineal" aria-labelledby="linear-route-title">
+        <p className="route-audience">Secuencia lineal</p>
+        <h2 id="linear-route-title">Ruta de estudio recomendada</h2>
+        <p>
+          Si prefieres un orden general antes de elegir una especialidad, recorre estos doce
+          pasos. Cada uno enlaza a la guía de entrada del tema.
+        </p>
+        <div className="roadmap-strip">
+          {ROADMAP_STEPS.map((step, index) => (
+            <div key={step.num} className="roadmap-item">
+              <Link href={step.href} className="roadmap-step">
+                <span className="roadmap-step-num">{step.num}</span>
+                <span className="roadmap-step-label">{step.label}</span>
+              </Link>
+              {index < ROADMAP_STEPS.length - 1 && (
+                <span className="roadmap-arrow" aria-hidden="true">→</span>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

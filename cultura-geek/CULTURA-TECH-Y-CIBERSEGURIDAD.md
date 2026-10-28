@@ -11,7 +11,7 @@ No todo lo que te acerca a la ciberseguridad tiene que ser un mapa, una certific
 
 A veces una serie, una película, un libro, un juego o una historia real te deja una idea dando vueltas en la cabeza. esa curiosidad también importa. La diferencia está en saber usarla bien: como inspiración y contexto, no como reemplazo de estudiar fundamentos.
 
-Esta sección es para descansar un poco del modo "temario" y ver la parte más humana, geek y cultural de la tecnología. aqui no hay comandos que memorizar, solo historias que te hacen preguntar cosas.
+Esta sección es para descansar un poco del modo "temario" y ver la parte más humana, geek y cultural de la tecnología. aquí no hay comandos que memorizar, solo historias que te hacen preguntar cosas.
 
 ## Series y Películas
 

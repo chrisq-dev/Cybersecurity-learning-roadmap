@@ -44,9 +44,17 @@ Lee [STYLE-GUIDE.md](STYLE-GUIDE.md) antes de modificar contenido.
 4. Repite el mismo título como encabezado H1.
 5. Usa encabezados H2 y H3 para que la tabla de contenido funcione correctamente.
 
-Los Markdown colocados dentro de una carpeta temática se publican automáticamente. Las páginas conocidas siguen el orden didáctico definido en `web/lib/markdown.js`; las nuevas aparecen después, ordenadas alfabéticamente por título.
+Los Markdown dentro de una carpeta ya publicada se incluyen automáticamente. Las páginas conocidas siguen el orden de `PAGE_ORDER` en `web/lib/markdown.js`; las nuevas aparecen después, ordenadas alfabéticamente.
 
-`README.md`, `CONTRIBUTING.md` y los documentos internos de la raíz no se publican como guías.
+Para publicar una **carpeta nueva**, además del Markdown hay que registrarla en:
+
+1. `PAGE_ORDER` y `STUDY_ORDER` de `web/lib/markdown.js`.
+2. Las fuentes de `web/lib/officialSources.mjs`.
+3. `Dockerfile` (copia de la carpeta y de `assets`).
+4. `INICIO-AQUI.md`, el home, `web/lib/areas.js` y las rutas si corresponde.
+5. El sitemap y las pruebas de contenido.
+
+`README.md`, `CONTRIBUTING.md`, `LICENSE`, `LICENSE-CONTENT` y los documentos internos de la raíz no se publican como guías.
 
 ## Ejemplo completo
 
@@ -97,7 +105,8 @@ La plantilla es una base, no una obligación rígida. Las guías culturales, glo
 ## Enlaces e imágenes
 
 - Usa enlaces relativos para otras guías: `[Fundamentos de redes](redes-cisco/FUNDAMENTOS-REDES.md)`.
-- Coloca imágenes compartidas en `assets/`.
+- Coloca imágenes compartidas en `assets/` y recuerda que el Dockerfile debe copiarlas.
+- No uses perfiles falsos, datos reales ni técnicas de abuso en ejemplos.
 - Incluye texto alternativo descriptivo.
 - No dependas de imágenes para explicar información esencial.
 

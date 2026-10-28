@@ -11,9 +11,9 @@ updated: "2026-06-29"
 
 Aprender a extraer y analizar la memoria RAM para descubrir la actividad en vivo del sistema.
 
-La memoria RAM es efimera. Apagas el equipo, desaparece. Pum. Se fue. Pero mientras el sistema esta encendido, la RAM contiene la foto completa de la actividad actual: procesos, conexiones de red, claves de cifrado, comandos, archivos abiertos, y código malicioso. Todo lo que el sistema esta pensando en ese momento.
+La memoria RAM es efímera. Apagas el equipo, desaparece. Pum. Se fue. Pero mientras el sistema esta encendido, la RAM contiene la foto completa de la actividad actual: procesos, conexiones de red, claves de cifrado, comandos, archivos abiertos, y código malicioso. Todo lo que el sistema esta pensando en ese momento.
 
-Porque basicamente, es eso.
+Porque básicamente, es eso.
 
 ## La Analogía: La Foto de la Pantalla
 
@@ -38,7 +38,7 @@ pasa si abres un archivo, lo ves, y lo cierras? Una parte quedó en la RAM. Si e
 - Fragmentos de archivos de disco.
 - Procesos ocultos (rootkits).
 
-### Distribución Tipica
+### Distribución Típica
 
 Sistemas modernos tienen 8-64 GB de RAM. El dump completo puede ser enorme. El perito trabaja con la imagen completa y extrae lo relevante.
 
@@ -48,7 +48,7 @@ Cuando la RAM se llena, el SO mueve páginas a disco (pagefile.sys en Windows, s
 
 ## Recolección de Memoria
 
-aqui tienes que ser rápido. La memoria no espera. Mientras estas corriendo la herramienta de dump, el sistema sigue cambiando. Cada milisegundo importa.
+aquí tienes que ser rápido. La memoria no espera. Mientras estas corriendo la herramienta de dump, el sistema sigue cambiando. Cada milisegundo importa.
 
 ### Recolección en Vivo
 
@@ -57,11 +57,11 @@ Herramientas:
 - Linux: `avml`, `lime`, `fmem`, `LiME`.
 - Mac: `osxpmem`, `MacMemoryReader`.
 
-El proceso debe ser rápido (la memoria cambia constantemente) y minimamente invasivo (evitar modificar la escena).
+El proceso debe ser rápido (la memoria cambia constantemente) y mínimamente invasivo (evitar modificar la escena).
 
 ### Recolección Remota
 
-En entornos corporativos, la recolección puede hacerse remotamente via agentes EDR.
+En entornos corporativos, la recolección puede hacerse remotamente vía agentes EDR.
 
 ### Volatilidad del Dump
 
@@ -119,25 +119,25 @@ Extrae hashes de contraseñas de la SAM en memoria.
 ### Linux con Volatility
 
 `vol -f dump.raw linux.pslist`:
-Procesos del sistema Linux. `linux.bash` recupera comandos bash historicos. `linux.netstat` conexiones de red. `linux.malfind` detección de malware.
+Procesos del sistema Linux. `linux.bash` recupera comandos bash históricos. `linux.netstat` conexiones de red. `linux.malfind` detección de malware.
 
 ## Escenarios de Análisis
 
-aqui van escenarios reales para que veas como se aplica todo esto. No es teoría, es lo que te vas a encontrar.
+aquí van escenarios reales para que veas como se aplica todo esto. No es teoría, es lo que te vas a encontrar.
 
 ### Proceso Sospechoso
 
-El analista encuentra un proceso `svch0st.exe` (notese el 0). PID 4321, sin firma digital, con conexión a IP 185.130.5.xx:8443.
+El analista encuentra un proceso `svch0st.exe` (nótese el 0). PID 4321, sin firma digital, con conexión a IP 185.130.5.xx:8443.
 
 Ejecuta `cmdline` y ve: `C:\Users\...\svch0st.exe -c 185.130.5.xx:8443`.
 
-Ejecuta `malfind` sobre el PID y detecta region RX con patrones de shellcode.
+Ejecuta `malfind` sobre el PID y detecta región RX con patrones de shellcode.
 
 Extrae el binario con `dumpfiles` y lo manda a análisis estático.
 
 ### Inyección de DLL
 
-`malfind` detecta una region de memoria inyectada en un proceso legítimo (`explorer.exe`). La region tiene permisos RWX (lectura, escritura, ejecución) y contiene una DLL maliciosa.
+`malfind` detecta una región de memoria inyectada en un proceso legítimo (`explorer.exe`). La región tiene permisos RWX (lectura, escritura, ejecución) y contiene una DLL maliciosa.
 
 El atacante uso `CreateRemoteThread` para inyectar código en un proceso confiable.
 
@@ -183,11 +183,11 @@ No tener suficiente espacio de almacenamiento: Un dump de 32GB RAM ocupa 32GB m�
 
 Dump incompleto: El recolector no pudo acceder a todo el espacio de direcciones.
 
-Contaminacion del dump: Ejecutar herramientas desde el mismo sistema analizado.
+Contaminación del dump: Ejecutar herramientas desde el mismo sistema analizado.
 
 ### Caso Real: Stuxnet (2010)
 
-El análisis forense de Stuxnet incluyo extenso análisis de memoria para entender su comportamiento. Los investigadores encontraron en RAM: instrucciones a centrifugadoras, modificaciones de PLC, y mecanismos de evasion.
+El análisis forense de Stuxnet incluyo extenso análisis de memoria para entender su comportamiento. Los investigadores encontraron en RAM: instrucciones a centrifugadoras, modificaciones de PLC, y mecanismos de evasión.
 
 ### Caso Real: Sony Pictures (2014)
 
@@ -197,7 +197,7 @@ Los investigadores de Sony usaron forense de memoria extensivo para rastrear el 
 
 Y ahora la otra cara de la moneda. Si tu sabes como se investiga la memoria, el atacante también. La pregunta es: como hacen para esconderse?
 
-### Evasion de Forense de Memoria
+### Evasión de Forense de Memoria
 
 El atacante puede intentar:
 - No ejecutar malware en RAM (fileless pero con técnicas de persistencia en disco).
@@ -238,7 +238,7 @@ Volatility permite listar por nombre, PID, PPID, y ruta para identificar anomal�
 
 Volatility extrae DLLs cargadas en cada proceso. El malware a veces carga DLLs maliciosas en procesos legítimos.
 
-`windows.modules` y `windows.modscan` listan modulos del kernel. Los rootkits cargan drivers que aparecen como modulos sospechosos.
+`windows.modules` y `windows.modscan` listan módulos del kernel. Los rootkits cargan drivers que aparecen como módulos sospechosos.
 
 ### Contraseñas y Hashes
 
@@ -282,13 +282,13 @@ Dump de RAM de un servidor Windows comprometido. Pasos:
 6. Analizar comandos: `windows.cmdline` -> que hizo el atacante.
 7. Hashes: `windows.hashdump` -> credenciales comprometidas.
 
-### Hallazgos Tipicos
+### Hallazgos Típicos
 
 - Proceso `wmiprvse.exe` sospechoso en `C:\Users\Public`.
 - Conexión a `185.130.5.xx:443`.
 - Inyección de DLL en `explorer.exe`.
 - Comandos de PowerShell para descarga de payload.
-- Persistencia via Run key en registro.
+- Persistencia vía Run key en registro.
 
 ## Forense de Memoria en Linux
 
@@ -300,7 +300,7 @@ Volatility 3 soporta Linux. Comandos equivalentes:
 
 - Linux no tiene SAM, el hash de contraseñas esta en `/etc/shadow`.
 - Los comandos bash quedan en memoria del proceso bash.
-- Los rootkits de kernel se cargan como modulos del kernel.
+- Los rootkits de kernel se cargan como módulos del kernel.
 - Los procesos zombie (defunct) aparecen en pslist.
 
 ## Análisis de Tiempo en Memoria
@@ -313,7 +313,7 @@ Volatility puede construir una línea de tiempo de actividad del sistema basada 
 - Tiempos de acceso a archivos.
 - Tiempos de modificación de registro.
 
-### Correlacion con Otras Fuentes
+### Correlación con Otras Fuentes
 
 Correlacionar eventos de memoria con logs de red y disco para reconstruir la historia completa.
 
@@ -347,7 +347,7 @@ Si el proceso de dump falla, parte de la memoria se pierde. Repetir dump si es p
 
 ## Integración con Otras Fuentes
 
-Correlacion de memoria con logs de disco, red y SIEM. Una conexión de red sospechosa en memoria se confirma con logs de firewall.
+Correlación de memoria con logs de disco, red y SIEM. Una conexión de red sospechosa en memoria se confirma con logs de firewall.
 
 ## Memoria como Evidencia en Juicio
 
@@ -355,7 +355,7 @@ El dump de RAM es evidencia. Debe tener cadena de custodia. Hash del dump verifi
 
 ## Forense de Memoria en Entornos Cloud
 
-En cloud, el acceso a RAM de la VM depende del proveedor. Y aqui hay un problema: no siempre puedes hacer un dump como si estuvieras frente a la máquina. AWS: tomar snapshot de la instancia. Azure: capturar disco de sistema operativo. Cada proveedor es un mundo.
+En cloud, el acceso a RAM de la VM depende del proveedor. Y aquí hay un problema: no siempre puedes hacer un dump como si estuvieras frente a la máquina. AWS: tomar snapshot de la instancia. Azure: capturar disco de sistema operativo. Cada proveedor es un mundo.
 
 ## Práctica Recomendada
 
@@ -377,7 +377,7 @@ El dump del host incluye procesos del contenedor. El análisis de memoria del ho
 
 ## Dump de Memoria en MacOS
 
-Herramientas: osxpmem, MacMemoryReader. Volatility 3 soporta macOS. Desafios: System Integrity Protection (SIP) bloquea acceso.
+Herramientas: osxpmem, MacMemoryReader. Volatility 3 soporta macOS. Desafíos: System Integrity Protection (SIP) bloquea acceso.
 
 ## Práctica de Análisis
 
@@ -387,7 +387,7 @@ Caso: servidor comprometido. Pasos: info, psscan, netscan, malfind, cmdline, dum
 
 1. Un perito llega a una escena con la PC encendida. La pantalla muestra una consola con actividad. Cual es su prioridad?
 
-2. La herramienta de dump de RAM se ejecuta desde un USB en el sistema sospechoso. Por qué es problematico?
+2. La herramienta de dump de RAM se ejecuta desde un USB en el sistema sospechoso. Por qué es problemático?
 
 3. Que información encuentras en un dump de RAM que no encuentras en un disco formateado?
 

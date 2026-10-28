@@ -42,7 +42,7 @@ En la práctica, tu computadora usa resolución recursiva con su servidor DNS lo
 **Servidores raíz:**
 Hay 13 grupos de servidores raíz (identificados con letras A a M). Están gestionados por diferentes organizaciones: Verisign (A, J), USC-ISI (B), Cogent (C), UMaryland (D), NASA (E), ISC (F), DoD (G), US Army (H), Netnod (I), RIPE (K), ICANN (L), WIDE (M).
 
-No hay 13 servidores físicos. Cada grupo tiene cientos de servidores distribuidos geograficamente usando anycast. Cuando preguntas por un servidor raíz, llegas al más cercano.
+No hay 13 servidores físicos. Cada grupo tiene cientos de servidores distribuidos geográficamente usando anycast. Cuando preguntas por un servidor raíz, llegas al más cercano.
 
 Estos servidores no saben donde esta "facebook.com". Saben donde están los servidores de dominio de alto nivel (TLD).
 
@@ -197,7 +197,7 @@ Un registro A apunta a la IP equivocada. O un registro MX apunta a un servidor d
 **TTL mal configurado:**
 Un TTL muy alto (días) hace que los cambios tarden en propagarse. Un TTL muy bajo (segundos) genera muchas consultas y carga en los servidores.
 
-**Delegacion rota:**
+**Delegación rota:**
 Los servidores NS configurados en el registro del dominio no coinciden con los servidores que realmente tienen los registros. El dominio no se resuelve.
 
 **Dominio expirado:**
@@ -214,7 +214,7 @@ Sin DHCP, tendrías que configurar cada dispositivo manualmente con una IP únic
 ### El proceso DORA en detalle
 
 **Discover (D):**
-El cliente envía un paquete DHCPDISCOVER. Es un broadcast UDP (MAC destino FF:FF:FF:FF:FF:FF, IP destino 255.255.255.255, puerto 67). Dice basicamente "hay alguien que me asigne una IP?"
+El cliente envía un paquete DHCPDISCOVER. Es un broadcast UDP (MAC destino FF:FF:FF:FF:FF:FF, IP destino 255.255.255.255, puerto 67). Dice básicamente "hay alguien que me asigne una IP?"
 
 **Offer (O):**
 Los servidores DHCP que reciben el Discover responden con DHCPOFFER. Incluyen:
@@ -222,7 +222,7 @@ Los servidores DHCP que reciben el Discover responden con DHCPOFFER. Incluyen:
 - Máscara de subred
 - Gateway predeterminado
 - Servidores DNS
-- Duracion del lease
+- Duración del lease
 - Otras opciones DHCP
 
 **Request (R):**
@@ -242,19 +242,19 @@ DHCP permite incluir opciones adicionales en los mensajes. Las más importantes:
 - Option 42: Servidores NTP
 - Option 43: Información específica del provedor
 - Option 66: Servidor TFTP (para teléfonos IP)
-- Option 121: Rutas estaticas sin clase
+- Option 121: Rutas estáticas sin clase
 - Option 150: Servidor TFTP (Cisco)
 
 ### El lease DHCP
 
 La asignación de IP no es permanente. Tiene un tiempo de concesión (lease). Por defecto suele ser 24 horas.
 
-**Renovacion:**
+**Renovación:**
 - A los 50% del lease: el cliente intenta renovar con DHCPREQUEST directamente al servidor.
 - Si no recibe respuesta a los 87.5%: el cliente vuelve a hacer Discover (broadcast).
 - Si falla: la IP expira y el cliente pierde conectividad.
 
-**Liberacion:**
+**Liberación:**
 El cliente puede enviar DHCPRELEASE para liberar la IP antes de que expire.
 
 ### Reservas DHCP
@@ -265,7 +265,7 @@ Esto es útil para servidores, impresoras, y otros dispositivos que necesitan IP
 
 ### DHCP Relay Agent
 
-Si los clientes y el servidor DHCP están en diferentes subredes, los broadcasts de Discover no cruzan el router. El DHCP Relay Agent (ip helper-address en Cisco) reenvia los mensajes DHCP entre subredes.
+Si los clientes y el servidor DHCP están en diferentes subredes, los broadcasts de Discover no cruzan el router. El DHCP Relay Agent (ip helper-address en Cisco) reenvía los mensajes DHCP entre subredes.
 
 ### Como se ataca DHCP
 
@@ -301,7 +301,7 @@ Dos dispositivos con la misma IP. Ocurre cuando:
 - Una IP estática esta dentro del rango DHCP
 - Un lease expira y la IP se reasigna mientras el dispositivo original sigue conectado
 
-El sintoma es intermitente: a veces funciona, a veces no.
+El síntoma es intermitente: a veces funciona, a veces no.
 
 **Opacidad de opciones:**
 Configuras una opción incorrecta (por ejemplo, Option 150 mal formateada para teléfonos IP) y los dispositivos no reciben la configuración que necesitan.
@@ -337,9 +337,9 @@ Cuando un dispositivo interno (192.168.1.10) quiere acceder a internet:
 4. El router recibe la respuesta:
    - Busca en su tabla NAT
    - Cambia el destino a 192.168.1.10:puerto_aleatorio
-   - Reenvia el paquete interno
+   - Reenvía el paquete interno
 
-Sin la tabla NAT, el router no sabria a que dispositivo interno entregar la respuesta.
+Sin la tabla NAT, el router no sabría a que dispositivo interno entregar la respuesta.
 
 ### Tipos de NAT
 
@@ -396,7 +396,7 @@ Los protocolos VPN como IPsec tienen problemas con NAT porque:
 La solución es NAT-T (NAT Traversal), que encapsula IPsec dentro de UDP.
 
 **Tabla NAT llena:**
-Los routers tienen un límite de traducciones simultaneas. Si hay muchas conexiones, la tabla se llena y nuevas conexiones fallan.
+Los routers tienen un límite de traducciones simultáneas. Si hay muchas conexiones, la tabla se llena y nuevas conexiones fallan.
 
 **Hairpinning:**
 Un dispositivo interno intenta acceder a otro dispositivo interno usando la IP pública externa. El router debe soportar NAT hairpinning para que esto funcione.
@@ -414,31 +414,31 @@ Protocolos usados por aplicaciones de tiempo real (WebRTC, VoIP) para descubrir 
 
 ## Casos reales
 
-### DNS hijacking en routers de Latinoamerica
+### DNS hijacking en routers de Latinoamérica
 
-Miles de routers en varios países de Latinoamerica fueron comprometidos. El atacante accedia a los routers usando contraseñas por defecto (admin/admin) y cambiaba la configuración DNS. Cuando los usuarios escribian la URL de su banco, eran redirigidos a sitios falsos.
+Miles de routers en varios países de Latinoamérica fueron comprometidos. El atacante accedía a los routers usando contraseñas por defecto (admin/admin) y cambiaba la configuración DNS. Cuando los usuarios escribían la URL de su banco, eran redirigidos a sitios falsos.
 
 El ataque funciono durante semanas. Los bancos detectaron un aumento en reclamos de cuentas comprometidas. La investigación revelo que los routers tenían el acceso remoto habilitado y contraseñas por defecto.
 
 ### Rogue DHCP en un hotel
 
-Un huésped en un hotel configuró su laptop como servidor DHCP. Cuando otros huespedes se conectaban al Wi-Fi, recibian una configuración donde el gateway era la laptop del atacante. Todo el tráfico pasaba por alli.
+Un huésped en un hotel configuró su laptop como servidor DHCP. Cuando otros huéspedes se conectaban al Wi-Fi, recibían una configuración donde el gateway era la laptop del atacante. Todo el tráfico pasaba por allí.
 
 El atacante capturo credenciales de correo electrónico, bancos y redes sociales. El hotel no tenía DHCP snooping configurado en sus switches.
 
 ### Agotamiento de tabla NAT en un ISP
 
-Un provedor de internet de banda ancha tenía routers que soportaban hasta 100,000 traducciones NAT simultaneas. Un cliente infectado con un malware que generaba miles de conexiones por segundo agoto la tabla NAT del router compartido.
+Un provedor de internet de banda ancha tenía routers que soportaban hasta 100,000 traducciones NAT simultáneas. Un cliente infectado con un malware que generaba miles de conexiones por segundo agotó la tabla NAT del router compartido.
 
 Otros clientes del mismo router no podían navegar. El ISP tuvo que implementar rate-limiting por cliente y aumentar la memoria de tablas NAT.
 
 ### Bypass de NAT en ataques a IoT
 
-Un atacante escaneo internet en busca de dispositivos IoT (cámaras, routers, DVRs) con UPnP habilitado. Mediante UPnP, los dispositivos abrian puertos en el router que permitian el acceso remoto. El atacante encontró miles de dispositivos accesibles desde internet.
+Un atacante escaneo internet en busca de dispositivos IoT (cámaras, routers, DVRs) con UPnP habilitado. Mediante UPnP, los dispositivos abrían puertos en el router que permitían el acceso remoto. El atacante encontró miles de dispositivos accesibles desde internet.
 
 ## Autoevaluación
 
-1. Puedes hacer ping a 8.8.8.8 pero no puedes resolver google.com. Que servicio esta fallando? Como lo confirmarias con comandos? Que información esperarias ver en cada comando?
+1. Puedes hacer ping a 8.8.8.8 pero no puedes resolver google.com. Que servicio esta fallando? Como lo confirmarías con comandos? Que información esperarías ver en cada comando?
 
 2. Explica el proceso DORA de DHCP. Que ocurre en cada paso específicamente a nivel de paquetes (tipo de mensaje, direcciones MAC y IP, puertos)?
 

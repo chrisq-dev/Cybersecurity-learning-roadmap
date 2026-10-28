@@ -20,7 +20,7 @@ Por eso, los hackers profesionales dedican el 90% de su tiempo a robar credencia
 
 ## La Analogía
 
-Imagina un submarino nuclear. Solo unas pocas personas tienen acceso a los códigos de lanzamiento de misiles. Esos códigos no están escritos en ningún papel. Están guardados en una caja fuerte de titanio que solo se abre con dos llaves diferentes, cada una en posesion de una persona diferente.
+Imagina un submarino nuclear. Solo unas pocas personas tienen acceso a los códigos de lanzamiento de misiles. Esos códigos no están escritos en ningún papel. Están guardados en una caja fuerte de titanio que solo se abre con dos llaves diferentes, cada una en posesión de una persona diferente.
 
 El PAM (Privileged Access Management) es esa caja fuerte de titanio para las contraseñas de los administradores de sistemas.
 
@@ -168,7 +168,7 @@ Características:
 
 Si un administrador usa la cuenta Break Glass un sábado a las 3:00 AM, el SOC debe investigar inmediatamente.
 
-## Segregacion de Deberes (SoD) en PAM
+## Segregación de Deberes (SoD) en PAM
 
 Los sistemas PAM pueden aplicar segregación de deberes:
 
@@ -195,7 +195,7 @@ Las cuentas cloud (IAM roles, service accounts, root accounts) también deben ge
 - Azure Privileged Identity Management (PIM) es el servicio de Microsoft para PAM en Azure.
 - Permite activar roles de Microsoft Entra ID solo cuando se necesitan.
 - Las activaciones requieren aprobación y MFA.
-- Las sesiones tienen duracion limitada (típicamente 1-8 horas).
+- Las sesiones tienen duración limitada (típicamente 1-8 horas).
 
 ### GCP y PAM
 
@@ -231,7 +231,7 @@ La lección: si las credenciales de administrador están en código fuente subid
 
 ### El Caso del Administrador Despedido (2018)
 
-Un administrador de sistemas de una empresa de salud fue despedido. Antes de irse, creo una cuenta de administrador oculta. Dos semanas después, accedio al sistema de registros médicos y robo datos de pacientes.
+Un administrador de sistemas de una empresa de salud fue despedido. Antes de irse, creo una cuenta de administrador oculta. Dos semanas después, accedió al sistema de registros médicos y robo datos de pacientes.
 
 La empresa no tenía PAM. No había:
 
@@ -266,7 +266,7 @@ Cuentas de emergencia que se usan sin generar alertas. El SOC debe ser notificad
 
 ### Falla 6: No Integrar PAM con SIEM
 
-Los logs de PAM deben enviarse al SIEM para correlacion con otros eventos.
+Los logs de PAM deben enviarse al SIEM para correlación con otros eventos.
 
 ## La Mirada del Hacker
 
@@ -283,7 +283,7 @@ Como atacante, las cuentas privilegiadas son mi objetivo final. No importa cuán
 
 BloodHound es una herramienta que analiza Active Directory y muestra visualmente las rutas de escalada de privilegios.
 
-Ejemplo de ruta que BloodHound encontraria:
+Ejemplo de ruta que BloodHound encontraría:
 
 "Usuario Juan -> Miembro del grupo Ventas -> Tiene acceso a la computadora del Admin -> Admin tiene sesión iniciada -> Extraer contraseña del Admin -> Admin es Domain Admin -> Game Over."
 
@@ -330,7 +330,7 @@ El concepto de "cero privilegios permanentes" significa que ningún usuario (ni 
 ### Ejemplo de Flujo ZSP
 
 1. Administrador necesita acceso a un servidor Linux.
-2. Solicita acceso via PAM (con justificacion).
+2. Solicita acceso vía PAM (con justificación).
 3. PAM verifica identidad (MFA), verifica horario, verifica aprobador.
 4. PAM agrega al admin al grupo `sudoers` del servidor por 2 horas.
 5. Admin ejecuta comandos con sudo.
@@ -349,7 +349,7 @@ Los pipelines de CI/CD necesitan credenciales para desplegar código, acceder a 
 **Solución PAM:**
 - Las herramientas de CI/CD se integran con el vault de PAM.
 - En lugar de almacenar la contraseña en una variable, el pipeline solicita la contraseña al vault en tiempo de ejecución.
-- El vault entrega la contraseña solo para la duracion del pipeline.
+- El vault entrega la contraseña solo para la duración del pipeline.
 - La contraseña se rota después de cada uso.
 
 ### Kubernetes y PAM
@@ -357,7 +357,7 @@ Los pipelines de CI/CD necesitan credenciales para desplegar código, acceder a 
 Kubernetes tiene su propio sistema de secrets, pero no es un PAM. Para entornos empresariales:
 
 1. **External Secrets Operator:** Sincroniza secrets de Kubernetes con un vault externo (AWS Secrets Manager, HashiCorp Vault, Azure Key Vault).
-2. **CSI Secrets Store:** Monta secrets del vault directamente en los pods como volumenes.
+2. **CSI Secrets Store:** Monta secrets del vault directamente en los pods como volúmenes.
 3. **Pod Identity:** Asigna identidades Microsoft Entra ID / AWS IAM a los pods para que puedan autenticarse sin secretos.
 
 ### Ejemplo: Integración Jenkins + Vault
@@ -376,14 +376,14 @@ Los sistemas PAM son esenciales para cumplir con normativas:
 ### SOX (Sarbanes-Oxley)
 
 - Requiere control de acceso a sistemas financieros.
-- PAM proporciona auditoría detallada de quien accedio a que y cuando.
+- PAM proporciona auditoría detallada de quien accedió a que y cuando.
 - Las sesiones grabadas sirven como evidencia en auditorías.
 
 ### PCI DSS
 
 - Requiere proteger las cuentas de administrador de sistemas de tarjetas de crédito.
 - PAM asegura que solo personal autorizado acceda a estos sistemas.
-- La rotación de contraseñas cumple con el requisito de cambiar contraseñas periodicamente.
+- La rotación de contraseñas cumple con el requisito de cambiar contraseñas periódicamente.
 
 ### ISO 27001
 
@@ -417,7 +417,7 @@ Los atacantes comprometieron las credenciales de un administrador de SolarWinds 
 
 **Lecciones:**
 - Las cuentas de firma de código son cuentas privilegiadas y deben gestionarse con PAM.
-- La rotación de contraseñas y el acceso just-in-time habrian limitado el daño.
+- La rotación de contraseñas y el acceso just-in-time habrían limitado el daño.
 
 ## Modos de Falla Adicionales
 

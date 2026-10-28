@@ -13,7 +13,7 @@ Aprender la arquitectura definitiva del siglo XXI: Asume la brecha (Assume Breac
 
 La Defensa en Profundidad de la guía anterior asume que las murallas del castillo son sagradas. Pero que pasa cuando la secretaria se lleva su laptop a Starbucks, se conecta a un Wi-Fi falso, se infecta, y luego regresa a la oficina y conecta la laptop directamente a la red interna, detrás del firewall?
 
-El modelo del castillo fracasa porque confió ciegamente en la laptop de la secretaria. Aqui nace Zero Trust (Confianza Cero).
+El modelo del castillo fracasa porque confió ciegamente en la laptop de la secretaria. Aquí nace Zero Trust (Confianza Cero).
 
 Esta guía explora los principios de Zero Trust, la implementación práctica, los modelos de madurez, los casos reales, y como migrar de una arquitectura tradicional a una de confianza cero.
 
@@ -32,7 +32,7 @@ Giras a la izquierda e intentas entrar a la sala de almacenamiento de muestras b
 Cada vez que cambias de sala, el sistema verifica:
 - Quien eres (credencial + biometría)
 - Si tienes permiso para estar en esa sala específica
-- Si tu comportamiento es normal (no estas nervioso, no entras a horas extranas)
+- Si tu comportamiento es normal (no estas nervioso, no entras a horas extrañas)
 - Si tu equipo de protección esta completo
 
 En Zero Trust, cada recurso es una sala separada del laboratorio. No importa donde estés físicamente (oficina, casa, cafetería). Cada vez que intentas acceder a un recurso, el sistema verifica explícitamente tu identidad, tu autorización, y la salud de tu dispositivo.
@@ -43,11 +43,11 @@ Zero Trust nace de una realidad ineludible: el perímetro de la red ya no existe
 
 ### Factores que Mataron el Perímetro
 
-Movilidad: Los empleados trabajan desde cualquier lugar. Laptops, tablets, teléfonos. El concepto de "red corporativa" se ha diluido. Los empleados se conectan desde cafes, aeropuertos, hoteles, sus casas.
+Movilidad: Los empleados trabajan desde cualquier lugar. Laptops, tablets, teléfonos. El concepto de "red corporativa" se ha diluido. Los empleados se conectan desde cafés, aeropuertos, hoteles, sus casas.
 
 Nube: Las aplicaciones ya no están en el datacenter de la empresa. Están en SaaS (Microsoft 365, Salesforce, Slack), en IaaS (AWS, Azure), en PaaS. La red corporativa es solo una de las muchas redes que los empleados usan para acceder a recursos corporativos.
 
-Dispositivos Personales (BYOD): Los empleados usan sus propios dispositivos. La empresa no controla ni puede asegurar esos dispositivos. Un empleado puede tener su laptop personal con malware conectandose al correo corporativo.
+Dispositivos Personales (BYOD): Los empleados usan sus propios dispositivos. La empresa no controla ni puede asegurar esos dispositivos. Un empleado puede tener su laptop personal con malware conectándose al correo corporativo.
 
 IoT: Dispositivos conectados que no son gestionados por IT: cámaras, sensores, impresoras, termostatos. Cada uno es un potencial punto de entrada.
 
@@ -55,13 +55,13 @@ Terceros y Proveedores: Contratistas, socios, proveedores necesitan acceso a rec
 
 Phishing: El atacante no necesita violar el perímetro. Solo necesita las credenciales de un empleado.
 
-### El Problema de la Confianza Implicita
+### El Problema de la Confianza Implícita
 
-En el modelo tradicional, una vez que un dispositivo esta conectado a la red corporativa (por cable o VPN), se le otorga confianza implicita. Puede acceder a la mayoría de los recursos de la red.
+En el modelo tradicional, una vez que un dispositivo esta conectado a la red corporativa (por cable o VPN), se le otorga confianza implícita. Puede acceder a la mayoría de los recursos de la red.
 
-El problema es evidente: la confianza implicita beneficia tanto a usuarios legítimos como a atacantes. Si un atacante compromete un dispositivo en la red corporativa, automáticamente tiene acceso a todos los recursos que ese dispositivo puede alcanzar.
+El problema es evidente: la confianza implícita beneficia tanto a usuarios legítimos como a atacantes. Si un atacante compromete un dispositivo en la red corporativa, automáticamente tiene acceso a todos los recursos que ese dispositivo puede alcanzar.
 
-Zero Trust elimina la confianza implicita. Ningún dispositivo es confiable por defecto, independientemente de su ubicación.
+Zero Trust elimina la confianza implícita. Ningún dispositivo es confiable por defecto, independientemente de su ubicación.
 
 ## Los 3 Pilares de Zero Trust
 
@@ -123,13 +123,13 @@ BeyondCorp eliminó el concepto de red corporativa privilegiada. Todos los recur
 - Estado del dispositivo
 - Contexto de la solicitud
 
-No importa si el empleado esta en la oficina de Google, en un café en Tokio, o en su casa en Brasil. El proceso de autenticación es el mismo. No hay confianza implicita por estar en la red corporativa.
+No importa si el empleado esta en la oficina de Google, en un café en Tokio, o en su casa en Brasil. El proceso de autenticación es el mismo. No hay confianza implícita por estar en la red corporativa.
 
 Google público que después de implementar BeyondCorp, los incidentes de seguridad relacionados con acceso no autorizado se redujeron drásticamente.
 
 ## Componentes de una Arquitectura Zero Trust
 
-Implementar Zero Trust requiere varios componentes tecnologicos.
+Implementar Zero Trust requiere varios componentes tecnológicos.
 
 ### Policy Engine (Motor de Políticas)
 
@@ -147,7 +147,7 @@ Salida: Permitir, Denegar, o Permitir con restricciones.
 
 ### Policy Administrator (Administrador de Políticas)
 
-Recibe las decisiones del Policy Engine y las ejecuta. Genera tokens de acceso de corta duracion que el usuario/sistema usa para acceder a los recursos.
+Recibe las decisiones del Policy Engine y las ejecuta. Genera tokens de acceso de corta duración que el usuario/sistema usa para acceder a los recursos.
 
 ### Policy Enforcement Point (Punto de Aplicación de Políticas)
 
@@ -155,11 +155,11 @@ El componente que intercepta las solicitudes y las envía al Policy Engine. Pued
 
 ### Identity Provider (Proveedor de Identidad)
 
-Gestiona identidades de usuarios y dispositivos. En el mundo Zero Trust, debe soportar autenticación fuerte (MFA, FIDO2, biometría) y federacion de identidades (SSO).
+Gestiona identidades de usuarios y dispositivos. En el mundo Zero Trust, debe soportar autenticación fuerte (MFA, FIDO2, biometría) y federación de identidades (SSO).
 
 ### Device Management (Gestión de Dispositivos)
 
-Evalua el estado de salud de los dispositivos antes de conceder acceso. Usa MDM (Mobile Device Management), EDR, y certificados de dispositivo.
+Evalúa el estado de salud de los dispositivos antes de conceder acceso. Usa MDM (Mobile Device Management), EDR, y certificados de dispositivo.
 
 Componentes clave:
 - Inventario de dispositivos: Que dispositivos existen? Son conocidos?
@@ -170,11 +170,11 @@ Componentes clave:
 
 No todos los datos son iguales. Zero Trust requiere saber que datos son sensibles para aplicar políticas de acceso diferenciales.
 
-Niveles de clasificación tipicos:
+Niveles de clasificación típicos:
 - Público: Accesible sin restricciones.
 - Interno: Accesible a todos los empleados.
 - Confidencial: Accesible solo a equipos específicos.
-- Restringido: Accesible solo a personas específicas con justificacion.
+- Restringido: Accesible solo a personas específicas con justificación.
 
 ### Network Segmentation (Segmentación de Red)
 
@@ -203,7 +203,7 @@ Zero Trust no es un producto que se compra e instala. Es un viaje de madurez.
 - Firewall perimetral como única defensa
 - Red plana sin segmentación
 - VPN para acceso remoto
-- Confianza implicita en la red interna
+- Confianza implícita en la red interna
 - Autenticación basada solo en contraseña
 
 ### Nivel 2: Inicial
@@ -231,7 +231,7 @@ Zero Trust no es un producto que se compra e instala. Es un viaje de madurez.
 - Automatización completa de políticas de acceso
 - Threat hunting basado en analítica avanzada
 
-La mayoría de las empresas están en nivel 1 o 2. Llegar al nivel 4 requiere años y una transformacion cultural y tecnológica.
+La mayoría de las empresas están en nivel 1 o 2. Llegar al nivel 4 requiere años y una transformación cultural y tecnológica.
 
 ## Zero Trust en la Práctica
 
@@ -303,9 +303,9 @@ Fase 3 (Meses 9-14): Segmentación de red. Separaron la red en 20 segmentos. Imp
 Fase 4 (Meses 15-18): Implementación de políticas de acceso condicional. Acceso JIT para administradores. Monitoreo continuo con UEBA.
 
 Resultados:
-- Reduccion del 80% en incidentes de acceso no autorizado
+- Reducción del 80% en incidentes de acceso no autorizado
 - Tiempo de detección de amenazas reducido de 24 horas a 30 minutos
-- Reduccion del 60% en privilegios de administrador permanentes
+- Reducción del 60% en privilegios de administrador permanentes
 - Cumplimiento con regulaciones financieras
 
 ## Formas de Falla
@@ -320,7 +320,7 @@ Ignorar dispositivos no gestionados: Empleados que acceden desde dispositivos pe
 
 Complejidad excesiva: Intentar implementar Zero Trust en toda la organización de golpe. El resultado es caos y resistencia organizacional.
 
-Falta de patrocinio ejecutivo: Zero Trust requiere inversión, cambios de procesos, y transformacion cultural. Sin apoyo de la dirección, fracasa.
+Falta de patrocinio ejecutivo: Zero Trust requiere inversión, cambios de procesos, y transformación cultural. Sin apoyo de la dirección, fracasa.
 
 Segmentación sin monitoreo: Crear 50 segmentos de red pero no monitorear el tráfico entre ellos. Los atacantes pueden moverse entre segmentos sin ser detectados.
 
@@ -396,12 +396,12 @@ Revisa si puedes eliminar la confianza de la ecuación:
 
 5. Explica la diferencia entre el modelo de seguridad tradicional (Castillo Medieval) y Zero Trust (Laboratorio Secreto). Cual es más adecuado para el entorno laboral actual y por qué?
 
-6. Tu empresa usa VPN para que empleados remotos accedan a la red corporativa. Una vez conectados via VPN, los empleados tienen acceso a la mayoría de los recursos de la red. Explica por qué esto es contrario al modelo Zero Trust.
+6. Tu empresa usa VPN para que empleados remotos accedan a la red corporativa. Una vez conectados vía VPN, los empleados tienen acceso a la mayoría de los recursos de la red. Explica por qué esto es contrario al modelo Zero Trust.
 
 7. Que es JIT (Just-In-Time Access) y como reduce el riesgo de credenciales de administrador robadas?
 
-8. Una empresa implementa Zero Trust pero no monitorea el tráfico entre segmentos de red. Que riesgo persiste y como lo explotaria un atacante?
+8. Una empresa implementa Zero Trust pero no monitorea el tráfico entre segmentos de red. Que riesgo persiste y como lo explotaría un atacante?
 
 9. Explica el concepto de Policy Engine en la arquitectura Zero Trust. Que información considera para decidir si conceder o denegar acceso?
 
-10. El equipo de ventas argumenta que Zero Trust "ralentiza su trabajo" porque tienen que autenticarse cada vez que acceden a un recurso. Como balancearias seguridad con productividad en este escenario?
+10. El equipo de ventas argumenta que Zero Trust "ralentiza su trabajo" porque tienen que autenticarse cada vez que acceden a un recurso. Como balancearías seguridad con productividad en este escenario?

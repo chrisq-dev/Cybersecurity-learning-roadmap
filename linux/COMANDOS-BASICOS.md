@@ -11,9 +11,9 @@ updated: "2026-06-29"
 
 Un analista de seguridad o un atacante no usa el ratón para abrir carpetas. Usa la terminal porque es exponencialmente más rápida y poderosa. Mientras que un usuario gráfico tarda segundos en navegar entre directorios haciendo clic, un administrador entrenado puede recorrer todo el sistema de archivos, filtrar millones de líneas de logs, y encontrar un archivo específico en menos tiempo del que le toma al sistema gráfico abrir el explorador de archivos.
 
-Esta guía no es una lista de comandos para memorizar. Es un conjunto de patrones mentales para que pienses en la terminal como un lenguaje, no como un conjunto de herramientas sueltas. Cuando entiendes los patrones -- ubicación, filtrado, búsqueda, composicion -- los comandos individuales se vuelven irrelevantes porque puedes deducir como usar cualquiera.
+Esta guía no es una lista de comandos para memorizar. Es un conjunto de patrones mentales para que pienses en la terminal como un lenguaje, no como un conjunto de herramientas sueltas. Cuando entiendes los patrones -- ubicación, filtrado, búsqueda, composición -- los comandos individuales se vuelven irrelevantes porque puedes deducir como usar cualquiera.
 
-La mayoría de los tutoriales de Linux te enseñan comandos en orden alfabetico. Eso es inútil. Aqui los vas a aprender en orden funcional: primero a saber donde estas, luego a ver que hay, luego a leer archivos, luego a buscar dentro de ellos, y finalmente a encadenar todo.
+La mayoría de los tutoriales de Linux te enseñan comandos en orden alfabético. Eso es inútil. Aquí los vas a aprender en orden funcional: primero a saber donde estas, luego a ver que hay, luego a leer archivos, luego a buscar dentro de ellos, y finalmente a encadenar todo.
 
 ## La Analogía: El Buzo en Aguas Turbias
 
@@ -27,7 +27,7 @@ La terminal de Linux es así al principio. No hay iconos bonitos. No hay ventana
 
 `cd` es tu propulsor. Te mueve de una coordenada a otra instantáneamente.
 
-`grep` es tu detector de metales. Busca una aguja específica en un pajar de millones de particulas.
+`grep` es tu detector de metales. Busca una aguja específica en un pajar de millones de partículas.
 
 `find` es tu sonar. Escanea todo el océano buscando objetos que coincidan con criterios exactos.
 
@@ -35,7 +35,7 @@ El pipe `|` es un tubo que conecta tus instrumentos. Tomas la salida de tu detec
 
 Cuando un buzo entra en pánico, empieza a nadar sin dirección, gasta su oxígeno y comete errores. Cuando un administrador novato entra a un servidor sin saber que comando usar, empieza a escribir comandos aleatorios, se pierde en el sistema de archivos y puede dañar algo.
 
-La clave es: no entres en pánico. Usa tus instrumentos en orden. Primero ubicate. Luego explora. Luego busca. Luego actúa.
+La clave es: no entres en pánico. Usa tus instrumentos en orden. Primero ubícate. Luego explora. Luego busca. Luego actúa.
 
 ## Donde Estas: pwd, ls, cd
 
@@ -61,7 +61,7 @@ Cuando trabajas en múltiples servidores simultáneamente (algo común en respue
 
 El `-la` no es opcional. Es el estándar. Cualquier tutorial o guía que muestre `ls` sin banderas te esta ensenando la versión incompleta.
 
-`ls -lah` añade `-h` para mostrar tamanos en formato humano (KB, MB, GB). Esto es útil cuando buscas archivos grandes que no deberían estar ahí, como un atacante que almacena una base de datos robada.
+`ls -lah` añade `-h` para mostrar tamaños en formato humano (KB, MB, GB). Esto es útil cuando buscas archivos grandes que no deberían estar ahí, como un atacante que almacena una base de datos robada.
 
 Un truco que uso en investigaciones: `ls -la --sort=time` ordena los archivos por fecha de modificación, mostrando primero los más recientes. Cuando investigas un incidente, los archivos que el atacante tocó suelen estar entre los más recientemente modificados.
 
@@ -75,7 +75,7 @@ No hay mucho misterio en `cd`. El error común es escribir rutas relativas sin e
 
 Siempre usa `pwd` antes de `cd` si no estas seguro de tu posición.
 
-## Lectura Estrategica: cat, less, head, tail
+## Lectura Estratégica: cat, less, head, tail
 
 Cuando encuentras un archivo en una investigación, no lo abres con un editor gráfico. Lo lees en la terminal. La razón es simple: velocidad. Un editor gráfico carga el archivo entero en memoria, lo que puede tardar segundos o minutos si el archivo es enorme. La terminal te muestra solo lo que necesitas.
 
@@ -107,13 +107,13 @@ Es útil para echar un vistazo rápido a la estructura de un archivo sin abrirlo
 
 `tail -n 20 archivo.txt` te muestra las últimas 20 líneas. Pero la verdadera potencia esta en `tail -f`.
 
-`tail -f` (follow) se queda ejecutando y muestra en tiempo real las nuevas líneas que se anaden al archivo. Esto es indispensable para monitorear logs en vivo.
+`tail -f` (follow) se queda ejecutando y muestra en tiempo real las nuevas líneas que se añaden al archivo. Esto es indispensable para monitorear logs en vivo.
 
 Escenario real: Estas respondiendo a un ataque de fuerza bruta activo. Abres una terminal, ejecutas `tail -f /var/log/auth.log`, y ves aparecer en pantalla, en tiempo real, cada intento de conexión fallido. Ves la IP del atacante, el usuario que intenta usar, y cada cuanto lo hace. Con esa información, puedes tomar decisiones inmediatas: bloquear la IP con `iptables`, o notificar al equipo de red para que la filtre en el borde.
 
 ### tac: La Versión Inversa
 
-`tac` es `cat` al reves. Muestra el archivo empezando por la última línea. Esto es útil cuando los logs escriben la fecha más reciente al final y quieres ver primero lo último ocurrido.
+`tac` es `cat` al revés. Muestra el archivo empezando por la última línea. Esto es útil cuando los logs escriben la fecha más reciente al final y quieres ver primero lo último ocurrido.
 
 ## Búsqueda en Contenido: grep
 
@@ -131,7 +131,7 @@ El nombre viene de "Global Regular Expression Print". En su forma más simple, b
 
 ### Banderas Críticas de grep
 
-`-i`: Ignora mayúsculas/minusculas. `grep -i "error"` encuentra "Error", "ERROR", "error".
+`-i`: Ignora mayúsculas/minúsculas. `grep -i "error"` encuentra "Error", "ERROR", "error".
 
 `-v`: Invierte la búsqueda. Muestra las líneas que NO coinciden. `grep -v "^#"` muestra líneas que no son comentarios en un archivo de configuración.
 
@@ -139,7 +139,7 @@ El nombre viene de "Global Regular Expression Print". En su forma más simple, b
 
 `-n`: Muestra el número de línea donde encontró la coincidencia. Útil para referenciar ubicaciones exactas.
 
-`-A 5` y `-B 5`: Muestra 5 líneas después (After) y 5 líneas antes (Before) de la coincidencia. `grep -B 2 -A 2 "192.168.1.100" /var/log/apache2/access.log` te muestra 2 líneas antes y 2 después de cada petición hecha desde esa IP, dandote contexto de la actividad del atacante.
+`-A 5` y `-B 5`: Muestra 5 líneas después (After) y 5 líneas antes (Before) de la coincidencia. `grep -B 2 -A 2 "192.168.1.100" /var/log/apache2/access.log` te muestra 2 líneas antes y 2 después de cada petición hecha desde esa IP, dándote contexto de la actividad del atacante.
 
 ### Patrones con Expresiones Regulares
 
@@ -149,7 +149,7 @@ El nombre viene de "Global Regular Expression Print". En su forma más simple, b
 - `grep "192\.168\." /var/log/syslog`: Busca direcciones IP en el rango 192.168.x.x.
 - `grep "[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}" archivo`: Busca cualquier dirección IP (formato básico, no perfecto pero útil).
 
-Una trampa común: los caracteres como el punto (.) en regex significan "cualquier carácter". Si buscas "192.168.1.1", el `.` coincidira con `192X168X1X1` también. Por eso debes escaparlo con `\.`.
+Una trampa común: los caracteres como el punto (.) en regex significan "cualquier carácter". Si buscas "192.168.1.1", el `.` coincidirá con `192X168X1X1` también. Por eso debes escaparlo con `\.`.
 
 ### Escenarios Reales con grep
 
@@ -187,7 +187,7 @@ Una trampa común: los caracteres como el punto (.) en regex significan "cualqui
 
 `find / -perm -o+w` busca archivos que cualquiera puede escribir (world-writable). Un atacante podría modificar estos archivos para inyectar código malicioso.
 
-### Combinaciones utiles
+### Combinaciones útiles
 
 `find / -name "*.sh" -mmin -60` busca scripts de shell modificados en la última hora. Los atacantes suelen descargar scripts en el momento del ataque.
 
@@ -212,8 +212,8 @@ La salida de A se vuelve la entrada de B, y la salida de B se vuelve la entrada 
 2. Filtra solo las líneas con "Failed"
 3. Extrae la última columna (la dirección IP)
 4. Ordena las IPs
-5. Cuenta ocurrencias unicas
-6. Ordena numericamente en reversa
+5. Cuenta ocurrencias únicas
+6. Ordena numéricamente en reversa
 
 El resultado es una lista de IPs ordenadas por número de intentos fallidos de conexión. La IP que más intentos hizo aparece primero. Eso es probablemente el atacante.
 
@@ -230,7 +230,7 @@ Los principiantes confunden `|` con `>` y `>>`. Son diferentes:
 `grep "error" log.txt > errores.txt` guarda los resultados en un archivo.
 `grep "error" log.txt | wc -l` cuenta las líneas con error.
 
-## Redirección y Composicion Avanzada
+## Redirección y Composición Avanzada
 
 ### tee: Ver y Guardar al Mismo Tiempo
 
@@ -256,7 +256,7 @@ Esto encuentra archivos temporales con más de 7 días de antigüedad y los elim
 
 ### sort y uniq: Ordenar y Contar
 
-`sort` ordena líneas alfabéticamente o numericamente. `uniq` elimina duplicados (pero solo funciona si los duplicados están consecutivos, por eso se usa con `sort` primero).
+`sort` ordena líneas alfabéticamente o numéricamente. `uniq` elimina duplicados (pero solo funciona si los duplicados están consecutivos, por eso se usa con `sort` primero).
 
 `cat access.log | awk '{print $1}' | sort | uniq -c | sort -nr`
 
@@ -387,11 +387,11 @@ Un alias defensivo útil:
 
 Esto hace que `rm` siempre pregunte antes de borrar, evitando borrados accidentales.
 
-Pero los alias también son un vector de ataque. Si un atacante modifica tu `~/.bashrc` para añadir `alias sudo='sudo /tmp/keylogger'`, cada vez que ejecutes sudo, estaras ejecutando el keylogger del atacante antes del comando real.
+Pero los alias también son un vector de ataque. Si un atacante modifica tu `~/.bashrc` para añadir `alias sudo='sudo /tmp/keylogger'`, cada vez que ejecutes sudo, estarás ejecutando el keylogger del atacante antes del comando real.
 
 ## El Comando watch: Observación Periódica
 
-`watch` ejecuta un comando cada 2 segundos (por defecto) y muestra la salida en pantalla, actualizandola constantemente.
+`watch` ejecuta un comando cada 2 segundos (por defecto) y muestra la salida en pantalla, actualizándola constantemente.
 
 `watch -n 5 'ps aux | grep httpd'` muestra cada 5 segundos los procesos de Apache que están corriendo.
 
@@ -420,7 +420,7 @@ El análisis forense del ataque a Capital One en 2019 revelo que el atacante uso
 
 Durante el incidente de SolarWinds (2020), los atacantes usaron comandos de `find` para localizar archivos de construcción y despliegue, y `grep` para buscar contraseñas y tokens incrustados en scripts. La limpieza de logs fue parte central de su operación para evitar detección.
 
-En 2018, un atacante comprometio un servidor Jenkins mal configurado en una empresa de tecnología. Uso `find / -type f -name "*.pem" 2>/dev/null` para localizar claves privadas SSH, y luego las uso para moverse lateralmente a otros servidores.
+En 2018, un atacante comprometió un servidor Jenkins mal configurado en una empresa de tecnología. Uso `find / -type f -name "*.pem" 2>/dev/null` para localizar claves privadas SSH, y luego las uso para moverse lateralmente a otros servidores.
 
 ## Autoevaluación
 
@@ -434,7 +434,7 @@ En 2018, un atacante comprometio un servidor Jenkins mal configurado en una empr
 
 5. Te piden auditar un servidor para asegurarte de que no hay scripts sospechosos ejecutándose. Usas `ps aux` y la lista tiene 300 líneas. Como usarías un pipe para encontrar instantáneamente si algún proceso es un script `bash` o `python` que no debería estar ahí?
 
-6. Un administrador ejecuta `cat file.txt > file.txt`. El archivo termina vacio. Explica por qué ocurre esto y como se podría haber evitado.
+6. Un administrador ejecuta `cat file.txt > file.txt`. El archivo termina vacío. Explica por qué ocurre esto y como se podría haber evitado.
 
 7. Estas revisando los logs de un servidor web y encuentras 50,000 peticiones desde una IP china en los últimos 5 minutos. Quieres ver las últimas 10 peticiones de esa IP para entender que estaba haciendo el atacante. Escribe el comando completo usando `grep`, `tail`, y pipes.
 

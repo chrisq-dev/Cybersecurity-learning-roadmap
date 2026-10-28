@@ -76,7 +76,7 @@ Es una puerta de entrada habitual para perfiles iniciales.
 
 ## 3. El Arquitecto Defensivo (Cloud Security Engineer)
 
-(Senior-Level). Si llegas aqui, la rompiste.
+(Senior-Level). Si llegas aquí, la rompiste.
 * **La Misión:** Eres el ingeniero que diseña y construye el castillo desde cero para que el dragón nunca pueda entrar. Construyes los fosos con cocodrilos (Firewalls), diseñas las bóvedas blindadas (Cifrado) y aíslas a los habitantes en burbujas de cristal impenetrables (Contenedores/Kubernetes).
 * **Las Habilidades (Skills):**
   * Dominio absoluto de la Nube (AWS, Azure, GCP).

@@ -1,11 +1,34 @@
 import "./globals.css";
+import { Fira_Code, Instrument_Serif, Manrope } from "next/font/google";
 import TopNav from '../components/TopNav';
 import ReadingProgress from '../components/ReadingProgress';
+import SiteFooter from '../components/SiteFooter';
 
 const BASE_URL = "https://cbsdev.lat";
 const SITE_TITLE = "Mapa abierto de ciberseguridad en español";
 const SITE_DESCRIPTION = "Colección abierta de explicaciones y recursos para consultar fundamentos, conectar conceptos y explorar la ciberseguridad en español.";
 const SOCIAL_IMAGE = "/og-mapa-ciberseguridad.png";
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const firaCode = Fira_Code({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata = {
   metadataBase: new URL(BASE_URL),
@@ -71,15 +94,17 @@ export default function RootLayout({ children }) {
   `;
 
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning className={`${instrumentSerif.variable} ${manrope.variable} ${firaCode.variable}`}>
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <a className="skip-link" href="#main-content">Saltar al contenido</a>
         <ReadingProgress />
         <div className="layout-container">
           <TopNav />
-          <main className="main-content">
+          <main className="main-content" id="main-content">
             {children}
           </main>
+          <SiteFooter />
         </div>
       </body>
     </html>

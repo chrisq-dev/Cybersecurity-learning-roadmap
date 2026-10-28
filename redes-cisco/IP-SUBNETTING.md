@@ -11,7 +11,7 @@ updated: "2026-06-29"
 
 Las direcciones IP son el sistema de coordenadas de internet. Sin ellas, no hay forma de que un paquete sepa donde ir. Pero no basta con entender que una IP es un número. Hay que entender como se estructuran las redes, por qué se dividen en subredes, y como esa división es la base de la seguridad perimetral.
 
-El subnetting asusta a mucha gente porque involucra números binarios y máscaras. Mi objetivo aqui es que entiendas la lógica, no que memorices tablas. En el mundo real, usas calculadoras de subnetting. Pero si no entiendes que calculan, no podrás diseñar redes seguras ni diagnosticar problemas de enrutamiento.
+El subnetting asusta a mucha gente porque involucra números binarios y máscaras. Mi objetivo aquí es que entiendas la lógica, no que memorices tablas. En el mundo real, usas calculadoras de subnetting. Pero si no entiendes que calculan, no podrás diseñar redes seguras ni diagnosticar problemas de enrutamiento.
 
 ## La diferencia entre una dirección MAC y una IP
 
@@ -19,11 +19,11 @@ Tu computadora tiene un nombre de fábrica: la dirección MAC. Es un identificad
 
 La dirección IP es la dirección actual del dispositivo. Cambia si te mudas de red. Le dice al resto de internet donde encontrarte ahora.
 
-Si un router solo usara direcciones MAC, no podría enrutar nada. Necesitaria saber la MAC de cada dispositivo en el mundo. La tabla seria infinita. En cambio, los routers solo necesitan saber que redes existen y por donde llegar a ellas. Las IPs le permiten a los routers resumir millones de dispositivos en una sola entrada de tabla.
+Si un router solo usara direcciones MAC, no podría enrutar nada. Necesitaría saber la MAC de cada dispositivo en el mundo. La tabla seria infinita. En cambio, los routers solo necesitan saber que redes existen y por donde llegar a ellas. Las IPs le permiten a los routers resumir millones de dispositivos en una sola entrada de tabla.
 
 ## Sistema binario: los números que entienden las computadoras
 
-pasa aqui? Las máquinas no piensan en decimal como nosotros. Piensan en unos y ceros. Y si no entiendes eso, el subnetting te va a parecer magia negra.
+pasa aquí? Las máquinas no piensan en decimal como nosotros. Piensan en unos y ceros. Y si no entiendes eso, el subnetting te va a parecer magia negra.
 
 Las direcciones IP se escriben en decimal, pero las computadoras las procesan en binario. Entender binario es esencial para subnetting.
 
@@ -100,7 +100,7 @@ Originalmente, las IPs se asignaban en clases fijas:
 
 ### Problemas del sistema de clases
 
-El sistema de clases era rigido. Si necesitabas 300 hosts, no podías usar una Clase C (254 hosts máximo). Tenías que usar una Clase B (65,534 hosts), desperdiciando 65,000 direcciones.
+El sistema de clases era rígido. Si necesitabas 300 hosts, no podías usar una Clase C (254 hosts máximo). Tenías que usar una Clase B (65,534 hosts), desperdiciando 65,000 direcciones.
 
 Con la explosión de internet en los 90, este desperdicio acelero el agotamiento de IPv4. La solución fue CIDR.
 
@@ -111,7 +111,7 @@ CIDR eliminó el concepto de clases fijas. En lugar de /8, /16, /24, puedes usar
 Ventajas de CIDR:
 - Flexibilidad: creas redes del tamaño exacto que necesitas
 - Ahorro de direcciones: no desperdicias IPs
-- Agregacion de rutas: reduces el tamaño de las tablas de enrutamiento
+- Agregación de rutas: reduces el tamaño de las tablas de enrutamiento
 
 CIDR se escribe como IP/máscara en bits: 192.168.1.0/24 significa que los primeros 24 bits son la red y los últimos 8 son los hosts.
 
@@ -185,7 +185,7 @@ En 192.168.1.0/24, la dirección de broadcast es 192.168.1.255.
 
 ### Link-local (APIPA)
 
-169.254.0.0/16 son direcciones link-local. Un dispositivo que no puede obtener una IP via DHCP se asigna una automáticamente en este rango. Si ves una IP 169.254.x.x, significa que DHCP fallo.
+169.254.0.0/16 son direcciones link-local. Un dispositivo que no puede obtener una IP vía DHCP se asigna una automáticamente en este rango. Si ves una IP 169.254.x.x, significa que DHCP fallo.
 
 ## Direcciones privadas vs públicas
 
@@ -196,7 +196,7 @@ Las direcciones privadas no son enrutables en internet. Se usan dentro de redes 
 - 172.16.0.0/12: 172.16.0.0 a 172.31.255.255 (1,048,576 direcciones)
 - 192.168.0.0/16: 192.168.0.0 a 192.168.255.255 (65,536 direcciones)
 
-Las direcciones públicas son unicas en todo internet. Son asignadas por la IANA y los registros regionales (RIPE, ARIN, LACNIC, AfriNIC, APNIC).
+Las direcciones públicas son únicas en todo internet. Son asignadas por la IANA y los registros regionales (RIPE, ARIN, LACNIC, AfriNIC, APNIC).
 
 Si ves una IP privada en un log de un ataque externo, es tráfico interno. El atacante no esta en internet, esta dentro de la red.
 
@@ -251,9 +251,9 @@ VLSM (Variable Length Subnet Mask) permite usar diferentes máscaras dentro del 
 - 25 hosts: 192.168.1.192/27 (192.168.1.192 a 192.168.1.223)
 - 25 hosts: 192.168.1.224/27 (192.168.1.224 a 192.168.1.255)
 
-Sin VLSM, habrias usado /26 para todas (4 subredes de 62 hosts), desperdiciando direcciones. Con VLSM, usas exactamente el espacio que necesitas.
+Sin VLSM, habrías usado /26 para todas (4 subredes de 62 hosts), desperdiciando direcciones. Con VLSM, usas exactamente el espacio que necesitas.
 
-## Supernetting (agregacion de rutas)
+## Supernetting (agregación de rutas)
 
 El supernetting combina múltiples redes en una sola entrada de tabla de enrutamiento. Es el proceso inverso al subnetting.
 
@@ -271,13 +271,13 @@ En binario:
 
 Los primeros 22 bits son idénticos. Puedes resumir como 192.168.0.0/22.
 
-Esto reduce las tablas de enrutamiento de 4 entradas a 1. Es esencial para que internet funcione: sin agregacion, las tablas de los routers del backbone serian millones de entradas.
+Esto reduce las tablas de enrutamiento de 4 entradas a 1. Es esencial para que internet funcione: sin agregación, las tablas de los routers del backbone serian millones de entradas.
 
-## IPv6: el futuro que ya esta aqui
+## IPv6: el futuro que ya esta aquí
 
 IPv6 usa 128 bits. Se escribe en hexadecimal separado por dos puntos. Se ve así: 2001:0db8:85a3:0000:0000:8a2e:0370:7334.
 
-Reglas de simplificacion:
+Reglas de simplificación:
 - Los ceros iniciales se pueden omitir: 2001:db8:85a3:0:0:8a2e:370:7334
 - Una secuencia de dos puntos consecutivos reemplaza bloques de ceros: 2001:db8:85a3::8a2e:370:7334
 - Esto solo se puede hacer una vez en la dirección.
@@ -301,23 +301,23 @@ IPv6 eliminó NAT porque hay suficientes direcciones. Cada dispositivo puede ten
 
 Configuras una máscara que no coincide con la del resto de la red. Los hosts pueden ver el gateway como parte de su propia red o como una red remota. Si lo ven como remoto, intentan enrutar en lugar de usar ARP, y no pueden comunicarse.
 
-Sintoma: ping a la IP del gateway falla, pero ping a 127.0.0.1 funciona.
+Síntoma: ping a la IP del gateway falla, pero ping a 127.0.0.1 funciona.
 
-### Superposicion de subredes
+### Superposición de subredes
 
 Dos subredes que se solapan. Si tienes 10.0.0.0/24 y 10.0.0.128/25, la segunda esta contenida en la primera. Los routers no saben a cual enviar los paquetes.
 
 ### Gateway predeterminado incorrecto
 
-El gateway configurado no esta en la misma subred que el host. El host no puede enviar tráfico fuera de su red porque intenta alcanzar el gateway via ARP, y el gateway nunca responde porque no pertenece a esa red.
+El gateway configurado no esta en la misma subred que el host. El host no puede enviar tráfico fuera de su red porque intenta alcanzar el gateway vía ARP, y el gateway nunca responde porque no pertenece a esa red.
 
 ### TTL expirado
 
 Un paquete que circula en un bucle de enrutamiento eventualmente agota su TTL y se descarta. El remitente recibe un mensaje ICMP Time Exceeded.
 
-### Fragmentacion excesiva
+### Fragmentación excesiva
 
-Cuando los paquetes son demasiado grandes para el MTU del enlace, se fragmentan. La fragmentacion aumenta la carga de procesamiento y reduce el rendimiento. Si un solo fragmento se pierde, todo el paquete original debe ser retransmitido.
+Cuando los paquetes son demasiado grandes para el MTU del enlace, se fragmentan. La fragmentación aumenta la carga de procesamiento y reduce el rendimiento. Si un solo fragmento se pierde, todo el paquete original debe ser retransmitido.
 
 ### Agotamiento de IPv4
 
@@ -340,7 +340,7 @@ Con CIDR, un atacante sabe que si encuentra una IP en 10.0.0.0/8, hay potencialm
 Un atacante envía paquetes con una IP de origen falsa. Esto permite:
 
 - Evadir listas blancas basadas en IP
-- Lanzar ataques de amplificacion (como el Smurf attack)
+- Lanzar ataques de amplificación (como el Smurf attack)
 - Ocultar el origen real del ataque
 
 La mitigación es el filtrado de ingreso (ingress filtering): el router verifica que el tráfico que sale de una red tenga IPs de origen pertenecientes a esa red.
@@ -356,13 +356,13 @@ Casos reales:
 - 2018: Un provedor de internet de Rusia anuncio rutas para Google, Amazon, Facebook, redirigiendo el tráfico durante minutos.
 - 2021: Varios ataques de BGP hijacking contra servicios financieros.
 
-### Fragmentacion como evasion
+### Fragmentación como evasión
 
-Los firewalls y sistemas de detección de intrusiones a menudo verifican los paquetes completos. Pero la fragmentacion IP permite dividir un paquete en fragmentos que, individualmente, parecen inofensivos. Cuando se reensamblan en el destino, forman un ataque.
+Los firewalls y sistemas de detección de intrusiones a menudo verifican los paquetes completos. Pero la fragmentación IP permite dividir un paquete en fragmentos que, individualmente, parecen inofensivos. Cuando se reensamblan en el destino, forman un ataque.
 
 Técnicas:
 - Fragmentos muy pequeños (tiny fragment attack): los datos del encabezado de capa 4 se dividen en el primer fragmento, evadiendo firewalls que no reensamblan.
-- Fragmentos traslapados (overlapping fragment attack): fragmentos cuyo offset se superpone, corrompiendo la inspeccion.
+- Fragmentos traslapados (overlapping fragment attack): fragmentos cuyo offset se superpone, corrompiendo la inspección.
 
 ### Enrutamiento de origen
 
@@ -374,13 +374,13 @@ Esta opción esta deshabilitada en casi todos los routers modernos.
 
 ### El error de máscara en una migración
 
-Una empresa migro sus servidores de 10.0.0.0/24 a 10.0.0.0/23 para tener más direcciones. El administrador actualizo la máscara en los servidores pero olvido actualizar la máscara en los switches de acceso. Los servidores y los switches no coincidian en los límites de subred.
+Una empresa migro sus servidores de 10.0.0.0/24 a 10.0.0.0/23 para tener más direcciones. El administrador actualizo la máscara en los servidores pero olvido actualizar la máscara en los switches de acceso. Los servidores y los switches no coincidían en los límites de subred.
 
 Los servidores nuevos con IPs en 10.0.0.128 a 10.0.0.255 no podían comunicarse con el gateway. El error tardo 2 horas en diagnosticarse porque "el ping funcionaba" (ping usa ICMP, que a veces funciona incluso con máscaras incorrectas dependiendo de la configuración).
 
 ### BGP hijacking de una criptomoneda
 
-En 2018, un atacante realizo BGP hijacking contra el DNS de Amazon Web Services. Redirigio el tráfico de un servicio de criptomonedas a un sitio falso. Los usuarios que escribian la URL correcta eran redirigidos a un servidor controlado por el atacante, que robaba sus credenciales.
+En 2018, un atacante realizo BGP hijacking contra el DNS de Amazon Web Services. Redirigió el tráfico de un servicio de criptomonedas a un sitio falso. Los usuarios que escribían la URL correcta eran redirigidos a un servidor controlado por el atacante, que robaba sus credenciales.
 
 El ataque duro aproximadamente 2 horas. Se estima que el atacante robo criptomonedas por valor de cientos de miles de dólares.
 
@@ -388,7 +388,7 @@ El ataque duro aproximadamente 2 horas. Se estima que el atacante robo criptomon
 
 Un hospital configuró todas las redes de los dispositivos médicos en una sola subred /22 (1022 direcciones). Cuando llegaron los nuevos monitores cardiacos para 300 camas, no había suficientes direcciones disponibles.
 
-El hospital tuvo que reestructurar todo el direccionamiento, lo que requirio apagar la red durante un fin de semana. En un hospital, eso es crítico.
+El hospital tuvo que reestructurar todo el direccionamiento, lo que requirió apagar la red durante un fin de semana. En un hospital, eso es crítico.
 
 ## Autoevaluación
 
@@ -402,7 +402,7 @@ El hospital tuvo que reestructurar todo el direccionamiento, lo que requirio apa
 
 5. Si un atacante realiza un escaneo de una subred /24, cuántas IPs debe probar? Y si la subred es /16? Cuanto tiempo le tomaría a 1000 paquetes por segundo escanear una /16 completa?
 
-6. Por qué las direcciones privadas (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) no son enrutables en internet? Que tecnología hace posible que dispositivos con IPs privadas puedan navegar? Esto es una característica de seguridad o una limitacion?
+6. Por qué las direcciones privadas (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) no son enrutables en internet? Que tecnología hace posible que dispositivos con IPs privadas puedan navegar? Esto es una característica de seguridad o una limitación?
 
 7. Explica el concepto de VLSM. Diseña el direccionamiento para una empresa que necesita 3 subredes de 120, 60 y 30 hosts respectivamente, partiendo de 192.168.1.0/24.
 
@@ -410,4 +410,4 @@ El hospital tuvo que reestructurar todo el direccionamiento, lo que requirio apa
 
 9. Tienes las siguientes redes: 10.1.0.0/24, 10.1.1.0/24, 10.1.2.0/24, 10.1.3.0/24. Cual es la máscara de supernet que las resume a una sola ruta? Cual es la dirección de red resumida?
 
-10. Que es la fragmentacion IP y como puede ser utilizada por un atacante para evadir firewalls y sistemas de detección?
+10. Que es la fragmentación IP y como puede ser utilizada por un atacante para evadir firewalls y sistemas de detección?

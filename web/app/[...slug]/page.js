@@ -3,6 +3,7 @@ import MarkdownRenderer from '../../components/MarkdownRenderer';
 import Pagination from '../../components/Pagination';
 import TableOfContents from '../../components/TableOfContents';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { OFFICIAL_SOURCES } from '../../lib/officialSources.mjs';
 
 const BASE_URL = "https://cbsdev.lat";
@@ -60,7 +61,7 @@ function extractDescription(content) {
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const data = getMarkdownContent(resolvedParams.slug);
-  if (!data) return { title: 'No encontrado' };
+  if (!data) notFound();
 
   const pageUrl = `${BASE_URL}/${resolvedParams.slug.join('/')}`;
   const description =
@@ -93,14 +94,7 @@ export default async function Page({ params }) {
   const resolvedParams = await params;
   const data = getMarkdownContent(resolvedParams.slug);
 
-  if (!data) {
-    return (
-      <div style={{ textAlign: 'center', padding: '5rem' }}>
-        <h1>404 — Documento no encontrado</h1>
-        <Link href="/">Volver al inicio</Link>
-      </div>
-    );
-  }
+  if (!data) notFound();
 
   const structure = getContentStructure();
   const allPages = structure.flatMap(category => category.pages);

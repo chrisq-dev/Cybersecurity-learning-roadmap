@@ -266,7 +266,7 @@ Active Directory permite permisos muy granulares sobre objetos. Por ejemplo, se 
 
 Un atacante usa herramientas como BloodHound para mapear estas relaciones. BloodHound consulta AD y construye un grafo que muestra:
 
-- Qué usuarios pueden leer la contraseña de qué otros usuarios (via "GenericAll" o "AllExtendedRights").
+- Qué usuarios pueden leer la contraseña de qué otros usuarios (vía "GenericAll" o "AllExtendedRights").
 - Qué usuarios pueden agregar miembros a grupos privilegiados.
 - Qué máquinas permiten delegación no restringida.
 - Qué grupos tienen sesiones activas de usuarios privilegiados.

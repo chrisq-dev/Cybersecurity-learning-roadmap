@@ -227,7 +227,7 @@ Plugin de auditoría empresarial o soluciones de terceros.
 
 ### DAM y SIEM
 
-Los logs de DAM deben enviarse al SIEM central para correlacion con otros eventos:
+Los logs de DAM deben enviarse al SIEM central para correlación con otros eventos:
 
 - Un DBA accede a la base de datos desde una IP externa (no desde la oficina).
 - Un DBA accede a las 3:00 AM (fuera de horario).
@@ -235,7 +235,7 @@ Los logs de DAM deben enviarse al SIEM central para correlacion con otros evento
 
 En el SIEM, estas señales se correlacionan para detectar Insider Threats.
 
-## Segregacion de Deberes (SoD) en Bases de Datos
+## Segregación de Deberes (SoD) en Bases de Datos
 
 La segregación de deberes asegura que ninguna persona tenga permisos para realizar dos funciones incompatibles.
 
@@ -246,7 +246,7 @@ La segregación de deberes asegura que ninguna persona tenga permisos para reali
 - **Auditor:** Lee logs de auditoría pero no puede modificar la base de datos.
 - **Oficial de Seguridad:** Aprueba cambios pero no los ejecuta.
 
-### Separacion de Entornos
+### Separación de Entornos
 
 - **Desarrollo:** DBAs pueden modificar estructura, datos de prueba.
 - **Pruebas:** Datos enmascarados (no datos reales de clientes).
@@ -262,7 +262,7 @@ La inyección SQL es el enemigo #1 de las bases de datos. Un atacante que explot
 
 ### Defensas Contra SQL Injection
 
-1. **Parametrizacion de Consultas (Prepared Statements):** La única defensa realmente efectiva. Separar los datos del código SQL.
+1. **Parametrización de Consultas (Prepared Statements):** La única defensa realmente efectiva. Separar los datos del código SQL.
 
 ```python
 # VULNERABLE
@@ -276,7 +276,7 @@ cursor.execute("SELECT * FROM usuarios WHERE email = %s", (email,))
 
 3. **Validación de Input:** Verificar que los datos de entrada tengan el formato esperado.
 
-4. **Principio del Menor Privilegio:** La cuenta de la aplicación debe tener solo los permisos minimos. No usar `sa` o `root` para la aplicación web.
+4. **Principio del Menor Privilegio:** La cuenta de la aplicación debe tener solo los permisos mínimos. No usar `sa` o `root` para la aplicación web.
 
 5. **WAF (Web Application Firewall):** Bloquear patrones de SQL Injection en el tráfico HTTP.
 
@@ -288,23 +288,23 @@ Marriott descubrió que 500 millones de registros de clientes fueron robados. Lo
 
 Los atacantes usaron acceso legítimo (credenciales robadas) para acceder a datos de clientes. No necesitaron SQL Injection ni vulnerabilidades técnicas. Fue un abuso de privilegios.
 
-La lección: el monitoreo de actividad (DAM) y el enmascaramiento de datos habrian limitado el daño.
+La lección: el monitoreo de actividad (DAM) y el enmascaramiento de datos habrían limitado el daño.
 
 ### El DBA que Robo Datos de Tarjetas de Crédito (2017)
 
-Un administrador de base de datos de una empresa de pagos uso sus privilegios para copiar datos de tarjetas de crédito de clientes. Vendio los datos en la dark web.
+Un administrador de base de datos de una empresa de pagos uso sus privilegios para copiar datos de tarjetas de crédito de clientes. Vendió los datos en la dark web.
 
 El ataque fue descubierto cuando un socio comercial noto transacciones fraudulentas. La empresa no tenía:
 
 - Enmascaramiento de datos (el DBA veía todas las tarjetas).
-- Auditoría DAM (nadie registro que el DBA accedio a los datos).
-- Segregacion de deberes (el DBA tenía acceso a producción y a datos sensibles).
+- Auditoría DAM (nadie registro que el DBA accedió a los datos).
+- Segregación de deberes (el DBA tenía acceso a producción y a datos sensibles).
 
 ### El Ataque a la Cadena de Suministro de Target (2013)
 
 Target fue hackeado cuando atacantes robaron credenciales de un proveedor de HVAC (calefacción). Esas credenciales les dieron acceso a la red interna de Target, desde donde accedieron a la base de datos de tarjetas de crédito.
 
-El ataque comprometio 40 millones de tarjetas de crédito. Target no tenía:
+El ataque comprometió 40 millones de tarjetas de crédito. Target no tenía:
 
 - Segmentación de red (el proveedor de HVAC tenía acceso a la red de pagos).
 - Monitoreo de actividad de base de datos (DAM).
@@ -314,13 +314,13 @@ El ataque comprometio 40 millones de tarjetas de crédito. Target no tenía:
 
 ### Falla 1: DBA con Permisos Excesivos
 
-Asignar `sysadmin` a todos los DBAs. Un DBA puede ver y modificar cualquier dato sin restriccion.
+Asignar `sysadmin` a todos los DBAs. Un DBA puede ver y modificar cualquier dato sin restricción.
 
 ### Falla 2: Aplicación Web Conectada como sa
 
 La aplicación web se conecta a la base de datos con el usuario `sa` (administrador). Si hay SQL Injection, el atacante obtiene control total.
 
-### Falla 3: No Auditar Consultas Anomalas
+### Falla 3: No Auditar Consultas Anómalas
 
 No configurar auditoría para consultas inusuales (SELECT masivo, acceso fuera de horario, consultas a tablas sensibles).
 
@@ -332,7 +332,7 @@ Los datos sensibles (tarjetas de crédito, SSN, salarios) se muestran completos 
 
 Almacenar los logs de auditoría en la misma base de datos que se esta auditando. Si un atacante compromete la base de datos, puede borrar los logs.
 
-### Falla 6: Sin Separacion de Entornos
+### Falla 6: Sin Separación de Entornos
 
 Datos de producción usados en desarrollo y pruebas. Los desarrolladores tienen acceso a datos reales de clientes.
 
@@ -360,7 +360,7 @@ Si logró credenciales de un usuario con permisos `db_owner`, puedo:
 - Crear un usuario para mi mismo (backdoor).
 - Ejecutar comandos en el sistema operativo (xp_cmdshell en SQL Server).
 
-**3. Evasion de Auditoría:**
+**3. Evasión de Auditoría:**
 
 Si tengo acceso a la base de datos, busco:
 
@@ -392,6 +392,6 @@ Responde estas preguntas para verificar si comprendes los conceptos:
 
 6. Explica el concepto de segregación de deberes (SoD) en bases de datos. Da un ejemplo de dos roles que no deberían estar en la misma persona.
 
-7. Un administrador de base de datos consulta la tabla de salarios de empleados a las 2:00 AM desde su casa. Que herramientas permitirian detectar esta actividad como sospechosa?
+7. Un administrador de base de datos consulta la tabla de salarios de empleados a las 2:00 AM desde su casa. Que herramientas permitirían detectar esta actividad como sospechosa?
 
 8. Cual es la diferencia entre la auditoría nativa de SQL Server y una herramienta DAM de terceros? Que ventajas tiene DAM?

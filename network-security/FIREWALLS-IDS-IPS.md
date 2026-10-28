@@ -23,9 +23,9 @@ Guardia de seguridad enorme pero poco inteligente. Esta en la puerta con una lis
 ### Tipos de Firewalls
 
 **Firewall de filtrado de paquetes (Stateless):**
-Revisa solo cabeceras de paquetes (IP origen, IP destino, puerto, protocolo). No mantiene estado de conexiones. Rápido pero limitado. Cada paquete se evalua individualmente sin contexto de la conexión a la que pertenece.
+Revisa solo cabeceras de paquetes (IP origen, IP destino, puerto, protocolo). No mantiene estado de conexiones. Rápido pero limitado. Cada paquete se evalúa individualmente sin contexto de la conexión a la que pertenece.
 
-**Firewall de inspeccion de estado (Stateful):**
+**Firewall de inspección de estado (Stateful):**
 Mantiene una tabla de conexiones activas. Solo permite paquetes que pertenecen a conexiones establecidas. Si un paquete SYN externo llega al puerto 80, permite el establecimiento y registra la conexión. Los paquetes siguientes de esa conexión se permiten automáticamente. Es el estándar mínimo actual.
 
 **Firewall de capa de aplicación (Proxy):**
@@ -87,7 +87,7 @@ Verifica que los protocolos se usen según los estándares RFC. Detecta desviaci
 - **En la red interna:** Detecta movimiento lateral de atacantes que ya entraron.
 - **En segmentos crítico:** Red de base de datos, red de administración.
 
-## IPS (Intrusion Prevention System): El Perro que Muerde
+## IPS (Intrusión Prevention System): El Perro que Muerde
 
 Evolución del IDS. La P es Prevention. Se coloca en medio del tráfico (inline). Si huele un ataque, ladra (alerta al SIEM) y muerde al atacante (bloquea la conexión). El servidor se salva automáticamente sin intervención humana.
 
@@ -104,13 +104,13 @@ Configurar un IPS en modo bloqueo sin ajuste fino es peligroso. Si una regla es 
 
 ### Capacidades Avanzadas de IPS
 
-**Normalización de tráfico:** Reensambla paquetes fragmentados para detectar evasion por fragmentacion.
+**Normalización de tráfico:** Reensambla paquetes fragmentados para detectar evasión por fragmentación.
 
 **Bloqueo por reputación:** Usa listas de IPs maliciosas actualizadas en tiempo real. Si una IP tiene reputación de ser un servidor de C2, el IPS bloquea automáticamente.
 
 **Control de aplicaciones:** Identifica aplicaciones por comportamiento (no por puerto). Puede bloquear Tor, BitTorrent, VPNs no autorizadas incluso si usan puertos no estándar.
 
-**Descifrado TLS:** Inspecciona tráfico HTTPS descifrandolo en el IPS y re-cifrandolo hacia el destino. Requiere que los endpoints confien en el certificado del IPS.
+**Descifrado TLS:** Inspecciona tráfico HTTPS descifrandolo en el IPS y re-cifrandolo hacia el destino. Requiere que los endpoints confíen en el certificado del IPS.
 
 ## NGFW (Next-Generation Firewall): El Todo en Uno
 
@@ -137,13 +137,13 @@ Las empresas ya no compran firewall + IDS + IPS por separado. Compran un NGFW qu
 
 ### Regla Mal Configurada (2019)
 
-Una empresa configuró una regla que permitia todo el tráfico desde la IP de su proveedor cloud. La intención era permitir actualizaciones. Un atacante comprometio al proveedor y uso esa regla para acceder a la red interna.
+Una empresa configuró una regla que permitía todo el tráfico desde la IP de su proveedor cloud. La intención era permitir actualizaciones. Un atacante comprometió al proveedor y uso esa regla para acceder a la red interna.
 
 ### IPS en Modo Monitoreo (2020)
 
 Un banco implementó un IPS pero lo dejó en modo monitoreo durante meses. Nunca completo el ajuste. Un atacante lanzo un exploit conocido que el IPS detecto correctamente... pero solo genero una alerta. No bloqueo.
 
-### Evasion por Fragmentacion (2021)
+### Evasión por Fragmentación (2021)
 
 Un atacante fragmento paquetes IP para evadir el IDS. Cada fragmento era tan pequeño que el IDS no podía reensamblar el contenido. El ataque paso desapercibido.
 
@@ -159,7 +159,7 @@ Firewall como única defensa. Redes internas planas (sin segmentación). Reglas 
 
 Un atacante enfrentando firewalls, IDS e IPS sabe que debe:
 - Usar puertos permitidos (80, 443, 53) para esconder el ataque.
-- Fragmentar paquetes para evadir inspeccion.
+- Fragmentar paquetes para evadir inspección.
 - Usar HTTPS para cifrar el payload.
 - Enumerar reglas del firewall con escaneos lentos.
 - Usar tunelizacion (SSH, DNS) para tráfico malicioso.
@@ -174,8 +174,8 @@ El atacante también sabe que los firewalls mal administrados (configuraciones p
 4. Como detecta un IPS malware dentro de tráfico HTTPS? Que implicaciones de privacidad tiene?
 5. Un atacante escanea puertos muy lentamente (1 paquete cada 10 segundos). Por qué evade la detección del IDS?
 6. Tienes un firewall con 500 reglas acumuladas de 5 años. Nadie recuerda para que sirven. Como las limpias sin causar interrupción?
-7. Un empleado se conecta via VPN desde su casa. Su PC tiene malware que intenta propagarse a la red corporativa. Que defensas lo detectan y bloquean?
-8. Por qué "el firewall me protege de todo" es una concepcion errónea? Que ataques no puede prevenir?
+7. Un empleado se conecta vía VPN desde su casa. Su PC tiene malware que intenta propagarse a la red corporativa. Que defensas lo detectan y bloquean?
+8. Por qué "el firewall me protege de todo" es una concepción errónea? Que ataques no puede prevenir?
 
 ## Arquitectura de Defensa Perimetral
 
@@ -229,14 +229,14 @@ En entornos cloud (AWS, Azure, GCP), los firewalls son virtuales:
 Reglas en el IPS/NGFW:
 - Buscar patrones como: UNION SELECT, OR 1=1, ', --, WAITFOR DELAY.
 - Bloquear requests que contengan estos patrones en parámetros GET/POST.
-- Normalizar tráfico antes de la inspeccion para evitar evasion por codificación URL.
+- Normalizar tráfico antes de la inspección para evitar evasión por codificación URL.
 
 ### Bloqueo de Cross-Site Scripting (XSS)
 
 Reglas en el IPS/WAF:
 - Buscar patrones como: <script>, onerror=, onload=, javascript:.
 - Bloquear requests con estos patrones en headers, cookies, y body.
-- Validar Content-Type para evitar polucion de parámetros.
+- Validar Content-Type para evitar polución de parámetros.
 
 ### Bloqueo de Fuerza Bruta
 
@@ -250,7 +250,7 @@ Reglas en el firewall/IPS:
 Estrategias:
 - Rate limiting por IP origen.
 - Bloqueo de IPs en listas negras de reputación.
-- Captcha o desafios JS para tráfico sospechoso.
+- Captcha o desafíos JS para tráfico sospechoso.
 - Redirección a servicios de mitigación cloud (Cloudflare, Akamai, AWS Shield).
 - Anycast para distribuir tráfico entre múltiples centros de datos.
 
@@ -260,7 +260,7 @@ Estrategias:
 
 **Volumen de tráfico:**
 - Picos inusuales (posible DDoS o exfiltración).
-- Caidas inesperadas (posible fallo del firewall o del enlace).
+- Caídas inesperadas (posible fallo del firewall o del enlace).
 
 **Conexiones bloqueadas:**
 - Incremento en bloqueos (posible escaneo o ataque).
@@ -269,7 +269,7 @@ Estrategias:
 
 **Rendimiento del firewall:**
 - Uso de CPU y memoria.
-- Número de conexiones simultaneas.
+- Número de conexiones simultáneas.
 - Throughput vs. capacidad nominal.
 
 **Cambios de configuración:**
@@ -286,14 +286,14 @@ Estrategias:
 - Licencia por expirar.
 - Firmas de IDS/IPS desactualizadas.
 
-## Pruebas de Penetracion a Firewalls
+## Pruebas de Penetración a Firewalls
 
-Como un atacante evalua un firewall:
+Como un atacante evalúa un firewall:
 
 1. **Descubrimiento de reglas:** Escaneo de puertos con diferentes opciones (SYN, FIN, NULL) para inferir reglas.
-2. **Evasion de filtros:** Fragmentacion, decoys, timing lento, puertos de origen confiables.
+2. **Evasión de filtros:** Fragmentación, decoys, timing lento, puertos de origen confiables.
 3. **Firewalking:** Técnica para determinar que puertos están filtrados enviando paquetes con TTL específico.
-4. **Bypass de IDS/IPS:** Ofuscación de payloads, codificación URL multiple, división de ataques en múltiples paquetes.
+4. **Bypass de IDS/IPS:** Ofuscación de payloads, codificación URL múltiple, división de ataques en múltiples paquetes.
 
 ## Preguntas Adicionales
 

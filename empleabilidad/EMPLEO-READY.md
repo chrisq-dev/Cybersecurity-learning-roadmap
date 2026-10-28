@@ -71,7 +71,7 @@ la pregunta del millón es: ¿cómo sabes si tú estás listo? No midas tus cert
 
 ### Aún no apliques si... (Semáforo en Rojo)
 
-Ojo aqui, porque si estás en esta lista, mejor sigue estudiando un poco más:
+Ojo aquí, porque si estás en esta lista, mejor sigue estudiando un poco más:
 * No sabes la diferencia entre una IP Pública y una Privada.
 * No sabes cómo leer la ruta de un archivo en Linux.
 * Crees que un Firewall y un Antivirus son exactamente lo mismo.

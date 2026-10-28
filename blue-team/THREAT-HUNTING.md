@@ -16,7 +16,7 @@ Un cazador no espera alertas. Busca activamente lo que las reglas automáticas n
 ## El Concepto: Assumed Breach
 
 Históricamente, la ciberseguridad trataba de construir muros altos (firewalls) y guardias en las puertas (antivirus). Si la alarma no sonaba, el equipo dormía tranquilo. Esta mentalidad falla porque:
-- Los muros siempre tienen grietas (vulnerabilidades desconocidas, configuraciones erroneas).
+- Los muros siempre tienen grietas (vulnerabilidades desconocidas, configuraciones erróneas).
 - Los guardias se cansan y se distraen.
 - Los atacantes encuentran formas de entrar sin hacer ruido.
 
@@ -24,7 +24,7 @@ La doctrina moderna cambio con el concepto de "assumed breach" (brecha asumida).
 
 ### Implicaciones de Assumed Breach
 
-**Cambio de mentalidad:** En lugar de preguntarse "estamos seguros?", el cazador se pregunta "donde podría estar escondiendose un atacante?".
+**Cambio de mentalidad:** En lugar de preguntarse "estamos seguros?", el cazador se pregunta "donde podría estar escondiéndose un atacante?".
 
 **Cambio de enfoque:** No esperar alertas, sino buscar activamente anomalías en los datos disponibles. El SIEM no es una pantalla de alertas, es una base de datos para explorar.
 
@@ -62,7 +62,7 @@ El hunting cierra esa ventana. No espera a que exista una regla; busca el compor
 El cazador fórmula una hipótesis basada en inteligencia de amenazas, reportes de la industria, o conocimiento interno de la red.
 
 Proceso:
-1. Leer un reporte: "El grupo APT29 esta usando una nueva técnica de persistencia via servicios de Windows."
+1. Leer un reporte: "El grupo APT29 esta usando una nueva técnica de persistencia vía servicios de Windows."
 2. Formular hipótesis: "Si APT29 esta en nuestra red, podría haber instalado servicios sospechosos en los últimos 30 días."
 3. Diseñar búsqueda: Consultar el SIEM para listar todos los servicios instalados recientemente, filtrando por nombres que coincidan con patrones de APT29.
 4. Analizar resultados: Revisar la lista manualmente, buscando servicios en sistemas donde no se esperan.
@@ -71,12 +71,12 @@ Proceso:
 
 Ejemplo de hipótesis concretas:
 - "Si hay un atacante en la red, podría estar usando RDP para moverse lateralmente en horarios no laborales."
-- "Si un empleado fue comprometido via phishing, su cuenta podría estar accediendo a sistemas que normalmente no usa."
+- "Si un empleado fue comprometido vía phishing, su cuenta podría estar accediendo a sistemas que normalmente no usa."
 - "Si hay malware en la red, podría estar generando consultas DNS a dominios generados algoritmicamente (DGA)."
 
 ### Caza Basada en Indicadores (IoCs)
 
-El cazador recibe una lista de IPs, dominios, hashes, o patrones de ataque de fuentes de inteligencia y busca si aparecen en los logs historicos.
+El cazador recibe una lista de IPs, dominios, hashes, o patrones de ataque de fuentes de inteligencia y busca si aparecen en los logs históricos.
 
 Ventaja: Rápida de ejecutar, útil para detección inmediata de amenazas conocidas.
 Desventaja: Los atacantes cambian sus IoCs constantemente. Depender solo de IoCs es hunting débil.
@@ -94,9 +94,9 @@ El cazador establece una línea base de comportamiento normal y busca desviacion
 
 Proceso:
 1. Establecer línea base: Durante 30-90 días, recolectar datos de comportamiento normal de usuarios, sistemas, y redes.
-2. Definir métricas: Horarios de trabajo tipicos, volumen de datos transferido, destinos de conexión frecuentes, aplicaciones usadas.
+2. Definir métricas: Horarios de trabajo típicos, volumen de datos transferido, destinos de conexión frecuentes, aplicaciones usadas.
 3. Buscar desviaciones: Identificar comportamientos que se salen de la línea base establecida.
-4. Investigar: Para cada desviacion, determinar si tiene una explicación legítima o si es sospechosa.
+4. Investigar: Para cada desviación, determinar si tiene una explicación legítima o si es sospechosa.
 
 Ejemplos de desviaciones:
 - Un usuario que nunca trabaja de madrugada inicia sesión a las 3:00 AM.
@@ -105,7 +105,7 @@ Ejemplos de desviaciones:
 
 ### Caza Basada en Datos (Data-Driven)
 
-El cazador explora los datos sin una hipótesis preconcebida, buscando anomalías estadisticas. Es la metodología más exploratoria.
+El cazador explora los datos sin una hipótesis preconcebida, buscando anomalías estadísticas. Es la metodología más exploratoria.
 
 Ejemplo: El cazador ejecuta una consulta que lista todos los procesos ejecutados en la última semana, ordenados por frecuencia. Los procesos que aparecen solo una vez son candidatos a investigación porque son poco comunes y potencialmente sospechosos.
 
@@ -146,7 +146,7 @@ La cuenta de Pedro fue comprometida. El atacante la uso para acceder a la base d
 **Paso 8: Escalacion**
 El cazador escala el hallazgo al equipo de respuesta a incidentes.
 
-**Paso 9: Retroalimentacion**
+**Paso 9: Retroalimentación**
 El cazador documenta el hallazgo y recomienda una nueva regla de detección: "Alertar cuando una cuenta del departamento de contabilidad inicie sesión RDP en un servidor de base de datos en horario no laboral."
 
 ## Casos Reales de Threat Hunting
@@ -161,13 +161,13 @@ Un cazador noto que un certificado emitido para un servidor interno estaba siend
 
 ### La Línea Base que Revelo Shadow IT (2022)
 
-Un equipo establecio una línea base de tráfico de red y descubrió que un servidor se comunicaba con una IP en un país sin operaciones de la empresa. Era un servicio cloud no autorizado que un empleado había configurado sin permiso (Shadow IT).
+Un equipo estableció una línea base de tráfico de red y descubrió que un servidor se comunicaba con una IP en un país sin operaciones de la empresa. Era un servicio cloud no autorizado que un empleado había configurado sin permiso (Shadow IT).
 
 ## Modos de Falla
 
 ### Hunting Sin Hipótesis
 
-Buscar "cosas extranas" sin marco de referencia produce ruido. El cazador necesita hipótesis para enfocar la búsqueda.
+Buscar "cosas extrañas" sin marco de referencia produce ruido. El cazador necesita hipótesis para enfocar la búsqueda.
 
 ### Dependencia Exclusiva de IoCs
 
@@ -177,7 +177,7 @@ Buscar solo IPs y hashes conocidos es hunting débil. Los atacantes cambian esto
 
 Un hallazgo que no se documenta se pierde. La documentación permite crear nuevas reglas, compartir inteligencia, y medir efectividad.
 
-### Sin Retroalimentacion al Engineering
+### Sin Retroalimentación al Engineering
 
 Si el hunting descubre patrones pero no se convierten en reglas automáticas, el equipo seguirá descubriendo lo mismo una y otra vez.
 
@@ -193,7 +193,7 @@ Si el cazador también responde alertas del SOC, nunca tendrá tiempo para cazar
 
 Un atacante que enfrenta un equipo de hunting sabe que:
 - No puede confiar en que su malware no será detectado por firmas. Debe comportarse como un usuario legítimo.
-- Cualquier desviacion de la norma (horarios, volumenes, destinos) puede ser detectada.
+- Cualquier desviación de la norma (horarios, volúmenes, destinos) puede ser detectada.
 - Cuanto más tiempo permanezca, más probable es que lo descubran.
 - Debe conocer la línea base de la red tanto como el defensor.
 
@@ -249,7 +249,7 @@ Aplicación: Un cazador efectivo busca patrones de comportamiento (TTPs) no IoCs
 
 ## Ejemplos Prácticos de Hunting
 
-### Búsqueda: Lateral Movement via RDP
+### Búsqueda: Lateral Movement vía RDP
 
 **Hipótesis:** Un atacante que compromete una estación de trabajo usará RDP para moverse lateralmente.
 
@@ -259,7 +259,7 @@ Aplicación: Un cazador efectivo busca patrones de comportamiento (TTPs) no IoCs
 1. Identificar todas las conexiones RDP exitosas en los últimos 30 días.
 2. Agrupar por usuario origen, sistema origen, sistema destino.
 3. Identificar anomalías: usuarios que nunca usaron RDP y de repente lo hacen (posible cuenta comprometida), conexiones desde sistemas que no son estaciones de administración, conexiones en horarios no laborales.
-4. Verificar si el usuario tenía justificacion para la conexión (mantenimiento, soporte). Si no hay justificacion, escalar a investigación.
+4. Verificar si el usuario tenía justificación para la conexión (mantenimiento, soporte). Si no hay justificación, escalar a investigación.
 
 ### Búsqueda: Unusual Process Creation
 
@@ -295,7 +295,7 @@ Aplicación: Un cazador efectivo busca patrones de comportamiento (TTPs) no IoCs
 ## Herramientas para Threat Hunting
 
 ### SIEM como Herramienta Principal
-El SIEM es la herramienta más utilizada para hunting. Permite buscar en grandes volumenes de datos historicos.
+El SIEM es la herramienta más utilizada para hunting. Permite buscar en grandes volúmenes de datos históricos.
 - Splunk: SPL (Search Processing Language) para búsquedas complejas.
 - Elastic/Kibana: Query DSL y Kibana Lens para visualizaciones.
 
@@ -307,7 +307,7 @@ Los EDRs modernos permiten búsquedas en endpoints a gran escala.
 
 ### Jupyter Notebooks para Hunting
 Los notebooks permiten documentar y compartir el proceso de hunting.
-- Análisis programatico de datos con Python/R.
+- Análisis programático de datos con Python/R.
 - Visualizaciones personalizadas.
 - Reproducibilidad del proceso.
 - Integración con APIs de SIEM y EDR.
@@ -324,19 +324,19 @@ Como saber si el programa de hunting es efectivo:
 
 **Métricas Cuantitativas:**
 - Número de hipótesis probadas por mes.
-- Número de ataques confirmados encontrados via hunting (no via alertas automáticas).
-- Tiempo desde la publicación de una nueva amenaza hasta su detección via hunting.
+- Número de ataques confirmados encontrados vía hunting (no vía alertas automáticas).
+- Tiempo desde la publicación de una nueva amenaza hasta su detección vía hunting.
 - Tasa de conversión de hipótesis a reglas de detección automáticas.
 - Porcentaje de tiempo del equipo dedicado a hunting (vs. otras actividades).
 
 **Métricas Cualitativas:**
 - Calidad de las hipótesis (son relevantes? se basan en inteligencia actual?).
 - Impacto de los hallazgos (se previno un incidente?).
-- Satisfaccion del equipo (el hunting es interesante o es una tarea más?).
+- Satisfacción del equipo (el hunting es interesante o es una tarea más?).
 - Integración con otros equipos (Detection Engineering, IR, Threat Intel).
 
 ## Preguntas Adicionales
 
 12. Tu hipótesis de hunting es que "los atacantes usan RDP para moverse lateralmente." Encuentras 50 conexiones RDP sospechosas en la última semana. Al investigar, todas son del equipo de IT haciendo mantenimiento remoto. Como refinas tu hipótesis?
 13. Implementas un programa de hunting y el equipo dedica 4 horas por semana a esta tarea. Después de 3 meses, no han encontrado ningún ataque real. Tu jefe te pregunta si vale la pena seguir invirtiendo tiempo en hunting. Que le dices?
-14. Durante una búsqueda de DNS beaconing, encuentras un dominio que hace consultas exactamente cada 60 segundos. El dominio esta registrado en Panama y la IP destino esta en Rusia. Tu primer instinto es que es un C2. Que verificaciones haces antes de concluir?
+14. Durante una búsqueda de DNS beaconing, encuentras un dominio que hace consultas exactamente cada 60 segundos. El dominio esta registrado en Panamá y la IP destino esta en Rusia. Tu primer instinto es que es un C2. Que verificaciones haces antes de concluir?

@@ -17,7 +17,7 @@ Esta guía es el punto de partida para entender como funcionan las APIs, cual es
 
 ## Que es una API?
 
-Una API es un intermediario de software que permite que dos aplicaciones se comuniquen entre si. Define un contrato: "Si me envías este mensaje, yo te respondere con esta información."
+Una API es un intermediario de software que permite que dos aplicaciones se comuniquen entre si. Define un contrato: "Si me envías este mensaje, yo te responderé con esta información."
 
 No es un servidor, no es una base de datos, no es un programa. Es una interfaz, un conjunto de reglas y protocolos para que las máquinas hablen entre si.
 
@@ -28,7 +28,7 @@ Imagina que entras a un restaurante de lujo.
 - **Tu (El Cliente / La App Móvil):** Tienes hambre y quieres comer.
 - **La Cocina (La Base de Datos o Servicio):** Esta llena de la comida (los datos) que tu quieres.
 
-**El Problema:** El dueño del restaurante no te permite entrar físicamente a la cocina. Si todos los clientes entraran a la cocina a agarrar comida, harían un desastre, se quemarían con las estufas y se robarias la comida de otros.
+**El Problema:** El dueño del restaurante no te permite entrar físicamente a la cocina. Si todos los clientes entraran a la cocina a agarrar comida, harían un desastre, se quemarían con las estufas y se robarías la comida de otros.
 
 **La Solución (La API):**
 
@@ -83,7 +83,7 @@ JSON desplazó a XML por varias razones:
 - Es más liviano (menos caracteres para representar los mismos datos)
 - Es más legible para humanos
 - Se integra nativamente con JavaScript (el lenguaje del navegador)
-- Los parsers de JSON son más rapidos que los de XML
+- Los parsers de JSON son más rápidos que los de XML
 - JSON tiene tipos de datos nativos (números, strings, booleanos, arrays, objetos) mientras que XML trata todo como texto
 
 ### El Hacker de APIs
@@ -144,7 +144,7 @@ Un lenguaje de consulta para APIs desarrollado por Facebook. Permite al cliente 
 }
 ```
 
-**Desventaja de seguridad:** GraphQL permite consultas complejas que pueden ser costosas para el servidor (ataques de denial of service mediante consultas anidadas). También expone el esquema completo de la base de datos a través de la introspeccion.
+**Desventaja de seguridad:** GraphQL permite consultas complejas que pueden ser costosas para el servidor (ataques de denial of service mediante consultas anidadas). También expone el esquema completo de la base de datos a través de la introspección.
 
 ### gRPC
 
@@ -160,7 +160,7 @@ No es una API tradicional sino un protocolo de comunicación bidireccional en ti
 
 ## Como se Autentican las APIs
 
-Las APIs no tienen interfaz gráfica para que el usuario ponga su usuario y contraseña. Necesitan mecanismos de autenticación programaticos.
+Las APIs no tienen interfaz gráfica para que el usuario ponga su usuario y contraseña. Necesitan mecanismos de autenticación programáticos.
 
 ### API Keys
 
@@ -290,13 +290,13 @@ La API debe validar que los datos recibidos cumplen con el formato esperado, usa
 
 ### CORS (Cross-Origin Resource Sharing)
 
-Define que origenes (dominios) pueden acceder a la API desde un navegador.
+Define que orígenes (dominios) pueden acceder a la API desde un navegador.
 
 ```
 Access-Control-Allow-Origin: https://miapp.com
 ```
 
-**Error común:** Usar `Access-Control-Allow-Origin: *` (permitir todos los origenes) expone la API a ataques desde cualquier sitio web.
+**Error común:** Usar `Access-Control-Allow-Origin: *` (permitir todos los orígenes) expone la API a ataques desde cualquier sitio web.
 
 ### Input Sanitization
 
@@ -329,7 +329,7 @@ Si la API no verifica que el token pertenece al usuario 1234, el usuario atacant
 
 **Logging insuficiente.** Sin logs de las peticiones a la API, es imposible investigar un incidente.
 
-**Autenticación débil.** API Keys enviadas en la URL (GET), tokens sin expiracion, JWT con algoritmos "none".
+**Autenticación débil.** API Keys enviadas en la URL (GET), tokens sin expiración, JWT con algoritmos "none".
 
 ## Autoevaluación
 

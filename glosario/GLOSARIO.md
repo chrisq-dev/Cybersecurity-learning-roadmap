@@ -9,13 +9,13 @@ updated: "2026-06-29"
 
 Este glosario existe para que no te pierdas cuando una guía mencione términos técnicos. No esta pensado para memorizar definiciones, sino para entender que significa cada concepto, por qué importa y con que otros temas se conecta.
 
-Busca el término que no entiendas, lee primero la explicación simple, revisa el contexto corporativo cuando aparezca y conecta el término con las guías relacionadas. Vuelve aqui cada vez que una palabra te frene.
+Busca el término que no entiendas, lee primero la explicación simple, revisa el contexto corporativo cuando aparezca y conecta el término con las guías relacionadas. Vuelve aquí cada vez que una palabra te frene.
 
 ## Como usar este glosario
 
-Los términos están organizados por area tematica. Dentro de cada area, aparecen en orden del más fundamental al más específico. Cada entrada incluye una definición, un ejemplo simple, una explicación de por qué importa en seguridad y una lista de términos relacionados dentro del mismo glosario.
+Los términos están organizados por área temática. Dentro de cada área, aparecen en orden del más fundamental al más específico. Cada entrada incluye una definición, un ejemplo simple, una explicación de por qué importa en seguridad y una lista de términos relacionados dentro del mismo glosario.
 
-El contexto corporativo aparece en aquellos términos que tienen implicaciones directas en como las organizaciones manejan la seguridad en la práctica. No todos los términos lo tienen, solo aquellos donde la diferencia entre la definición teorica y la aplicación real es significativa.
+El contexto corporativo aparece en aquellos términos que tienen implicaciones directas en como las organizaciones manejan la seguridad en la práctica. No todos los términos lo tienen, solo aquellos donde la diferencia entre la definición teórica y la aplicación real es significativa.
 
 ---
 
@@ -220,7 +220,7 @@ El contexto corporativo aparece en aquellos términos que tienen implicaciones d
 
 **Ejemplo simple.** Videollamadas y juegos en línea usan UDP porque es más importante la velocidad que recibir todos los paquetes.
 
-**Por qué importa.** Por su naturaleza sin conexión, UDP es más difícil de filtrar y monitorear que TCP. Se usa en ataques de amplificacion DNS y otros DDoS.
+**Por qué importa.** Por su naturaleza sin conexión, UDP es más difícil de filtrar y monitorear que TCP. Se usa en ataques de amplificación DNS y otros DDoS.
 
 
 ### NAT
@@ -234,7 +234,7 @@ El contexto corporativo aparece en aquellos términos que tienen implicaciones d
 
 ### VLAN
 
-**Que es.** Virtual Local Area Network; segmentación lógica de una red a nivel de capa 2.
+**Que es.** Virtual Local Área Network; segmentación lógica de una red a nivel de capa 2.
 
 **Ejemplo simple.** Separar el tráfico de cámaras de seguridad del tráfico de empleados en el mismo switch físico.
 
@@ -261,7 +261,7 @@ El contexto corporativo aparece en aquellos términos que tienen implicaciones d
 
 ### IPS
 
-**Que es.** Intrusion Prevention System; sistema que detecta y bloquea actividad maliciosa en tiempo real.
+**Que es.** Intrusión Prevention System; sistema que detecta y bloquea actividad maliciosa en tiempo real.
 
 **Ejemplo simple.** Un IPS detecta un exploit conocido en el tráfico entrante y descarta el paquete antes de que llegue al servidor.
 
@@ -359,14 +359,14 @@ El contexto corporativo aparece en aquellos términos que tienen implicaciones d
 
 **Que es.** JSON Web Token; formato compacto para transmitir información de forma segura entre partes.
 
-**Ejemplo simple.** Un token JWT puede contener el ID del usuario, su rol y una fecha de expiracion, todo firmado digitalmente.
+**Ejemplo simple.** Un token JWT puede contener el ID del usuario, su rol y una fecha de expiración, todo firmado digitalmente.
 
 **Por qué importa.** JWT se usa ampliamente en autenticación de APIs y aplicaciones modernas. Su seguridad depende de como se firma, donde se almacena y como se valida.
 
 
 ### CORS
 
-**Que es.** Cross-Origin Resource Sharing; mecanismo que permite o bloquea peticiones entre distintos origenes.
+**Que es.** Cross-Origin Resource Sharing; mecanismo que permite o bloquea peticiones entre distintos orígenes.
 
 **Ejemplo simple.** Una API en api.misitio.com decide si acepta peticiones desde app.misitio.com o desde cualquier otro sitio.
 
@@ -393,7 +393,7 @@ El contexto corporativo aparece en aquellos términos que tienen implicaciones d
 
 ### LFI
 
-**Que es.** Local File Inclusion; vulnerabilidad que permite leer archivos locales del servidor.
+**Que es.** Local File Inclusión; vulnerabilidad que permite leer archivos locales del servidor.
 
 **Ejemplo simple.** Una URL como `?pagina=../../etc/passwd` que permite leer archivos del sistema.
 
@@ -451,7 +451,7 @@ El contexto corporativo aparece en aquellos términos que tienen implicaciones d
 
 ### IOC
 
-**Que es.** Indicator of Compromise; evidencia observable que indica una posible intrusion.
+**Que es.** Indicator of Compromise; evidencia observable que indica una posible intrusión.
 
 **Ejemplo simple.** Un hash de malware, una IP sospechosa, un dominio usado en phishing o una ruta de archivo rara.
 
@@ -525,7 +525,7 @@ El contexto corporativo aparece en aquellos términos que tienen implicaciones d
 
 **Que es.** Conjunto documentado de pasos para responder a un escenario específico.
 
-**Ejemplo simple.** Un runbook para phishing describe los pasos exactos: confirmar el reporte, analizar el correo, bloquear el remitente, buscar si alguien más lo recibio.
+**Ejemplo simple.** Un runbook para phishing describe los pasos exactos: confirmar el reporte, analizar el correo, bloquear el remitente, buscar si alguien más lo recibió.
 
 **Por qué importa.** Los runbooks estandarizan la respuesta, reducen errores en momentos de presión y facilitan la capacitación de nuevos analistas.
 
@@ -590,13 +590,13 @@ El contexto corporativo aparece en aquellos términos que tienen implicaciones d
 **Por qué importa.** El modelo tradicional de castillo y foso (confiar en todo lo que esta dentro de la red) ya no funciona. Zero Trust asume que la red esta comprometida y verifica cada acceso.
 
 
-### Federacion
+### Federación
 
 **Que es.** Mecanismo que permite usar una identidad de un sistema para acceder a otros sistemas.
 
 **Ejemplo simple.** Usar tu cuenta de Google para iniciar sesión en un sitio tercero.
 
-**Por qué importa.** La federacion simplifica la gestión de identidades pero introduce riesgos: si el proveedor de identidad se compromete, todos los sistemas federados están en riesgo.
+**Por qué importa.** La federación simplifica la gestión de identidades pero introduce riesgos: si el proveedor de identidad se compromete, todos los sistemas federados están en riesgo.
 
 
 ### SSO
@@ -627,7 +627,7 @@ El contexto corporativo aparece en aquellos términos que tienen implicaciones d
 
 **Ejemplo simple.** AES (Advanced Encryption Standard) es el cifrado simétrico más usado actualmente.
 
-**Por qué importa.** El cifrado simétrico es rápido y eficiente, pero requiere compartir la clave de forma segura entre las partes. El desafio principal es la distribución de claves.
+**Por qué importa.** El cifrado simétrico es rápido y eficiente, pero requiere compartir la clave de forma segura entre las partes. El desafío principal es la distribución de claves.
 
 
 ### Cifrado Asimétrico
@@ -835,7 +835,7 @@ El contexto corporativo aparece en aquellos términos que tienen implicaciones d
 
 ### Pentesting
 
-**Que es.** Prueba de penetracion; evaluación ofensiva autorizada de un sistema.
+**Que es.** Prueba de penetración; evaluación ofensiva autorizada de un sistema.
 
 **Ejemplo simple.** Un equipo de seguridad externo intenta comprometer los sistemas de una empresa siguiendo reglas predefinidas.
 
@@ -871,7 +871,7 @@ El contexto corporativo aparece en aquellos términos que tienen implicaciones d
 
 ### Pivoting
 
-**Que es.** Uso de un sistema comprometido como trampolin para acceder a otros sistemas.
+**Que es.** Uso de un sistema comprometido como trampolín para acceder a otros sistemas.
 
 **Ejemplo simple.** Desde un servidor web comprometido, el atacante accede a la base de datos interna que no era accesible desde internet.
 
@@ -884,7 +884,7 @@ El contexto corporativo aparece en aquellos términos que tienen implicaciones d
 
 ### Phishing
 
-**Que es.** Ataque que usa enganos para obtener información sensible o acceso.
+**Que es.** Ataque que usa engaños para obtener información sensible o acceso.
 
 **Ejemplo simple.** Un correo que parece del banco pidiendo al usuario que haga clic en un enlace e ingrese su contraseña.
 
@@ -906,7 +906,7 @@ El contexto corporativo aparece en aquellos términos que tienen implicaciones d
 
 **Ejemplo simple.** Un atacante se hace pasar por un técnico de TI que necesita credenciales para realizar un mantenimiento urgente.
 
-**Por qué importa.** El pretexting es más elaborado que el phishing porque construye una historia creible. Es común en ataques dirigidos a empresas.
+**Por qué importa.** El pretexting es más elaborado que el phishing porque construye una historia creíble. Es común en ataques dirigidos a empresas.
 
 
 ---
@@ -946,7 +946,7 @@ El contexto corporativo aparece en aquellos términos que tienen implicaciones d
 
 ### LLM
 
-**Que es.** Large Language Model; modelo de IA entrenado con grandes volumenes de texto.
+**Que es.** Large Language Model; modelo de IA entrenado con grandes volúmenes de texto.
 
 **Ejemplo simple.** ChatGPT, Claude y Gemini son ejemplos de LLMs.
 
@@ -972,7 +972,7 @@ El contexto corporativo aparece en aquellos términos que tienen implicaciones d
 
 **Ejemplo simple.** Microsoft lanza un parche para una vulnerabilidad en Windows que permite ejecución remota de código.
 
-**Por qué importa.** La gestión de parches es uno de los controles más básicos y más efectivos. La mayoría de las brechas importantes explotan vulnerabilidades para las que ya existia un parche.
+**Por qué importa.** La gestión de parches es uno de los controles más básicos y más efectivos. La mayoría de las brechas importantes explotan vulnerabilidades para las que ya existía un parche.
 
 
 ### Gap Analysis

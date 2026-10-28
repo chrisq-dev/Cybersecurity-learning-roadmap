@@ -91,10 +91,19 @@ export default function MarkdownRenderer({ content, basePath = '' }) {
             );
           },
           a({ node, children, href, ...props }) {
-            if (href && !href.startsWith('http') && !href.startsWith('#')) {
+            const isHash = href?.startsWith('#');
+            const isContact = /^(mailto:|tel:)/i.test(href || '');
+            const isExternal = /^(https?:|\/\/)/i.test(href || '');
+
+            if (href && !isHash && !isContact && !isExternal) {
               return <Link href={normalizeInternalHref(href, basePath)} {...props}>{children}</Link>;
             }
-            return <a href={href} target="_blank" rel="noopener noreferrer" {...props}>{children}</a>;
+
+            const externalProps = !isHash && !isContact
+              ? { target: '_blank', rel: 'noopener noreferrer' }
+              : {};
+
+            return <a href={href} {...externalProps} {...props}>{children}</a>;
           },
           img({ node, src, alt, ...props }) {
             if (src && !src.startsWith('http') && !src.startsWith('data:')) {
@@ -116,6 +125,7 @@ export default function MarkdownRenderer({ content, basePath = '' }) {
                 <input
                   type="checkbox"
                   defaultChecked={checked}
+                  aria-label={checked ? 'Tarea completada' : 'Tarea pendiente'}
                   {...props}
                   readOnly
                   style={{ cursor: 'default', marginRight: '8px' }}
@@ -123,6 +133,18 @@ export default function MarkdownRenderer({ content, basePath = '' }) {
               );
             }
             return <input type={type} {...props} />;
+          },
+          table({ node, children, ...props }) {
+            return (
+              <div
+                className="table-scroll"
+                role="region"
+                aria-label="Tabla de datos con desplazamiento horizontal"
+                tabIndex={0}
+              >
+                <table {...props}>{children}</table>
+              </div>
+            );
           },
           blockquote({ node, children, ...props }) {
             const firstChild = node.children?.[0];

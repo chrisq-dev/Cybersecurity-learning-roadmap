@@ -63,12 +63,12 @@ Playbooks: Documentos paso a paso para tipos de incidentes. Un playbook de ranso
 
 Herramientas: Tener disponibles discos forenses (con write blockers), software de captura de memoria, cables de red, y acceso a consolas de gestión. No tener las herramientas cuando ocurre el incidente es tan malo como no tener plan.
 
-Contactos: Lista actualizada de números: abogados de turno, proveedores de seguridad, compañía de seguros, autoridades ciberneticas, equipo de comunicaciones (para crisis de relaciones públicas), y lideres de negocio.
+Contactos: Lista actualizada de números: abogados de turno, proveedores de seguridad, compañía de seguros, autoridades cibernéticas, equipo de comunicaciones (para crisis de relaciones públicas), y lideres de negocio.
 
 Simulacros: Practicar la respuesta regularmente. Un simulacro típico:
 1. Anunciar un escenario de incidente (ej: "recibimos un correo de un cliente diciendo que su cuenta fue comprometida").
 2. El equipo sigue el playbook correspondiente.
-3. Se evalua la respuesta: tiempos, comunicación, decisiones.
+3. Se evalúa la respuesta: tiempos, comunicación, decisiones.
 4. Se identifican áreas de mejora.
 5. Se actualiza el playbook.
 
@@ -98,7 +98,7 @@ La alerta llega al SOC. El equipo de IR debe confirmar rápido si es un incident
 El atacante está dentro. La contención busca limitar el daño sin destruir evidencia innecesariamente. Aislar, suspender, apagar o mantener operativo un sistema son decisiones distintas: deben considerar propagación, seguridad física, continuidad, cifrado activo y valor de la evidencia volátil.
 
 **Contención a corto plazo (minutos):**
-- Aislar el sistema de la red (desconectar cable, deshabilitar puerto de switch, aislar via EDR).
+- Aislar el sistema de la red (desconectar cable, deshabilitar puerto de switch, aislar vía EDR).
 - Deshabilitar cuentas de usuario comprometidas.
 - Bloquear IPs maliciosas en el firewall.
 - Cambiar contraseñas de cuentas afectadas.
@@ -140,7 +140,7 @@ Restaurar los sistemas afectados a operación normal usando copias de seguridad 
 
 El paso más importante y el que más se omite. Dos semanas después del incidente, el equipo se reúne y escribe un documento que explica:
 
-**Que incluire en un post-mortem:**
+**Que incluiré en un post-mortem:**
 - Cronología del incidente (cuando entró, cuando se detecto, cuando se contuvo, cuando se recupero).
 - Causa raíz (como entró el atacante exactamente).
 - Fallas en las defensas (que reglas de detección no funcionaron, que controles fallaron).
@@ -161,7 +161,7 @@ Si tu, como analista, entras a la computadora del atacante y copias el archivo "
 
 **Preservación:** La evidencia no debe ser alterada. Se usan bloqueadores de escritura (write blockers) en discos para garantizar que ningún dato se modifique durante la copia.
 
-**Documentación:** Cada persona que toca la evidencia firma un registro. La cadena muestra quien, cuando, donde, y por qué accedio.
+**Documentación:** Cada persona que toca la evidencia firma un registro. La cadena muestra quien, cuando, donde, y por qué accedió.
 
 **Integridad:** Se calcula el hash SHA-256 del archivo o disco inmediatamente después de la adquisición. Cualquier modificación cambiaría el hash, demostrando manipulación.
 
@@ -175,7 +175,7 @@ Si tu, como analista, entras a la computadora del atacante y copias el archivo "
 - Analizar el disco original en lugar de una copia (modificas timestamps).
 - Usar herramientas no validadas (no aceptadas en tribunales).
 - No documentar cada paso (cadena de custodia rota).
-- Almacenar evidencia junto con otros datos (riesgo de contaminacion).
+- Almacenar evidencia junto con otros datos (riesgo de contaminación).
 
 ## Escenarios Ilustrativos
 
@@ -191,11 +191,11 @@ Una empresa detecto ransomware en una PC. El administrador apagó el servidor de
 
 ### Post-Mortem que Evitó una Repetición
 
-Una startup sufrio ransomware (rescate de $50,000). El equipo contuvo sin pagar. En el post-mortem descubrieron que el atacante entró por VPN sin 2FA. Implementaron 2FA en todos los accesos remotos. Seis meses después, otro ataque intento el mismo vector y fue bloqueado.
+Una startup sufrió ransomware (rescate de $50,000). El equipo contuvo sin pagar. En el post-mortem descubrieron que el atacante entró por VPN sin 2FA. Implementaron 2FA en todos los accesos remotos. Seis meses después, otro ataque intento el mismo vector y fue bloqueado.
 
 ## Modos de Falla
 
-Sin plan: improvisación bajo presión. Sin práctica: el plan escrito no sirve si nadie lo conoce. Comunicación caotica: nadie sabe quien lidera. Destruir evidencia: apagar sistemas antes de forénsica. No aprender: resolver el incidente y no hacer post-mortem.
+Sin plan: improvisación bajo presión. Sin práctica: el plan escrito no sirve si nadie lo conoce. Comunicación caótica: nadie sabe quien lidera. Destruir evidencia: apagar sistemas antes de forénsica. No aprender: resolver el incidente y no hacer post-mortem.
 
 ## La Perspectiva del Atacante
 
@@ -229,12 +229,12 @@ Documento maestro que define como la organización responde a incidentes. Debe i
 **Matriz de Escalacion:**
 - Nivel 1: Incidente menor (un solo sistema no crítico, sin datos sensibles). Respuesta: Equipo local en horas laborales.
 - Nivel 2: Incidente moderado (sistema crítico afectado, posible fuga de datos). Respuesta: Equipo de IR completo en 2 horas.
-- Nivel 3: Incidente mayor (Multiple sistemas, datos de clientes, ransomware, APT). Respuesta: Equipo completo inmediatamente, notificar a alta dirección y legales.
+- Nivel 3: Incidente mayor (Múltiples sistemas, datos de clientes, ransomware, APT). Respuesta: Equipo completo inmediatamente, notificar a alta dirección y legales.
 
 **Playbooks de IR:**
 
 Playbook de Ransomware:
-1. Confirmar sintomas: archivos encriptados, nota de rescate, cambios en pantalla.
+1. Confirmar síntomas: archivos encriptados, nota de rescate, cambios en pantalla.
 2. Aislar sistema afectado de la red (no apagar).
 3. Identificar alcance: que otros sistemas están encriptados?.
 4. Determinar vector de entrada: phishing? VPN sin 2FA? vulnerabilidad?
@@ -259,7 +259,7 @@ Playbook de Phishing:
 
 ### Adquisición de Evidencia
 
-**Orden de Volatilidad (Los datos más volatiles primero):**
+**Orden de Volatilidad (Los datos más volátiles primero):**
 1. Registros y caché de CPU.
 2. Tablas de enrutamiento y ARP.
 3. Memoria del kernel y procesos.

@@ -174,17 +174,17 @@ Los backups de bases de datos deben estar cifrados. Un backup sin cifrar es un r
 
 1. Cifrar todos los backups con TDE o cifrado nativo.
 2. Almacenar las claves de cifrado de backup separadas de los datos.
-3. Probar la restauración de backups periodicamente.
-4. Almacenar backups en ubicaciones geograficamente separadas.
+3. Probar la restauración de backups periódicamente.
+4. Almacenar backups en ubicaciones geográficamente separadas.
 5. Usar almacenamiento inmutable (los backups no pueden ser modificados o borrados).
 
 ## Casos Reales
 
 ### La Brecha de Equifax (2017)
 
-Equifax sufrio una brecha que expuso datos de 147 millones de personas. La causa fue una vulnerabilidad en Apache Struts (CVE-2017-5638).
+Equifax sufrió una brecha que expuso datos de 147 millones de personas. La causa fue una vulnerabilidad en Apache Struts (CVE-2017-5638).
 
-Los datos robados incluian nombres, números de seguro social, fechas de nacimiento y direcciones. Si Equifax hubiera tenido cifrado en reposo a nivel de columna para los números de seguro social, los atacantes habrian obtenido datos cifrados inútiles.
+Los datos robados incluían nombres, números de seguro social, fechas de nacimiento y direcciones. Si Equifax hubiera tenido cifrado en reposo a nivel de columna para los números de seguro social, los atacantes habrían obtenido datos cifrados inútiles.
 
 Sin embargo, el cifrado en reposo no habría detenido el ataque: los atacantes usaron credenciales de una aplicación legítima que tenía acceso a los datos descifrados. Necesitaban también controles de acceso.
 
@@ -196,7 +196,7 @@ Varios casos de discos SSD de centros de datos que fueron desechados o reutiliza
 
 Miles de bases de datos MongoDB fueron secuestradas porque estaban expuestas a internet sin autenticación. Los atacantes borraron los datos y pidieron rescate.
 
-El cifrado en reposo no habría ayudado aqui: la base de datos estaba funcionando y accesible. Los atacantes accedieron a los datos a través de la aplicación, no robando el disco.
+El cifrado en reposo no habría ayudado aquí: la base de datos estaba funcionando y accesible. Los atacantes accedieron a los datos a través de la aplicación, no robando el disco.
 
 ## Modos de Falla
 
@@ -222,7 +222,7 @@ El cifrado de columna puede degradar el rendimiento significativamente. Sin prue
 
 ## La Mirada del Hacker
 
-Como atacante, el cifrado en reposo es un obstaculo, pero no insalvable si puedo comprometer la aplicación o la base de datos en funcionamiento.
+Como atacante, el cifrado en reposo es un obstáculo, pero no insalvable si puedo comprometer la aplicación o la base de datos en funcionamiento.
 
 ### Como Evadir el Cifrado en Reposo
 
@@ -272,7 +272,7 @@ Existe un nivel de cifrado aún más profundo que TDE y el cifrado de columna: e
 ### Herramientas
 
 - **AWS S3 Client-Side Encryption:** El SDK de AWS permite cifrar objetos antes de subirlos a S3.
-- **Azure Client-Side Encryption:** El SDK de Azure Storage cifra datos antes de la transmision.
+- **Azure Client-Side Encryption:** El SDK de Azure Storage cifra datos antes de la transmisión.
 - **SQL Server Always Encrypted:** Una característica que permite que las consultas se ejecuten sobre datos cifrados, y solo el cliente tiene la llave.
 
 ## Data Masking vs Encryption
@@ -320,7 +320,7 @@ Diferentes regulaciones exigen cifrado de datos:
 
 ### El Robo de la Base de Datos de LinkedIn (2012)
 
-LinkedIn sufrio una brecha donde 6.5 millones de contraseñas de usuarios fueron robadas. Las contraseñas estaban almacenadas como hashes SHA1 sin sal (salt).
+LinkedIn sufrió una brecha donde 6.5 millones de contraseñas de usuarios fueron robadas. Las contraseñas estaban almacenadas como hashes SHA1 sin sal (salt).
 
 El cifrado en reposo no habría ayudado porque los atacantes accedieron a la base de datos en funcionamiento a través de una vulnerabilidad. Pero si LinkedIn hubiera usado cifrado de columna para las contraseñas, el ataque habría sido más difícil.
 
@@ -336,7 +336,7 @@ Este es el caso de uso perfecto del cifrado en reposo: proteger contra robo fís
 
 ### Falla 6: Cifrado Sin Rotation de Claves
 
-Usar la misma clave de cifrado por años. Si la clave se ve comprometida (empleado despedido, auditoría), todos los datos historicos quedan expuestos.
+Usar la misma clave de cifrado por años. Si la clave se ve comprometida (empleado despedido, auditoría), todos los datos históricos quedan expuestos.
 
 Buena práctica: rotar claves de cifrado anualmente, y mantener claves anteriores para descifrar datos antiguos.
 

@@ -29,7 +29,7 @@ Imagina que un hacker ruso pública una llave pública en internet y dice: "Hola
 
 El cifrado asimétrico asegura que solo el dueño de la llave privada puede descifrar. Pero si no sabes quién es el dueño de la llave pública, el cifrado no te sirve de nada. Le estás mandando tu información secreta a un impostor, y el cifrado garantiza que solo él —el impostor— pueda leerla.
 
-**Por qué esto importa:** aqui tienes el problema de seguridad más básico y más ignorado. puedes tener el mejor cifrado del mundo, pero si no sabes con QUIÉN estás hablando, estás regalando tus datos. Es como ponerle una cerradura de última tecnología a la puerta de tu casa... pero abrirla cuando alguien toca el timbre y dice "soy el técnico del gas".
+**Por qué esto importa:** aquí tienes el problema de seguridad más básico y más ignorado. puedes tener el mejor cifrado del mundo, pero si no sabes con QUIÉN estás hablando, estás regalando tus datos. Es como ponerle una cerradura de última tecnología a la puerta de tu casa... pero abrirla cuando alguien toca el timbre y dice "soy el técnico del gas".
 
 Este es el **problema de la autenticación de la llave pública**. Y para resolverlo se creó PKI.
 
@@ -154,7 +154,7 @@ Tu navegador no acepta ciegamente cualquier certificado. Hace una banda de verif
 4. **Revocación:** El certificado no debe estar en una lista de revocación (CRL) o ser reportado como revocado por OCSP.
 5. **Uso de la llave:** El certificado debe tener el uso correcto (TLS Web Server Authentication).
 
-Si alguna de estas verificaciones falla, el navegador muestra una advertencia. Y aqui viene el problema: la mayoría de los usuarios ignora estas advertencias y hace clic en "Continuar de todas formas". Es como si un guardia de seguridad te dijera "esta persona no está en la lista de invitados" y tu dijeras "ah, déjalo pasar igual".
+Si alguna de estas verificaciones falla, el navegador muestra una advertencia. Y aquí viene el problema: la mayoría de los usuarios ignora estas advertencias y hace clic en "Continuar de todas formas". Es como si un guardia de seguridad te dijera "esta persona no está en la lista de invitados" y tu dijeras "ah, déjalo pasar igual".
 
 ### OCSP y CRL: Verificando que el Certificado no esté Revocado
 
@@ -237,7 +237,7 @@ Un certificado válido no garantiza una conexión segura. La seguridad depende d
 
 ## La Visión del Hacker: Ataques a PKI y TLS
 
-Sabes qué tienen en común todos estos ataques? Ninguno rompió la criptografía. Todos explotaron algo más débil: la confianza, la implementación, o la estupidez humana. aqui te cuento cómo se hace.
+Sabes qué tienen en común todos estos ataques? Ninguno rompió la criptografía. Todos explotaron algo más débil: la confianza, la implementación, o la estupidez humana. aquí te cuento cómo se hace.
 
 ### MITM con Certificados Falsos
 
@@ -386,12 +386,12 @@ El sistema PKI no es perfecto. Pero sigue siendo la mejor solución que tenemos 
 
 4. Una empresa opera su propio servidor web con un certificado auto-firmado. Los empleados que acceden internamente ven una advertencia de seguridad en el navegador. Explica por qué un certificado auto-firmado es inherentemente inseguro para comunicaciones externas y cual es la diferencia con un certificado firmado por una CA confiable.
 
-5. Durante el handshake TLS 1.2, el servidor envía su certificado junto con los parámetros Diffie-Hellman efimeros. Explica por qué el servidor firma estos parámetros con su llave privada. Que pasaría si no los firmara?
+5. Durante el handshake TLS 1.2, el servidor envía su certificado junto con los parámetros Diffie-Hellman efímeros. Explica por qué el servidor firma estos parámetros con su llave privada. Que pasaría si no los firmara?
 
 6. En 2011, la CA DigiNotar fue comprometida y se emitieron certificados falsos para google.com. Explica el impacto de este ataque: por qué los navegadores confiaban inicialmente en esos certificados falsos, y que tuvo que hacer la industria para mitigar el daño.
 
 7. Un atacante compromete una CA intermedia y emite un certificado falso para un banco. Explica como Certificate Transparency (CT) y los registros DNS CAA pueden detectar o prevenir este ataque incluso si la firma criptográfica del certificado es perfectamente valida.
 
-8. Heartbleed permitia leer 64 KB de memoria del servidor. Explica por qué este ataque es diferente a un ataque contra el algoritmo RSA. Por qué Yahoo tuvo que revocar y reemitir todos sus certificados aunque el algoritmo RSA mismo no hubiera sido comprometido?
+8. Heartbleed permitía leer 64 KB de memoria del servidor. Explica por qué este ataque es diferente a un ataque contra el algoritmo RSA. Por qué Yahoo tuvo que revocar y reemitir todos sus certificados aunque el algoritmo RSA mismo no hubiera sido comprometido?
 
 ---

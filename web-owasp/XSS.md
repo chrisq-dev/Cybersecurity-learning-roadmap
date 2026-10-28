@@ -67,7 +67,7 @@ El peor de todos. El atacante guarda el código malicioso en la base de datos de
 
 **Ejemplos reales:**
 - Un comentario en un blog que contiene `<script>` malicioso. Cada visitante de esa entrada ejecuta el script.
-- Un perfil de usuario con un campo "biografia" que no sanitiza entradas. Cada visita al perfil ejecuta el ataque.
+- Un perfil de usuario con un campo "biografía" que no sanitiza entradas. Cada visita al perfil ejecuta el ataque.
 - Un foro de discusión donde los mensajes no se filtran.
 
 **Por qué es el más peligroso:** No requiere que la víctima haga clic en ningún enlace. La víctima solo necesita visitar la página legítima del servicio que usa. No hay forma de que la víctima sepa que esta siendo atacada hasta que es demasiado tarde.

@@ -49,13 +49,13 @@ Obtener datos de las fuentes identificadas. Puede ser automatizada o manual, dep
 
 ### 3. Procesamiento
 
-Organizar los datos: eliminar duplicados, estandarizar formatos, traducir, extraer metadatos. Parece aburrido, pero sin esto tienes un monton de datos que no sirven para nada.
+Organizar los datos: eliminar duplicados, estandarizar formatos, traducir, extraer metadatos. Parece aburrido, pero sin esto tienes un montón de datos que no sirven para nada.
 
 ### 4. Análisis
 
 Encontrar patrones, conexiones, anomalías. Un dato aislado no dice nada. Cien datos conectados cuentan una historia. Esa es la esencia del análisis.
 
-### 5. Difusion
+### 5. Difusión
 
 Compartir los resultados con quien los necesita, en el formato adecuado. No le mandes un JSON al CEO.
 
@@ -65,13 +65,13 @@ Compartir los resultados con quien los necesita, en el formato adecuado. No le m
 
 LinkedIn: Estructura organizacional, puestos, tecnologías, conexiones, historial laboral. Es la joya de la corona para OSINT corporativo.
 
-Facebook: Vida personal, familiares, amigos, ubicaciones, intereses, eventos. La gente publica TODO aqui.
+Facebook: Vida personal, familiares, amigos, ubicaciones, intereses, eventos. La gente publica TODO aquí.
 
 Twitter/X: Opiniones, quejas, relaciones, horarios, movimientos. Los tweets con geolocalizacion son un regalo.
 
 Instagram: Ubicaciones, estilo de vida, circulo social. La gente muestra a donde va y con quien.
 
-Reddit: Intereses profundos, comunidades, conocimiento técnico. La persona que en LinkedIn es un profesional serio, en Reddit esta preguntando cosas que no preguntaria en público.
+Reddit: Intereses profundos, comunidades, conocimiento técnico. La persona que en LinkedIn es un profesional serio, en Reddit esta preguntando cosas que no preguntaría en público.
 
 ### Buscadores
 
@@ -136,7 +136,7 @@ Análisis de cambios en el tiempo: Wayback Machine para ver evolución, alertas 
 
 ### Frameworks
 
-Recon-ng: Framework modular para recolección automatizada. Workspaces, modulos, todo integrado.
+Recon-ng: Framework modular para recolección automatizada. Workspaces, módulos, todo integrado.
 
 theHarvester: Recolecta emails, subdominios, IPs. Es una de las herramientas más utilizadas y sigue siendo relevante.
 
@@ -189,7 +189,7 @@ La línea entre OSINT y hacking es delgada. Cruzarla es ilegal. La regla es: si 
 
 ### Marco Legal
 
-La recolección de información pública es generalmente legal. El uso posterior puede no serlo. Cada país tiene leyes diferentes. Averigualas antes, no después.
+La recolección de información pública es generalmente legal. El uso posterior puede no serlo. Cada país tiene leyes diferentes. Averígualas antes, no después.
 
 ## Formas de Falla
 
@@ -199,7 +199,7 @@ Sobrecarga de información: Tener tantos datos que no se puede analizar. Es com�
 
 No verificar fuentes: Un dato de una fuente no confirmada es ruido.
 
-Confundir correlacion con causalidad: Dos eventos ocurren juntos pero no hay relación causal. Esto pasa más seguido de lo que crees.
+Confundir correlación con causalidad: Dos eventos ocurren juntos pero no hay relación causal. Esto pasa más seguido de lo que crees.
 
 Depender de una sola fuente: Una fuente puede estar equivocada o desactualizada.
 
@@ -245,13 +245,13 @@ Repositorios públicos. Buscar: Claves API, tokens, contraseñas en código. Con
 
 ## OSINT Geográfico (GEOINT)
 
-### Análisis de Imagenes Satelitales
+### Análisis de Imágenes Satelitales
 
-Identificar instalaciones, vehiculos, movimiento. Google Earth, Sentinel Hub. puedes ver cambios en instalaciones día a día.
+Identificar instalaciones, vehículos, movimiento. Google Earth, Sentinel Hub. puedes ver cambios en instalaciones día a día.
 
 ### Geolocalizacion de Fotos
 
-Determinar ubicación de una foto por: metadatos EXIF, puntos de referencia, vegetacion, clima, sombras.
+Determinar ubicación de una foto por: metadatos EXIF, puntos de referencia, vegetación, clima, sombras.
 
 Herramientas: GeoEstimation, PlaTe, Google Maps.
 
@@ -277,7 +277,7 @@ Identificar dispositivos expuestos: RDP, SSH, Telnet, bases de datos, cámaras, 
 
 ### Búsqueda de Identidad
 
-Nombre + ciudad + profesion. Buscar en redes, registros públicos, foros.
+Nombre + ciudad + profesión. Buscar en redes, registros públicos, foros.
 
 ### Verificación de Identidad
 
@@ -297,7 +297,7 @@ Shodan, Censys, VirusTotal, HaveIBeenPwned, Hunter, AlienVault OTX. Saber usar A
 
 ### Automatizar sin Abusar
 
-Rate limiting: respetar límites de requests. User-Agent: no usar el mismo. Proxies rotativos para evasion. Si rompes algo, te bloquean.
+Rate limiting: respetar límites de requests. User-Agent: no usar el mismo. Proxies rotativos para evasión. Si rompes algo, te bloquean.
 
 ## OSINT de Infraestructura
 
@@ -307,13 +307,13 @@ Registros A, MX, TXT, CNAME, NS. Cada registro revela información: MX muestra p
 
 ### WHOIS History
 
-Quien registro el dominio antes? Los datos historicos de WHOIS revelan el dueño original aunque hoy este privado. La gente cambia de dueño, pero el WHOIS histórico no miente.
+Quien registro el dominio antes? Los datos históricos de WHOIS revelan el dueño original aunque hoy este privado. La gente cambia de dueño, pero el WHOIS histórico no miente.
 
 ### Certificate Transparency
 
-crt.sh muestra todos los certificados SSL emitidos para un dominio. Revela subdominios, incluyendo los de desarrollo y administración. A veces hay subdominios que el dueño no sabia que existian.
+crt.sh muestra todos los certificados SSL emitidos para un dominio. Revela subdominios, incluyendo los de desarrollo y administración. A veces hay subdominios que el dueño no sabía que existían.
 
-## OSINT de Imagenes y Video
+## OSINT de Imágenes y Video
 
 ### Metadatos EXIF
 
@@ -346,7 +346,7 @@ Objetivo: Mapear infraestructura de target.com (ejemplo).
 5. GitHub -> repositorios.
 6. Hunter -> emails.
 7. Google Dorks -> documentos.
-8. Correlacion.
+8. Correlación.
 
 Cada paso construye sobre el anterior.
 
@@ -356,7 +356,7 @@ La misma información que usa un pentester para proteger, usa un atacante para a
 
 ## Limitaciones del OSINT
 
-No toda información esta disponible públicamente. La información puede ser falsa o desactualizada. El objetivo puede estar usando contramedidas (privacidad, desinformacion). A veces no encuentras nada, y eso también es un resultado.
+No toda información esta disponible públicamente. La información puede ser falsa o desactualizada. El objetivo puede estar usando contramedidas (privacidad, desinformación). A veces no encuentras nada, y eso también es un resultado.
 
 ## OSINT en la Práctica
 
@@ -372,7 +372,7 @@ Búsqueda de identidades falsas, empresas fantasma, conexiones entre personas, d
 
 ## Automatización con Python
 
-Requests + BeautifulSoup para scraping. Selenium para páginas dinamicas. APIs de Shodan, VirusTotal, Hunter.
+Requests + BeautifulSoup para scraping. Selenium para páginas dinámicas. APIs de Shodan, VirusTotal, Hunter.
 
 ## Verificación de Información
 
@@ -380,11 +380,11 @@ Cross-referencing: confirmar el mismo dato en 2-3 fuentes. No confiar en una sol
 
 ## Huella Digital Personal
 
-Cada persona deja una huella digital. Saber que información tuya esta pública es el primer paso para protegerte. Buscate a tu mismo. Te vas a sorprender.
+Cada persona deja una huella digital. Saber que información tuya esta pública es el primer paso para protegerte. Búscate a tu mismo. Te vas a sorprender.
 
 ## Búsquedas en Archivos Públicos
 
-Registros de propiedad, patentes, licitaciones, documentos legales. Google Scholar, PubMed, repositorios academicos.
+Registros de propiedad, patentes, licitaciones, documentos legales. Google Scholar, PubMed, repositorios académicos.
 
 ## Monitoreo Continuo
 
@@ -392,7 +392,7 @@ Alertas de Google para palabras clave. Monitoreo de dominios. Verificación peri
 
 ## Autoevaluación
 
-1. El CEO publica en LinkedIn que la empresa migro a Microsoft 365. Como usaria un atacante esta información?
+1. El CEO publica en LinkedIn que la empresa migro a Microsoft 365. Como usaría un atacante esta información?
 
 2. Un técnico sube un script a GitHub con una clave API. Que haces como OSINTer?
 
@@ -406,7 +406,7 @@ Alertas de Google para palabras clave. Monitoreo de dominios. Verificación peri
 
 7. La empresa Foundstone (ejemplo ficticio) tiene certificados SSL para `foundstone.com`, `foundstone-admin.com`, `dev-foundstone.com`. Que revela esto?
 
-8. Que buscarias en Shodan si atacas una empresa? Y en Censys?
+8. Que buscarías en Shodan si atacas una empresa? Y en Censys?
 
 9. Por qué es importante documentar cada paso en una investigación OSINT?
 

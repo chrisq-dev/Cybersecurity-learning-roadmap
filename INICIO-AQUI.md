@@ -35,7 +35,7 @@ Cada una de estas áreas se aborda desde una perspectiva conceptual. No encontra
 
 ### Qué no es esta web
 
-No es un curso paso a paso. No es un manual de herramientas. No es una guía para aprobar un examen de certificación. No contiene laboratorios prácticos ni ejercicios de programación. No es un sustituto de la experiencia práctica.
+No es un curso paso a paso. No es un manual de herramientas. No es una guía para aprobar un examen de certificación. No es un curso con laboratorios guiados; algunas guías incluyen ejercicios conceptuales y prácticas sugeridas para entornos legales y controlados. No es un sustituto de la experiencia práctica.
 
 Lo que ofrece es el contexto conceptual que necesitas para dar sentido a todo lo demás: las herramientas que usarás, las certificaciones que estudiarías, las prácticas que verás en la industria y los incidentes que leerás en las noticias. Es el mapa que te permite entender el territorio antes de recorrerlo.
 
@@ -179,6 +179,8 @@ Antes de considerar que entendiste un área, deberías poder:
 
 ## Conecta con
 
+**Seguridad personal:** [PROTEGETE-EN-INTERNET.md](seguridad-personal/PROTEGETE-EN-INTERNET.md), [CUENTAS-Y-CONTRASENAS.md](seguridad-personal/CUENTAS-Y-CONTRASENAS.md), [PRIVACIDAD-DIARIA.md](seguridad-personal/PRIVACIDAD-DIARIA.md), [CELULAR-Y-DISPOSITIVOS.md](seguridad-personal/CELULAR-Y-DISPOSITIVOS.md), [ESTAFAS-CON-IA.md](seguridad-personal/ESTAFAS-CON-IA.md), [SI-TE-HACKEARON.md](seguridad-personal/SI-TE-HACKEARON.md), [FAMILIA-Y-USUARIOS-NO-TECNICOS.md](seguridad-personal/FAMILIA-Y-USUARIOS-NO-TECNICOS.md)
+
 **Glosarios:** [GLOSARIO.md](glosario/GLOSARIO.md), [GLOSARIO-CULTURA-HACKER.md](recursos/GLOSARIO-CULTURA-HACKER.md)
 
 **Fundamentos:** [Computación-BASICA.md](fundamentos/COMPUTACION-BASICA.md), [SISTEMAS-OPERATIVOS.md](fundamentos/SISTEMAS-OPERATIVOS.md), [IDENTIDAD-PERMISOS.md](fundamentos/IDENTIDAD-PERMISOS.md), [BASE-DE-SEGURIDAD.md](fundamentos/BASE-DE-SEGURIDAD.md)
@@ -228,6 +230,14 @@ Antes de considerar que entendiste un área, deberías poder:
 **Recursos de Apoyo:** [COMO-USAR-ESTA-GUIA.md](recursos/COMO-USAR-ESTA-GUIA.md), [ROADMAP-90-Días.md](recursos/ROADMAP-90-DIAS.md), [PLATAFORMAS-DE-PRACTICA.md](recursos/PLATAFORMAS-DE-PRACTICA.md), [CURSOS-Y-CERTIFICACIONES.md](recursos/CURSOS-Y-CERTIFICACIONES.md)
 
 ## Detalle de las Áreas
+
+### Seguridad Personal
+
+Antes de estudiar cómo se rompen los sistemas, esta área ayuda a proteger cuentas, dispositivos, datos y personas. Es la puerta de entrada para lectores no técnicos y para quien quiere reducir riesgos cotidianos con controles simples.
+
+Los archivos son PROTEGETE-EN-INTERNET.md (higiene digital y estafas comunes), CUENTAS-Y-CONTRASENAS.md (passkeys, MFA y gestores), PRIVACIDAD-DIARIA.md (datos personales y rastros), CELULAR-Y-DISPOSITIVOS.md (configuración y pérdida), ESTAFAS-CON-IA.md (voz clonada, deepfakes y fraude), SI-TE-HACKEARON.md (pasos de recuperación) y FAMILIA-Y-USUARIOS-NO-TECNICOS.md (acompañamiento sin fricción).
+
+No requiere conocimientos técnicos. Se conecta con OSINT, privacidad, ingeniería social y los playbooks de respuesta.
 
 ### Fundamentos Técnicos
 

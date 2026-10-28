@@ -15,11 +15,11 @@ Hardening no es un programa que instalas ni un botón que activas. Es un proceso
 
 Un servidor Linux recién instalado viene con servicios innecesarios activados, puertos abiertos, contraseñas por defecto, y configuraciones pensadas para la comodidad del usuario, no para la seguridad. El hardening transforma ese servidor "cómodo" en un servidor "paranoico" que solo hace lo que debe hacer y nada más.
 
-Esta guía cubre las prácticas esenciales de hardening: configuración segura de SSH, firewall, actualizaciones, control de acceso, minimizacion de servicios, y detección de cambios. No es una lista de verificación para seguir ciegamente; es un conjunto de principios que debes entender para aplicarlos según el contexto de cada servidor.
+Esta guía cubre las prácticas esenciales de hardening: configuración segura de SSH, firewall, actualizaciones, control de acceso, minimización de servicios, y detección de cambios. No es una lista de verificación para seguir ciegamente; es un conjunto de principios que debes entender para aplicarlos según el contexto de cada servidor.
 
-## La Analogía: El Taller de Cerrajeria
+## La Analogía: El Taller de Cerrajería
 
-Olvídate del castillo medieval que se usa en todos los tutoriales de hardening. Vamos a usar algo más práctico: un taller de cerrajeria.
+Olvídate del castillo medieval que se usa en todos los tutoriales de hardening. Vamos a usar algo más práctico: un taller de cerrajería.
 
 Un cerrajero recibe un lote de puertas nuevas de fábrica. Vienen con la cerradura básica de fábrica, idéntica para todas las puertas, con una llave genérica que cualquiera puede tener. La puerta cumple su función básica: separa el interior del exterior. Pero no es segura.
 
@@ -55,7 +55,7 @@ Un servidor web solo necesita:
 - SSH para administración (idealmente solo desde IPs específicas).
 - Actualizaciones de seguridad.
 
-No necesita: servidor de correo, servicio de impresion, Bluetooth, servidor de bases de datos local, entorno gráfico, herramientas de desarrollo, ni ningún otro servicio que no sea parte de su función.
+No necesita: servidor de correo, servicio de impresión, Bluetooth, servidor de bases de datos local, entorno gráfico, herramientas de desarrollo, ni ningún otro servicio que no sea parte de su función.
 
 Cada servicio adicional es un punto de entrada potencial. El atacante no necesita romper el servidor web si puede romper el servidor de correo que alguien olvido desactivar.
 
@@ -114,9 +114,9 @@ Esto es útil en servidores donde hay cuentas de servicio (www-data, mysql) que 
 
 **5. Usar fail2ban para mitigar fuerza bruta**
 
-fail2ban monitorea los logs de autenticación y bloquea temporalmente (via iptables) las IPs que tienen demasiados intentos fallidos.
+fail2ban monitorea los logs de autenticación y bloquea temporalmente (vía iptables) las IPs que tienen demasiados intentos fallidos.
 
-Configuración tipica:
+Configuración típica:
 ```
 [sshd]
 enabled = true
@@ -235,7 +235,7 @@ En Debian/Ubuntu, configura las actualizaciones de seguridad para que se instale
 
 `dpkg-reconfigure --priority=low unattended-upgrades`
 
-Esto habilita la instalacion automática de parches de seguridad. Puedes configurar que solo se apliquen actualizaciones de seguridad (no nuevas versiones de software que puedan introducir cambios no deseados).
+Esto habilita la instalación automática de parches de seguridad. Puedes configurar que solo se apliquen actualizaciones de seguridad (no nuevas versiones de software que puedan introducir cambios no deseados).
 
 En Red Hat/CentOS/Fedora:
 `dnf install dnf-automatic`
@@ -249,17 +249,17 @@ Mi posición: las actualizaciones de seguridad deben aplicarse automáticamente.
 
 ### Kernel Live Patching
 
-Históricamente, las actualizaciones del kernel requerian un reinicio del sistema. Los parches en vivo (live patching) permiten aplicar parches de seguridad al kernel sin reiniciar:
+Históricamente, las actualizaciones del kernel requerían un reinicio del sistema. Los parches en vivo (live patching) permiten aplicar parches de seguridad al kernel sin reiniciar:
 
 - Canonical Livepatch (Ubuntu): Gratuito para hasta 3 máquinas.
 - KernelCare: Solución comercial.
 - kpatch: Herramienta nativa del kernel de Linux.
 
-Live patching es útil para servidores que no pueden reiniciarse frecuentemente, pero no reemplaza la necesidad de reinicios periodicos para aplicar parches que no pueden aplicarse en vivo.
+Live patching es útil para servidores que no pueden reiniciarse frecuentemente, pero no reemplaza la necesidad de reinicios periódicos para aplicar parches que no pueden aplicarse en vivo.
 
-## Minimizacion de Servicios y Programas
+## Minimización de Servicios y Programas
 
-Cada programa instalado y cada servicio corriendo es un punto de ataque potencial. La minimizacion reduce la superficie de ataque.
+Cada programa instalado y cada servicio corriendo es un punto de ataque potencial. La minimización reduce la superficie de ataque.
 
 ### Inventario de Servicios
 
@@ -268,12 +268,12 @@ Después de instalar un servidor, revisa que servicios están corriendo:
 `systemctl list-units --type=service --state=running`
 
 En un servidor Ubuntu recién instalado, puedes encontrar servicios como:
-- `cups.service`: Servicio de impresion. Innecesario en un servidor web.
+- `cups.service`: Servicio de impresión. Innecesario en un servidor web.
 - `avahi-daemon.service`: Zeroconf/Bonjour. Innecesario en un servidor.
 - `postfix.service`: Servidor de correo. Innecesario si no envías correo desde el servidor.
 - `bluetooth.service`: Bluetooth. Innecesario en un servidor.
 
-Deten e inhabilita todo lo que no sea necesario:
+Detén e inhabilita todo lo que no sea necesario:
 ```
 systemctl stop cups
 systemctl disable cups
@@ -326,9 +326,9 @@ Un atacante que compromete un servidor modifica archivos del sistema para establ
 
 ### AIDE (Advanced Intrusion Detection Environment)
 
-AIDE crea una base de datos de hashes de archivos del sistema (binarios, bibliotecas, archivos de configuración) y luego verifica periodicamente que no hayan cambiado.
+AIDE crea una base de datos de hashes de archivos del sistema (binarios, bibliotecas, archivos de configuración) y luego verifica periódicamente que no hayan cambiado.
 
-Instalacion:
+Instalación:
 ```
 apt install aide
 aideinit
@@ -374,7 +374,7 @@ net.ipv4.conf.all.rp_filter = 1
 net.ipv4.conf.default.rp_filter = 1
 ```
 
-**Ignorar pings de broadcast (previene ser usado en ataques DDoS de amplificacion):**
+**Ignorar pings de broadcast (previene ser usado en ataques DDoS de amplificación):**
 ```
 net.ipv4.icmp_echo_ignore_broadcasts = 1
 ```
@@ -400,7 +400,7 @@ net.ipv4.ip_forward = 0
 net.ipv4.tcp_syncookies = 1
 ```
 
-**Limitar conexiones simultaneas:**
+**Limitar conexiones simultáneas:**
 ```
 net.core.somaxconn = 1024
 ```
@@ -416,7 +416,7 @@ Aplicar cambios: `sysctl -p`
 
 ### Servicios Comunes Innecesarios en un Servidor
 
-- **CUPS (Common Unix Printing System):** Servicio de impresion. `systemctl disable cups`
+- **CUPS (Common Unix Printing System):** Servicio de impresión. `systemctl disable cups`
 - **Avahi:** Zeroconf/Bonjour para descubrimiento de servicios en la red local. `systemctl disable avahi-daemon`
 - **Bluetooth:** `systemctl disable bluetooth`
 - **Postfix:** Servidor de correo SMTP. Si el servidor no necesita enviar correo, deshabilitalo. `systemctl disable postfix`
@@ -429,19 +429,19 @@ gcc, make, python-dev, perl, etc. son necesarios en entornos de desarrollo pero 
 Si es posible, elimina los compiladores de los servidores de producción:
 `apt remove gcc make`
 
-Si necesitas mantenerlos (por ejemplo, para instalar modulos de Python), considera restringir su ejecución con AppArmor o SELinux.
+Si necesitas mantenerlos (por ejemplo, para instalar módulos de Python), considera restringir su ejecución con AppArmor o SELinux.
 
 ## Particionado Seguro
 
 La forma en que particionas el disco tiene implicaciones de seguridad. Un particionado bien pensado puede limitar el daño de un ataque.
 
-### Separacion de Particiones
+### Separación de Particiones
 
-- `/`: Particion raíz. Suficiente espacio para el sistema base (10-20GB).
-- `/var`: Separado de raíz. Si los logs crecen sin control, no llenan la particion raíz.
+- `/`: Partición raíz. Suficiente espacio para el sistema base (10-20GB).
+- `/var`: Separado de raíz. Si los logs crecen sin control, no llenan la partición raíz.
 - `/tmp`: Separado, montado con `noexec,nosuid,nodev`.
 - `/home`: Separado, montado con `nosuid,nodev` (y opcionalmente `noexec`).
-- `/opt`: Separado si instalas aplicaciones de terceros aqui.
+- `/opt`: Separado si instalas aplicaciones de terceros aquí.
 
 ### Opciones de Montaje
 
@@ -454,8 +454,8 @@ En `/etc/fstab`:
 /dev/sda4 /home ext4 defaults,nosuid,nodev,noatime 0 2
 ```
 
-- `noexec`: No permite ejecutar binarios desde esta particion. Los atacantes no pueden ejecutar malware desde /tmp.
-- `nosuid`: Ignora los bits SUID/SGID en esta particion.
+- `noexec`: No permite ejecutar binarios desde esta partición. Los atacantes no pueden ejecutar malware desde /tmp.
+- `nosuid`: Ignora los bits SUID/SGID en esta partición.
 - `nodev`: No permite archivos de dispositivo.
 - `noatime`: No actualiza el timestamp de acceso a archivos. Mejora rendimiento y reduce escritura en disco.
 
@@ -503,7 +503,7 @@ setenforce 1          # Cambia a enforcing
 
 ## Modos de Falla Comunes
 
-**Abrir un puerto en UFW pero no verificar externamente:** Confias en que UFW esta funcionando pero nunca probaste desde afuera. Un error en la configuración puede dejar el puerto abierto.
+**Abrir un puerto en UFW pero no verificar externamente:** Confías en que UFW esta funcionando pero nunca probaste desde afuera. Un error en la configuración puede dejar el puerto abierto.
 
 **Deshabilitar SELinux en lugar de configurarlo correctamente:** Es el error más común en entornos Red Hat. SELinux bloquea algo, y el administrador lo desactiva en vez de investigar la causa.
 
@@ -525,7 +525,7 @@ setenforce 1          # Cambia a enforcing
 
 **El Incidente de los Servidores de Jenkins (2018):** Un servidor Jenkins en una empresa de tecnología estaba expuesto a Internet sin firewall, con el usuario admin y contraseña por defecto. Un atacante encontró el servidor en Shodan, gano acceso, y uso las credenciales almacenadas en Jenkins para comprometer toda la infraestructura en la nube.
 
-**La Filtración de Datos de la Clínica de UCLA (2015):** Un servidor Linux con una base de datos de pacientes fue comprometido porque SSH permitia inicio de sesión con contraseña y la contraseña de root era débil. El atacante ingreso por SSH con fuerza bruta y extrajo datos de salud protegidos de 4.5 millones de pacientes.
+**La Filtración de Datos de la Clínica de UCLA (2015):** Un servidor Linux con una base de datos de pacientes fue comprometido porque SSH permitía inicio de sesión con contraseña y la contraseña de root era débil. El atacante ingreso por SSH con fuerza bruta y extrajo datos de salud protegidos de 4.5 millones de pacientes.
 
 **El Caso de los Mineros en los Servidores de Docker (2019):** Una empresa instalo Docker en sus servidores de producción pero no aplico hardening a los contenedores. Los atacantes comprometieron un contenedor con una aplicación web vulnerable y desde ahí accedieron al host, instalando mineros de criptomonedas. La falta de aislamiento y la ausencia de firewall interno permitió el movimiento lateral.
 
@@ -543,7 +543,7 @@ setenforce 1          # Cambia a enforcing
 
 **Ataques de día cero en servicios expuestos:** Incluso con el mejor hardening, un servicio expuesto a Internet (como un servidor web) puede tener vulnerabilidades desconocidas. El hardening reduce la superficie de ataque pero no la elimina por completo.
 
-**Ingeniería social:** El hardening técnico no protege contra un administrador que revela su contraseña en un correo de phishing. La seguridad técnica debe complementarse con concienciacion del personal.
+**Ingeniería social:** El hardening técnico no protege contra un administrador que revela su contraseña en un correo de phishing. La seguridad técnica debe complementarse con concienciación del personal.
 
 ## Autoevaluación
 
@@ -551,14 +551,14 @@ setenforce 1          # Cambia a enforcing
 
 2. Configuras UFW con `default deny incoming` y luego abres el puerto 443 para tu servidor web. De repente, el servidor no puede descargar actualizaciones. Que política se te olvido configurar y como la corriges?
 
-3. En `/etc/ssh/sshd_config` encuentras `PermitRootLogin yes`. Explica que tipo de ataque estas facilitando y describe como un atacante aprovecharia esta configuración. Que comando exacto editas y que valor pones?
+3. En `/etc/ssh/sshd_config` encuentras `PermitRootLogin yes`. Explica que tipo de ataque estas facilitando y describe como un atacante aprovecharía esta configuración. Que comando exacto editas y que valor pones?
 
 4. Un administrador dice: "SELinux es molesto porque bloquea cosas, mejor lo deshabilito." Defiende por qué mantener SELinux en modo enforcing es mejor que deshabilitarlo. Describe como usarías el modo permissive para diagnosticar problemas.
 
-5. Tu servidor tiene la particion `/tmp` montada sin `noexec`. Un atacante compromete el servidor web y descarga un script malicioso a `/tmp`. Explica como la opción `noexec` habría prevenido la ejecución del script y que alternativas usaria el atacante para evitarlo.
+5. Tu servidor tiene la partición `/tmp` montada sin `noexec`. Un atacante compromete el servidor web y descarga un script malicioso a `/tmp`. Explica como la opción `noexec` habría prevenido la ejecución del script y que alternativas usaría el atacante para evitarlo.
 
-6. Instalas unattended-upgrades para actualizaciones de seguridad automáticas. Dos meses después, descubres que una actualización rompió el servicio de base de datos y nadie lo noto durante semanas. Como configurarias las actualizaciones para evitar esto sin dejar de recibir parches de seguridad?
+6. Instalas unattended-upgrades para actualizaciones de seguridad automáticas. Dos meses después, descubres que una actualización rompió el servicio de base de datos y nadie lo noto durante semanas. Como configurarías las actualizaciones para evitar esto sin dejar de recibir parches de seguridad?
 
-7. Durante una auditoría, encuentras que el servidor tiene instalados gcc, make, python-dev, y varias bibliotecas de desarrollo. El servidor es de producción y no se usa para desarrollo. Explica por qué esto es un riesgo y como mitigarias las herramientas de desarrollo sin afectar el funcionamiento del servidor.
+7. Durante una auditoría, encuentras que el servidor tiene instalados gcc, make, python-dev, y varias bibliotecas de desarrollo. El servidor es de producción y no se usa para desarrollo. Explica por qué esto es un riesgo y como mitigarías las herramientas de desarrollo sin afectar el funcionamiento del servidor.
 
 8. Configuras un servidor siguiendo las guías de hardening de este sitio. Sin embargo, un atacante logra comprometer el servidor web a través de una vulnerabilidad de día cero. Explica como las capas de hardening que aplicaste limitan el daño que el atacante puede causar incluso después del compromiso inicial.

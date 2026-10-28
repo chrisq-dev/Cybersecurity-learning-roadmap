@@ -29,7 +29,7 @@ Para arreglar esta falla masiva, la industria no destruyó el sistema de correo 
 
 Cuando diseñas un protocolo asumiendo que todos son buenos? Exactamente esto.
 
-El Simple Mail Transfer Protocol (SMTP) fue definido en RFC 821 en 1982. En esa epoca, internet era una red academica y militar donde todos los participantes eran confiables.
+El Simple Mail Transfer Protocol (SMTP) fue definido en RFC 821 en 1982. En esa época, internet era una red académica y militar donde todos los participantes eran confiables.
 
 ### Como Funciona SMTP (Simplificado)
 
@@ -45,7 +45,7 @@ Haz clic aqui para recuperar tu acceso...
 .
 ```
 
-El servidor SMTP no verifica si realmente eres `atacante@gmail.com`. Simplemente acepta lo que le digas en `MAIL FROM` y lo reenvia al destino. Cualquier persona con acceso a un servidor SMTP (incluso público) puede enviar correos con cualquier remitente.
+El servidor SMTP no verifica si realmente eres `atacante@gmail.com`. Simplemente acepta lo que le digas en `MAIL FROM` y lo reenvía al destino. Cualquier persona con acceso a un servidor SMTP (incluso público) puede enviar correos con cualquier remitente.
 
 ### La Cabecera "From" es Solo Texto
 
@@ -53,7 +53,7 @@ La dirección de correo que ves en tu cliente de correo (la cabecera `From:`) es
 
 ### Extensiones Posteriores (ESMTP)
 
-Con el tiempo se anadieron extensiones como:
+Con el tiempo se añadieron extensiones como:
 
 - SMTP-AUTH: autenticación para usar el servidor SMTP (evita que cualquiera use tu servidor para enviar correos). Pero no verifica la identidad del remitente declarado.
 - STARTTLS: cifrado de la conexión entre servidores SMTP. Protege el contenido en tránsito, pero no verifica la identidad del remitente.
@@ -80,7 +80,7 @@ Esto significa: "Los servidores de correo de Google están en la lista `_spf.goo
 
 1. El servidor de correo del receptor (ej. Outlook) recibe un correo de `remitente@empresa.com`.
 2. El receptor consulta el DNS de `empresa.com` y busca el registro SPF.
-3. El receptor extrae la IP del servidor que envio el correo (de la cabecera `Received`).
+3. El receptor extrae la IP del servidor que envío el correo (de la cabecera `Received`).
 4. Compara la IP contra la lista del registro SPF.
 5. Si la IP esta en la lista: PASS. Si no: FAIL.
 
@@ -88,13 +88,13 @@ Esto significa: "Los servidores de correo de Google están en la lista `_spf.goo
 
 SPF tiene problemas graves:
 
-1. **Reenvío de Correos:** Si un correo legítimo se reenvia, la IP del reenviador no esta en el SPF original, y el correo se marca como falso. Esto rompe listas de correo y sistemas de tickets.
+1. **Reenvío de Correos:** Si un correo legítimo se reenvía, la IP del reenviador no esta en el SPF original, y el correo se marca como falso. Esto rompe listas de correo y sistemas de tickets.
 
 2. **Solo Verifica la IP, no el Contenido:** Un atacante puede configurar su propio servidor en una IP autorizada por SPF (si logra acceso a la infraestructura) y seguir enviando correos falsos.
 
 3. **Límite de 10 Consultas DNS:** SPF tiene un límite de 10 consultas DNS (para evitar ataques DDoS). Dominios con infraestructura compleja pueden exceder este límite.
 
-4. **No Protege contra Alteracion:** SPF no verifica que el contenido del correo no fue modificado en el tránsito. Solo verifica que el servidor de envio esta autorizado.
+4. **No Protege contra Alteración:** SPF no verifica que el contenido del correo no fue modificado en el tránsito. Solo verifica que el servidor de envío esta autorizado.
 
 ## DKIM: El Sello de Cera Real
 
@@ -126,9 +126,9 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 
 ### Selectores DKIM
 
-Los selectores permiten tener múltiples llaves públicas simultáneamente. Son utiles para:
+Los selectores permiten tener múltiples llaves públicas simultáneamente. Son útiles para:
 
-- Rotar llaves periodicamente.
+- Rotar llaves periódicamente.
 - Tener llaves diferentes para diferentes servicios (marketing, transaccional, corporativo).
 - Revocar una llave comprometida sin afectar las demás.
 
@@ -169,14 +169,14 @@ Las políticas disponibles son:
 
 3. **p=reject:** "Si falla la autenticación, rechaza el correo. No lo entregues, no lo pongas en SPAM, destrúyelo". Esta es la única política realmente segura.
 
-### Alineacion de Identificadores
+### Alineación de Identificadores
 
 DMARC requiere que el dominio en la cabecera `From` coincida con:
 
-- **SPF:** El dominio en `MAIL FROM` (SPF) debe coincidir con el dominio en `From` (cabecera). Esto es alineacion SPF.
-- **DKIM:** El dominio en la firma DKIM (`d=`) debe coincidir con el dominio en `From` (cabecera). Esto es alineacion DKIM.
+- **SPF:** El dominio en `MAIL FROM` (SPF) debe coincidir con el dominio en `From` (cabecera). Esto es alineación SPF.
+- **DKIM:** El dominio en la firma DKIM (`d=`) debe coincidir con el dominio en `From` (cabecera). Esto es alineación DKIM.
 
-Se considera que un correo pasa DMARC si pasa SPF Y tiene alineacion, O pasa DKIM Y tiene alineacion.
+Se considera que un correo pasa DMARC si pasa SPF Y tiene alineación, O pasa DKIM Y tiene alineación.
 
 ### Reportes Agregados (RUA)
 
@@ -203,13 +203,13 @@ Para el Blue Team, estos reportes son oro puro. Revelan:
 
 La migración a DMARC debe ser gradual para evitar bloquear correos legítimos:
 
-1. **Fase 1 - Monitorizacion:** Implementar `p=none` por 1-2 meses. Analizar los reportes para identificar flujos de correo legítimos que no están autenticados.
+1. **Fase 1 - Monitorización:** Implementar `p=none` por 1-2 meses. Analizar los reportes para identificar flujos de correo legítimos que no están autenticados.
 
 2. **Fase 2 - Cuarentena:** Implementar `p=quarantine` por 1 mes. Los correos sospechosos van a SPAM en lugar de ser bloqueados.
 
 3. **Fase 3 - Rechazo:** Implementar `p=reject`. Solo los correos que pasan autenticación llegan a la bandeja de entrada.
 
-Cada fase debe ir acompanada de comunicación con los equipos de negocio para identificar falsos positivos.
+Cada fase debe ir acompañada de comunicación con los equipos de negocio para identificar falsos positivos.
 
 ## Casos Reales
 
@@ -229,9 +229,9 @@ Si la empresa hubiera tenido DMARC con `p=reject`, el correo nunca habría llega
 
 ### El Caso del Correo de Google y PayPal (2017)
 
-Un investigador de seguridad descubrió que Google y PayPal tenían configuraciones de SPF y DKIM correctas, pero DMARC en `p=none`. Esto significaba que cualquier atacante podía falsificar correos de `@google.com` o `@paypal.com` y estos llegarian sin problemas a las víctimas.
+Un investigador de seguridad descubrió que Google y PayPal tenían configuraciones de SPF y DKIM correctas, pero DMARC en `p=none`. Esto significaba que cualquier atacante podía falsificar correos de `@google.com` o `@paypal.com` y estos llegarían sin problemas a las víctimas.
 
-Google corrigio la configuración a `p=reject` después de que el investigador lo publicara.
+Google corrigió la configuración a `p=reject` después de que el investigador lo publicara.
 
 ### El Ataque a Ubiquiti Networks (2015)
 
@@ -243,7 +243,7 @@ La empresa tenía configuraciones de seguridad de correo débiles. Si hubieran t
 
 ### Falla 1: DMARC en None
 
-La configuración `p=none` es útil para monitorizacion inicial, pero muchas empresas la dejan permanentemente. Esto anula completamente la protección. DMARC en `none` solo recolecta datos, no bloquea nada.
+La configuración `p=none` es útil para monitorización inicial, pero muchas empresas la dejan permanentemente. Esto anula completamente la protección. DMARC en `none` solo recolecta datos, no bloquea nada.
 
 ### Falla 2: SPF con Mecanismo ~all (Soft Fail)
 
@@ -269,19 +269,19 @@ Como atacante, el correo electrónico es mi vector de entrada favorito. Es más 
 
 Si la empresa objetivo no tiene DMARC, mis opciones son:
 
-1. **Spoofing Directo:** Envio correos como `ceo@empresa.com`. El servidor receptor no verifica nada. La víctima ve el nombre del CEO en su bandeja de entrada.
+1. **Spoofing Directo:** Envío correos como `ceo@empresa.com`. El servidor receptor no verifica nada. La víctima ve el nombre del CEO en su bandeja de entrada.
 
-2. **Spoofing con Display Name:** Uso una cuenta falsa de Gmail pero pongo el nombre de visualizacion del CEO: "Juan Perez (CEO)" con dirección `juan.perez@gmail.com`. Muchos usuarios miran solo el nombre, no la dirección.
+2. **Spoofing con Display Name:** Uso una cuenta falsa de Gmail pero pongo el nombre de visualización del CEO: "Juan Perez (CEO)" con dirección `juan.perez@gmail.com`. Muchos usuarios miran solo el nombre, no la dirección.
 
-3. **Dominio Similar (Typosquatting):** Registro `empresa-seguridad.com` o `empresaa.com` y envio correos desde ahí. Con una letra diferente, la mayoría de usuarios no nota la diferencia.
+3. **Dominio Similar (Typosquatting):** Registro `empresa-seguridad.com` o `empresaa.com` y envío correos desde ahí. Con una letra diferente, la mayoría de usuarios no nota la diferencia.
 
 ### Ataques Cuando DMARC Existe
 
 Si la empresa tiene DMARC `p=reject`, no puedo falsificar su dominio. Pero tengo alternativas:
 
-1. **Comprometer una Cuenta Real:** Envio un phishing a un empleado real para robar sus credenciales. Una vez dentro, envio correos desde la cuenta legítima del empleado comprometido.
+1. **Comprometer una Cuenta Real:** Envío un phishing a un empleado real para robar sus credenciales. Una vez dentro, envío correos desde la cuenta legítima del empleado comprometido.
 
-2. **Ataque a Proveedores:** Envio correos falsos desde el dominio de un proveedor o socio (que quizas no tiene DMARC). La empresa confía en correos de sus socios.
+2. **Ataque a Proveedores:** Envío correos falsos desde el dominio de un proveedor o socio (que quizás no tiene DMARC). La empresa confía en correos de sus socios.
 
 3. **Whaling con Ingeniería Social:** Sin falsificar el dominio, creo un correo convincente desde una cuenta personal del CEO (si encuentro su correo personal en redes sociales).
 
@@ -387,7 +387,7 @@ v=spf1 include:servidor1.com include:servidor2.com include:servidor3.com
 Soluciones:
 - Combinar rangos IP en lugar de usar múltiples `include`.
 - Usar un servicio de gestión SPF como DNS Made Easy o Cloudflare.
-- Revisar periodicamente los includes para eliminar los que ya no se usan.
+- Revisar periódicamente los includes para eliminar los que ya no se usan.
 
 ## DKIM: Implementación Avanzada
 
@@ -399,7 +399,7 @@ DKIM soporta múltiples algoritmos:
 - **rsa-sha1:** Obsoleto (SHA-1 tiene vulnerabilidades conocidas).
 - **ed25519-sha256:** Algoritmo moderno usando curvas elípticas (más rápido, claves más cortas).
 
-### Canones de Firma
+### Cánones de Firma
 
 DKIM define como se normaliza el mensaje antes de firmar:
 
@@ -412,19 +412,19 @@ La mayoría de los servicios usan `relaxed/relaxed` para evitar falsos positivos
 
 ### Rotación de Claves DKIM
 
-Las claves DKIM deben rotarse periodicamente:
+Las claves DKIM deben rotarse periódicamente:
 
 1. Generar un nuevo par de claves.
 2. Publicar la nueva clave pública con un nuevo selector.
 3. Configurar el servidor de correo para firmar con la nueva clave.
 4. Mantener la clave antigua por un tiempo (los correos en tránsito pueden tener la firma antigua).
-5. Eliminar la clave antigua cuando todos los correos en circulacion hayan expirado.
+5. Eliminar la clave antigua cuando todos los correos en circulación hayan expirado.
 
 ## Caso Real: El Ataque a la Casa Blanca (2020)
 
 En 2020, investigadores descubrieron que el dominio whitehouse.gov tenía configuraciones de DMARC incompletas. Aunque tenía SPF y DKIM, la política DMARC estaba en `p=none`.
 
-Esto significaba que cualquier atacante podía falsificar correos de la Casa Blanca y estos llegarian a las bandejas de entrada sin problemas. El gobierno de EE.UU. había emitido una directiva ejecutiva (EO 14028) exigiendo DMARC `p=reject` para todas las agencias federales, pero la implementación era lenta.
+Esto significaba que cualquier atacante podía falsificar correos de la Casa Blanca y estos llegarían a las bandejas de entrada sin problemas. El gobierno de EE.UU. había emitido una directiva ejecutiva (EO 14028) exigiendo DMARC `p=reject` para todas las agencias federales, pero la implementación era lenta.
 
 ## Autoevaluación
 
@@ -440,7 +440,7 @@ Responde estas preguntas para verificar si comprendes los conceptos:
 
 5. Explica la diferencia entre SPF (que verifica) y DKIM (que verifica). Usa la analogía del correo l para ilustrar la diferencia.
 
-6. Un atacante compromete el servidor DNS de una empresa y modifica el registro SPF para incluir su propia dirección IP. Como podría el equipo de seguridad detectar esta modificación y que protocolo evitaria que los correos falsos lleguen a los destinatarios?
+6. Un atacante compromete el servidor DNS de una empresa y modifica el registro SPF para incluir su propia dirección IP. Como podría el equipo de seguridad detectar esta modificación y que protocolo evitaría que los correos falsos lleguen a los destinatarios?
 
 7. Por qué la política DMARC `p=reject` es considerada la única configuración realmente segura? Que riesgos conlleva implementarla sin una fase de pruebas adecuada?
 
